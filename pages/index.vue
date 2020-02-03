@@ -3,13 +3,33 @@
         
         <el-main class="main_page">
           <div class="scroll">
-            <nuxt-link to="/login">
+        <div class="" v-if ="!$store.state.isLoggedIn">
+             <nuxt-link to="/login">
               <div class="demo-type">
-                 <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                <span  class="avatar_text">Please Login First</span>
+                 <el-avatar :size="60" src="https://img.icons8.com/nolan/64/name.png"></el-avatar>
+               <span  class="avatar_text">Please Login First</span>
+                 <el-avatar :size="60" src="~static/images/2d_reult_icon.png"></el-avatar>
               </div>
                
             </nuxt-link>
+        </div>
+        <div v-else>
+           <nuxt-link to="/login">
+              <div class="demo-type">
+                 <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                <span  class="avatar_text">Name</span>
+                    <nuxt-link to="/result">
+                       <div class="result_icon">
+                        <img src="~static/images/2d_result_icon.png" alt="">
+                      </div>
+                    </nuxt-link>
+                   
+              </div>
+               
+            </nuxt-link>
+        </div>
+
+           
 
            
           <div class="block">
@@ -152,6 +172,10 @@
 import Logo from '~/components/Logo.vue'
 import axios from 'axios'
 export default {
+  layout: 'homeLayout',
+  mounted() {
+     this.updateIsLoggedIn();
+   },
   components: {
     Logo
   },
@@ -163,20 +187,26 @@ export default {
     }
   },
    methods: {
-     
+      updateIsLoggedIn() {
+        this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
+      },
+      hasUserInfo() {
+        return Boolean(localStorage.getItem('userInfo'));
+      },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
       }
     },
      created() {
-        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
-        .then(response => {
-          // JSON responses are automatically parsed.
-          this.posts = response.data
-          console.log(this.posts);
-      alert(this.posts)
-        })
+      //   axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+      //   .then(response => {
+      //     // JSON responses are automatically parsed.
+      //     this.posts = response.data
+      //     console.log(this.posts);
+      // alert(this.posts)
+      //   })
     },
+    
     //   mounted() {
     //  axios
     //   .get('https://build.seinlucky.com/api/v1/twod-result/live')

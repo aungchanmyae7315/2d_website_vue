@@ -39,6 +39,11 @@ export default {
         path: '/bet',
         component: 'pages/bet.vue'
       },
+      {
+        name: 'result',
+        path: '/result',
+        component: 'pages/result.vue'
+      },
       
     ]
   },

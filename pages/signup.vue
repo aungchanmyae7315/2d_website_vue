@@ -5,7 +5,7 @@
  <div class="sign_page">
         <el-page-header @back="goBack">
         </el-page-header>
-          <el-form v-if="active===1" :model="numberValidateForm" ref="numberValidateForm" class="demo-ruleForm" >
+          <el-form v-if="active===1"  class="demo-ruleForm" >
            
         
         <div class="sign_up_text">
@@ -14,20 +14,17 @@
              <div class="phone_input">
             <el-form-item
               
-                prop="phone"
-                :rules="[
-                { required: true, message: 'phone is required'},
-                { type: 'number', message: 'phone must be a number'}
-                ]"
+               
             >  
-                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model.number="numberValidateForm.phone" autocomplete="off"></el-input>
+                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="phone" ></el-input>
                
             </el-form-item>
             
              </div>
-             
+              <el-button type="success" round @click="next()">next</el-button>
+        
           </el-form>
-        <el-form v-if="active===2" :model="numberValidateForm" ref="numberValidateForm" class="demo-ruleForm" >
+        <el-form v-if="active===2"  class="demo-ruleForm" >
           <div class="sign_up_text">
                 <h4>We have sent OTP<br> on your number</h4>
             </div>
@@ -36,31 +33,29 @@
                   
                    
                 >  
-                    <el-input type="otp" placeholder="Enter OTP number" prefix-icon="el-icon-otp" v-model.number="numberValidateForm.otp" autocomplete="off"></el-input>
+                    <el-input type="otp" placeholder="Enter OTP number" prefix-icon="el-icon-otp" v-model="otp" autocomplete="off"></el-input>
                   
                 </el-form-item>
             
              </div>
+             <el-button type="success" round @click="nextTwo()">next</el-button>
         </el-form>
 
-        <el-form v-if="active===3" :model="numberValidateForm" ref="numberValidateForm" class="demo-ruleForm" >
+        <el-form v-if="active===3"  class="demo-ruleForm" >
            <div class="sign_up_text">
             <h4>Set your Password</h4>
         </div>
              <div class="phone_input">
             <el-form-item
               
-                prop="password"
-                :rules="[
-                { required: true, message: 'password is required'},
-                { type: 'number', message: 'password must be a number'}
-                ]"
+               
             >  
-                <el-input type="password" placeholder="Password" prefix-icon="el-icon-lock" v-model.number="numberValidateForm.password" autocomplete="off"></el-input>
+                <el-input type="password" placeholder="Password" prefix-icon="el-icon-lock" v-model="password" autocomplete="off"></el-input>
                
             </el-form-item>
             
              </div>
+             <el-button type="success" round @click="submitForm()">Submit</el-button>
         </el-form>
 
 
@@ -84,7 +79,7 @@
        
          </div>
      
-                <el-button type="success" round @click="submitForm('numberValidateForm')">Submit</el-button>
+                
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
         
     </div>
@@ -93,63 +88,99 @@
 
 
 <script>
+import axios from 'axios'
   export default {
       layout: 'loginLayout',
     data() {
       return {
         active: 1,
          input: '',
-         numberValidateForm: {
-            phone: '',
-            otp:'',
-            password:''
-            }
+         phone:'',
+         otp:'',
+         password:''
+        //  numberValidateForm: {
+        //     // phone: '',
+        //     otp:'',
+        //     password:''
+        //     }
       };
     },
      methods: {
-        submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-         
-          if (valid) {
-              if (this.active++ > 2) this.active = 0;
-            alert('submit!');
-            // this.axios.post('http://localhost:8000/yourPostApi', {
-            //         phone: this.phone,
+        
+      next() {
+        
+         axios.post('https://build.seinlucky.com/api/v1/send-otp', {
+                    phone: this.phone,
                   
-            //     })
-            //     .then(function (response) {
-            //         this.output = response.data;
-            //     })
-            //     alert(this.output);
-  
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+                })
+                // console.log(this.phone)
+                .then(response => (
+                  console.log(response),
+                this.userOtp = response.data,
+                this.$store.commit('setOtp', this.userOtp),
+                console.log(this.userOtp)
+                ));
+                // console.log(response)
+                  // this.$store.commit("setPhone", this.userPhone); 
+                if (this.active++ > 2) this.active = 0;
+
       },
-      //  methods: {
-      //       formSubmit(e) {
-      //           e.preventDefault();
-      //           let currentObj = this;
-      //           this.axios.post('http://localhost:8000/yourPostApi', {
-      //               name: this.name,
-      //               description: this.description
-      //           })
-      //           .then(function (response) {
-      //               currentObj.output = response.data;
-      //           })
-      //           .catch(function (error) {
-      //               currentObj.output = error;
-      //           });
-      //       }
-      //   }
+      nextTwo() {
+        if(this.active++ > 2) this.active=0;
+      },
+      submitForm() {
+        // this.$refs[formName].validate((valid) => {
+         
+          // if (valid) {
+              if (this.active++ > 2) this.active = 0;
+            // alert('submit!');
+            // alert(this.phone);
+            // alert(this.otp);
+            // alert(this.password);
+             axios.post('https://build.seinlucky.com/api/v1/register', {
+                    phone: this.phone,
+                    otp: this.otp,
+                    password: this.password
+                })
+                .then(response => (
+                  console.log(response.message),
+                   this.userInfo = response.data,
+                  this.$store.commit('logIn', this.userInfo),
+                  console.log(this.userInfo)
+                  
+              
+                ));
+                // alert(this.userInfo)
+                //  this.$router.go('/');
+                // console.log(response);
+          //         const getPhoneUser = this.info;
+          //        this.$store.commit("setPhone", getPhoneUser); 
+
+          // const customerResponse = await this.$axios.get('https://build.seinlucky.com/api/v1/register/' + getPhoneUser );
+          // // if there is customer data
+          // const customerData = customerResponse.data.data;
+          // alert(customerData)
+          // if(customerData) {
+          //   this.$store.commit('logIn', customerData);
+          //   this.$router.go('/');
+          // } 
+          // else {
+            
+          //   alert('not ok')
+          // }
+              //   alert("register Doen");
+              //  this.$router.push('/');
+  
+          // } else {
+          //   console.log('error submit!!');
+          //   return false;
+          // }
+        // });
+      },
+
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-      // submitForm(formName) {
-        // if (this.active++ > 2) this.active = 0;
-      // },
        goBack() {
         this.$router.push('/');
       }
@@ -160,7 +191,7 @@
   <style>
   .el-page-header__left {
     margin:0;
-    padding:20px 5px;
+   padding:20px 5px;
   }
   .sign_page {
       padding:0 20px;
@@ -193,3 +224,31 @@
     }
     
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
