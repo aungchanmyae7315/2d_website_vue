@@ -16,5 +16,7 @@
     "element-ui": "^2.13.0",
     "nuxt": "^2.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.2"
+  }
 }

@@ -57,16 +57,6 @@
              </div>
              <el-button type="success" round @click="submitForm()">Submit</el-button>
         </el-form>
-
-
-        <!-- <div class="phone_input">
-          <el-input
-             placeholder="eg.097 xxx xxx"
-            v-model="input"
-            clearable>
-             <i slot="prefix" class="el-input__icon el-icon-phone"></i>
-          </el-input>
-        </div> -->
         
         <div class="step_bar">
 
@@ -150,32 +140,6 @@ import axios from 'axios'
                   
               
                 ));
-                // alert(this.userInfo)
-                //  this.$router.go('/');
-                // console.log(response);
-          //         const getPhoneUser = this.info;
-          //        this.$store.commit("setPhone", getPhoneUser); 
-
-          // const customerResponse = await this.$axios.get('https://build.seinlucky.com/api/v1/register/' + getPhoneUser );
-          // // if there is customer data
-          // const customerData = customerResponse.data.data;
-          // alert(customerData)
-          // if(customerData) {
-          //   this.$store.commit('logIn', customerData);
-          //   this.$router.go('/');
-          // } 
-          // else {
-            
-          //   alert('not ok')
-          // }
-              //   alert("register Doen");
-              //  this.$router.push('/');
-  
-          // } else {
-          //   console.log('error submit!!');
-          //   return false;
-          // }
-        // });
       },
 
       resetForm(formName) {

@@ -1,16 +1,17 @@
 <template>
   <div class="main_container">
-      <el-main>
+    
+     
            <Nuxt />
-      </el-main>
-   
+     
+
+       
      <el-footer class="footer">
           <el-menu
-            :default-active="activeIndex2"
             class="el-menu-demo"
             mode="horizontal"
             text-align="center"
-            @select="handleSelect"
+          
             background-color="#14612D"
             text-color="#fff"
             width="100%"
@@ -36,8 +37,26 @@
 </template>
 
 <style>
-body {
+.service_layout .longText_service{
+  max-width: 480px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  text-align: justify;
+}
+
+/*------THE TRICK------*/
+.service_layout #hidingScrollBar_service{
   overflow: hidden;
+}
+.service_layout .hideScrollBar_service{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  margin-left: 17px;
+  padding-top:0 !important;
+  padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
+ 
 }
 
 </style>

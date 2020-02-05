@@ -1,14 +1,20 @@
 <template>
  
         
-        <el-main class="main_page">
-          <div class="scroll">
+      <el-main class="main_page">
+        
+        <div class="longText" id="hidingScrollBar">
+         <div class="hideScrollBar">
         <div class="" v-if ="!$store.state.isLoggedIn">
              <nuxt-link to="/login">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://img.icons8.com/nolan/64/name.png"></el-avatar>
                <span  class="avatar_text">Please Login First</span>
-                 <el-avatar :size="60" src="~static/images/2d_reult_icon.png"></el-avatar>
+                    <nuxt-link to="/result">
+                       <div class="result_icon">
+                        <img src="~static/images/2d_result_icon.png" alt="">
+                      </div>
+                    </nuxt-link>
               </div>
                
             </nuxt-link>
@@ -29,26 +35,23 @@
             </nuxt-link>
         </div>
 
-           
-
-           
           <div class="block">
             <el-carousel trigger="click" height="150px">
            
                 <el-carousel-item name ='first'>
-                  <el-carousel-label class="el-carousel_label">
+                  <div class="el-carousel_label">
                     <h3>ipsum dolor sit amet fdsf</h3> 
-                  </el-carousel-label>
+                  </div>
                 </el-carousel-item>
-                <el-carousel-item name ='secont'>
-                   <el-carousel-label class="el-carousel_label">
-                    <h3>ipsum dolor sit amet fdsf</h3> 
-                  </el-carousel-label>
+                <el-carousel-item name ='second'>
+                   <div class="el-carousel_label">
+                    <h3>ipsum dolo sit amet fdsf</h3> 
+                  </div>
                 </el-carousel-item>
                 <el-carousel-item name ='third'>
-                   <el-carousel-label class="el-carousel_label">
+                   <div class="el-carousel_label">
                     <h3>ipsum dolor sit amet fdsf</h3> 
-                  </el-carousel-label>
+                  </div>
                 </el-carousel-item>
               
        
@@ -160,10 +163,9 @@
               </nuxt-link>
                
             </div>
-
-                  </div>
-
-        </el-main>
+      </div>
+    </div>
+  </el-main>
        
 
 </template>
@@ -182,7 +184,7 @@ export default {
   data() {
     return {
       activeIndex: '1',
-        activeIndex2: '1',
+      //   activeIndex2: '1',
      
     }
   },
@@ -193,9 +195,9 @@ export default {
       hasUserInfo() {
         return Boolean(localStorage.getItem('userInfo'));
       },
-      handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-      }
+      // handleSelect(key, keyPath) {
+      //   console.log(key, keyPath);
+      // }
     },
      created() {
       //   axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
@@ -218,12 +220,7 @@ export default {
 </script>
 
 <style>
-.el-carousel_label {
-  background: red;
-  width:100%;
-  height:20px;
-  
-  }
+
   .el-carousel {
     border-radius: 22px;
   }
@@ -254,15 +251,14 @@ export default {
   text-align: center;
 } */
   .main_page {
-   padding:80px 20px;
+   
    margin:0 auto;
   }
-  .el-header, .el-footer {
+  .el-header {
     background-color: #14612D;
     color: #333;
-    text-align: center;
-    line-height: 60px;
-    padding:0;
+    /* text-align: center; */
+    padding:10px 0;
     z-index: 5;
   }
   
@@ -282,6 +278,8 @@ export default {
     max-width: 480px;
     width:100%;
     height:100vh;
+    padding:7px;
+    overflow: hidden;
     /* background-position: 100% 100%; */
     
   }

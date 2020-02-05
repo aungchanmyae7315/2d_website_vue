@@ -6,11 +6,11 @@
    
      <el-footer class="footer">
           <el-menu
-            :default-active="activeIndex2"
+       
             class="el-menu-demo"
             mode="horizontal"
             text-align="center"
-            @select="handleSelect"
+         
             background-color="#14612D"
             text-color="#fff"
             width="100%"

@@ -44,6 +44,11 @@ export default {
         path: '/result',
         component: 'pages/result.vue'
       },
+      {
+        name: 'signup_refel',
+        path: '/signup_refel',
+        component: 'pages/signup_refel.vue'
+      },
       
     ]
   },

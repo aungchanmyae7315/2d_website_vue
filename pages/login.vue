@@ -22,25 +22,25 @@
           </div>
 
 
-       <el-form :model="numberValidateForm" ref="numberValidateForm" class="demo-ruleForm">
+       <el-form  ref="" class="demo-ruleForm">
             <el-form-item
               
                 prop="phone"
                 :rules="[
                 { required: true, message: 'phone is required'},
-                { type: 'number', message: 'phone must be a number'}
+              
                 ]"
             >
-                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model.number="numberValidateForm.phone" autocomplete="off"></el-input>
+                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="phone" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item
                 prop="password"
                 :rules="[
                 { required: true, message: 'password is required'},
-                { type: 'number', message: 'password must be a number'}
+             
                 ]"
             >
-                <el-input type="password" placeholder="Password"  prefix-icon="el-icon-lock" v-model.number="numberValidateForm.password" autocomplete="off"></el-input>
+                <el-input type="password" placeholder="Password"  prefix-icon="el-icon-lock" v-model="password" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item>
                 <el-button type="success" round @click="submitForm('numberValidateForm')">Submit</el-button>
@@ -88,27 +88,52 @@
     </main>
  </template>
 <script>
+import axios from 'axios'
+// import store from './vuex/store'
   export default {
       layout: 'loginLayout',
     data() {
       return {
             dialogVisible: false,
-            numberValidateForm: {
+          
             phone: '',
             password:''
-            }
+            
       };
     },
+    
     methods: {
       submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            alert('submit!');
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
+   
+        
+              alert(this.phone)
+                  alert(this.password)
+             axios.post('https://build.seinlucky.com/api/v1/login', {
+                    phone: this.phone,
+                    password: this.password,
+                    
+                })
+              
+                // console.log(this.phone)
+                .then(response => (
+                  console.log(response),
+                  
+                  this.phoneResponse = response.data.message,
+                  this.$store.commit('setPhone', this.phoneResponse),
+                  console.log('ewe')
+                  ));
+                //  if (store.state.phoneResponse = '') {
+                //    alert('fail')
+                //  }else {
+                //    alert ('regds')
+                //  }
+                if(state.phoneResponse == 'fail') {
+                  alert('word')
+                }else {
+                  alert('hello')
+                }
+                 this.$router.push('/');
+      
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();

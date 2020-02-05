@@ -2,7 +2,31 @@
   <div>
     <div class="main_container">
         <el-header class="header">
-          <ul class="header_item">
+          <el-row :gutter="20">
+            <el-col :span="8"><div class="noti"><img src="~static/images/noti.png" alt="logo"></div></el-col>
+            <el-col :span="8"><div class=""><img src="~static/images/logo.png" class="logo" alt="logo"></div></el-col>
+            <el-col :span="4">
+                 <div class="music_icon">
+                  <a href="#" title="Listen to the song" class="player-controls">
+                      <span class="audio-label">
+                          
+                      </span>
+                      <span class="play"></span>
+                      <span class="pause"></span>
+                  </a>
+                  <audio id="player">
+                      <source src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1" type="audio/mp3">
+                       <!-- <source src="https://casting-crowns.mp3quack.com/?raw=1" type="audio/mp3"> -->
+                  </audio>
+              </div>
+            </el-col>
+            <el-col :span="4">
+              <div class="messeage_icon">
+                  <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
+              </div>
+            </el-col>
+          </el-row>
+          <!-- <ul class="header_item">
            <li class="noti"><a href=""> <img src="~static/images/noti.png" alt="logo"></a></li>
             <li><a href=""> <img src="~static/images/logo.png" class="logo" alt="logo"></a></li>
             <li class="music_icon">
@@ -16,14 +40,14 @@
                 </a>
                 <audio id="player">
                     <source src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1" type="audio/mp3">
-                      <!-- <source src="https://casting-crowns.mp3quack.com/?raw=1" type="audio/mp3"> -->
+                    
                 </audio>
             </div>
             </li>
             <li class="messeage_icon">
                 <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
             </li>
-          </ul>
+          </ul> -->
             
            
         </el-header>
@@ -31,11 +55,11 @@
         <nuxt />
         <el-footer class="footer">
           <el-menu
-            :default-active="activeIndex2"
+          
             class="el-menu-demo"
             mode="horizontal"
             text-align="center"
-            @select="handleSelect"
+            
             background-color="#14612D"
             text-color="#fff"
             width="100%"
@@ -108,6 +132,7 @@ html {
     max-width:480px;
     width:100%;
     bottom: 0;
+    padding:0;
 }
 .button--green {
   display: inline-block;
@@ -138,3 +163,5 @@ html {
   background-color: #35495e;
 }
 </style>
+
+

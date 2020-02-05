@@ -3,9 +3,12 @@ import Vuex from 'vuex'
 
 const createStore = () => {
     return new Vuex.Store({
+        
         state: {
              isLoggedIn: false,
             Otp: '',
+            phoneResponse:'',
+            count: 0
             // modalProduct: {},
             // loaded:true
         },
@@ -31,9 +34,17 @@ const createStore = () => {
                 state.Otp = Otp;
                 console.log(Otp)
             },
+            setPhone(state, phoneResponse){
+                state.phoneResponse = phoneResponse;
+                console.log(phoneResponse)
+            },
             // openOrderConfirmModal(state,modalProduct) {  
             //     state.modalProduct = modalProduct;  
             // }
+            increment (state) {
+                // mutate state
+                state.count++
+              }
         }
     })
 }

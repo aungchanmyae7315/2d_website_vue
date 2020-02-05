@@ -1,22 +1,28 @@
 <template>
    <main>
-        <div class="service">
-            <img src="~static/icons_service/Customer_services_icon.png" alt="">
-            <p class="contact_text">Contact us via Viber or Phone call</p>
-            <ul class="service_contact">
-                <li><el-button size="medium"  icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                <li><el-button size="medium"   icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                <li><el-button size="medium"   icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                 
+         <el-main>
+            <div class="longText" id="hidingScrollBar">
+              <div class="hideScrollBar_service">
+                  <div class="service">
+                  <img src="~static/icons_service/Customer_services_icon.png" alt="">
+                    <p class="contact_text">Contact us via Viber or Phone call</p>
+                    <ul class="service_contact">
+                        <li><el-button size="medium"  icon="el-icon-phone" round>09 798 455 846</el-button></li>
+                        <li><el-button size="medium"   icon="el-icon-phone" round>09 798 455 846</el-button></li>
+                        <li><el-button size="medium"   icon="el-icon-phone" round>09 798 455 846</el-button></li>
+                        <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
+                        <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
+                        <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
+                        
 
-            </ul>
-           <h6>Or</h6>
-           <p class="contact_chat"> You can just message to us </p>
-            <el-button type="primary">Chat with our customer service</el-button>
-        </div>
+                    </ul>
+                  <h6>Or</h6>
+                  <p class="contact_chat"> You can just message to us </p>
+                    <el-button type="primary">Chat with our customer service</el-button>
+                </div>
+              </div>
+             </div>
+        </el-main>
     </main>
 </template>
 
@@ -27,6 +33,13 @@ export default {
 }
 </script>
 <style>
+.hideScrollBar_service {
+      width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin-left: 17px;
+    padding-right: 28px;
+}
   .service {
         text-align:center;
         margin-bottom:80px;

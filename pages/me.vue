@@ -13,22 +13,32 @@
       <el-main>
            <ul class="acc_items">
                
-                <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
-                <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
-                <li><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></li>
-                 <li><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></li>
-                  <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> LogOut</a></li>
+            
+                <div  v-if ="!$store.state.isLoggedIn">
+                        <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
+                        <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
+                        <li><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></li>
+                </div>
+                <div v-else> 
+                       <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
+                        <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
+                        <li><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></li>
+
+                        <li><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></li>
+                        <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> LogOut</a></li>
+                </div>
+              
 
             </ul>
       </el-main>
    
      <el-footer class="footer">
           <el-menu
-            :default-active="activeIndex2"
+           
             class="el-menu-demo"
             mode="horizontal"
             text-align="center"
-            @select="handleSelect"
+           
             background-color="#14612D"
             text-color="#fff"
             width="100%"
@@ -109,7 +119,7 @@ export default {
     }
     .acc_items li a img {
         padding: 0 10px;
-        margin-bottom:-11px;
+        
     }
     
 </style>
