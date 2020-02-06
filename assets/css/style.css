@@ -296,8 +296,27 @@
   .music_icon {
     left:12px;
   }
+  .bet_container .el-dialog {
+    width:92% !important;
+  }
 
 }
+@media screen and (min-width:460px) {
+  .bet_container .el-dialog {
+    width:57% !important;
+  }
+
+
+}
+
+@media screen and (min-width:1024px) {
+  .bet_container .el-dialog {
+    width:40% !important;
+  }
+  
+
+}
+ 
  
 
 

@@ -7,12 +7,99 @@
                 <el-col :span="6">
                     
                     <div v-if="check_btn[0] != null">
-                        <el-button @click="clear_btn()" class="fast_btn" >clear</el-button>
+                        <el-button @click="clear_btn()" class="fast_btn" >Clear</el-button>
                     </div>
                     <div v-else>
-                        <el-button  class="fast_btn" >Fast</el-button>
+                        <el-button type="button"   @click="dialogFormVisible = true"   class="fast_btn" >Fast</el-button>
+                          
                     </div>
-                      
+                     <!-- <el-checkbox-button  v-model="checkAll" @change="small_number">Check all</el-checkbox-button> -->
+                     
+      <!-- <el-checkbox-group v-model="check_btn">
+                        <el-checkbox-button v-for="btn in btns"   :label="btn" :key="btn">{{btn}}</el-checkbox-button>
+                    </el-checkbox-group> -->
+
+
+                <el-dialog title="" :visible.sync="dialogFormVisible" class="modal_bet"
+                width="90%" center
+                    >  
+                    <p>Single and Double size</p>
+            
+                        <el-row class="single_btn">
+                            <el-col :span="4">  <el-button type="text" @click="big_number">ကြီး</el-button></el-col>
+                            <el-col :span="4"><el-button type="text" @click="small_number">ငယ်</el-button></el-col>
+                            <el-col :span="4"> <el-button type="text"  @click="odd_number">မ</el-button></el-col>
+                            <el-col :span="4"><el-button type="text" @click="even_number">စုံ</el-button></el-col>    
+                                <el-col :span="4"></el-col>                                                  
+                        </el-row>
+                        <el-row class="single_btn">
+                            <el-col :span="4"> <el-button type="text" @click="ee_number">စုံစုံ</el-button></el-col>
+                            <el-col :span="4"> <el-button type="text" @click="eo_number">စုံမ</el-button> </el-col>
+                            <el-col :span="4"> <el-button  type="text" @click="oe_number">မစုံ</el-button></el-col>
+                            <el-col :span="4">  <el-button type="text"  @click="oo_number">မမ</el-button> </el-col>
+                            <el-col :span="4">  <el-button type="text"  @click="same_number">အပူး</el-button></el-col>
+                        </el-row>
+                    
+                    <div class="con_power">
+                        <p>Constellation Power</p>
+                        <el-button type="text" @click="big_number">Constellation 07,18,24,35,69</el-button>
+                        <el-button type="text" @click="big_number">Constellation R 70,81,42,53,96</el-button>
+                        <el-button type="text" @click="big_number">Power 05, 16, 27, 38,</el-button>
+                        <el-button type="text" @click="big_number">Power R 05,16,27,38</el-button>
+                    </div>
+                        
+                        <p>20 Selection Number</p>
+                        <el-row  class="select_number_two">
+                            <el-col :span="5">  <el-button type="text" @click="btw_00_19">00-19</el-button></el-col>
+                            <el-col :span="5"><el-button type="text" @click="btw_20_39">20-39</el-button></el-col>
+                            <el-col :span="5"> <el-button type="text"  @click="btw_40_59">40-59</el-button></el-col>
+                            <el-col :span="5"><el-button type="text" @click="btw_60_79">60-79</el-button></el-col>    
+                                <el-col :span="5"><el-button type="text" @click="btw_80_99">80-99</el-button></el-col>    
+                        </el-row>
+                        
+                
+
+                        <div class="select_number">
+                            <el-button type="text" @click="with_0">0</el-button>
+                            <el-button type="text" @click="with_1">1</el-button>
+                            <el-button type="text" @click="with_2">2</el-button>
+                            <el-button type="text" @click="with_3">3</el-button>
+                            <el-button type="text" @click="with_4">4</el-button>
+                            <el-button type="text" @click="with_5">5</el-button>
+                            <el-button type="text" @click="with_6">6</el-button>
+                            <el-button type="text" @click="with_7">7</el-button>
+                            <el-button type="text" @click="with_8">8</el-button> 
+                            <el-button type="text" @click="with_9">9</el-button>
+
+                            <p>Head</p>
+                            <el-button type="text" @click="head_0">0</el-button>
+                            <el-button type="text" @click="head_1">1</el-button>
+                            <el-button type="text" @click="head_2">2</el-button>
+                            <el-button type="text" @click="head_3">3</el-button>
+                            <el-button type="text" @click="head_4">4</el-button>
+                            <el-button type="text" @click="head_5">5</el-button>
+                            <el-button type="text" @click="head_6">6</el-button>
+                            <el-button type="text" @click="head_7">7</el-button>
+                            <el-button type="text" @click="head_8">8</el-button> 
+                            <el-button type="text" @click="head_9">9</el-button>
+
+                            <p>Tail</p>
+                            <el-button type="text" @click="tail_0">0</el-button>
+                            <el-button type="text" @click="tail_1">1</el-button>
+                            <el-button type="text" @click="tail_2">2</el-button>
+                            <el-button type="text" @click="tail_3">3</el-button>
+                            <el-button type="text" @click="tail_4">4</el-button>
+                            <el-button type="text" @click="tail_5">5</el-button>
+                            <el-button type="text" @click="tail_6">6</el-button>
+                            <el-button type="text" @click="tail_7">7</el-button>
+                            <el-button type="text" @click="tail_8">8</el-button> 
+                            <el-button type="text" @click="tail_9">9</el-button>
+                        </div>
+    
+                    
+        
+                        
+                </el-dialog>
                 </el-col>
                 <el-col :span="18">
                     <el-input class="bet_input" placeholder="500 Ks"  v-model="input_bet">
@@ -39,97 +126,12 @@
         <div class="longText" id="hidingScrollBar">
             <div class="hideScrollBar_bet">
                 <div class="all_btn">
-                <!-- <q-btn color="primary" label="Primary" ></q-btn> -->
-    
-
-                <!-- <q-btn class="btn number-btns" label="01"></q-btn>
-                <q-btn class="btn number-btns" label="02"></q-btn>
-                <q-btn class="btn number-btns" label="03"></q-btn>
-                <q-btn class="btn number-btns" label="04"></q-btn>
-                <q-btn class="btn number-btns" label="05"></q-btn>
-                <q-btn class="btn number-btns" label="06"></q-btn>
-                <q-btn class="btn number-btns" label="07"></q-btn>
-                <q-btn class="btn number-btns" label="08"></q-btn>
-                <q-btn class="btn number-btns" label="09"></q-btn>
-                <q-btn class="btn number-btns" color="primary" label="10"></q-btn>
-                <q-btn class="btn number-btns" label="11"></q-btn>
-                <q-btn class="btn number-btns" label="12"></q-btn>
-                <q-btn class="btn number-btns" label="13"></q-btn>
-                <q-btn class="btn number-btns" label="14"></q-btn>
-                <q-btn class="btn number-btns" label="15"></q-btn>
-                <q-btn class="btn number-btns" label="16"></q-btn>
-                <button class="btn hello-btns">02</button>
-                <button class="btn hello-btns">03</button> -->
-
-            
-                <!-- <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">00</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">01</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">02</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">03</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">04</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">05</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">06</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">07</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">08</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">09</button>
-
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">10</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">11</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">12</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">13</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">14</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">15</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">16</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">17</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">18</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">19</button>
-    
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">21</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">21</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">23</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">24</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">25</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">26</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">27</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">28</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">29</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">30</button>
-
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">31</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">32</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">33</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">34</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">35</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">36</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">37</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">38</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">39</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">40</button>
-
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">41</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">41</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">43</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">44</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">45</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">46</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">47</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">48</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">49</button>
-                <button style="background:#14612D" class="btn btn_sm" :class="{ active: isActive }" @click="add_btn_select">40</button>
-
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">51</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">52</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">53</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">54</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">55</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">56</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">57</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">58</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">59</button>
-                <button style="background:rgb(195, 171, 75)" class="btn btn_md" :class="{ active: isActive }" @click="add_btn_select">50</button> -->
-                    <el-checkbox-group v-model="check_btn">
-                        <el-checkbox-button v-for="btn in btns"   :label="btn" :key="btn">{{btn}}</el-checkbox-button>
+                      <el-checkbox-group v-model="check_btn">
+                        <el-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-button>
                     </el-checkbox-group>
+                    <!-- <el-checkbox-group v-model="check_btn" :indeterminate="isIndeterminate">
+                        <el-checkbox-button v-for="btn in btns"   :label="btn" :key="btn">{{btn}}</el-checkbox-button>
+                    </el-checkbox-group> -->
                 
                 </div>
             </div>
@@ -180,7 +182,7 @@
         border: 0;
         margin: 11px;
         border-radius: 10px;
-        padding: 14px 16px;
+        padding: 14px;
         color: #e0dddd;
         background:#14612D;
         font-weight: bold;
@@ -244,38 +246,107 @@
     .betclose_text {
         color:#CCCCCC;
     }
-    /* .btn {
-   border: 0;
-   margin: 11px;
-   border-radius: 10px;
-   padding: 14px 16px;
-   color: #e0dddd;
-   font-weight: bold;
-} */
-/* .active {
-   border: 0;
-   margin: 11px;
-   border-radius: 10px;
-   padding: 14px 16px;
-   background:red !important;
-   color:#fff;
-   font-weight: bold;
-}
-.active:focus {
-   border-color:#000;
-}
-.isActive {
-   border: 0;
-   margin: 11px;
-   border-radius: 10px;
-   padding: 14px 16px;
-   color:#e0dddd;
-   font-weight: bold;
-   
-} */
+    .bet_container .el-dialog {
+        background-color: #232C36;
+        border-radius: 32px;
+        border:2pt solid #FFEA72;
+        max-width: 480px;
+       
+        
+    }
+    .modal_bet .el-button {
+      
+        background: #555555;
+        color:#fff;
+        font-weight: bold;
+    }
+    .modal_bet .el-dialog__headerbtn .el-dialog__close {
+        color:green;
+        font-size: 26px;
+        font-weight: bold;
+    }
+    .modal_bet .el-row {
+        margin:3px auto;
+    }
+    .modal_bet p {
+        color:#CCCCCC;
+        margin-top:10px;
+    }
+   .select_number .el-button {
+       width:23px;
+       margin:0;
+   }
+   .single_btn .el-button {
+       width:46px;
+   }
+   .select_number_two .el-col-5 {
+       width:19.83333%;
+   }
+   .select_number_two .el-button {
+       width:53px;
+
+   }
+   .con_power {
+       text-align: left;
+   }
+   .con_power .el-button {
+       width:100%;
+       margin:10px 0 0 0;
+       text-align: left;
+       padding-left:10px;
+   }
+
+   @media screen and (max-width:320px) {
+       .select_number_two .el-button {
+           width:46px;
+       }
+       .single_btn .el-button {
+           width:39px;
+       }
+       .select_number .el-button {
+           width:20px;
+       }
+   }
+   @media screen and (max-width:414px) {
+      .select_number .el-button {
+          width:26.5px;
+      }
+   }
+   @media screen and (max-width:360px) {
+      .select_number .el-button{
+          width:23.3px;
+      }
+   }
+    @media screen and (max-width:375px) {
+      .select_number .el-button{
+          width:24px;
+      }
+   }
+    @media screen and (min-width:480px) {
+      .select_number .el-button{
+          width:33.2px;
+      }
+      .select_number_two .el-button {
+          width:74px;
+      }
+   }
 </style>
 
 <script>
+const cityOptions = ['00','01', '02', '03', '04','05','06','07','08','09','10',
+                      '11','12','13','14','15','16','17','18','19','20',
+                      '21','22','23','24','25','26','27','28','29','30',
+                      '31','32','33','34','35','36','37','38','39','40',
+                      '41','42','43','44','45','46','47','48','49','50',
+                      '51','52','53','54','55','56','57','58','59','60',
+                      '61','62','63','64','65','66','67','68','69','70',
+                      '71','72','73','74','75','76','77','78','79','80',
+                      '81','82','83','84','85','86','87','88','89','90',
+                      '91','92','93','94','95','96','97','98','99',
+                      
+                      
+                      
+                      ];
  const btn_options = ['00','01', '02', '03', '04','05','06','07','08','09','10',
                       '11','12','13','14','15','16','17','18','19','20',
                       '21','22','23','24','25','26','27','28','29','30',
@@ -290,31 +361,377 @@
                       
                       
                       ];
+const big_option = ['51','52','53','54','55','56','57','58','59','60',
+                      '61','62','63','64','65','66','67','68','69','70',
+                      '71','72','73','74','75','76','77','78','79','80',
+                      '81','82','83','84','85','86','87','88','89','90',
+                      '91','92','93','94','95','96','97','98','99',
+    
+]
+const small_option = ['00','01', '02', '03', '04','05','06','07','08','09','10',
+                      '11','12','13','14','15','16','17','18','19','20',
+                      '21','22','23','24','25','26','27','28','29','30',
+                      '31','32','33','34','35','36','37','38','39','40',
+                      '41','42','43','44','45','46','47','48','49','50',
+    
+]
+const same_option = ['00','11', '22', '33', '44','55','66','77','88','99'
+                     
+    
+]
+const even_option = ['00','02','04','06','08','10','12','14','16','18',
+                    '20','22','24', '26', '28','30','32','34','36','38', '40',
+                    '42','44','46','48','50','52','54','56','58','60',
+                    '62','64','66','68','70','72','74','76','78','80',
+                    '82','84','86','88','90','92','94','96','98',
+                    
+                       
+]
+const odd_option = ['00','01','03','05','07','09','11','13','15','17','19','21','23','25',
+                    '27','29','31','33','35','37','39','41','43','45','47','49','51','53',
+                    '55','57','59','61','63','65','67','69','71','73','75','77','79','81',
+                    '83','85','87','89','91','93','95','97','99',
+
+]
+const ee_option = ['00','02','04','06','08','20','22','24','26','28','40','42','44','46',
+                    '48','60','62','64','66','68','80','82','84','86','88'
+
+]
+const oo_option = ['11','13','15','17','19','31','33','35','37','39','51','53','55','57',
+                    '59','71','73','75','77','79','91','93','95','97','99'
+
+]
+const eo_option = ['01','03','05','07','09','21','23','25','27','29','41','43','45','47',
+                   '49','61','63','65','67','69','81','83','85','87','89'
+
+]
+const oe_option = ['10','12','14','16','18','30','32','34','36','38','50','52','54','56',
+                   '58','70','72','74','76','78','90','92','94','96','98',
+
+]
+const btw_00_19_option = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13',
+                            '14','15','16','17','18','19'
+
+]
+const btw_20_39_option = ['20','21','22','23','24','25','26','27','28','29','30',
+                            '31','32','33','34','35','36','37','38','39'
+
+]
+const btw_40_59_option = ['40','41','42','43','44','45','46','47','48','49','50',
+                            '51','52','53','54','55','56','57','58','59'
+    
+]
+const btw_60_79_option = ['60','61','62','63','64','65','66','67','68','69','70',
+                      '71','72','73','74','75','76','77','78','79'
+    
+]
+const btw_80_99_option = ['80','81','82','83','84','85','86','87','88','89','90',
+                      '91','92','93','94','95','96','97','98','99'
+    
+]
+const with_0_option = ['01','02','03','04','05','06','07','08','09','10','20','30','40',
+                '50','60','70','80','90'
+
+]
+const with_1_option = ['01','10','11','12','13','14','15','16','17','18','19','21','31',
+                '41','51','61','71','81','91',
+
+]
+const with_2_option = ['02','12','20','21','22','23','24','25','26','27','28','29','32',
+                '42','52','62','72','82','92',
+
+]
+const with_3_option = ['03','13','23','30','31','32','33','34','35','36','37','38','39',
+                '43','53','63','73','83','93',
+
+]
+const with_4_option = ['04','14','24','34','40','41','42','43','44','45','46','47','48',
+                '49','54','64','74','84','94',
+
+]
+const with_5_option = ['05','15','25','35','45','50','51','52','53','54','55','56','57',
+                '58','59','65','75','85','95',
+
+]
+const with_6_option = ['06','16','26','36','46','56','60','61','62','63','64','65',
+                '66','67','68','69','76','86','96'
+
+]
+const with_7_option = ['07','17','27','37','47','57','67','70','71','72','73','74',
+                '75','76','77','78','79','87','97',
+
+]
+const with_8_option = ['08','18','28','38','48','58','68','78','80','81','82','83',
+                '84','85','86','87','88','89','98',
+
+]
+const with_9_option = ['09','19','29','39','49','59','69','79','89','90','91','92',
+                '93','94','95','96','97','98','99',
+
+]
+const head_1_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_2_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_3_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_4_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_5_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_6_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_7_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_8_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const head_9_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_1_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_2_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_3_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_4_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_5_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_6_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_7_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_8_option = ['','','','','','','','','','','','','','','','','',
+
+]
+const tail_9_option = ['','','','','','','','','','','','','','','','','',
+
+]
+
+
 export default {
     
     data() {
         return {
              input_bet: '',
+               dialogFormVisible: false,
             // isActive: false,
-                check_btn: [''],
-                btns: btn_options
+                check_btn:[],
+                btns: btn_options,
+                check_btn: [],
+                cities: cityOptions,
+               
         }
     },
+
      methods: {
-    //   add_btn_select(event) {
-    //      if(event.target.className == "active") 
-    //      {
-    //         event.target.className = "isActive";
-    //      }else {
-    //          event.target.className = "active";
-    //      }
-    //   },
+
        goBack() {
             this.$router.push('/')
       },
       clear_btn() {
            this.check_btn = [];
-      }
+        //    this.dialogFormVisible = false
+      },
+    //     handleCheckAllChange(val) {
+    //     this.checkedCities = val ? small_option : [];
+       
+    //   },
+      small_number(val) {
+           this.check_btn = val ? small_option : [];
+           this.dialogFormVisible = false
+      },
+      big_number(val) {
+           this.check_btn = val ? big_option : [];
+           this.dialogFormVisible = false
+      },
+       same_number(val) {
+           this.check_btn = val ? same_option : [];
+            this.dialogFormVisible = false
+      },
+       even_number(val) {
+           this.check_btn = val ? even_option : [];
+            this.dialogFormVisible = false
+      },
+       odd_number(val) {
+           this.check_btn = val ? odd_option : [];
+            this.dialogFormVisible = false
+      },
+      ee_number(val) {
+           this.check_btn = val ? ee_option : [];
+            this.dialogFormVisible = false
+      },
+      oo_number(val) {
+           this.check_btn = val ? oo_option : [];
+            this.dialogFormVisible = false
+      },
+       eo_number(val) {
+           this.check_btn = val ? eo_option : [];
+            this.dialogFormVisible = false
+      },
+       oe_number(val) {
+           this.check_btn = val ? oe_option : [];
+            this.dialogFormVisible = false
+      },
+      btw_00_19(val) {
+            this.check_btn = val ? btw_00_19_option : [];
+            this.dialogFormVisible = false
+      },
+       btw_20_39(val) {
+            this.check_btn = val ? btw_20_39_option : [];
+            this.dialogFormVisible = false
+      },
+       btw_40_59(val) {
+            this.check_btn = val ? btw_40_59_option : [];
+            this.dialogFormVisible = false
+      },
+       btw_60_79(val) {
+            this.check_btn = val ? btw_60_79_option : [];
+            this.dialogFormVisible = false
+      },
+       btw_80_99(val) {
+            this.check_btn = val ? btw_80_99_option : [];
+            this.dialogFormVisible = false
+      },
+        with_0(val) {
+            this.check_btn = val ? with_0_option : [];
+            this.dialogFormVisible = false
+      },
+      with_1(val) {
+            this.check_btn = val ? with_1_option : [];
+            this.dialogFormVisible = false
+      },
+      with_2(val) {
+            this.check_btn = val ? with_2_option : [];
+            this.dialogFormVisible = false
+      },
+      with_3(val) {
+            this.check_btn = val ? with_3_option : [];
+            this.dialogFormVisible = false
+      },
+      with_4(val) {
+            this.check_btn = val ? with_4_option : [];
+            this.dialogFormVisible = false
+      },
+      with_5(val) {
+            this.check_btn = val ? with_5_option : [];
+            this.dialogFormVisible = false
+      },
+      with_6(val) {
+            this.check_btn = val ? with_6_option : [];
+            this.dialogFormVisible = false
+      },
+      with_7(val) {
+            this.check_btn = val ? with_7_option : [];
+            this.dialogFormVisible = false
+      },
+       with_8(val) {
+            this.check_btn = val ? with_8_option : [];
+            this.dialogFormVisible = false
+      },
+       with_9(val) {
+            this.check_btn = val ? with_9_option : [];
+            this.dialogFormVisible = false
+      },
+      head_0(val) {
+            this.check_btn = val ? head_0_option : [];
+            this.dialogFormVisible = false
+      },
+       head_1(val) {
+            this.check_btn = val ? head_1_option : [];
+            this.dialogFormVisible = false
+      },
+       head_2(val) {
+            this.check_btn = val ? head_2_option : [];
+            this.dialogFormVisible = false
+      },
+       head_3(val) {
+            this.check_btn = val ? head_3_option : [];
+            this.dialogFormVisible = false
+      },
+       head_4(val) {
+            this.check_btn = val ? head_4_option : [];
+            this.dialogFormVisible = false
+      },
+       head_5(val) {
+            this.check_btn = val ? head_5_option : [];
+            this.dialogFormVisible = false
+      },
+       head_6(val) {
+            this.check_btn = val ? head_6_option : [];
+            this.dialogFormVisible = false
+      },
+       head_7(val) {
+            this.check_btn = val ? head_7_option : [];
+            this.dialogFormVisible = false
+      },
+       head_8(val) {
+            this.check_btn = val ? head_8_option : [];
+            this.dialogFormVisible = false
+      },
+
+       head_9(val) {
+            this.check_btn = val ? head_9_option : [];
+            this.dialogFormVisible = false
+      },
+      tail_0(val) {
+            this.check_btn = val ? tail_0_option : [];
+            this.dialogFormVisible = false
+      },
+        tail_1(val) {
+            this.check_btn = val ? tail_1_option : [];
+            this.dialogFormVisible = false
+      },
+       tail_2(val) {
+            this.check_btn = val ? tail_2_option : [];
+            this.dialogFormVisible = false
+      },
+       tail_3(val) {
+            this.check_btn = val ? tail_3_option : [];
+            this.dialogFormVisible = false
+      },
+       tail_4(val) {
+            this.check_btn = val ? tail_4_option : [];
+            this.dialogFormVisible = false
+      },
+       tail_5(val) {
+            this.check_btn = val ? tail_5_option : [];
+            this.dialogFormVisible = false
+      },
+       tail_6(val) {
+            this.check_btn = val ? tail_6_option : [];
+            this.dialogFormVisible = false
+      },
+       tail_7(val) {
+            this.check_btn = val ? tail_7_option : [];
+            this.dialogFormVisible = false
+      },
+       tail_8(val) {
+            this.check_btn = val ? tail_8_option : [];
+            this.dialogFormVisible = false
+      },
+
+       tail_9(val) {
+            this.check_btn = val ? tail_9_option : [];
+            this.dialogFormVisible = false
+      },
+
      }
 }
 </script>
