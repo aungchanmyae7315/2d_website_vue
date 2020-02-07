@@ -3,7 +3,13 @@
     <div class="main_container">
         <el-header class="header">
           <el-row :gutter="20">
-            <el-col :span="8"><div class="noti"><img src="~static/images/noti.png" alt="logo"></div></el-col>
+            <el-col :span="8">
+              <nuxt-link to="/notification">
+              <div class="noti">
+                <img src="~static/images/noti.png" alt="logo">
+              </div>
+              </nuxt-link>
+            </el-col>
             <el-col :span="8"><div class=""><img src="~static/images/logo.png" class="logo" alt="logo"></div></el-col>
             <el-col :span="4">
                  <div class="music_icon">

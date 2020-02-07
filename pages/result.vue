@@ -55,7 +55,7 @@
         margin:0;
     }
     .result .el-page-header {
-        line-height: 58px;
+        line-height: 43px;
         color:#fff;
         padding:0 20px;
     }

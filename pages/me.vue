@@ -24,7 +24,7 @@
                         <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
                         <li><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></li>
 
-                        <li><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></li>
+                        <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li>
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> LogOut</a></li>
                 </div>
               
@@ -84,7 +84,7 @@ export default {
     methods: {
         logout() {
             this.$store.commit('logOut');
-            this.$router.go('/')
+            this.$router.push('/')
       },
     }
 }

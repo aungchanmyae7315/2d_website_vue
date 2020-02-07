@@ -49,6 +49,16 @@ export default {
         path: '/signup_refel',
         component: 'pages/signup_refel.vue'
       },
+      {
+        name: 'notification',
+        path: '/notification',
+        component: 'pages/notification.vue'
+      },
+      {
+        name: 'remark',
+        path: '/remark',
+        component: 'pages/remark.vue'
+      },
       
     ]
   },

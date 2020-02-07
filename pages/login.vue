@@ -23,6 +23,19 @@
 
 
        <el-form  ref="" class="demo-ruleForm">
+           <!-- <p v-if="success"> 
+              <el-button
+                plain
+             >
+                {{ success }}
+              </el-button></p>
+           <p v-else>
+             <el-button
+            plain >
+            {{error}}
+            </el-button>
+          </p> -->
+           
             <el-form-item
               
                 prop="phone"
@@ -40,10 +53,11 @@
              
                 ]"
             >
-                <el-input type="password" placeholder="Password"  prefix-icon="el-icon-lock" v-model="password" autocomplete="off"></el-input>
+                <el-input type="password" show-password placeholder="Password"  prefix-icon="el-icon-lock" v-model="password" autocomplete="off"></el-input>
             </el-form-item>
+            <p>{{error}}</p>
             <el-form-item>
-                <el-button type="success" round @click="submitForm('numberValidateForm')">Submit</el-button>
+                <el-button type="success"  round @click="submitForm('')">Submit</el-button>
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
                 <el-button type="text" @click="dialogVisible = true">Forgot Password</el-button>
             </el-form-item>
@@ -95,44 +109,72 @@ import axios from 'axios'
     data() {
       return {
             dialogVisible: false,
-          
+           errors:[],
             phone: '',
-            password:''
+            password:'',
+               success: '',
+               error:'',
+                response: '',
             
       };
     },
     
     methods: {
-      submitForm(formName) {
-   
-        
-              alert(this.phone)
-                  alert(this.password)
-             axios.post('https://build.seinlucky.com/api/v1/login', {
+      submitForm() {
+
+                axios.post('https://build.seinlucky.com/api/v1/login', {
                     phone: this.phone,
                     password: this.password,
                     
                 })
               
-                // console.log(this.phone)
-                .then(response => (
-                  console.log(response),
+               .then(response => {
+                
+                  if(response.data.result == '0'){
+                    this.error_message = response.data.data,
+                    console.log(this.message)
+                    this.error = 'Please try again'
+                    this.$notify.error({
+                      title: 'Error',
+                      message: this.error_message
+                    });
+                  }else {
+                     this.userInfo = response.data,
+                    this.$store.commit('logIn', this.userInfo),
+                     this.success_message = response.data.data,
+                     
+                     this.$notify({
+                        title: 'Success',
+                        message: this.success_message,
+                        type: 'success'
+                      });
+                      this.$router.push('/');
+                  }
+                 
+                  // this.response = response.data
+                  //  
                   
-                  this.phoneResponse = response.data.message,
-                  this.$store.commit('setPhone', this.phoneResponse),
-                  console.log('ewe')
-                  ));
-                //  if (store.state.phoneResponse = '') {
+                  //  this.results = response.data.results;
+                  // this.response = JSON.stringify(response.data.results, null, 2)
+                  // console.log(this.response)
+                })
+                  
+                // .catch(error => {
+                //     this.response = 'Error: ' + error.response
+                //   })
+                //        this.phone = '';
+                    
+                //       this.password = '';                     //  if (store.state.phoneResponse = '') {
                 //    alert('fail')
                 //  }else {
                 //    alert ('regds')
                 //  }
-                if(state.phoneResponse == 'fail') {
-                  alert('word')
-                }else {
-                  alert('hello')
-                }
-                 this.$router.push('/');
+                // if(state.phoneResponse == 'fail') {
+                //   alert('word')
+                // }else {
+                //   alert('hello')
+                // }
+                //  this.$router.push('/');
       
       },
       resetForm(formName) {

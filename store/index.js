@@ -8,8 +8,10 @@ const createStore = () => {
              isLoggedIn: false,
             Otp: '',
             phoneResponse:'',
-            count: 0
+            count: 0,
+           
             // modalProduct: {},
+            
             // loaded:true
         },
         getters: {
@@ -20,11 +22,13 @@ const createStore = () => {
         mutations: {
             logIn(state, userInfo) {
                 // console.log("UserInfo", userInfo);
+                state.userInfo = userInfo;
                 localStorage.setItem('userInfo', JSON.stringify(userInfo));
                 state.isLoggedIn = true;
             },
             logOut(state) {
                 localStorage.removeItem('userInfo');
+                localStorage.removeItem('phoneResponse');
                 state.isLoggedIn = false;
             },
             updateIsLoggedIn(state, isLoggedIn) {
@@ -36,15 +40,10 @@ const createStore = () => {
             },
             setPhone(state, phoneResponse){
                 state.phoneResponse = phoneResponse;
-                console.log(phoneResponse)
+                console.log(phoneResponse.access_token)
             },
-            // openOrderConfirmModal(state,modalProduct) {  
-            //     state.modalProduct = modalProduct;  
-            // }
-            increment (state) {
-                // mutate state
-                state.count++
-              }
+           
+           
         }
     })
 }

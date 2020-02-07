@@ -20,7 +20,7 @@
             </nuxt-link>
         </div>
         <div v-else>
-           <nuxt-link to="/login">
+           <nuxt-link to="/result">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
                 <span  class="avatar_text">Name</span>
@@ -39,21 +39,23 @@
             <el-carousel trigger="click" height="150px">
            
                 <el-carousel-item name ='first'>
-                  <div class="el-carousel_label">
+                  <!-- <div class="el-carousel_label">
                     <h3>ipsum dolor sit amet fdsf</h3> 
-                  </div>
+                  </div> -->
                 </el-carousel-item>
                 <el-carousel-item name ='second'>
-                   <div class="el-carousel_label">
+                   <!-- <div class="el-carousel_label">
                     <h3>ipsum dolo sit amet fdsf</h3> 
-                  </div>
+                  </div> -->
                 </el-carousel-item>
                 <el-carousel-item name ='third'>
-                   <div class="el-carousel_label">
+                   <!-- <div class="el-carousel_label">
                     <h3>ipsum dolor sit amet fdsf</h3> 
-                  </div>
+                  </div> -->
                 </el-carousel-item>
-              
+              <div class="el-carousel_label">
+                    <h3>ipsum dolor sit amet fdsf</h3> 
+                </div>
        
             </el-carousel>
           </div>

@@ -1,23 +1,23 @@
 <template>
-    <main class="signup_refel_page">
+    <main class="signup_refel_page ">
                  <div class="longText" id="hidingScrollBar">
                     <div class="hideScrollBar_refel">
-                    <img src="~static/images/refel_page/refel_img_one.png" class="refel_img">
-                        <div class="refel_img_two">
+                    <img src="~static/images/refel_page/refel_img_one.png" class="acc_refel_img">
+                        <!-- <div class="refel_img_two">
                             <img src="~static/images/refel_page/refel_img_two.png" class="">
                         </div>
-                    
+                     -->
                         <el-card class="box-card">
                             
-                            <h3 >Registartion Successful!!</h3>
+                            <!-- <h3 >Registartion Successful!!</h3> -->
                             <h5>We are so delighted you are here!</h5> 
                         
-                            <h2 class="background"><span>Optional</span></h2>
+                            <!-- <h2 class="background"><span>Optional</span></h2> -->
                             <h4>Have a referral code ?</h4>
                             <p>Please enter referral code and <br>
                                 get 500 sein lucky points.
                             </p>
-                        <el-input placeholder="Enter a referral code" v-model="refel_code"></el-input>
+                        <el-input placeholder="Enter a referral code" v-model="referal_code"></el-input>
                         </el-card>
                         <el-button type="info" class="submitRefel" round @click="skip()">Skip</el-button>
                          <el-button type="success" class="submitRefel" round @click="submistRefel()">Summit Referral Code</el-button>
@@ -29,13 +29,42 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
-            refel_code:'',
+            referal_code:'',
+            accessToken: '',
         }
     },
     methods: {
+         submistRefel() {
+          
+              //  this.accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjAwYzg5N2IwODFjNDAwZDg4ZDUzYTg4NWRmNWRlYzc1MDE0ODU3NzA1Y2NiZmFiZmQ1YjkxYjI5MTI3ZGI0M2MzMzEwODY0NDU0Y2E5ZGI3In0"
+                // alert(this.referal_code)
+                // axios.post('https://build.seinlucky.com/api/v1/upload_referal_code', {
+                //    headers: headers,
+                //      referal_code: this.referal_code,
+                   
+                    //  access_token:'Bearer'+' '+this.accessToken,
+
+                    
+                // })
+                let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjBiNTE3YzRhODJlYzFlNWY4OTNmMjY2MDA0N2E4M2I5NWM4OTNhMDE3MzlkNGQ4MTcwNzJlZmY3MzNmNTc0ZDlkMjcwMjFkMWY1NjczNzM0In0 ';
+                    axios.post("https://build.seinlucky.com/api/v1/upload_referal_code",[], 
+                    {headers: { 'Authorization' : 'Bearer '+ token}})
+                    
+                    .then(response => {
+                    // this.comments = response.data;
+                    console.log(response.data)
+                })
+              
+            //    .then(response => {
+            //     //    console.log(accessToken)
+            //        console.log(response)
+            //    })
+         
+    },
         skip() {
              this.$router.push('/');
         }
@@ -50,10 +79,10 @@ export default {
         margin:0 auto;
         text-align: center;
     }
-    .refel_img {
+    .acc_refel_img {
         width:140px;
         height:auto;
-        margin:0 auto;
+        margin:50px auto;
     } 
     .refel_img_two img {
         width:80px;

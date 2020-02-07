@@ -2,10 +2,10 @@
     <main>
 
 
- <div class="sign_page">
+ <div class="sign_page signup">
         <el-page-header @back="goBack">
         </el-page-header>
-          <el-form v-if="active===1"  class="demo-ruleForm" >
+          <el-form v-if="active===1"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
            
         
         <div class="sign_up_text">
@@ -13,49 +13,64 @@
         </div>
              <div class="phone_input">
             <el-form-item
-              
+              label="phone"
+              prop="phone"
+              :rules="[
+                { required: true, message: 'phone is required'},
+                
+              ]"
                
             >  
-                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="phone" ></el-input>
+                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                
             </el-form-item>
             
              </div>
-              <el-button type="success" round @click="next()">next</el-button>
+               <el-button type="success" round @click="next('ruleForm')">next</el-button>
         
           </el-form>
-        <el-form v-if="active===2"  class="demo-ruleForm" >
+        <el-form v-if="active===2" :model="numberValidateForm" ref="numberValidateForm"   class="demo-ruleForm" >
           <div class="sign_up_text">
                 <h4>We have sent OTP<br> on your number</h4>
             </div>
             <div class="phone_input">
                 <el-form-item
-                  
+                   label="OTP"
+                    prop="otp"
+                    :rules="[
+                      { required: true, message: 'otp is required'},
+                      { type: 'number', message: 'otp must be a number'}
+                    ]"
                    
                 >  
-                    <el-input type="otp" placeholder="Enter OTP number" prefix-icon="el-icon-otp" v-model="otp" autocomplete="off"></el-input>
+                    <el-input type="otp" placeholder="Enter OTP number" prefix-icon="el-icon-otp" v-model.number="numberValidateForm.otp" autocomplete="off"></el-input>
                   
                 </el-form-item>
             
              </div>
-             <el-button type="success" round @click="nextTwo()">next</el-button>
+             <el-button type="success" round @click="nextTwo('numberValidateForm')">next</el-button>
         </el-form>
 
-        <el-form v-if="active===3"  class="demo-ruleForm" >
+        <el-form v-if="active===3" :model="ruleForm"  ref="ruleForm" class="demo-ruleForm" >
            <div class="sign_up_text">
             <h4>Set your Password</h4>
         </div>
              <div class="phone_input">
             <el-form-item
-              
+             label="Paassword"
+                    prop="password"
+                    :rules="[
+                      { required: true, message: 'password is required'},
+                     
+                    ]"
                
             >  
-                <el-input type="password" placeholder="Password" prefix-icon="el-icon-lock" v-model="password" autocomplete="off"></el-input>
+                <el-input type="password" show-password placeholder="Password" prefix-icon="el-icon-lock" v-model="ruleForm.password" autocomplete="off"></el-input>
                
             </el-form-item>
             
              </div>
-             <el-button type="success" round @click="submitForm()">Submit</el-button>
+             <el-button type="success" round @click="submitForm('ruleForm')">Submit</el-button>
         </el-form>
         
         <div class="step_bar">
@@ -85,62 +100,115 @@ import axios from 'axios'
       return {
         active: 1,
          input: '',
-         phone:'',
-         otp:'',
-         password:''
-        //  numberValidateForm: {
-        //     // phone: '',
-        //     otp:'',
-        //     password:''
-        //     }
+        
+        ruleForm: {
+            phone:'',
+           password: '',
+
+        },
+         numberValidateForm: {
+            otp:'',
+            },
+          
+         
+         
       };
     },
      methods: {
         
-      next() {
-        
-         axios.post('https://build.seinlucky.com/api/v1/send-otp', {
-                    phone: this.phone,
+      next(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert(this.ruleForm.phone);
+           axios.post('https://build.seinlucky.com/api/v1/send-otp', {
+                    phone: this.ruleForm.phone,
                   
                 })
-                // console.log(this.phone)
+               
                 .then(response => (
-                  console.log(response),
+                   console.log(this.ruleForm.phone),
+               
                 this.userOtp = response.data,
                 this.$store.commit('setOtp', this.userOtp),
                 console.log(this.userOtp)
                 ));
+              if (this.active++ > 2) this.active = 0;
+
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+        
+        
                 // console.log(response)
                   // this.$store.commit("setPhone", this.userPhone); 
-                if (this.active++ > 2) this.active = 0;
-
+                // 
       },
-      nextTwo() {
-        if(this.active++ > 2) this.active=0;
-      },
-      submitForm() {
-        // this.$refs[formName].validate((valid) => {
-         
-          // if (valid) {
-              if (this.active++ > 2) this.active = 0;
-            // alert('submit!');
-            // alert(this.phone);
-            // alert(this.otp);
-            // alert(this.password);
-             axios.post('https://build.seinlucky.com/api/v1/register', {
-                    phone: this.phone,
-                    otp: this.otp,
-                    password: this.password
+       nextTwo(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            if(this.active++ > 2) this.active=0;
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+       },
+      // nextTwo() {
+      //   if(this.active++ > 2) this.active=0;
+      // },
+       submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            axios.post('https://build.seinlucky.com/api/v1/register', {
+                    phone: this.ruleForm.phone,
+                    otp: this.numberValidateForm.otp,
+                    password: this.ruleForm.password
                 })
-                .then(response => (
-                  console.log(response.message),
-                   this.userInfo = response.data,
-                  this.$store.commit('logIn', this.userInfo),
-                  console.log(this.userInfo)
+                .then(response => {
+                  console.log(response.data)
+                  this.otp_error = response.data.data
+                  if(response.data.result == '0') {
+                     this.$router.push('/');
+                      this.$message({
+                        showClose: true,
+                        center: true,
+                       
+                        message: this.otp_error,
+                        type: 'error'
+                      });
+                       if (this.active++ > 2) this.active = 0;
+                     
+                  }
+                  else {
+                       this.userInfo = response.data,
+                      this.$store.commit('logIn', this.userInfo),
+                      console.log(this.userInfo)
+                       if (this.active++ > 2) this.active = 0;
+                        this.$router.push('/signup_refel');
+                  }
+                })
+                // .then(response => ( 
+                //    this.otp_error = response.data.result,
+                //   //  if(response.data.result == '0') 
+                // console.log(this.otp_error),
+                // console.log('bar'),
+                //   console.log(response.message),
+                //    this.userInfo = response.data,
+                //   this.$store.commit('logIn', this.userInfo),
+                //   console.log(this.userInfo)
                   
               
-                ));
+                // ));
+                
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
       },
+     
 
       resetForm(formName) {
         this.$refs[formName].resetFields();
@@ -153,9 +221,9 @@ import axios from 'axios'
   </script>
 
   <style>
-  .el-page-header__left {
+  .signup .el-page-header__left {
     margin:0;
-   padding:20px 5px;
+    padding:20px 5px; 
   }
   .sign_page {
       padding:0 20px;
