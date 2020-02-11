@@ -1,17 +1,15 @@
 <template>
     <main class="remark">
-        <h4>Remark</h4>
+       
          <div class="longText_remark" id="hidingScrollBar_remark">
             <div class="hideScrollBar_remark">
+               <h4>Remark</h4>  
                 <el-card class="box-card">
                       <el-form    class="demo-ruleForm" >
                           <el-form-item
                                 label="Name"
                                 prop="name"
-                                :rules="[
-                                    { required: true, message: 'name is required'},
-                                    
-                                ]"
+                                
                                 
                                 >  
                                     <el-input type="name" placeholder="Enter your name" v-model="name"  ></el-input>
@@ -20,11 +18,7 @@
                              <el-form-item
                                 label="Phone"
                                 prop="phone"
-                                :rules="[
-                                    { required: true, message: 'phone is required'},
-                                    
-                                ]"
-                                
+                               
                                 >  
                                     <el-input type="phone" placeholder="Enter your phone" v-model="phone"  ></el-input>
                                 
@@ -35,29 +29,38 @@
         
                 <el-card>
                    <el-table
-                        :data="tableData"
-                        border
-                        show-summary
-                        style="width: 100%">
+                      :data="tableData"
+                      border
+                      height="100%"
+                      :summary-method="getSummaries"
+                      show-summary
+                      style="width: 100%; margin-top: 20px">
+                   
+                      <el-table-column
+                        prop="bets"
+                        label="Bet">
+                      </el-table-column>
+                      <el-table-column
+                        prop="odds"
+                        label="odds">
+                      </el-table-column>
+                      <el-table-column
+                        prop="amount"
+                        label="Amount">
+                      </el-table-column>
                     
-                        <el-table-column
-                        prop="name"
-                        label="Name">
-                        </el-table-column>
-                          <el-table-column
-                        prop="name"
-                        label="Name">
-                        </el-table-column>
-                        <el-table-column
-                        
-                        prop="amount1"
-                       
-                        label="Amount 1">
-                        </el-table-column>
-                       
-                       
                     </el-table>
+                 
                 </el-card>
+                 <div class="btn_group">
+                      <nuxt-link to="/bet">
+                            <el-button type="default" round>Back</el-button>
+                      </nuxt-link>
+                    <nuxt-link to="/">
+                          <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  Submit</el-button>
+                    </nuxt-link>
+                    
+                  </div>
             </div>
          </div>
     </main>
@@ -65,46 +68,97 @@
 
 
 <script>
+import axios from 'axios'
 export default {
+
+  getters: {},
+  mutations: {},
+  actions: {},
+  mounted () {
+   
+     
+    
+    const bets = this.$store.state.check_btn;
+     const bet_amount = this.$store.state.input_amount;
+  
+ console.log(bets);
+  console.log(bet_amount);
+    
+  
+},
     data() {
         return {
-             tableData: [{
-          id: '12987122',
-          name: 'Tom',
-          amount1: '234',
-          amount2: '3.2',
-          amount3: 10
-        }, {
-          id: '12987123',
-          name: 'Tom',
-          amount1: '165',
-          amount2: '4.43',
-          amount3: 12
-        }, {
-          id: '12987126',
-          name: 'Tom',
-          amount1: '539',
-          amount2: '4.1',
-          amount3: 15
-        }]
+          bets : this.$store.state.check_btn ? null:'--',
+          check_btn:[],
+          bet_amount: this.$store.state.input_amount ? null:'--',
+          bets:'',
+          name :'',
+          phone:'',
 
+          tableData: [
+          {
+
+            bets : this.$store.state.check_btn,
+            odds: '3.2',
+            amount:this.$store.state.input_amount ,
+          }, ]
         }
     },
+    
      methods: {
+       
+       submit_bet() {
+         axios.post('https://build.seinlucky.com/api/v1/2d/bet', {
+                    name: this.name,
+                    phone: this.phone,
+                    bets : this.$store.state.check_btn[0],
+                    amount:this.$store.state.input_amount,
+                    
+                })
+                     .then(response => {
+                          console.log(response);
+                  // if(response.data.result == '0'){
+                  //   this.error_message = response.data.data,
+                  //   console.log(this.message)
+                  //   this.error = 'Please try again'
+                  //   this.$notify.error({
+                  //     title: 'Error',
+                  //     message: this.error_message
+                  //   });
+                  // }else {
+                  //    this.userInfo = response.data,
+                  //   this.$store.commit('logIn', this.userInfo),
+                  //    this.success_message = response.data.data,
+                     
+                  //    this.$notify({
+                  //       title: 'Success',
+                  //       message: this.success_message,
+                  //       type: 'success'
+                  //     });
+                  //     this.$router.push('/');
+                  // }
+                 
+                })
+       },
       getSummaries(param) {
         const { columns, data } = param;
         const sums = [];
         columns.forEach((column, index) => {
-          if (index === 0) {
-            sums[index] = 'Total Cost';
+           if (index === 0) {
+            sums[index] = ' ';
             return;
           }
+          if (index === 1) {
+            sums[index] = 'Total';
+            return;
+          }
+          
           const values = data.map(item => Number(item[column.property]));
           if (!values.every(value => isNaN(value))) {
-            sums[index] = '$ ' + values.reduce((prev, curr) => {
+            sums[index] = 'Ks ' + values.reduce((prev, curr) => {
               const value = Number(curr);
               if (!isNaN(value)) {
-                return prev + curr;
+                return  prev + curr;
               } else {
                 return prev;
               }
@@ -122,6 +176,10 @@ export default {
 <style>
     .remark {
         text-align: center;
+     
+        max-width: 480px;
+        width:100%;
+        height:100vh;
     }
     .remark h4 {
         font-size: 19px;
@@ -131,8 +189,24 @@ export default {
 .remark .el-card {
     margin:20px auto;
 }
+.remark .el-form-item {
+  margin-bottom:0;
+}
 
+.el-button--default {
+ 
+  background-color:#EEEEEE;
+  color:#000;
+}
 
+.remark .btn_group {
+  margin-top:100px;
+}
+.bet_submit {
+  background-color:#158220;
+  color:#fff;
+  font-weight: bold;
+}
 .longText_remark{
   max-width: 480px;
   width: 100%;
@@ -142,14 +216,15 @@ export default {
 }
 
 /*------THE TRICK------*/
-/* #hidingScrollBar_remark{
+#hidingScrollBar_remark{
   overflow: hidden;
-} */
+}
 .hideScrollBar_remark{
   width: 100%;
   height: 100%;
   overflow: auto;
   margin-left: 15px;
+  padding-bottom:30px;
   padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
 
  

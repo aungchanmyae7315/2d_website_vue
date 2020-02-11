@@ -5,10 +5,12 @@ const createStore = () => {
     return new Vuex.Store({
         
         state: {
-             isLoggedIn: false,
+            isLoggedIn: false,
+            check_btn:false,
             Otp: '',
             phoneResponse:'',
-            count: 0,
+            getBet:'',
+          
            
             // modalProduct: {},
             
@@ -34,6 +36,8 @@ const createStore = () => {
             updateIsLoggedIn(state, isLoggedIn) {
                 state.isLoggedIn = isLoggedIn;
             },
+           
+            
             setOtp(state, Otp){
                 state.Otp = Otp;
                 console.log(Otp)
@@ -42,13 +46,23 @@ const createStore = () => {
                 state.phoneResponse = phoneResponse;
                 console.log(phoneResponse.access_token)
             },
-           
+            getBet(state, check_btn){
+                state.check_btn = check_btn;
+                console.log(check_btn)
+            },
+            betAmount(state, input_amount){
+                state.input_amount = input_amount;
+                console.log(input_amount)
+            },
+            
            
         }
     })
 }
 
 export default createStore;
+
+
 
 
 

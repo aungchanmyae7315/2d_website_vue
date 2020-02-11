@@ -151,12 +151,6 @@ import axios from 'axios'
                       this.$router.push('/');
                   }
                  
-                  // this.response = response.data
-                  //  
-                  
-                  //  this.results = response.data.results;
-                  // this.response = JSON.stringify(response.data.results, null, 2)
-                  // console.log(this.response)
                 })
                   
                 // .catch(error => {

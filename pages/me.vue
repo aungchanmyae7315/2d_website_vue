@@ -1,7 +1,7 @@
 
 
 <template>
-
+    <el-main>
        <div class="main_container">
      <el-header class="me_header" >
         <div class="demo-type">
@@ -30,6 +30,7 @@
               
 
             </ul>
+            
       </el-main>
    
      <el-footer class="footer">
@@ -64,24 +65,30 @@
         
            
     
-      
+      </el-main>
 
 </template>
 
 
 <script>
 export default {
-    
-    //  logout() {
-    //     this.$store.commit('logOut');
-    //     this.$router.go('/')
-    //   },
+     
+    mounted() {
+     this.updateIsLoggedIn();
+   },
     data() {
       return {
-        
+       
       };
     },
+    
     methods: {
+        updateIsLoggedIn() {
+        this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
+      },
+      hasUserInfo() {
+        return Boolean(localStorage.getItem('userInfo'));
+      },
         logout() {
             this.$store.commit('logOut');
             this.$router.push('/')
@@ -120,6 +127,9 @@ export default {
     .acc_items li a img {
         padding: 0 10px;
         
+    }
+    .me_header  .avatar_text {
+        bottom:24px;
     }
     
 </style>

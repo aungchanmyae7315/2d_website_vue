@@ -9,7 +9,7 @@
              <nuxt-link to="/login">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://img.icons8.com/nolan/64/name.png"></el-avatar>
-               <span  class="avatar_text">Please Login First</span>
+                  <span  class="avatar_text_logout">Please Login First</span>
                     <nuxt-link to="/result">
                        <div class="result_icon">
                         <img src="~static/images/2d_result_icon.png" alt="">
@@ -23,12 +23,19 @@
            <nuxt-link to="/result">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                <span  class="avatar_text">Name</span>
-                    <nuxt-link to="/result">
-                       <div class="result_icon">
+                <div  class="avatar_text">
+                  <ul>
+                    <li>Hello</li>
+                    <li class="amount_mmk">5000 MMk</li>
+                  </ul>
+                  </div>
+                  <div class="result_icon">
+                     <nuxt-link to="/result">
                         <img src="~static/images/2d_result_icon.png" alt="">
-                      </div>
                     </nuxt-link>
+                  </div>
+                 <!-- <span  class="avatar_text">5000 MMk</span> -->
+                   
                    
               </div>
                
@@ -54,7 +61,7 @@
                   </div> -->
                 </el-carousel-item>
               <div class="el-carousel_label">
-                    <h3>ipsum dolor sit amet fdsf</h3> 
+                    <h3>  <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon"> ipsum dolor sit amet fdsf</h3> 
                 </div>
        
             </el-carousel>
@@ -62,7 +69,7 @@
           <div class="row n_d_t">
             <div class="col">
                 <div class="number">
-                      <h2>89</h2>
+                      <h2 class="live_number">{{this.info.live}}</h2>
                 </div>
             </div>
             <div class="col">
@@ -85,15 +92,15 @@
                   
                   <div class="col">
                       <span>Set</span>
-                      <h4>1596.89</h4>
+                      <h4>{{this.info.set_1200}}</h4>
                   </div>
                   <div class="col">
                       <span>Value</span>
-                      <h4>1397.76</h4>
+                      <h4>{{this.info.val_1200}}</h4>
                   </div>
                   <div class="col">
                       <span>2D</span>
-                      <h4>89</h4>
+                      <h4 class="result_num">{{this.info.result_1200}}</h4>
                   </div>
                 </div>
               </div>
@@ -105,15 +112,34 @@
                       
                       <div class="col">
                           <span>Set</span>
-                          <h4>1596.89</h4>
+                          <h4>{{this.info.set_430}}</h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
-                          <h4>1397.76</h4>
+                          <h4>{{this.info.val_430}}</h4>
                       </div>
                       <div class="col">
                           <span>2D</span>
-                          <h4>--</h4>
+                          <h4 class="result_num">{{this.info.result_430}}</h4>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card_three">
+                <div class="card_item">
+                
+                    <div class="row">
+                      
+                      <div class="col">
+                          <h5 class="time_number">9:30 AM</h5>
+                      </div>
+                      <div class="col">
+                          <span>Set</span>
+                          <h4>{{this.info.internet_930}}</h4>
+                      </div>
+                      <div class="col">
+                          <span>Value</span>
+                          <h4>{{this.info.modern_930}}</h4>
                       </div>
                     </div>
                 </div>
@@ -128,30 +154,11 @@
                       </div>
                       <div class="col">
                           <span>Set</span>
-                          <h4>1596.89</h4>
+                          <h4>{{this.info.internet_200}}</h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
-                          <h4>1397.76</h4>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card_three">
-                <div class="card_item">
-                
-                    <div class="row">
-                      
-                      <div class="col">
-                          <h5 class="time_number">4:00 PM</h5>
-                      </div>
-                      <div class="col">
-                          <span>Set</span>
-                          <h4>1596.89</h4>
-                      </div>
-                      <div class="col">
-                          <span>Value</span>
-                          <h4>1397.76</h4>
+                          <h4>{{this.info.modern_200}}</h4>
                       </div>
                     </div>
                 </div>
@@ -167,6 +174,7 @@
             </div>
       </div>
     </div>
+
   </el-main>
        
 
@@ -176,21 +184,28 @@
 import Logo from '~/components/Logo.vue'
 import axios from 'axios'
 export default {
+  
   layout: 'homeLayout',
   mounted() {
+     
      this.updateIsLoggedIn();
+     
    },
   components: {
     Logo
   },
   data() {
     return {
+    
       activeIndex: '1',
+      info:'',
+      set_1200:'',
       //   activeIndex2: '1',
      
     }
   },
    methods: {
+     
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
@@ -202,13 +217,14 @@ export default {
       // }
     },
      created() {
-      //   axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
-      //   .then(response => {
-      //     // JSON responses are automatically parsed.
-      //     this.posts = response.data
-      //     console.log(this.posts);
-      // alert(this.posts)
-      //   })
+      
+       setInterval(function () {
+          axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+              .then(response => {
+                console.log(this.info = response.data.data)
+              })
+	      	}.bind(this), 5000);
+        
     },
     
     //   mounted() {
@@ -219,6 +235,8 @@ export default {
     //   alert(this.info)
     //   }
 }
+
+
 </script>
 
 <style>
@@ -300,3 +318,4 @@ export default {
   }
 
 </style>
+

@@ -114,20 +114,31 @@
                 <!-- <el-col :span="8"><div type="text">Text Button</div></el-col> -->
             </el-row>
 
-             <div v-if ="!$store.state.isLoggedIn" class="bet_footer">
+               <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
+                 <nuxt-link to="login" >
+                    <el-button  type="warning" round>Please Login to bet</el-button>
+                 </nuxt-link>
+             </div>
+            <div v-else class="bet_login_btn">
+
+                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet" round>Bet</el-button>
+           
+            </div>
+            
+             <!-- <div v-if ="!$store.state.isLoggedIn">
                  <nuxt-link to="login">
                     <el-button  type="warning" round>Please Login to bet</el-button>
                  </nuxt-link>
              </div>
             <div v-else>
                <el-button type="warning" class="bet_btn_login" round>Bet</el-button>
-            </div>
+            </div> -->
         </el-header>
         <div class="longText" id="hidingScrollBar">
             <div class="hideScrollBar_bet">
                 <div class="all_btn">
                       <el-checkbox-group v-model="check_btn">
-                        <el-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-button>
+                        <el-checkbox-button v-for="city in cities" :id="city.id" :label="city" :key="city">{{city}}</el-checkbox-button>
                     </el-checkbox-group>
                     <!-- <el-checkbox-group v-model="check_btn" :indeterminate="isIndeterminate">
                         <el-checkbox-button v-for="btn in btns"   :label="btn" :key="btn">{{btn}}</el-checkbox-button>
@@ -176,8 +187,19 @@
         background-repeat: no-repeat;
         height: 100vh;
     }
+    .el-checkbox-button.is-checked .el-checkbox-button__inner {
+            color:#000;
+            background-color:#FEDC54;
+            border-color: #FEDC54;
+            -webkit-box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
+            -moz-box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
+            box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
+    }
     .bet_container .el-checkbox-button__inner 
     {
+        -webkit-box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
+        box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
         border: 0;
         margin: 11px;
         border-radius: 10px;
@@ -212,7 +234,14 @@
        
     }
  
- 
+    .bet_login_btn  .el-button.is-round{
+        width:100%;
+        background: linear-gradient(#FDD164, #BB8834);
+        font-size: 17px;
+        font-weight: bold;
+        color:#4D2707;
+        
+    }
     .bet_container  .el-input__inner{
        text-align: right;
        font-size:20px;
@@ -332,6 +361,8 @@
 </style>
 
 <script>
+
+
 const cityOptions = ['00','01', '02', '03', '04','05','06','07','08','09','10',
                       '11','12','13','14','15','16','17','18','19','20',
                       '21','22','23','24','25','26','27','28','29','30',
@@ -530,33 +561,55 @@ const tail_9_option = ['09','19','29','39','49','59','69','79','89','99'
 
 
 export default {
-    
+    mounted() {
+        this.updateIsLoggedIn();
+    },
     data() {
         return {
-             input_bet: '',
+              isLoggedIn: true,
+                input_bet: '',
                dialogFormVisible: false,
             // isActive: false,
-                check_btn:[],
+              
                 btns: btn_options,
                 check_btn: [],
+            
                 cities: cityOptions,
+
+            
+              
                
         }
     },
-
      methods: {
+        updateIsLoggedIn() {
+            this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
+        },
+        hasUserInfo() {
+            return Boolean(localStorage.getItem('userInfo'));
+        },
+        goBack() {
+                this.$router.push('/')
+        },
+        clear_btn() {
+            this.check_btn = [];
+            //    this.dialogFormVisible = false
+        },
+        bet(value) {
+            
+      
+         alert(this.input_bet);
+        if(this.check_btn) {
+              this.$store.commit('getBet', this.check_btn);
+              this.$store.commit('betAmount', this.input_bet);
+        }
+        
+            
+             this.$router.push('/remark');
+      },
+        
+            
 
-       goBack() {
-            this.$router.push('/')
-      },
-      clear_btn() {
-           this.check_btn = [];
-        //    this.dialogFormVisible = false
-      },
-    //     handleCheckAllChange(val) {
-    //     this.checkedCities = val ? small_option : [];
-       
-    //   },
       small_number(val) {
            this.check_btn = val ? small_option : [];
            this.dialogFormVisible = false

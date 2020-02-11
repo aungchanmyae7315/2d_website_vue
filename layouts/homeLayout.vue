@@ -13,18 +13,15 @@
             <el-col :span="8"><div class=""><img src="~static/images/logo.png" class="logo" alt="logo"></div></el-col>
             <el-col :span="4">
                  <div class="music_icon">
-                  <a href="#" title="Listen to the song" class="player-controls">
-                      <span class="audio-label">
-                          
-                      </span>
-                      <span class="play"></span>
-                      <span class="pause"></span>
-                  </a>
-                  <audio id="player">
-                      <source src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1" type="audio/mp3">
-                       <!-- <source src="https://casting-crowns.mp3quack.com/?raw=1" type="audio/mp3"> -->
-                  </audio>
-              </div>
+                   <audio id="track">
+                        <source src="http://basichow.com/asserts/interlude.mp3" type="audio/mpeg" />
+                      </audio>
+
+                      <div id="player-container">
+                        <div id="play-pause" class="play">Play</div>
+                      </div>
+                     
+                </div>
             </el-col>
             <el-col :span="4">
               <div class="messeage_icon">
@@ -114,6 +111,20 @@ html {
   
  
 }
+  .el-main {
+    text-align: center;
+    margin:0 auto;
+    background-image:url(~static/images/main_bg.png); 
+    background-size:cover;
+    background-repeat: no-repeat;
+    max-width: 480px;
+    width:100%;
+    height:100vh;
+    padding:7px;
+    overflow: hidden;
+    /* background-position: 100% 100%; */
+    
+  }
 .el-menu-item {
   padding:0 30px;
 }
@@ -128,16 +139,26 @@ html {
     background:#2E3192;
     position: fixed;
     top:0;
+    right:0;
+    left:0;
     max-width: 480px;
     width:100%;
     line-height: 39px;
     z-index: 1;
+}
+.el-header {
+  background-color: #14612D;
+    color: #333;
+    padding: 10px 0;
+    z-index: 5;
 }
 .footer {
    position: fixed; 
     max-width:480px;
     width:100%;
     bottom: 0;
+    right:0;
+    left:0;
     padding:0;
 }
 .button--green {
@@ -169,5 +190,9 @@ html {
   background-color: #35495e;
 }
 </style>
+
+
+
+
 
 

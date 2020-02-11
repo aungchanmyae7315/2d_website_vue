@@ -1,5 +1,10 @@
 
 export default {
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
+  loading: '~/components/loading.vue',
   mode: 'spa',
   router: {
     routes: [
@@ -55,8 +60,8 @@ export default {
         component: 'pages/notification.vue'
       },
       {
-        name: 'remark',
-        path: '/remark',
+       name:'remark',
+        path: 'remark',
         component: 'pages/remark.vue'
       },
       
@@ -73,6 +78,7 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     script: [
+      
       // { src: 'https://unpkg.com/vue' },
       // { src: 'https://unpkg.com/vue-material' },
       { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' },
@@ -94,7 +100,8 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+
+
   /*
   ** Global CSS
   */
