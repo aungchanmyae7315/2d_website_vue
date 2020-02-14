@@ -4,10 +4,27 @@
     <el-main>
        <div class="main_container">
      <el-header class="me_header" >
-        <div class="demo-type">
+         <div  v-if ="$store.state.isLoggedIn">
+              <div class="demo-type">
+                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                  <span  class="avatar_text">Please Login First </span>
+                </div>
+        </div>
+        <div v-else> 
+              <div class="demo-type">
                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                <span  class="avatar_text">Please Login First</span>
+                <div  class="avatar_text">
+                  <ul>
+                    <li>09797532383</li>
+                    <nuxt-link to="/profile_edit">
+                     <li class="edit_profile">Edite Profile</li>
+                    </nuxt-link>
+                  </ul>
+                  </div>
+            
               </div>
+        </div>
+       
            
       </el-header>
       <el-main>
@@ -17,12 +34,13 @@
                 <div  v-if ="!$store.state.isLoggedIn">
                         <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
                         <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
-                        <li><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></li>
+                        <li><nuxt-link to="/language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
+
                 </div>
                 <div v-else> 
                        <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
                         <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
-                        <li><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></li>
+                        <li><nuxt-link to="/language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
 
                         <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li>
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> LogOut</a></li>
@@ -129,7 +147,10 @@ export default {
         
     }
     .me_header  .avatar_text {
-        bottom:24px;
+        bottom:17px;
+    }
+    .edit_profile {
+      color:goldenrod;
     }
     
 </style>

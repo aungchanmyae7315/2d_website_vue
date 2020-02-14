@@ -57,7 +57,8 @@
             </el-form-item>
             <p>{{error}}</p>
             <el-form-item>
-                <el-button type="success"  round @click="submitForm('')">Submit</el-button>
+
+                <el-button type="success"  round @click="submitForm('')"  v-loading.fullscreen.lock="fullscreenLoading">Submit</el-button>
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
                 <el-button type="text" @click="dialogVisible = true">Forgot Password</el-button>
             </el-form-item>
@@ -112,9 +113,10 @@ import axios from 'axios'
            errors:[],
             phone: '',
             password:'',
-               success: '',
-               error:'',
-                response: '',
+            success: '',
+            error:'',
+            response: '',
+            fullscreenLoading: false
             
       };
     },
@@ -140,7 +142,17 @@ import axios from 'axios'
                     });
                   }else {
                      this.userInfo = response.data,
-                    this.$store.commit('logIn', this.userInfo),
+                    this.$store.commit('logIn', this.userInfo);
+                     const loading = this.$loading({
+                          lock: true,
+                          text: 'Loading',
+                          spinner: 'el-icon-loading',
+                          background: 'rgba(0, 0, 0, 0.7)'
+                        });
+                        setTimeout(() => {
+                          loading.close();
+                        }, 2000);
+                     
                      this.success_message = response.data.data,
                      
                      this.$notify({
@@ -148,7 +160,8 @@ import axios from 'axios'
                         message: this.success_message,
                         type: 'success'
                       });
-                      this.$router.push('/');
+                       this.$router.push('/');
+                         
                   }
                  
                 })

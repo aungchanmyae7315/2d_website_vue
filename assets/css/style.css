@@ -242,18 +242,20 @@
 .card_one , .card_two{
     background-image:url(~static/images/card_one_bg.png);
     background-repeat: no-repeat;
-    background-size:100% auto;
+    background-size:100%;
     background-position: center;
     text-align: center;
-    padding:25px;
+    padding:27px;
+    margin:7px auto;
 }
 .card_three , .card_four {
     background-image:url(~static/images/card_two_bg.png);
     background-repeat: no-repeat;
-    background-size:100% auto;
+    background-size:100%;
     background-position: center;
     text-align: center;
     padding:20px;
+    margin:7px auto;
 }
 .card_item h4 {
     color:rgba(255, 255, 255, 1);

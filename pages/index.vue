@@ -9,12 +9,23 @@
              <nuxt-link to="/login">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://img.icons8.com/nolan/64/name.png"></el-avatar>
-                  <span  class="avatar_text_logout">Please Login First</span>
-                    <nuxt-link to="/result">
-                       <div class="result_icon">
+                  <span  class="avatar_text_logout">{{ $t('language') }}</span>
+                
+
+
+        <NuxtLink v-if="$i18n.locale !== 'en'" :to="`/mm/` + $route.fullPath" >
+            <div class="result_icon">
                         <img src="~static/images/2d_result_icon.png" alt="">
                       </div>
-                    </nuxt-link>
+          </NuxtLink>
+          <NuxtLink v-else :to="$route.fullPath.replace(/^\/[^\/]+/, '')" >
+            <div class="result_icon">
+                        <img src="~static/images/2d_result_icon.png" alt="">
+                      </div>
+          </NuxtLink>
+
+
+                   
               </div>
                
             </nuxt-link>
@@ -25,7 +36,7 @@
                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li>Hello</li>
+                    <li>{{ $t('language') }}</li>
                     <li class="amount_mmk">5000 MMk</li>
                   </ul>
                   </div>
@@ -184,10 +195,13 @@
 import Logo from '~/components/Logo.vue'
 import axios from 'axios'
 export default {
-  
+    getters: {},
+  mutations: {},
+  actions: {},
   layout: 'homeLayout',
   mounted() {
-     
+     const lang = this.$store.state.lang;
+     console.log(lang)
      this.updateIsLoggedIn();
      
    },
@@ -218,12 +232,12 @@ export default {
     },
      created() {
       
-       setInterval(function () {
+      //  setInterval(function () {
           axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 console.log(this.info = response.data.data)
               })
-	      	}.bind(this), 5000);
+	      	// }.bind(this), 5000);
         
     },
     
@@ -298,7 +312,7 @@ export default {
     max-width: 480px;
     width:100%;
     height:100vh;
-    padding:7px;
+    padding:0;
     overflow: hidden;
     /* background-position: 100% 100%; */
     

@@ -7,66 +7,82 @@ export default {
   loading: '~/components/loading.vue',
   mode: 'spa',
   router: {
-    routes: [
-      {
-        name: 'index',
-        path: '/',
-        component: 'pages/index.vue'
-      },
-      {
-        name: 'walletLayout',
-        path: '/wallet',
-        component: 'pages/wallet.vue'
-      },
-      {
-        name: 'serviceLayout',
-        path: '/service',
-        component: 'pages/service.vue'
-      },
-      {
-        name: 'meLayout',
-        path: '/me',
-        component: 'pages/me.vue'
-      },
-      
-      {
-        name: 'loginLayout',
-        path: '/login',
-        component: 'pages/login.vue'
-      },
-      {
-        name: 'signupLayout',
-        path: '/signup',
-        component: 'pages/signup.vue'
-      },
-      {
-        name: 'bet',
-        path: '/bet',
-        component: 'pages/bet.vue'
-      },
-      {
-        name: 'result',
-        path: '/result',
-        component: 'pages/result.vue'
-      },
-      {
-        name: 'signup_refel',
-        path: '/signup_refel',
-        component: 'pages/signup_refel.vue'
-      },
-      {
-        name: 'notification',
-        path: '/notification',
-        component: 'pages/notification.vue'
-      },
-      {
-       name:'remark',
-        path: 'remark',
-        component: 'pages/remark.vue'
-      },
-      
-    ]
+    middleware: 'i18n'
   },
+  plugins: ['~/plugins/i18n.js'],
+  generate: {
+    routes: [{
+      
+          name: 'result',
+          path: '/result',
+          component: 'pages/result.vue'
+        
+    }]
+  },
+      // {
+      //   name: 'index',
+      //   path: '/',
+      //   component: 'pages/index.vue'
+      // },
+      // {
+      //   name: 'walletLayout',
+      //   path: '/wallet',
+      //   component: 'pages/wallet.vue'
+      // },
+      // {
+      //   name: 'serviceLayout',
+      //   path: '/service',
+      //   component: 'pages/service.vue'
+      // },
+      // {
+      //   name: 'meLayout',
+      //   path: '/me',
+      //   component: 'pages/me.vue'
+      // },
+      
+      // {
+      //   name: 'loginLayout',
+      //   path: '/login',
+      //   component: 'pages/login.vue'
+      // },
+      // {
+      //   name: 'signupLayout',
+      //   path: '/signup',
+      //   component: 'pages/signup.vue'
+      // },
+      // {
+      //   name: 'bet',
+      //   path: '/bet',
+      //   component: 'pages/bet.vue'
+      // },
+      // {
+      //   name: 'result',
+      //   path: '/result',
+      //   component: 'pages/result.vue'
+      // },
+      // {
+      //   name: 'signup_refel',
+      //   path: '/signup_refel',
+      //   component: 'pages/signup_refel.vue'
+      // },
+      // {
+      //   name: 'notification',
+      //   path: '/notification',
+      //   component: 'pages/notification.vue'
+      // },
+      // {
+      //  name:'remark',
+      //   path: 'remark',
+      //   component: 'pages/remark.vue'
+      // },
+      // {
+      //   name:'language',
+      //    path: 'language',
+      //    component: 'pages/language.vue'
+      //  },
+      
+  //   ]
+  // },
   /*
   ** Headers of the page
   */
@@ -122,6 +138,8 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/axios',
+
+    {src: '@/plugins/i18n', ssr: false},
   ],
   /*
   ** Nuxt.js dev-modules
@@ -131,10 +149,48 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    '@nuxtjs/axios',
-    
-  ],
+ modules: [
+
+  '@nuxtjs/axios',
+
+  ['nuxt-i18n', {
+    seo: false,
+    locales: [
+      {
+        title: 'english',
+        code: 'en',
+        file: 'en.js',
+      },
+      {
+        title: 'myanmar',
+        code: 'mm',
+        file: 'mm.js'
+      }
+    ],
+    lazy: true,
+    langDir: 'locales/',
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en'
+    }
+  }],
+],
+auth: {
+  strategies: {
+    local: {
+      endpoints: {
+        login: { url: '/', method: 'post', propertyName: 'access_token' },
+        logout: { url: '/', method: 'post' },
+        user: { url: '/', method: 'get', propertyName: false}
+      },
+    },
+  },
+  redirect: {
+    login: '/',
+    logout: '/',
+    home: '/'
+}
+},
   /*
   ** Build configuration
   */

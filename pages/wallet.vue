@@ -2,7 +2,7 @@
     <el-main class="wallet">
       <el-header class="wallet_header" >
               <div class="demo-type">
-                 <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                 <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/kbz_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
                     <li>My Balance</li>
@@ -11,10 +11,10 @@
                   </div>
               </div>
                 <div class="btn_group_wallet">
-                <nuxt-link to="/">
+                <nuxt-link to="/withdrawal">
                    <el-button round class="withdraw_btn">Withdrawal</el-button>
                 </nuxt-link>
-              <nuxt-link to="/signup">
+              <nuxt-link to="/topup">
                     <el-button type="warning" round>Top Up</el-button>
               </nuxt-link>
               
@@ -26,89 +26,130 @@
            
                 <el-card>
                   
+
+
+               
+                    
+                  
+            
+
+
+
+
+
+
+
+
                   <h5>Sein Lucky Bank Accounts</h5>
                   <p><span style="color:red;">Warning !!!</span> There is no other Sein Lucky bank account except these following bank accounts</p>
-                    <div class="demo-type">
-                      <el-avatar :size="50" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    <div class="demo-type wallet_type">
+                      <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/kbz_img.png" alt=""></el-avatar>
                       <div  class="avatar_text">
                         <ul>
                           <li>KBZ Bank</li>
-                          <li class="bank_number">068-3010-620-0945-901</li>
+                          <li class="bank_number">
+                            <span class="code text-red">{{ kbz_bank }}</span>
+                          <input type="hidden" id="kbz-code" :value="kbz_bank">
+                          </li>
                         </ul>
                         </div>
                         <div class="result_icon">
-                           <el-popover
-                            placement="top"
-                          
-                            width="30"
-                            trigger="click"
-                            :content="this.message">
-                            <el-button  round slot="reference" @click="copy_1">Copy</el-button>
-                          </el-popover>
+                            <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_1">
+                            Copy
+                          </span>
                         </div>
                     </div>
-                    <div class="demo-type">
-                      <el-avatar :size="50" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    <div class="demo-type wallet_type">
+                     <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/kbz_pay_img.png" alt=""></el-avatar>
                       <div  class="avatar_text">
                         <ul>
                           <li>KBZ Pay</li>
-                          <li class="bank_number">0969 886 0088</li>
+                          <li class="bank_number">
+                              <span class="code text-red">{{ kbz_pay }}</span>
+                            <input type="hidden" id="kbz_pay-code" :value="kbz_pay">
+                          </li>
                         </ul>
                         </div>
                         <div class="result_icon">
-                           <el-popover
-                            placement="top"
-                          
-                            width="30"
-                            trigger="click"
-                            :content="this.message">
-                            <el-button  round slot="reference" @click="copy_2">Copy</el-button>
-                          </el-popover>
+                          <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_2">
+                            Copy
+                          </span>
                         </div>
                     </div>
-                   <div class="demo-type">
-                      <el-avatar :size="50" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                   <div class="demo-type wallet_type">
+                      <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/cb_pay_img.png" alt=""></el-avatar>
                       <div  class="avatar_text">
                         <ul>
                           <li>CB Pay</li>
-                          <li class="bank_number">015-8600-5000-258-28</li>
+                          <li class="bank_number">
+                               <span class="code text-red">{{ cb_pay }}</span>
+                              <input type="hidden" id="cb_pay-code" :value="cb_pay">
+                          </li>
                         </ul>
                         </div>
                         <div class="result_icon">
-                           <el-popover
-                            placement="top"
-                          
-                            width="30"
-                            trigger="click"
-                            :content="this.message">
-                            <el-button  round slot="reference" @click="copy_3">Copy</el-button>
-                          </el-popover>
+                          <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_3">
+                            Copy
+                          </span>
                         </div>
                     </div>
-                    <div class="demo-type">
-                      <el-avatar :size="50" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                    <div class="demo-type wallet_type">  
+                      
+                      <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/aya_img.png" alt=""></el-avatar>
                       <div  class="avatar_text">
                         <ul>
                           <li>AYA Bank</li>
-                          <li class="bank_number">021-7201-010-0346-47</li>
+                          <li class="bank_number">
+                             <span class="code text-red">{{ aya_bank }}</span>
+                              <input type="hidden" id="aya-code" :value="aya_bank">
+                          </li>
                         </ul>
                         </div>
                         <div class="result_icon">
+                           <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_4">
+                            Copy
+                          </span>
                            
-                            <el-popover
-                            placement="top"
-                          
-                            width="30"
-                            trigger="click"
-                            :content="this.message">
-                            <el-button  round slot="reference" @click="copy_4">Copy</el-button>
-                          </el-popover>
+                        </div>
+                    </div>
+                    <div class="demo-type wallet_type">  
+                      
+                        <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/wavepay_img.png" alt=""></el-avatar>
+                      <div  class="avatar_text">
+                        <ul>
+                          <li>Wave Pay</li>
+                          <li class="bank_number">
+                             <span class="code text-red">{{ wave_pay }}</span>
+                              <input type="hidden" id="wave-code" :value="wave_pay">
+                          </li>
+                        </ul>
+                        </div>
+                        <div class="result_icon">
+                           <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_5">
+                            Copy
+                          </span>
+                           
                         </div>
                     </div>
                       
                 </el-card>
                 </div>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <el-footer class="footer">
               <el-menu
                 
@@ -177,6 +218,12 @@
     .el-main {
       margin-top:-1px !important;
     }
+    .copy-btn {
+      background: #fff;
+      padding:4px 7px;
+      border-radius: 23px;
+      font-size:11px;
+    }
     .wallet .el-card {
       background-color: #252E39;
       border:2pt solid #FFEA72;
@@ -202,7 +249,7 @@
      
     }
     .wallet .el-card .el-button.is-round {
-      padding:6px 10px;
+      padding:6px 7px;
       margin-top:5px;
     }
     .wallet .el-card__body {
@@ -212,16 +259,27 @@
       text-align: center;
       padding:4px !important;
     }
+    .wallet_type .el-avatar--circle {
+      border-radius: 22%;
+    }
+    .wallet_type .el-button {
+      font-size: 11px;
+    }
+    .wallet_type .el-avatar ul {
+      padding:5px;
+    }
 </style>
 <script>
  
   export default {
     data() {
       return {
+        testingCode: "068-3010-620-0945-901",
         kbz_bank:'068-3010-620-0945-901',
         kbz_pay:'09698860088',
         cb_pay:'015-8600-5000-258-28',
         aya_bank:'021-7201-010-0346-47',
+        wave_pay:'09257578394',
         visible: false,
        
         message:''
@@ -229,39 +287,116 @@
     },
 
     methods: {
-       copy_1() {
-        navigator.clipboard.writeText(this.kbz_bank)
-        .then(() => {
-          console.log('Text is on the clipboard.');
-          this.message = 'copied';
-        })
-         
-    },
-    copy_2() {
-        navigator.clipboard.writeText(this.kbz_pay)
-        .then(() => {
-          console.log('Text is on the clipboard.');
-          this.message = 'copied';
-        })
-         
-    },
-    copy_3() {
-        navigator.clipboard.writeText(this.cb_pay)
-        .then(() => {
-          console.log('Text is on the clipboard.');
-          this.message = 'copied';
-        })
-         
-    },
-    copy_4() {
-        navigator.clipboard.writeText(this.aya_bank)
-        .then(() => {
-          console.log('Text is on the clipboard.');
-          this.message = 'copied';
-        })
-         
-    }
-  
+
+
+
+       copyTestingCode_1 () {
+          let testingCodeToCopy = document.querySelector('#kbz-code')
+          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+          testingCodeToCopy.select()
+
+          try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+             this.$notify({
+               message:'Copied'+' '+ msg,
+              position: 'bottom-right',
+              showClose: false
+            });
+            
+          } catch (err) {
+            alert('Oops, unable to copy');
+          }
+
+          /* unselect the range */
+          testingCodeToCopy.setAttribute('type', 'hidden')
+          window.getSelection().removeAllRanges()
+        },
+        copyTestingCode_2 () {
+          let testingCodeToCopy = document.querySelector('#kbz_pay-code')
+          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+          testingCodeToCopy.select()
+
+          try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+             this.$notify({
+               message:'Copied'+' '+ msg,
+              position: 'bottom-right',
+              showClose: false
+            });
+          } catch (err) {
+            alert('Oops, unable to copy');
+          }
+
+          /* unselect the range */
+          testingCodeToCopy.setAttribute('type', 'hidden')
+          window.getSelection().removeAllRanges()
+        },
+        copyTestingCode_3 () {
+          let testingCodeToCopy = document.querySelector('#cb_pay-code')
+          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+          testingCodeToCopy.select()
+
+          try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+             this.$notify({
+                message:'Copied'+' '+ msg,
+              position: 'bottom-right',
+              showClose: false
+            });
+          } catch (err) {
+            alert('Oops, unable to copy');
+          }
+
+          /* unselect the range */
+          testingCodeToCopy.setAttribute('type', 'hidden')
+          window.getSelection().removeAllRanges()
+        },
+        copyTestingCode_4 () {
+          let testingCodeToCopy = document.querySelector('#aya-code')
+          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+          testingCodeToCopy.select()
+
+          try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+             this.$notify({
+               message:'Copied'+' '+ msg,
+              position: 'bottom-right',
+              showClose: false
+            });
+          } catch (err) {
+            alert('Oops, unable to copy');
+          }
+
+          /* unselect the range */
+          testingCodeToCopy.setAttribute('type', 'hidden')
+          window.getSelection().removeAllRanges()
+        },
+        copyTestingCode_5 () {
+          let testingCodeToCopy = document.querySelector('#wave-code')
+          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+          testingCodeToCopy.select()
+
+          try {
+            var successful = document.execCommand('copy');
+            var msg = successful ? 'successful' : 'unsuccessful';
+             this.$notify({
+              message:'Copied'+' '+ msg,
+              position: 'bottom-right',
+              showClose: false
+            });
+          } catch (err) {
+            alert('Oops, unable to copy');
+          }
+
+          /* unselect the range */
+          testingCodeToCopy.setAttribute('type', 'hidden')
+          window.getSelection().removeAllRanges()
+        },
+
     }
   };
 </script>
