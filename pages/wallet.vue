@@ -193,7 +193,7 @@
   .wallet_header .demo-type {
    
     padding:0 10px;
-    height:77px;
+    height:63px;
   }
     .header {
         background-color :#2A612D;
@@ -227,6 +227,7 @@
     .wallet .el-card {
       background-color: #252E39;
       border:2pt solid #FFEA72;
+      border-radius: 13px;
     }
     .wallet  h5 {
       color:#fff;

@@ -130,7 +130,7 @@ export default {
     .acc_items {
         list-style :none;
         text-align:left;
-        padding:0;
+        padding:10px;
     }
     .acc_items  li {
         padding:10px 0;

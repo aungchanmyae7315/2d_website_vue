@@ -1,5 +1,5 @@
 <template>
-    <div class="bet_container">
+    <el-main class="bet_container">
         <el-header>
             <el-page-header @back="goBack()">
             </el-page-header>
@@ -147,18 +147,9 @@
                 </div>
             </div>
         </div>
-         <el-footer class="bet_footer">
-             <!-- <div v-if ="!$store.state.isLoggedIn">
-                 <nuxt-link to="login">
-                    <el-button  type="warning" round>Please Login to bet</el-button>
-                 </nuxt-link>
-             </div>
-            <div v-else>
-               <el-button type="warning" class="bet_btn_login" round>Bet</el-button>
-            </div> -->
-         </el-footer>
+        
             
-    </div>
+    </el-main>
     
 </template>
 
@@ -181,12 +172,12 @@
     .bet_footer .bet_btn_login {
         width:120px;
     }
-    .bet_container {
+    /* .bet_container {
         background-image:url(~static/images/main_bg.png); 
         background-size: cover;
         background-repeat: no-repeat;
         height: 100vh;
-    }
+    } */
     .el-checkbox-button.is-checked .el-checkbox-button__inner {
             color:#000;
             background-color:#FEDC54;
@@ -201,9 +192,11 @@
         -moz-box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
         box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
         border: 0;
-        margin: 11px;
+        margin: 7px;
         border-radius: 10px;
         padding: 14px;
+        width:42px;
+        height:42px;
         color: #e0dddd;
         background:#14612D;
         font-weight: bold;
@@ -211,6 +204,7 @@
     .el-checkbox-button:first-child .el-checkbox-button__inner {
           border-radius: 10px;
           border-left:unset;
+          
     }
     .el-checkbox-button:last-child .el-checkbox-button__inner {
          border-radius: 10px;
@@ -255,10 +249,10 @@
         font-weight: bold;
         font-size:22px;
     }
-    .all_btn {
+    /* .all_btn {
         text-align: center;
         height:100vh;
-    }
+    } */
     .hideScrollBar_bet {
         width: 100%;
         height: 100%;
@@ -303,9 +297,10 @@
    .select_number .el-button {
        width:23px;
        margin:0;
+       margin-top:3px;
    }
    .single_btn .el-button {
-       width:46px;
+       width:44px;
    }
    .select_number_two .el-col-5 {
        width:19.83333%;
@@ -353,6 +348,7 @@
     @media screen and (min-width:480px) {
       .select_number .el-button{
           width:33.2px;
+          
       }
       .select_number_two .el-button {
           width:74px;
@@ -559,7 +555,7 @@ const tail_9_option = ['09','19','29','39','49','59','69','79','89','99'
 
 ]
 
-
+import axios from 'axios'
 export default {
     mounted() {
         this.updateIsLoggedIn();
@@ -600,8 +596,20 @@ export default {
       
          alert(this.input_bet);
         if(this.check_btn) {
-              this.$store.commit('getBet', this.check_btn);
-              this.$store.commit('betAmount', this.input_bet);
+             axios.post('https://build.seinlucky.com/api/v2/v1/get_odds', {
+                    bets: this.check_btn,
+                    
+                    
+                })
+              
+               .then(response => {
+                     this.betInfo = response;
+                     console.log('xxxx');
+                     console.log(this.betInfo);
+               })
+
+            //   this.$store.commit('getBet', this.check_btn);
+            //   this.$store.commit('betAmount', this.input_bet);
         }
         
             

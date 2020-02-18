@@ -54,23 +54,21 @@
         </div>
 
           <div class="block">
-            <el-carousel trigger="click" height="150px">
+             <h3>{{ image }}</h3>
+            <el-carousel  trigger="click" height="150px">
+             <el-carousel-item v-for="image in slider_image" :key="image">
+                    <img :src="image.slider_image">
+              </el-carousel-item>
            
-                <el-carousel-item name ='first'>
-                  <!-- <div class="el-carousel_label">
-                    <h3>ipsum dolor sit amet fdsf</h3> 
-                  </div> -->
+                <!-- <el-carousel-item name ='first'>
+                
                 </el-carousel-item>
                 <el-carousel-item name ='second'>
-                   <!-- <div class="el-carousel_label">
-                    <h3>ipsum dolo sit amet fdsf</h3> 
-                  </div> -->
+                 
                 </el-carousel-item>
                 <el-carousel-item name ='third'>
-                   <!-- <div class="el-carousel_label">
-                    <h3>ipsum dolor sit amet fdsf</h3> 
-                  </div> -->
-                </el-carousel-item>
+                  
+                </el-carousel-item> -->
               <div class="el-carousel_label">
                     <h3>  <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon"> ipsum dolor sit amet fdsf</h3> 
                 </div>
@@ -194,6 +192,7 @@
 <script>
 import Logo from '~/components/Logo.vue'
 import axios from 'axios'
+
 export default {
     getters: {},
   mutations: {},
@@ -203,6 +202,7 @@ export default {
      const lang = this.$store.state.lang;
      console.log(lang)
      this.updateIsLoggedIn();
+       this.updateLang();
      
    },
   components: {
@@ -210,7 +210,8 @@ export default {
   },
   data() {
     return {
-    
+
+      slider_image:'',
       activeIndex: '1',
       info:'',
       set_1200:'',
@@ -226,6 +227,14 @@ export default {
       hasUserInfo() {
         return Boolean(localStorage.getItem('userInfo'));
       },
+
+
+      updateLang() {
+        this.$store.commit('updateLang', this.hasLang());
+      },
+      hasLang() {
+        return Boolean(localStorage.getItem('locale'));
+      },
       // handleSelect(key, keyPath) {
       //   console.log(key, keyPath);
       // }
@@ -237,7 +246,13 @@ export default {
               .then(response => {
                 console.log(this.info = response.data.data)
               })
-	      	// }.bind(this), 5000);
+          // }.bind(this), 5000);
+          
+          axios.get('https://build.seinlucky.com/api/v2/v1/slider_image')
+              .then(response => {
+                console.log(this.slider_image = response.data.data)
+              })
+        
         
     },
     
@@ -258,13 +273,13 @@ export default {
   .el-carousel {
     border-radius: 22px;
   }
-    .el-carousel__item:nth-child(1n) {
-    background-image:url(../static/images/slide_1.png);
+   /* .el-carousel__item:nth-child(1n) {
+    background-image:url(https://build.seinlucky.com//storage//slider_image_upload//1580895847_5e3a8e6728bf7.jpg);
     background-size:cover;
     background-repeat: no-repeat;
     background-position: 100% ;
-  }
-  .el-carousel__item:nth-child(2n) {
+  } */
+  /* .el-carousel__item:nth-child(2n) {
     background-image:url(../static/images/slide_1.png);
     background-size:cover;
     background-repeat: no-repeat;
@@ -275,7 +290,7 @@ export default {
     background-size:cover;
     background-repeat: no-repeat;
      background-position: 100%;
-  }
+  }  */
 /* .container {
   margin: 0 auto;
   min-height: 100vh;

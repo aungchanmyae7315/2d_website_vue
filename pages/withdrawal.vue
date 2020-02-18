@@ -120,7 +120,7 @@
      .withdrawal .el-button.is-round{
         
         position: relative;
-        margin-top:140px;
+        bottom:0;
         max-width: 480px;
         width:100%;
         margin-bottom:20px;

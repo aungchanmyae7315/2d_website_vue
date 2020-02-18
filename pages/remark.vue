@@ -200,7 +200,10 @@ export default {
 }
 
 .remark .btn_group {
-  margin-top:100px;
+    position: fixed;
+    right: 0;
+    bottom: 22px;
+    left: 0;
 }
 .bet_submit {
   background-color:#158220;

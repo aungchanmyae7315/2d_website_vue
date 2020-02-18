@@ -240,22 +240,23 @@
     margin:25px auto 0px auto;
 }
 .card_one , .card_two{
-    background-image:url(~static/images/card_one_bg.png);
-    background-repeat: no-repeat;
-    background-size:100%;
-    background-position: center;
-    text-align: center;
-    padding:27px;
-    margin:7px auto;
+  
+   border:2px solid #FFEA72;
+   border-radius: 13px;
+   padding:20px;
+   margin:7px auto;
+    background-image:
+    linear-gradient(#3A4450, #151E28),
+    linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);  
 }
 .card_three , .card_four {
-    background-image:url(~static/images/card_two_bg.png);
-    background-repeat: no-repeat;
-    background-size:100%;
-    background-position: center;
-    text-align: center;
+    border:2px solid #FFEA72;
+    border-radius: 13px;
     padding:20px;
     margin:7px auto;
+   background-image:
+   linear-gradient(#3A4450, #151E28),
+   linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);  
 }
 .card_item h4 {
     color:rgba(255, 255, 255, 1);

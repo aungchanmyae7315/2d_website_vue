@@ -28,7 +28,7 @@ export default {
   z-index: 999;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(29, 27, 27, 0.8);
   text-align: center;
   padding-top: 200px;
   font-size: 30px;

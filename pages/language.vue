@@ -5,7 +5,21 @@
                 <el-page-header @back="goBack" content="Language">
                 </el-page-header>
             </el-header>
-            <li>{{ $t('language') }}</li>
+<lang></lang>
+            <!-- <nuxt-link
+                v-if="$i18n.locale !== 'en'"
+                :to="switchLocalePath('en')"
+                >
+                English
+                </nuxt-link>
+
+                <nuxt-link
+                v-if="$i18n.locale !== 'mm'"
+                :to="switchLocalePath('mm')"
+                >
+                Myanmar
+            </nuxt-link> -->
+            <!-- <li>{{ $t('language') }}</li>
             <ul class="lang_list">
                 <nuxt-link
                     :key="index"
@@ -14,19 +28,23 @@
                 >
                     <li :class="isSelected(locale.code)">{{ locale.title }}</li>
                 </nuxt-link>
-            </ul>
+            </ul> -->
                <el-button type="success" style="width:100%"  round @click="submitLang('')"  v-loading.fullscreen.lock="fullscreenLoading">Submit</el-button>
         </div>
     </section>
 </template>
 
 <script>
+import lang from '~/components/lang.vue'
 export default {
     data() {
         return {
               fullscreenLoading: false
         }
     },
+    components: {
+    lang
+  },
     methods: {
         isSelected: function (code) {
             const vm = this
@@ -50,7 +68,10 @@ export default {
                           setTimeout(() => {
                           loading.close();
                         }, 2000);
-                      this.$router.go('/');
+                    //   this.$route.fullPath.replace(/^\/mm/, '/home')
+                    //  return redirect(route.fullPath.replace(/^\/mm/, '/'))
+                    // this.store.mm
+                       this.$store.commit('SET_LANG', 'hello')
                         
         }
        
@@ -58,7 +79,7 @@ export default {
     computed: {
         locales () {
           
-            return this.$i18n.locales
+            return this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)
             
         },
        

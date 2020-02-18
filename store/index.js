@@ -10,9 +10,9 @@ const createStore = () => {
             Otp: '',
             phoneResponse:'',
             getBet:'',
-            
+            updateLang:true,
             locales: ['en', 'mm'],
-            locale: 'en'
+        
             // repairs: [],
             // purchases: [],
             // appStatus: {isViewDetail:false, repairPageNum:0, repairQueryType:'', lastRepairQueryType:'', isShowBottomTab:true, pageTitle:'', purchasePageNum:0, purchaseQueryType:'', lastPurchaseQueryType:'', isRefreshList:true},
@@ -28,8 +28,8 @@ const createStore = () => {
           
         },
         mutations: {
-            SET_LANG (state, locale) {
-                if (state.locales.includes(locale)) {
+            SET_LANG(state, locale) {
+                if (state.locales.indexOf(locale) !== -1) {
                   state.locale = locale
                   localStorage.setItem('locale', JSON.stringify(locale));
                 }
@@ -53,6 +53,9 @@ const createStore = () => {
             },
             updateIsLoggedIn(state, isLoggedIn) {
                 state.isLoggedIn = isLoggedIn;
+            },
+            updateLang(state, updateLang) {
+                state.updateLang = updateLang;
             },
            
             

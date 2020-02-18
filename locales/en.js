@@ -3,7 +3,7 @@
 
 export default {
     "hello": "fuxk",
-    "language": "Lee",
+    "language": "language",
     "night_mode": "Dark Theme",
     "no_internet": "Check Your Internet Connection",
     "en": "English",

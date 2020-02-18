@@ -45,6 +45,10 @@ export default {
         margin-bottom:80px;
 
     }
+  .service .el-button.is-round {
+    width:unset;
+  }
+
     .service .contact_text {
         color:#BDC5BE;
         margin-bottom:50px;

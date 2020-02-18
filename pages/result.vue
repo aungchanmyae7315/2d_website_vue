@@ -4,6 +4,7 @@
           <el-page-header @back="goBack" content="2D Result">
         </el-page-header>
       </el-header>
+      {{ $t('language') }}
       <div class="result_item">
          <el-card shadow="always">
             <el-row type="flex" class="row-bg"  justify="space-between">
