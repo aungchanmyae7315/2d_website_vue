@@ -4,6 +4,30 @@
           <el-page-header @back="goBack" content="Notification">
         </el-page-header>
       </el-header>
+        <section class="noti_content">
+            <ul v-for="noti of notification" :key="noti" class="noti_text" >
+                
+
+                
+                    <li @click="cur_id(noti.notification_id)" >
+                    
+                    <img src="~static/images/noti_page/noti_icon2.png" alt="" class="noti_icon">
+                    <div style="color:#000;">{{noti.title}}</div>
+                    <div style="color:#b8b8b8;">{{noti.description}}</div>
+                    <div class="el_icon_right">
+                         <i  class="el-icon-arrow-right" ></i>
+                    </div>
+                   
+                     <el-divider></el-divider>
+                </li>
+               
+             
+                
+
+            </ul>
+            
+                
+        </section>
 
     </div>
 </template>
@@ -17,6 +41,32 @@
     .notification .el-page-header__content {
         color:#fff;
     }
+    .noti_content {
+        padding:0 20px;
+        margin-top:20px;
+    }
+    .noti_text {
+        padding:0;
+        margin:0;
+    }
+    .noti_text li {
+        list-style:none;
+    }
+    .noti_text .noti_icon {
+       width: 30px;
+        height: auto;
+        float: left;
+        display: block;
+        /* padding: 22px; */
+        margin: 10px 15px 10px 0;
+    }
+    .el_icon_right {
+        float: right;
+        position: relative;
+        right:3px;
+        bottom:30px;
+    }
+
 </style>
 
 <script>
@@ -25,31 +75,32 @@ export default {
     data() {
         return {
             notification:'',
+           
         }
     },
     methods: {
         goBack() {
             this.$router.push('/')
       },
+      cur_id(data) {
+         this.$store.commit('noti_id', data);
+         this.$router.push('/withdraw_noti')
+      }
      },
      created() {
-        //    axios.get('https://build.seinlucky.com/api/v1/notification')
-           
-        //   .then(response => {
-        //     console.log(this.notification = response.data.data)
-        //   })
 
-
-         let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYxNjk3Y2E5OTcwMDI1ZWYwYzIxYzc1YzgwNjcyMTViNDk4ZTEzM2RmNmI0MjlhYzM0MDBlMGQ3NmZlNjI1ZDcxZDY1OGJjZjRjOWFmMDcxIn0.eyJhdWQiOiIxIiwianRpIjoiNjE2OTdjYTk5NzAwMjVlZjBjMjFjNzVjODA2NzIxNWI0OThlMTMzZGY2YjQyOWFjMzQwMGUwZDc2ZmU2MjVkNzFkNjU4YmNmNGM5YWYwNzEiLCJpYXQiOjE1ODIwMDA5MzMsIm5iZiI6MTU4MjAwMDkzMywiZXhwIjoxNjEzNjIzMzMzLCJzdWIiOiI2MSIsInNjb3BlcyI6W119.frZXVPGXsA0MO0VinvCCdX7JKFEDmoYA-i-srKVASxtNyGlL7bQOKfwS5hMQjr7j6L1_MebXYmvVla5rYpDeU_bD0r-8E8DBysL8j4x2w43yKjHz6pwnieEWuDq3IoWsjvLxk_zXTveeL9WGUqbhdNLQ3QIqwwM2lXH8PItT4hKf_9wJeolJWc8Hd8gAI4IExBL8z_ta8DQhB5CN4HglehtLB52u1xezSNp_y8Psxe5I4Gqy_UHdRmucwZlfZzPzzBVTkuOU3DZwdY7KNK5BHR0WrHc-ty_OPwmMJ0K74pNsSvlq8biF6NOeiQvbF4-X43jXGBpvG_smzXh5VH4FdJ5cvaJx-ZL37LkM3D3e7TEkjm-bQXXlKJOHrsAD1EntEz4cEp1bw39hry2Ti3iVsG6CvAPp1qzj2RrIFoQoQyHUR1qbiCagU6d6X3xoQxdWCfLMBcpimj5GEJRDgQPLDC50uGBFzG3CJZQmmLmDrAAl5gghiubIp7zJCHQLAZCMzyjA7V-cwiyu_pHuIgIzwcBAPCKAeZWMSbJFovaMxzEmXmQ7_5QiWRLsdMRft6v670q3spqenGadK5XmBNReLKhvpEaOc3fKFXQU8VulRq0stoJ1kbnaVLcec8GyI8WtWYNr5DKnahiJqIHXc7J8rH9M4O9RSJJcga42nFWdDoU';
-                    axios.get("https://build.seinlucky.com/api/v1/notification",[], 
+         let token = localStorage.getItem('token');
+        
+        
+                axios.get("https://build.seinlucky.com/api/v1/notification",
                     {headers: {
-                            'Authorization': "Bearer ${localStorage.getItem('access_token')}"
+                               "Authorization": "Bearer "+token
                          }
                         })
-                    
                     .then(response => {
                      console.log(this.notification = response.data.data)
-                   
+                     var noti_id = this.notification.notification_id
+                    
                 })
      }
 }

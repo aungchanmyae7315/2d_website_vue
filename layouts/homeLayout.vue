@@ -13,12 +13,10 @@
             <el-col :span="8"><div class=""><img src="~static/images/logo.png" class="logo" alt="logo"></div></el-col>
             <el-col :span="4">
                  <div class="music_icon">
-                   <audio id="track">
-                        <source src="http://basichow.com/asserts/interlude.mp3" type="audio/mpeg" />
-                      </audio>
-
+              
                       <div id="player-container">
-                        <div id="play-pause" class="play">Play</div>
+                        <div id="play-pause" class="play" v-on:click="play">Play</div>
+                         <audio ref="audioElm" src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1"></audio>
                       </div>
                      
                 </div>
@@ -29,32 +27,13 @@
               </div>
             </el-col>
           </el-row>
-          <!-- <ul class="header_item">
-           <li class="noti"><a href=""> <img src="~static/images/noti.png" alt="logo"></a></li>
-            <li><a href=""> <img src="~static/images/logo.png" class="logo" alt="logo"></a></li>
-            <li class="music_icon">
-             <div class="wrapper">
-                <a href="#" title="Listen to the song" class="player-controls">
-                    <span class="audio-label">
-                        
-                    </span>
-                    <span class="play"></span>
-                    <span class="pause"></span>
-                </a>
-                <audio id="player">
-                    <source src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1" type="audio/mp3">
+ 
+
                     
-                </audio>
-            </div>
-            </li>
-            <li class="messeage_icon">
-                <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
-            </li>
-          </ul> -->
-            
-           
+
+      
         </el-header>
-   
+ 
         <nuxt />
         <el-footer class="footer">
           <el-menu
@@ -88,7 +67,25 @@
     
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
 
+    }
+  },
+  methods: {
+     play: function(event) {
+      var a = this.$refs.audioElm;
+      if (a.paused) {
+        a.play();
+      } else {
+        a.pause();
+      }
+    }
+  }
+}
+</script>
 <style>
 html {
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',

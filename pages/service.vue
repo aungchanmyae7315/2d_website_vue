@@ -6,14 +6,8 @@
                   <div class="service">
                   <img src="~static/icons_service/Customer_services_icon.png" alt="">
                     <p class="contact_text">Contact us via Viber or Phone call</p>
-                    <ul class="service_contact">
-                        <li><el-button size="medium"  icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                        <li><el-button size="medium"   icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                        <li><el-button size="medium"   icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                        <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                        <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                        <li><el-button size="medium" icon="el-icon-phone" round>09 798 455 846</el-button></li>
-                        
+                    <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
+                        <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
 
                     </ul>
                   <h6>Or</h6>
@@ -28,8 +22,27 @@
 
 
 <script>
+ import axios from 'axios'
 export default {
      layout: 'serviceLayout',
+     data() {
+       return {
+         contact:[],
+       }
+     },
+     methods: {
+    dial: function(data){
+      window.location ='tel:'+data;
+    },
+     },
+    created() {
+        axios.get("https://build.seinlucky.com/api/v1/contact")
+    
+            
+                .then(response => {
+                    console.log(this.contact = response.data.data[0].phone_number)
+            });
+     },
 }
 </script>
 <style>

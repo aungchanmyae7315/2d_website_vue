@@ -12,6 +12,7 @@ const createStore = () => {
             getBet:'',
             updateLang:true,
             locales: ['en', 'mm'],
+            token:'',
         
             // repairs: [],
             // purchases: [],
@@ -46,9 +47,25 @@ const createStore = () => {
                 state.isLoggedIn = true;
                 
             },
+            accessToken(state, token) {
+                // console.log("Token", token);
+                // state.userInfo = userInfo;
+
+                localStorage.setItem('token', (token));
+            
+                
+            },
+            noti_id(state, data) {
+                // console.log("Token", token);
+                // state.userInfo = userInfo;
+                localStorage.setItem('notification_id', (data));
+            
+                
+            },
             logOut(state) {
                 localStorage.removeItem('userInfo');
                 localStorage.removeItem('phoneResponse');
+                localStorage.removeItem('token');
                 state.isLoggedIn = false;
             },
             updateIsLoggedIn(state, isLoggedIn) {

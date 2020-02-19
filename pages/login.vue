@@ -142,7 +142,10 @@ import axios from 'axios'
                     });
                   }else {
                      this.userInfo = response.data,
+                     this.token = response.data.access_token;
+                     console.log(this.token);
                     this.$store.commit('logIn', this.userInfo);
+                    this.$store.commit('accessToken', this.token);
                      const loading = this.$loading({
                           lock: true,
                           text: 'Loading',
@@ -165,23 +168,7 @@ import axios from 'axios'
                   }
                  
                 })
-                  
-                // .catch(error => {
-                //     this.response = 'Error: ' + error.response
-                //   })
-                //        this.phone = '';
-                    
-                //       this.password = '';                     //  if (store.state.phoneResponse = '') {
-                //    alert('fail')
-                //  }else {
-                //    alert ('regds')
-                //  }
-                // if(state.phoneResponse == 'fail') {
-                //   alert('word')
-                // }else {
-                //   alert('hello')
-                // }
-                //  this.$router.push('/');
+           
       
       },
       resetForm(formName) {

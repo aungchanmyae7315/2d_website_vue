@@ -16,18 +16,19 @@
             <h5>Upload Bank transferred Slip</h5>
              <el-upload
                 class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
+                action="https://build.seinlucky.com/api/v1/slip"
                 :on-preview="handlePreview"
                 :on-remove="handleRemove"
                  :limit="2"
-                :on-exceed="handleExceed"
+                
+                :on-change="handleChange"
                 :file-list="fileList"
                 list-type="picture">
                   <i slot="default" class="el-icon-plus"></i>
               
                 <div slot="tip" class="el-upload__tip">please upload bank slip photo here</div>
              </el-upload>
-              <el-button round>Summit</el-button>
+              <el-button round @click="slip_upload">Summit</el-button>
         </div>
        
     </section>
@@ -91,27 +92,70 @@
 </style>
 
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
             
             tran_amount:'',
-               fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'}, ]
+            img_url:'',
+               fileList: [],
         }
     },
     methods: {
         goBack() {
               this.$router.push('/wallet');
         },
+        handleChange(file, fileList) {
+            this.img_url = fileList[0].url
+            console.log(this.img_url);
+        },
         handleRemove(file, fileList) {
+             
         console.log(file, fileList);
         },
         handlePreview(file) {
-            console.log(file);
+          alert(file.url)
+            console.log(file.url);
         },
          handleExceed(files, fileList) {
         this.$message.warning(`The limit is 2, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
       },
-    }
+
+    
+
+      slip_upload() {
+        
+         
+         let token = localStorage.getItem('token');
+        
+         var data = {
+                image:'https://cdn1.peopleimages.com/picture/201903/1830571-legs-speak-louder-than-words-zoom_90.jpg',
+                amount: this.tran_amount,
+                bank_type_id:1,
+                card_number:370101002345,
+
+            }
+            console.log(data)
+                axios.post("https://build.seinlucky.com/api/v1/slip",
+                           data,
+                    {
+                           
+
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         },
+                          
+                        })
+                
+                    .then(response => {
+                     console.log(this.topup_info = response.data.data)
+                     console.log(this.topup_info)
+                })
+            
+     }
+    },
+    
+    
 }
 </script>
