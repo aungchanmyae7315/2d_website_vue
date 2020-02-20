@@ -41,7 +41,7 @@ const createStore = () => {
         //         localStorage.setItem('lang', JSON.stringify(lang));
         //    },
             logIn(state, userInfo) {
-                console.log("UserInfo", userInfo);
+                //console.log("UserInfo", userInfo);
                 // state.userInfo = userInfo;
                 localStorage.setItem('userInfo', JSON.stringify(userInfo));
                 state.isLoggedIn = true;
@@ -62,6 +62,10 @@ const createStore = () => {
             
                 
             },
+            bet_date(state, data) {
+                localStorage.setItem('bet_date', (data));
+             
+            },
             logOut(state) {
                 localStorage.removeItem('userInfo');
                 localStorage.removeItem('phoneResponse');
@@ -78,19 +82,19 @@ const createStore = () => {
             
             setOtp(state, Otp){
                 state.Otp = Otp;
-                console.log(Otp)
+                //console.log(Otp)
             },
             setPhone(state, phoneResponse){
                 state.phoneResponse = phoneResponse;
-                console.log(phoneResponse.access_token)
+                //console.log(phoneResponse.access_token)
             },
             getBet(state, check_btn){
                 state.check_btn = check_btn;
-                console.log(check_btn)
+                //console.log(check_btn)
             },
             betAmount(state, input_amount){
                 state.input_amount = input_amount;
-                console.log(input_amount)
+                //console.log(input_amount)
             },
             
            

@@ -1,32 +1,42 @@
 <template>
    <div class="main_container bet_status">
       <el-header>
-          <el-page-header @back="goBack" content="2D Result">
-        </el-page-header>
-        <el-row type="flex" class="row-bg" justify="space-between">
-            <el-col :span="6"><div class="bet_s_no">No</div></el-col>
-            <el-col :span="6"><div class="bet_s_d_t">Date and Time</div></el-col>
-            <el-col :span="6"><div class="bet_s_amount">Amount (MMK)</div></el-col>
-        </el-row>
-        <div class="list_bet_info">
-            <ul >
-                <li @click="dialogVisible = true" v-for="(bet_list,b) in bet_stauts" :key="b">
-                    <div class="no">{{bet_list.number}}</div>
-                     <div class="date_time">{{bet_list.created_at}}</div>
-                      <div class="amount_bet">{{bet_list.amount}}</div>
-                </li>
-            </ul>
+          <el-page-header @back="goBack" content="Bet Status for 12:00 PM">
            
-        </div>
+        </el-page-header>
+         <nuxt-link to="/bet_history">
+             <img src="~static/images/icons/bet_status_icon.png" alt="" class="bet_status_icon">
+        </nuxt-link>
       </el-header>
+
+       <table class="table">
+            <thead>
+                <tr>
+                <th>Date and Time</th>
+                <th>No</th>
+                <th style="text-align:right">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr @click="dialogVisible = true" v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id">
+                <th scope="row">{{bet_list.created_at}}</th>  
+                <td>{{bet_list.number}}</td> 
+                <td style="text-align:right">{{bet_list.amount}}</td>  
+                </tr>
+            </tbody>
+        </table>
+        
+
       <el-dialog class="model_items"
-  title="Tips"
-  :visible.sync="dialogVisible"
-  width="90%"
->
+        title="Tips"
+        :visible.sync="dialogVisible"
+        width="90%"
+        >
     <ul>
         <li>
-            <span>Date & Time</span>
+            <span>Date & Time</span><br>
+            <span>12:00Am</span>
+            
         </li>
         <li>
             <span>Name</span>
@@ -53,10 +63,7 @@
 
     .bet_status .el-header {
        background-color :#fff;
-       -webkit-box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.75);
-        -moz-box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.75);
-        box-shadow: 0px 2px 2px -1px rgba(0,0,0,0.75);
-        height: 85px !important;
+      
     }
     .el-page-header__left {
         margin:0;
@@ -67,9 +74,10 @@
         padding:0 10px;
        
     }
-    .withdrawal .el-page-header__content {
+    .bet_status .el-page-header__content {
         color:#000;
         font-weight: bold;
+        margin:0 37px;
     }
     .list_bet_info ul {
         padding:20px;
@@ -78,7 +86,7 @@
     .list_bet_info ul li {
         list-style: none;
         display: flex;
-        padding:20px;
+        padding:20px 0;
         border-bottom:1px solid #BDC1CC;
 
     
@@ -99,7 +107,20 @@
     .bet_status .el-dialog {
         border-radius: 13px;
     }
-    
+    .bet_status_icon {
+        width: 25px;
+        height: auto;
+        float: right;
+        position: relative;
+        bottom: 34px;
+        right: 12px;
+    }
+    .bet_status .table td, .table th {
+        font-weight: unset;
+    }
+    .bet_status .el-page-header__content {
+        font-size: 12pt;
+    }
 </style>
 
 <script>
@@ -107,6 +128,7 @@
 export default {
     data() {
         return {
+           
             bet_stauts:'',
             dialogVisible: false
         }

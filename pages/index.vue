@@ -42,7 +42,7 @@
                      
 
                     </li>
-                    <li class="amount_mmk">{{this.profile.wallet}}</li>
+                    <li  class="amount_mmk">{{this.profile.wallet}}</li>
                   </ul>
                   </div>
                   <div class="result_icon">
@@ -236,9 +236,7 @@ export default {
       hasLang() {
         return Boolean(localStorage.getItem('locale'));
       },
-      // handleSelect(key, keyPath) {
-      //   console.log(key, keyPath);
-      // }
+
     },
      created() {
       
@@ -266,14 +264,7 @@ export default {
                 })
         
     },
-    
-    //   mounted() {
-    //  axios
-    //   .get('https://build.seinlucky.com/api/v1/twod-result/live')
-    //   .then(response => (this.info = response))
-    //   console.log(this.info);
-    //   alert(this.info)
-    //   }
+
 }
 
 
@@ -284,32 +275,7 @@ export default {
   .el-carousel {
     border-radius: 22px;
   }
-   /* .el-carousel__item:nth-child(1n) {
-    background-image:url(https://build.seinlucky.com//storage//slider_image_upload//1580895847_5e3a8e6728bf7.jpg);
-    background-size:cover;
-    background-repeat: no-repeat;
-    background-position: 100% ;
-  } */
-  /* .el-carousel__item:nth-child(2n) {
-    background-image:url(../static/images/slide_1.png);
-    background-size:cover;
-    background-repeat: no-repeat;
-     background-position: 100%;
-  }
-  .el-carousel__item:nth-child(3n) {
-    background-image:url(../static/images/slide_1.png);
-    background-size:cover;
-    background-repeat: no-repeat;
-     background-position: 100%;
-  }  */
-/* .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-} */
+   
   .main_page {
    
    margin:0 auto;
