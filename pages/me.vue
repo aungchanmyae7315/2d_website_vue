@@ -163,7 +163,7 @@ export default {
         
     }
     .me_header  .avatar_text {
-        bottom:24px;
+        bottom:19px;
     }
     .edit_profile {
       color:goldenrod;

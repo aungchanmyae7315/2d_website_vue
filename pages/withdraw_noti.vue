@@ -10,7 +10,7 @@
         </div>
       <el-card data-aos="zoom-out-down"
         data-aos-easing="linear"
-        data-aos-duration="1000">
+        data-aos-duration="500">
           <h5 class="win_text">Hi , Aung Chan Myae <br>Your have won 80,000 Ks <br>Congratulations !!</h5>
       
         <div class="row win_item">

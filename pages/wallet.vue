@@ -47,7 +47,7 @@
              <div class="longText" id="hidingScrollBar">
                 <div class="hideScrollBar hideScrollBar_wallet ">
 
-                <el-card data-aos="fade-up" data-aos-duration="700">
+                <el-card data-aos="fade-up" data-aos-duration="800">
                   
 
                   <h5>Sein Lucky Bank Accounts</h5>

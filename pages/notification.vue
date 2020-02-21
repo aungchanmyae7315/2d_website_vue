@@ -7,7 +7,7 @@
         <section class="noti_content">
             <ul v-for="noti of notification" :key="noti" class="noti_text"  data-aos="fade-down"
         data-aos-easing="linear"
-        data-aos-duration="1000">
+        data-aos-duration="500">
                 
 
                 

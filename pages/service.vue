@@ -6,7 +6,7 @@
                   <div class="service">
                   <img src="~static/icons_service/Customer_services_icon.png" alt="" data-aos="fade-down"
      data-aos-easing="linear"
-     data-aos-duration="1000">
+     data-aos-duration="500">
                     <p class="contact_text">Contact us via Viber or Phone call</p>
                     <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
