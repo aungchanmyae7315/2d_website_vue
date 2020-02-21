@@ -75,7 +75,7 @@ export default {
   actions: {},
   mounted () {
    
-     
+   
       const odd =  localStorage.getItem('odds');
      
     const bets = this.$store.state.check_btn;
@@ -111,19 +111,20 @@ export default {
      methods: {
        
        submit_bet() {
+        //  location.reload();
           let token = localStorage.getItem('token');
             alert(this.name)
             alert(this.phone)
-            alert(this.$store.state.check_btn)
+            alert( localStorage.getItem('check_btn'))
             alert( localStorage.getItem('bet_amount') )
 
                 var data = {
                     client_name:this.name,
                     client_phone:this.phone,
-                    twod_id:  this.$store.state.check_btn,
+                    twod_id:  localStorage.getItem('check_btn'),
                     amount: localStorage.getItem('bet_amount') ,
                 }
-          axios.post("https://build.seinlucky.com/api/v1/2d/bet",
+          axios.post("https://build.seinlucky.com/api/v2/v1/2d_web/bet",
                            data,
                     {
                            
