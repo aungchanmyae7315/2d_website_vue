@@ -8,6 +8,9 @@
    
   
  }
+ .el-avatar>img {
+   width:60px;
+ }
  .el-menu-item {
    padding:0 30px;
  }

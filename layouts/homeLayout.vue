@@ -117,6 +117,7 @@ html {
     max-width: 480px;
     width:100%;
     height:100vh;
+    margin-top:-1px;
     padding:0;
     overflow: hidden;
     /* background-position: 100% 100%; */

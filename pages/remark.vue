@@ -37,6 +37,7 @@
                       style="width: 100%; margin-top: 20px">
                    
                       <el-table-column
+
                         prop="bets"
                         label="Bet">
                       </el-table-column>

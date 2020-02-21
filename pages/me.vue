@@ -34,17 +34,17 @@
                
             
                 <div  v-if ="!$store.state.isLoggedIn">
-                        <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
+                       <li><nuxt-link to="/notification"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></nuxt-link></li>
                         <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
                         <li><nuxt-link to="/language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
 
                 </div>
                 <div v-else> 
-                       <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
+                       <li><nuxt-link to="/notification"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></nuxt-link></li>
                         <li><nuxt-link to="/bet_status"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></nuxt-link></li>
                         <li><nuxt-link to="/language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
 
-                        <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li>
+                        <!-- <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li> -->
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> LogOut</a></li>
                 </div>
               
@@ -163,7 +163,7 @@ export default {
         
     }
     .me_header  .avatar_text {
-        bottom:17px;
+        bottom:24px;
     }
     .edit_profile {
       color:goldenrod;

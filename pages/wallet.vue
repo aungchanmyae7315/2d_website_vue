@@ -18,7 +18,7 @@
                    
                   <img :src="this.profile.image" alt="">
                   </el-avatar>
-                  <el-avatar :size="60" v-else> 
+                  <el-avatar :size="60" v-else > 
                    <img src="~static/images/icons/me_img.png" alt="">
                   
                   </el-avatar>
@@ -47,7 +47,7 @@
              <div class="longText" id="hidingScrollBar">
                 <div class="hideScrollBar hideScrollBar_wallet ">
 
-                <el-card>
+                <el-card data-aos="fade-up" data-aos-duration="700">
                   
 
                   <h5>Sein Lucky Bank Accounts</h5>

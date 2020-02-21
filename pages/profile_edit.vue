@@ -13,7 +13,9 @@
                     <label for="imageUpload"></label>
                 </div>
                 <div class="avatar-preview">
-                    <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                   
+                    <div id="imagePreview">
+                      <img :src="this.profile.profile " alt="" id="imagePreview">
                     </div>
                 </div>
             </div>
@@ -151,10 +153,25 @@
 <script>
  import axios from 'axios'
   export default {
+    mounted() {
+        console.log('fffff')
+      let token = localStorage.getItem('token');
+    
+      axios.get("https://build.seinlucky.com/api/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     console.log(this.profile = response.data.data)
+ 
+                })
+    },
     data() {
       return {
         image: '',
         edit_name:'',
+        profile:'',
       };
     },
     methods: {
@@ -181,22 +198,28 @@
     removeImage: function (e) {
       this.image = '';
     },
-  
+  created() {
+     
+    },
     profile_edit() {
               let token = localStorage.getItem('token');
+              console.log(this.image)
+              var img = "https://images.pexels.com/photos/3584930/pexels-photo-3584930.jpeg"
                 var data_profile = {
-                  profile:this.image
+                  //https://images.pexels.com/photos/3584930/pexels-photo-3584930.jpeg
+                  profile:img
 
                 }
         
                 axios.post("https://build.seinlucky.com/api/v1/profile-photo/update",data_profile,
                     {
                       headers: {
-                               "Authorization": "Bearer "+token
+                               'Authorization': 'Bearer '+token,
+                               'content-type': 'multipart/form-data'
                          }
                         })
                     .then(response => {
-                     //console.log(this.profiel_update = response.data.data)
+                     console.log(response)
 
                 })
                  var data_name = {
@@ -212,8 +235,11 @@
                      console.log(this.name_update = response.data.data)
 
                 })
+
+    
                  this.$router.push('/me');
-    }
+    },
+    
 
      
     }

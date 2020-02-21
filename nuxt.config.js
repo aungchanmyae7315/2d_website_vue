@@ -23,7 +23,7 @@ export default {
     script: [
       
       // { src: 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js' },
-      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/vee-validate/2.1.1/vee-validate.min.js' },
+      { src: 'https://unpkg.com/aos@next/dist/aos.js' },
       { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js' },
@@ -34,7 +34,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons' },
       // { rel: 'stylesheet', href: 'https://unpkg.com/vue-material/dist/vue-material.min.css' },
-      // { rel: 'stylesheet', href: 'https://unpkg.com/vue-material/dist/theme/default.css' },
+      { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css' },
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' },
       { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css' },
       { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'},
@@ -65,7 +65,7 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/axios',
-    '@/plugins/i18n.js',
+    '@/plugins/aos',
    
     {src: '@/plugins/i18n', ssr: false},
   ],
