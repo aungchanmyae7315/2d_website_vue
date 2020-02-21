@@ -100,10 +100,14 @@ export default {
                          }
                         })
                     .then(response => {
+
                      console.log(this.notification = response.data.data)
                      var noti_id = this.notification.notification_id
                     
                 })
+
+            // var URL = "https://build.seinlucky.com/api/v1/notification";
+            
      }
 }
 </script>
