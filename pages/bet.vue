@@ -624,12 +624,16 @@ export default {
                             
                                     })
                                 .then(response => {
-                                console.log(this.profiel_update = response.data.data)
-
+                                console.log(this.bet_odds = response.data)
+                                console.log('bet_odds')
+                                this.$store.commit('odds',this.bet_odds);
                             })
+                                var data = this.ruleForm.check_btn  
+                            this.$store.commit('getBet', data);
+                            var bet_amount = this.ruleForm.amount
 
-                        //   this.$store.commit('getBet', this.check_btn);
-                        //   this.$store.commit('betAmount', this.input_bet);
+                            
+                          this.$store.commit('betAmount',bet_amount);
                          this.$router.push('/remark');
                     }
 

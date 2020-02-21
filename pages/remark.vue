@@ -26,31 +26,29 @@
                       </el-form>
                    
                 </el-card>
-        
+     
                 <el-card>
-                   <el-table
-                      :data="tableData"
-                      border
-                      height="100%"
-                      :summary-method="getSummaries"
-                      show-summary
-                      style="width: 100%; margin-top: 20px">
-                   
-                      <el-table-column
 
-                        prop="bets"
-                        label="Bet">
-                      </el-table-column>
-                      <el-table-column
-                        prop="odds"
-                        label="odds">
-                      </el-table-column>
-                      <el-table-column
-                        prop="amount"
-                        label="Amount">
-                      </el-table-column>
-                    
-                    </el-table>
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th>Bet</th>
+                         <th>Odds</th>
+                         <th>Amount</th>
+                       
+                        </tr>
+                    </thead>
+                    <tbody  >
+                        <tr  v-for="(odd,o) in odds_data" :key="o">
+                      
+                        <th>{{odd.number}}</th>  
+                         <th>{{odd.times}}</th>  
+                         <th>{{bet_amount}}</th> 
+                      
+                        </tr>
+                    </tbody>
+          </table>
+                 
                  
                 </el-card>
                  <div class="btn_group">
@@ -78,7 +76,8 @@ export default {
   mounted () {
    
      
-    
+      const odd =  localStorage.getItem('odds');
+     
     const bets = this.$store.state.check_btn;
      const bet_amount = this.$store.state.input_amount;
   
@@ -91,11 +90,14 @@ export default {
         return {
           bets : this.$store.state.check_btn ? null:'--',
           check_btn:[],
-          bet_amount: this.$store.state.input_amount ? null:'--',
+          bet_amount: localStorage.getItem('bet_amount'),
           bets:'',
           name :'',
           phone:'',
-
+         
+          odds_data:JSON.parse(localStorage.getItem('odds')),
+           
+         
           tableData: [
           {
 
@@ -109,37 +111,35 @@ export default {
      methods: {
        
        submit_bet() {
-         axios.post('https://build.seinlucky.com/api/v1/2d/bet', {
-                    name: this.name,
-                    phone: this.phone,
-                    bets : this.$store.state.check_btn[0],
-                    amount:this.$store.state.input_amount,
-                    
+          let token = localStorage.getItem('token');
+            alert(this.name)
+            alert(this.phone)
+            alert(this.$store.state.check_btn)
+            alert( localStorage.getItem('bet_amount') )
+
+                var data = {
+                    client_name:this.name,
+                    client_phone:this.phone,
+                    twod_id:  this.$store.state.check_btn,
+                    amount: localStorage.getItem('bet_amount') ,
+                }
+          axios.post("https://build.seinlucky.com/api/v1/2d/bet",
+                           data,
+                    {
+                           
+
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         },
+                          
+                        })
+                
+                    .then(response => {
+                     console.log(this.bet = response.data.data)
+                     console.log(this.bet)
+                      this.$router.push('/bet_success');
                 })
-                     .then(response => {
-                          console.log(response);
-                  // if(response.data.result == '0'){
-                  //   this.error_message = response.data.data,
-                  //   console.log(this.message)
-                  //   this.error = 'Please try again'
-                  //   this.$notify.error({
-                  //     title: 'Error',
-                  //     message: this.error_message
-                  //   });
-                  // }else {
-                  //    this.userInfo = response.data,
-                  //   this.$store.commit('logIn', this.userInfo),
-                  //    this.success_message = response.data.data,
-                     
-                  //    this.$notify({
-                  //       title: 'Success',
-                  //       message: this.success_message,
-                  //       type: 'success'
-                  //     });
-                  //     this.$router.push('/');
-                  // }
-                 
-                })
+               
        },
       getSummaries(param) {
         const { columns, data } = param;
