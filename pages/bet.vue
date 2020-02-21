@@ -137,7 +137,7 @@
               <div class="hideScrollBar_bet">
                 <div class="all_btn" data-aos="fade-down"
                     data-aos-easing="linear"
-                    data-aos-duration="1500">
+                    data-aos-duration="500">
                    
                         <el-form-item
                            
