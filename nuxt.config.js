@@ -4,12 +4,26 @@ export default {
     port: 8000, // default: 3000
     host: '0.0.0.0' // default: localhost
   },
-  loading: '~/components/loading.vue',
-  mode: 'spa',
+  // loading: '~/components/loading.vue',
+  // mode: 'spa',
 
-  generate: {
-    routes: ['/', '/result', '/mm', '/mm/result']
-  },
+
+  // router: {              // customize nuxt.js router (vue-router).
+  //   middleware: 'i18n'   // middleware all pages of the application
+  // },
+ 
+  // generate: {
+  //   routes: ['/', '/about', '/mm', '/mm/about']
+  // },
+  loading: { color: '#3B8070' },
+
+ router: {              // customize nuxt.js router (vue-router).
+   middleware: 'i18n'   // middleware all pages of the application
+ },
+
+ generate: {
+   routes: ['/', '/result', '/mm', '/mm/result']
+ },
   /*
   ** Headers of the page
   */
@@ -66,8 +80,9 @@ export default {
     '@/plugins/element-ui',
     '@/plugins/axios',
     '@/plugins/aos',
+    // '~/plugins/i18n.js',
    
-    {src: '@/plugins/i18n', ssr: false},
+    // {src: '@/plugins/i18n', ssr: false},
   ],
   /*
   ** Nuxt.js dev-modules
@@ -77,27 +92,7 @@ export default {
   /*
   ** Nuxt.js modules
   */
- modules: [
 
-  '@nuxtjs/axios',
-  ['nuxt-i18n',
-      {
-        locales: ['en', 'mm'],
-        defaultLocale: 'en',
-        vueI18n: {
-          fallbackLocale: 'en',
-          messages: {
-            en: {
-              greeting: 'Hello world!'
-            },
-            mm: {
-              greeting: 'Lee bal'
-            }
-          }
-        }
-      }
-    ]
-],
 // auth: {
 //   strategies: {
 //     local: {
@@ -119,6 +114,7 @@ export default {
   */
   build: {
     vendor: ['vue-i18n'] ,
+   
     transpile: [/^element-ui/],
     /*
     ** You can extend webpack config here
