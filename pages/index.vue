@@ -9,21 +9,7 @@
              <nuxt-link to="/login">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://img.icons8.com/nolan/64/name.png"></el-avatar>
-                  <span  class="avatar_text_logout">{{ $t('language') }}</span>
-                
-
-
-        <NuxtLink v-if="$i18n.locale !== 'en'" :to="`/mm/` + $route.fullPath" >
-            <div class="result_icon">
-                        <img src="~static/images/2d_result_icon.png" alt="">
-                      </div>
-          </NuxtLink>
-          <NuxtLink v-else :to="$route.fullPath.replace(/^\/[^\/]+/, '')" >
-            <div class="result_icon">
-                        <img src="~static/images/2d_result_icon.png" alt="">
-                      </div>
-          </NuxtLink>
-
+                  <span  class="avatar_text_logout">Please Login First</span>
 
                    
               </div>
@@ -31,13 +17,14 @@
             </nuxt-link>
         </div>
         <div v-else>
-           <nuxt-link to="/result">
+           
               <div class="demo-type">
+                <nuxt-link to="/me">
                  <el-avatar :size="60" v-if="this.profile.name != 'null'"><img :src="this.profile.image" alt=""></el-avatar>
                   <el-avatar :size="60" v-else ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li><span v-if="this.profile.name === 'null'"> {{this.profile.name}}</span>
+                    <li><span v-if="this.profile.name != 'null'"> {{this.profile.name}}</span>
                         <span v-else ><nuxt-link style="color:#fff" to="/me">Upgrade Name</nuxt-link></span>
                      
 
@@ -45,6 +32,7 @@
                     <li  class="amount_mmk">{{this.profile.wallet}}</li>
                   </ul>
                   </div>
+                </nuxt-link>
                   <div class="result_icon">
                      <nuxt-link to="/result">
                         <img src="~static/images/2d_result_icon.png" alt="">
@@ -55,10 +43,10 @@
                    
               </div>
                
-            </nuxt-link>
+         
         </div>
 
-          <div class="block">
+          <div class="block" data-aos="fade-up" data-aos-duration="700">
   
             <el-carousel  trigger="click" height="150px">
                <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
@@ -94,7 +82,7 @@
             </div>
           </div>
           
-           <div class="card_one">
+           <div class="card_one" data-aos="fade-up" data-aos-duration="700">
             <div class="card_item">
               <h5 class="time_number">12:00 AM</h5>
                 <div class="row">
@@ -153,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <div class="card_three">
+            <div class="card_three " >
                 <div class="card_item">
                 
                     <div class="row">

@@ -8,20 +8,30 @@
                     </el-page-header>
                 </el-header>
                 <p>Select your receiving bank</p>
+                <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                 <el-card>
                   
                         <ul class="choose_pay" v-for="(bank, i) in bank_type" :key="i">
                            
                             <li >   
+                                <el-form-item 
+                                label="Bank"
+                                prop="radio1"
+                                :rules="[
+                                    { required: true, message: 'Bank option is required'},
+                                    
+                                ]"
                                 
-                                <!-- {{bank}} -->
-                                <div @click="id_bank(bank.id)" >
-                                     <el-radio-group v-model="radio1">
-                                    <img :src="bank.bank_icon" alt="">
-                                    <el-radio-button    :label="bank.bank_name"></el-radio-button> 
-                                    </el-radio-group>
-                                </div>
-                                 
+                                >  
+                                    <!-- {{bank}} -->
+                                    <div @click="id_bank(bank.id)" >
+
+                                        <el-radio-group v-model="ruleForm.radio1">
+                                        <img :src="bank.bank_icon" alt="">
+                                        <el-radio-button    :label="bank.bank_name"></el-radio-button> 
+                                        </el-radio-group>
+                                    </div>
+                                </el-form-item>
                                  <!-- <img src="~/static/images/topup_withdraw/kbz_img.png" alt="">
                                  <el-radio-button  label="KBZ Bank"></el-radio-button> -->
                             </li>
@@ -30,22 +40,51 @@
 
                   
                 </el-card>
-                <el-form>
-                    <el-form-item label="Bank Card Number" class="tran_input" >
-                        <el-input   type="text" placeholder="Please enter Card Number" v-model="card_number" autocomplete="off"></el-input>
+                
+                    <el-form-item
+                    label="Bank Card Number"
+                    prop="card_number"
+                    :rules="[
+                        { required: true, message: 'Bank Card Number is required'},
+                        
+                    ]"
+                    
+                    >  
+                    <!-- <el-form-item label="Bank Card Number" class="tran_input" > -->
+                        <el-input   type="text" placeholder="Please enter Card Number" v-model="ruleForm.card_number"></el-input>
                     </el-form-item>
-                    <el-form-item label="Withdraw Amount" class="tran_amount tran_input" >
-                        <el-input   type="text" placeholder="Please enter  Amount" v-model="tran_amount" autocomplete="off"></el-input>
+                    <!-- <el-form-item label="Withdraw Amount" class="tran_amount tran_input" > -->
+                    <el-form-item class="tran_amount tran_input"
+                        label="Withdraw Amount"
+                        prop="tran_amount"
+                        :rules="[
+                            { required: true, message: 'Withdraw Amount is required'},
+                            
+                        ]"
+                        
+                        >  
+                        <el-input   type="text" placeholder="Please enter  Amount" v-model="ruleForm.tran_amount" ></el-input>
                     </el-form-item>
-                    <el-form-item label="Password" class="password tran_input" >
-                        <el-input type="password" show-password placeholder="Password" v-model="password" autocomplete="off"></el-input>
+                    <!-- <el-form-item label="Password" class="password tran_input" > -->
+                        <el-form-item class="tran_amount tran_input"
+                            label="Password"
+                            prop="password"
+                            :rules="[
+                                { required: true, message: 'Password is required'},
+                                
+                            ]"
+                            
+                            >  
+                        <el-input type="password" show-password placeholder="Password" v-model="ruleForm.password" ></el-input>
                     </el-form-item>
                   
-                </el-form>
+              
                 
-                 <el-button round @click="withdrawal">Summit</el-button>
+                     <el-button round @click="withdrawal('ruleForm')">Summit</el-button>
+                  </el-form>
                     </div>
                 </div>
+                
             </div>
         </main>
 </template>
@@ -131,11 +170,16 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            card_number:'',
-            tran_amount:'',
-            password:'',
+            ruleForm: {
+                card_number:'',
+                tran_amount:'',
+                password:'',
+                radio1:'',
+
+          },
+            
             bank_type:'',
-            radio1:'',
+            
             
         }
     },
@@ -147,15 +191,18 @@ export default {
         goBack() {
               this.$router.push('/wallet');
         },
-        withdrawal() {
-             let token = localStorage.getItem('token');
+        withdrawal(formName) {
+
+            this.$refs[formName].validate((valid) => {
+            if (valid) {
+                let token = localStorage.getItem('token');
      
-            var data = {
-                bank_type_id:this.bank_id,
-                card_number:this.card_number,
-                amount: this.tran_amount,
-                password: this.password,
-            }
+                var data = {
+                    bank_type_id:this.bank_id,
+                    card_number:this.ruleForm.card_number,
+                    amount: this.ruleForm.tran_amount,
+                    password: this.ruleForm.password,
+                }
        
                 axios.post("https://build.seinlucky.com/api/v1/withdraw",
                            data,
@@ -172,12 +219,25 @@ export default {
                      console.log(this.with = response.data.data)
                      console.log(this.with)
                 })
+                // this.$notify({
+                //     title: 'Success',
+                //     message: 'Success',
+                //     type: 'success'
+                //     });
+
+            this.$router.push('/withdraw_success');
+            } else {
             
-                this.$notify({
-                    title: 'Warning',
-                    message: this.with,
-                    type: 'warning'
-                    });
+                console.log('error submit!!');
+                return false;
+            }
+            });
+
+
+
+
+            
+                
              //this.$router.push('/withdraw_success');
         }
     },

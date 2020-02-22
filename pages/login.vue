@@ -101,13 +101,12 @@ import axios from 'axios'
     data() {
       return {
             dialogVisible: false,
-           errors:[],
+          
            ruleForm: {
             phone:'',
-           
-           password: '',
+            password: '',
 
-        },
+          },
          
             success: '',
             error:'',

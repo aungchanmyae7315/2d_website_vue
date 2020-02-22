@@ -18,7 +18,7 @@
                    
                   <img :src="this.profile.image" alt="">
                   </el-avatar>
-                  <el-avatar :size="60" v-else> 
+                  <el-avatar :size="60" v-else > 
                    <img src="~static/images/icons/me_img.png" alt="">
                   
                   </el-avatar>
@@ -47,7 +47,7 @@
              <div class="longText" id="hidingScrollBar">
                 <div class="hideScrollBar hideScrollBar_wallet ">
 
-                <el-card>
+                <el-card data-aos="fade-up" data-aos-duration="800">
                   
 
                   <h5>Sein Lucky Bank Accounts</h5>
@@ -93,7 +93,7 @@
                   
                 </el-menu-item>
                 <el-menu-item index="2">
-                    <nuxt-link to="/wallet" type="wallet"><img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
+                    <nuxt-link to="/wallet" type="wallet"><img src="~static/icons_header/wallet_t_icon.png" alt=""></nuxt-link>
                 </el-menu-item>
                 <el-menu-item index="3">
                     <nuxt-link to="/service"><img src="~static/icons_header/service_icon.png" alt=""></nuxt-link>

@@ -14,16 +14,6 @@ const createStore = () => {
             locales: ['en', 'mm'],
             token:'',
         
-            // repairs: [],
-            // purchases: [],
-            // appStatus: {isViewDetail:false, repairPageNum:0, repairQueryType:'', lastRepairQueryType:'', isShowBottomTab:true, pageTitle:'', purchasePageNum:0, purchaseQueryType:'', lastPurchaseQueryType:'', isRefreshList:true},
-            // repairBadge: {},
-            // purchaseBadge:{},
-            // products:[]
-           
-            // modalProduct: {},
-            
-            // loaded:true
         },
         getters: {
           
@@ -49,7 +39,7 @@ const createStore = () => {
             },
             accessToken(state, token) {
                 // console.log("Token", token);
-                // state.userInfo = userInfo;
+                 state.token = token;
 
                 localStorage.setItem('token', (token));
             
@@ -57,12 +47,13 @@ const createStore = () => {
             },
             noti_id(state, data) {
                 // console.log("Token", token);
-                // state.userInfo = userInfo;
+                state.data = data;
                 localStorage.setItem('notification_id', (data));
             
                 
             },
             bet_date(state, data) {
+                state.data = data;
                 localStorage.setItem('bet_date', (data));
              
             },
@@ -89,14 +80,20 @@ const createStore = () => {
                 //console.log(phoneResponse.access_token)
             },
             getBet(state, check_btn){
+                localStorage.setItem('check_btn', JSON.stringify(check_btn));
                 state.check_btn = check_btn;
                 //console.log(check_btn)
             },
-            betAmount(state, input_amount){
-                state.input_amount = input_amount;
-                //console.log(input_amount)
+            betAmount(state, bet_amount){
+                localStorage.setItem('bet_amount', bet_amount);
+                state.bet_amount = bet_amount;
+                //console.log(bet_amount)
             },
-            
+            odds(state, bet_odds){
+                localStorage.setItem('odds',  JSON.stringify(bet_odds));
+                state.bet_odds = bet_odds;
+                //console.log(check_btn)
+            },
            
         }
     })

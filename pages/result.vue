@@ -5,7 +5,9 @@
         </el-page-header>
       </el-header>
       <div class="result_item">
-            <div v-for="result of twod_result" :key="result">
+            <div v-for="result of twod_result" :key="result" data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="500">
            
                
                  <el-card shadow="always">

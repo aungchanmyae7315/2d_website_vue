@@ -8,7 +8,9 @@
            <div class="refel_img_two">
             <img src="~static/images/noti_page/noti_icon3.png" class="">
         </div>
-      <el-card>
+      <el-card data-aos="zoom-out-down"
+        data-aos-easing="linear"
+        data-aos-duration="500">
           <h5 class="win_text">Hi , Aung Chan Myae <br>Your have won 80,000 Ks <br>Congratulations !!</h5>
       
         <div class="row win_item">
@@ -55,6 +57,7 @@
         height:auto;
         position: relative;
         top: 43px;
+        z-index: 1;
     }
     .win_text {
         padding:20px;

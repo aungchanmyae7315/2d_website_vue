@@ -1,25 +1,19 @@
 <template>
-    <el-main class="bet_container">
+    <section class="bet_container">
+         <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
         <el-header>
             <el-page-header @back="goBack()">
             </el-page-header>
             <el-row>
                 <el-col :span="6">
                     
-                    <div v-if="check_btn[0] != null">
+                    <div v-if="ruleForm.check_btn[0] != null">
                         <el-button @click="clear_btn()" class="fast_btn" >Clear</el-button>
                     </div>
                     <div v-else>
                         <el-button type="button"   @click="dialogFormVisible = true"   class="fast_btn" >Fast</el-button>
                           
                     </div>
-                     <!-- <el-checkbox-button  v-model="checkAll" @change="small_number">Check all</el-checkbox-button> -->
-                     
-      <!-- <el-checkbox-group v-model="check_btn">
-                        <el-checkbox-button v-for="btn in btns"   :label="btn" :key="btn">{{btn}}</el-checkbox-button>
-                    </el-checkbox-group> -->
-
-
                 <el-dialog title="" :visible.sync="dialogFormVisible" class="modal_bet"
                 width="90%" center
                     >  
@@ -102,16 +96,28 @@
                 </el-dialog>
                 </el-col>
                 <el-col :span="18">
-                    <el-input class="bet_input" placeholder="500 Ks"  v-model="input_bet">
-                    </el-input>
+                    
+                            <el-form-item
+                            
+                            prop="amount"
+                            :rules="[
+                                { required: true, message: 'Amount is required'},
+                                
+                            ]"
+                            
+                            >  
+                                <el-input class type="text" placeholder="500 Ks"  v-model="ruleForm.amount"  ></el-input>
+                            
+                            </el-form-item>
                 </el-col>
             </el-row>
             
             <el-row>
               
                 <el-col :span="12"><div class="betclose_text">Bet Close: 14:35:93</div></el-col>
-                <el-col :span="12"> <div class="balance_amount">Balance:5,000 ks</div></el-col>
-                <!-- <el-col :span="8"><div type="text">Text Button</div></el-col> -->
+                <el-col v-if ="!$store.state.isLoggedIn" :span="12"> <div class="balance_amount"></div></el-col>
+                <el-col v-else :span="12"> <div class="balance_amount">Balance: {{this.profile.wallet}}</div></el-col>
+        
             </el-row>
 
                <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
@@ -121,35 +127,37 @@
              </div>
             <div v-else class="bet_login_btn">
 
-                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet" round>Bet</el-button>
+                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round>Bet</el-button>
            
             </div>
             
-             <!-- <div v-if ="!$store.state.isLoggedIn">
-                 <nuxt-link to="login">
-                    <el-button  type="warning" round>Please Login to bet</el-button>
-                 </nuxt-link>
-             </div>
-            <div v-else>
-               <el-button type="warning" class="bet_btn_login" round>Bet</el-button>
-            </div> -->
         </el-header>
-        <div class="longText" id="hidingScrollBar">
-            <div class="hideScrollBar_bet">
-                <div class="all_btn">
-                      <el-checkbox-group v-model="check_btn">
-                        <el-checkbox-button v-for="city in cities" :id="city.id" :label="city" :key="city">{{city}}</el-checkbox-button>
-                    </el-checkbox-group>
-                    <!-- <el-checkbox-group v-model="check_btn" :indeterminate="isIndeterminate">
-                        <el-checkbox-button v-for="btn in btns"   :label="btn" :key="btn">{{btn}}</el-checkbox-button>
-                    </el-checkbox-group> -->
-                
+       <el-main>
+            <div class="longText" id="hidingScrollBar">
+              <div class="hideScrollBar_bet">
+                <div class="all_btn" data-aos="fade-down"
+                    data-aos-easing="linear"
+                    data-aos-duration="500">
+                   
+                        <el-form-item
+                           
+                                    prop="check_btn"
+                                    :rules="[
+                                    { required: true, message: 'bet is required'},
+                                    
+                                    ]"
+                            
+                            >   <el-checkbox-group v-model="ruleForm.check_btn">
+                                    <el-checkbox-button v-for="city in cities" :id="city.id" :label="city" :key="city">{{city}}</el-checkbox-button>
+                                </el-checkbox-group>
+                            </el-form-item>
+
                 </div>
             </div>
         </div>
-        
-            
-    </el-main>
+        </el-main>
+            </el-form>
+    </section>
     
 </template>
 
@@ -172,12 +180,7 @@
     .bet_footer .bet_btn_login {
         width:120px;
     }
-    /* .bet_container {
-        background-image:url(~static/images/main_bg.png); 
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100vh;
-    } */
+
     .el-checkbox-button.is-checked .el-checkbox-button__inner {
             color:#000;
             background-color:#FEDC54;
@@ -209,9 +212,7 @@
     .el-checkbox-button:last-child .el-checkbox-button__inner {
          border-radius: 10px;
     }
-    .bet_container .el-checkbox-group {
-        margin-bottom:250px;
-    }
+
     .bet_container .el-header {
         background: #2A612D;
         height:auto !important;
@@ -560,18 +561,36 @@ export default {
     mounted() {
         this.updateIsLoggedIn();
     },
+      created() {
+      
+         
+          let token = localStorage.getItem('token');
+    
+        axios.get("https://build.seinlucky.com/api/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     console.log(this.profile = response.data.data)
+
+                })
+    },
     data() {
         return {
               isLoggedIn: true,
-                input_bet: '',
+                ruleForm: {
+                    amount:'',
+                    check_btn: [],
+                },
                dialogFormVisible: false,
             // isActive: false,
-              
+                
                 btns: btn_options,
-                check_btn: [],
+                
             
                 cities: cityOptions,
-
+                profile:'',
             
               
                
@@ -588,212 +607,226 @@ export default {
                 this.$router.push('/')
         },
         clear_btn() {
-            this.check_btn = [];
+            this.ruleForm.check_btn = [];
             //    this.dialogFormVisible = false
         },
-        bet(value) {
-            
-      
-         alert(this.input_bet);
-        if(this.check_btn) {
-             axios.post('https://build.seinlucky.com/api/v2/v1/get_odds', {
-                    bets: this.check_btn,
-                    
-                    
-                })
-              
-               .then(response => {
-                     this.betInfo = response;
-                     console.log('xxxx');
-                     console.log(this.betInfo);
-               })
+        bet(formName) {
+             this.$refs[formName].validate((valid) => {
+                if (valid) {
+                       alert(this.ruleForm.amount);
+                    alert(this.ruleForm.check_btn);
+                    if(this.ruleForm.check_btn) {
+                        var data= {
+                            bets:this.ruleForm.check_btn
+                        }
+                        axios.post("https://build.seinlucky.com/api/v2/v1/get_odds",data,
+                                {
+                            
+                                    })
+                                .then(response => {
+                                console.log(this.bet_odds = response.data)
+                                console.log('bet_odds')
+                                this.$store.commit('odds',this.bet_odds);
+                            })
+                                var data = this.ruleForm.check_btn  
+                            this.$store.commit('getBet', data);
+                            var bet_amount = this.ruleForm.amount
 
-            //   this.$store.commit('getBet', this.check_btn);
-            //   this.$store.commit('betAmount', this.input_bet);
-        }
-        
+                            
+                          this.$store.commit('betAmount',bet_amount);
+                         this.$router.push('/remark');
+                    }
+
+                } else {
+                
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+      
+      
             
-             this.$router.push('/remark');
+            
       },
         
             
 
       small_number(val) {
-           this.check_btn = val ? small_option : [];
+           this.ruleForm.check_btn = val ? small_option : [];
            this.dialogFormVisible = false
       },
       big_number(val) {
-           this.check_btn = val ? big_option : [];
+           this.ruleForm.check_btn = val ? big_option : [];
            this.dialogFormVisible = false
       },
        same_number(val) {
-           this.check_btn = val ? same_option : [];
+           this.ruleForm.check_btn = val ? same_option : [];
             this.dialogFormVisible = false
       },
        even_number(val) {
-           this.check_btn = val ? even_option : [];
+           this.ruleForm.check_btn = val ? even_option : [];
             this.dialogFormVisible = false
       },
        odd_number(val) {
-           this.check_btn = val ? odd_option : [];
+           this.ruleForm.check_btn = val ? odd_option : [];
             this.dialogFormVisible = false
       },
       ee_number(val) {
-           this.check_btn = val ? ee_option : [];
+           this.ruleForm.check_btn = val ? ee_option : [];
             this.dialogFormVisible = false
       },
       oo_number(val) {
-           this.check_btn = val ? oo_option : [];
+           this.ruleForm.check_btn = val ? oo_option : [];
             this.dialogFormVisible = false
       },
        eo_number(val) {
-           this.check_btn = val ? eo_option : [];
+           this.ruleForm.check_btn = val ? eo_option : [];
             this.dialogFormVisible = false
       },
        oe_number(val) {
-           this.check_btn = val ? oe_option : [];
+           this.ruleForm.check_btn = val ? oe_option : [];
             this.dialogFormVisible = false
       },
       btw_00_19(val) {
-            this.check_btn = val ? btw_00_19_option : [];
+            this.ruleForm.check_btn = val ? btw_00_19_option : [];
             this.dialogFormVisible = false
       },
        btw_20_39(val) {
-            this.check_btn = val ? btw_20_39_option : [];
+            this.ruleForm.check_btn = val ? btw_20_39_option : [];
             this.dialogFormVisible = false
       },
        btw_40_59(val) {
-            this.check_btn = val ? btw_40_59_option : [];
+            this.ruleForm.check_btn = val ? btw_40_59_option : [];
             this.dialogFormVisible = false
       },
        btw_60_79(val) {
-            this.check_btn = val ? btw_60_79_option : [];
+            this.ruleForm.check_btn = val ? btw_60_79_option : [];
             this.dialogFormVisible = false
       },
        btw_80_99(val) {
-            this.check_btn = val ? btw_80_99_option : [];
+            this.ruleForm.check_btn = val ? btw_80_99_option : [];
             this.dialogFormVisible = false
       },
         with_0(val) {
-            this.check_btn = val ? with_0_option : [];
+            this.ruleForm.check_btn = val ? with_0_option : [];
             this.dialogFormVisible = false
       },
       with_1(val) {
-            this.check_btn = val ? with_1_option : [];
+            this.ruleForm.check_btn = val ? with_1_option : [];
             this.dialogFormVisible = false
       },
       with_2(val) {
-            this.check_btn = val ? with_2_option : [];
+            this.ruleForm.check_btn = val ? with_2_option : [];
             this.dialogFormVisible = false
       },
       with_3(val) {
-            this.check_btn = val ? with_3_option : [];
+            this.ruleForm.check_btn = val ? with_3_option : [];
             this.dialogFormVisible = false
       },
       with_4(val) {
-            this.check_btn = val ? with_4_option : [];
+            this.ruleForm.check_btn = val ? with_4_option : [];
             this.dialogFormVisible = false
       },
       with_5(val) {
-            this.check_btn = val ? with_5_option : [];
+            this.ruleForm.check_btn = val ? with_5_option : [];
             this.dialogFormVisible = false
       },
       with_6(val) {
-            this.check_btn = val ? with_6_option : [];
+            this.ruleForm.check_btn = val ? with_6_option : [];
             this.dialogFormVisible = false
       },
       with_7(val) {
-            this.check_btn = val ? with_7_option : [];
+            this.ruleForm.check_btn = val ? with_7_option : [];
             this.dialogFormVisible = false
       },
        with_8(val) {
-            this.check_btn = val ? with_8_option : [];
+            this.ruleForm.check_btn = val ? with_8_option : [];
             this.dialogFormVisible = false
       },
        with_9(val) {
-            this.check_btn = val ? with_9_option : [];
+            this.ruleForm.check_btn = val ? with_9_option : [];
             this.dialogFormVisible = false
       },
       head_0(val) {
-            this.check_btn = val ? head_0_option : [];
+            this.ruleForm.check_btn = val ? head_0_option : [];
             this.dialogFormVisible = false
       },
        head_1(val) {
-            this.check_btn = val ? head_1_option : [];
+            this.ruleForm.check_btn = val ? head_1_option : [];
             this.dialogFormVisible = false
       },
        head_2(val) {
-            this.check_btn = val ? head_2_option : [];
+            this.ruleForm.check_btn = val ? head_2_option : [];
             this.dialogFormVisible = false
       },
        head_3(val) {
-            this.check_btn = val ? head_3_option : [];
+            this.ruleForm.check_btn = val ? head_3_option : [];
             this.dialogFormVisible = false
       },
        head_4(val) {
-            this.check_btn = val ? head_4_option : [];
+            this.ruleForm.check_btn = val ? head_4_option : [];
             this.dialogFormVisible = false
       },
        head_5(val) {
-            this.check_btn = val ? head_5_option : [];
+            this.ruleForm.check_btn = val ? head_5_option : [];
             this.dialogFormVisible = false
       },
        head_6(val) {
-            this.check_btn = val ? head_6_option : [];
+            this.ruleForm.check_btn = val ? head_6_option : [];
             this.dialogFormVisible = false
       },
        head_7(val) {
-            this.check_btn = val ? head_7_option : [];
+            this.ruleForm.check_btn = val ? head_7_option : [];
             this.dialogFormVisible = false
       },
        head_8(val) {
-            this.check_btn = val ? head_8_option : [];
+            this.ruleForm.check_btn = val ? head_8_option : [];
             this.dialogFormVisible = false
       },
 
        head_9(val) {
-            this.check_btn = val ? head_9_option : [];
+            this.ruleForm.check_btn = val ? head_9_option : [];
             this.dialogFormVisible = false
       },
       tail_0(val) {
-            this.check_btn = val ? tail_0_option : [];
+            this.ruleForm.check_btn = val ? tail_0_option : [];
             this.dialogFormVisible = false
       },
         tail_1(val) {
-            this.check_btn = val ? tail_1_option : [];
+            this.ruleForm.check_btn = val ? tail_1_option : [];
             this.dialogFormVisible = false
       },
        tail_2(val) {
-            this.check_btn = val ? tail_2_option : [];
+            this.ruleForm.check_btn = val ? tail_2_option : [];
             this.dialogFormVisible = false
       },
        tail_3(val) {
-            this.check_btn = val ? tail_3_option : [];
+            this.ruleForm.check_btn = val ? tail_3_option : [];
             this.dialogFormVisible = false
       },
        tail_4(val) {
-            this.check_btn = val ? tail_4_option : [];
+            this.ruleForm.check_btn = val ? tail_4_option : [];
             this.dialogFormVisible = false
       },
        tail_5(val) {
-            this.check_btn = val ? tail_5_option : [];
+            this.ruleForm.check_btn = val ? tail_5_option : [];
             this.dialogFormVisible = false
       },
        tail_6(val) {
-            this.check_btn = val ? tail_6_option : [];
+            this.ruleForm.check_btn = val ? tail_6_option : [];
             this.dialogFormVisible = false
       },
        tail_7(val) {
-            this.check_btn = val ? tail_7_option : [];
+            this.ruleForm.check_btn = val ? tail_7_option : [];
             this.dialogFormVisible = false
       },
        tail_8(val) {
-            this.check_btn = val ? tail_8_option : [];
+            this.ruleForm.check_btn = val ? tail_8_option : [];
             this.dialogFormVisible = false
       },
 
        tail_9(val) {
-            this.check_btn = val ? tail_9_option : [];
+            this.ruleForm.check_btn = val ? tail_9_option : [];
             this.dialogFormVisible = false
       },
 
