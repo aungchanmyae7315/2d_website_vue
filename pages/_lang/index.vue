@@ -5,8 +5,9 @@
         
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
+          
         <div class="" v-if ="!$store.state.isLoggedIn">
-             <nuxt-link to="/login">
+             <nuxt-link to="login">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://img.icons8.com/nolan/64/name.png"></el-avatar>
                   <span  class="avatar_text_logout">Please Login First</span>
@@ -19,13 +20,13 @@
         <div v-else>
            
               <div class="demo-type">
-                <nuxt-link to="/me">
+                <nuxt-link to="me">
                  <el-avatar :size="60" v-if="this.profile.name != 'null'"><img :src="this.profile.image" alt=""></el-avatar>
                   <el-avatar :size="60" v-else ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
                     <li><span v-if="this.profile.name != 'null'"> {{this.profile.name}}</span>
-                        <span v-else ><nuxt-link style="color:#fff" to="/me">Upgrade Name</nuxt-link></span>
+                        <span v-else ><nuxt-link style="color:#fff" to="me">Upgrade Name</nuxt-link></span>
                      
 
                     </li>
@@ -34,7 +35,7 @@
                   </div>
                 </nuxt-link>
                   <div class="result_icon">
-                     <nuxt-link to="/result">
+                     <nuxt-link to="result">
                         <img src="~static/images/2d_result_icon.png" alt="">
                     </nuxt-link>
                   </div>
@@ -164,7 +165,7 @@
 
 
             <div class="bet_btn">
-              <nuxt-link to="/bet">
+              <nuxt-link to="bet">
                  <el-button type="" round>Bet</el-button>
               </nuxt-link>
                

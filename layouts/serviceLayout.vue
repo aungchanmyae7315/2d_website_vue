@@ -21,13 +21,13 @@
               
             </el-menu-item>
             <el-menu-item index="2">
-                <nuxt-link to="/wallet" type="wallet"><img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
+                <nuxt-link to="wallet" type="wallet"><img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
             </el-menu-item>
             <el-menu-item index="3">
-                <nuxt-link to="/service"><img src="~static/icons_header/service_t_icon.png" alt=""></nuxt-link>
+                <nuxt-link to="service"><img src="~static/icons_header/service_t_icon.png" alt=""></nuxt-link>
             </el-menu-item>
              <el-menu-item index="4">
-                <nuxt-link to="/me"><img src="~static/icons_header/me_icon.png" alt=""></nuxt-link>
+                <nuxt-link to="me"><img src="~static/icons_header/me_icon.png" alt=""></nuxt-link>
             </el-menu-item>
 
 

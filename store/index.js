@@ -12,7 +12,6 @@ const createStore = () => {
             getBet:'',
             updateLang:true,
             locales: ['en', 'mm'],
-            locales: ['en', 'mm'],
             locale: 'en',
             token:'',
         
@@ -24,7 +23,6 @@ const createStore = () => {
             SET_LANG(state, locale) {
                 if (state.locales.indexOf(locale) !== -1) {
                   state.locale = locale
-                 // localStorage.setItem('locale', JSON.stringify(locale));
                 }
               },
         //       SET_LANG(state , lang) {

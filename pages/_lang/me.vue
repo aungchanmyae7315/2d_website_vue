@@ -11,7 +11,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li>{{this.profile.phone}}</li>
-                    <nuxt-link to="/profile_edit">
+                    <nuxt-link to="profile_edit">
                      <li class="edit_profile">Edite Profile</li>
                     </nuxt-link>
                   </ul>
@@ -34,15 +34,15 @@
                
             
                 <div  v-if ="!$store.state.isLoggedIn">
-                       <li><nuxt-link to="/notification"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></nuxt-link></li>
+                       <li><nuxt-link to="notification"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></nuxt-link></li>
                         <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
-                        <li><nuxt-link to="/language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
+                        <li><nuxt-link to="language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
 
                 </div>
                 <div v-else> 
-                       <li><nuxt-link to="/notification"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></nuxt-link></li>
-                        <li><nuxt-link to="/bet_status"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></nuxt-link></li>
-                        <li><nuxt-link to="/language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
+                       <li><nuxt-link to="notification"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></nuxt-link></li>
+                        <li><nuxt-link to="bet_status"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></nuxt-link></li>
+                        <li><nuxt-link to="language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
 
                         <!-- <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li> -->
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> LogOut</a></li>
@@ -69,13 +69,13 @@
               
             </el-menu-item>
             <el-menu-item index="2">
-                <nuxt-link to="/wallet" type="wallet"><img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
+                <nuxt-link to="wallet" type="wallet"><img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
             </el-menu-item>
             <el-menu-item index="3">
-                <nuxt-link to="/service"><img src="~static/icons_header/service_icon.png" alt=""></nuxt-link>
+                <nuxt-link to="service"><img src="~static/icons_header/service_icon.png" alt=""></nuxt-link>
             </el-menu-item>
              <el-menu-item index="4">
-                <nuxt-link to="/me"><img src="~static/icons_header/me_t_icon.png" alt=""></nuxt-link>
+                <nuxt-link to="me"><img src="~static/icons_header/me_t_icon.png" alt=""></nuxt-link>
             </el-menu-item>
 
 

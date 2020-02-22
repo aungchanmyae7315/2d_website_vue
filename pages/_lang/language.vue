@@ -46,15 +46,15 @@ export default {
     lang
   },
     methods: {
-        isSelected: function (code) {
-            const vm = this
-            const selectedLocale = this.$i18n.locale
+        // isSelected: function (code) {
+        //     const vm = this
+        //     const selectedLocale = this.$i18n.locale
 
-            if (code == selectedLocale) {
-                return 'active'
+        //     if (code == selectedLocale) {
+        //         return 'active'
                 
-            }
-        },
+        //     }
+        // },
         goBack() {
               this.$router.push('/');
         },
@@ -79,7 +79,7 @@ export default {
     computed: {
         locales () {
           
-            return this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)
+            r//eturn this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)
             
         },
        

@@ -60,7 +60,7 @@
             <nuxt-link to="/">
                   <el-button type="default" round>Skip</el-button>
             </nuxt-link>
-           <nuxt-link to="/signup">
+           <nuxt-link to="signup">
                 <el-button type="warning" round>Sign Up</el-button>
            </nuxt-link>
           

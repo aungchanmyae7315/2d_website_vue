@@ -2,7 +2,7 @@
   <main>
     <h1>{{ $t('greeting') }}</h1>
 
-    <nuxt-link
+    <!-- <nuxt-link
       v-if="$i18n.locale !== 'en'"
       :to="switchLocalePath('en')"
     >
@@ -14,6 +14,6 @@
       :to="switchLocalePath('mm')"
     >
       Myanmar
-    </nuxt-link>
+    </nuxt-link> -->
   </main>
 </template>

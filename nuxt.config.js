@@ -1,29 +1,16 @@
-
 export default {
-  server: {
-    port: 8000, // default: 3000
-    host: '0.0.0.0' // default: localhost
+  // server: {
+  //   port: 8000, // default: 3000
+  //   host: '0.0.0.0' // default: localhost
+  // },
+  loading: '~/components/loading.vue',
+  mode: 'spa',
+  router: {              // customize nuxt.js router (vue-router).
+    middleware: 'i18n'   // middleware all pages of the application
   },
-  // loading: '~/components/loading.vue',
-  // mode: 'spa',
-
-
-  // router: {              // customize nuxt.js router (vue-router).
-  //   middleware: 'i18n'   // middleware all pages of the application
-  // },
- 
-  // generate: {
-  //   routes: ['/', '/about', '/mm', '/mm/about']
-  // },
-  loading: { color: '#3B8070' },
-
- router: {              // customize nuxt.js router (vue-router).
-   middleware: 'i18n'   // middleware all pages of the application
- },
-
- generate: {
-   routes: ['/', '/result', '/mm', '/mm/result']
- },
+  generate: {
+    routes: ['/', '/about', '/mm', '/mm/about']
+  },
   /*
   ** Headers of the page
   */
@@ -80,8 +67,7 @@ export default {
     '@/plugins/element-ui',
     '@/plugins/axios',
     '@/plugins/aos',
-    // '~/plugins/i18n.js',
-   
+    '~/plugins/i18n.js',
     // {src: '@/plugins/i18n', ssr: false},
   ],
   /*
@@ -92,7 +78,11 @@ export default {
   /*
   ** Nuxt.js modules
   */
+ modules: [
 
+  '@nuxtjs/axios',
+ 
+],
 // auth: {
 //   strategies: {
 //     local: {
@@ -114,7 +104,6 @@ export default {
   */
   build: {
     vendor: ['vue-i18n'] ,
-   
     transpile: [/^element-ui/],
     /*
     ** You can extend webpack config here

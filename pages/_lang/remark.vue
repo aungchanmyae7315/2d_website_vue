@@ -52,7 +52,7 @@
                  
                 </el-card>
                  <div class="btn_group">
-                      <nuxt-link to="/bet">
+                      <nuxt-link to="bet">
                             <el-button type="default" round>Back</el-button>
                       </nuxt-link>
                     <nuxt-link to="/">

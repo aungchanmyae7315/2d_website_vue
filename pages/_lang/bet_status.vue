@@ -4,7 +4,7 @@
           <el-page-header @back="goBack" content="Bet Status for 12:00 PM">
            
         </el-page-header>
-         <nuxt-link to="/bet_history">
+         <nuxt-link to="bet_history">
              <img src="~static/images/icons/bet_status_icon.png" alt="" class="bet_status_icon">
         </nuxt-link>
       </el-header>
