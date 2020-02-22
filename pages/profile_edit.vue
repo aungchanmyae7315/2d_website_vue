@@ -192,7 +192,8 @@
                 axios.post("https://build.seinlucky.com/api/v1/profile-photo/update",data_profile,
                     {
                       headers: {
-                               "Authorization": "Bearer "+token
+                               "Authorization": "Bearer "+token,
+                               "Access-Control-Allow-Origin" : "*"
                          }
                         })
                     .then(response => {
@@ -205,7 +206,8 @@
                   }
                 axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
                     {headers: {
-                               "Authorization": "Bearer "+token
+                               "Authorization": "Bearer "+token,
+                              
                          }
                         })
                     .then(response => {
