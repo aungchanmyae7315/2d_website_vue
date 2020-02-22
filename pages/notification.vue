@@ -40,17 +40,21 @@ export default {
         //   })
 
 
-         let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjYxNjk3Y2E5OTcwMDI1ZWYwYzIxYzc1YzgwNjcyMTViNDk4ZTEzM2RmNmI0MjlhYzM0MDBlMGQ3NmZlNjI1ZDcxZDY1OGJjZjRjOWFmMDcxIn0.eyJhdWQiOiIxIiwianRpIjoiNjE2OTdjYTk5NzAwMjVlZjBjMjFjNzVjODA2NzIxNWI0OThlMTMzZGY2YjQyOWFjMzQwMGUwZDc2ZmU2MjVkNzFkNjU4YmNmNGM5YWYwNzEiLCJpYXQiOjE1ODIwMDA5MzMsIm5iZiI6MTU4MjAwMDkzMywiZXhwIjoxNjEzNjIzMzMzLCJzdWIiOiI2MSIsInNjb3BlcyI6W119.frZXVPGXsA0MO0VinvCCdX7JKFEDmoYA-i-srKVASxtNyGlL7bQOKfwS5hMQjr7j6L1_MebXYmvVla5rYpDeU_bD0r-8E8DBysL8j4x2w43yKjHz6pwnieEWuDq3IoWsjvLxk_zXTveeL9WGUqbhdNLQ3QIqwwM2lXH8PItT4hKf_9wJeolJWc8Hd8gAI4IExBL8z_ta8DQhB5CN4HglehtLB52u1xezSNp_y8Psxe5I4Gqy_UHdRmucwZlfZzPzzBVTkuOU3DZwdY7KNK5BHR0WrHc-ty_OPwmMJ0K74pNsSvlq8biF6NOeiQvbF4-X43jXGBpvG_smzXh5VH4FdJ5cvaJx-ZL37LkM3D3e7TEkjm-bQXXlKJOHrsAD1EntEz4cEp1bw39hry2Ti3iVsG6CvAPp1qzj2RrIFoQoQyHUR1qbiCagU6d6X3xoQxdWCfLMBcpimj5GEJRDgQPLDC50uGBFzG3CJZQmmLmDrAAl5gghiubIp7zJCHQLAZCMzyjA7V-cwiyu_pHuIgIzwcBAPCKAeZWMSbJFovaMxzEmXmQ7_5QiWRLsdMRft6v670q3spqenGadK5XmBNReLKhvpEaOc3fKFXQU8VulRq0stoJ1kbnaVLcec8GyI8WtWYNr5DKnahiJqIHXc7J8rH9M4O9RSJJcga42nFWdDoU';
-                    axios.get("https://build.seinlucky.com/api/v1/notification",[], 
+         let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImIzYjZiN2FjOWU0NjkwYWRiMjk4MDlhOTM2ZmEyYjhmNTE3ZTkzZWYzNWEyMjUzYWVmYjU1NjA4YjdmNjM4NjI0ZmI3NGIwZGNjNDc0Y2MwIn0.eyJhdWQiOiIxIiwianRpIjoiYjNiNmI3YWM5ZTQ2OTBhZGIyOTgwOWE5MzZmYTJiOGY1MTdlOTNlZjM1YTIyNTNhZWZiNTU2MDhiN2Y2Mzg2MjRmYjc0YjBkY2M0NzRjYzAiLCJpYXQiOjE1ODIwMDMxMDAsIm5iZiI6MTU4MjAwMzEwMCwiZXhwIjoxNjEzNjI1NTAwLCJzdWIiOiIyNyIsInNjb3BlcyI6W119.AIrMBypu-qp6TI79u9B26ovGNj6a2bF9oiZjht8C_amyBGmz1M3Kgd7oEseSbUge7lggDihcenjxVYHQ_AbGf6XMSW_PDYnyCT3a3SXpoTQI2sI7rv7Uo9z_uryjXkq-Jz6dgQQ2JrmujnIwm7u8mqFzwjFL-F8owDkSeP9ItETJreSmuRwazOL36rAnGNolJLBMscbWtkZ4UaTCLJsgoo8w0xLlKblOmWTvBztjvpwr4uA_AtGbNh0wTY3n1zi0BBVKnVI65jflZW7oK0Qrznfmp4FtdlZgtsplf4WANN0STq6kcPWbeAzhIdtgppKAxlN0e7tyUGxyWMl50LKiNLeD8InhsX_T2kq8dRsuEMN7oRIGIyKirUx6kRFVjK6__2cuhtlVbHepF5NuaAsKTAmrtvkOpZunReaHXVMoGtgaxwDzQMg9yH-gIlU7LJIdZuNWRp_R7q8kLzEyZUXquWXlQuwTdkRAxiCG90EwGXkjOwXikGCEm99Ehp-ERj2qm6czfEMdnRo6JVJTRNYpBgmPb5cGnwPZaOdsp6uTyUW-4YfzV3RebdMn9DUjX7Dy20YPug1fcCgupChI3COT1BpCOuyh6lpR1mZAE7a6BjxL7374LPHNywAAgD3qh__rTQIFUe-xcB3tdGrnrMYMLefeLL15ODw-9fSfzWXEDCM';
+                    axios.get("https://build.seinlucky.com/api/v1/notification", 
                     {headers: {
-                            'Authorization': "Bearer ${localStorage.getItem('access_token')}"
+                            'Authorization': 'Bearer '+token
                          }
                         })
                     
                     .then(response => {
+
                      console.log(this.notification = response.data.data)
                    
                 })
+
+            // var URL = "https://build.seinlucky.com/api/v1/notification";
+            
      }
 }
 </script>
