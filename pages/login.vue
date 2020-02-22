@@ -21,31 +21,23 @@
               </ul>
           </div>
 
-
-       <el-form  ref="" class="demo-ruleForm">
-           <!-- <p v-if="success"> 
-              <el-button
-                plain
-             >
-                {{ success }}
-              </el-button></p>
-           <p v-else>
-             <el-button
-            plain >
-            {{error}}
-            </el-button>
-          </p> -->
-           
+      <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
             <el-form-item
-              
-                prop="phone"
-                :rules="[
+             
+              prop="phone"
+              :rules="[
                 { required: true, message: 'phone is required'},
-              
-                ]"
-            >
-                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="phone" autocomplete="off"></el-input>
+                
+              ]"
+               
+            >  
+                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+               
             </el-form-item>
+            
+        
+
+            
             <el-form-item
                 prop="password"
                 :rules="[
@@ -53,12 +45,11 @@
              
                 ]"
             >
-                <el-input type="password" show-password placeholder="Password"  prefix-icon="el-icon-lock" v-model="password" autocomplete="off"></el-input>
+                <el-input type="password" show-password placeholder="Password"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
             </el-form-item>
-            <p>{{error}}</p>
             <el-form-item>
+          <el-button type="success" round @click="submitForm('ruleForm')">Submit</el-button>
 
-                <el-button type="success"  round @click="submitForm('')"  v-loading.fullscreen.lock="fullscreenLoading">Submit</el-button>
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
                 <el-button type="text" @click="dialogVisible = true">Forgot Password</el-button>
             </el-form-item>
@@ -111,8 +102,13 @@ import axios from 'axios'
       return {
             dialogVisible: false,
            errors:[],
-            phone: '',
-            password:'',
+           ruleForm: {
+            phone:'',
+           
+           password: '',
+
+        },
+         
             success: '',
             error:'',
             response: '',
@@ -122,11 +118,12 @@ import axios from 'axios'
     },
     
     methods: {
-      submitForm() {
-
-                axios.post('https://build.seinlucky.com/api/v1/login', {
-                    phone: this.phone,
-                    password: this.password,
+      submitForm(formName) {
+         this.$refs[formName].validate((valid) => {
+          if (valid) {
+             axios.post('https://build.seinlucky.com/api/v1/login', {
+                    phone: this.ruleForm.phone,
+                    password: this.ruleForm.password,
                     
                 })
               
@@ -142,7 +139,10 @@ import axios from 'axios'
                     });
                   }else {
                      this.userInfo = response.data,
+                     this.token = response.data.access_token;
+                    
                     this.$store.commit('logIn', this.userInfo);
+                    this.$store.commit('accessToken', this.token);
                      const loading = this.$loading({
                           lock: true,
                           text: 'Loading',
@@ -165,23 +165,15 @@ import axios from 'axios'
                   }
                  
                 })
-                  
-                // .catch(error => {
-                //     this.response = 'Error: ' + error.response
-                //   })
-                //        this.phone = '';
-                    
-                //       this.password = '';                     //  if (store.state.phoneResponse = '') {
-                //    alert('fail')
-                //  }else {
-                //    alert ('regds')
-                //  }
-                // if(state.phoneResponse == 'fail') {
-                //   alert('word')
-                // }else {
-                //   alert('hello')
-                // }
-                //  this.$router.push('/');
+          } else {
+          
+            console.log('error submit!!');
+            return false;
+          }
+        });
+
+               
+           
       
       },
       resetForm(formName) {

@@ -9,35 +9,30 @@
                 </el-header>
                 <p>Select your receiving bank</p>
                 <el-card>
-                    <el-radio-group v-model="radio1">
-                        <ul class="choose_pay">
-                            <li >
-                                 <img src="~/static/images/topup_withdraw/kbz_img.png" alt="">
-                                 <el-radio-button  label="KBZ Bank"></el-radio-button>
+                  
+                        <ul class="choose_pay" v-for="(bank, i) in bank_type" :key="i">
+                           
+                            <li >   
+                                
+                                <!-- {{bank}} -->
+                                <div @click="id_bank(bank.id)" >
+                                     <el-radio-group v-model="radio1">
+                                    <img :src="bank.bank_icon" alt="">
+                                    <el-radio-button    :label="bank.bank_name"></el-radio-button> 
+                                    </el-radio-group>
+                                </div>
+                                 
+                                 <!-- <img src="~/static/images/topup_withdraw/kbz_img.png" alt="">
+                                 <el-radio-button  label="KBZ Bank"></el-radio-button> -->
                             </li>
-                             <li>
-                                  <img src="~/static/images/topup_withdraw/kbz_pay_img.png" alt="">
-                                  <el-radio-button  label="KBZ Pay"></el-radio-button>
-                            </li>
-                             <li>
-                                  <img src="~/static/images/topup_withdraw/cb_pay_img.png" alt="">
-                                  <el-radio-button  label="CB Pay"></el-radio-button>
-                            </li>
-                             <li>
-                                  <img src="~/static/images/topup_withdraw/aya_img.png" alt="">
-                                  <el-radio-button  label="AYA Bank"></el-radio-button>
-                            </li>
-                             <li>
-                                  <img src="~/static/images/topup_withdraw/wavepay_img.png" alt="">
-                                  <el-radio-button  label="Wave Pay"></el-radio-button>
-                            </li>
+                            
                         </ul>
 
-                    </el-radio-group>
+                  
                 </el-card>
                 <el-form>
                     <el-form-item label="Bank Card Number" class="tran_input" >
-                        <el-input   type="text" placeholder="Please enter Card Number" v-model="tran_input" autocomplete="off"></el-input>
+                        <el-input   type="text" placeholder="Please enter Card Number" v-model="card_number" autocomplete="off"></el-input>
                     </el-form-item>
                     <el-form-item label="Withdraw Amount" class="tran_amount tran_input" >
                         <el-input   type="text" placeholder="Please enter  Amount" v-model="tran_amount" autocomplete="off"></el-input>
@@ -45,7 +40,9 @@
                     <el-form-item label="Password" class="password tran_input" >
                         <el-input type="password" show-password placeholder="Password" v-model="password" autocomplete="off"></el-input>
                     </el-form-item>
+                  
                 </el-form>
+                
                  <el-button round @click="withdrawal">Summit</el-button>
                     </div>
                 </div>
@@ -130,26 +127,67 @@
 </style>
 
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
-            tran_input:'',
+            card_number:'',
             tran_amount:'',
             password:'',
-
-              radio1: 'KBZ Bank',
-            radio2: 'New York',
-            radio3: 'New York',
-            radio4: 'New York'
+            bank_type:'',
+            radio1:'',
+            
         }
     },
     methods: {
+        id_bank(data) {
+            this.bank_id = data;
+           
+        },
         goBack() {
               this.$router.push('/wallet');
         },
         withdrawal() {
-             this.$router.push('/withdraw_success');
+             let token = localStorage.getItem('token');
+     
+            var data = {
+                bank_type_id:this.bank_id,
+                card_number:this.card_number,
+                amount: this.tran_amount,
+                password: this.password,
+            }
+       
+                axios.post("https://build.seinlucky.com/api/v1/withdraw",
+                           data,
+                    {
+                           
+
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         },
+                          
+                        })
+                
+                    .then(response => {
+                     console.log(this.with = response.data.data)
+                     console.log(this.with)
+                })
+            
+                this.$notify({
+                    title: 'Warning',
+                    message: this.with,
+                    type: 'warning'
+                    });
+             //this.$router.push('/withdraw_success');
         }
-    }
+    },
+    created() {
+        axios.get("https://build.seinlucky.com/api/v1/bank-type")
+    
+            
+                .then(response => {
+                    console.log(this.bank_type = response.data.data)
+            });
+     },
 }
 </script>

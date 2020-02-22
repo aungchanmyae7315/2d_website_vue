@@ -33,12 +33,12 @@
 
         <el-form>
             <el-form-item  class="edit_name" >
-                <el-input   type="number" placeholder="Your Full Name" v-model="edit_name" autocomplete="off"></el-input>
+                <el-input  required type="text" placeholder="Your Full Name" v-model="edit_name" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
                 <p>Registered Phone: 09954265784</p>
               
-               <el-button round>Summit</el-button>
+               <el-button round @click="profile_edit">Summit</el-button>
              
     </div>
 </template>
@@ -149,10 +149,12 @@
 
 
 <script>
+ import axios from 'axios'
   export default {
     data() {
       return {
-        image: ''
+        image: '',
+        edit_name:'',
       };
     },
     methods: {
@@ -178,14 +180,40 @@
     },
     removeImage: function (e) {
       this.image = '';
-    }
+    },
   
+    profile_edit() {
+              let token = localStorage.getItem('token');
+                var data_profile = {
+                  profile:this.image
 
+                }
+        
+                axios.post("https://build.seinlucky.com/api/v1/profile-photo/update",data_profile,
+                    {
+                      headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     //console.log(this.profiel_update = response.data.data)
 
+                })
+                 var data_name = {
+                    name:this.edit_name,
 
+                  }
+                axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     console.log(this.name_update = response.data.data)
 
-
-
+                })
+                 this.$router.push('/me');
+    }
 
      
     }

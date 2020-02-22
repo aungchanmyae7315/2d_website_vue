@@ -6,16 +6,11 @@
      <el-header class="me_header" >
          <div  v-if ="$store.state.isLoggedIn">
               <div class="demo-type">
-                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-                  <span  class="avatar_text">Please Login First </span>
-                </div>
-        </div>
-        <div v-else> 
-              <div class="demo-type">
-                 <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                 <el-avatar v-if="this.profile.name != 'null'" :size="60"> <img :src="this.profile.profile " alt=""></el-avatar>
+                 <el-avatar v-else :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li>09797532383</li>
+                    <li>{{this.profile.phone}}</li>
                     <nuxt-link to="/profile_edit">
                      <li class="edit_profile">Edite Profile</li>
                     </nuxt-link>
@@ -23,6 +18,13 @@
                   </div>
             
               </div>
+        </div>
+        <div v-else> 
+           <div class="demo-type">
+                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                  <span  class="avatar_text">Please Login First </span>
+                </div>
+             
         </div>
        
            
@@ -39,7 +41,7 @@
                 </div>
                 <div v-else> 
                        <li><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> Notifications</a></li>
-                        <li><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></li>
+                        <li><nuxt-link to="/bet_status"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> Bet Stauts</a></nuxt-link></li>
                         <li><nuxt-link to="/language"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> Language</a></nuxt-link></li>
 
                         <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li>
@@ -89,6 +91,7 @@
 
 
 <script>
+ import axios from 'axios'
 export default {
      
     mounted() {
@@ -96,7 +99,7 @@ export default {
    },
     data() {
       return {
-       
+        profile:'',
       };
     },
     
@@ -111,6 +114,19 @@ export default {
             this.$store.commit('logOut');
             this.$router.push('/')
       },
+    },
+    created() {
+      let token = localStorage.getItem('token');
+    
+      axios.get("https://build.seinlucky.com/api/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     console.log(this.profile = response.data.data)
+
+                })
     }
 }
 </script>

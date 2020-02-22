@@ -4,6 +4,30 @@
           <el-page-header @back="goBack" content="Notification">
         </el-page-header>
       </el-header>
+        <section class="noti_content">
+            <ul v-for="noti of notification" :key="noti" class="noti_text" >
+                
+
+                
+                    <li @click="cur_id(noti.notification_id)" >
+                    
+                    <img src="~static/images/noti_page/noti_icon2.png" alt="" class="noti_icon">
+                    <div style="color:#000;">{{noti.title}}</div>
+                    <div style="color:#b8b8b8;">{{noti.description}}</div>
+                    <div class="el_icon_right">
+                         <i  class="el-icon-arrow-right" ></i>
+                    </div>
+                   
+                     <el-divider></el-divider>
+                </li>
+               
+             
+                
+
+            </ul>
+            
+                
+        </section>
 
     </div>
 </template>
@@ -17,6 +41,32 @@
     .notification .el-page-header__content {
         color:#fff;
     }
+    .noti_content {
+        padding:0 20px;
+        margin-top:20px;
+    }
+    .noti_text {
+        padding:0;
+        margin:0;
+    }
+    .noti_text li {
+        list-style:none;
+    }
+    .noti_text .noti_icon {
+       width: 30px;
+        height: auto;
+        float: left;
+        display: block;
+        /* padding: 22px; */
+        margin: 10px 15px 10px 0;
+    }
+    .el_icon_right {
+        float: right;
+        position: relative;
+        right:3px;
+        bottom:30px;
+    }
+
 </style>
 
 <script>
@@ -25,32 +75,33 @@ export default {
     data() {
         return {
             notification:'',
+           
         }
     },
     methods: {
         goBack() {
             this.$router.push('/')
       },
+      cur_id(data) {
+         this.$store.commit('noti_id', data);
+         this.$router.push('/withdraw_noti')
+      }
      },
      created() {
-        //    axios.get('https://build.seinlucky.com/api/v1/notification')
-           
-        //   .then(response => {
-        //     console.log(this.notification = response.data.data)
-        //   })
 
-
-         let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImIzYjZiN2FjOWU0NjkwYWRiMjk4MDlhOTM2ZmEyYjhmNTE3ZTkzZWYzNWEyMjUzYWVmYjU1NjA4YjdmNjM4NjI0ZmI3NGIwZGNjNDc0Y2MwIn0.eyJhdWQiOiIxIiwianRpIjoiYjNiNmI3YWM5ZTQ2OTBhZGIyOTgwOWE5MzZmYTJiOGY1MTdlOTNlZjM1YTIyNTNhZWZiNTU2MDhiN2Y2Mzg2MjRmYjc0YjBkY2M0NzRjYzAiLCJpYXQiOjE1ODIwMDMxMDAsIm5iZiI6MTU4MjAwMzEwMCwiZXhwIjoxNjEzNjI1NTAwLCJzdWIiOiIyNyIsInNjb3BlcyI6W119.AIrMBypu-qp6TI79u9B26ovGNj6a2bF9oiZjht8C_amyBGmz1M3Kgd7oEseSbUge7lggDihcenjxVYHQ_AbGf6XMSW_PDYnyCT3a3SXpoTQI2sI7rv7Uo9z_uryjXkq-Jz6dgQQ2JrmujnIwm7u8mqFzwjFL-F8owDkSeP9ItETJreSmuRwazOL36rAnGNolJLBMscbWtkZ4UaTCLJsgoo8w0xLlKblOmWTvBztjvpwr4uA_AtGbNh0wTY3n1zi0BBVKnVI65jflZW7oK0Qrznfmp4FtdlZgtsplf4WANN0STq6kcPWbeAzhIdtgppKAxlN0e7tyUGxyWMl50LKiNLeD8InhsX_T2kq8dRsuEMN7oRIGIyKirUx6kRFVjK6__2cuhtlVbHepF5NuaAsKTAmrtvkOpZunReaHXVMoGtgaxwDzQMg9yH-gIlU7LJIdZuNWRp_R7q8kLzEyZUXquWXlQuwTdkRAxiCG90EwGXkjOwXikGCEm99Ehp-ERj2qm6czfEMdnRo6JVJTRNYpBgmPb5cGnwPZaOdsp6uTyUW-4YfzV3RebdMn9DUjX7Dy20YPug1fcCgupChI3COT1BpCOuyh6lpR1mZAE7a6BjxL7374LPHNywAAgD3qh__rTQIFUe-xcB3tdGrnrMYMLefeLL15ODw-9fSfzWXEDCM';
-                    axios.get("https://build.seinlucky.com/api/v1/notification", 
+         let token = localStorage.getItem('token');
+        
+        
+                axios.get("https://build.seinlucky.com/api/v1/notification",
                     {headers: {
-                            'Authorization': 'Bearer '+token
+                               "Authorization": "Bearer "+token
                          }
                         })
-                    
                     .then(response => {
 
                      console.log(this.notification = response.data.data)
-                   
+                     var noti_id = this.notification.notification_id
+                    
                 })
 
             // var URL = "https://build.seinlucky.com/api/v1/notification";

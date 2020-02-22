@@ -1,156 +1,83 @@
 <template>
     <el-main class="wallet">
       <el-header class="wallet_header" >
-              <div class="demo-type">
-                 <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/kbz_img.png" alt=""></el-avatar>
+              <div v-if="!$store.state.isLoggedIn" class="demo-type logout_wallet">
+                 <el-avatar :size="60" >  <img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li>My Balance</li>
-                    <li class="amount_mmk">5000 MMk</li>
+                    <li>
+                      <span>Please Log In First</span>
+                      
+                      </li>
+                  
                   </ul>
                   </div>
               </div>
-                <div class="btn_group_wallet">
-                <nuxt-link to="/withdrawal">
-                   <el-button round class="withdraw_btn">Withdrawal</el-button>
+              <div v-else class="demo-type">
+                 <el-avatar :size="60" v-if="this.profile.image != 'null'"> 
+                   
+                  <img :src="this.profile.image" alt="">
+                  </el-avatar>
+                  <el-avatar :size="60" v-else> 
+                   <img src="~static/images/icons/me_img.png" alt="">
+                  
+                  </el-avatar>
+                <div  class="avatar_text">
+                  <ul>
+                    <li>My Balance</li>
+                    <li class="amount_mmk">{{this.profile.wallet}}</li>
+                  </ul>
+                  </div>
+              </div>
+              <div v-if ="!$store.state.isLoggedIn">
+               
+              </div>
+           
+                <div v-else class="btn_group_wallet">
+                  <nuxt-link to="/withdrawal">
+                    <el-button round class="withdraw_btn">Withdrawal</el-button>
+                  </nuxt-link>
+                <nuxt-link to="/topup">
+                      <el-button type="warning" round>Top Up</el-button>
                 </nuxt-link>
-              <nuxt-link to="/topup">
-                    <el-button type="warning" round>Top Up</el-button>
-              </nuxt-link>
               
-            </div>
+               </div>
          
             </el-header>
              <div class="longText" id="hidingScrollBar">
                 <div class="hideScrollBar hideScrollBar_wallet ">
-           
+
                 <el-card>
                   
 
-
-               
-                    
-                  
-            
-
-
-
-
-
-
-
-
                   <h5>Sein Lucky Bank Accounts</h5>
                   <p><span style="color:red;">Warning !!!</span> There is no other Sein Lucky bank account except these following bank accounts</p>
-                    <div class="demo-type wallet_type">
-                      <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/kbz_img.png" alt=""></el-avatar>
+                    
+                    <div v-for="(bank_info, b) in bank_account" :key="b">
+                     <div class="demo-type wallet_type">
+                      <img :src="bank_info.bank_icon" alt="">
                       <div  class="avatar_text">
                         <ul>
-                          <li>KBZ Bank</li>
+                          <li>{{bank_info.bank_name}}</li>
                           <li class="bank_number">
-                            <span class="code text-red">{{ kbz_bank }}</span>
-                          <input type="hidden" id="kbz-code" :value="kbz_bank">
+                            <span class="code text-red">{{ bank_info.card_number }}</span>
+                            <input type="hidden" id="kbz-code" :value="bank_info.card_number">
                           </li>
                         </ul>
                         </div>
                         <div class="result_icon">
-                            <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_1">
+                            <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode(bank_info.id)">
                             Copy
                           </span>
-                        </div>
-                    </div>
-                    <div class="demo-type wallet_type">
-                     <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/kbz_pay_img.png" alt=""></el-avatar>
-                      <div  class="avatar_text">
-                        <ul>
-                          <li>KBZ Pay</li>
-                          <li class="bank_number">
-                              <span class="code text-red">{{ kbz_pay }}</span>
-                            <input type="hidden" id="kbz_pay-code" :value="kbz_pay">
-                          </li>
-                        </ul>
-                        </div>
-                        <div class="result_icon">
-                          <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_2">
-                            Copy
-                          </span>
-                        </div>
-                    </div>
-                   <div class="demo-type wallet_type">
-                      <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/cb_pay_img.png" alt=""></el-avatar>
-                      <div  class="avatar_text">
-                        <ul>
-                          <li>CB Pay</li>
-                          <li class="bank_number">
-                               <span class="code text-red">{{ cb_pay }}</span>
-                              <input type="hidden" id="cb_pay-code" :value="cb_pay">
-                          </li>
-                        </ul>
-                        </div>
-                        <div class="result_icon">
-                          <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_3">
-                            Copy
-                          </span>
-                        </div>
-                    </div>
-                    <div class="demo-type wallet_type">  
-                      
-                      <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/aya_img.png" alt=""></el-avatar>
-                      <div  class="avatar_text">
-                        <ul>
-                          <li>AYA Bank</li>
-                          <li class="bank_number">
-                             <span class="code text-red">{{ aya_bank }}</span>
-                              <input type="hidden" id="aya-code" :value="aya_bank">
-                          </li>
-                        </ul>
-                        </div>
-                        <div class="result_icon">
-                           <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_4">
-                            Copy
-                          </span>
-                           
-                        </div>
-                    </div>
-                    <div class="demo-type wallet_type">  
-                      
-                        <el-avatar :size="50" > <img src="~/static/images/topup_withdraw/wavepay_img.png" alt=""></el-avatar>
-                      <div  class="avatar_text">
-                        <ul>
-                          <li>Wave Pay</li>
-                          <li class="bank_number">
-                             <span class="code text-red">{{ wave_pay }}</span>
-                              <input type="hidden" id="wave-code" :value="wave_pay">
-                          </li>
-                        </ul>
-                        </div>
-                        <div class="result_icon">
-                           <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode_5">
-                            Copy
-                          </span>
-                           
-                        </div>
+                          </div>
+                      </div>
                     </div>
                       
                 </el-card>
                 </div>
                 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <el-footer class="footer">
+          <el-footer class="footer">
               <el-menu
                 
                 class="el-menu-demo"
@@ -177,7 +104,7 @@
 
 
               </el-menu>
-      </el-footer>
+          </el-footer>
   </el-main>
 </template>
 <style>
@@ -186,10 +113,9 @@
      
         height:auto !important;
     }
-    .hideScrollBar_wallet {
-      padding-top:23px ;
-      padding-bottom:223px ;
-    }
+    /* .hideScrollBar_wallet {
+     
+    } */
   .wallet_header .demo-type {
    
     padding:0 10px;
@@ -201,6 +127,7 @@
     }
     .btn_group_wallet {
       text-align: center;
+      padding:10px 0;
     }
     .btn_group_wallet .el-button.is-round {
       width:46%;
@@ -269,29 +196,66 @@
     .wallet_type .el-avatar ul {
       padding:5px;
     }
+    .wallet_type img {
+      width:55px;
+      height:auto;
+      float:left;
+      border-radius: 9px;
+      margin-right:8px;
+    }
+    .logout_wallet ul li span {
+      position: relative;
+      bottom: 7px;
+      
+    }
 </style>
 <script>
- 
+ import axios from 'axios'
   export default {
+    
+     mounted() {
+      this.updateIsLoggedIn();
+     
+   },
     data() {
       return {
-        testingCode: "068-3010-620-0945-901",
-        kbz_bank:'068-3010-620-0945-901',
-        kbz_pay:'09698860088',
-        cb_pay:'015-8600-5000-258-28',
-        aya_bank:'021-7201-010-0346-47',
-        wave_pay:'09257578394',
+        bank_account:'',
+        card_number:'',
         visible: false,
-       
+        profile:'',
         message:''
       };
+    },
+     created() {
+      
+          axios.get('https://build.seinlucky.com/api/v1/admin-bank')
+              .then(response => {
+                console.log(this.bank_account = response.data.data)
+              })  
+          let token = localStorage.getItem('token');
+    
+        axios.get("https://build.seinlucky.com/api/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     console.log(this.profile = response.data.data)
+
+                })
     },
 
     methods: {
 
+       updateIsLoggedIn() {
+        this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
+      },
+      hasUserInfo() {
+        return Boolean(localStorage.getItem('userInfo'));
+      },
 
-
-       copyTestingCode_1 () {
+       copyTestingCode (data) {
+         alert(data)
           let testingCodeToCopy = document.querySelector('#kbz-code')
           testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
           testingCodeToCopy.select()
@@ -313,91 +277,9 @@
           testingCodeToCopy.setAttribute('type', 'hidden')
           window.getSelection().removeAllRanges()
         },
-        copyTestingCode_2 () {
-          let testingCodeToCopy = document.querySelector('#kbz_pay-code')
-          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
-          testingCodeToCopy.select()
+       
 
-          try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-             this.$notify({
-               message:'Copied'+' '+ msg,
-              position: 'bottom-right',
-              showClose: false
-            });
-          } catch (err) {
-            alert('Oops, unable to copy');
-          }
-
-          /* unselect the range */
-          testingCodeToCopy.setAttribute('type', 'hidden')
-          window.getSelection().removeAllRanges()
-        },
-        copyTestingCode_3 () {
-          let testingCodeToCopy = document.querySelector('#cb_pay-code')
-          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
-          testingCodeToCopy.select()
-
-          try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-             this.$notify({
-                message:'Copied'+' '+ msg,
-              position: 'bottom-right',
-              showClose: false
-            });
-          } catch (err) {
-            alert('Oops, unable to copy');
-          }
-
-          /* unselect the range */
-          testingCodeToCopy.setAttribute('type', 'hidden')
-          window.getSelection().removeAllRanges()
-        },
-        copyTestingCode_4 () {
-          let testingCodeToCopy = document.querySelector('#aya-code')
-          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
-          testingCodeToCopy.select()
-
-          try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-             this.$notify({
-               message:'Copied'+' '+ msg,
-              position: 'bottom-right',
-              showClose: false
-            });
-          } catch (err) {
-            alert('Oops, unable to copy');
-          }
-
-          /* unselect the range */
-          testingCodeToCopy.setAttribute('type', 'hidden')
-          window.getSelection().removeAllRanges()
-        },
-        copyTestingCode_5 () {
-          let testingCodeToCopy = document.querySelector('#wave-code')
-          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
-          testingCodeToCopy.select()
-
-          try {
-            var successful = document.execCommand('copy');
-            var msg = successful ? 'successful' : 'unsuccessful';
-             this.$notify({
-              message:'Copied'+' '+ msg,
-              position: 'bottom-right',
-              showClose: false
-            });
-          } catch (err) {
-            alert('Oops, unable to copy');
-          }
-
-          /* unselect the range */
-          testingCodeToCopy.setAttribute('type', 'hidden')
-          window.getSelection().removeAllRanges()
-        },
-
+       
     }
   };
 </script>

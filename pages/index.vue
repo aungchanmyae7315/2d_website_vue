@@ -33,11 +33,16 @@
         <div v-else>
            <nuxt-link to="/result">
               <div class="demo-type">
-                 <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                 <el-avatar :size="60" v-if="this.profile.name != 'null'"><img :src="this.profile.image" alt=""></el-avatar>
+                  <el-avatar :size="60" v-else ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li>{{ $t('language') }}</li>
-                    <li class="amount_mmk">5000 MMk</li>
+                    <li><span v-if="this.profile.name === 'null'"> {{this.profile.name}}</span>
+                        <span v-else ><nuxt-link style="color:#fff" to="/me">Upgrade Name</nuxt-link></span>
+                     
+
+                    </li>
+                    <li  class="amount_mmk">{{this.profile.wallet}}</li>
                   </ul>
                   </div>
                   <div class="result_icon">
@@ -54,25 +59,20 @@
         </div>
 
           <div class="block">
-             <h3>{{ image }}</h3>
+  
             <el-carousel  trigger="click" height="150px">
-             <el-carousel-item v-for="image in slider_image" :key="image">
-                    <img :src="image.slider_image">
+               <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
+                  <div>
+                     <img :src="img_slide.slider_image" value="img_slide">
+                  </div>
+                   
               </el-carousel-item>
            
-                <!-- <el-carousel-item name ='first'>
-                
-                </el-carousel-item>
-                <el-carousel-item name ='second'>
-                 
-                </el-carousel-item>
-                <el-carousel-item name ='third'>
+                    <div class="el-carousel_label">
+                        <h3>  <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon"> ipsum dolor sit amet fdsf</h3> 
+                    </div>
                   
-                </el-carousel-item> -->
-              <div class="el-carousel_label">
-                    <h3>  <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon"> ipsum dolor sit amet fdsf</h3> 
-                </div>
-       
+          
             </el-carousel>
           </div>
           <div class="row n_d_t">
@@ -199,8 +199,8 @@ export default {
   actions: {},
   layout: 'homeLayout',
   mounted() {
-     const lang = this.$store.state.lang;
-     console.log(lang)
+    //  const lang = this.$store.state.lang;
+    //  console.log(lang)
      this.updateIsLoggedIn();
        this.updateLang();
      
@@ -211,10 +211,11 @@ export default {
   data() {
     return {
 
-      slider_image:'',
+      slider_images:'',
       activeIndex: '1',
       info:'',
       set_1200:'',
+      profile:'',
       //   activeIndex2: '1',
      
     }
@@ -235,9 +236,7 @@ export default {
       hasLang() {
         return Boolean(localStorage.getItem('locale'));
       },
-      // handleSelect(key, keyPath) {
-      //   console.log(key, keyPath);
-      // }
+
     },
      created() {
       
@@ -250,19 +249,22 @@ export default {
           
           axios.get('https://build.seinlucky.com/api/v2/v1/slider_image')
               .then(response => {
-                console.log(this.slider_image = response.data.data)
+                console.log(this.slider_images = response.data.data)
               })
-        
+         let token = localStorage.getItem('token');
+    
+       axios.get("https://build.seinlucky.com/api/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     console.log(this.profile = response.data.data)
+
+                })
         
     },
-    
-    //   mounted() {
-    //  axios
-    //   .get('https://build.seinlucky.com/api/v1/twod-result/live')
-    //   .then(response => (this.info = response))
-    //   console.log(this.info);
-    //   alert(this.info)
-    //   }
+
 }
 
 
@@ -273,32 +275,7 @@ export default {
   .el-carousel {
     border-radius: 22px;
   }
-   /* .el-carousel__item:nth-child(1n) {
-    background-image:url(https://build.seinlucky.com//storage//slider_image_upload//1580895847_5e3a8e6728bf7.jpg);
-    background-size:cover;
-    background-repeat: no-repeat;
-    background-position: 100% ;
-  } */
-  /* .el-carousel__item:nth-child(2n) {
-    background-image:url(../static/images/slide_1.png);
-    background-size:cover;
-    background-repeat: no-repeat;
-     background-position: 100%;
-  }
-  .el-carousel__item:nth-child(3n) {
-    background-image:url(../static/images/slide_1.png);
-    background-size:cover;
-    background-repeat: no-repeat;
-     background-position: 100%;
-  }  */
-/* .container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-} */
+   
   .main_page {
    
    margin:0 auto;
