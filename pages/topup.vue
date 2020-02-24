@@ -6,14 +6,14 @@
                 <el-page-header @back="goBack" content="Top Up">
                 </el-page-header>
             </el-header>
-            <p>After bank transferring is completed</p>
+            <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p>
           
             <el-form>
                  <el-form-item label="Transfer Amount" class="tran_input" >
                     <el-input   type="number" placeholder="Please enter the top up amount" v-model="tran_amount" autocomplete="off"></el-input>
                 </el-form-item>
             </el-form>
-            <h5>Upload Bank transferred Slip</h5>
+            <h5>{{$t('Upload Bank transferred Slip')}}</h5>
              <el-upload
                 class="upload-demo"
                 action="https://build.seinlucky.com/api/v1/slip"
@@ -26,7 +26,7 @@
                 list-type="picture">
                   <i slot="default" class="el-icon-plus"></i>
               
-                <div slot="tip" class="el-upload__tip">please upload bank slip photo here</div>
+                <div slot="tip" class="el-upload__tip">{{$t('please upload bank slip photo here')}}</div>
              </el-upload>
               <el-button round @click="slip_upload">Summit</el-button>
         </div>

@@ -57,10 +57,10 @@
 
         <h6>Or</h6>
         <div class="btn_group_sig">
-            <nuxt-link to="/">
+            <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
                   <el-button type="default" round>Skip</el-button>
             </nuxt-link>
-           <nuxt-link to="signup">
+           <nuxt-link :to="`${$t('signup')}?lang=${$store.state.locale}`">
                 <el-button type="warning" round>Sign Up</el-button>
            </nuxt-link>
           

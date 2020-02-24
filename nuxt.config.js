@@ -1,8 +1,8 @@
 export default {
-  // server: {
-  //   port: 8000, // default: 3000
-  //   host: '0.0.0.0' // default: localhost
-  // },
+  server: {
+    port: 8000, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
   loading: '~/components/loading.vue',
   mode: 'spa',
   router: {              // customize nuxt.js router (vue-router).

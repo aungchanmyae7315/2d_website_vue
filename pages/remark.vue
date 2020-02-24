@@ -52,10 +52,10 @@
                  
                 </el-card>
                  <div class="btn_group">
-                      <nuxt-link to="bet">
+                      <nuxt-link  :to="`${$t('bet')}?lang=${$store.state.locale}`">
                             <el-button type="default" round>Back</el-button>
                       </nuxt-link>
-                    <nuxt-link to="/">
+                    <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
                           <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  Submit</el-button>
                     </nuxt-link>
                     

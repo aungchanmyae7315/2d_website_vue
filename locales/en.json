@@ -1,14 +1,60 @@
 {
-  "links": {
-    "home": "Home"
-   
-  },
-  "home": {
-    "title": "Welcome",
-    "introduction": "This is an introduction in English."
-  },
-  "about": {
-    "title": "About",
-    "introduction": "..."
-  }
+  "Language" : "Language",
+  "my_balance": "My Balance",
+  "Top Up": "Top Up",
+  "Withdrawal": "Withdrawal",
+  "Please transfer to Sein Lucky bank accounts first": "Please transfer to Sein Lucky bank accounts first",
+  "Tap bank icons for the account info": "Tap bank icons for the account info",
+  "After bank transferring is finished, please enter your amount and upload your bank slip below.": "After bank transferring is finished, please enter your amount and upload your bank slip below.",
+  "Enter transferred amount": "Enter transferred amount",
+  "Upload Bank transferred Slip": "Upload Bank transferred Slip",
+  "please upload bank slip photo here": "please upload bank slip photo here",
+  "Submit": "Submit",
+  "Cash Withdrawal": "Cash Withdrawal",
+  "Choose your receiving account": "Choose your receiving account",
+  "Enter the amount and password": "Enter the amount and password",
+  "Cash Amount": "Cash Amount",
+  "Password": "Password",
+  "Select bank account": "Select bank account",
+  "Use a new bank account": "Use a new bank account",
+  "Select bank": "Select bank",
+  "Enter Card Number": "Enter Card Number",
+  "Add Bank Card": "Add Bank Card",
+  "Please enter your bank account number correctly. we are not liable for entering wrong card number.": "Please enter your bank account number correctly. we are not liable for entering wrong card number.",
+  "Confirm": "အတည်ပြုသည်",
+  "Receiving Account": "Receiving Account",
+  "Please Login first": "Please Login first",
+  "Point Rewards": "Point Rewards",
+  "Points": "Points",
+  "Point History": "Point History",
+  "Get More Points": "Get More Points",
+  "Share Sein Lucky to your friends and get Sein Lucky points": "Share Sein Lucky to your friends and get Sein Lucky points",
+  "Copy to Clipboard": "Copy to Clipboard",
+  "Copy": "Copy",
+  "How to top up money?": "How to top up money?",
+  "How to withdraw money?": "How to withdraw money?",
+  "Bet Status": "Bet Status",
+  "Did not receive OTP?": "Did not receive OTP?",
+  "Resend": "Resend",
+  "Setting Password": "Setting Password",
+  "Contact us via Viber or Phone call.": "Contact us via Viber or Phone call.",
+  "Customer Services": "Customer Services",
+  "Log Out": "Log Out",
+  "Unicode/Zawgyi": "Unicode/Zawgyi",
+ 
+  "Transaction History": "Transaction History",
+  "Pending Withdrawal": "Pending Withdrawal",
+  "Win": "Win",
+  "Bet": "Bet",
+  "Cancel Request": "Cancel Request",
+  "Do you want to cancel your request?": "Do you want to cancel your request?",
+  "Completed": "Completed",
+  "Bet Status for 12:00 PM": "Bet Status for 12:00 PM",
+  "Bet Status for 4:30 PM": "Bet Status for 4:30 PM",
+  "Click to see Bet History": "Click to see Bet History",
+  "You can just message to us" : "You can just message to us",
+  "Sein Lucky Bank Accounts" : "Sein Lucky Bank Accounts"
+
+
 }
+

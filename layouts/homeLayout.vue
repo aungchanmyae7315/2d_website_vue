@@ -4,7 +4,7 @@
         <el-header class="header">
           <el-row :gutter="20">
             <el-col :span="8">
-              <nuxt-link to="notification">
+              <nuxt-link :to="`${$t('notification')}?lang=${$store.state.locale}`">
               <div class="noti">
                 <img src="~static/images/noti.png" alt="logo">
               </div>
@@ -47,17 +47,17 @@
             width="100%"
             active-text-color="#ffd04b">
             <el-menu-item index="1">
-              <nuxt-link to="/"><img src="~static/icons_header/dimond_t_icon.png" alt=""></nuxt-link>
+              <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`"><img src="~static/icons_header/dimond_t_icon.png" alt=""></nuxt-link>
               
             </el-menu-item>
             <el-menu-item index="2">
-                <nuxt-link to="wallet" type="wallet"><img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
+                <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`"> <img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
             </el-menu-item>
             <el-menu-item index="3">
-                <nuxt-link to="service"><img src="~static/icons_header/service_icon.png" alt=""></nuxt-link>
+                <nuxt-link :to="`${$t('service')}?lang=${$store.state.locale}`"><img src="~static/icons_header/service_icon.png" alt=""></nuxt-link>
             </el-menu-item>
              <el-menu-item index="4">
-                <nuxt-link to="me"><img src="~static/icons_header/me_icon.png" alt=""></nuxt-link>
+                <nuxt-link :to="`${$t('me')}?lang=${$store.state.locale}`"><img src="~static/icons_header/me_icon.png" alt=""></nuxt-link>
             </el-menu-item>
 
 
