@@ -137,7 +137,7 @@ export default {
                 
                     .then(response => {
                      console.log(this.bet = response.data.data)
-                     console.log(this.bet)
+                     console.log(response)
                       this.$router.push('/bet_success');
                 })
                

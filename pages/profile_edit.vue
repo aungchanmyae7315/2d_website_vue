@@ -236,6 +236,7 @@
                         })
                     .then(response => {
                      console.log(this.name_update = response.data.data)
+                     console.log(response)
 
                 })
 
