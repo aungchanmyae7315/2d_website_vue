@@ -9,7 +9,7 @@
              <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
               <div class="demo-type">
                  <el-avatar :size="60" src="https://img.icons8.com/nolan/64/name.png"></el-avatar>
-                  <span  class="avatar_text_logout">Please Login First</span>
+                  <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
 
                    
               </div>
@@ -241,8 +241,8 @@ export default {
                 console.log(this.slider_images = response.data.data)
               })
          let token = localStorage.getItem('token');
-    
-       axios.get("https://build.seinlucky.com/api/v1/profile",
+      if(token) {
+         axios.get("https://build.seinlucky.com/api/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
@@ -251,6 +251,8 @@ export default {
                      console.log(this.profile = response.data.data)
 
                 })
+      }
+      
         
     },
 

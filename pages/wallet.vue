@@ -6,7 +6,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li>
-                      <span>Please Log In First</span>
+                      <span>{{$t('Please Login first')}}</span>
                       
                       </li>
                   
@@ -88,19 +88,26 @@
                 text-color="#fff"
                 width="100%"
                 active-text-color="#ffd04b">
-                <el-menu-item index="1">
-                  <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"><img src="~static/icons_header/dimond_icon.png" alt=""></nuxt-link>
-                  
-                </el-menu-item>
-                <el-menu-item index="2">
-                    <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`"><img src="~static/icons_header/wallet_t_icon.png" alt=""></nuxt-link>
-                </el-menu-item>
-                <el-menu-item index="3">
-                    <nuxt-link  :to="`${$t('service')}?lang=${$store.state.locale}`"><img src="~static/icons_header/service_icon.png" alt=""></nuxt-link>
-                </el-menu-item>
+                  <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                    <el-menu-item index="1">
+                        <img src="~static/icons_header/dimond_icon.png" alt="">
+                    </el-menu-item>
+                </nuxt-link>
+                <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`">
+                  <el-menu-item index="2">
+                      <img src="~static/icons_header/wallet_t_icon.png" alt="">
+                  </el-menu-item>
+                </nuxt-link>
+                 <nuxt-link  :to="`${$t('service')}?lang=${$store.state.locale}`">
+                  <el-menu-item index="3">
+                    <img src="~static/icons_header/service_icon.png" alt="">
+                  </el-menu-item>
+                </nuxt-link>
+                <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
                   <el-menu-item index="4">
-                    <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`"><img src="~static/icons_header/me_icon.png" alt=""></nuxt-link>
+                    <img src="~static/icons_header/me_icon.png" alt="">
                 </el-menu-item>
+                </nuxt-link>
 
 
               </el-menu>

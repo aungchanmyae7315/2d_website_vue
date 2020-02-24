@@ -5,20 +5,39 @@
            <img src="~static/images/login_page/login_bg.png" class="login_bg">
           <div class="main_login_page">
               <div class="language">
+                <el-dropdown @command="changeLang" style="text-align:center">
+              
               <ul>
+                
                 <li>
-                  <a href="">ဇော်ဂျီ</a>
+               <el-dropdown-item round command='en'>{{$t('English')}}</el-dropdown-item>
                 </li>
                 <li>
-                  <a href="">ယူနီကုတ်</a>
+                   <el-dropdown-item round command='uni'>{{$t('Unicode')}}</el-dropdown-item>
                 </li>
                 <li>
-                  <a href="">English</a>
+                 <el-dropdown-item round command='zg'>{{$t('Zawgyi')}}</el-dropdown-item>
                 </li>
                 <li>
-                  <a href="">Chinese</a>
+                   <el-dropdown-item round command='zh'>{{$t('China')}}</el-dropdown-item>
                 </li>
+                
               </ul>
+               </el-dropdown>   
+              <!-- <div class="lang">
+                <el-dropdown @command="changeLang" style="text-align:center">
+                <span class="el-dropdown-link" style='cursor: pointer;'>
+                    {{$t('Language')}}
+                </span>
+                
+                    <el-dropdown-item round command='en'>English</el-dropdown-item>
+                    <el-dropdown-item round command='uni'>Myanmar Unicode</el-dropdown-item>
+                    <el-dropdown-item round command='zg'>Myanmar Zawgyi</el-dropdown-item>
+                     <el-dropdown-item round command='zh'>China</el-dropdown-item>
+
+
+                </el-dropdown>   
+            </div> -->
           </div>
 
       <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
@@ -31,7 +50,7 @@
               ]"
                
             >  
-                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                <el-input type="phone"  :placeholder="$t('Phone_placeholder')" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                
             </el-form-item>
             
@@ -45,23 +64,25 @@
              
                 ]"
             >
-                <el-input type="password" show-password placeholder="Password"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
+                <el-input type="password" show-password :placeholder="$t('Password')"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
             </el-form-item>
             <el-form-item>
-          <el-button type="success" round @click="submitForm('ruleForm')">Submit</el-button>
+          <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Submit')}}</el-button>
 
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
-                <el-button type="text" @click="dialogVisible = true">Forgot Password</el-button>
+                          <nuxt-link :to="`${$t('signup')}?lang=${$store.state.locale}`">
+                <el-button type="text"  style="color:#158220">{{$t('Forgot_password')}}</el-button>
+                          </nuxt-link>
             </el-form-item>
         </el-form>
 
         <h6>Or</h6>
         <div class="btn_group_sig">
             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-                  <el-button type="default" round>Skip</el-button>
+                  <el-button type="default" round>{{$t('Skip')}}</el-button>
             </nuxt-link>
            <nuxt-link :to="`${$t('signup')}?lang=${$store.state.locale}`">
-                <el-button type="warning" round>Sign Up</el-button>
+                <el-button type="warning" round>{{$t('Sign_up')}}</el-button>
            </nuxt-link>
           
         </div>
@@ -76,17 +97,7 @@
         
     <!-- forgot password modal box     -->
 
-<el-dialog
-  title="Tips"
-  :visible.sync="dialogVisible"
-  width="100%"
-  :before-close="handleClose">
-  <span>This is a message</span>
-  <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
-  </span>
-</el-dialog>
+
     
      
   
@@ -117,6 +128,12 @@ import axios from 'axios'
     },
     
     methods: {
+         changeLang (lang) {
+            //mutate 'locale' in store
+            this.$store.commit('SET_LANG', lang)
+            //re-route to the current page but with the selected language in a query string
+            this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
+         },
       submitForm(formName) {
          this.$refs[formName].validate((valid) => {
           if (valid) {
@@ -208,14 +225,17 @@ import axios from 'axios'
     padding:0;
     margin:0;
     text-align:center;
-    display :inline-flex;
+    
 
   }
   .language ul li {
     list-style :none;
     display :block;
-    padding:15px 10px 15px 10px;
+    display: inline-block;
+    margin:8px auto;
+    padding:0 5px;
   }
+
   .language ul li a {
     text-decoration :none;
   }
@@ -241,7 +261,7 @@ import axios from 'axios'
     font-family:'Oswald';
     font-weight:700;
     position:relative;  
-    margin: 80px auto 20px auto;
+    margin: 60px auto 20px auto;
     font-size: 16px;
     line-height: 15px;
     width: 282px;

@@ -53,8 +53,15 @@
   "Bet Status for 4:30 PM": "Bet Status for 4:30 PM",
   "Click to see Bet History": "Click to see Bet History",
   "You can just message to us" : "You can just message to us",
-  "Sein Lucky Bank Accounts" : "Sein Lucky Bank Accounts"
-
-
+  "Sein Lucky Bank Accounts" : "Sein Lucky Bank Accounts",
+  "Phone_placeholder" : "phone",
+  "Password_placeholder":"Password",
+  "Forgot_password" :"Forgot Password",
+  "Skip" : "Skip",
+  "Sign_up" :"Sign Up",
+  "Unicode":"Unicode",
+  "Zawgyi" :"Zawgyi",
+  "China" :"China",
+  "Next" : "Next"
 }
 
