@@ -5,7 +5,7 @@
         </el-page-header>
       </el-header>
         <section class="noti_content">
-            <ul v-for="noti of notification" :key="noti" class="noti_text"  data-aos="fade-down"
+            <ul v-for="(noti ,n) in notification" :key="n" class="noti_text"  data-aos="fade-down"
         data-aos-easing="linear"
         data-aos-duration="500">
                 

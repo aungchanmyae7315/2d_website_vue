@@ -17,7 +17,7 @@
                             <template slot="title">
                                 
                                 <div style="text-align:left"> {{bet_list_detail.date}}</div>
-                                <div style="text-align:right">{{bet_list_detail.amount}}</div>
+                                <div style="text-align:right">{{bet_list_detail.result_amount}}</div>
                             </template>
 
                             <el-row>
