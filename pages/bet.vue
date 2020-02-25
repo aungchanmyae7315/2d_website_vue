@@ -121,13 +121,13 @@
             </el-row>
 
                <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
-                 <nuxt-link to="login" >
-                    <el-button  type="warning" round>Please Login to bet</el-button>
+                 <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
+                    <el-button  type="warning" round>{{$t('Please Login first')}}</el-button>
                  </nuxt-link>
              </div>
             <div v-else class="bet_login_btn">
 
-                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round>Bet</el-button>
+                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round>{{$t('Bet')}}</el-button>
            
             </div>
             
@@ -148,7 +148,7 @@
                                     ]"
                             
                             >   <el-checkbox-group v-model="ruleForm.check_btn">
-                                    <el-checkbox-button v-for="city in cities" :id="city.id" :label="city" :key="city">{{city}}</el-checkbox-button>
+                                    <el-checkbox-button v-for="city in cities" :id="city.id"  :label="city" :key="city.id">{{city}}</el-checkbox-button>
                                 </el-checkbox-group>
                             </el-form-item>
 
@@ -582,7 +582,9 @@ export default {
                 ruleForm: {
                     amount:'',
                     check_btn: [],
+                   
                 },
+              
                dialogFormVisible: false,
             // isActive: false,
                 

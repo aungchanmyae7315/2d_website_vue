@@ -6,7 +6,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li>
-                      <span>Please Log In First</span>
+                      <span>{{$t('Please Login first')}}</span>
                       
                       </li>
                   
@@ -24,7 +24,7 @@
                   </el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li>My Balance</li>
+                    <li>{{ $t('my_balance') }}</li>
                     <li class="amount_mmk">{{this.profile.wallet}}</li>
                   </ul>
                   </div>
@@ -34,11 +34,11 @@
               </div>
            
                 <div v-else class="btn_group_wallet">
-                  <nuxt-link to="/withdrawal">
-                    <el-button round class="withdraw_btn">Withdrawal</el-button>
+                  <nuxt-link  :to="`${$t('withdrawal')}?lang=${$store.state.locale}`">
+                    <el-button round class="withdraw_btn">{{ $t('Withdrawal') }}</el-button>
                   </nuxt-link>
-                <nuxt-link to="/topup">
-                      <el-button type="warning" round>Top Up</el-button>
+                <nuxt-link  :to="`${$t('topup')}?lang=${$store.state.locale}`">
+                      <el-button type="warning" round>{{ $t('Top Up') }}</el-button>
                 </nuxt-link>
               
                </div>
@@ -50,7 +50,7 @@
                 <el-card data-aos="fade-up" data-aos-duration="800">
                   
 
-                  <h5>Sein Lucky Bank Accounts</h5>
+                  <h5>{{ $t('Sein Lucky Bank Accounts') }}</h5>
                   <p><span style="color:red;">Warning !!!</span> There is no other Sein Lucky bank account except these following bank accounts</p>
                     
                     <div v-for="(bank_info, b) in bank_account" :key="b">
@@ -67,7 +67,7 @@
                         </div>
                         <div class="result_icon">
                             <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode(bank_info.id)">
-                            Copy
+                            {{ $t('Copy') }}
                           </span>
                           </div>
                       </div>
@@ -88,19 +88,26 @@
                 text-color="#fff"
                 width="100%"
                 active-text-color="#ffd04b">
-                <el-menu-item index="1">
-                  <nuxt-link to="/"><img src="~static/icons_header/dimond_icon.png" alt=""></nuxt-link>
-                  
-                </el-menu-item>
-                <el-menu-item index="2">
-                    <nuxt-link to="/wallet" type="wallet"><img src="~static/icons_header/wallet_t_icon.png" alt=""></nuxt-link>
-                </el-menu-item>
-                <el-menu-item index="3">
-                    <nuxt-link to="/service"><img src="~static/icons_header/service_icon.png" alt=""></nuxt-link>
-                </el-menu-item>
+                  <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                    <el-menu-item index="1">
+                        <img src="~static/icons_header/dimond_icon.png" alt="">
+                    </el-menu-item>
+                </nuxt-link>
+                <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`">
+                  <el-menu-item index="2">
+                      <img src="~static/icons_header/wallet_t_icon.png" alt="">
+                  </el-menu-item>
+                </nuxt-link>
+                 <nuxt-link  :to="`${$t('service')}?lang=${$store.state.locale}`">
+                  <el-menu-item index="3">
+                    <img src="~static/icons_header/service_icon.png" alt="">
+                  </el-menu-item>
+                </nuxt-link>
+                <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
                   <el-menu-item index="4">
-                    <nuxt-link to="/me"><img src="~static/icons_header/me_icon.png" alt=""></nuxt-link>
+                    <img src="~static/icons_header/me_icon.png" alt="">
                 </el-menu-item>
+                </nuxt-link>
 
 
               </el-menu>
@@ -212,7 +219,9 @@
 <script>
  import axios from 'axios'
   export default {
-    
+     head() {
+        return { title: this.$t('about.title') }
+      },
      mounted() {
       this.updateIsLoggedIn();
      

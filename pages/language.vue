@@ -5,37 +5,39 @@
                 <el-page-header @back="goBack" content="Language">
                 </el-page-header>
             </el-header>
-<lang></lang>
-            <!-- <nuxt-link
-                v-if="$i18n.locale !== 'en'"
-                :to="switchLocalePath('en')"
-                >
-                English
-                </nuxt-link>
 
-                <nuxt-link
-                v-if="$i18n.locale !== 'mm'"
-                :to="switchLocalePath('mm')"
-                >
-                Myanmar
-            </nuxt-link> -->
-            <!-- <li>{{ $t('language') }}</li>
-            <ul class="lang_list">
-                <nuxt-link
-                    :key="index"
-                    v-for="(locale, index) in locales"
-                    :to="switchLocalePath(locale.code)"
-                >
-                    <li :class="isSelected(locale.code)">{{ locale.title }}</li>
-                </nuxt-link>
-            </ul> -->
-               <el-button type="success" style="width:100%"  round @click="submitLang('')"  v-loading.fullscreen.lock="fullscreenLoading">Submit</el-button>
+            <div class="lang">
+                <el-dropdown @command="changeLang" style="text-align:center">
+                <span class="el-dropdown-link" style='cursor: pointer;'>
+                    {{$t('Language')}}
+                </span>
+                
+                    <el-dropdown-item round command='en'>English</el-dropdown-item>
+                    <el-dropdown-item round command='uni'>Myanmar Unicode</el-dropdown-item>
+                    <el-dropdown-item round command='zg'>Myanmar Zawgyi</el-dropdown-item>
+                     <el-dropdown-item round command='zh'>China</el-dropdown-item>
+
+
+                </el-dropdown>   
+            </div>
+
+
+
+         <div class="footer_btn" >
+             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
+                         <el-button type="success" style="width:100%"  round @click="submitLang('')"  v-loading.fullscreen.lock="fullscreenLoading">Submit</el-button>
+            </nuxt-link>
         </div>
+           
+      
+        </div>
+       
+           
     </section>
 </template>
 
 <script>
-import lang from '~/components/lang.vue'
+
 export default {
     data() {
         return {
@@ -43,18 +45,24 @@ export default {
         }
     },
     components: {
-    lang
+    
   },
     methods: {
-        isSelected: function (code) {
-            const vm = this
-            const selectedLocale = this.$i18n.locale
+         changeLang (lang) {
+      //mutate 'locale' in store
+      this.$store.commit('SET_LANG', lang)
+      //re-route to the current page but with the selected language in a query string
+      this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
+    },
+        // isSelected: function (code) {
+        //     const vm = this
+        //     const selectedLocale = this.$i18n.locale
 
-            if (code == selectedLocale) {
-                return 'active'
+        //     if (code == selectedLocale) {
+        //         return 'active'
                 
-            }
-        },
+        //     }
+        // },
         goBack() {
               this.$router.push('/');
         },
@@ -79,7 +87,7 @@ export default {
     computed: {
         locales () {
           
-            return this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)
+            //eturn this.$i18n.locales.filter(locale => locale.code !== this.$i18n.locale)
             
         },
        
@@ -88,6 +96,30 @@ export default {
 </script>
 
 <style >
+    .lang {
+        text-align: center;
+        margin:100px auto;
+    }
+    .lang .el-dropdown-menu__item{
+        margin:20px auto;
+    }
+    .lang .el-dropdown-link {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .lang .el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+        background: #158220;
+        color:#fff;
+        border-radius: 21px;
+    }
+    .lang .el-button.is-round {
+        width: 100%;
+        position: absolute;
+        right: 0;
+        left: 0;
+        margin: 20px;
+        bottom: 0;
+    }
     .language_type {
         padding:20px;
     }

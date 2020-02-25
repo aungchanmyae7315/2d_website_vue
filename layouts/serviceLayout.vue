@@ -16,19 +16,27 @@
             text-color="#fff"
             width="100%"
             active-text-color="#ffd04b">
+             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
             <el-menu-item index="1">
-              <nuxt-link to="/"><img src="~static/icons_header/dimond_icon.png" alt=""></nuxt-link>
-              
+             <img src="~static/icons_header/dimond_icon.png" alt="">
+
             </el-menu-item>
+            </nuxt-link>
+             <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`">
             <el-menu-item index="2">
-                <nuxt-link to="/wallet" type="wallet"><img src="~static/icons_header/wallet_icon.png" alt=""></nuxt-link>
+               <img src="~static/icons_header/wallet_icon.png" alt="">
             </el-menu-item>
+            </nuxt-link>
+            <nuxt-link :to="`${$t('service')}?lang=${$store.state.locale}`">
             <el-menu-item index="3">
-                <nuxt-link to="/service"><img src="~static/icons_header/service_t_icon.png" alt=""></nuxt-link>
+                <img src="~static/icons_header/service_t_icon.png" alt="">
             </el-menu-item>
+            </nuxt-link>
+              <nuxt-link :to="`${$t('me')}?lang=${$store.state.locale}`">
              <el-menu-item index="4">
-                <nuxt-link to="/me"><img src="~static/icons_header/me_icon.png" alt=""></nuxt-link>
+              <img src="~static/icons_header/me_icon.png" alt="">
             </el-menu-item>
+            </nuxt-link>
 
 
           </el-menu>

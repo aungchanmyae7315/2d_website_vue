@@ -1,4 +1,3 @@
-
 export default {
   server: {
     port: 8000, // default: 3000
@@ -6,9 +5,11 @@ export default {
   },
   loading: '~/components/loading.vue',
   mode: 'spa',
-
+  router: {              // customize nuxt.js router (vue-router).
+    middleware: 'i18n'   // middleware all pages of the application
+  },
   generate: {
-    routes: ['/', '/result', '/mm', '/mm/result']
+    routes: ['/', '/about', '/mm', '/mm/about']
   },
   /*
   ** Headers of the page
@@ -66,8 +67,8 @@ export default {
     '@/plugins/element-ui',
     '@/plugins/axios',
     '@/plugins/aos',
-   
-    {src: '@/plugins/i18n', ssr: false},
+    '~/plugins/i18n.js',
+    // {src: '@/plugins/i18n', ssr: false},
   ],
   /*
   ** Nuxt.js dev-modules
@@ -80,23 +81,7 @@ export default {
  modules: [
 
   '@nuxtjs/axios',
-  ['nuxt-i18n',
-      {
-        locales: ['en', 'mm'],
-        defaultLocale: 'en',
-        vueI18n: {
-          fallbackLocale: 'en',
-          messages: {
-            en: {
-              greeting: 'Hello world!'
-            },
-            mm: {
-              greeting: 'Lee bal'
-            }
-          }
-        }
-      }
-    ]
+ 
 ],
 // auth: {
 //   strategies: {

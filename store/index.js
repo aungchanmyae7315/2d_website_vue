@@ -11,7 +11,8 @@ const createStore = () => {
             phoneResponse:'',
             getBet:'',
             updateLang:true,
-            locales: ['en', 'mm'],
+            locales: ['en', 'uni','zg','zh'],
+            locale: 'en',
             token:'',
         
         },
@@ -80,7 +81,7 @@ const createStore = () => {
                 //console.log(phoneResponse.access_token)
             },
             getBet(state, check_btn){
-                localStorage.setItem('check_btn',check_btn);
+                localStorage.setItem('check_btn', check_btn);
                 state.check_btn = check_btn;
                 //console.log(check_btn)
             },

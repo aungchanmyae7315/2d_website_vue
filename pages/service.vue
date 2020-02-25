@@ -7,13 +7,13 @@
                   <img src="~static/icons_service/Customer_services_icon.png" alt="" data-aos="fade-down"
      data-aos-easing="linear"
      data-aos-duration="500">
-                    <p class="contact_text">Contact us via Viber or Phone call</p>
+                    <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
                     <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
 
                     </ul>
                   <h6>Or</h6>
-                  <p class="contact_chat"> You can just message to us </p>
+                  <p class="contact_chat">{{$t('You can just message to us')}} </p>
                     <el-button type="primary">Chat with our customer service</el-button>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export default {
     font-family:'Oswald';
     font-weight:700;
     position:relative;  
-    margin: 80px auto 20px auto;
+    margin: 70px auto 20px auto;
     font-size: 16px;
     line-height: 15px;
     width: 282px;
@@ -124,6 +124,7 @@ h6:after   {
     }
     .service_contact .el-button  {
        border-radius:12px;
+       width:140px !important;
     }
     .service_contact li:hover a {
       color:#2D5936;

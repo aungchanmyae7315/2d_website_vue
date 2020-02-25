@@ -22,7 +22,7 @@
 
 
             <el-form-item
-              label="Phone"
+              :label="$t('Phone_placeholder')"
               prop="phone"
               :rules="[
                 { required: true, message: 'phone is required'},
@@ -30,12 +30,12 @@
               ]"
                
             >  
-                <el-input type="phone" placeholder="Phone" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                <el-input type="phone" placeholder="09 xxx xxx xxx" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                
             </el-form-item>
             
              </div>
-               <el-button type="success" round @click="next('ruleForm')">next</el-button>
+               <el-button type="success" round @click="next('ruleForm')">{{$t('Next')}}</el-button>
         
           </el-form>
             <el-form v-if="active===2"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
@@ -60,7 +60,7 @@
             </el-form-item>
             
              </div>
-               <el-button type="success" round @click="nextTwo('ruleForm')">next</el-button>
+               <el-button type="success" round @click="nextTwo('ruleForm')">{{$t('Next')}}</el-button>
         
           </el-form>
         <!-- <el-form v-if="active===2" :model="ruleForm" ref="ruleForm"   class="demo-ruleForm" >
@@ -104,7 +104,7 @@
             </el-form-item>
             
              </div>
-             <el-button type="success" round @click="submitForm('ruleForm')">Submit</el-button>
+             <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Submit')}}</el-button>
         </el-form>
         
         <div class="step_bar">
@@ -291,7 +291,7 @@ import axios from 'axios'
     }
     .sign_page .el-button.is-round {
         width:100%;
-        margin:30px auto;
+        margin:20px auto;
     }
     .phone_input .el-input__prefix {
         color:green;
