@@ -2,8 +2,10 @@
     <section class="bet_container">
          <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
         <el-header>
-            <el-page-header @back="goBack()">
+            <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
+             <el-page-header content="">
             </el-page-header>
+            </nuxt-link>
             <el-row>
                 <el-col :span="6">
                     
@@ -127,7 +129,7 @@
              </div>
             <div v-else class="bet_login_btn">
 
-                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round>{{$t('Bet')}}</el-button>
+                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
            
             </div>
             
@@ -605,9 +607,9 @@ export default {
         hasUserInfo() {
             return Boolean(localStorage.getItem('userInfo'));
         },
-        goBack() {
-                this.$router.push('/')
-        },
+        // goBack() {
+        //         this.$router.push('/home')
+        // },
         clear_btn() {
             this.ruleForm.check_btn = [];
             //    this.dialogFormVisible = false

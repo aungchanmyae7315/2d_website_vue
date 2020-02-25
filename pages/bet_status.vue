@@ -1,7 +1,7 @@
 <template>
    <div class="main_container bet_status">
       <el-header>
-          <el-page-header @back="goBack" content="Bet Status for 12:00 PM">
+          <el-page-header @back="goBack" content="Bet Status">
            
         </el-page-header>
          <nuxt-link :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
@@ -27,31 +27,35 @@
         </table>
         
 
-      <el-dialog class="model_items"
+      <el-dialog class="model_items" v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id"
         title="Tips"
         :visible.sync="dialogVisible"
         width="90%"
         >
-    <ul>
-        <li>
+    <ul >
+        <li >
             <span>Date & Time</span><br>
-            <span>12:00Am</span>
+            <p>{{bet_list.created_at}}</p>
             
         </li>
         <li>
             <span>Name</span>
+             <span>Name</span>
         </li>
         <li>
             <span>Phone Number</span>
+            <p>09xxxxxx</p>
         </li>
         <li>
             <span>Bet Number</span>
+            <p>{{bet_list.number}}</p>
         </li>
         <li>
             <span>Odds</span>
         </li>
         <li>
             <span>Amount</span>
+             <p>{{bet_list.amount}}</p>
         </li>
     </ul>
 </el-dialog>

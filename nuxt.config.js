@@ -23,7 +23,9 @@ export default {
     ],
     script: [
       
-      // { src: 'https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.min.js' },
+      // { src: '' },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js' },
+      { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js' },
       { src: 'https://unpkg.com/aos@next/dist/aos.js' },
       { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js' },

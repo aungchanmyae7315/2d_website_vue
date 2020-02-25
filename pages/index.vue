@@ -65,16 +65,26 @@
           </div>
           <div class="row n_d_t">
             <div class="col">
+               
                 <div class="number">
-                      <h2 class="live_number">{{this.info.live}}</h2>
+
+                      <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
+                       <h2 class="static"
+                          v-bind:class="{ live_number: isActive, 'text-danger': hasError }">
+                          {{this.info.live}}
+                      </h2>
                 </div>
+               
             </div>
             <div class="col">
                 <div class="date_time">
                   <div class="d_t_item">
+                   
+ 
                       <span>updated at:</span><br>
-                      <span>4 January 2020</span><br>
-                      <span>12:00 AM</span>
+                      <span v-text="currentDate"></span><br>
+                      <!-- <span v-if="currentTime == ''" v-text="currentTime"></span> -->
+                        <span v-text="currentTime"></span>
                   </div>
 
                   
@@ -85,6 +95,7 @@
            <div class="card_one" data-aos="fade-up" data-aos-duration="700">
             <div class="card_item">
               <h5 class="time_number">12:00 AM</h5>
+            
                 <div class="row">
                   
                   <div class="col">
@@ -97,7 +108,10 @@
                   </div>
                   <div class="col">
                       <span>2D</span>
-                      <h4 class="result_num">{{this.info.result_1200}}</h4>
+                     <h4 class="static"
+                          v-bind:class="{ result_num: isActive, 'text-danger': hasError }">
+                          {{this.info.result_1200}}
+                      </h4>
                   </div>
                 </div>
               </div>
@@ -117,7 +131,11 @@
                       </div>
                       <div class="col">
                           <span>2D</span>
-                          <h4 class="result_num">{{this.info.result_430}}</h4>
+                          <h4 class="static"
+                          v-bind:class="{ result_num: isActive, 'text-danger': hasError }">
+                          {{this.info.result_430}}
+                      </h4>
+                          <!-- <h4 class="result_num">{{this.info.result_430}}</h4> -->
                       </div>
                     </div>
                 </div>
@@ -199,10 +217,15 @@ export default {
   },
   data() {
     return {
-
+       isActive: true,
+      hasError: false,
+      currentTime: '',
+      currentDate: null,
+      morningTime:null,
       slider_images:'',
       activeIndex: '1',
       info:'',
+      kwee_cma:'',
       set_1200:'',
       profile:'',
       //   activeIndex2: '1',
@@ -210,7 +233,10 @@ export default {
     }
   },
    methods: {
-     
+       updateCurrentTime() {
+        this.currentTime = moment().format('h:mm:ss A');
+        this.currentDate = moment().format('LL');
+      },
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
@@ -228,17 +254,62 @@ export default {
 
     },
      created() {
-      
-      //  setInterval(function () {
-          axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+      this.currentDate = moment().format('LL');
+    var currentTime = moment().format('h:mm:ss A');
+  
+    setInterval(() => this.updateCurrentTime(), 1 * 1000);
+    var morningTime_9_30 = '9:01:00'
+     var time_12_00 = '12:00:00'
+        var time_01_00 = '1:01:00'
+          var time_04_30 = '4:30:00'
+    
+  if(currentTime  >  morningTime_9_30 ) {
+    //alert('one')
+    this.isActive = true
+     axios.get('http://kweecma.online/2d3dapi/')
               .then(response => {
-                console.log(this.info = response.data.data)
+               // this.info = response.data.data
+               console.log(response)
               })
-          // }.bind(this), 5000);
+     
+  }else if(currentTime > time_12_00 && currentTime <  time_01_00 ) {
+      // alert('two')
+      this.isActive = false
+      alert(currentTime)
+       axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+              .then(response => {
+                this.info = response.data.data
+              })
+  }else if(currentTime > time_01_00 && currentTime < time_04_30 ) {
+    // alert('three')
+    console.log('theeereee')
+    this.isActive = true
+         axios.get('http://shwe2d3.com/index.php/api/')
+              .then(response => {
+               this.info = response.data[0]
+                console.log(response.data[0])
+              })
+  }else if(currentTime > time_04_30 && currentTime < morningTime_9_30) {
+     this.isActive = false
+      //  alert('foursssss')
+        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+              .then(response => {
+                this.info = response.data.data
+               
+              })
+  }else {
+        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+              .then(response => {
+                this.info = response.data.data
+               
+              })
+  }
+    
+     
           
           axios.get('https://build.seinlucky.com/api/v2/v1/slider_image')
               .then(response => {
-                console.log(this.slider_images = response.data.data)
+               this.slider_images = response.data.data
               })
          let token = localStorage.getItem('token');
       if(token) {
@@ -248,7 +319,7 @@ export default {
                          }
                         })
                     .then(response => {
-                     console.log(this.profile = response.data.data)
+                     this.profile = response.data.data
 
                 })
       }

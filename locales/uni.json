@@ -66,7 +66,31 @@
   "Unicode":"ယူနီကုတ်",
   "Zawgyi" :"ဇော်ဂျီ",
   "China" :"China",
-  "Next" : "နောက်ထပ်"
+  "Next" : "နောက်ထပ်",
+
+
+  "notification":"notification",
+  "/":"/",
+  "wallet":"wallet",
+  "service":"service",
+  "me":"me",
+  "acc_refel":"acc_refel",
+  "bet_detail":"bet_detail",
+  "bet_history":"bet_history",
+  "bet_status":"bet_status",
+  "bet_success":"bet_success",
+  "bet":"bet",
+  "language":"language",
+  "login":"login",
+  "profile_edit":"profile_edit",
+  "remark":"remark",
+  "result":"result",
+  "signup_refel":"signup_refel",
+  "topup":"top_up",
+
+  "withdraw_noti":"withdraw_noti",
+  "withdraw_success":"withdraw_success",
+  "withdrawal":"withdrawal"
 
  
 }

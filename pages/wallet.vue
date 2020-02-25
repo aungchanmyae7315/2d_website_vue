@@ -61,7 +61,7 @@
                           <li>{{bank_info.bank_name}}</li>
                           <li class="bank_number">
                             <span class="code text-red">{{ bank_info.card_number }}</span>
-                            <input type="hidden" id="kbz-code" :value="bank_info.card_number">
+                            <input type="hidden" :id="'code'+(b+1)" :value="bank_info.card_number">
                           </li>
                         </ul>
                         </div>
@@ -219,9 +219,7 @@
 <script>
  import axios from 'axios'
   export default {
-     head() {
-        return { title: this.$t('about.title') }
-      },
+     
      mounted() {
       this.updateIsLoggedIn();
      
@@ -239,7 +237,7 @@
       
           axios.get('https://build.seinlucky.com/api/v1/admin-bank')
               .then(response => {
-                console.log(this.bank_account = response.data.data)
+                this.bank_account = response.data.data
               })  
           let token = localStorage.getItem('token');
     
@@ -249,7 +247,7 @@
                          }
                         })
                     .then(response => {
-                     console.log(this.profile = response.data.data)
+                     this.profile = response.data.data
 
                 })
     },
@@ -264,9 +262,8 @@
       },
 
        copyTestingCode (data) {
-         alert(data)
-          let testingCodeToCopy = document.querySelector('#kbz-code')
-          testingCodeToCopy.setAttribute('type', 'text')    // 不是 hidden 才能複製
+          let testingCodeToCopy = document.querySelector('#code'+data)
+          testingCodeToCopy.setAttribute('type', 'text')    
           testingCodeToCopy.select()
 
           try {
@@ -281,8 +278,6 @@
           } catch (err) {
             alert('Oops, unable to copy');
           }
-
-          /* unselect the range */
           testingCodeToCopy.setAttribute('type', 'hidden')
           window.getSelection().removeAllRanges()
         },

@@ -4,8 +4,11 @@
                 <div class="longText" id="hidingScrollBar">
                     <div class="hideScrollBar_refel">
                 <el-header>
-                    <el-page-header @back="goBack" content="Withdrawal">
-                    </el-page-header>
+                     <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`">
+                         <el-page-header content="Withdrawal">
+                         </el-page-header>
+                     </nuxt-link>
+
                 </el-header>
                 <p>Select your receiving bank</p>
                 <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
