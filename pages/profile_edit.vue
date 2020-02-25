@@ -202,23 +202,27 @@
      
     },
     profile_edit() {
+
               let token = localStorage.getItem('token');
-              console.log(this.image)
-              var img = "https://images.pexels.com/photos/3584930/pexels-photo-3584930.jpeg"
+              // console.log(this.image)
+              var img = this.image
+              // var img = "https://images.pexels.com/photos/3584930/pexels-photo-3584930.jpeg"
                 var data_profile = {
                   //https://images.pexels.com/photos/3584930/pexels-photo-3584930.jpeg
-                  profile:img
+                  profile:this.image,
 
                 }
-        
+
                 axios.post("https://build.seinlucky.com/api/v1/profile-photo/update",data_profile,
                     {
                       headers: {
                                "Authorization": "Bearer "+token,
                                "Access-Control-Allow-Origin" : "*",
-                               
-                               'content-type': 'multipart/form-data'
+                               "Content-Type" : 'application/json',
+                               "Content-Type": 'multipart/form-data'
                          }
+                                        
+                    
                         })
                     .then(response => {
                      console.log(response)
@@ -226,6 +230,7 @@
                 })
                  var data_name = {
                     name:this.edit_name,
+                    // profile:this.image
 
                   }
                 axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
@@ -235,7 +240,7 @@
                          }
                         })
                     .then(response => {
-                     console.log(this.name_update = response.data.data)
+                    //  console.log(this.name_update = response.data.data)
                      console.log(response)
 
                 })
