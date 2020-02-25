@@ -150,7 +150,7 @@ export default {
                 
                     .then(response => {
                      console.log(this.topup_info = response.data.data)
-                     console.log(this.topup_info)
+                     console.log(response)
                 })
             
      }

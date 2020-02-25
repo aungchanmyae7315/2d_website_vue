@@ -80,7 +80,7 @@ const createStore = () => {
                 //console.log(phoneResponse.access_token)
             },
             getBet(state, check_btn){
-                localStorage.setItem('check_btn', JSON.stringify(check_btn));
+                localStorage.setItem('check_btn',check_btn);
                 state.check_btn = check_btn;
                 //console.log(check_btn)
             },
