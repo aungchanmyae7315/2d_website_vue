@@ -1,8 +1,10 @@
 <template>
    <div class="main_container withdraw_noti">
       <el-header>
-          <el-page-header @back="goBack" content="Withdrawal">
-        </el-page-header>
+           <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`">
+                <el-page-header content="Withdrawal">
+                </el-page-header>
+           </nuxt-link>
       </el-header>
       <section class="withdraw_notifi">
            <div class="refel_img_two">
@@ -84,9 +86,9 @@ export default {
       
     },
      methods: {
-        goBack() {
-            this.$router.push('/notification')
-      },
+    //     goBack() {
+    //         this.$router.push('/notification')
+    //   },
      },
        created() {
 

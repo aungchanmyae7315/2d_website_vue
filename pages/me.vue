@@ -133,7 +133,7 @@ export default {
                          }
                         })
                     .then(response => {
-                     console.log(this.profile = response.data.data)
+                     this.profile = response.data.data
 
                 })
     }

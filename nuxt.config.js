@@ -34,7 +34,7 @@ export default {
       { src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons' },
       // { rel: 'stylesheet', href: 'https://unpkg.com/vue-material/dist/vue-material.min.css' },
       { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css' },
@@ -70,7 +70,7 @@ export default {
     '@/plugins/axios',
     '@/plugins/aos',
     '~/plugins/i18n.js',
-    // {src: '@/plugins/i18n', ssr: false},
+  
   ],
   /*
   ** Nuxt.js dev-modules
@@ -85,22 +85,7 @@ export default {
   '@nuxtjs/axios',
  
 ],
-// auth: {
-//   strategies: {
-//     local: {
-//       endpoints: {
-//         login: { url: '/', method: 'post', propertyName: 'access_token' },
-//         logout: { url: '/', method: 'post' },
-//         user: { url: '/', method: 'get', propertyName: false}
-//       },
-//     },
-//   },
-//   redirect: {
-//     login: '/',
-//     logout: '/',
-//     home: '/'
-// }
-// },
+
   /*
   ** Build configuration
   */

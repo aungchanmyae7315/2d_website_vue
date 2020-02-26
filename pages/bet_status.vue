@@ -1,15 +1,18 @@
 <template>
    <div class="main_container bet_status">
       <el-header>
-          <el-page-header @back="goBack" content="Bet Status">
-           
-        </el-page-header>
+           <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
+                <el-page-header  content="Bet Status">
+                
+                </el-page-header>
+           </nuxt-link>
+
          <nuxt-link :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
              <img src="~static/images/icons/bet_status_icon.png" alt="" class="bet_status_icon">
         </nuxt-link>
       </el-header>
 
-       <table class="table">
+       <table class="table" style="width:95%" >
             <thead>
                 <tr>
                 <th>Date and Time</th>
@@ -18,7 +21,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr @click="dialogVisible = true" v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id">
+                <!-- @click="dialogVisible = true" -->
+                <tr  v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id">
                 <th scope="row">{{bet_list.created_at}}</th>  
                 <td>{{bet_list.number}}</td> 
                 <td style="text-align:right">{{bet_list.amount}}</td>  
@@ -75,7 +79,7 @@
     .bet_status .el-page-header {
         line-height: 43px;
         color:#000;
-        padding:0 10px;
+        padding:0 20px;
        
     }
     .bet_status .el-page-header__content {
@@ -117,7 +121,7 @@
         float: right;
         position: relative;
         bottom: 34px;
-        right: 12px;
+        right: 24px;
     }
     .bet_status .table td, .table th {
         font-weight: unset;
@@ -157,7 +161,7 @@ export default {
                          }
                         })
                     .then(response => {
-                     console.log(this.bet_stauts = response.data.data)    
+                     this.bet_stauts = response.data.data  
                 })
      }
 }

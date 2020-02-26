@@ -1,14 +1,16 @@
 <template>
    <div class="main_container bet_detail">
       <el-header>
-          <el-page-header @back="goBack" content="Bet Detail">
-           
-        </el-page-header>
+          <nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
+            <el-page-header  content="Bet Detail">
+            
+            </el-page-header>
+          </nuxt-link>
         
       </el-header>
-       <el-row>
-            <el-col :span="12"><div style="text-align:center" class="">Date and Time</div></el-col>
-             <el-col  :span="12"><div style="text-align:center" class="">Amount (MMK)</div></el-col>
+       <el-row style="padding:23px;">
+            <el-col :span="12"><div class="">Date and Time</div></el-col>
+             <el-col  :span="12"><div style="text-align:right;padding-right:20px" class="">Amount (MMK)</div></el-col>
         </el-row>
      
                  <el-collapse accordion>
@@ -16,8 +18,8 @@
                         <el-collapse-item   v-for="(bet_list_detail,b) in bet_detail" :key="b">
                             <template slot="title">
                                 
-                                <div style="text-align:left"> {{bet_list_detail.date}}</div>
-                                <div style="text-align:right">{{bet_list_detail.result_amount}}</div>
+                                <div style="margin:0"> {{bet_list_detail.date}}</div>
+                                <div style="margin-right:0;padding-right:20px">{{bet_list_detail.result_amount}}</div>
                             </template>
 
                             <el-row>
@@ -93,7 +95,7 @@
     .bet_detail .el-page-header {
         line-height: 43px;
         color:#000;
-        padding:0 10px;
+        padding:0 20px;
        
     }
     .bet_detail .el-page-header__content {
@@ -116,6 +118,12 @@
         border-bottom:1px solid #b8b8b8 !important;
         padding-top:15px;
     }
+    .el-collapse-item__arrow {
+        margin:0;
+    }
+    .el-collapse-item__header {
+        padding:0 20px;
+    }
 
 </style>
 
@@ -135,17 +143,15 @@ export default {
        
       },
     
-        goBack() {
-            this.$router.push('/me')
-        }
+        // goBack() {
+        //     this.$router.push('/me')
+        // }
     },
       created() {
 
         let token = localStorage.getItem('token');
 
         let bet_date = localStorage.getItem('bet_date');
-         console.log(token);
-        console.log(bet_date);
             axios.get("https://build.seinlucky.com/api/v1/historyByDate?date="+bet_date,
                 {headers: {
                             "Authorization": "Bearer "+token
@@ -153,7 +159,7 @@ export default {
                     })
             
                 .then(response => {
-                    console.log(this.bet_detail = response.data.data)
+                    this.bet_detail = response.data.data
             })
      }
 }

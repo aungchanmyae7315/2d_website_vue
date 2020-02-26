@@ -1,8 +1,10 @@
 <template>
    <div class="main_container profile_edit">
       <el-header>
-          <el-page-header @back="goBack" content="Profile">
-        </el-page-header>
+         <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
+            <el-page-header content="Profile">
+          </el-page-header>
+         </nuxt-link>
       </el-header>
 
 
@@ -35,10 +37,10 @@
 
         <el-form>
             <el-form-item  class="edit_name" >
-                <el-input  required type="text" placeholder="Your Full Name" v-model="edit_name" autocomplete="off"></el-input>
+                <el-input  required type="text" placeholder="Your Full Name"  v-model="this.profile.name" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
-                <p>Registered Phone: 09954265784</p>
+                <p>Registered Phone: {{this.profile.phone}}</p>
               
                <el-button round @click="profile_edit">Summit</el-button>
              
@@ -154,7 +156,7 @@
  import axios from 'axios'
   export default {
     mounted() {
-        console.log('fffff')
+  
       let token = localStorage.getItem('token');
     
       axios.get("https://build.seinlucky.com/api/v1/profile",
@@ -163,21 +165,20 @@
                          }
                         })
                     .then(response => {
-                     console.log(this.profile = response.data.data)
+                     this.profile = response.data.data
  
                 })
     },
     data() {
       return {
         image: '',
-        edit_name:'',
         profile:'',
       };
     },
     methods: {
-      goBack() {
-          this.$router.push('/me');
-      },
+      // goBack() {
+      //     this.$router.push('/me');
+      // },
 
       onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -229,7 +230,7 @@
 
                 })
                  var data_name = {
-                    name:this.edit_name,
+                    name:this.profile.name,
                     // profile:this.image
 
                   }

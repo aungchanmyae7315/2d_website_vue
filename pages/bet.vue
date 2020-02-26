@@ -6,7 +6,7 @@
              <el-page-header content="">
             </el-page-header>
             </nuxt-link>
-            <el-row>
+            <el-row style="padding-top:15px;">
                 <el-col :span="6">
                     
                     <div v-if="ruleForm.check_btn[0] != null">
@@ -113,14 +113,15 @@
                             </el-form-item>
                 </el-col>
             </el-row>
-            
-            <el-row>
-              
-                <el-col :span="12"><div class="betclose_text">Bet Close: 14:35:93</div></el-col>
+             <!-- <span v-text="currentTime"></span> -->
+            <!-- <el-row>
+                
+                     
+                <el-col :span="12"><div class="betclose_text">Bet Close: 11:55:00</div></el-col>
                 <el-col v-if ="!$store.state.isLoggedIn" :span="12"> <div class="balance_amount"></div></el-col>
                 <el-col v-else :span="12"> <div class="balance_amount">Balance: {{this.profile.wallet}}</div></el-col>
         
-            </el-row>
+            </el-row> -->
 
                <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
                  <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
@@ -129,7 +130,7 @@
              </div>
             <div v-else class="bet_login_btn">
 
-                    <el-button  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
+                    <el-button   v-bind:class="{ bet_off: isActive}"  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
            
             </div>
             
@@ -182,6 +183,10 @@
     .bet_footer .bet_btn_login {
         width:120px;
     }
+    /* .bet_login_btn {
+        padding-top:10px;
+    } */
+    
 
     .el-checkbox-button.is-checked .el-checkbox-button__inner {
             color:#000;
@@ -243,10 +248,7 @@
        text-align: right;
        font-size:20px;
     }
-    .bet_container .el-row {
-        margin-top:10px;
-       
-    }
+  
     .el-input-group__prepend {
         color:#000;
         font-weight: bold;
@@ -320,6 +322,10 @@
        margin:10px 0 0 0;
        text-align: left;
        padding-left:10px;
+   }
+   .bet_off {
+       cursor: no-drop !important;
+       display: none !important;
    }
 
    @media screen and (max-width:320px) {
@@ -563,11 +569,63 @@ export default {
     mounted() {
         this.updateIsLoggedIn();
     },
-      created() {
-      
-         
-          let token = localStorage.getItem('token');
+ 
+    data() {
+        return {
+            isActive:true,
+            hasError:'',
+             currentTime: '',
+             morning_from:this.morning_from,
+             morning_to:'',
+             evening_from:'',
+             evening_to:'',
+            
+              isLoggedIn: true,
+                ruleForm: {
+                    amount:'',
+                    check_btn: [],
+                   
+                },
+
+               dialogFormVisible: false,
+                btns: btn_options,
+                cities: cityOptions,
+                profile:'', 
+        }
+    },
+    created() {
+       axios.get('https://build.seinlucky.com/api/v2/v1/close_time')
+             
+              .then(response => {
+                    this.time = response.data.data
+                    this.morning_from = response.data.data[0].from
+                    this.morning_to = response.data.data[0].to
+                    this.evening_from = response.data.data[1].from
+                    this.evening_to = response.data.data[1].to
+
+                    var currentTime = moment().format('HH:mm:ss');
+                    setInterval(() => this.updateCurrentTime(), 1 * 1000);
+
+                    if(currentTime  >  this.morning_from && currentTime < this.morning_to  ) {
+                        this.isActive = ture
+                    alert('one')
+                    }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
+                        this.isActive = false
+                        alert('two')
+                    }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
+                        this.isActive = false
+                            alert('three')
+                    }else if(currentTime > this.evening_to && currentTime < this.morning_to) {
+                        this.isActive = true
+                        alert('four')
+                    }else {
+                        alert('fixe')
+                        
+                    }
+
+                })
     
+        let token = localStorage.getItem('token');
         axios.get("https://build.seinlucky.com/api/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
@@ -578,67 +636,35 @@ export default {
 
                 })
     },
-    data() {
-        return {
-              isLoggedIn: true,
-                ruleForm: {
-                    amount:'',
-                    check_btn: [],
-                   
-                },
-              
-               dialogFormVisible: false,
-            // isActive: false,
-                
-                btns: btn_options,
-                
-            
-                cities: cityOptions,
-                profile:'',
-            
-              
-               
-        }
-    },
      methods: {
+         updateCurrentTime() {
+         this.currentTime = moment().format('HH:mm:ss');
+           
+        },
         updateIsLoggedIn() {
             this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
         },
         hasUserInfo() {
             return Boolean(localStorage.getItem('userInfo'));
         },
-        // goBack() {
-        //         this.$router.push('/home')
-        // },
+
         clear_btn() {
             this.ruleForm.check_btn = [];
-            //    this.dialogFormVisible = false
         },
         bet(formName) {
              this.$refs[formName].validate((valid) => {
                 if (valid) {
-                       alert(this.ruleForm.amount);
-                    alert(this.ruleForm.check_btn);
+
                     if(this.ruleForm.check_btn) {
-                        var data= {
-                            bets:this.ruleForm.check_btn
-                        }
-                        axios.post("https://build.seinlucky.com/api/v2/v1/get_odds",data,
-                                {
-                            
-                                    })
-                                .then(response => {
-                                console.log(this.bet_odds = response.data)
-                                console.log('bet_odds')
-                                this.$store.commit('odds',this.bet_odds);
-                            })
-                                var data = this.ruleForm.check_btn  
-                            this.$store.commit('getBet', data);
-                            var bet_amount = this.ruleForm.amount
+
+                        var data = this.ruleForm.check_btn  
+                        this.$store.commit('getBet', data);
+                        var bet_amount = this.ruleForm.amount
 
                             
                           this.$store.commit('betAmount',bet_amount);
-                         this.$router.push('/remark');
+                         this.$router.push(`remark?lang=${this.$store.state.locale}`); 
+                        //  `${$t('remark')}?lang=${$store.state.locale}`
                     }
 
                 } else {

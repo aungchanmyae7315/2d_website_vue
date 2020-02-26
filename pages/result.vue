@@ -1,8 +1,10 @@
 <template>
    <div class="main_container result">
       <el-header>
-          <el-page-header @back="goBack" content="2D Result">
-        </el-page-header>
+           <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                <el-page-header  content="2D Result">
+                </el-page-header>
+           </nuxt-link>
       </el-header>
       <div class="result_item">
             <div v-for="result of twod_result" :key="result" data-aos="fade-down"
@@ -61,6 +63,8 @@
         border-radius: 10px;
     }
     .result_item .el-col .result_number {
+        width:52px;
+        
        background: #222C36;
         float: right;
         font-weight: bold;
@@ -75,6 +79,7 @@
     }
     .result_time , .result_date {
        margin:17px;
+       font-size: 15px;
     }
 </style>
 
@@ -88,9 +93,9 @@ export default {
         }
     },
      methods: {
-        goBack() {
-            this.$router.push('/')
-      },
+    //     goBack() {
+    //         this.$router.push('/')
+    //   },
      },
      created() {
           axios.get("https://build.seinlucky.com/api/v1/twod-result")

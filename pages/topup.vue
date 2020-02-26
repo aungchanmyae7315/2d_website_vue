@@ -3,8 +3,10 @@
     <section>
         <div class="topup">
             <el-header>
-                <el-page-header @back="goBack" content="Top Up">
+                 <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`">
+                <el-page-header content="Top Up">
                 </el-page-header>
+                 </nuxt-link>
             </el-header>
             <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p>
           

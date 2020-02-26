@@ -263,31 +263,30 @@ export default {
         var time_01_00 = '1:01:00'
           var time_04_30 = '4:30:00'
     
-  if(currentTime  >  morningTime_9_30 ) {
+  if(currentTime  >  morningTime_9_30 && currentTime < time_12_00 ) {
     //alert('one')
     this.isActive = true
-     axios.get('http://kweecma.online/2d3dapi/')
+     axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
-               // this.info = response.data.data
-               console.log(response)
+              this.info = response.data[0]
+              // console.log(response)
               })
      
   }else if(currentTime > time_12_00 && currentTime <  time_01_00 ) {
       // alert('two')
       this.isActive = false
-      alert(currentTime)
+     // alert(currentTime)
        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 this.info = response.data.data
               })
   }else if(currentTime > time_01_00 && currentTime < time_04_30 ) {
     // alert('three')
-    console.log('theeereee')
     this.isActive = true
          axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
                this.info = response.data[0]
-                console.log(response.data[0])
+                //console.log(response.data[0])
               })
   }else if(currentTime > time_04_30 && currentTime < morningTime_9_30) {
      this.isActive = false

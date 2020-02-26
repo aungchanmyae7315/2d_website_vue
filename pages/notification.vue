@@ -1,8 +1,10 @@
 <template>
    <div class="main_container notification">
       <el-header>
-          <el-page-header @back="goBack" content="Notification">
-        </el-page-header>
+            <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                <el-page-header content="Notification">
+                </el-page-header>
+            </nuxt-link>
       </el-header>
         <section class="noti_content">
             <ul v-for="(noti ,n) in notification" :key="n" class="noti_text"  data-aos="fade-down"
@@ -81,9 +83,9 @@ export default {
         }
     },
     methods: {
-        goBack() {
-            this.$router.push('/')
-      },
+    //     goBack() {
+    //         this.$router.push('/')
+    //   },
       cur_id(data) {
          this.$store.commit('noti_id', data);
          this.$router.push('/withdraw_noti')

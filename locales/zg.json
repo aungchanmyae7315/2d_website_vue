@@ -83,11 +83,14 @@
   "remark":"remark",
   "result":"result",
   "signup_refel":"signup_refel",
-  "topup":"top_up",
+  "topup":"topup",
 
   "withdraw_noti":"withdraw_noti",
   "withdraw_success":"withdraw_success",
-  "withdrawal":"withdrawal"
+  "withdrawal":"withdrawal",
+  "signup":"signup",
+  "English":"English"
+
   }
   
   

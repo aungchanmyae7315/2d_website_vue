@@ -29,7 +29,7 @@
      
                 <el-card>
 
-                <table class="table">
+                <table class="table" >
                     <thead>
                         <tr>
                         <th>Bet</th>
@@ -39,7 +39,7 @@
                         </tr>
                     </thead>
                     <tbody  >
-                        <tr  v-for="(odd,o) in odds_data" :key="o">
+                        <tr  v-for="(odd,o) in bet_odds" :key="o">
                       
                         <th>{{odd.number}}</th>  
                          <th>{{odd.times}}</th>  
@@ -52,12 +52,12 @@
                  
                 </el-card>
                  <div class="btn_group">
-                      <nuxt-link  :to="`${$t('bet')}?lang=${$store.state.locale}`">
-                            <el-button type="default" round>Back</el-button>
-                      </nuxt-link>
-                    <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                     
+                            <el-button type="default" @click="back_bet" round>Back</el-button>
+                     
+                  
                           <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  Submit</el-button>
-                    </nuxt-link>
+                  
                     
                   </div>
             </div>
@@ -74,49 +74,43 @@ export default {
   mutations: {},
   actions: {},
   mounted () {
-   
-   
-      const odd =  localStorage.getItem('odds');
-     
-    const bets = this.$store.state.check_btn;
-     const bet_amount = this.$store.state.input_amount;
-  
- console.log(bets);
-  console.log(bet_amount);
-    
-  
+
 },
     data() {
         return {
-          bets : this.$store.state.check_btn ? null:'--',
-          check_btn:[],
           bet_amount: localStorage.getItem('bet_amount'),
-          bets:'',
           name :'',
           phone:'',
-         
-          odds_data:JSON.parse(localStorage.getItem('odds')),
-           
-         
-          tableData: [
-          {
+          bet_odds:'',
 
-            bets : this.$store.state.check_btn,
-            odds: '3.2',
-            amount:this.$store.state.input_amount ,
-          }, ]
         }
+    },
+    created() {
+      
+           var data= {
+              bets:localStorage.getItem('check_btn'),
+          }
+          axios.post("https://build.seinlucky.com/api/v2/v1/get_odds",data,
+                  {
+              
+                      })
+                  .then(response => {
+                  this.bet_odds = response.data
+
+              })
+    
     },
     
      methods: {
+         
+       back_bet() {
+         
+         localStorage.removeItem('odds');
+           this.$router.push(`bet?lang=${this.$store.state.locale}`); 
+       },
        
        submit_bet() {
-        //  location.reload();
           let token = localStorage.getItem('token');
-            alert(this.name)
-            alert(this.phone)
-            alert( localStorage.getItem('check_btn'))
-            alert( localStorage.getItem('bet_amount') )
 
                 var data = {
                     client_name:this.name,
@@ -136,9 +130,8 @@ export default {
                         })
                 
                     .then(response => {
-                     console.log(this.bet = response.data.data)
-                     console.log(response)
-                      this.$router.push('/bet_success');
+                      this.bet = response.data.data
+                    this.$router.push(`bet_success?lang=${this.$store.state.locale}`);
                 })
                
        },
@@ -190,6 +183,7 @@ export default {
     }
 .remark .el-card {
     margin:20px auto;
+    border-radius: 17px;
 }
 .remark .el-form-item {
   margin-bottom:0;
@@ -229,7 +223,7 @@ export default {
   height: 100%;
   overflow: auto;
   margin-left: 15px;
-  padding-bottom:30px;
+  padding-bottom:50px;
   padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
 
  

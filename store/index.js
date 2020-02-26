@@ -90,11 +90,11 @@ const createStore = () => {
                 state.bet_amount = bet_amount;
                 //console.log(bet_amount)
             },
-            odds(state, bet_odds){
-                localStorage.setItem('odds',  JSON.stringify(bet_odds));
-                state.bet_odds = bet_odds;
-                //console.log(check_btn)
-            },
+            // odds(state, bet_odds){
+            //     localStorage.setItem('odds',  JSON.stringify(bet_odds));
+            //     state.bet_odds = bet_odds;
+            //     //console.log(check_btn)
+            // },
            
         }
     })

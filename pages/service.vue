@@ -42,7 +42,7 @@ export default {
     
             
                 .then(response => {
-                    console.log(this.contact = response.data.data[0].phone_number)
+                    this.contact = response.data.data[0].phone_number
             });
      },
 }

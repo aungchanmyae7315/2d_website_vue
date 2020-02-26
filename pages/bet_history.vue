@@ -1,9 +1,11 @@
 <template>
    <div class="main_container bet_history">
       <el-header>
-          <el-page-header @back="goBack" content="Bet History">
-           
-        </el-page-header>
+           <nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`">
+                <el-page-header content="Bet History">
+                
+                </el-page-header>
+           </nuxt-link>
         
       </el-header>
 
@@ -36,7 +38,7 @@
     .bet_history .el-page-header {
         line-height: 43px;
         color:#000;
-        padding:0 10px;
+        padding:0 20px;
        
     }
     .bet_history .el-page-header__content {
@@ -61,9 +63,9 @@ export default {
        
       },
     
-        goBack() {
-            this.$router.push('/me')
-        },
+        // goBack() {
+        //     this.$router.push('/me')
+        // },
         bet_date(data) {
           this.$store.commit('bet_date', data)
            this.$router.push('/bet_detail')
@@ -82,7 +84,7 @@ export default {
                          }
                         })
                     .then(response => {
-                     console.log(this.bet_historys = response.data.data)    
+                     this.bet_historys = response.data.data   
                 })
      }
 }

@@ -2,9 +2,13 @@
     <main>
         <section class="bet_success">
             <img src="~static/images/refel_page/refel_img_two.png" class="">
-            <h4>Bet Successful</h4>
-           
-             <el-button @click="goBack" round="">Summit</el-button>
+            <h4 style="padding-top:10px;">Bet Successful</h4>
+            <el-footer>
+                   <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                         <el-button  round="">Summit</el-button>
+                   </nuxt-link>
+            </el-footer>
+            
         </section>
        
     </main>
@@ -41,9 +45,7 @@ export default {
         }
     },
     methods: {
-        goBack() {
-            this.$router.push('/');
-        }
+        
     }
 }
 </script>
