@@ -606,27 +606,28 @@ export default {
                     var currentTime = moment().format('HH:mm:ss');
                     setInterval(() => this.updateCurrentTime(), 1 * 1000);
 
-                    if(currentTime  >  this.morning_from && currentTime < this.morning_to  ) {
-                        this.isActive = ture
-                    alert('one')
+                    if(currentTime  >  this.morning_from ) {
+                        this.isActive = false
+                    // alert('one')
                     }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
                         this.isActive = false
-                        alert('two')
+                        // alert('two')
                     }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
                         this.isActive = false
-                            alert('three')
+                            // alert('three')
                     }else if(currentTime > this.evening_to && currentTime < this.morning_to) {
                         this.isActive = true
-                        alert('four')
+                        // alert('four')
                     }else {
-                        alert('fixe')
+                        // alert('fixe')
                         
                     }
 
                 })
     
         let token = localStorage.getItem('token');
-        axios.get("https://build.seinlucky.com/api/v1/profile",
+        if(token) {
+             axios.get("https://build.seinlucky.com/api/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
@@ -635,6 +636,8 @@ export default {
                      console.log(this.profile = response.data.data)
 
                 })
+        }
+               
     },
      methods: {
          updateCurrentTime() {

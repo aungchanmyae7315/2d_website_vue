@@ -16,8 +16,13 @@
                 </div>
                 <div class="avatar-preview">
                    
-                    <div id="imagePreview">
-                      <img :src="this.profile.profile " alt="" id="imagePreview">
+                    <div id="imagePreview" v-if="this.profile.image !== 'null'">
+                           <img :src="this.profile.profile " alt="" id="imagePreview">
+                     
+                     
+                    </div>
+                    <div id="imagePreview" v-else>
+                            <img src="~static/images/icons/me_img.png" alt="" style="width:140px">
                     </div>
                 </div>
             </div>
@@ -29,7 +34,8 @@
                     <label for="imageUpload"></label>
                 </div>
                 <div class="avatar-preview">
-                  <img :src="image" alt="" id="imagePreview">
+                
+                  <img  :src="image" alt="" id="imagePreview">
                     <!-- <button @click="removeImage">Remove image</button>  -->
                 </div>
             </div>
@@ -158,16 +164,18 @@
     mounted() {
   
       let token = localStorage.getItem('token');
-    
-      axios.get("https://build.seinlucky.com/api/v1/profile",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                     this.profile = response.data.data
- 
-                })
+      if(token) {
+          axios.get("https://build.seinlucky.com/api/v1/profile",
+              {headers: {
+                          "Authorization": "Bearer "+token
+                    }
+                  })
+              .then(response => {
+                this.profile = response.data.data
+
+          })
+      }
+                
     },
     data() {
       return {
@@ -218,6 +226,7 @@
                     {
                       headers: {
                                "Authorization": "Bearer "+token,
+                               "Accept":"application/json",
                                "Access-Control-Allow-Origin" : "*",
                                "Content-Type" : 'application/json',
                                "Content-Type": 'multipart/form-data'

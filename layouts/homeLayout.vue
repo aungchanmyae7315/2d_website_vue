@@ -4,14 +4,17 @@
         <el-header class="header">
           <el-row :gutter="20">
             <el-col :span="8">
-              <nuxt-link :to="`${$t('notification')}?lang=${$store.state.locale}`">
-              <div class="noti">
+      
+              <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`">
+
+              <div class="noti" type="primary" @click="loading"
+              v-loading.fullscreen.lock="fullscreenLoading">
                 <img src="~static/images/noti.png" alt="logo">
               </div>
               </nuxt-link>
             </el-col>
             <el-col :span="8"><div class=""><img src="~static/images/logo.png" class="logo" alt="logo"></div></el-col>
-            <el-col :span="4">
+            <!-- <el-col :span="4">
                  <div class="music_icon">
               
                       <div id="player-container">
@@ -20,8 +23,8 @@
                       </div>
                      
                 </div>
-            </el-col>
-            <el-col :span="4">
+            </el-col> -->
+            <el-col :span="8">
               <div class="messeage_icon">
                   <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
               </div>
@@ -81,10 +84,23 @@
 export default {
   data() {
     return {
-
+       fullscreenLoading: false
     }
   },
   methods: {
+    loading() {
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        setTimeout(() => {
+          loading.close();
+        }, 2000);
+      
+    },
+
      play: function(event) {
       var a = this.$refs.audioElm;
       if (a.paused) {

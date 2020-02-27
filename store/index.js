@@ -76,6 +76,11 @@ const createStore = () => {
                 state.Otp = Otp;
                 //console.log(Otp)
             },
+            error_mes(state, Otp){
+                state.Otp = Otp;
+                //console.log(Otp)
+            },
+
             setPhone(state, phoneResponse){
                 state.phoneResponse = phoneResponse;
                 //console.log(phoneResponse.access_token)

@@ -14,7 +14,7 @@
                   </div>
               </div>
               <div v-else class="demo-type">
-                 <el-avatar :size="60" v-if="this.profile.image != 'null'"> 
+                 <el-avatar :size="60" v-if="this.profile.image !== 'null'"> 
                    
                   <img :src="this.profile.image" alt="">
                   </el-avatar>
@@ -240,8 +240,8 @@
                 this.bank_account = response.data.data
               })  
           let token = localStorage.getItem('token');
-    
-        axios.get("https://build.seinlucky.com/api/v1/profile",
+        if(token) {
+              axios.get("https://build.seinlucky.com/api/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
@@ -250,6 +250,8 @@
                      this.profile = response.data.data
 
                 })
+        }
+                
     },
 
     methods: {

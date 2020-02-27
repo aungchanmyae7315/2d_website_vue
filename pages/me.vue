@@ -7,7 +7,7 @@
        
          <div  v-if ="$store.state.isLoggedIn">
               <div class="demo-type">
-                 <el-avatar v-if="this.profile.name != 'null'" :size="60"> <img :src="this.profile.profile " alt=""></el-avatar>
+                 <el-avatar v-if="this.profile.image !== 'null'" :size="60"> <img :src="this.profile.profile " alt=""></el-avatar>
                  <el-avatar v-else :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
@@ -22,7 +22,7 @@
         </div>
         <div v-else> 
            <div class="demo-type">
-                  <el-avatar :size="60" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+                  <el-avatar :size="60" ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                   <span  class="avatar_text">{{$t('Please Login first')}}</span>
                 </div>
              
@@ -37,11 +37,11 @@
                 <div  v-if ="!$store.state.isLoggedIn">
                        <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
                        <li><nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
-                        <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
+                        <!-- <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li> -->
 
                 </div>
                 <div v-else> 
-                       <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href="" @click="loading" v-loading.fullscreen.lock="fullscreenLoading"><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
@@ -108,11 +108,24 @@ export default {
    },
     data() {
       return {
+        fullscreenLoading: false,
         profile:'',
       };
     },
     
     methods: {
+      loading() {
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        setTimeout(() => {
+          loading.close();
+        }, 2000);
+      
+    },
         updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
