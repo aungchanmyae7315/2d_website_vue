@@ -179,6 +179,7 @@
       return {
         image: '',
         edit_name:'',
+        profile:'',
       };
     },
     methods: {
@@ -190,9 +191,9 @@
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length)
         return;
-      // this.createImage(files[0]);
-//  [Photo]
- this.image = e.target.files[0];
+      this.createImage(e.target.files[0]);
+      //  [Photo]
+      this.image = e.target.files[0];
     },
       createImage(file) {
 
@@ -201,7 +202,8 @@
         var vm = this;
 
         reader.onload = (e) => {
-          vm.image = e.target.result;
+          this.image = e.target.result;
+          //vm.image = e.target.result;
         };
         reader.readAsDataURL(file);
       },
