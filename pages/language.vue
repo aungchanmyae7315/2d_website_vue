@@ -7,17 +7,17 @@
             </el-header>
 
             <div class="lang">
-                <el-dropdown @command="changeLang" slot="dropdown"  style="text-align:center">
+                <el-dropdown @command="changeLang"  style="text-align:center">
                 <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
                     {{$t('Language')}}
                 </span> -->
-                
+              
                     <el-dropdown-item round command='en'>English</el-dropdown-item>
                     <el-dropdown-item round command='uni'>Myanmar Unicode</el-dropdown-item>
                     <el-dropdown-item round command='zg'>Myanmar Zawgyi</el-dropdown-item>
                      <el-dropdown-item round command='zh'>China</el-dropdown-item>
-
-
+              
+              
                 </el-dropdown>   
             </div>
 

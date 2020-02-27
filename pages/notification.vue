@@ -103,7 +103,7 @@ export default {
                         })
                     .then(response => {
 
-                     console.log(this.notification = response.data.data)
+                    this.notification = response.data.data
                      var noti_id = this.notification.notification_id
                     
                 })

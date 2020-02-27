@@ -291,11 +291,11 @@ export default {
     setInterval(() => this.updateCurrentTime(), 1 * 1000);
      
    
-            console.log(this.morningTime_9_30)
-              console.log(this.time_12_00)
-                console.log(this.time_01_00)
-                  console.log(this.time_04_30)
-                    console.log(this.currentTime)
+            // console.log(this.morningTime_9_30)
+            //   console.log(this.time_12_00)
+            //     console.log(this.time_01_00)
+            //       console.log(this.time_04_30)
+            //         console.log(this.currentTime)
    
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
  //alert('currentTime')
