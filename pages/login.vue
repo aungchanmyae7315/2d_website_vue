@@ -5,7 +5,7 @@
            <img src="~static/images/login_page/login_bg.png" class="login_bg">
           <div class="main_login_page">
               <div class="language">
-                <el-dropdown @command="changeLang" style="text-align:center">
+                <el-dropdown @command="changeLang" slot="dropdown"  style="text-align:center">
               
               <ul>
                 

@@ -37,7 +37,7 @@
                 <div  v-if ="!$store.state.isLoggedIn">
                        <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
                        <li><nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
-                        <!-- <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li> -->
+                        <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
                 </div>
                 <div v-else> 

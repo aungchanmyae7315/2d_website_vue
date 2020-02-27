@@ -57,11 +57,23 @@
               </el-carousel-item>
            
                     <div class="el-carousel_label">
-                        <h3>  <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon"> ipsum dolor sit amet fdsf</h3> 
+                      
+                        <h3> 
+                          <div class="runtext-container">
+                              <div class="main-runtext">
+                              <marquee direction="" onmouseover="this.stop();" onmouseout="this.start();">
+                                <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
+                                {{this.slider_text.text}}
+                              </marquee>
+                              </div>
+                              </div>
+                           <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon"> ipsum dolor sit amet fdsf
+                           </h3> 
                     </div>
                   
           
             </el-carousel>
+
           </div>
           <div class="row n_d_t">
             <div class="col">
@@ -246,6 +258,7 @@ export default {
       kwee_cma:'',
       set_1200:'',
       profile:'',
+      slider_text:''
       //   activeIndex2: '1',
      
     }
@@ -284,8 +297,8 @@ export default {
                   console.log(this.time_04_30)
                     console.log(this.currentTime)
    
-  if(this.currentTime  > this.morningTime_9_30 || this.currentTime < this.time_12_00 ) {
-//  alert('currentTime')
+  if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
+ //alert('currentTime')
     this.isActive = true
      axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
@@ -293,7 +306,7 @@ export default {
               // console.log(response)
               })
      
-  }else if(this.currentTime > this.time_12_00 || this.currentTime <  this.time_01_00 ) {
+  }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
       alert('two')
       this.isActive = false
      // alert(currentTime)
@@ -301,15 +314,15 @@ export default {
               .then(response => {
                 this.info = response.data.data
               })
-  }else if(this.currentTime > this.time_01_00 || this.currentTime < this.time_04_30 ) {
-   alert('three')
+  }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
+   //alert('three')
     this.isActive = true
          axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
                this.info = response.data[0]
-                console.log(response.data[0])
+               
               })
-  }else if(this.currentTime > this.time_04_30 || this.currentTime < this.morningTime_9_30) {
+  }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
      this.isActive = false
         alert('foursssss')
         axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
@@ -337,6 +350,13 @@ export default {
               .then(response => {
                this.slider_images = response.data.data
               })
+
+          axios.get('https://build.seinlucky.com/api/v2/v1/slider_text')
+              .then(response => {
+               this.slider_text = response.data.data[0]
+             
+              })
+              
          let token = localStorage.getItem('token');
       if(token) {
          axios.get("https://build.seinlucky.com/api/v1/profile",
@@ -410,6 +430,35 @@ export default {
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
   }
+
+/* slider text css */
+/* CSS Document */
+
+marquee {
+	margin-top: 5px;
+	width: 100%;
+}
+
+
+.runtext-container .holder {
+position: relative;
+overflow: visible;
+display:inline;
+
+}
+
+.runtext-container .holder .text-container {
+	display:inline;
+}
+
+.runtext-container .holder a{
+	text-decoration: none;
+	font-weight: bold;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.25);
+	line-height: -0.5em;
+	font-size:16px;
+}
+
 
 </style>
 

@@ -2,15 +2,15 @@
     <section>
         <div class="language_type">
             <el-header>
-                <el-page-header @back="goBack" content="Language">
+                <el-page-header @back="goBack" :content="$t('Language')">
                 </el-page-header>
             </el-header>
 
             <div class="lang">
-                <el-dropdown @command="changeLang" style="text-align:center">
-                <span class="el-dropdown-link" style='cursor: pointer;'>
+                <el-dropdown @command="changeLang" slot="dropdown"  style="text-align:center">
+                <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
                     {{$t('Language')}}
-                </span>
+                </span> -->
                 
                     <el-dropdown-item round command='en'>English</el-dropdown-item>
                     <el-dropdown-item round command='uni'>Myanmar Unicode</el-dropdown-item>
@@ -107,7 +107,7 @@ export default {
         font-size: 18px;
         font-weight: bold;
     }
-    .lang .el-dropdown-menu__item:focus, .el-dropdown-menu__item:not(.is-disabled):hover {
+    .language_type .el-dropdown-menu__item:not(.is-disabled):hover {
         background: #158220;
         color:#fff;
         border-radius: 21px;

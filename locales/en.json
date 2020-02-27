@@ -90,7 +90,8 @@
   "withdraw_success":"withdraw_success",
   "withdrawal":"withdrawal",
   "signup":"signup",
-  "English":"English"
+  "English":"English",
+  "forgot_password":"forgot_password"
 
    
 }
