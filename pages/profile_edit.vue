@@ -1,10 +1,8 @@
 <template>
    <div class="main_container profile_edit">
       <el-header>
-         <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
-            <el-page-header content="Profile">
-          </el-page-header>
-         </nuxt-link>
+          <el-page-header @back="goBack" content="Profile">
+        </el-page-header>
       </el-header>
 
 
@@ -15,9 +13,7 @@
                     <label for="imageUpload"></label>
                 </div>
                 <div class="avatar-preview">
-                   
-                    <div id="imagePreview">
-                      <img :src="this.profile.profile " alt="" id="imagePreview">
+                    <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
                     </div>
                 </div>
             </div>
@@ -37,13 +33,13 @@
 
         <el-form>
             <el-form-item  class="edit_name" >
-                <el-input  required type="text" placeholder="Your Full Name"  v-model="this.profile.name" autocomplete="off"></el-input>
+                <el-input  required type="text" placeholder="Your Full Name" v-model="edit_name" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
-                <p>Registered Phone: {{this.profile.phone}}</p>
-              
+                <p>Registered Phone: 09954265784</p>
+
                <el-button round @click="profile_edit">Summit</el-button>
-             
+
     </div>
 </template>
 
@@ -78,13 +74,13 @@
     .profile_edit .el-page-header {
         line-height: 43px;
         color:#000;
-       
+
     }
     .profile_edit .el-page-header__content {
         color:#000;
         font-weight: bold;
     }
- 
+
     .avatar-upload {
   position: relative;
   max-width: 205px;
@@ -148,110 +144,92 @@
   background-position: center;
 }
 
- 
+
 </style>
 
 
 <script>
  import axios from 'axios'
   export default {
-    mounted() {
-  
-      let token = localStorage.getItem('token');
-    
-      axios.get("https://build.seinlucky.com/api/v1/profile",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                     this.profile = response.data.data
- 
-                })
-    },
     data() {
       return {
         image: '',
-        profile:'',
+        edit_name:'',
       };
     },
     methods: {
-      // goBack() {
-      //     this.$router.push('/me');
-      // },
+      goBack() {
+          this.$router.push('/me');
+      },
 
       onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length)
         return;
-      this.createImage(files[0]);
+      // this.createImage(files[0]);
+//  [Photo]
+ this.image = e.target.files[0];
     },
-    createImage(file) {
-      var image = new Image();
-      var reader = new FileReader();
-      var vm = this;
+      createImage(file) {
 
-      reader.onload = (e) => {
-        vm.image = e.target.result;
-      };
-      reader.readAsDataURL(file);
-    },
+        var image = new Image();
+        var reader = new FileReader();
+        var vm = this;
+
+        reader.onload = (e) => {
+          vm.image = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      },
     removeImage: function (e) {
       this.image = '';
     },
-  created() {
-     
-    },
+
     profile_edit() {
+               //  console.log(this.image);
 
-              let token = localStorage.getItem('token');
-              // console.log(this.image)
-              var img = this.image
-              // var img = "https://images.pexels.com/photos/3584930/pexels-photo-3584930.jpeg"
-                var data_profile = {
-                  //https://images.pexels.com/photos/3584930/pexels-photo-3584930.jpeg
-                  profile:this.image,
+                let token = localStorage.getItem('token');
 
-                }
+                let formData = new FormData();
+                formData.append('profile', this.image);
 
-                axios.post("https://build.seinlucky.com/api/v1/profile-photo/update",data_profile,
-                    {
-                      headers: {
-                               "Authorization": "Bearer "+token,
-                               "Access-Control-Allow-Origin" : "*",
-                               "Content-Type" : 'application/json',
-                               "Content-Type": 'multipart/form-data'
-                         }
-                                        
-                    
-                        })
-                    .then(response => {
-                     console.log(response)
+                 console.log(formData);
 
+                axios.post('https://build.seinlucky.com/api/v1/profile-photo/update',
+                  formData
+                 ,{
+                  headers: {
+                    "Authorization": "Bearer "+token,
+                    'content-type': 'multipart/form-data'
+                  }
                 })
+                  .then(function (response) {
+                    console.log(response);
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
+
                  var data_name = {
-                    name:this.profile.name,
-                    // profile:this.image
+                    name: this.edit_name,
 
                   }
+
                 axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
                     {headers: {
-                               "Authorization": "Bearer "+token,
-                              
+                               "Authorization": "Bearer "+token
                          }
                         })
                     .then(response => {
-                    //  console.log(this.name_update = response.data.data)
-                     console.log(response)
+                     console.log(this.name_update = response.data.data)
 
                 })
 
-    
-                 this.$router.push('/me');
-    },
-    
 
-     
+                 this.$router.push('/me');
+    }
+
+
     }
   }
 </script>
