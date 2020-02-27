@@ -185,7 +185,7 @@
     font-size: 14px;
     opacity: 0.95;
     text-align: left;
-    padding:6px 20px;
+    padding:0 10px;
     position:relative;
    
     top:122px;
@@ -364,7 +364,20 @@
   padding-top:60px;
   padding-bottom: 130px; /*This would hide the scroll bar of the bottom if there is one*/
 }
-
+.el-message {
+  min-width: 300px !important;
+}
+.el-message.is-center {
+  -webkit-box-pack:unset !important;
+}
+.el-message .el-icon-error {
+  margin:0 !important;
+  padding-right:20px !important;
+}
+.el-notification .el-icon-success {
+  margin: 0 !important;
+  padding-right: 50px !important;
+}
 @media screen and (min-width:480px) {
  .card_one , .card_two ,.card_three ,.card_four{
    margin:10px auto;

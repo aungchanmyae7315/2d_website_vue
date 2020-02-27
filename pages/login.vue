@@ -5,7 +5,7 @@
            <img src="~static/images/login_page/login_bg.png" class="login_bg">
           <div class="main_login_page">
               <div class="language">
-                <el-dropdown @command="changeLang" style="text-align:center">
+                <el-dropdown @command="changeLang" slot="dropdown"  style="text-align:center">
               
               <ul>
                 
@@ -70,7 +70,7 @@
           <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Submit')}}</el-button>
 
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
-                          <nuxt-link :to="`${$t('signup')}?lang=${$store.state.locale}`">
+                          <nuxt-link :to="`${$t('forgot_password')}?lang=${$store.state.locale}`">
                 <el-button type="text"  style="color:#158220">{{$t('Forgot_password')}}</el-button>
                           </nuxt-link>
             </el-form-item>
@@ -174,7 +174,8 @@ import axios from 'axios'
                      this.$notify({
                         title: 'Success',
                         message: this.success_message,
-                        type: 'success'
+                        type: 'success',
+                       
                       });
                        this.$router.push('/');
                          
