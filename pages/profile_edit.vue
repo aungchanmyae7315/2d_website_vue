@@ -191,22 +191,23 @@
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length)
         return;
-      this.createImage(e.target.files[0]);
+      //this.createImage(e.target.files[0]);
       //  [Photo]
       this.image = e.target.files[0];
+      console.log(this.image)
     },
-      createImage(file) {
+      // createImage(file) {
 
-        var image = new Image();
-        var reader = new FileReader();
-        var vm = this;
+      //   var image = new Image();
+      //   var reader = new FileReader();
+      //   var vm = this;
 
-        reader.onload = (e) => {
-          this.image = e.target.result;
-          //vm.image = e.target.result;
-        };
-        reader.readAsDataURL(file);
-      },
+      //   reader.onload = (e) => {
+      //     this.image = e.target.result;
+      //     //vm.image = e.target.result;
+      //   };
+      //   reader.readAsDataURL(this.image);
+      // },
     removeImage: function (e) {
       this.image = '';
     },

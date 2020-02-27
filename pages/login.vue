@@ -5,7 +5,7 @@
            <img src="~static/images/login_page/login_bg.png" class="login_bg">
           <div class="main_login_page">
               <div class="language">
-                <el-dropdown-menu @command="changeLang" slot="dropdown"  style="text-align:center">
+                <el-dropdown @command="changeLang"  style="text-align:center">
               
               <ul>
                 
@@ -23,7 +23,7 @@
                 </li>
                 
               </ul>
-                </el-dropdown-menu>   
+                </el-dropdown>   
               <!-- <div class="lang">
                 <el-dropdown @command="changeLang" style="text-align:center">
                 <span class="el-dropdown-link" style='cursor: pointer;'>
