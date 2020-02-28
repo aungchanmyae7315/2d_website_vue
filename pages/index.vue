@@ -307,7 +307,7 @@ export default {
               })
      
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-      alert('two')
+     // alert('two')
       this.isActive = false
      // alert(currentTime)
        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
@@ -324,14 +324,14 @@ export default {
               })
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
      this.isActive = false
-        alert('foursssss')
+        //alert('foursssss')
         axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 this.info = response.data.data
                
               })
   }else {
-    alert('mm')
+    //alert('mm')
       this.isActive = false
         axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
