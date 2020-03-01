@@ -44,7 +44,7 @@
                 <el-input  required type="text" placeholder="Your Full Name" v-model="edit_name" autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
-                <p>Registered Phone: 09954265784</p>
+                <p>Registered Phone: {{this.profile.phone}}</p>
 
                <el-button round @click="profile_edit">Summit</el-button>
 
@@ -170,6 +170,7 @@
                   })
               .then(response => {
                 this.profile = response.data.data
+                console.log(this.profile.name)
 
           })
       }

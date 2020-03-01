@@ -25,7 +25,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li><span v-if="this.profile.name === 'null'"> {{this.profile.name}}</span>
-                        <span v-else ><nuxt-link style="color:#fff" to="me">Upgrade Name</nuxt-link></span>
+                        <span v-else ><nuxt-link style="color:#fff" to="me">{{this.profile.name}}</nuxt-link></span>
                      
 
                     </li>
