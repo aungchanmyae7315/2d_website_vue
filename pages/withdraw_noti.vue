@@ -2,7 +2,7 @@
    <div class="main_container withdraw_noti">
       <el-header>
            <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`">
-                <el-page-header content="Withdrawal">
+                 <el-page-header :title="`${$t('back')}`"  :content="`${$t('Withdrawal')}`">
                 </el-page-header>
            </nuxt-link>
       </el-header>
@@ -86,9 +86,7 @@ export default {
       
     },
      methods: {
-    //     goBack() {
-    //         this.$router.push('/notification')
-    //   },
+
      },
        created() {
 

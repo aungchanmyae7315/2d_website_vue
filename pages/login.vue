@@ -24,6 +24,8 @@
                 
               </ul>
                 </el-dropdown>   
+                <div id="app">
+</div>
               <!-- <div class="lang">
                 <el-dropdown @command="changeLang" style="text-align:center">
                 <span class="el-dropdown-link" style='cursor: pointer;'>
@@ -50,7 +52,7 @@
               ]"
                
             >  
-                <el-input type="phone"  :placeholder="$t('Phone_placeholder')" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                <el-input type="number"  :placeholder="$t('Phone_placeholder')" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                
             </el-form-item>
             
@@ -71,7 +73,7 @@
 
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
                           <nuxt-link :to="`${$t('forgot_password')}?lang=${$store.state.locale}`">
-                <el-button type="text"  style="color:#158220">{{$t('Forgot_password')}}</el-button>
+                <el-button type="text"  style="color:#158220">{{$t('forgot_password')}}</el-button>
                           </nuxt-link>
             </el-form-item>
         </el-form>
@@ -128,6 +130,7 @@ import axios from 'axios'
     },
     
     methods: {
+ 
          changeLang (lang) {
             //mutate 'locale' in store
             this.$store.commit('SET_LANG', lang)
@@ -177,7 +180,7 @@ import axios from 'axios'
                         type: 'success',
                        
                       });
-                       this.$router.push('/');
+                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
                          
                   }
                  

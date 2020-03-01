@@ -7,8 +7,8 @@
        
          <div  v-if ="$store.state.isLoggedIn">
               <div class="demo-type">
-                 <el-avatar v-if="this.profile.image !== 'null'" :size="60"> <img :src="this.profile.profile " alt=""></el-avatar>
-                 <el-avatar v-else :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
+                 <el-avatar v-if="this.profile.image == null" :size="60"><img src="~static/images/icons/me_img.png" alt=""> </el-avatar>
+                 <el-avatar v-else :size="60"><img :src="this.profile.profile " alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
                     <li>{{this.profile.phone}}</li>
@@ -134,7 +134,7 @@ export default {
       },
         logout() {
             this.$store.commit('logOut');
-            this.$router.push('/')
+              this.$router.push(`/?lang=${this.$store.state.locale}`); 
       },
     },
     created() {

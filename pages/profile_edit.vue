@@ -1,8 +1,10 @@
 <template>
    <div class="main_container profile_edit">
       <el-header>
-          <el-page-header @back="goBack" content="Profile">
-        </el-page-header>
+         <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
+                          <el-page-header :title="`${$t('back')}`"  :content="`${$t('profile')}`">
+                </el-page-header>
+            </nuxt-link>
       </el-header>
 
 
@@ -14,13 +16,14 @@
                 </div>
                 <div class="avatar-preview">
                    
-                    <div id="imagePreview" v-if="this.profile.image !== 'null'">
-                           <img :src="this.profile.profile " alt="" id="imagePreview">
+                    <div id="imagePreview" v-if="this.profile.image == null">
+                        <img src="~static/images/icons/me_img.png" alt="" style="width:140px">
+                         
                      
                      
                     </div>
                     <div id="imagePreview" v-else>
-                            <img src="~static/images/icons/me_img.png" alt="" style="width:140px">
+                              <img :src="this.profile.profile " alt="" id="imagePreview">
                     </div>
                 </div>
             </div>
@@ -33,15 +36,15 @@
                 </div>
                 <div class="avatar-preview">
                 
-                  <img  :src="image" alt="" id="imagePreview">
+                  <img  :src="url" alt="" id="imagePreview">
                     <!-- <button @click="removeImage">Remove image</button>  -->
                 </div>
             </div>
         </div>
 
-        <el-form>
+        <el-form  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
             <el-form-item  class="edit_name" >
-                <el-input  required type="text" placeholder="Your Full Name" v-model="edit_name" autocomplete="off"></el-input>
+                <el-input  required type="text" placeholder="Your Full Name" v-model="ruleForm.edit_name"  autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
                 <p>Registered Phone: {{this.profile.phone}}</p>
@@ -58,7 +61,7 @@
     background: #158220;
     color:#fff;
     font-weight: bold;
-    margin-top:180px;
+    margin-top:150px;
 }
     .profile_edit .el-input__inner {
         background-color: #E6E6E6;
@@ -178,9 +181,15 @@
     },
     data() {
       return {
-        image: '',
-        edit_name:'',
+          ruleForm: {
+            edit_name:'Name'
+
+        },
+       
+       
         profile:'',
+        image:'',
+        
       };
     },
     methods: {
@@ -192,23 +201,12 @@
       var files = e.target.files || e.dataTransfer.files;
       if (!files.length)
         return;
-      //this.createImage(e.target.files[0]);
-      //  [Photo]
+      
       this.image = e.target.files[0];
-      console.log(this.image)
+       this.url = URL.createObjectURL(this.image);
+  
     },
-      // createImage(file) {
 
-      //   var image = new Image();
-      //   var reader = new FileReader();
-      //   var vm = this;
-
-      //   reader.onload = (e) => {
-      //     this.image = e.target.result;
-      //     //vm.image = e.target.result;
-      //   };
-      //   reader.readAsDataURL(this.image);
-      // },
     removeImage: function (e) {
       this.image = '';
     },
@@ -239,7 +237,7 @@
                   });
 
                  var data_name = {
-                    name: this.edit_name,
+                    name: this.ruleForm.edit_name,
 
                   }
 

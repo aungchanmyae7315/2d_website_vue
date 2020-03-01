@@ -66,9 +66,30 @@
   "Next" : "Next",
 
 
-  
-  "notification":"notification",
+  "notification_title":"Notification",
   "/":"/",
+  "wallet_title":"Wallet",
+  "service_title":"Service",
+  "me_title":"Me",
+
+  "acc_refel_title":"acc_refel",
+
+  "bet_detail_title":"Bet Detail",
+  "bet_history_title":"Bet History",
+  "bet_status_title":"Bet Stauts",
+  "bet_success_title":"Bet Success",
+  "bet_title":"Bet",
+
+  "language_title":"Language",
+  "login_title":"Login",
+  "profile_edit_title":"Profile Edit",
+  "remark_title":"Remark",
+  "result_title":"Result",
+  "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
+  "topup_title":"Topup",
+
+  "notification":"notification",
+
   "wallet":"wallet",
   "service":"service",
   "me":"me",
@@ -91,7 +112,24 @@
   "withdrawal":"withdrawal",
   "signup":"signup",
   "English":"English",
-  "forgot_password":"forgot_password"
+  "forgot_password":"Forgot Password",
+
+  "back":"Back",
+  "date_time":"Date and Time",
+  "no":"No",
+  "Amount":"Amount",
+  "date":"Date",
+
+  "name" : "Name",
+  "phone" : "Phone",
+  "odds" : "Odds",
+  "win_lose_amount" : "Win or Lose Amount",
+
+  "profile" : "Profile",
+
+  "enter_cash_amount" : "Enter Cash Amount",
+
+  "we_will_reply":"We wil reply you within 24 hours"
 
    
 }

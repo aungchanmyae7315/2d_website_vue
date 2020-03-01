@@ -2,7 +2,7 @@
    <div class="main_container bet_history">
       <el-header>
            <nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`">
-                <el-page-header content="Bet History">
+                <el-page-header :title="`${$t('back')}`"  :content="`${$t('bet_history_title')}`">
                 
                 </el-page-header>
            </nuxt-link>
@@ -12,8 +12,8 @@
        <table class="table">
             <thead>
                 <tr>
-                <th>Date</th>
-                <th style="text-align:right">Amount</th>
+                <th>{{$t('date')}}</th>
+                <th style="text-align:right">{{$t('Amount')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -63,12 +63,11 @@ export default {
        
       },
     
-        // goBack() {
-        //     this.$router.push('/me')
-        // },
+     
         bet_date(data) {
           this.$store.commit('bet_date', data)
-           this.$router.push('/bet_detail')
+       
+            this.$router.push(`bet_detail?lang=${this.$store.state.locale}`); 
 
         },
     },

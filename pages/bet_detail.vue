@@ -2,15 +2,15 @@
    <div class="main_container bet_detail">
       <el-header>
           <nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
-            <el-page-header  content="Bet Detail">
+           <el-page-header :title="`${$t('back')}`"  :content="`${$t('bet_detail_title')}`">
             
             </el-page-header>
           </nuxt-link>
         
       </el-header>
        <el-row style="padding:23px;">
-            <el-col :span="12"><div class="">Date and Time</div></el-col>
-             <el-col  :span="12"><div style="text-align:right;padding-right:20px" class="">Amount (MMK)</div></el-col>
+            <el-col :span="12"><div class="">{{$t('date_time')}}</div></el-col>
+             <el-col  :span="12"><div style="text-align:right;padding-right:20px" class="">{{$t('Amount')}}</div></el-col>
         </el-row>
      
                  <el-collapse accordion>
@@ -24,7 +24,7 @@
 
                             <el-row>
                                 <el-col :span="12">
-                                   <p style="text-align:right">Name :</p>
+                                   <p style="text-align:right">{{$t('name')}} :</p>
                                  
                                 </el-col>
                                 <el-col :span="12">
@@ -33,7 +33,7 @@
                             </el-row>
                              <el-row>
                                 <el-col :span="12">
-                                   <p style="text-align:right">Phone :</p>
+                                   <p style="text-align:right">{{$t('phone')}} :</p>
                                  
                                 </el-col>
                                 <el-col :span="12">
@@ -42,7 +42,7 @@
                             </el-row>
                              <el-row>
                                 <el-col :span="12">
-                                   <p style="text-align:right">No :</p>
+                                   <p style="text-align:right">{{$t('no')}} :</p>
                                  
                                 </el-col>
                                 <el-col :span="12">
@@ -51,7 +51,7 @@
                             </el-row>
                              <el-row>
                                 <el-col :span="12">
-                                   <p style="text-align:right">Odds :</p>
+                                   <p style="text-align:right">{{$t('odds')}} :</p>
                                  
                                 </el-col>
                                 <el-col :span="12">
@@ -60,7 +60,7 @@
                             </el-row>
                              <el-row>
                                 <el-col :span="12">
-                                   <p style="text-align:right">Amount :</p>
+                                   <p style="text-align:right">{{$t('Amount')}} :</p>
                                  
                                 </el-col>
                                 <el-col :span="12">
@@ -69,7 +69,7 @@
                             </el-row>
                              <el-row>
                                 <el-col :span="12">
-                                   <p style="text-align:right">Win or Lose Amount :</p>
+                                   <p style="text-align:right">{{$t('win_lose_amount')}} :</p>
                                  
                                 </el-col>
                                 <el-col :span="12">
@@ -143,9 +143,7 @@ export default {
        
       },
     
-        // goBack() {
-        //     this.$router.push('/me')
-        // }
+  
     },
       created() {
 

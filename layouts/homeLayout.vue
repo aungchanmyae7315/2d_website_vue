@@ -2,18 +2,34 @@
   <div>
     <div class="main_container">
         <el-header class="header">
-          <el-row :gutter="20">
-            <el-col :span="8">
-      
-              <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`">
+          <ul class="home_header">
+            <li class="" v-if ="!$store.state.isLoggedIn">
+                
+            </li>
+            <li v-else>
+                 <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`">
 
-              <div class="noti" type="primary" @click="loading"
-              v-loading.fullscreen.lock="fullscreenLoading">
-                <img src="~static/images/noti.png" alt="logo">
-              </div>
-              </nuxt-link>
-            </el-col>
-            <el-col :span="8"><div class=""><img src="~static/images/logo.png" class="logo" alt="logo"></div></el-col>
+                  <div class="noti" type="primary" @click="loading"
+                  v-loading.fullscreen.lock="fullscreenLoading">
+                    <img src="~static/images/noti.png" alt="logo">
+                  </div>
+                  </nuxt-link>
+            </li>
+            <li>
+                 <img src="~static/images/logo.png" class="logo" alt="logo">
+            </li>
+              <li class="" v-if ="!$store.state.isLoggedIn">
+
+            </li>
+            <li v-else style="float:right;padding-right:20px;">
+                   <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
+            </li>
+          </ul>
+             
+          
+              
+               
+          
             <!-- <el-col :span="4">
                  <div class="music_icon">
               
@@ -24,12 +40,9 @@
                      
                 </div>
             </el-col> -->
-            <el-col :span="8">
-              <div class="messeage_icon">
-                  <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
-              </div>
-            </el-col>
-          </el-row>
+           
+              
+           
  
 
                     

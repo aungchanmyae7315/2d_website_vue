@@ -4,19 +4,44 @@
         <div class="topup">
             <el-header>
                  <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`">
-                <el-page-header content="Top Up">
+                 <el-page-header :title="`${$t('back')}`"  :content="`${$t('Top Up')}`">
                 </el-page-header>
                  </nuxt-link>
             </el-header>
             <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p>
           
             <el-form>
-                 <el-form-item label="Transfer Amount" class="tran_input" >
-                    <el-input   type="number" placeholder="Please enter the top up amount" v-model="tran_amount" autocomplete="off"></el-input>
+                 <el-form-item :label="$t('Enter transferred amount')" class="tran_input" >
+                    <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="tran_amount" autocomplete="off"></el-input>
                 </el-form-item>
             </el-form>
             <h5>{{$t('Upload Bank transferred Slip')}}</h5>
-          <el-upload
+
+            <div class="avatar-upload">
+                    <div class="avatar-edit" v-if="!url">
+                        <label for="imageUpload" class="upload_icon"> <i slot="default" class="el-icon-plus"></i></label>
+                        
+                        <input type='file' @change="onFileChange" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                        <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+                    </div>
+            
+                <div class="avatar-preview" v-else>
+                        
+                        <img  :src="url" alt="" id="imagePreview">
+                   
+                        <el-button type="text" @click="removeImage">Remove image</el-button> 
+                </div>
+                 
+                    
+                
+            </div>
+           
+        
+
+
+
+
+          <!-- <el-upload
                 class="upload-demo"
                 action=""
                 :limit="1"
@@ -27,9 +52,9 @@
                 list-type="picture">
                <i slot="default" class="el-icon-plus"></i>
                 <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
-                </el-upload>
+                </el-upload> -->
            
-              <el-button round @click="slip_upload">Summit</el-button>
+              <el-button round @click="slip_upload">{{$t('Submit')}}</el-button>
         </div>
        
     </section>
@@ -89,6 +114,63 @@
         background-color: #158220;
         color:#fff;
     }
+     .topup .avatar-upload {
+  position: relative;
+  
+  margin: 50px auto;
+}
+ .topup .avatar-upload .avatar-edit {
+  margin:0 auto;
+  text-align: center;
+  z-index: 1;
+
+}
+.topup .avatar-upload .avatar-edit input {
+  display: none;
+}
+
+
+
+.topup .avatar-upload .avatar-preview , #imagePreview{
+  width:100%;
+  height:200px;
+  position: relative;
+  text-align: center;
+  margin:0 auto;
+  
+
+  /* border: 6px solid #F8F8F8; */
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+/* #imagePreview  {
+  width:192px;
+  height:192px;
+} */
+.topup .avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.topup .upload_icon {
+  position: absolute;
+    right: 0;
+    padding:50px;
+    width: 100%;
+    height: 91px;
+    left: 0;
+    z-index: 88;
+    top: 33px;
+    bottom: 0;
+    background-color: hsla(120,100%,75%,0.3);
+     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    /* width: 35px; */
+    /* height: 35px; */
+    padding: 26px;
+    
+}
     
 </style>
 
@@ -103,35 +185,66 @@ export default {
         return {
             
             tran_amount:'',
-            img_url:'',
-            fileList: [],
+              image:'',
+              url:'',
+               image:'',
+               amount:''
+            // img_url:'',
+            // fileList: [],
+            // file:'',
         }
     },
     methods: {
-        handleRemove(file, fileList) {
-        console.log(file, fileList);
-      },
-      handlePreview(file) {
-        console.log(file);
-      },
-       handleExceed(files, fileList) {
-        this.$message.warning(`The limit is 1, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
-      },
-        
-      slip_upload() {
-        
-       
-         var data = {
-                image:'https://cdn1.peopleimages.com/picture/201903/1830571-legs-speak-louder-than-words-zoom_90.jpg',
-                amount: this.tran_amount,
-                bank_type_id:1,
-              
 
+         onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            
+            this.image = e.target.files[0];
+            this.url = URL.createObjectURL(this.image);
+        
+            },
+
+    removeImage: function (e) {
+      this.url = '';
+    },
+
+    //     handleRemove(file, fileList) {
+    //     console.log(file, fileList);
+    //     // this.$store.commit('file', this.file);
+    //   },
+    //   handlePreview(e) {
+    //        var files = e.target.files || e.dataTransfer.files;
+    //   if (!files.length)
+    //     return;
+
+    //   this.image = e.target.files[0];
+    //    this.file = URL.createObjectURL(this.image);
+    //         console.log(file);
+
+    //   },
+    //    handleExceed(files, fileList) {
+    //     this.$message.warning(`The limit is 1, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
+    //   },
+        
+      slip_upload(file) {
+           
+            // let formData = new FormData();
+            //     formData.append('image', this.image);
+            //     formData.append('amount', this.tran_amount);
+
+            //      console.log(formData);
+        
+         var data = {
+                image:this.image,
+                amount: this.tran_amount,
             }
-              
-         let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjU1ODU4OGU1YWEyMjcwNzRlYzkwOTA0MDdlMmI4YWJjOTM5ZTA0ZWU3MTEyODE3MWZiODliY2NlNzNlZmE1NjRmMGZmMTE5Y2U1OGE0MDdiIn0.eyJhdWQiOiIxIiwianRpIjoiNTU4NTg4ZTVhYTIyNzA3NGVjOTA5MDQwN2UyYjhhYmM5MzllMDRlZTcxMTI4MTcxZmI4OWJjY2U3M2VmYTU2NGYwZmYxMTljZTU4YTQwN2IiLCJpYXQiOjE1ODI3OTg0NTMsIm5iZiI6MTU4Mjc5ODQ1MywiZXhwIjoxNjE0NDIwODUzLCJzdWIiOiI2MSIsInNjb3BlcyI6W119.OFmkUw1kHgZpRus3SlRCMheRuxQcLJZXOp8chjhOxjHbGVyhd5JxRfrosLyOc51C3hwMq644FpG7wXajLQJqHE2Vt-gWG77CKeJ_QrOQXZT_jSSuaHbckIVk0H-yYSPO82Hrmb0gi893dE9kex3E4YJbI1FFGnoLkMfZXHGyKr_PBQRPpIBJm4_7e3Y2X-glta2n3XmbsaaLg7nz7udUcF6zR_rWUDtyHUzBOhs0aDWByhkpF0VSXpPN9vtqbUgt9RqC7h3GlINRDF1PmYYq6jYj4DF2vNcgVTQGxC7j3xAsa3C3kYp_1A_AnNGuOYq9LQA9HaIHew3-igmDP9NR9jr4uiceLjlFI5Si259KT5sMWo7DJ3eSp2Xzo26OI2PyPifRxfMU18pBwwuN-BDf2kX-LPXSDers3YiFlDS6KXbrrqDxVrc2pmAdaki7Sb2nilvp9sc_YJGwS1cO7WK6gq3KREkAnJx9PDQDH78Qj9EhVWVX5rjQys0q9ymCE8yYatCKfps-fS0PANG-0Y6HyUnS9-eZ8yNU62z_jPMd-wSz3FuC7FzsnnWdyOQcu07Ug_xYySx2W5FZ4wNV4Ecxh8_RY8df64fcA9dNtdd2Ni7S5WAA9usMucA9qRPfgfkTFmwJ4VJpoQKPjW38WidgJ9FIkiGt174LCObVcgAY7FY'
-            console.log(token)
-            console.log(data)
+                 let token = localStorage.getItem('token');
+            
+                console.log(token)
+                  console.log(data)
+           
                 axios.post("https://build.seinlucky.com/api/v1/slip_post",
                            data,
                     {

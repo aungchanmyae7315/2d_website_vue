@@ -1,7 +1,9 @@
 <template>
     <el-main class="wallet">
       <el-header class="wallet_header" >
+        
               <div v-if="!$store.state.isLoggedIn" class="demo-type logout_wallet">
+                 <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" >  <img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
@@ -12,14 +14,16 @@
                   
                   </ul>
                   </div>
+                   </nuxt-link>
               </div>
+        
               <div v-else class="demo-type">
-                 <el-avatar :size="60" v-if="this.profile.image !== 'null'"> 
-                   
-                  <img :src="this.profile.image" alt="">
+                 <el-avatar :size="60" v-if="this.profile.image == null"> 
+                    <img src="~static/images/icons/me_img.png" alt="">
+                  
                   </el-avatar>
                   <el-avatar :size="60" v-else > 
-                   <img src="~static/images/icons/me_img.png" alt="">
+                   <img :src="this.profile.image" alt="">
                   
                   </el-avatar>
                 <div  class="avatar_text">

@@ -66,7 +66,7 @@ export default {
          
     },
         skip() {
-             this.$router.push('/');
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
         }
     }
 }

@@ -79,7 +79,7 @@ export default {
     font-family:'Oswald';
     font-weight:700;
     position:relative;  
-    margin: 70px auto 20px auto;
+    margin: 60px auto 20px auto;
     font-size: 16px;
     line-height: 15px;
     width: 282px;

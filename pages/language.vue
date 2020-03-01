@@ -1,10 +1,10 @@
 <template>
     <section>
         <div class="language_type">
-            <el-header>
-                <el-page-header @back="goBack" :content="$t('Language')">
+              <nuxt-link  :to="`${$t('/me')}?lang=${$store.state.locale}`">
+                          <el-page-header :title="`${$t('back')}`"  :content="`${$t('Language')}`">
                 </el-page-header>
-            </el-header>
+            </nuxt-link>
 
             <div class="lang">
                 <el-dropdown @command="changeLang"  style="text-align:center">
@@ -25,7 +25,7 @@
 
          <div class="footer_btn" >
              <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-                         <el-button type="success" style="width:100%"  round @click="submitLang('')"  v-loading.fullscreen.lock="fullscreenLoading">Submit</el-button>
+                         <el-button type="success" style="width:100%"  round @click="submitLang('')"  v-loading.fullscreen.lock="fullscreenLoading">{{$t('Submit')}}</el-button>
             </nuxt-link>
         </div>
            
@@ -64,7 +64,7 @@ export default {
         //     }
         // },
         goBack() {
-              this.$router.push('/');
+                this.$router.push(`/?lang=${this.$store.state.locale}`); 
         },
          submitLang() {
                      const loading = this.$loading({
@@ -99,6 +99,12 @@ export default {
     .lang {
         text-align: center;
         margin:100px auto;
+    }
+    .lang .el-dropdown {
+        padding:27px;
+        -webkit-box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
+        -moz-box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
+        box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
     }
     .lang .el-dropdown-menu__item{
         margin:20px auto;

@@ -201,6 +201,9 @@ import axios from 'axios'
        submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
+            // alert(this.ruleForm.phone),
+            //  alert(this.ruleForm.otp)
+            //   alert(this.ruleForm.password)
             axios.post('https://build.seinlucky.com/api/v1/register', {
                     phone: this.ruleForm.phone,
                     otp: this.ruleForm.otp,

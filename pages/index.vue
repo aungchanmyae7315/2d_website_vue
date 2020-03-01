@@ -20,11 +20,11 @@
            
               <div class="demo-type">
                 <nuxt-link :to="`${$t('profile_edit')}?lang=${$store.state.locale}`">
-                 <el-avatar :size="60" v-if="this.profile.name !== 'null'"><img :src="this.profile.image" alt=""></el-avatar>
-                  <el-avatar :size="60" v-else ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
+                 <el-avatar :size="60" v-if="this.profile.profile == null"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
+                  <el-avatar :size="60" v-else ><img :src="this.profile.image" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li><span v-if="this.profile.name === 'null'"> {{this.profile.name}}</span>
+                    <li><span v-if="this.profile.name == null"> Upgrade Name</span>
                         <span v-else ><nuxt-link style="color:#fff" to="me">{{this.profile.name}}</nuxt-link></span>
                      
 
@@ -59,15 +59,20 @@
                     <div class="el-carousel_label">
                       
                         <h3> 
-                          <div class="runtext-container">
-                              <div class="main-runtext">
+                          <div class="scroll-left">
+                            <p> 
+                               <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
+                              {{this.slider_text.text}}</p>
+                          </div>
+                        
+                             <!-- <div class="scroll-left">
                               <marquee direction="" onmouseover="this.stop();" onmouseout="this.start();">
                                 <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
                                 {{this.slider_text.text}}
                               </marquee>
-                              </div>
-                              </div>
-                           <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon"> ipsum dolor sit amet fdsf
+                              </div> -->
+                             
+                        
                            </h3> 
                     </div>
                   
@@ -136,18 +141,18 @@
                       <div class="col">
                           <span>Set</span>
                           
-                          <h4 v-if="this.currentTime  > this.morningTime_9_30 || this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 || this.currentTime <  this.time_01_00">{{this.info.set_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 || this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 || this.currentTime < this.morningTime_9_30">{{this.info.set_430}}</h4>
+                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
                           <h4 v-else>{{this.info.set_430}}</h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
-                           <h4 v-if="this.currentTime  > this.morningTime_9_30 || this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 || this.currentTime <  this.time_01_00">{{this.info.val_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 || this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 || this.currentTime < this.morningTime_9_30">{{this.info.val_430}}</h4>
+                           <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
                           <h4 v-else>{{this.info.set_430}}</h4>
                         
                       </div>
@@ -265,7 +270,7 @@ export default {
   },
    methods: {
        updateCurrentTime() {
-        this.currentTime = moment().format('h:mm:ss A');
+       var currentTime = moment().format('HH:mm:ss');
         this.currentDate = moment().format('LL');
         
        },
@@ -298,7 +303,7 @@ export default {
             //         console.log(this.currentTime)
    
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
- //alert('currentTime')
+//  alert('currentTime')
     this.isActive = true
      axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
@@ -307,7 +312,7 @@ export default {
               })
      
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-      alert('two')
+    //  alert('two')
       this.isActive = false
      // alert(currentTime)
        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
@@ -315,7 +320,7 @@ export default {
                 this.info = response.data.data
               })
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-   //alert('three')
+  // alert('three')
     this.isActive = true
          axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
@@ -324,18 +329,19 @@ export default {
               })
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
      this.isActive = false
-        alert('foursssss')
+        //alert('foursssss')
         axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 this.info = response.data.data
                
               })
   }else {
-    alert('mm')
+   // alert('mm')
       this.isActive = false
         axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
-                this.info_api = response.data.data
+                this.info = response.data.data
+                console.log(this.info)
                
               })
   }
@@ -366,6 +372,7 @@ export default {
                         })
                     .then(response => {
                      this.profile = response.data.data
+                     console.log(this.profile)
 
                 })
       }
@@ -433,32 +440,44 @@ export default {
 
 /* slider text css */
 /* CSS Document */
-
-marquee {
-	margin-top: 5px;
-	width: 100%;
+.scroll-left {
+  overflow: hidden;
+  height:36px;	
+  position: relative;
+  width:auto;
 }
-
-
-.runtext-container .holder {
-position: relative;
-overflow: visible;
-display:inline;
-
+.scroll-left p {
+  position: absolute;
+  white-space:nowrap;
+  height: 100%;
+  margin: 0;
+  line-height: 25px;
+  text-align: left;
+  /* Apply animation to this element */	
+  -moz-animation: scroll-left 15s linear infinite;
+  -webkit-animation: scroll-left 15s linear infinite;
+  animation: scroll-left 15s linear infinite;
 }
-
-.runtext-container .holder .text-container {
-	display:inline;
+/* Move it (define the animation) */
+@-moz-keyframes scroll-left {
+  0%   { -moz-transform: translateX(100%); }
+  100% { -moz-transform: translateX(-100%); }
 }
-
-.runtext-container .holder a{
-	text-decoration: none;
-	font-weight: bold;
-	text-shadow:0 -1px 0 rgba(0,0,0,0.25);
-	line-height: -0.5em;
-	font-size:16px;
+@-webkit-keyframes scroll-left {
+  0%   { -webkit-transform: translateX(100%); }
+  100% { -webkit-transform: translateX(-100%); }
 }
-
-
+@keyframes scroll-left {
+  0%   { 
+  -moz-transform: translateX(100%); /* Browser bug fix */
+  -webkit-transform: translateX(100%); /* Browser bug fix */
+  transform: translateX(200px); 		
+  }
+  100% { 
+  -moz-transform: translateX(-100%); /* Browser bug fix */
+  -webkit-transform: translateX(-100%); /* Browser bug fix */
+  transform: translateX(-100%); 
+ }
+}
 </style>
 

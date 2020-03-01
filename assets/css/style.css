@@ -41,6 +41,16 @@
      z-index: 1;
     
  }
+ .home_header {
+   padding:0;
+   margin:0;
+   list-style: none;
+   text-align:center;
+ }
+ .home_header li {
+   list-style: none;
+   display: inline;
+ }
  .el-header {
    z-index: 20;
  }
@@ -188,7 +198,7 @@
     padding:0 10px;
     position:relative;
    
-    top:122px;
+    top:120px;
     z-index: 2;
     background: rgba(25, 61, 26, 0.705);
     margin: 0;
@@ -362,7 +372,7 @@
   margin-left: 15px;
   padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
   padding-top:60px;
-  padding-bottom: 130px; /*This would hide the scroll bar of the bottom if there is one*/
+  padding-bottom: 180px; /*This would hide the scroll bar of the bottom if there is one*/
 }
 .el-message {
   min-width: 300px !important;
