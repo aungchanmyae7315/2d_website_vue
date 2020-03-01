@@ -92,21 +92,21 @@
         font-weight: bold;
     }
 
-    .avatar-upload {
+    .profile_edit .avatar-upload {
   position: relative;
   max-width: 205px;
   margin: 50px auto;
 }
-.avatar-upload .avatar-edit {
+.profile_edit .avatar-upload .avatar-edit {
   position: absolute;
   right: 30px;
   z-index: 1;
   bottom:0;
 }
-.avatar-upload .avatar-edit input {
+.profile_edit .avatar-upload .avatar-edit input {
   display: none;
 }
-.avatar-upload .avatar-edit input + label {
+.profile_edit .avatar-upload .avatar-edit input + label {
   display: inline-block;
   width: 34px;
   height: 34px;
@@ -119,11 +119,11 @@
   font-weight: normal;
   transition: all 0.2s ease-in-out;
 }
-.avatar-upload .avatar-edit input + label:hover {
+.profile_edit .avatar-upload .avatar-edit input + label:hover {
   background: #f1f1f1;
   border-color: #d6d6d6;
 }
-.avatar-upload .avatar-edit input + label:after {
+.profile_edit .avatar-upload .avatar-edit input + label:after {
   content: "\f040";
   font-family: 'FontAwesome';
   color:green;
@@ -134,7 +134,7 @@
   text-align: center;
   margin: auto;
 }
-.avatar-upload .avatar-preview , #imagePreview{
+.profile_edit .avatar-upload .avatar-preview , #imagePreview{
   width: 140px;
   height: 140px;
   position: relative;
@@ -146,7 +146,7 @@
   width:192px;
   height:192px;
 } */
-.avatar-upload .avatar-preview > div {
+.profile_edit .avatar-upload .avatar-preview > div {
   width: 100%;
   height: 100%;
   border-radius: 100%;

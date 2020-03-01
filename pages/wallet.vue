@@ -55,7 +55,7 @@
                   
 
                   <h5>{{ $t('Sein Lucky Bank Accounts') }}</h5>
-                  <p><span style="color:red;">Warning !!!</span> There is no other Sein Lucky bank account except these following bank accounts</p>
+                  <p><span style="color:red;">{{$t('Warning')}} !!!</span> {{$t('there_is_no_other')}}</p>
                     
                     <div v-for="(bank_info, b) in bank_account" :key="b">
                      <div class="demo-type wallet_type">

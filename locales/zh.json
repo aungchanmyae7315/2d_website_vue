@@ -1,6 +1,6 @@
 {
   "Language" : "语言",
-  "My_balance": "我的余额",
+  "my_balance": "我的余额",
   "Top Up": "充值",
   "Withdrawal": "提现",
   "Please transfer to Sein Lucky bank accounts first": "请汇款至Sein Lucky 公司的银行卡",
@@ -55,7 +55,7 @@
   "Bet Status for 4:30 PM": "12:00 PM 的下注状态",
   "Click to see Bet History": "Click to see Bet History",
   "You can just message to us" : "点我，和客服聊天",
-  "Sein Lucky Bank Accounts" : "Sein Lucky Bank Accounts",
+  "Sein Lucky Bank Accounts" : "Sein Lucky 选择银行",
   "Phone_placeholder" : "电话号码",
   "Password_placeholder":"密码",
   "Forgot_password" :"忘记密码",
@@ -66,7 +66,22 @@
 "China" :"中文",
   "Next" : "下一步",
 
- 
+  "notification_title":"Notification",
+
+  "wallet_title":"Wallet",
+  "service_title":"Service",
+  "me_title":"Me",
+
+  "acc_refel_title":"acc_refel",
+
+
+  "language_title":"Language",
+  "login_title":"Login",
+  "profile_edit_title":"Profile Edit",
+  "remark_title":"Remark",
+  "result_title":"Result",
+  "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
+  "topup_title":"Topup",
 
 "bet_detail_title":"下注详细",
 "bet_history_title":"下注记录",
@@ -119,7 +134,10 @@
 "profile" : "头像",
 
 "enter_cash_amount" : "请输入金额",
-"we_will_reply":"上传成功，五分钟内到账。"
+"we_will_reply":"上传成功，五分钟内到账。",
+"Warning":"请注意",
+"there_is_no_other" : "本公司除以下 银行账号外，一律没有其他收款账号。"
+
 
 
 
