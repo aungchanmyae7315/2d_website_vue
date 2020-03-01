@@ -141,18 +141,18 @@
                       <div class="col">
                           <span>Set</span>
                           
-                          <h4 v-if="this.currentTime  > this.morningTime_9_30 || this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 || this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 || this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 || this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}cc</h4>
+                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
                           <h4 v-else>{{this.info.set_430}}</h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
-                           <h4 v-if="this.currentTime  > this.morningTime_9_30 || this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 || this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 || this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 || this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
+                           <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
                           <h4 v-else>{{this.info.set_430}}</h4>
                         
                       </div>
@@ -270,7 +270,7 @@ export default {
   },
    methods: {
        updateCurrentTime() {
-        this.currentTime = moment().format('h:mm:ss A');
+       var currentTime = moment().format('HH:mm:ss');
         this.currentDate = moment().format('LL');
         
        },
@@ -320,7 +320,7 @@ export default {
                 this.info = response.data.data
               })
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-  //  alert('three')
+  // alert('three')
     this.isActive = true
          axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
