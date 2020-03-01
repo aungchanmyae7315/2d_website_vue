@@ -108,7 +108,7 @@
                             ]"
                             
                             >  
-                                <el-input class type="text" placeholder="500 Ks"  v-model="ruleForm.amount"  ></el-input>
+                                <el-input class type="number" placeholder="500 Ks"  v-model="ruleForm.amount"  ></el-input>
                             
                             </el-form-item>
                 </el-col>
@@ -130,7 +130,7 @@
              </div>
             <div v-else class="bet_login_btn">
 
-                    <el-button   v-bind:class="{ bet_off: isActive}"  type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
+                    <el-button     type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
            
             </div>
             
@@ -138,7 +138,7 @@
        <el-main>
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_bet">
-                <div class="all_btn" data-aos="fade-down"
+                <div class="all_btn" v-bind:class="{ bet_off: isActive}" data-aos="fade-down"
                     data-aos-easing="linear"
                     data-aos-duration="500">
                    
@@ -323,10 +323,10 @@
        text-align: left;
        padding-left:10px;
    }
-   .bet_off {
+   /* .bet_off {
        cursor: no-drop !important;
        display: none !important;
-   }
+   } */
 
    @media screen and (max-width:320px) {
        .select_number_two .el-button {
@@ -606,22 +606,23 @@ export default {
                     var currentTime = moment().format('HH:mm:ss');
                     setInterval(() => this.updateCurrentTime(), 1 * 1000);
 
-                    if(currentTime  >  this.morning_from ) {
-                        this.isActive = false
-                    // alert('one')
-                    }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
-                        this.isActive = false
-                        // alert('two')
-                    }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
-                        this.isActive = false
-                            // alert('three')
-                    }else if(currentTime > this.evening_to && currentTime < this.morning_to) {
-                        this.isActive = true
-                        // alert('four')
-                    }else {
-                        // alert('fixe')
+                    // if(currentTime  >  this.morning_from ) {
+                    //     this.isActive = false
+                    // // alert('one')
+                    // }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
+                    //     this.isActive = false
+                    //     // alert('two')
+                    // }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
+                    //     this.isActive = false
+                    //         // alert('three')
+                    // }else if(currentTime > this.evening_to && currentTime < this.morning_to) {
+                    //     this.isActive = true
+                    //     // alert('four')
+                    // }else {
+                    //      this.isActive = false
+                    //     // alert('fixe')
                         
-                    }
+                    // }
 
                 })
     

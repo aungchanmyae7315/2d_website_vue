@@ -14,12 +14,12 @@
                   </div>
               </div>
               <div v-else class="demo-type">
-                 <el-avatar :size="60" v-if="this.profile.image !== 'null'"> 
-                   
-                  <img :src="this.profile.image" alt="">
+                 <el-avatar :size="60" v-if="this.profile.image == null"> 
+                    <img src="~static/images/icons/me_img.png" alt="">
+                  
                   </el-avatar>
                   <el-avatar :size="60" v-else > 
-                   <img src="~static/images/icons/me_img.png" alt="">
+                   <img :src="this.profile.image" alt="">
                   
                   </el-avatar>
                 <div  class="avatar_text">

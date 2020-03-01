@@ -5,12 +5,12 @@
                     <div class="hideScrollBar_refel">
                 <el-header>
                      <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`">
-                         <el-page-header content="Withdrawal">
+                           <el-page-header :title="`${$t('back')}`"  :content="`${$t('Withdrawal')}`">
                          </el-page-header>
                      </nuxt-link>
 
                 </el-header>
-                <p>Select your receiving bank</p>
+                <p>{{$t('Choose your receiving account')}}</p>
                 <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                 <el-card>
                   
@@ -45,7 +45,7 @@
                 </el-card>
                 
                     <el-form-item
-                    label="Bank Card Number"
+                    :label="$t('Receiving Account')"
                     prop="card_number"
                     :rules="[
                         { required: true, message: 'Bank Card Number is required'},
@@ -54,11 +54,11 @@
                     
                     >  
                     <!-- <el-form-item label="Bank Card Number" class="tran_input" > -->
-                        <el-input   type="text" placeholder="Please enter Card Number" v-model="ruleForm.card_number"></el-input>
+                        <el-input   type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
                     </el-form-item>
                     <!-- <el-form-item label="Withdraw Amount" class="tran_amount tran_input" > -->
                     <el-form-item class="tran_amount tran_input"
-                        label="Withdraw Amount"
+                        :label="$t('Cash Amount')"
                         prop="tran_amount"
                         :rules="[
                             { required: true, message: 'Withdraw Amount is required'},
@@ -66,11 +66,11 @@
                         ]"
                         
                         >  
-                        <el-input   type="text" placeholder="Please enter  Amount" v-model="ruleForm.tran_amount" ></el-input>
+                        <el-input   type="number" :placeholder="$t('enter_cash_amount')" v-model="ruleForm.tran_amount" ></el-input>
                     </el-form-item>
                     <!-- <el-form-item label="Password" class="password tran_input" > -->
                         <el-form-item class="tran_amount tran_input"
-                            label="Password"
+                            :label="$t('Password')"
                             prop="password"
                             :rules="[
                                 { required: true, message: 'Password is required'},
@@ -78,12 +78,12 @@
                             ]"
                             
                             >  
-                        <el-input type="password" show-password placeholder="Password" v-model="ruleForm.password" ></el-input>
+                        <el-input type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
                     </el-form-item>
                   
               
                 
-                     <el-button round @click="withdrawal('ruleForm')">Summit</el-button>
+                     <el-button round @click="withdrawal('ruleForm')">{{$t('Confirm')}}</el-button>
                   </el-form>
                     </div>
                 </div>
@@ -222,13 +222,9 @@ export default {
                      console.log(this.with = response.data.data)
                      console.log(this.with)
                 })
-                // this.$notify({
-                //     title: 'Success',
-                //     message: 'Success',
-                //     type: 'success'
-                //     });
-
-            this.$router.push('/withdraw_success');
+             
+                  this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
+            
             } else {
             
                 console.log('error submit!!');

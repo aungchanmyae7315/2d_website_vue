@@ -2,7 +2,7 @@
    <div class="main_container result">
       <el-header>
            <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-                <el-page-header  content="2D Result">
+               <el-page-header :title="`${$t('back')}`"  :content="`${$t('result_title')}`">
                 </el-page-header>
            </nuxt-link>
       </el-header>

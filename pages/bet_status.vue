@@ -2,8 +2,8 @@
    <div class="main_container bet_status">
       <el-header>
            <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
-                <el-page-header  content="Bet Status">
-                
+                <el-page-header :title="`${$t('back')}`"  :content="`${$t('bet_status_title')}`">
+                   
                 </el-page-header>
            </nuxt-link>
 
@@ -15,9 +15,9 @@
        <table class="table" style="width:95%" >
             <thead>
                 <tr>
-                <th>Date and Time</th>
-                <th>No</th>
-                <th style="text-align:right">Amount</th>
+                <th>{{$t('date_time')}}</th>
+                <th>{{$t('no')}}</th>
+                <th style="text-align:right">{{$t('Amount')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -146,9 +146,7 @@ export default {
        
       },
     
-        goBack() {
-            this.$router.push('/me')
-        }
+       
     },
       created() {
 

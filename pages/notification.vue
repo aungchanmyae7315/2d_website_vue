@@ -2,7 +2,7 @@
    <div class="main_container notification">
       <el-header>
             <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-                <el-page-header content="Notification">
+                          <el-page-header :title="`${$t('back')}`"  :content="`${$t('notification_title')}`">
                 </el-page-header>
             </nuxt-link>
       </el-header>
@@ -83,12 +83,11 @@ export default {
         }
     },
     methods: {
-    //     goBack() {
-    //         this.$router.push('/')
-    //   },
+
       cur_id(data) {
          this.$store.commit('noti_id', data);
-         this.$router.push('/withdraw_noti')
+           this.$router.push(`withdraw_noti?lang=${this.$store.state.locale}`); 
+       
       }
      },
      created() {

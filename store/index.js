@@ -14,6 +14,7 @@ const createStore = () => {
             locales: ['en', 'uni','zg','zh'],
             locale: 'en',
             token:'',
+            file:'',
         
         },
         getters: {
@@ -26,11 +27,7 @@ const createStore = () => {
                   localStorage.setItem('locale', JSON.stringify(locale));
                 }
               },
-        //       SET_LANG(state , lang) {
-        //         state.lang = lang
-        //         console.log(lang);
-        //         localStorage.setItem('lang', JSON.stringify(lang));
-        //    },
+
             logIn(state, userInfo) {
                 //console.log("UserInfo", userInfo);
                 // state.userInfo = userInfo;
@@ -95,11 +92,11 @@ const createStore = () => {
                 state.bet_amount = bet_amount;
                 //console.log(bet_amount)
             },
-            // odds(state, bet_odds){
-            //     localStorage.setItem('odds',  JSON.stringify(bet_odds));
-            //     state.bet_odds = bet_odds;
-            //     //console.log(check_btn)
-            // },
+            file(state, file){
+                //localStorage.setItem('file',file);
+                state.file = file;
+                //console.log(check_btn)
+            },
            
         }
     })
