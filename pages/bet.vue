@@ -2,10 +2,11 @@
     <section class="bet_container">
          <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
         <el-header>
-            <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-             <el-page-header content="">
-            </el-page-header>
+             <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                          <el-page-header :title="`${$t('back')}`">
+                </el-page-header>
             </nuxt-link>
+           
             <el-row style="padding-top:15px;">
                 <el-col :span="6">
                     

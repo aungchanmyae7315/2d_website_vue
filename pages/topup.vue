@@ -16,7 +16,32 @@
                 </el-form-item>
             </el-form>
             <h5>{{$t('Upload Bank transferred Slip')}}</h5>
-          <el-upload
+
+            <div class="avatar-upload">
+                    <div class="avatar-edit" v-if="!url">
+                        <label for="imageUpload" class="upload_icon"> <i slot="default" class="el-icon-plus"></i></label>
+                        
+                        <input type='file' @change="onFileChange" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                        <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+                    </div>
+            
+                <div class="avatar-preview" v-else>
+                        
+                        <img  :src="url" alt="" id="imagePreview">
+                   
+                        <el-button type="text" @click="removeImage">Remove image</el-button> 
+                </div>
+                 
+                    
+                
+            </div>
+           
+        
+
+
+
+
+          <!-- <el-upload
                 class="upload-demo"
                 action=""
                 :limit="1"
@@ -27,7 +52,7 @@
                 list-type="picture">
                <i slot="default" class="el-icon-plus"></i>
                 <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
-                </el-upload>
+                </el-upload> -->
            
               <el-button round @click="slip_upload">{{$t('Submit')}}</el-button>
         </div>
@@ -89,6 +114,63 @@
         background-color: #158220;
         color:#fff;
     }
+     .topup .avatar-upload {
+  position: relative;
+  
+  margin: 50px auto;
+}
+ .topup .avatar-upload .avatar-edit {
+  margin:0 auto;
+  text-align: center;
+  z-index: 1;
+
+}
+.topup .avatar-upload .avatar-edit input {
+  display: none;
+}
+
+
+
+.topup .avatar-upload .avatar-preview , #imagePreview{
+  width:100%;
+  height:200px;
+  position: relative;
+  text-align: center;
+  margin:0 auto;
+  
+
+  /* border: 6px solid #F8F8F8; */
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+}
+/* #imagePreview  {
+  width:192px;
+  height:192px;
+} */
+.topup .avatar-upload .avatar-preview > div {
+  width: 100%;
+  height: auto;
+  border-radius: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.topup .upload_icon {
+  position: absolute;
+    right: 0;
+    padding:50px;
+    width: 100%;
+    height: 91px;
+    left: 0;
+    z-index: 88;
+    top: 33px;
+    bottom: 0;
+    background-color: hsla(120,100%,75%,0.3);
+     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+    /* width: 35px; */
+    /* height: 35px; */
+    padding: 26px;
+    
+}
     
 </style>
 
@@ -103,41 +185,65 @@ export default {
         return {
             
             tran_amount:'',
-            img_url:'',
-            fileList: [],
-            file:'',
+              image:'',
+              url:'',
+               image:'',
+               amount:''
+            // img_url:'',
+            // fileList: [],
+            // file:'',
         }
     },
     methods: {
-        handleRemove(file, fileList) {
-        console.log(file, fileList);
-        // this.$store.commit('file', this.file);
-      },
-      handlePreview(e) {
-           var files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
-        return;
 
-      this.image = e.target.files[0];
-       this.file = URL.createObjectURL(this.image);
-            console.log(file);
+         onFileChange(e) {
+            var files = e.target.files || e.dataTransfer.files;
+            if (!files.length)
+                return;
+            
+            this.image = e.target.files[0];
+            this.url = URL.createObjectURL(this.image);
+        
+            },
 
-      },
-       handleExceed(files, fileList) {
-        this.$message.warning(`The limit is 1, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
-      },
+    removeImage: function (e) {
+      this.url = '';
+    },
+
+    //     handleRemove(file, fileList) {
+    //     console.log(file, fileList);
+    //     // this.$store.commit('file', this.file);
+    //   },
+    //   handlePreview(e) {
+    //        var files = e.target.files || e.dataTransfer.files;
+    //   if (!files.length)
+    //     return;
+
+    //   this.image = e.target.files[0];
+    //    this.file = URL.createObjectURL(this.image);
+    //         console.log(file);
+
+    //   },
+    //    handleExceed(files, fileList) {
+    //     this.$message.warning(`The limit is 1, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
+    //   },
         
       slip_upload(file) {
            
-           
+            // let formData = new FormData();
+            //     formData.append('image', this.image);
+            //     formData.append('amount', this.tran_amount);
 
+            //      console.log(formData);
+        
          var data = {
-                image:this.file,
+                image:this.image,
                 amount: this.tran_amount,
             }
                  let token = localStorage.getItem('token');
-                  console.log(data)
+            
                 console.log(token)
+                  console.log(data)
            
                 axios.post("https://build.seinlucky.com/api/v1/slip_post",
                            data,

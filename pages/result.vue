@@ -7,7 +7,7 @@
            </nuxt-link>
       </el-header>
       <div class="result_item">
-            <div v-for="result of twod_result" :key="result" data-aos="fade-down"
+            <div v-for="(result,t) in twod_result" :key="t" data-aos="fade-down"
                 data-aos-easing="linear"
                 data-aos-duration="500">
            
@@ -102,7 +102,7 @@ export default {
       
                 
                     .then(response => {
-                     console.log(this.twod_result = response.data.data)
+                     this.twod_result = response.data.data
                 })
      }
 }
