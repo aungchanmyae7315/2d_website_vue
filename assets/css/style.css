@@ -362,7 +362,7 @@
   margin-left: 15px;
   padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
   padding-top:60px;
-  padding-bottom: 130px; /*This would hide the scroll bar of the bottom if there is one*/
+  padding-bottom: 180px; /*This would hide the scroll bar of the bottom if there is one*/
 }
 .el-message {
   min-width: 300px !important;

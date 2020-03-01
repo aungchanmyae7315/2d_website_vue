@@ -101,23 +101,27 @@
 "withdrawal":"withdrawal",
 "signup":"signup",
 "English":"English",
-"forgot_password":"forgot_password",
 
-"back":"back",
-"date_time":"Date and Time",
-"no":"No",
-"Amount":"Amount",
-"date":"Date",
 
-"name" : "Name",
-"phone" : "Phone",
-"odds" : "Odds",
-"win_lose_amount" : "Win or Lose Amount",
+"forgot_password":"忘记密码?",
 
-"profile" : "Profile",
+"back":"上一步",
+"date_time":"日期时间",
+"no":"号码",
+"Amount":"金额",
+"date":"日期",
 
-"enter_cash_amount" : "Enter Cash Amount",
-"we_will_reply":"We wil reply you within 24 hours"
+"name" : "名字",
+"phone" : "电话",
+"odds" : "倍数",
+"win_lose_amount" : "输赢金额",
+
+"profile" : "头像",
+
+"enter_cash_amount" : "请输入金额",
+"we_will_reply":"上传成功，五分钟内到账。"
+
+
 
 
 }

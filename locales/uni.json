@@ -96,7 +96,7 @@
   "withdrawal":"withdrawal",
   "signup":"signup",
   "English":"English",
-  "forgot_password":"forgot_password",
+  "forgot_password":"စကားဝှက်မေ့နေသလား?",
 
   "notification":"notification",
 
@@ -119,19 +119,21 @@
   "signup_refel":"signup_refel",
   "topup":"topup",
 
-  "back":"နောက်သို့",
-  "date_time":"ရက်စွဲ နှင့် အချိန်",
-  "no":"ဂဏန်း",
-  "Amount":"ငွေပမာဏ",
-  "date":"ရက်စွဲ",
+  "back":"ရှေ့သို့",
+"date_time":"ရက်စွဲ၊အချိန်",
+"no":"No",
+"Amount":"ငွေပမာဏ",
+"date":"ရင်စွဲ",
 
-  "name" : "နာမည်",
-  "phone" : "ဖုန်း",
-  "odds" : "အဆ",
-  "win_lose_amount" : "အနိုင်အရှုံးငွေပမာဏ",
+"name" : "အမည်",
+"phone" : "ဖုန်းနံပါတ်",
+"odds" : "အဆ",
+"win_lose_amount" : "အနိုင်အရှုံး",
 
-  "profile" : "Profile",
+"profile" : "ကိုယ်ရေးဓာတ်ပုံ",
 
-  "enter_cash_amount" : " ငွေပမာဏထည့်ရန်",
-  "we_will_reply":"၂၄ နာရီအတွင်း ပြန်လည်ဆက်သွယ်ပေးပါမည်"
+"enter_cash_amount" : "ငွေပမာဏဖြည့်ပါ",
+"we_will_reply":"(၅)မိနစ်အတွင်း အကောင့်သို့ညငွေရောက်ပါမည်။"
+ 
 }
+

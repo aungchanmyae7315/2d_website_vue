@@ -168,6 +168,10 @@
     .bet_container .el-header {
         color:#fff;
         padding:20px;
+        position: fixed;
+        width:100%;
+        left:0;
+        top:0;
     }
   
     .bet_footer .el-button {
@@ -264,8 +268,10 @@
         overflow: auto;
         margin-left: 17px;
         padding-right: 28px;
-        padding-top: 20px;
-        margin-bottom:250px;
+        padding-top: 190px;
+        padding-bottom:30px;
+       
+        
     }
     .balance_amount {
         text-align: right;

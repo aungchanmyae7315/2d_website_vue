@@ -61,7 +61,7 @@
     background: #158220;
     color:#fff;
     font-weight: bold;
-    margin-top:180px;
+    margin-top:150px;
 }
     .profile_edit .el-input__inner {
         background-color: #E6E6E6;

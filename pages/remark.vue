@@ -12,7 +12,7 @@
                                 
                                 
                                 >  
-                                    <el-input type="name" placeholder="Enter your name" v-model="name"  ></el-input>
+                                    <el-input type="text" placeholder="Enter your name" v-model="name"  ></el-input>
                                 
                                 </el-form-item>
                              <el-form-item
@@ -20,7 +20,7 @@
                                 prop="phone"
                                
                                 >  
-                                    <el-input type="phone" placeholder="Enter your phone" v-model="phone"  ></el-input>
+                                    <el-input type="number" placeholder="Enter your phone" v-model="phone"  ></el-input>
                                 
                                 </el-form-item>
                       </el-form>
@@ -41,9 +41,9 @@
                     <tbody  >
                         <tr  v-for="(odd,o) in bet_odds" :key="o">
                       
-                        <th>{{odd.number}}</th>  
+                        <th :id="odd.id">{{odd.number}}</th>  
                          <th>{{odd.times}}</th>  
-                         <th>{{bet_amount}}</th> 
+                         <th :id="odd.id">{{bet_amount}}</th> 
                       
                         </tr>
                     </tbody>
