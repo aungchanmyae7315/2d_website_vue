@@ -173,6 +173,7 @@
                   })
               .then(response => {
                 this.profile = response.data.data
+                console.log(this.profile.name)
 
           })
       }
