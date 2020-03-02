@@ -46,7 +46,7 @@
   "Transaction History": "ငွေမှတ်တမ်း",
   "Pending Withdrawal": "ငွေထုတ်နေသည်",
   "Win": "ထီပေါက်ရငွေ",
-  "Bet": "ထိုးငွေ",
+  "Bet": "ထိုးမယ်",
   "Cancel Request": "ပယ်ဖျက်မည်",
   "Do you want to cancel your request?": "တောင်းဆိုမှု ရပ်ဆိုင်းလိုပါသလား",
   "Completed": "အောင်မြင်သည်",
@@ -119,7 +119,7 @@
   "signup_refel":"signup_refel",
   "topup":"topup",
 
-  "back":"ရှေ့သို့",
+  "back":"နောက်သို့",
 "date_time":"ရက်စွဲ၊အချိန်",
 "no":"ဂဏန်း",
 "Amount":"ငွေပမာဏ",

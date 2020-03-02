@@ -148,7 +148,7 @@
             </div>
             <div class="card_two">
                 <div class="card_item">
-                  <h5 class="time_number">4:00 PM</h5>
+                  <h5 class="time_number">4:30 PM</h5>
                     <div class="row">
                       
                       <div class="col">
@@ -189,12 +189,12 @@
                           <h5 class="time_number">9:30 AM</h5>
                       </div>
                       <div class="col">
-                          <span>Set</span>
-                          <h4>{{this.info.internet_930}}</h4>
+                          <span>Modern</span>
+                          <h4>{{this.info.modern_930}}</h4>
                       </div>
                       <div class="col">
-                          <span>Value</span>
-                          <h4>{{this.info.modern_930}}</h4>
+                          <span>Internet</span>
+                          <h4>{{this.info.internet_930}}</h4>
                       </div>
                     </div>
                 </div>
@@ -205,15 +205,15 @@
                     <div class="row">
                       
                       <div class="col">
-                          <h5 class="time_number">4:00 PM</h5>
+                          <h5 class="time_number">2:00 PM</h5>
                       </div>
                       <div class="col">
-                          <span>Set</span>
-                          <h4>{{this.info.internet_200}}</h4>
-                      </div>
-                      <div class="col">
-                          <span>Value</span>
+                          <span>Modern</span>
                           <h4>{{this.info.modern_200}}</h4>
+                      </div>
+                      <div class="col">
+                          <span>Internet</span>
+                          <h4>{{this.info.internet_200}}</h4>
                       </div>
                     </div>
                 </div>

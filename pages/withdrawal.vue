@@ -219,11 +219,24 @@ export default {
                         })
                 
                     .then(response => {
-                     console.log(this.with = response.data.data)
-                     console.log(this.with)
+                     console.log(this.with = response.data)
+                      this.res_amount = response.data.message,
+                 
+                     this.res_data = response.data.data
+                    
+                      if(this.res_amount == "fail" ) {
+                  this.$notify({
+                    title: 'Warning',
+                    message: this.res_data,
+                    type: 'warning'
+                  });
+                }else {
+                     this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
+                  
+                }
                 })
              
-                  this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
+                 
             
             } else {
             

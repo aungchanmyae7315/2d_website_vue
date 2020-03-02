@@ -1,7 +1,8 @@
 <template>
     <main class="sign_up_main el-main">
       
-   
+    <div class="longText_login" id="hidingScrollBar_login">
+         <div class="hideScrollBar_login">
            <img src="~static/images/login_page/login_bg.png" class="login_bg">
           <div class="main_login_page">
               <div class="language">
@@ -102,8 +103,8 @@
 
     
      
-  
-    
+         </div>
+         </div>
     </main>
  </template>
 <script>
@@ -211,7 +212,24 @@ import axios from 'axios'
 </script>
 
 <style>
+.longText_login{
+  max-width: 480px;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  /* text-align: justify; */
+}
 
+/*------THE TRICK------*/
+#hidingScrollBar_login{
+  overflow: hidden;
+}
+.hideScrollBar_login{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding-bottom: 20px; /*This would hide the scroll bar of the bottom if there is one*/
+}
   
   .login_bg {
     max-width:414px;
