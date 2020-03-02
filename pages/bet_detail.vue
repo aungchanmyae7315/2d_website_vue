@@ -10,7 +10,8 @@
       </el-header>
        <el-row style="padding:23px;">
             <el-col :span="12"><div class="">{{$t('date_time')}}</div></el-col>
-             <el-col  :span="12"><div style="text-align:right;padding-right:20px" class="">{{$t('Amount')}}</div></el-col>
+            <el-col :span="6"><div class="">{{$t('no')}}</div></el-col>
+            <el-col  :span="6"><div style="text-align:right;padding-right:20px" class="">{{$t('Amount')}}</div></el-col>
         </el-row>
      
                  <el-collapse accordion>
@@ -19,6 +20,7 @@
                             <template slot="title">
                                 
                                 <div style="margin:0"> {{bet_list_detail.date}}</div>
+                                <div style="margin-right:0;"> {{bet_list_detail.number}}</div>
                                 <div style="margin-right:0;padding-right:20px">{{bet_list_detail.result_amount}}</div>
                             </template>
 
