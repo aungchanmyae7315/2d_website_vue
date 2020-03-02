@@ -19,7 +19,8 @@
    width:60px;
  }
  .el-menu-item {
-   padding:0 30px;
+   padding:0 20px;
+   text-align: center;
    line-height: 44px !important;
  }
  .el-menu-item  {

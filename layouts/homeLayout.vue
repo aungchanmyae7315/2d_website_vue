@@ -167,7 +167,7 @@ html {
     
   }
 .el-menu-item {
-  padding:0 30px;
+  padding:0 20px;
 }
 .el-menu-demo  {
   display: flex;

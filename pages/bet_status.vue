@@ -2,7 +2,7 @@
    <div class="main_container bet_status">
       <el-header>
            <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
-                <el-page-header  :title="`${$t('back')}`"  :content="`${$t('bet_status_title')}`">
+                <el-page-header :content="`${$t('bet_status_title')}`">
                    
                    
                 </el-page-header>
@@ -144,7 +144,7 @@
     .time_status {
         position: relative;
         bottom:32px;
-        left:220px;
+        left:240px;
         color:#000;
         font-weight: bold;
     }
