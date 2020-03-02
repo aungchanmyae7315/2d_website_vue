@@ -53,10 +53,10 @@
                 </el-card>
                  <div class="btn_group">
                      
-                            <el-button type="default" @click="back_bet" round>Back</el-button>
+                            <el-button type="default" @click="back_bet" round>{{$t('back')}}</el-button>
                      
                   
-                          <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  Submit</el-button>
+                          <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Submit')}}</el-button>
                   
                     
                   </div>

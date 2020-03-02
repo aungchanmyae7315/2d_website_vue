@@ -44,7 +44,7 @@
 
         <el-form  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
             <el-form-item  class="edit_name" >
-                <el-input  required type="text" placeholder="Your Full Name" v-model="ruleForm.edit_name"  autocomplete="off"></el-input>
+                <el-input  required type="text" placeholder="Your Full Name" id="ok" v-model="profile.name"  autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
                 <p>Registered Phone: {{this.profile.phone}}</p>
@@ -237,10 +237,10 @@
                   });
 
                  var data_name = {
-                    name: this.ruleForm.edit_name,
+                    name: $('#ok').val(),
 
                   }
-
+          console.log(data_name)
                 axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
                     {headers: {
                                "Authorization": "Bearer "+token

@@ -22,7 +22,7 @@
                         <label for="imageUpload" class="upload_icon_top"> <i slot="default" class="el-icon-plus"></i></label>
                         
                         <input type='file' @change="onFileChange" id="imageUpload" accept=".png, .jpg, .jpeg" />
-                        <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
+                        <div slot="tip" class="el-upload__tip"></div>
                     </div>
             
                 <div class="avatar-preview" v-else>

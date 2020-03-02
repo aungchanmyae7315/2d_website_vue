@@ -69,6 +69,7 @@
   "notification_title":"Notification",
   "/":"/",
   "edit_profile_index":"edit_profile_index",
+  "home_title":"Home",
   "wallet_title":"Wallet",
   "service_title":"Service",
   "me_title":"Me",
@@ -139,6 +140,9 @@
 
   "edit_profile" : "Edit",
   "you_balance":"You Balance"
+
+
+
 
 }
 

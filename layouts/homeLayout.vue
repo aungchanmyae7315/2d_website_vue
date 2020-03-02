@@ -67,26 +67,26 @@
             <el-menu-item index="1">
             
               <img src="~static/icons_header/dimond_t_icon.png" alt="">
-             <h5 class="main_icon" style="font-weight:bold">Home</h5>
+             <h5 class="main_icon" style="font-weight:bold">{{$t('home_title')}}</h5>
               
             </el-menu-item>
             </nuxt-link>
              <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`"> 
             <el-menu-item index="2">
                <img src="~static/icons_header/wallet_icon.png" alt="">
-                <h5 class="main_icon">Wallet</h5>
+                <h5 class="main_icon">{{$t('wallet_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
               <nuxt-link :to="`${$t('service')}?lang=${$store.state.locale}`">
             <el-menu-item index="3">
               <img src="~static/icons_header/service_icon.png" alt="">
-               <h5 class="main_icon">Service</h5>
+               <h5 class="main_icon">{{$t('service_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
              <nuxt-link :to="`${$t('me')}?lang=${$store.state.locale}`">
              <el-menu-item index="4">
                <img src="~static/icons_header/me_icon.png" alt="">
-                <h5 class="main_icon">Me</h5>
+                <h5 class="main_icon">{{$t('me_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
 

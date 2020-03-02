@@ -67,10 +67,10 @@
   "Next" : "下一步",
 
   "notification_title":"Notification",
-
-  "wallet_title":"Wallet",
-  "service_title":"Service",
-  "me_title":"Me",
+  "home_title":"主页",
+  "wallet_title":"钱包",
+  "service_title":"客服",
+  "me_title":"我的",
 
   "acc_refel_title":"acc_refel",
 
@@ -93,6 +93,7 @@
 "notification":"notification",
 "/":"/",
 "edit_profile_index":"edit_profile_index",
+"home":"Home",
 "wallet":"wallet",
 "service":"service",
 "me":"me",
