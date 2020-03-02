@@ -92,6 +92,7 @@
 
 "notification":"notification",
 "/":"/",
+"edit_profile_index":"edit_profile_index",
 "wallet":"wallet",
 "service":"service",
 "me":"me",
@@ -137,7 +138,8 @@
 "we_will_reply":"上传成功，五分钟内到账。",
 "Warning":"请注意",
 "there_is_no_other" : "本公司除以下 银行账号外，一律没有其他收款账号。",
-"edit_profile" : "Edit"
+"edit_profile" : "Edit",
+"you_balance":"You Balance"
 
 
 

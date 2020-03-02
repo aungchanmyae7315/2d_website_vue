@@ -33,7 +33,7 @@
   "Copy": "ကူးယူမည္",
   "How to top up money?": "ပိုက္ဆံ ဘယ္လိုျဖည့္မလဲ?",
   "How to withdraw money?": "ပိုက္ဆံ ဘယ္လိုထုတ္ယူမလဲ?",
-  "Bet Status": "Sein Lucky တြင္ထိုးထား‌ေသာစာရင္း",
+  "Bet Status": "ထိုးထား‌ေသာစာရင္း",
   "Did not receive OTP?": "OTP ကုဒ္ရၿပီလား‌?",
   "Resend": "OTPကုဒ္ျပန္ပိုပါ",
   "Setting Password": "စကားဝွက္ျပဳလုပ္ပါ",
@@ -70,6 +70,7 @@
 
   "notification_title":"အသိေပးခ်က္",
   "/":"/",
+  "edit_profile_index":"edit_profile_index",
   "wallet_title":"ပိုက္ဆံအိတ္",
   "service_title":"ဝန္ေဆာင္မႈဖုန္း",
   "me_title":"ကြၽႏ္ုပ္",
@@ -78,7 +79,7 @@
 
   "bet_detail_title":"မွတ္တမ္းေသးစိတ္",
   "bet_history_title":"ထီထိုးမွတ္တမ္း",
-  "bet_status_title":"ထိုးထားေသာဂဏန္းမ်ား",
+  "bet_status_title":"ထိုးထားေသာစာရင္း",
   "bet_success_title":"ထီေပါက္သည္",
   "bet_title":"ထိုးေငြ",
 
@@ -136,7 +137,9 @@
 "we_will_reply":"(၅)မိနစ္အတြင္း အေကာင့္သို႔ညေငြေရာက္ပါမည္။",
 "Warning":"အလိမ္အညာသတိျပဳပါ",
 "there_is_no_other" : "Sein Lucky သည္ေအာက္ေဖာ္ျပပါ ဘဏ္အေကာင့္မ်ားမွလြဲ၍ တျခားဘဏ္အေကာင့္မ်ား လုံးဝ၊လုံးဝလက္မခံပါ။",
-"edit_profile" : "ျပင္မည္"
+
+"edit_profile" : "ျပင္မည္",
+"you_balance":"သင္ရဲ႕လက္က်န္ေငြ"
 
  
  

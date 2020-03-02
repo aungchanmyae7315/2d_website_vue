@@ -11,7 +11,7 @@
                  <el-avatar v-else :size="60"><img :src="this.profile.profile " alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li>{{this.profile.phone}}</li>
+                    <li>{{this.profile.name}}</li>
                     <nuxt-link :to="`${$t('profile_edit')}?lang=${$store.state.locale}`">
                      <li class="edit_profile">{{$t('edit_profile')}}</li>
                     </nuxt-link>
@@ -44,6 +44,7 @@
                 <div v-else> 
                        <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href="" @click="loading" v-loading.fullscreen.lock="fullscreenLoading"><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
+                         <li><nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/bet_status_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
                         <!-- <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li> -->
@@ -69,22 +70,25 @@
              <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
             <el-menu-item index="1">
               <img src="~static/icons_header/dimond_icon.png" alt="">
-              
+              <h5 class="main_icon" >Home</h5>
             </el-menu-item>
             </nuxt-link>
              <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`">
             <el-menu-item index="2">
                <img src="~static/icons_header/wallet_icon.png" alt="">
+               <h5 class="main_icon">Wallet</h5>
             </el-menu-item>
             </nuxt-link>
             <nuxt-link :to="`${$t('service')}?lang=${$store.state.locale}`">
             <el-menu-item index="3">
                 <img src="~static/icons_header/service_icon.png" alt="">
+                <h5 class="main_icon" >Service</h5>
             </el-menu-item>
             </nuxt-link>
              <nuxt-link :to="`${$t('me')}?lang=${$store.state.locale}`">
              <el-menu-item index="4">
                <img src="~static/icons_header/me_t_icon.png" alt="">
+               <h5 class="main_icon" style="font-weight:bold">Me</h5>
             </el-menu-item>
             </nuxt-link>
 
@@ -195,6 +199,10 @@ export default {
     }
     .edit_profile {
       color:goldenrod;
+    }
+    .me_bet_stauts_icon {
+      width:52px;
+      height:auto;
     }
     
 </style>

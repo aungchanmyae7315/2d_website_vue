@@ -33,7 +33,7 @@
   "Copy": "ကူးယူမည်",
   "How to top up money?": "ပိုက်ဆံ ဘယ်လိုဖြည့်မလဲ?",
   "How to withdraw money?": "ပိုက်ဆံ ဘယ်လိုထုတ်ယူမလဲ?",
-  "Bet Status": "Sein Lucky တွင်ထိုးထား‌သောစာရင်း",
+  "Bet Status": "ထိုးထား‌သောစာရင်း",
   "Did not receive OTP?": "OTP ကုဒ်ရပြီလား‌?",
   "Resend": "OTPကုဒ်ပြန်ပိုပါ",
   "Setting Password": "စကားဝှက်ပြုလုပ်ပါ",
@@ -70,6 +70,7 @@
 
   "notification_title":"အသိပေးချက်",
   "/":"/",
+  "edit_profile_index":"edit_profile_index",
   "wallet_title":"ပိုက်ဆံအိတ်",
   "service_title":"ဝန်ဆောင်မှုဖုန်း",
   "me_title":"ကျွန်ုပ်",
@@ -78,7 +79,7 @@
 
   "bet_detail_title":"မှတ်တမ်းသေးစိတ်",
   "bet_history_title":"ထီထိုးမှတ်တမ်း",
-  "bet_status_title":"ထိုးထားသောဂဏန်းများ",
+  "bet_status_title":"ထိုးထားသောစာရင်း",
   "bet_success_title":"ထီပေါက်သည်",
   "bet_title":"ထိုးငွေ",
 
@@ -137,7 +138,8 @@
 "Warning":"အလိမ်အညာသတိပြုပါ",
 "there_is_no_other" : "Sein Lucky သည်အောက်ဖော်ပြပါ ဘဏ်အကောင့်များမှလွဲ၍ တခြားဘဏ်အကောင့်များ လုံးဝ၊လုံးဝလက်မခံပါ။",
 
-"edit_profile" : "ပြင်မည်"
+"edit_profile" : "ပြင်မည်",
+"you_balance":"သင်ရဲ့လက်ကျန်ငွေ"
 
  
  

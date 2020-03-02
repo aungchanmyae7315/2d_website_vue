@@ -2,9 +2,11 @@
    <div class="main_container bet_status">
       <el-header>
            <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
-                <el-page-header :title="`${$t('back')}`"  :content="`${$t('bet_status_title')}`">
+                <el-page-header  :title="`${$t('back')}`"  :content="`${$t('bet_status_title')}`">
+                   
                    
                 </el-page-header>
+                 <span class="time_status">{{this.time_stauts}}</span>
            </nuxt-link>
 
          <nuxt-link :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
@@ -29,8 +31,12 @@
                 </tr>
             </tbody>
         </table>
-        
-
+        <div style="text-align:center;padding:20px;">
+            <nuxt-link :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
+                <el-button class="bet_history_btn" type="info" round>{{$t('Click to see Bet History')}}</el-button>
+            </nuxt-link>
+        </div>
+       
       <el-dialog class="model_items" v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id"
         title="Tips"
         :visible.sync="dialogVisible"
@@ -129,6 +135,19 @@
     .bet_status .el-page-header__content {
         font-size: 12pt;
     }
+    .bet_history_btn {
+        background: green;
+        max-width: 480px;
+        width:100%;
+        
+    }
+    .time_status {
+        position: relative;
+        bottom:32px;
+        left:220px;
+        color:#000;
+        font-weight: bold;
+    }
 </style>
 
 <script>
@@ -138,7 +157,9 @@ export default {
         return {
            
             bet_stauts:'',
-            dialogVisible: false
+            dialogVisible: false,
+            time_stauts:'',
+            time:this.time_stauts
         }
     },
     methods: {
@@ -160,6 +181,8 @@ export default {
                         })
                     .then(response => {
                      this.bet_stauts = response.data.data  
+                    this.time_stauts = response.data.data[0].time
+                    console.log(this.time_stauts)
                 })
      }
 }

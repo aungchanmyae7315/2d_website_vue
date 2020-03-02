@@ -19,17 +19,17 @@
         <div v-else>
            
               <div class="demo-type">
-                <nuxt-link :to="`${$t('profile_edit')}?lang=${$store.state.locale}`">
+                <nuxt-link :to="`${$t('edit_profile_index')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" v-if="this.profile.profile == null"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                   <el-avatar :size="60" v-else ><img :src="this.profile.image" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
                     <li><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
-                        <span v-else ><nuxt-link style="color:#fff" to="me">{{this.profile.name}}</nuxt-link></span>
+                        <span v-else >{{this.profile.name}}</span>
                      
 
                     </li>
-                    <li  class="amount_mmk">{{this.profile.wallet}}</li>
+                    <li  class="amount_mmk"><span>{{$t('you_balance')}} - </span>{{this.profile.wallet}} Ks</li>
                   </ul>
                   </div>
                 </nuxt-link>

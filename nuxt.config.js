@@ -62,7 +62,14 @@ export default {
   ** Plugins to load before mounting the App
   */
  axios: {
- 
+  credentials: false,
+  baseURL: "https://build.seinlucky.com/api/v1/",
+  // baseURL: "http://paramilpg.com/api/v1/",
+  proxyHeaders: false,
+  headers: {
+    'Content-Type': 'application/json',
+    'X-Requested-With': 'XMLHttpRequest'
+  }
 },
   plugins: [
     '@/plugins/element-ui',

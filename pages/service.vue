@@ -12,9 +12,9 @@
                         <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
 
                     </ul>
-                  <h6>Or</h6>
+                  <!-- <h6>Or</h6>
                   <p class="contact_chat">{{$t('You can just message to us')}} </p>
-                    <el-button type="primary">Chat with our customer service</el-button>
+                    <el-button type="primary">Chat with our customer service</el-button> -->
                 </div>
               </div>
              </div>

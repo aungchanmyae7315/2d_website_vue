@@ -39,10 +39,10 @@
                     
                     <div class="con_power">
                         <p>Constellation Power</p>
-                        <el-button type="text" @click="big_number">Constellation 07,18,24,35,69</el-button>
-                        <el-button type="text" @click="big_number">Constellation R 70,81,42,53,96</el-button>
-                        <el-button type="text" @click="big_number">Power 05, 16, 27, 38,</el-button>
-                        <el-button type="text" @click="big_number">Power R 05,16,27,38</el-button>
+                        <el-button type="text" @click="con_number">Constellation 07,18,24,35,69</el-button>
+                        <el-button type="text" @click="con_number_R">Constellation R 70,81,42,53,96</el-button>
+                        <el-button type="text" @click="con_number_power">Power 05, 16, 27, 38,</el-button>
+                        <el-button type="text" @click="con_number_power_R">Power R 05,16,27,38</el-button>
                     </div>
                         
                         <p>20 Selection Number</p>
@@ -434,7 +434,7 @@ const even_option = ['00','02','04','06','08','10','12','14','16','18',
                     
                        
 ]
-const odd_option = ['00','01','03','05','07','09','11','13','15','17','19','21','23','25',
+const odd_option = ['01','03','05','07','09','11','13','15','17','19','21','23','25',
                     '27','29','31','33','35','37','39','41','43','45','47','49','51','53',
                     '55','57','59','61','63','65','67','69','71','73','75','77','79','81',
                     '83','85','87','89','91','93','95','97','99',
@@ -456,6 +456,10 @@ const oe_option = ['10','12','14','16','18','30','32','34','36','38','50','52','
                    '58','70','72','74','76','78','90','92','94','96','98',
 
 ]
+const con_number_option = ['07','18','24','35','69']
+const con_number_R_option = ['70','81','42','53','96']
+const con_number_power_option = ['05','16','27','38','49']
+const con_number_power_R_option = ['50','61','72','83']
 const btw_00_19_option = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13',
                             '14','15','16','17','18','19'
 
@@ -749,6 +753,23 @@ export default {
            this.ruleForm.check_btn = val ? oe_option : [];
             this.dialogFormVisible = false
       },
+      con_number(val) {
+             this.ruleForm.check_btn = val ? con_number_option : [];
+            this.dialogFormVisible = false
+      },
+       con_number_R(val) {
+             this.ruleForm.check_btn = val ? con_number_R_option : [];
+            this.dialogFormVisible = false
+      },
+       con_number_power(val) {
+             this.ruleForm.check_btn = val ? con_number_power_option : [];
+            this.dialogFormVisible = false
+      },
+       con_number_power_R(val) {
+             this.ruleForm.check_btn = val ? con_number_power_R_option : [];
+            this.dialogFormVisible = false
+      },
+      
       btw_00_19(val) {
             this.ruleForm.check_btn = val ? btw_00_19_option : [];
             this.dialogFormVisible = false
