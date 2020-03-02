@@ -2,10 +2,10 @@
     <main>
         <section class="bet_success">
             <img src="~static/images/refel_page/refel_img_two.png" class="">
-            <h4 style="padding-top:10px;">Bet Successful</h4>
+            <h4 style="padding-top:10px;">{{$t('bet_succ')}}</h4>
             <el-footer>
                    <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-                         <el-button  round="">Summit</el-button>
+                         <el-button  round="">{{$t('Submit')}}</el-button>
                    </nuxt-link>
             </el-footer>
             
