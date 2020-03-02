@@ -86,10 +86,15 @@
                 <div class="number">
 
                       <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
-                       <h2 class="static"
+                       <h2 class="static" 
                           v-bind:class="{ live_number: isActive, 'text-danger': hasError }">
-                          {{this.info.live}}
+                         <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
+                          <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.result_1200}}</span>
+                          <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
+                          <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
+                          <span v-else>{{this.info.live}}</span>
                       </h2>
+                      
                 </div>
                
             </div>
@@ -117,17 +122,25 @@
                   
                   <div class="col">
                       <span>Set</span>
-                      <h4>{{this.info.set_1200}}</h4>
+                     <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_1200}}s</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_1200}}</h4>
+                          <h4 v-else>{{this.info.set_430}}</h4>
                   </div>
                   <div class="col">
                       <span>Value</span>
-                      <h4>{{this.info.val_1200}}</h4>
+                       <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_1200}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
+                          <h4 v-else>{{this.info.set_430}}</h4>
                   </div>
                   <div class="col">
                       <span>2D</span>
-                     <h4 class="static"
-                          v-bind:class="{ result_num: isActive, 'text-danger': hasError }">
-                          {{this.info.result_1200}}
+                     <h4 class="static" >
+                         
+                          {{this.info_api.result_1200}}
                       </h4>
                   </div>
                 </div>
@@ -141,25 +154,25 @@
                       <div class="col">
                           <span>Set</span>
                           
-                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}a</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}b</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_430}}c</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}d</h4>
-                          <h4 v-else>{{this.info.set_430}}e</h4>
+                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
+                          <h4 v-else>{{this.info.set_430}}</h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
                           <h4 v-else>{{this.info.set_430}}</h4>
                         
                       </div>
                       <div class="col">
                           <span>2D</span>
-                          <h4 class="static"
-                          v-bind:class="{ result_num: isActive, 'text-danger': hasError }">
+                          <h4 class="static">
+                       
                           {{this.info.result_430}}
                       </h4>
                           <!-- <h4 class="result_num">{{this.info.result_430}}</h4> -->
@@ -322,10 +335,11 @@ export default {
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
   // alert('three')
     this.isActive = true
+    
          axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
                this.info = response.data[0]
-               
+               console.log(this.info)
               })
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
      this.isActive = false
@@ -349,7 +363,8 @@ export default {
       axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
-               
+               console.log(this.info_api)
+               console.log('back')
               })
           
           axios.get('https://build.seinlucky.com/api/v2/v1/slider_image')
