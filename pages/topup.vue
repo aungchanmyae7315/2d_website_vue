@@ -17,17 +17,17 @@
             </el-form>
             <h5>{{$t('Upload Bank transferred Slip')}}</h5>
 
-            <div class="avatar-upload">
-                    <div class="avatar-edit" v-if="!url">
-                        <label for="imageUpload" class="upload_icon"> <i slot="default" class="el-icon-plus"></i></label>
+            <div class="avatar-upload_top">
+                    <div class="avatar-edit_top" v-if="!url">
+                        <label for="imageUpload" class="upload_icon_top"> <i slot="default" class="el-icon-plus"></i></label>
                         
-                        <input type='file' @change="onFileChange" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                        <input type='file' @change="onFileChange" id="imageUpload_top" accept=".png, .jpg, .jpeg" />
                         <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
                     </div>
             
-                <div class="avatar-preview" v-else>
+                <div class="avatar-preview_top" v-else>
                         
-                        <img  :src="url" alt="" id="imagePreview">
+                        <img  :src="url" alt="" id="imagePreview_top">
                    
                         <el-button type="text" @click="removeImage">Remove image</el-button> 
                 </div>
@@ -114,24 +114,24 @@
         background-color: #158220;
         color:#fff;
     }
-     .topup .avatar-upload {
+     .topup .avatar-upload_top {
   position: relative;
   
   margin: 50px auto;
 }
- .topup .avatar-upload .avatar-edit {
+ .topup .avatar-upload_top .avatar-edit_top {
   margin:0 auto;
   text-align: center;
   z-index: 1;
 
 }
-.topup .avatar-upload .avatar-edit input {
+.topup .avatar-upload_top .avatar-edit_top input {
   display: none;
 }
 
 
 
-.topup .avatar-upload .avatar-preview , #imagePreview{
+.topup .avatar-upload_top .avatar-preview_top , #imagePreview_top{
   width:100%;
   height:200px;
   position: relative;
@@ -146,7 +146,7 @@
   width:192px;
   height:192px;
 } */
-.topup .avatar-upload .avatar-preview > div {
+.topup .avatar-upload_top .avatar-preview_top > div {
   width: 100%;
   height: auto;
   border-radius: 100%;
@@ -154,7 +154,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-.topup .upload_icon {
+.topup .upload_icon_top {
   position: absolute;
     right: 0;
     padding:50px;
