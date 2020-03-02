@@ -24,7 +24,7 @@
                   <el-avatar :size="60" v-else ><img :src="this.profile.image" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li><span v-if="this.profile.name == null"> Upgrade Name</span>
+                    <li><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
                         <span v-else ><nuxt-link style="color:#fff" to="me">{{this.profile.name}}</nuxt-link></span>
                      
 
@@ -141,11 +141,11 @@
                       <div class="col">
                           <span>Set</span>
                           
-                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_430}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
-                          <h4 v-else>{{this.info.set_430}}</h4>
+                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}a</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}b</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_430}}c</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}d</h4>
+                          <h4 v-else>{{this.info.set_430}}e</h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
@@ -338,9 +338,9 @@ export default {
   }else {
    // alert('mm')
       this.isActive = false
-        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+        axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
-                this.info = response.data.data
+                 this.info = response.data[0]
                 console.log(this.info)
                
               })

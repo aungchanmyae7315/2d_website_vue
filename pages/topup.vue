@@ -236,30 +236,35 @@ export default {
 
             //      console.log(formData);
         
-         var data = {
-                image:this.image,
-                amount: this.tran_amount,
-            }
+        //  var data = {
+        //         image:this.image,
+        //         amount: this.tran_amount,
+        //     }
                  let token = localStorage.getItem('token');
             
-                console.log(token)
-                  console.log(data)
-           
-                axios.post("https://build.seinlucky.com/api/v1/slip_post",
-                           data,
-                    {
-                           
 
-                        headers: {
-                               "Authorization": "Bearer "+token
-                         },
-                          
-                        })
+                let formData = new FormData();
+                formData.append('image', this.image);
+                 formData.append('amount', this.tran_amount);
+
+                //  console.log(formData);
+                // console.log(token)
+              
+            axios.post('https://build.seinlucky.com/api/v1/slip_post',
+                  formData
+                 ,{
+                  headers: {
+                    "Authorization": "Bearer "+token,
+                    'content-type': 'multipart/form-data'
+                  }
+                })
+               
                 
                     .then(response => {
                      //console.log(this.topup_info = response.data.data)
                      console.log(response)
                 })
+                 this.$router.push(`wallet?lang=${this.$store.state.locale}`); 
             
      }
     

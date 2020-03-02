@@ -182,7 +182,7 @@
     data() {
       return {
           ruleForm: {
-            edit_name:'Name'
+            edit_name:''
 
         },
        
