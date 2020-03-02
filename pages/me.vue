@@ -13,7 +13,7 @@
                   <ul>
                     <li>{{this.profile.phone}}</li>
                     <nuxt-link :to="`${$t('profile_edit')}?lang=${$store.state.locale}`">
-                     <li class="edit_profile">Edite Profile</li>
+                     <li class="edit_profile">{{$t('edit_profile')}}</li>
                     </nuxt-link>
                   </ul>
                   </div>
@@ -21,11 +21,12 @@
               </div>
         </div>
         <div v-else> 
+            <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
            <div class="demo-type">
                   <el-avatar :size="60" ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                   <span  class="avatar_text">{{$t('Please Login first')}}</span>
                 </div>
-             
+            </nuxt-link>
         </div>
        
            
@@ -35,8 +36,8 @@
                
             
                 <div  v-if ="!$store.state.isLoggedIn">
-                       <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
-                       <li><nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
                 </div>
@@ -105,6 +106,21 @@ export default {
      
     mounted() {
      this.updateIsLoggedIn();
+       let token = localStorage.getItem('token');
+    if(token) {
+        axios.get("https://build.seinlucky.com/api/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                      // location.reload();
+                     this.profile = response.data.data
+                    
+
+                })
+    }
+      
    },
     data() {
       return {
@@ -138,19 +154,7 @@ export default {
       },
     },
     created() {
-      let token = localStorage.getItem('token');
-    if(token) {
-        axios.get("https://build.seinlucky.com/api/v1/profile",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                     this.profile = response.data.data
-
-                })
-    }
-      
+    
     }
 }
 </script>

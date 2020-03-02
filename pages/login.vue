@@ -8,18 +8,18 @@
                 <el-dropdown @command="changeLang"  style="text-align:center">
               
               <ul>
-                
+                  
                 <li>
-               <el-dropdown-item round command='en'>{{$t('English')}}</el-dropdown-item>
+                  <el-dropdown-item round command='en'>English</el-dropdown-item>
                 </li>
                 <li>
-                   <el-dropdown-item round command='uni'>{{$t('Unicode')}}</el-dropdown-item>
+                   <el-dropdown-item round command='uni'>ယူနီကုဒ်</el-dropdown-item>
                 </li>
                 <li>
-                 <el-dropdown-item round command='zg'>{{$t('Zawgyi')}}</el-dropdown-item>
+                 <el-dropdown-item round command='zg'> ေဇာ္ဂ်ီ</el-dropdown-item>
                 </li>
                 <li>
-                   <el-dropdown-item round command='zh'>{{$t('China')}}</el-dropdown-item>
+                   <el-dropdown-item round command='zh'>中文</el-dropdown-item>
                 </li>
                 
               </ul>

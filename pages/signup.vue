@@ -133,6 +133,7 @@ import axios from 'axios'
       layout: 'loginLayout',
     data() {
       return {
+          fullscreenLoading: false,
        errors:[],
     name:null,
   
@@ -164,14 +165,30 @@ import axios from 'axios'
                   
                 })
                
-                .then(response => (
-                   console.log(this.ruleForm.phone),
+                .then(response => {
+                 
+                  this.res_phone = response.data.message,
+                 
+                  this.res_data = response.data.data,
+                  //  console.log(this.ruleForm.phone),
                
                 this.userOtp = response.data,
                 this.$store.commit('setOtp', this.userOtp),
                 console.log(this.userOtp)
-                ));
-              if (this.active++ > 2) this.active = 0;
+                 if(this.res_phone == "fail" ) {
+                  this.$notify({
+                    title: 'Warning',
+                    message: this.res_data,
+                    type: 'warning'
+                  });
+                }else {
+                    if (this.active++ > 2) this.active = 0;
+                  
+                }
+                });
+        //      
+                
+              //if (this.active++ > 2) this.active = 0;
 
           } else {
             console.log('error submit!!');

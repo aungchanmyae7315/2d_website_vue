@@ -170,6 +170,8 @@
         color:#fff;
         padding:20px;
         position: fixed;
+        right:0;
+        max-width: 480px;
         width:100%;
         left:0;
         top:0;
@@ -285,6 +287,7 @@
         border-radius: 32px;
         border:2pt solid #FFEA72;
         max-width: 480px;
+        z-index: 99;
        
         
     }
@@ -305,6 +308,9 @@
     .modal_bet p {
         color:#CCCCCC;
         margin-top:10px;
+    }
+    .v-modal {
+        z-index: 0 !important;
     }
    .select_number .el-button {
        width:23px;
