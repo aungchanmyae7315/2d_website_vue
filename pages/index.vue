@@ -307,14 +307,7 @@ export default {
       this.currentDate = moment().format('LL');
       this.currentTime = moment().format('HH:mm:ss ');
     setInterval(() => this.updateCurrentTime(), 1 * 1000);
-     
-   
-            // console.log(this.morningTime_9_30)
-            //   console.log(this.time_12_00)
-            //     console.log(this.time_01_00)
-            //       console.log(this.time_04_30)
-            //         console.log(this.currentTime)
-   
+
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
 //  alert('currentTime')
     this.isActive = true
@@ -335,12 +328,17 @@ export default {
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
   // alert('three')
     this.isActive = true
-    
-         axios.get('http://shwe2d3.com/index.php/api/')
+   setTimeout(function () {
+      axios.get('http://shwe2d3.com/index.php/api/')
               .then(response => {
                this.info = response.data[0]
                console.log(this.info)
               })
+    }.bind(this), 2000)
+               
+             
+      
+   
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
      this.isActive = false
         //alert('foursssss')

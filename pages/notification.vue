@@ -6,10 +6,11 @@
                 </el-page-header>
             </nuxt-link>
       </el-header>
-      <section v-if="!notification"  >
+      <section v-if="notification"  >
           <p style="text-align:center;color:#b8b8b8"> No notification</p>
       </section>
         <section v-else class="noti_content" >
+            
             <ul v-for="(noti ,n) in notification" :key="n" class="noti_text"  data-aos="fade-down"
         data-aos-easing="linear"
         data-aos-duration="500">

@@ -72,7 +72,7 @@
           <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Submit')}}</el-button>
 
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
-                          <nuxt-link :to="`${$t('forgot_password')}?lang=${$store.state.locale}`">
+                          <nuxt-link :to="`${$t('Forgotpassword')}?lang=${$store.state.locale}`">
                 <el-button type="text"  style="color:#158220">{{$t('forgot_password')}}</el-button>
                           </nuxt-link>
             </el-form-item>
