@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="language_type">
-              <nuxt-link  :to="`${$t('/me')}?lang=${$store.state.locale}`">
+              <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
                           <el-page-header :title="`${$t('back')}`"  :content="`${$t('Language')}`">
                 </el-page-header>
             </nuxt-link>
