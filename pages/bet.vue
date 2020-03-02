@@ -336,10 +336,10 @@
        text-align: left;
        padding-left:10px;
    }
-   /* .bet_off {
+   .bet_off {
        cursor: no-drop !important;
        display: none !important;
-   } */
+   }
 
    @media screen and (max-width:320px) {
        .select_number_two .el-button {
@@ -617,25 +617,41 @@ export default {
                     this.evening_to = response.data.data[1].to
 
                     var currentTime = moment().format('HH:mm:ss');
-                    setInterval(() => this.updateCurrentTime(), 1 * 1000);
+                    var currentDate  = moment().day();
+                  //  console.log(currentDate)
+                    // setInterval(() => this.updateCurrentTime(), 1 * 1000);
+                    // console.log(this.morning_from)
+                    //  console.log(this.morning_to)
+                    //   console.log(this.evening_from)
+                    //    console.log(this.evening_to)
+                    //    console.log(currentTime)
 
-                    // if(currentTime  >  this.morning_from ) {
-                    //     this.isActive = false
-                    // // alert('one')
-                    // }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
-                    //     this.isActive = false
-                    //     // alert('two')
-                    // }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
-                    //     this.isActive = false
-                    //         // alert('three')
-                    // }else if(currentTime > this.evening_to && currentTime < this.morning_to) {
-                    //     this.isActive = true
-                    //     // alert('four')
-                    // }else {
-                    //      this.isActive = false
-                    //     // alert('fixe')
+
+
+                    if(currentTime  >  this.morning_from && currentTime < this.morning_to ) {
+                        this.isActive = true
+                     //alert('one')
+                    }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
+                        this.isActive = false
+                         //alert('two')
+                    }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
+                        this.isActive = true
+                             //alert('three')
+                    }else if(currentTime > this.evening_to) {
+                        this.isActive = false
+                         //alert('four')
+                    }else {
+                         this.isActive = false
+                         
                         
-                    // }
+                    }
+
+                    if(currentDate == 0 || currentDate == 6) {
+                        this.isActive = true
+                    }
+
+
+                    
 
                 })
     

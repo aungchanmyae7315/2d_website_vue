@@ -138,7 +138,7 @@
                   </div>
                   <div class="col">
                       <span>2D</span>
-                     <h4 class="static" >
+                     <h4 class="static" style="font-weight:bold">
                          
                           {{this.info_api.result_1200}}
                       </h4>
@@ -171,7 +171,7 @@
                       </div>
                       <div class="col">
                           <span>2D</span>
-                          <h4 class="static">
+                          <h4 class="static" style="font-weight:bold">
                        
                           {{this.info.result_430}}
                       </h4>
@@ -311,7 +311,7 @@ export default {
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
 //  alert('currentTime')
     this.isActive = true
-     axios.get('http://shwe2d3.com/index.php/api/')
+     axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
               // console.log(response)
@@ -328,13 +328,16 @@ export default {
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
   // alert('three')
     this.isActive = true
-   setTimeout(function () {
-      axios.get('http://shwe2d3.com/index.php/api/')
+
+
+      axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
+               
                console.log(this.info)
               })
-    }.bind(this), 2000)
+            
+  
                
              
       
@@ -350,7 +353,7 @@ export default {
   }else {
    // alert('mm')
       this.isActive = false
-        axios.get('http://shwe2d3.com/index.php/api/')
+        axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                  this.info = response.data[0]
                 console.log(this.info)
@@ -362,7 +365,7 @@ export default {
               .then(response => {
                 this.info_api = response.data.data
                console.log(this.info_api)
-               console.log('back')
+               //console.log('back')
               })
           
           axios.get('https://build.seinlucky.com/api/v2/v1/slider_image')
