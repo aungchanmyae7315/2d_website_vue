@@ -638,7 +638,7 @@ export default {
                              //alert('three')
                     }else if(currentTime > this.evening_to) {
                         this.isActive = false
-                         alert('four')
+                         //alert('four')
                     }else {
                          this.isActive = false
                          
