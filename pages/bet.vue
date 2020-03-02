@@ -139,9 +139,8 @@
        <el-main>
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_bet">
-                <div class="all_btn" v-bind:class="{ bet_off: isActive}" data-aos="fade-down"
-                    data-aos-easing="linear"
-                    data-aos-duration="500">
+                <div class="all_btn" v-bind:class="{ bet_off: isActive}">
+                    
                    
                         <el-form-item
                            
@@ -338,7 +337,7 @@
    }
    .bet_off {
        cursor: no-drop !important;
-       display: none !important;
+       display: none;
    }
 
    @media screen and (max-width:320px) {
@@ -639,7 +638,7 @@ export default {
                              //alert('three')
                     }else if(currentTime > this.evening_to) {
                         this.isActive = false
-                         //alert('four')
+                         alert('four')
                     }else {
                          this.isActive = false
                          

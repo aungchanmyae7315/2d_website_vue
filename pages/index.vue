@@ -470,9 +470,9 @@ export default {
   line-height: 25px;
   text-align: left;
   /* Apply animation to this element */	
-  -moz-animation: scroll-left 15s linear infinite;
-  -webkit-animation: scroll-left 15s linear infinite;
-  animation: scroll-left 15s linear infinite;
+  -moz-animation: scroll-left 50s linear infinite;
+  -webkit-animation: scroll-left 50s linear infinite;
+  animation: scroll-left 50s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes scroll-left {

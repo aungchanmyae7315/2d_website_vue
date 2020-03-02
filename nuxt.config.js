@@ -62,9 +62,8 @@ export default {
   ** Plugins to load before mounting the App
   */
  axios: {
-
+ 
 },
-
   plugins: [
     '@/plugins/element-ui',
     '@/plugins/axios',
