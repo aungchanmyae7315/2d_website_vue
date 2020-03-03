@@ -49,7 +49,7 @@
         </el-form>
                 <p>Registered Phone: {{this.profile.phone}}</p>
 
-               <el-button round @click="profile_edit">Summit</el-button>
+               <el-button round @click="profile_edit">{{$t('Confirm')}}</el-button>
 
     </div>
 </template>
@@ -173,7 +173,7 @@
                   })
               .then(response => {
                 this.profile = response.data.data
-                console.log(this.profile.name)
+               // console.log(this.profile.name)
 
           })
       }
@@ -193,9 +193,7 @@
       };
     },
     methods: {
-      goBack() {
-          this.$router.push('/me');
-      },
+     
 
       onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -252,7 +250,7 @@
                 })
 
 
-                 this.$router.push('/me');
+                this.$router.push(`me?lang=${this.$store.state.locale}`); 
     }
 
 

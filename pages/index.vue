@@ -106,7 +106,7 @@
                       <span>updated at:</span><br>
                       <span v-text="currentDate"></span><br>
                       <!-- <span v-if="currentTime == ''" v-text="currentTime"></span> -->
-                        <span v-text="currentTime"></span>
+                        <span v-text="breakTime"></span>
                   </div>
 
                   
@@ -116,7 +116,7 @@
           
            <div class="card_one" data-aos="fade-up" data-aos-duration="700">
             <div class="card_item">
-              <h5 class="time_number">12:00 AM</h5>
+              <h5 class="time_number">12:00 PM</h5>
             
                 <div class="row">
                   
@@ -124,7 +124,7 @@
                       <span>Set</span>
                      <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_1200}}</h4>
                           <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_1200}}</h4>
                           <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
                           <h4 v-else>{{this.info.set_430}}d</h4>
                   </div>
@@ -132,7 +132,7 @@
                       <span>Value</span>
                        <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_1200}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_1200}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
                           <h4 v-else>{{this.info.set_430}}</h4>
                   </div>
@@ -269,6 +269,7 @@ export default {
 
       currentDate: null,
       morningTime:null,
+      
       slider_images:'',
       activeIndex: '1',
       
@@ -277,14 +278,18 @@ export default {
       kwee_cma:'',
       set_1200:'',
       profile:'',
-      slider_text:''
+      slider_text:'',
+      breakTime:null,
+
       //   activeIndex2: '1',
      
     }
   },
    methods: {
        updateCurrentTime() {
-       var currentTime = moment().format('HH:mm:ss');
+       this.currentTime = moment().format('HH:mm:ss');
+       this.breakTime = moment().format('h:mm:ss a')
+       //console.log(oktime)
         this.currentDate = moment().format('LL');
         
        },
@@ -308,17 +313,18 @@ export default {
      created() {
       this.currentDate = moment().format('LL');
       this.currentTime = moment().format('HH:mm:ss ');
+       this.breakTime = moment().format('h:mm:ss a')
      setInterval(() => this.updateCurrentTime(), 1 * 1000);
 
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
       this.isActive = true
-      setInterval(function() {
+      // setInterval(function() {
               axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
-              console.log(response)
+             // console.log(response)
               })      
-                    }.bind(this), 3000)
+                    // }.bind(this), 3000)
    
     
     
@@ -336,14 +342,14 @@ export default {
   // alert('three')
     this.isActive = true
 
-      setInterval(function() {
+      // setInterval(function() {
       axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
                
-               console.log(this.info)
+             //  console.log(this.info)
               })
-             }.bind(this), 3000)
+            //  }.bind(this), 3000)
   
                
              
@@ -360,20 +366,20 @@ export default {
   }else {
    // alert('mm')
       this.isActive = false
-        setInterval(function() {
+        // setInterval(function() {
         axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                  this.info = response.data[0]
-                console.log(this.info)
+               // console.log(this.info)
                
               })
-        }.bind(this), 3000)
+        // }.bind(this), 3000)
   }
     
       axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
-               console.log(this.info_api)
+              // console.log(this.info_api)
                //console.log('back')
               })
           
@@ -397,7 +403,7 @@ export default {
                         })
                     .then(response => {
                      this.profile = response.data.data
-                     console.log(this.profile)
+                     //console.log(this.profile)
 
                 })
       }

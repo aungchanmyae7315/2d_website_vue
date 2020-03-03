@@ -49,7 +49,7 @@
         </el-form>
                 <p>Registered Phone: {{this.profile.phone}}</p>
 
-               <el-button round @click="profile_edit">Summit</el-button>
+               <el-button round @click="profile_edit">{{$t('Confirm')}}</el-button>
 
     </div>
 </template>
@@ -193,9 +193,7 @@
       };
     },
     methods: {
-      goBack() {
-          this.$router.push('/me');
-      },
+      
 
       onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -240,7 +238,7 @@
                     name: $('#ok').val(),
 
                   }
-          console.log(data_name)
+         
                 axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
                     {headers: {
                                "Authorization": "Bearer "+token
@@ -252,7 +250,7 @@
                 })
 
 
-                 this.$router.push('/me');
+                this.$router.push(`me?lang=${this.$store.state.locale}`); 
     }
 
 

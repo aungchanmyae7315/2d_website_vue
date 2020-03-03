@@ -13,8 +13,8 @@
                 </span> -->
               
                     <el-dropdown-item round command='en'>English</el-dropdown-item>
-                    <el-dropdown-item round command='uni'>Myanmar Unicode(မြန်မာ ယူနီကုဒ်)</el-dropdown-item>
-                    <el-dropdown-item round command='zg'>Myanmar Zawgyi(ျမန္မာ ေဇာ္ဂ်ီ)</el-dropdown-item>
+                    <el-dropdown-item round command='uni'>မြန်မာ ယူနီကုဒ်</el-dropdown-item>
+                    <el-dropdown-item round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item>
                      <el-dropdown-item round command='zh'>中文</el-dropdown-item>
               
               

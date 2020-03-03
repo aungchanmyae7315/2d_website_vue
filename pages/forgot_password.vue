@@ -3,8 +3,10 @@
 
 
  <div class="sign_page signup">
-        <el-page-header @back="goBack">
-        </el-page-header>
+        <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+                          <el-page-header style="color:#000" :title="`${$t('back')}`"  >
+                </el-page-header> 
+            </nuxt-link>
           <el-form v-if="active===1"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
            
         

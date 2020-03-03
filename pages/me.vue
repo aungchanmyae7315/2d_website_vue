@@ -201,7 +201,7 @@ export default {
       color:goldenrod;
     }
     .me_bet_stauts_icon {
-      width:50px;
+      width:48px;
       height:auto;
     }
     
