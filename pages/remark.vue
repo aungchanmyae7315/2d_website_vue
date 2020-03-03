@@ -140,9 +140,11 @@ export default {
                           message: this.res_message,
                           type: 'warning'
                         });
+                      }else {
+                          this.$router.push(`bet_success?lang=${this.$store.state.locale}`);
                       }
-                      this.bet = response.data.data
-                    //this.$router.push(`bet_success?lang=${this.$store.state.locale}`);
+                      // this.bet = response.data.data
+                    
                 })
                
        },
