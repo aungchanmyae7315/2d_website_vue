@@ -302,6 +302,7 @@ export default {
         return Boolean(localStorage.getItem('locale'));
       },
 
+
     },
      created() {
       this.currentDate = moment().format('LL');
@@ -312,6 +313,7 @@ export default {
 //  alert('currentTime')
 
     this.isActive = true
+    
      axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
