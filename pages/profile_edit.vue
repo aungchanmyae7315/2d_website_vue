@@ -47,7 +47,8 @@
                 <el-input  required type="text" placeholder="Your Full Name" id="ok" v-model="profile.name"  autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
-                <p>Registered Phone: {{this.profile.phone}}</p>
+                 <p>{{$t('registered_phone')}}: {{this.profile.phone}}</p>
+
 
                <el-button round @click="profile_edit">{{$t('Confirm')}}</el-button>
 

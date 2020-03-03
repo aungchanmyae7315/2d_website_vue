@@ -46,6 +46,12 @@
                          <th :id="odd.id">{{bet_amount}}</th> 
                       
                         </tr>
+
+                          <tr>
+                              <th>{{$t('total')}}</th>
+                              <th></th>
+                              <th>{{this.bet_amount * this.bet_odds.length}} {{$t('kyat')}}</th>
+                          </tr>
                     </tbody>
           </table>
                  
@@ -101,9 +107,14 @@ export default {
               })
     
     },
+    computed: {
+        sumTotal() {
+            this.bet_amount
+        }
+    },
     
      methods: {
-         
+      
        back_bet() {
          
          localStorage.removeItem('odds');

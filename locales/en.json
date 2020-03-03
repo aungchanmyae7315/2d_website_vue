@@ -5,7 +5,7 @@
   "Withdrawal": "Withdrawal",
   "Please transfer to Sein Lucky bank accounts first": "Please transfer to Sein Lucky bank accounts first",
   "Tap bank icons for the account info": "Tap bank icons for the account info",
-  "After bank transferring is finished, please enter your amount and upload your bank slip below.": "After bank transferring is finished, please enter your amount and upload your bank slip below.",
+  "After bank transferring is finished, please enter your amount and upload your bank slip below.": "After transferring to sein lucky bank account, please upload your bank slip,",
   "Enter transferred amount": "Enter transferred amount",
   "Upload Bank transferred Slip": "Upload Bank transferred Slip",
   "please upload bank slip photo here": "please upload bank slip photo here",
@@ -152,7 +152,10 @@
   "phone_require":"Phone number is required.",
   "otp_require"  :"OTP code is required.",
   "password_required" :"Password is required.",
-  "amount_required":"Amount is required"
+  "amount_required":"Amount is required",
+  "total" :"Total",
+  "kyat":"Ks",
+  "registered_phone":"Registered Phone"
 
   
 }

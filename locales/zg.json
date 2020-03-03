@@ -5,7 +5,7 @@
   "Withdrawal": "ေငြထုတ္မည္",
   "Please transfer to Sein Lucky bank accounts first": "Sein Lucky  ၏ဘဏ္အေကာင့္သို ေငြအရင္လႊဲပါ",
   "Tap bank icons for the account info": "Sein Lucky  ၏ဘဏ္အေကာင့္ၾကည့္ရန္ ဘဏ္တံဆိပ္မ်ားကို ႏွိပ္ပါ",
-  "After bank transferring is finished, please enter your amount and upload your bank slip below.": "ဘဏ္မွေငြလြဲၿပီးေနာက္ မိမိလႊဲလိုက္ေသာ ေငြပမာဏျဖည့္ၿပီး ‌ေငြလႊစလစ္ဓာတ္ပုံတင္ပါ",
+  "After bank transferring is finished, please enter your amount and upload your bank slip below.": "Sein Lucky သို႔ေငြလြဲၿပီးေနာက္ ေငြလႊဲစလစ္ဓာတ္ပုံတင္ပါ",
   "Enter transferred amount": "လြဲေငြပမာဏျဖည့္ပါ",
   "Upload Bank transferred Slip": "ေငြလြဲမွတ္တမ္း ဓာတ္ပုံတင္ပါ",
   "please upload bank slip photo here": "ေငြလြဲမွတ္တမ္း ထည့္ရန္  ",
@@ -153,7 +153,9 @@
 "phone_require":"ဖုန္းနံပါတ္ျဖည့္ရမည္",
 "otp_require"  :"OTP ကုဒ္ျဖည့္ရမည္",
 "password_required" :"စကားဝွက္ျဖည့္ရမည္",
-"amount_required":"ေငြပမာဏျဖည့္ပါ"
- 
+"amount_required":"ေငြပမာဏျဖည့္ပါ",
+"total" :"စုစုေပါင္းထိုးေငြ",
+"kyat":"က်ပ္",
+"registered_phone":"မွတ္ပုံတင္ထား‌ေသာဖုန္း"
 }
 

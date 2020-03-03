@@ -104,7 +104,7 @@
                             
                             prop="amount"
                             :rules="[
-                                { required: true, message: 'Amount is required'},
+                                 { required: true, message: $t('amount_required') },
                                 
                             ]"
                             

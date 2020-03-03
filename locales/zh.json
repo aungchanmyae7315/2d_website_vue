@@ -144,19 +144,20 @@
 
 "bet_succ":"下注完成",
 "fast_btn":"快选",
-"clear_btn":"Clear",
-"sign_up_new":"Sign up",
+"clear_btn":"清除",
+"sign_up_new":"注册账号",
 
-"What_phone_number" :"What is your phone number?",
-"we_sent_OTP" :"We have sent OTP on your number.",
-"set_your_password" :"Set your password",
-"phone_require":"Phone number is required.",
-"otp_require"  :"OTP code is required.",
-"password_required" :"Password is required.",
-"amount_required":"Amount is required"
+"What_phone_number" :"请输入你在 Sein Lucky 用的电话号码",
+"we_sent_OTP" :"已发送验证码，请在短信查收",
+"set_your_password" :"请设置密码",
+"phone_require":"请输入电话号码",
+"otp_require"  :"请输入验证码",
+"password_required" :"请输入密码",
+"amount_required":"请输入金额",
+"total" :"合计",
 
-
-
+"kyat":"Ks",
+"registered_phone":"Sein Lucky 账号"
 
 }
 
