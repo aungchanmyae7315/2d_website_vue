@@ -173,7 +173,7 @@
                   })
               .then(response => {
                 this.profile = response.data.data
-               // console.log(this.profile.name)
+                console.log(this.profile.name)
 
           })
       }
@@ -193,7 +193,7 @@
       };
     },
     methods: {
-     
+      
 
       onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
@@ -238,7 +238,7 @@
                     name: $('#ok').val(),
 
                   }
-          console.log(data_name)
+         
                 axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
                     {headers: {
                                "Authorization": "Bearer "+token

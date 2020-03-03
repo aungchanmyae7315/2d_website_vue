@@ -109,7 +109,7 @@
                             ]"
                             
                             >  
-                                <el-input class type="number" placeholder="500 Ks"  v-model="ruleForm.amount"  ></el-input>
+                                <el-input class type="number" placeholder="200 Ks(min)"  v-model="ruleForm.amount"  ></el-input>
                             
                             </el-form-item>
                 </el-col>

@@ -191,9 +191,7 @@ export default {
             this.bank_id = data;
            
         },
-        goBack() {
-              this.$router.push('/wallet');
-        },
+       
         withdrawal(formName) {
 
             this.$refs[formName].validate((valid) => {
@@ -243,14 +241,8 @@ export default {
                 console.log('error submit!!');
                 return false;
             }
-            });
-
-
-
-
-            
-                
-             //this.$router.push('/withdraw_success');
+            });   
+             
         }
     },
     created() {

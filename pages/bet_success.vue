@@ -5,7 +5,7 @@
             <h4 style="padding-top:10px;">{{$t('bet_succ')}}</h4>
             <el-footer>
                    <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-                         <el-button  round="">{{$t('Submit')}}</el-button>
+                         <el-button  round="">{{$t('Confirm')}}</el-button>
                    </nuxt-link>
             </el-footer>
             

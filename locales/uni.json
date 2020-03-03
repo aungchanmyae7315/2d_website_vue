@@ -46,7 +46,7 @@
   "Transaction History": "ငွေမှတ်တမ်း",
   "Pending Withdrawal": "ငွေထုတ်နေသည်",
   "Win": "ထီပေါက်ရငွေ",
-  "Bet": "ထိုးမယ်",
+  "Bet": "ထိုးမည်",
   "Cancel Request": "ပယ်ဖျက်မည်",
   "Do you want to cancel your request?": "တောင်းဆိုမှု ရပ်ဆိုင်းလိုပါသလား",
   "Completed": "အောင်မြင်သည်",
@@ -66,7 +66,7 @@
   "Unicode":"ယူနီကုတ်",
   "Zawgyi" :"ဇော်ဂျီကုတ်",
   "China" :"中文",
-  "Next" : "နောက်သို",
+  "Next" : "ရှေ့သို့",
 
   "notification_title":"အသိပေးချက်",
   "/":"/",
@@ -87,7 +87,7 @@
   "language_title":"ဘာသာစကား",
   "login_title":"လော့အင်ဝင်မယ်",
   "profile_edit_title":"ပြင်မည်",
-  "remark_title":"မှတ်ချက်",
+  "remark_title":"ထိုးမည့်ဂဏန်းမျာ",
   "result_title":"ထွက်ဂဏန်းများ",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"ငွေဖြည့်မည်",
@@ -144,7 +144,16 @@
 
 "bet_succ":"ထီးထိုးအောင်မြင်သည်",
 "fast_btn":"အမြန်ရွေး",
-"clear_btn":"ရှင်းလင်း"
+"clear_btn":"ဖျက်မည်",
+"sign_up_new":"အကောင့်သစ်ဖွင့်မည်",
+
+"What_phone_number" :"သင်ဘယ်ဖုန်းနံပါတ်သုံးသလဲ",
+"we_sent_OTP" :"သင်၏ဖုန်းကို OTP ကုဒ်ပို့လိုက်ပါပြီ",
+"set_your_password" :"စကားဝှက်သတ်မှတ်ပါ",
+"phone_require":"ဖုန်းနံပါတ်ဖြည့်ရမည်",
+"otp_require"  :"OTP ကုဒ်ဖြည့်ရမည်",
+"password_required" :"စကားဝှက်ဖြည့်ရမည်",
+"amount_required":"ငွေပမာဏဖြည့်ပါ"
  
 }
 

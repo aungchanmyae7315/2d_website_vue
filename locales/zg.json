@@ -46,7 +46,7 @@
   "Transaction History": "ေငြမွတ္တမ္း",
   "Pending Withdrawal": "ေငြထုတ္ေနသည္",
   "Win": "ထီေပါက္ရေငြ",
-  "Bet": "ထိုးမယ္",
+  "Bet": "ထိုးမည္",
   "Cancel Request": "ပယ္ဖ်က္မည္",
   "Do you want to cancel your request?": "ေတာင္းဆိုမႈ ရပ္ဆိုင္းလိုပါသလား",
   "Completed": "ေအာင္ျမင္သည္",
@@ -66,7 +66,7 @@
   "Unicode":"ယူနီကုတ္",
   "Zawgyi" :"ေဇာ္ဂ်ီကုတ္",
   "China" :"中文",
-  "Next" : "ေနာက္သို",
+  "Next" : "ေရွ႕သို႔",
 
   "notification_title":"အသိေပးခ်က္",
   "/":"/",
@@ -87,7 +87,7 @@
   "language_title":"ဘာသာစကား",
   "login_title":"ေလာ့အင္ဝင္မယ္",
   "profile_edit_title":"ျပင္မည္",
-  "remark_title":"မွတ္ခ်က္",
+  "remark_title":"ထိုးမည့္ဂဏန္းမ်ာ",
   "result_title":"ထြက္ဂဏန္းမ်ား",
   "signup_refel_title":"Sein Lucky အေကာင့္အသစ္ဖြင့္မည္",
   "topup_title":"ေငြျဖည့္မည္",
@@ -144,7 +144,16 @@
 
 "bet_succ":"ထီးထိုးေအာင္ျမင္သည္",
 "fast_btn":"အျမန္ေ႐ြး",
-"clear_btn":"ရွင္းလင္း"
+"clear_btn":"ဖ်က္မည္",
+"sign_up_new":"အေကာင့္သစ္ဖြင့္မည္",
+
+"What_phone_number" :"သင္ဘယ္ဖုန္းနံပါတ္သုံးသလဲ",
+"we_sent_OTP" :"သင္၏ဖုန္းကို OTP ကုဒ္ပို႔လိုက္ပါၿပီ",
+"set_your_password" :"စကားဝွက္သတ္မွတ္ပါ",
+"phone_require":"ဖုန္းနံပါတ္ျဖည့္ရမည္",
+"otp_require"  :"OTP ကုဒ္ျဖည့္ရမည္",
+"password_required" :"စကားဝွက္ျဖည့္ရမည္",
+"amount_required":"ေငြပမာဏျဖည့္ပါ"
  
 }
 

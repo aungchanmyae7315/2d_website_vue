@@ -14,7 +14,7 @@
                  <el-form-item 
                   prop="tran_amount"
               :rules="[
-                { required: true, message: 'Transferred amount is required'},
+                { required: true, message: $t('amount_required')},
                 
               ]"
                  :label="$t('Enter transferred amount')" class="tran_input" >

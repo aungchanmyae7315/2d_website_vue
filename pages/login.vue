@@ -48,7 +48,7 @@
              
               prop="phone"
               :rules="[
-                { required: true, message: 'phone is required'},
+                   { required: true, message: $t('What_phone_number') },
                 
               ]"
                
@@ -63,14 +63,14 @@
             <el-form-item
                 prop="password"
                 :rules="[
-                { required: true, message: 'password is required'},
+                 { required: true, message: $t('set_your_password') },
              
                 ]"
             >
                 <el-input type="password" show-password :placeholder="$t('Password')"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
             </el-form-item>
             <el-form-item>
-          <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Submit')}}</el-button>
+          <el-button type="success" round @click="submitForm('ruleForm')">{{$t('login_title')}}</el-button>
 
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
                           <nuxt-link :to="`${$t('Forgotpassword')}?lang=${$store.state.locale}`">
@@ -80,12 +80,12 @@
         </el-form>
 
         <h6>Or</h6>
-        <div class="btn_group_sig">
+        <div class="">
             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
                   <el-button type="default" round>{{$t('Skip')}}</el-button>
             </nuxt-link>
            <nuxt-link :to="`${$t('signup')}?lang=${$store.state.locale}`">
-                <el-button type="warning" round>{{$t('Sign_up')}}</el-button>
+                <el-button type="warning" round>{{$t('sign_up_new')}}</el-button>
            </nuxt-link>
           
         </div>
@@ -125,7 +125,8 @@ import axios from 'axios'
             success: '',
             error:'',
             response: '',
-            fullscreenLoading: false
+            fullscreenLoading: false,
+            ok:''
             
       };
     },
@@ -174,11 +175,15 @@ import axios from 'axios'
                         }, 2000);
                      
                      this.success_message = response.data.data,
+                  
                      
                      this.$notify({
                         title: 'Success',
-                        message: this.success_message,
+                        
+                        // message:this.success_message,
+                        message:this.success_message,
                         type: 'success',
+                        // duration:0
                        
                       });
                         this.$router.push(`/?lang=${this.$store.state.locale}`); 

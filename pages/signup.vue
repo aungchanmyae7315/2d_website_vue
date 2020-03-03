@@ -28,7 +28,7 @@
               :label="$t('Phone_placeholder')"
               prop="phone"
               :rules="[
-                { required: true, message: 'phone is required'},
+                { required: true, message: $t('What_phone_number') },
                 
               ]"
                
@@ -53,7 +53,7 @@
               label="Otp"
               prop="otp"
               :rules="[
-                { required: true, message: 'otp is required'},
+                 { required: true, message: $t('we_sent_OTP') },
                 
               ]"
                
@@ -97,7 +97,7 @@
              label="Password"
                     prop="password"
                     :rules="[
-                      { required: true, message: 'password is required'},
+                      { required: true, message: $t('set_your_password') },
                      
                     ]"
                
@@ -107,7 +107,7 @@
             </el-form-item>
             
              </div>
-             <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Submit')}}</el-button>
+             <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Confirm')}}</el-button>
         </el-form>
         
         <div class="step_bar">

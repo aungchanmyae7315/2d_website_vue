@@ -4,7 +4,7 @@
          <div class="longText_remark" id="hidingScrollBar_remark">
             <div class="hideScrollBar_remark">
                <h4>{{$t('remark_title')}}</h4>  
-                <el-card class="box-card">
+                <!-- <el-card class="box-card">
                       <el-form    class="demo-ruleForm" >
                           <el-form-item
                                 :label="$t('name')"
@@ -25,7 +25,7 @@
                                 </el-form-item>
                       </el-form>
                    
-                </el-card>
+                </el-card> -->
      
                 <el-card>
 
@@ -56,7 +56,7 @@
                             <el-button type="default" @click="back_bet" round>{{$t('back')}}</el-button>
                      
                   
-                          <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Submit')}}</el-button>
+                          <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
                   
                     
                   </div>

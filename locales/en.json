@@ -143,6 +143,17 @@
 
   "bet_succ":"Bet Successful",
   "fast_btn":"Fast",
-  "clear_btn":"Clear"
+  "clear_btn":"Clear",
+  "sign_up_new":"Sign up",
+
+  "What_phone_number" :"What is your phone number?",
+  "we_sent_OTP" :"We have sent OTP on your number.",
+  "set_your_password" :"Set your password",
+  "phone_require":"Phone number is required.",
+  "otp_require"  :"OTP code is required.",
+  "password_required" :"Password is required.",
+  "amount_required":"Amount is required"
+
+  
 }
 
