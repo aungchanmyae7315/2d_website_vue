@@ -288,9 +288,9 @@ export default {
    methods: {
        updateCurrentTime() {
        this.currentTime = moment().format('HH:mm:ss');
-       this.breakTime = moment().format('h:mm:ss a')
+       this.breakTime = moment().format('h:mm:ss A')
        //console.log(oktime)
-        this.currentDate = moment().format('LL');
+       this.currentDate = moment().format("YYYY D MMMM  dddd")
         
        },
       updateIsLoggedIn() {
@@ -311,7 +311,8 @@ export default {
 
     },
      created() {
-      this.currentDate = moment().format('LL');
+      
+      this.currentDate = moment().format("YYYY D MMMM  dddd")
       this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
      setInterval(() => this.updateCurrentTime(), 1 * 1000);

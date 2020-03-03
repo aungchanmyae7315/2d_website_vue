@@ -18,7 +18,7 @@
                            
                             <li >   
                                 <el-form-item 
-                                label="Bank"
+                               
                                 prop="radio1"
                                 :rules="[
                                     { required: true, message: 'Bank option is required'},

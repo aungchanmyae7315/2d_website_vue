@@ -405,6 +405,11 @@
   margin: 0 !important;
   padding-right: 50px !important;
 }
+
+
+.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before {
+  display: none;
+}
 @media screen and (min-width:480px) {
  .card_one , .card_two ,.card_three ,.card_four{
    margin:10px auto;
