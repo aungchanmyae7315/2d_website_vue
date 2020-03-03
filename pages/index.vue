@@ -318,13 +318,13 @@ export default {
 
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
       this.isActive = true
-      // setInterval(function() {
+      setInterval(function() {
               axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
              // console.log(response)
               })      
-                    // }.bind(this), 3000)
+        }.bind(this), 3000)
    
     
     
@@ -342,14 +342,14 @@ export default {
   // alert('three')
     this.isActive = true
 
-      // setInterval(function() {
+       setInterval(function() {
       axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
                
              //  console.log(this.info)
               })
-            //  }.bind(this), 3000)
+            }.bind(this), 3000)
   
                
              
@@ -366,14 +366,14 @@ export default {
   }else {
    // alert('mm')
       this.isActive = false
-        // setInterval(function() {
+         setInterval(function() {
         axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                  this.info = response.data[0]
                // console.log(this.info)
                
               })
-        // }.bind(this), 3000)
+         }.bind(this), 3000)
   }
     
       axios.get('https://build.seinlucky.com/api/v1/twod-result/live')

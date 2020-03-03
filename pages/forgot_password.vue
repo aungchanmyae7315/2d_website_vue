@@ -3,7 +3,7 @@
 
 
  <div class="sign_page signup">
-        <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
+        <nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`">
                           <el-page-header style="color:#000" :title="`${$t('back')}`"  >
                 </el-page-header> 
             </nuxt-link>
@@ -113,9 +113,9 @@
 
        
             <el-steps :active="active" align-center finish-status="success">
-              <el-step title="Step 1">Hello</el-step>
-              <el-step title="Step 2">Tow</el-step>
-              <el-step title="Step 3"> Therew</el-step>
+              <el-step >Hello</el-step>
+              <el-step >Tow</el-step>
+              <el-step > Therew</el-step>
             </el-steps>
        
          </div>
@@ -294,6 +294,10 @@ import axios from 'axios'
       max-width: 480px;
       width:100%;
 
+  }
+   .el-step__head.is-process  ,.el-step__title.is-process{
+    color:#b8b8b8;
+    border-color:#b8b8b8;
   }
   .sign_up_text {
       text-align: center;
