@@ -9,19 +9,7 @@
                  </nuxt-link>
             </el-header>
             <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p>
-          
-            <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
-                 <el-form-item 
-                  prop="tran_amount"
-              :rules="[
-                { required: true, message: $t('amount_required')},
-                
-              ]"
-                 :label="$t('Enter transferred amount')" class="tran_input" >
-                    <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
-                </el-form-item>
-            </el-form>
-            <h5>{{$t('Upload Bank transferred Slip')}}</h5>
+              <!-- <h5>{{$t('Upload Bank transferred Slip')}}</h5> -->
             
             <div class="avatar-upload">
                     <div class="avatar-edit" v-if="!url">
@@ -41,6 +29,20 @@
                     
                 
             </div>
+
+
+            <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                 <el-form-item 
+                  prop="tran_amount"
+              :rules="[
+                { required: true, message: $t('amount_required')},
+                
+              ]"
+                 :label="$t('Enter transferred amount')" class="tran_input" >
+                    <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                </el-form-item>
+            </el-form>
+          
            
               <el-button round @click="slip_upload('ruleForm')">{{$t('Submit')}}</el-button>
         </div>
@@ -143,14 +145,14 @@
   background-position: center;
 }
 .topup .upload_icon_top {
-  position: absolute;
+  position: relative;
     right: 0;
     padding:50px;
     width: 100%;
-    height: 91px;
+    
     left: 0;
     z-index: 88;
-    top: 33px;
+   
     bottom: 0;
     background-color: hsla(120,100%,75%,0.3);
      box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);

@@ -46,11 +46,16 @@
                 </nuxt-link>
               
                </div>
+
          
             </el-header>
              <div class="longText" id="hidingScrollBar">
-                <div class="hideScrollBar hideScrollBar_wallet ">
-
+                <div class=" hideScrollBar_wallet ">
+                  <div class="topup_withdraw">
+                     <a href="https://www.seinlucky.com/topup"> <h5>{{$t('How to top up money?')}}</h5></a>
+                     <a href="https://www.seinlucky.com/withdraw"><h5>{{$t('How to withdraw money?')}}</h5></a>
+                  </div>
+                    
                 <el-card data-aos="fade-up" data-aos-duration="800">
                   
 
@@ -128,9 +133,17 @@
      
         height:auto !important;
     }
-    /* .hideScrollBar_wallet {
+  .hideScrollBar_wallet {
      
-    } */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    margin-left: 15px;
+    padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
+    padding-top:60px;
+    padding-bottom: 330px; /*This would hide the scroll bar of the bottom if there is one*/
+
+    }
   .wallet_header .demo-type {
    
     padding:0 10px;
@@ -222,6 +235,14 @@
       position: relative;
       bottom: 7px;
       
+    }
+    .topup_withdraw {
+      margin-bottom:20px;
+
+    }
+    .topup_withdraw a h5 {
+      text-decoration: underline;
+      text-decoration-style: solid;
     }
 </style>
 <script>

@@ -175,15 +175,14 @@ import axios from 'axios'
                         }, 2000);
                      
                      this.success_message = response.data.data,
-                  
-                     
+                    
                      this.$notify({
                         title: 'Success',
                         
-                        // message:this.success_message,
+                        //message: $t('set_your_password'),
                         message:this.success_message,
                         type: 'success',
-                        // duration:0
+                         //duration:0
                        
                       });
                         this.$router.push(`/?lang=${this.$store.state.locale}`); 
