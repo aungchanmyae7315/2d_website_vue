@@ -246,6 +246,7 @@ export default {
   actions: {},
   layout: 'homeLayout',
   mounted() {
+    
     //  const lang = this.$store.state.lang;
     //  console.log(lang)
      this.updateIsLoggedIn();
@@ -261,8 +262,8 @@ export default {
       hasError: false,
       currentTime: '',
       morningTime_9_30:'09:30:00',
-      time_12_00:'12:00:00',
-      time_01_00:'13:01:00',
+      time_12_00:'12:01:00',
+      time_01_00:'13:00:00',
       time_04_30:'16:30:00',
 
 
@@ -310,20 +311,23 @@ export default {
     setInterval(() => this.updateCurrentTime(), 1 * 1000);
 
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-//  alert('currentTime')
-
-    this.isActive = true
-    
-     axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
+      this.isActive = true
+      setInterval(function() {
+              axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
-              // console.log(response)
-              })
+              console.log(response)
+              })      
+                    }.bind(this), 3000)
+   
+    
+    
      
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
     //  alert('two')
       this.isActive = false
      // alert(currentTime)
+     
        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 this.info = response.data.data
@@ -332,14 +336,14 @@ export default {
   // alert('three')
     this.isActive = true
 
-
+      setInterval(function() {
       axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
                
                console.log(this.info)
               })
-            
+             }.bind(this), 3000)
   
                
              
@@ -356,12 +360,14 @@ export default {
   }else {
    // alert('mm')
       this.isActive = false
+        setInterval(function() {
         axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
                  this.info = response.data[0]
                 console.log(this.info)
                
               })
+        }.bind(this), 3000)
   }
     
       axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
