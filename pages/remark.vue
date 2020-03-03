@@ -3,24 +3,24 @@
        
          <div class="longText_remark" id="hidingScrollBar_remark">
             <div class="hideScrollBar_remark">
-               <h4>Remark</h4>  
+               <h4>{{$t('remark_title')}}</h4>  
                 <el-card class="box-card">
                       <el-form    class="demo-ruleForm" >
                           <el-form-item
-                                label="Name"
+                                :label="$t('name')"
                                 prop="name"
                                 
                                 
                                 >  
-                                    <el-input type="text" placeholder="Enter your name" v-model="name"  ></el-input>
+                                    <el-input type="text" :placeholder="$t('name')" v-model="name"  ></el-input>
                                 
                                 </el-form-item>
                              <el-form-item
-                                label="Phone"
+                                 :label="$t('phone')"
                                 prop="phone"
                                
                                 >  
-                                    <el-input type="number" placeholder="Enter your phone" v-model="phone"  ></el-input>
+                                    <el-input type="number" :placeholder="$t('Phone_placeholder')" v-model="phone"  ></el-input>
                                 
                                 </el-form-item>
                       </el-form>
@@ -32,9 +32,9 @@
                 <table class="table" >
                     <thead>
                         <tr>
-                        <th>Bet</th>
-                         <th>Odds</th>
-                         <th>Amount</th>
+                        <th>{{$t('no')}}</th>
+                         <th>{{$t('odds')}}</th>
+                         <th>{{$t('Amount')}}</th>
                        
                         </tr>
                     </thead>
@@ -95,6 +95,7 @@ export default {
               
                       })
                   .then(response => {
+                    console.log(response)
                   this.bet_odds = response.data
 
               })
@@ -130,8 +131,18 @@ export default {
                         })
                 
                     .then(response => {
+                     
+                      this.res_error = response.data.message
+                      this.res_message = response.data.data
+                
+                      if(this.res_error == 'fail') {
+                         this.$message({
+                          message: this.res_message,
+                          type: 'warning'
+                        });
+                      }
                       this.bet = response.data.data
-                    this.$router.push(`bet_success?lang=${this.$store.state.locale}`);
+                    //this.$router.push(`bet_success?lang=${this.$store.state.locale}`);
                 })
                
        },

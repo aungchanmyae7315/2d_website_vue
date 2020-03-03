@@ -11,10 +11,10 @@
                 <el-col :span="6">
                     
                     <div v-if="ruleForm.check_btn[0] != null">
-                        <el-button @click="clear_btn()" class="fast_btn" >Clear</el-button>
+                        <el-button @click="clear_btn()" class="fast_btn" >{{$t('clear_btn')}}</el-button>
                     </div>
                     <div v-else>
-                        <el-button type="button"   @click="dialogFormVisible = true"   class="fast_btn" >Fast</el-button>
+                        <el-button type="button"   @click="dialogFormVisible = true"   class="fast_btn" >{{$t('fast_btn')}}</el-button>
                           
                     </div>
                 <el-dialog title="" :visible.sync="dialogFormVisible" class="modal_bet"

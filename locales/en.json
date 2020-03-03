@@ -21,7 +21,7 @@
   "Enter Card Number": "Enter Card Number",
   "Add Bank Card": "Add Bank Card",
   "Please enter your bank account number correctly. we are not liable for entering wrong card number.": "Please enter your bank account number correctly. we are not liable for entering wrong card number.",
-  "Confirm": "အတည်ပြုသည်",
+  "Confirm": "Confirm",
   "Receiving Account": "Receiving Account",
   "Please Login first": "Please Login First",
   "Point Rewards": "Point Rewards",
@@ -141,6 +141,8 @@
   "edit_profile" : "Edit",
   "you_balance":"You Balance",
 
-  "bet_succ":"Bet Successful"
+  "bet_succ":"Bet Successful",
+  "fast_btn":"Fast",
+  "clear_btn":"Clear"
 }
 

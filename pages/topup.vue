@@ -10,13 +10,19 @@
             </el-header>
             <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p>
           
-            <el-form>
-                 <el-form-item :label="$t('Enter transferred amount')" class="tran_input" >
-                    <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="tran_amount" autocomplete="off"></el-input>
+            <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                 <el-form-item 
+                  prop="tran_amount"
+              :rules="[
+                { required: true, message: 'Transferred amount is required'},
+                
+              ]"
+                 :label="$t('Enter transferred amount')" class="tran_input" >
+                    <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
                 </el-form-item>
             </el-form>
             <h5>{{$t('Upload Bank transferred Slip')}}</h5>
-
+            
             <div class="avatar-upload">
                     <div class="avatar-edit" v-if="!url">
                         <label for="imageUpload" class="upload_icon_top"> <i slot="default" class="el-icon-plus"></i></label>
@@ -36,25 +42,7 @@
                 
             </div>
            
-        
-
-
-
-
-          <!-- <el-upload
-                class="upload-demo"
-                action=""
-                :limit="1"
-                 :on-exceed="handleExceed"
-                :on-preview="handlePreview"
-                :on-remove="handleRemove"
-                :file-list="fileList"
-                list-type="picture">
-               <i slot="default" class="el-icon-plus"></i>
-                <div slot="tip" class="el-upload__tip">jpg/png files with a size less than 500kb</div>
-                </el-upload> -->
-           
-              <el-button round @click="slip_upload">{{$t('Submit')}}</el-button>
+              <el-button round @click="slip_upload('ruleForm')">{{$t('Submit')}}</el-button>
         </div>
        
     </section>
@@ -183,12 +171,15 @@ export default {
     },
     data() {
         return {
-            
-            tran_amount:'',
+            ruleForm: {
+                  tran_amount:'',
+            },
+          
               image:'',
               url:'',
                image:'',
-               amount:''
+               amount:'',
+                error:'',
             // img_url:'',
             // fileList: [],
             // file:'',
@@ -227,25 +218,15 @@ export default {
     //    handleExceed(files, fileList) {
     //     this.$message.warning(`The limit is 1, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
     //   },
-        
-      slip_upload(file) {
-           
-            // let formData = new FormData();
-            //     formData.append('image', this.image);
-            //     formData.append('amount', this.tran_amount);
-
-            //      console.log(formData);
-        
-        //  var data = {
-        //         image:this.image,
-        //         amount: this.tran_amount,
-        //     }
-                 let token = localStorage.getItem('token');
+        slip_upload(formName) {
+             this.$refs[formName].validate((valid) => {
+          if (valid) {
+              let token = localStorage.getItem('token');
             
 
                 let formData = new FormData();
                 formData.append('image', this.image);
-                 formData.append('amount', this.tran_amount);
+                 formData.append('amount', this.ruleForm.tran_amount);
 
                 //  console.log(formData);
                 // console.log(token)
@@ -264,9 +245,20 @@ export default {
                      //console.log(this.topup_info = response.data.data)
                      console.log(response)
                 })
-                 this.$router.push(`wallet?lang=${this.$store.state.locale}`); 
+                 this.$router.push(`topup_success?lang=${this.$store.state.locale}`); 
+                 
             
-     }
+          } else {
+          
+            console.log('error submit!!');
+            return false;
+          }
+        });
+
+        },
+     
+            
+            
     
     },
     
