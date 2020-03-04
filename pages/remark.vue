@@ -66,7 +66,7 @@
                  <div class="btn_group">
                      
                   
-                          <el-button style="width:100%" type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
+                          <el-button  type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
                   
                     
                   </div>
@@ -203,11 +203,15 @@ export default {
     left: 0;
     bottom: 0;
     padding: 20px;
+    max-width: 480px;
+    width:100%;
 }
 .bet_submit {
   background-color:#158220;
   color:#fff;
   font-weight: bold;
+  max-width: 480px;
+  width:100%;
 }
 .longText_remark{
   max-width: 480px;
