@@ -106,7 +106,7 @@
                       <span>updated at:</span><br>
                       <span v-text="currentDate"></span><br>
                       <!-- <span v-if="currentTime == ''" v-text="currentTime"></span> -->
-                        <span v-text="breakTime"></span>
+                        <span v-text="this.breakTime"></span>
                   </div>
 
                   
@@ -246,9 +246,7 @@ export default {
   actions: {},
   layout: 'homeLayout',
   mounted() {
-    
-    //  const lang = this.$store.state.lang;
-    //  console.log(lang)
+  
      this.updateIsLoggedIn();
        this.updateLang();
      
@@ -287,9 +285,22 @@ export default {
   },
    methods: {
        updateCurrentTime() {
+         if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
+            this.isActive = false
+            this.breakTime = '12:01 PM';
+          } else if(this.currentTime > this.time_04_30){
+            this.isActive = false
+            this.breakTime = '4:30 PM'; 
+          }else if(this.currentTime < this.morningTime_9_30){
+            this.isActive = false
+            this.breakTime = '4:30 PM'; 
+          }else{
+             this.isActive = true
+            this.breakTime = moment().format('h:mm A');
+          }
+
        this.currentTime = moment().format('HH:mm:ss');
-       this.breakTime = moment().format('h:mm:ss A')
-       //console.log(oktime)
+
        this.currentDate = moment().format("YYYY D MMMM  dddd")
         
        },
@@ -316,14 +327,14 @@ export default {
       this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
      setInterval(() => this.updateCurrentTime(), 1 * 1000);
-
+    
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-      this.isActive = true
+      // this.isActive = true
       setInterval(function() {
               axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
-             // console.log(response)
+            
               })      
         }.bind(this), 3000)
    
@@ -332,16 +343,14 @@ export default {
      
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
     //  alert('two')
-      this.isActive = false
-     // alert(currentTime)
+   
      
        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
                 this.info = response.data.data
               })
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-  // alert('three')
-    this.isActive = true
+ 
 
        setInterval(function() {
       axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
@@ -357,7 +366,7 @@ export default {
       
    
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
-     this.isActive = false
+     //this.isActive = false
         //alert('foursssss')
         axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
               .then(response => {
@@ -366,7 +375,7 @@ export default {
               })
   }else {
    // alert('mm')
-      this.isActive = false
+      //this.isActive = false
          setInterval(function() {
         axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
               .then(response => {

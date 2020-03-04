@@ -75,11 +75,11 @@ export default {
                             .then(response => {
                                 this.res_data = response.data.data
                                 this.error_msg = response.data.message
-                                console.log(this.res_data)
-                                console.log(this.error_msg)
+                               
+                                
                                 if(this.error_msg == 'fail'){
                                     this.$message({
-                                        message: this.res_data,
+                                        message:  this.res_data,
                                         type: 'warning'
                                         });
                                 }else {

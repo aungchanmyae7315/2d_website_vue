@@ -180,7 +180,7 @@ import axios from 'axios'
                         title: 'Success',
                         
                         //message: $t('set_your_password'),
-                        message:this.success_message,
+                        message:  this.$t('login_success'),
                         type: 'success',
                          //duration:0
                        
