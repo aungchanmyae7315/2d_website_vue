@@ -25,7 +25,7 @@
 
 
             <el-form-item
-              :label="$t('Phone')"
+              :label="$t('phone')"
               prop="phone"
               :rules="[
                 { required: true, message: $t('What_phone_number') },
@@ -207,6 +207,7 @@ import axios from 'axios'
        nextTwo(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
+           // console.log(this.otp_error)
             if(this.active++ > 2) this.active=0;
           } else {
           
@@ -230,26 +231,30 @@ import axios from 'axios'
                     password: this.ruleForm.password
                 })
                 .then(response => {
-                  console.log(response.data)
-                  this.otp_error = response.data.data
-                  if(response.data.result == '0') {
-                       this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                  //console.log(response)
+                  this.otp_error = response.data.message
+                  this.otp_data = response.data.data
+                  //console.log(this.otp_error)
+                  
+                  if(this.otp_error == 'fail') {
+                      // this.$router.push(`/?lang=${this.$store.state.locale}`); 
                       this.$message({
                         showClose: true,
                         center: true,
                        
-                        message: this.otp_error,
+                        message: this.otp_data,
                         type: 'error'
                       });
-                       if (this.active++ > 2) this.active = 0;
+                      //  if (this.active++ > 2) this.active = 0;
                      
                   }
                   else {
+                    //alert('heee')
                      this.token = response.data.access_token;
                        this.userInfo = response.data,
                       this.$store.commit('logIn', this.userInfo),
                         this.$store.commit('accessToken', this.token);
-                      console.log(this.userInfo)
+                     // console.log(this.userInfo)
                        if (this.active++ > 2) this.active = 0;
                           this.$router.push(`signup_refel?lang=${this.$store.state.locale}`); 
                   }
