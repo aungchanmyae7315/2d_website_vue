@@ -142,7 +142,7 @@ import axios from 'axios'
       submitForm(formName) {
          this.$refs[formName].validate((valid) => {
           if (valid) {
-             axios.post('https://build.seinlucky.com/api/v1/login', {
+             this.$axios.post('/v1/login', {
                     phone: this.ruleForm.phone,
                     password: this.ruleForm.password,
                     

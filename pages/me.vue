@@ -112,7 +112,7 @@ export default {
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');
     if(token) {
-        axios.get("https://build.seinlucky.com/api/v1/profile",
+       this.$axios.get("/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

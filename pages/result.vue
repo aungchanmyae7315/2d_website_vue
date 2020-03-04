@@ -98,7 +98,7 @@ export default {
     //   },
      },
      created() {
-          axios.get("https://build.seinlucky.com/api/v1/twod-result")
+          this.$axios.get("/v1/twod-result")
       
                 
                     .then(response => {

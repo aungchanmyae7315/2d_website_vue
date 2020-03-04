@@ -155,7 +155,7 @@ import axios from 'axios'
         this.$refs[formName].validate((valid) => {
           if (valid) {
          
-           axios.post('https://build.seinlucky.com/api/v1/forgot_password_OTP', {
+          this.$axios.post('/v1/forgot_password_OTP', {
                     phone: this.ruleForm.phone,
                   
                 })
@@ -215,7 +215,7 @@ import axios from 'axios'
        submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            axios.post('https://build.seinlucky.com/api/v1/forgot-password', {
+            this.$axios.post('/v1/forgot-password', {
                     phone: this.ruleForm.phone,
                     otp: this.ruleForm.otp,
                     password: this.ruleForm.password

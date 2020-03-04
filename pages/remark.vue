@@ -100,7 +100,7 @@ export default {
            var data= {
               bets:localStorage.getItem('check_btn'),
           }
-          axios.post("https://build.seinlucky.com/api/v2/v1/get_odds",data,
+          this.$axios.post("/v2/v1/get_odds",data,
                   {
               
                       })
@@ -134,7 +134,7 @@ export default {
                     twod_id:  localStorage.getItem('check_btn'),
                     amount: localStorage.getItem('bet_amount') ,
                 }
-          axios.post("https://build.seinlucky.com/api/v2/v1/2d_web/bet",
+          this.$axios.post("/v2/v1/2d_web/bet",
                            data,
                     {
                            

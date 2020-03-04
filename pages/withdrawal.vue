@@ -205,7 +205,7 @@ export default {
                     password: this.ruleForm.password,
                 }
        
-                axios.post("https://build.seinlucky.com/api/v1/withdraw",
+                this.$axios.post("/v1/withdraw",
                            data,
                     {
                            
@@ -226,7 +226,7 @@ export default {
                   this.$notify({
                     title: 'Warning',
                     message: this.res_data,
-                    type: 'warning'
+                type: 'warning'
                   });
                 }else {
                      this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
@@ -246,7 +246,7 @@ export default {
         }
     },
     created() {
-        axios.get("https://build.seinlucky.com/api/v1/bank-type")
+        this.$axios.get("/v1/bank-type")
     
             
                 .then(response => {

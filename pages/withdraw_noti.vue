@@ -106,7 +106,7 @@ export default {
          let token = localStorage.getItem('token');
             let noti_id = localStorage.getItem('notification_id');
             console.log(noti_id);
-                axios.get("https://build.seinlucky.com/api/v1/notification/detail?notification_id="+noti_id,
+                this.$axios.get("/v1/notification/detail?notification_id="+noti_id,
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

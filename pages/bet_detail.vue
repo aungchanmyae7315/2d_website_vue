@@ -152,7 +152,7 @@ export default {
         let token = localStorage.getItem('token');
 
         let bet_date = localStorage.getItem('bet_date');
-            axios.get("https://build.seinlucky.com/api/v1/historyByDate?date="+bet_date,
+           this.$axios.get("/v1/historyByDate?date="+bet_date,
                 {headers: {
                             "Authorization": "Bearer "+token
                         }

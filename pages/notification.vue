@@ -99,7 +99,7 @@ export default {
          let token = localStorage.getItem('token');
         
         if(token) {
-                axios.get("https://build.seinlucky.com/api/v1/notification",
+                this.$axios.get("/v1/notification",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
@@ -112,9 +112,6 @@ export default {
                 })
         }
                 
-
-            // var URL = "https://build.seinlucky.com/api/v1/notification";
-            
      }
 }
 </script>

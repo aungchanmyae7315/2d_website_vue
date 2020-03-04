@@ -233,7 +233,7 @@ export default {
                 //  console.log(formData);
                 // console.log(token)
               
-            axios.post('https://build.seinlucky.com/api/v1/slip_post',
+            this.$axios.post('/v1/slip_post',
                   formData
                  ,{
                   headers: {

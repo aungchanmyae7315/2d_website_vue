@@ -254,6 +254,7 @@ export default {
   components: {
     Logo
   },
+  
   data() {
     return {
        isActive: true,
@@ -331,7 +332,7 @@ export default {
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
       // this.isActive = true
       setInterval(function() {
-              axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
+             this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
             
@@ -345,7 +346,7 @@ export default {
     //  alert('two')
    
      
-       axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+       this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info = response.data.data
               })
@@ -353,7 +354,7 @@ export default {
  
 
        setInterval(function() {
-      axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
+      this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
                
@@ -368,7 +369,7 @@ export default {
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
      //this.isActive = false
         //alert('foursssss')
-        axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+        this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info = response.data.data
                
@@ -377,7 +378,7 @@ export default {
    // alert('mm')
       //this.isActive = false
          setInterval(function() {
-        axios.get('https://build.seinlucky.com/api/v2/v1/kwee_live')
+        this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
                  this.info = response.data[0]
                // console.log(this.info)
@@ -386,19 +387,19 @@ export default {
          }.bind(this), 3000)
   }
     
-      axios.get('https://build.seinlucky.com/api/v1/twod-result/live')
+      this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
               // console.log(this.info_api)
                //console.log('back')
               })
           
-          axios.get('https://build.seinlucky.com/api/v2/v1/slider_image')
+          this.$axios.get('/v2/v1/slider_image')
               .then(response => {
                this.slider_images = response.data.data
               })
 
-          axios.get('https://build.seinlucky.com/api/v2/v1/slider_text')
+          this.$axios.get('/v2/v1/slider_text')
               .then(response => {
                this.slider_text = response.data.data[0]
              
@@ -406,7 +407,7 @@ export default {
               
          let token = localStorage.getItem('token');
       if(token) {
-         axios.get("https://build.seinlucky.com/api/v1/profile",
+         this.$axios.get("/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

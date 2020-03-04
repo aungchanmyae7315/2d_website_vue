@@ -52,8 +52,8 @@
              <div class="longText" id="hidingScrollBar">
                 <div class=" hideScrollBar_wallet ">
                   <div class="topup_withdraw">
-                     <a href="https://www.seinlucky.com/topup"> <h5>{{$t('How to top up money?')}}</h5></a>
-                     <a href="https://www.seinlucky.com/withdraw"><h5>{{$t('How to withdraw money?')}}</h5></a>
+                     <a href="https://www.seinlucky.com/topup"> <p class="under-below">{{$t('How to top up money?')}}</p></a>
+                     <a href="https://www.seinlucky.com/withdraw"><p class="under-below">{{$t('How to withdraw money?')}}</p></a>
                   </div>
                     
                 <el-card data-aos="fade-up" data-aos-duration="800">
@@ -187,7 +187,7 @@
     .wallet  h5 {
       color:#fff;
     }
-    .wallet p {
+    .wallet .el-card__body p {
       color:#CCCCCC;
       padding-bottom:15px;
       border-bottom:1px solid #425266;
@@ -240,9 +240,17 @@
       margin-bottom:20px;
 
     }
-    .topup_withdraw a h5 {
+    .topup_withdraw  a  {
+      color:#fff;
       text-decoration: underline;
       text-decoration-style: solid;
+    }
+    .under-below { 
+      font-size: 19px;
+      font-weight: bold;
+      -webkit-text-underline-position: under;
+      -ms-text-underline-position: below;
+      text-underline-position: under; 
     }
 </style>
 <script>
@@ -264,13 +272,13 @@
     },
      created() {
       
-          axios.get('https://build.seinlucky.com/api/v1/admin-bank')
+          this.$axios.get('/v1/admin-bank')
               .then(response => {
                 this.bank_account = response.data.data
               })  
           let token = localStorage.getItem('token');
         if(token) {
-              axios.get("https://build.seinlucky.com/api/v1/profile",
+              this.$axios.get("/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

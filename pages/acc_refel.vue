@@ -67,7 +67,7 @@ export default {
                         // console.log(data_code)
                        // alert(data_code)
                 
-                        axios.post("https://build.seinlucky.com/api/v2/v1/upload_referal_code",data_code,
+                         this.$axios.post("/v2/v1/upload_referal_code",data_code,
                             {headers: {
                                     "Authorization": "Bearer "+token
                                 }

@@ -610,7 +610,7 @@ export default {
         }
     },
     created() {
-       axios.get('https://build.seinlucky.com/api/v2/v1/close_time')
+       this.$axios.get('/v2/v1/close_time')
              
               .then(response => {
                     this.time = response.data.data
@@ -660,7 +660,7 @@ export default {
     
         let token = localStorage.getItem('token');
         if(token) {
-             axios.get("https://build.seinlucky.com/api/v1/profile",
+             this.$axios.get("/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

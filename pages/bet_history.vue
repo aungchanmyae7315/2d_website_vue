@@ -77,7 +77,7 @@ export default {
          let token = localStorage.getItem('token');
         
         
-                axios.get("https://build.seinlucky.com/api/v1/history",
+                this.$axios.get("/v1/history",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

@@ -63,8 +63,9 @@ export default {
   */
  axios: {
   credentials: false,
-  baseURL: "https://build.seinlucky.com/api/v1/",
-  // baseURL: "http://paramilpg.com/api/v1/",
+    //  baseURL: "https://api.2dboss.com/api/",
+  baseURL: "https://build.seinlucky.com/api/",
+
   proxyHeaders: false,
   headers: {
     'Content-Type': 'application/json',

@@ -167,7 +167,7 @@
   
       let token = localStorage.getItem('token');
       if(token) {
-          axios.get("https://build.seinlucky.com/api/v1/profile",
+          this.$axios.get("/v1/profile",
               {headers: {
                           "Authorization": "Bearer "+token
                     }
@@ -220,7 +220,7 @@
 
                  console.log(formData);
 
-                axios.post('https://build.seinlucky.com/api/v1/profile-photo/update',
+                this.$axios.post('/v1/profile-photo/update',
                   formData
                  ,{
                   headers: {
@@ -240,7 +240,7 @@
 
                   }
          
-                axios.post("https://build.seinlucky.com/api/v1/profile/update",data_name,
+                this.$axios.post("/v1/profile/update",data_name,
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

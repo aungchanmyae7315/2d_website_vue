@@ -174,7 +174,7 @@ export default {
          let token = localStorage.getItem('token');
         
         
-                axios.get("https://build.seinlucky.com/api/v1/betStatus",
+                this.$axios.get("/v1/betStatus",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
