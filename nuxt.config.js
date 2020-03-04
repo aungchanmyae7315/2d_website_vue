@@ -34,7 +34,7 @@ export default {
       { src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' },
     ],
     link: [
-      // { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+       { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
       // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons' },
       // { rel: 'stylesheet', href: 'https://unpkg.com/vue-material/dist/vue-material.min.css' },
       { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css' },
@@ -64,7 +64,7 @@ export default {
  axios: {
   credentials: false,
     //  baseURL: "https://api.2dboss.com/api/",
-  baseURL: "https://build.seinlucky.com/api/",
+  baseURL: "https://api.2dboss.com/api/",
 
   proxyHeaders: false,
   headers: {

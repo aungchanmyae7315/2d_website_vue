@@ -1,10 +1,10 @@
 <template>
     <main class="remark">
        <el-header>
-           <nuxt-link  :to="`${$t('bet')}?lang=${$store.state.locale}`">
-               <el-page-header :title="`${$t('back')}`"  :content="`${$t('remark_title')}`">
+           <!-- <nuxt-link  :to="`${$t('bet')}?lang=${$store.state.locale}`"> -->
+               <el-page-header title="" @back="goBack"  :content="`${$t('remark_title')}`">
                 </el-page-header>
-           </nuxt-link>
+           <!-- </nuxt-link> -->
       </el-header>
          <div class="longText_remark" id="hidingScrollBar_remark">
             <div class="hideScrollBar_remark">
@@ -118,7 +118,9 @@ export default {
     },
     
      methods: {
-      
+      goBack() {
+             this.$router.push(`bet?lang=${this.$store.state.locale}`); 
+         },
        back_bet() {
          
          localStorage.removeItem('odds');

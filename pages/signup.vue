@@ -4,7 +4,7 @@
 
  <div class="sign_page signup">
           <nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`">
-                          <el-page-header style="color:#000" :title="`${$t('back')}`"  >
+                          <el-page-header style="color:#000" title=""  >
                 </el-page-header> 
             </nuxt-link>
        

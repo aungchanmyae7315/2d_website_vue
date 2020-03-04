@@ -4,10 +4,10 @@
                 <div class="longText" id="hidingScrollBar">
                     <div class="hideScrollBar_refel">
                 <el-header>
-                     <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`">
-                           <el-page-header :title="`${$t('back')}`"  :content="`${$t('Withdrawal')}`">
+                     <!-- <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`"> -->
+                           <el-page-header @back="goBack" title=""  :content="`${$t('Withdrawal')}`">
                          </el-page-header>
-                     </nuxt-link>
+                     <!-- </nuxt-link> -->
 
                 </el-header>
                 <p>{{$t('Choose your receiving account')}}</p>
@@ -187,6 +187,9 @@ export default {
         }
     },
     methods: {
+        goBack() {
+             this.$router.push(`wallet?lang=${this.$store.state.locale}`); 
+         },
         id_bank(data) {
             this.bank_id = data;
            

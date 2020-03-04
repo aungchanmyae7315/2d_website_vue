@@ -3,10 +3,11 @@
     <section>
         <div class="topup">
             <el-header>
-                 <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`">
-                 <el-page-header :title="`${$t('back')}`"  :content="`${$t('Top Up')}`">
+                 <!-- <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`"> -->
+                 <el-page-header title="" @back="goBack"  :content="`${$t('Top Up')}`">
+                    
                 </el-page-header>
-                 </nuxt-link>
+                 <!-- </nuxt-link> -->
             </el-header>
             <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p>
               <!-- <h5>{{$t('Upload Bank transferred Slip')}}</h5> -->
@@ -188,7 +189,9 @@ export default {
         }
     },
     methods: {
-
+          goBack() {
+             this.$router.push(`wallet?lang=${this.$store.state.locale}`); 
+         },
          onFileChange(e) {
             var files = e.target.files || e.dataTransfer.files;
             if (!files.length)

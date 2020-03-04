@@ -1,10 +1,10 @@
 <template>
     <section>
         <div class="language_type">
-              <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
-                          <el-page-header :title="`${$t('back')}`"  :content="`${$t('Language')}`">
+              <!-- <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`"> -->
+                          <el-page-header @back="goBack" title=""  :content="`${$t('Language')}`">
                 </el-page-header>
-            </nuxt-link>
+            <!-- </nuxt-link> -->
 
             <div class="lang">
                 <el-dropdown @command="changeLang"  style="text-align:center">
@@ -48,6 +48,9 @@ export default {
     
   },
     methods: {
+        goBack() {
+             this.$router.push(`me?lang=${this.$store.state.locale}`); 
+         },
          changeLang (lang) {
       //mutate 'locale' in store
       this.$store.commit('SET_LANG', lang)

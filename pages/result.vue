@@ -1,10 +1,10 @@
 <template>
    <div class="main_container result">
       <el-header>
-           <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-               <el-page-header :title="`${$t('back')}`"  :content="`${$t('result_title')}`">
+           <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
+               <el-page-header title="" @back="goBack"  :content="`${$t('result_title')}`">
                 </el-page-header>
-           </nuxt-link>
+           <!-- </nuxt-link> -->
       </el-header>
       <div class="result_item">
             <div v-for="(result,t) in twod_result" :key="t" data-aos="fade-down"
@@ -93,9 +93,9 @@ export default {
         }
     },
      methods: {
-    //     goBack() {
-    //         this.$router.push('/')
-    //   },
+        goBack() {
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+         },
      },
      created() {
           this.$axios.get("/v1/twod-result")

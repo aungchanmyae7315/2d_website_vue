@@ -1,13 +1,12 @@
 <template>
    <div class="main_container bet_status">
       <el-header>
-           <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
-                <el-page-header :content="`${$t('bet_status_title')}`">
-                   
+           <!-- <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`"> -->
+                <el-page-header  @back="goBack" title=""  :content="`${$t('bet_status_title')}`">
                    
                 </el-page-header>
                  <span class="time_status">{{this.time_stauts}}</span>
-           </nuxt-link>
+           <!-- </nuxt-link> -->
 
          <nuxt-link :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
              <img src="~static/images/icons/bet_status_icon.png" alt="" class="bet_status_icon">
@@ -163,6 +162,9 @@ export default {
         }
     },
     methods: {
+        goBack() {
+             this.$router.push(`me?lang=${this.$store.state.locale}`); 
+         },
         handleClose(done) {
        
       },
@@ -180,8 +182,9 @@ export default {
                          }
                         })
                     .then(response => {
+                 
                      this.bet_stauts = response.data.data  
-                    this.time_stauts = response.data.data[0].time
+                    this.time_stauts = response.data.time
                     console.log(this.time_stauts)
                 })
      }

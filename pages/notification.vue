@@ -1,10 +1,10 @@
 <template>
    <div class="main_container notification">
       <el-header>
-            <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-                          <el-page-header :title="`${$t('back')}`"  :content="`${$t('notification_title')}`">
+            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
+                          <el-page-header @back="goBack" title=""  :content="`${$t('notification_title')}`">
                 </el-page-header>
-            </nuxt-link>
+            <!-- </nuxt-link> -->
       </el-header>
       <section v-if="notification"  >
           <p style="text-align:center;color:#b8b8b8"> No notification</p>
@@ -87,7 +87,9 @@ export default {
         }
     },
     methods: {
-
+        goBack() {
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+         },
       cur_id(data) {
          this.$store.commit('noti_id', data);
            this.$router.push(`withdraw_noti?lang=${this.$store.state.locale}`); 

@@ -1,11 +1,11 @@
 <template>
    <div class="main_container bet_detail">
       <el-header>
-          <nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
-           <el-page-header :title="`${$t('back')}`"  :content="`${$t('bet_detail_title')}`">
+          <!-- <nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`"> -->
+           <el-page-header @back="goBack" title=" "  :content="`${$t('bet_detail_title')}`">
             
             </el-page-header>
-          </nuxt-link>
+          <!-- </nuxt-link> -->
         
       </el-header>
        <el-row style="padding:23px;">
@@ -141,6 +141,9 @@ export default {
         }
     },
     methods: {
+       goBack() {
+             this.$router.push(`bet_history?lang=${this.$store.state.locale}`); 
+         },
         handleClose(done) {
        
       },

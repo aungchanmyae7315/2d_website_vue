@@ -2,10 +2,10 @@
     <section class="bet_container">
          <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
         <el-header>
-             <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-                          <el-page-header :title="`${$t('back')}`">
+             <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
+                          <el-page-header @back="goBack" title="">
                 </el-page-header>
-            </nuxt-link>
+            <!-- </nuxt-link> -->
            
             <el-row style="padding-top:15px;">
                 <el-col :span="6">
@@ -673,6 +673,9 @@ export default {
                
     },
      methods: {
+         goBack() {
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+         },
          updateCurrentTime() {
          this.currentTime = moment().format('HH:mm:ss');
            

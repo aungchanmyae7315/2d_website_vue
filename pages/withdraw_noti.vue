@@ -2,7 +2,7 @@
    <div class="main_container withdraw_noti">
       <el-header>
            <!-- <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"> -->
-                 <el-page-header @back="goBack" :title="`${$t('back')}`"  :content="`${$t('Withdrawal')}`">
+                 <el-page-header @back="goBack" title=""  :content="`${$t('Withdrawal')}`">
                 </el-page-header>
            <!-- </nuxt-link> -->
       </el-header>

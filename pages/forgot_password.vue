@@ -3,10 +3,10 @@
 
 
  <div class="sign_page signup">
-        <nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`">
-                          <el-page-header style="color:#000" :title="`${$t('back')}`"  >
+        <!-- <nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"> -->
+                          <el-page-header @back="goBack" style="color:#000" title=""  >
                 </el-page-header> 
-            </nuxt-link>
+            <!-- </nuxt-link> -->
           <el-form v-if="active===1"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
            
         
@@ -148,7 +148,9 @@ import axios from 'axios'
       };
     },
      methods: {
-       
+       goBack() {
+             this.$router.push(`login?lang=${this.$store.state.locale}`); 
+         },
   
   
       next(formName) {

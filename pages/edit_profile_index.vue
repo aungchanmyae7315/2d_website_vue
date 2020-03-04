@@ -1,10 +1,10 @@
 <template>
    <div class="main_container profile_edit">
       <el-header>
-         <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
-                          <el-page-header :title="`${$t('back')}`"  :content="`${$t('profile')}`">
+         <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
+                          <el-page-header @back="goBack" title=""  :content="`${$t('profile')}`">
                 </el-page-header>
-            </nuxt-link>
+            <!-- </nuxt-link> -->
       </el-header>
 
 
@@ -193,7 +193,9 @@
       };
     },
     methods: {
-      
+      goBack() {
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+         },
 
       onFileChange(e) {
       var files = e.target.files || e.dataTransfer.files;
