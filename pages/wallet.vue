@@ -67,7 +67,7 @@
                       <img :src="bank_info.bank_icon" alt="">
                       <div  class="avatar_text">
                         <ul>
-                          <li>{{bank_info.bank_name}}</li>
+                          <li style="font-size:12px;">{{bank_info.bank_name}}</li>
                           <li class="bank_number">
                             <span class="code text-red">{{ bank_info.card_number }}</span>
                             <input type="hidden" :id="'code'+(b+1)" :value="bank_info.card_number">

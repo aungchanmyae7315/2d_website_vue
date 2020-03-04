@@ -114,7 +114,7 @@
             </div>
           </div>
           
-           <div class="card_one" data-aos="fade-up" data-aos-duration="700">
+           <div class="card_one" data-aos="fade-up" >
             <div class="card_item">
               <h5 class="time_number">12:00 PM</h5>
             
