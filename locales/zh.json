@@ -157,7 +157,28 @@
 "total" :"合计",
 
 "kyat":"Ks",
-"registered_phone":"Sein Lucky 账号"
+"registered_phone":"Sein Lucky 账号",
+"big":"大",
+"small":"小",
+"odd":"奇数",
+"even":"偶数",
+"ee":"奇奇",
+"eo":"偶奇",
+"oe":"奇偶",
+"oo":"奇奇",
+"same":"双数",
+"Constellation_power":"Constellation Power",
+"20_selection_number":"一次选20个",
+"head":"头数",
+"tail":"尾数",
+"registartion_success":"注册成功！",
+"we_are_so_delighted":"欢迎加入Sein Lucky！",
+"optional":"选填",
+"have_referral_code":"您有推荐码吗？",
+"please_enter_referral_code":"请输入推荐码，立即领取现金抽奖！",
+"enter_referral_code":"请输入推荐码",
+"summit_referral_code":"提交推荐码",
+"referral_code":"推荐码"
 
 }
 

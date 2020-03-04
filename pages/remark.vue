@@ -1,9 +1,14 @@
 <template>
     <main class="remark">
-       
+       <el-header>
+           <nuxt-link  :to="`${$t('bet')}?lang=${$store.state.locale}`">
+               <el-page-header :title="`${$t('back')}`"  :content="`${$t('remark_title')}`">
+                </el-page-header>
+           </nuxt-link>
+      </el-header>
          <div class="longText_remark" id="hidingScrollBar_remark">
             <div class="hideScrollBar_remark">
-               <h4>{{$t('remark_title')}}</h4>  
+               <!-- <h4>{{$t('remark_title')}}</h4>   -->
                 <!-- <el-card class="box-card">
                       <el-form    class="demo-ruleForm" >
                           <el-form-item
@@ -50,19 +55,18 @@
                           <tr>
                               <th>{{$t('total')}}</th>
                               <th></th>
-                              <th>{{this.bet_amount * this.bet_odds.length}} {{$t('kyat')}}</th>
+                              <th style="text-align:right">{{this.bet_amount * this.bet_odds.length}} {{$t('kyat')}}</th>
                           </tr>
                     </tbody>
           </table>
                  
                  
-                </el-card>
+                </el-card> 
+
                  <div class="btn_group">
                      
-                            <el-button type="default" @click="back_bet" round>{{$t('back')}}</el-button>
-                     
                   
-                          <el-button type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
+                          <el-button style="width:100%" type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
                   
                     
                   </div>
@@ -159,36 +163,8 @@ export default {
                 })
                
        },
-      getSummaries(param) {
-        const { columns, data } = param;
-        const sums = [];
-        columns.forEach((column, index) => {
-           if (index === 0) {
-            sums[index] = ' ';
-            return;
-          }
-          if (index === 1) {
-            sums[index] = 'Total';
-            return;
-          }
-          
-          const values = data.map(item => Number(item[column.property]));
-          if (!values.every(value => isNaN(value))) {
-            sums[index] = 'Ks ' + values.reduce((prev, curr) => {
-              const value = Number(curr);
-              if (!isNaN(value)) {
-                return  prev + curr;
-              } else {
-                return prev;
-              }
-            }, 0);
-          } else {
-            sums[index] = 'N/A';
-          }
-        });
-
-        return sums;
-      }
+     
+      
     }
 }
 </script>
@@ -206,7 +182,7 @@ export default {
         margin-top:30px;
     }
 .remark .el-card {
-    margin:20px auto;
+    margin:50px auto;
     border-radius: 17px;
 }
 .remark .el-form-item {
@@ -220,10 +196,13 @@ export default {
 }
 
 .remark .btn_group {
-    position: fixed;
+   position: fixed;
     right: 0;
     bottom: 22px;
+    background: #fff;
     left: 0;
+    bottom: 0;
+    padding: 20px;
 }
 .bet_submit {
   background-color:#158220;
@@ -252,4 +231,20 @@ export default {
 
  
 }
+.remark .el-header {
+       background-color :#2A612D;
+
+    }
+    .el-page-header__left {
+        margin:0;
+    }
+    .remark .el-page-header {
+        line-height: 43px;
+        color:#fff;
+        padding:0 20px;
+    }
+    .remark .el-page-header__content {
+        color:#fff;
+        font-weight: bold;
+    }
 </style>

@@ -153,10 +153,32 @@
   "otp_require"  :"OTP code is required.",
   "password_required" :"Password is required.",
   "amount_required":"Amount is required",
+  
   "total" :"Total",
   "kyat":"Ks",
-  "registered_phone":"Registered Phone"
+  "registered_phone":"Registered Phone",
 
+  "big":"Big",
+  "small":"Small",
+  "odd":"Odd",
+  "even":"Even",
+  "ee":"EE",
+  "eo":"EO",
+  "oe":"OE",
+  "oo":"OO",
+  "same":"Same",
+  "Constellation_power":"Constellation Power",
+  "20_selection_number":"20 Selectio Number",
+  "head":"Head",
+  "tail":"Tail",
+  "registartion_success":"Registartion Successful",
+  "we_are_so_delighted":"We are so delighted you are here !",
+  "optional":"Optional",
+  "have_referral_code":"Have a referral Code?",
+  "please_enter_referral_code":"Please enter referral code and get 500 Sein Lucky points",
+  "enter_referral_code":"Enter a referral code",
+  "summit_referral_code":"Sumit Referral Code",
+  "referral_code":"Referral Code"
   
 }
 

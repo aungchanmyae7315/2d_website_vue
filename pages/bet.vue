@@ -23,29 +23,29 @@
                     <p>Single and Double size</p>
             
                         <el-row class="single_btn">
-                            <el-col :span="4">  <el-button type="text" @click="big_number">ကြီး</el-button></el-col>
-                            <el-col :span="4"><el-button type="text" @click="small_number">ငယ်</el-button></el-col>
-                            <el-col :span="4"> <el-button type="text"  @click="odd_number">မ</el-button></el-col>
-                            <el-col :span="4"><el-button type="text" @click="even_number">စုံ</el-button></el-col>    
+                            <el-col :span="4">  <el-button type="text" @click="big_number">{{$t('big')}}</el-button></el-col>
+                            <el-col :span="4"><el-button type="text" @click="small_number">{{$t('small')}}</el-button></el-col>
+                            <el-col :span="4"> <el-button type="text"  @click="odd_number">{{$t('odd')}}</el-button></el-col>
+                            <el-col :span="4"><el-button type="text" @click="even_number">{{$t('even')}}</el-button></el-col>    
                                 <el-col :span="4"></el-col>                                                  
                         </el-row>
                         <el-row class="single_btn">
-                            <el-col :span="4"> <el-button type="text" @click="ee_number">စုံစုံ</el-button></el-col>
-                            <el-col :span="4"> <el-button type="text" @click="eo_number">စုံမ</el-button> </el-col>
-                            <el-col :span="4"> <el-button  type="text" @click="oe_number">မစုံ</el-button></el-col>
-                            <el-col :span="4">  <el-button type="text"  @click="oo_number">မမ</el-button> </el-col>
-                            <el-col :span="4">  <el-button type="text"  @click="same_number">အပူး</el-button></el-col>
+                            <el-col :span="4"> <el-button type="text" @click="ee_number">{{$t('ee')}}</el-button></el-col>
+                            <el-col :span="4"> <el-button type="text" @click="eo_number">{{$t('eo')}}</el-button> </el-col>
+                            <el-col :span="4"> <el-button  type="text" @click="oe_number">{{$t('oe')}}</el-button></el-col>
+                            <el-col :span="4">  <el-button type="text"  @click="oo_number">{{$t('oo')}}</el-button> </el-col>
+                            <el-col :span="4">  <el-button type="text"  @click="same_number">{{$t('same')}}</el-button></el-col>
                         </el-row>
                     
                     <div class="con_power">
                         <p>Constellation Power</p>
                         <el-button type="text" @click="con_number">Constellation 07,18,24,35,69</el-button>
                         <el-button type="text" @click="con_number_R">Constellation R 70,81,42,53,96</el-button>
-                        <el-button type="text" @click="con_number_power">Power 05, 16, 27, 38,</el-button>
+                        <el-button type="text" @click="con_number_power">Power 05, 16, 27, 38,49</el-button>
                         <el-button type="text" @click="con_number_power_R">Power R 05,16,27,38</el-button>
                     </div>
                         
-                        <p>20 Selection Number</p>
+                        <p>{{$t('20_selection_number')}}</p>
                         <el-row  class="select_number_two">
                             <el-col :span="5">  <el-button type="text" @click="btw_00_19">00-19</el-button></el-col>
                             <el-col :span="5"><el-button type="text" @click="btw_20_39">20-39</el-button></el-col>
@@ -68,7 +68,7 @@
                             <el-button type="text" @click="with_8">8</el-button> 
                             <el-button type="text" @click="with_9">9</el-button>
 
-                            <p>Head</p>
+                            <p>{{$t('head')}}</p>
                             <el-button type="text" @click="head_0">0</el-button>
                             <el-button type="text" @click="head_1">1</el-button>
                             <el-button type="text" @click="head_2">2</el-button>
@@ -80,7 +80,7 @@
                             <el-button type="text" @click="head_8">8</el-button> 
                             <el-button type="text" @click="head_9">9</el-button>
 
-                            <p>Tail</p>
+                            <p>{{$t('tail')}}</p>
                             <el-button type="text" @click="tail_0">0</el-button>
                             <el-button type="text" @click="tail_1">1</el-button>
                             <el-button type="text" @click="tail_2">2</el-button>
@@ -408,7 +408,7 @@ const cityOptions = ['00','01', '02', '03', '04','05','06','07','08','09','10',
                       
                       
                       ];
-const big_option = ['51','52','53','54','55','56','57','58','59','60',
+const big_option = ['50','51','52','53','54','55','56','57','58','59','60',
                       '61','62','63','64','65','66','67','68','69','70',
                       '71','72','73','74','75','76','77','78','79','80',
                       '81','82','83','84','85','86','87','88','89','90',
@@ -480,7 +480,7 @@ const btw_80_99_option = ['80','81','82','83','84','85','86','87','88','89','90'
                       '91','92','93','94','95','96','97','98','99'
     
 ]
-const with_0_option = ['01','02','03','04','05','06','07','08','09','10','20','30','40',
+const with_0_option = ['00','01','02','03','04','05','06','07','08','09','10','20','30','40',
                 '50','60','70','80','90'
 
 ]

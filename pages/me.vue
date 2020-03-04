@@ -47,7 +47,7 @@
                          <li><nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
-                        <!-- <li><nuxt-link to="/acc_refel"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> Referral Code</a></nuxt-link></li> -->
+                         <li><nuxt-link :to="`${$t('acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
                 </div>
               

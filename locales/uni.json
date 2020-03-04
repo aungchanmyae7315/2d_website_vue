@@ -156,6 +156,27 @@
 "amount_required":"ငွေပမာဏဖြည့်ပါ",
 "total" :"စုစုပေါင်းထိုးငွေ",
 "kyat":"ကျပ်",
-"registered_phone":"မှတ်ပုံတင်ထား‌သောဖုန်း"
+"registered_phone":"မှတ်ပုံတင်ထား‌သောဖုန်း",
+"big":"ကြီး",
+"small":"ငယ်",
+"odd":"မ",
+"even":"စုံ",
+"ee":"စုံစုံ",
+"eo":"စုံမ",
+"oe":"မစုံ",
+"oo":"မမ",
+"same":"အပူ",
+"Constellation_power":"Constellation Power",
+"20_selection_number":"20 လုံးစီ",
+"head":"ထိပ်",
+"tail":"နောက်",
+"registartion_success":"မှတ်ပုံတင်ခြင်း ‌‌အောင်မြင်သည်",
+"we_are_so_delighted":"စတင်အသုံးပြုမှုုအတွက် ဝမ်း‌‌မြောက်မိပါတယ်",
+"optional":"နောက်ထပ်",
+"have_referral_code":"ရည်ညွှန်းကုဒ် ရှိ‌‌‌လား",
+"please_enter_referral_code":"ရည်ညွှန်းကုဒ်ဖြည့်၍ ကံစမ်းမဲဆုငွေလက်ဆောင် ရယူလိုက်ပါ",
+"enter_referral_code":"ရည်ညွှန်းကုဒ်ဖြည့်ပါ",
+"summit_referral_code":"ရည်ညွှန်းကုဒ်တင်သွင်းမည်",
+"referral_code":"ရည်ညွှန်းကုဒ်"
 }
 

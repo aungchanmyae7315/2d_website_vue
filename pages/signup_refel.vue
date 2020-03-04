@@ -9,18 +9,29 @@
                     
                         <el-card class="box-card">
                             
-                            <h3 >Registartion Successful!!</h3>
-                            <h5>We are so delighted you are here!</h5> 
+                            <h3 >{{$t('registartion_success')}}</h3>
+                            <h5>{{$t('we_are_so_delighted')}}</h5> 
                         
-                            <h2 class="background"><span>Optional</span></h2>
-                            <h4>Have a referral code ?</h4>
-                            <p>Please enter referral code and <br>
-                                get 500 sein lucky points.
+                            <h2 class="background"><span>{{$t('optional')}}</span></h2>
+                            <h4>{{$t('have_referral_code')}}</h4>
+                            <p>{{$t('please_enter_referral_code')}}
                             </p>
-                        <el-input placeholder="Enter a referral code" v-model="refel_code"></el-input>
+                       <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                             <el-form-item
+                                   
+                                    prop="referal_code"
+                                    :rules="[
+                                        { required: true, message: $t('enter_referral_code') },
+                                        
+                                    ]"
+                                    
+                                    >  
+                                    <el-input :placeholder="$t('enter_referral_code')" v-model="ruleForm.referal_code"></el-input>
+                             </el-form-item>
+                        </el-form>
                         </el-card>
-                        <el-button type="info" class="submitRefel" round @click="skip()">Skip</el-button>
-                         <el-button type="success" class="submitRefel" round @click="submistRefel()">Summit Referral Code</el-button>
+                        <el-button type="info" class="submitRefel" round @click="skip()">{{$t('Skip')}}</el-button>
+                         <el-button type="success" class="submitRefel" round @click="submitRefel('ruleForm')">{{$t('summit_referral_code')}}</el-button>
                          
                 </div>
              </div>
@@ -29,15 +40,75 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
     data() {
         return {
-            refel_code:'',
+            ruleForm: {
+                 referal_code:'',
+
+                },
+             errors:[],
+           
+            accessToken: '',
         }
     },
     methods: {
+         submitRefel(formName) {
+              this.$refs[formName].validate((valid) => {
+             if (valid) {
+                // alert(this.ruleForm.referal_code)
+                        let token = localStorage.getItem('token');
+                        var data_code = {
+                            referal_code:this.ruleForm.referal_code
+
+                        }
+                        console.log(token)
+                        console.log(data_code)
+                    //    alert(data_code)
+                
+                        axios.post("https://build.seinlucky.com/api/v2/v1/upload_referal_code",data_code,
+                            {headers: {
+                                    "Authorization": "Bearer "+token
+                                }
+                                })
+                            .then(response => {
+                                this.res_data = response.data.data
+                                this.error_msg = response.data.message
+                                console.log(this.res_data)
+                                console.log(this.error_msg)
+                                if(this.error_msg == 'fail'){
+                                    this.$message({
+                                        message: this.res_data,
+                                        type: 'warning'
+                                        });
+                                }else {
+                                    this.$message({
+                                    message: ',You had already entered a referral code',
+                                    type: 'success'
+                                    });
+                                    this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                                }
+                                
+                            // console.log(this.name_update = response.data.data)
+              
+                })
+
+
+             
+             }else {
+                   console.log('error submit!!');
+                return false;
+                  
+                }
+            });
+                  
+             
+        
+         
+    },
         skip() {
-             this.$router.push('/');
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
         }
     }
 }

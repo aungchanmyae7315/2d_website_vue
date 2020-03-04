@@ -12,7 +12,7 @@
            
         
         <div class="sign_up_text">
-            <h4>What's Your<br> Phone Number</h4>
+            <h4>{{$t('What_phone_number')}}</h4>
         </div>
              <div class="phone_input">
 
@@ -25,7 +25,7 @@
 
 
             <el-form-item
-              :label="$t('Phone_placeholder')"
+              :label="$t('Phone')"
               prop="phone"
               :rules="[
                 { required: true, message: $t('What_phone_number') },
@@ -45,20 +45,20 @@
            
         
          <div class="sign_up_text">
-                <h4>We have sent OTP<br> on your number</h4>
+                <h4>{{$t('we_sent_OTP')}}</h4>
             </div>
              <div class="phone_input">
 
             <el-form-item
-              label="Otp"
+              label="OTP"
               prop="otp"
               :rules="[
-                 { required: true, message: $t('we_sent_OTP') },
+                 { required: true, message: $t('otp_require') },
                 
               ]"
                
             >  
-                <el-input type="otp" placeholder="Phone" prefix-icon="el-icon-otp" v-model="ruleForm.otp"  ></el-input>
+                <el-input type="otp" placeholder="OTP" prefix-icon="el-icon-otp" v-model="ruleForm.otp"  ></el-input>
                
             </el-form-item>
             
@@ -90,11 +90,11 @@
 
         <el-form v-if="active===3" :model="ruleForm"  ref="ruleForm" class="demo-ruleForm" >
            <div class="sign_up_text">
-            <h4>Set your Password</h4>
+            <h4>{{$t('set_your_password')}}</h4>
         </div>
              <div class="phone_input">
             <el-form-item
-             label="Password"
+              :label="$t('Password')"
                     prop="password"
                     :rules="[
                       { required: true, message: $t('set_your_password') },
@@ -233,7 +233,7 @@ import axios from 'axios'
                   console.log(response.data)
                   this.otp_error = response.data.data
                   if(response.data.result == '0') {
-                     this.$router.push('/');
+                       this.$router.push(`/?lang=${this.$store.state.locale}`); 
                       this.$message({
                         showClose: true,
                         center: true,
@@ -251,7 +251,7 @@ import axios from 'axios'
                         this.$store.commit('accessToken', this.token);
                       console.log(this.userInfo)
                        if (this.active++ > 2) this.active = 0;
-                        this.$router.push('/');
+                          this.$router.push(`signup_refel?lang=${this.$store.state.locale}`); 
                   }
                 })
                 // .then(response => ( 
@@ -278,9 +278,7 @@ import axios from 'axios'
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-       goBack() {
-        this.$router.push('/');
-      }
+       
     }
   }
   </script>
