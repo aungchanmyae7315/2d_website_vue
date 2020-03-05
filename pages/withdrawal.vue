@@ -179,7 +179,7 @@
         text-align: left;
         background: unset;
         box-shadow:unset;
-        border: 2px solid #158220;
+        border: 3px solid #158220;
         border-radius: 9px;
     }
 
@@ -262,14 +262,14 @@ export default {
             this.$refs[formName].validate((valid) => {
             if (valid) {
                 let token = localStorage.getItem('token');
-     console.log(token)
+    // console.log(token)
                 var data = {
                     bank_type_id:this.bank_id,
                     card_number:this.ruleForm.card_number,
                     amount: this.ruleForm.tran_amount,
                     password: this.ruleForm.password,
                 }
-                console.log(data)
+               // console.log(data)
        
                 this.$axios.post("/v2/v1/withdraw",
                            data,
@@ -291,7 +291,7 @@ export default {
                       if(this.res_amount == "fail" ) {
                   this.$notify({
                     title: 'Warning',
-                    message: this.res_data,
+                    message: this.$t('amount_invalid'),
                 type: 'warning'
                   });
                 }else {

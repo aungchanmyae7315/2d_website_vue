@@ -29,7 +29,7 @@
                      
 
                     </li>
-                    <li  class="amount_mmk"><span>{{$t('you_balance')}} - </span>{{this.profile.wallet}} {{$t('kyat')}}</li>
+                    <li  class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.profile.wallet}} {{$t('kyat')}}</li>
                   </ul>
                   </div>
                 </nuxt-link>

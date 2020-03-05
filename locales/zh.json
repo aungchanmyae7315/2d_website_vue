@@ -181,13 +181,14 @@
 "referral_code":"推荐码",
 "login_success":"登录成功",
 "Bank_account_number_required":"请输入银行账号",
-"bank_card_number_require":"“请输入银行卡号”",
+"bank_card_number_required":"“请输入银行卡号”",
 "bank_option_required":"Bank option is required",
 "withdraw_amount_required":"请输入提款金额",
 "sein_lucky_office_hours":"Sein Lucky office hours",
 "mon-sat":"Mon - Sat",
 "top-up_approved_5_minutes ":"Top-up is pending and will be approved 5 minutes within in office hours.",
-"if_not_in_office_hours" :"If not in office hours, your top-up will be approved within 5 minutes once we start working." 
+"if_not_in_office_hours" :"If not in office hours, your top-up will be approved within 5 minutes once we start working." ,
+"amount_invalid":"余额不足"
 
 }
 

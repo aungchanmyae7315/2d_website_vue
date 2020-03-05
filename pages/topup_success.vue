@@ -7,10 +7,10 @@
                  <span>{{$t('sein_lucky_office_hours')}}</span>
                   <el-divider></el-divider>
                 <span>{{$t('mon-sat')}}</span><br>
-                <span>{{$t('top-up_approved_5_minutes')}}</span>
+                <span>9:00 AM - 5:30 PM</span>
 
             </el-card>
-            <p style="color:#5AAF46">{{$t('top-up_approved_5_minutes')}}</p>
+            <p style="color:#5AAF46">{{$t('topup_approved_5_minutes')}}</p>
             <p>{{$t('if_not_in_office_hours')}}</p>
              <el-button @click="goBack" round="">{{$t('Confirm')}}</el-button>
         </section>

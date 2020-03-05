@@ -87,7 +87,7 @@
   "language_title":"ဘာသာစကား",
   "login_title":"လော့အင်ဝင်မယ်",
   "profile_edit_title":"ပြင်မည်",
-  "remark_title":"ထိုးမည့်ဂဏန်းမျာ",
+  "remark_title":"ထိုးမည့်ဂဏန်းများ",
   "result_title":"ထွက်ဂဏန်းများ",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"ငွေဖြည့်မည်",
@@ -180,13 +180,14 @@
 "referral_code":"ရည်ညွှန်းကုဒ်",
 "login_success":"အကောင့်၀င်ခြင်းအောင်မြင်ပါသည်",
 "Bank_account_number_required":"ဘဏ်အကောင့်ဖြည့်ပါ",
-"bank_card_number_require":"ဘဏ်ကဒ်နံပါတ်ဖြည့်ပါ",
+"bank_card_number_required":"ဘဏ်ကဒ်နံပါတ်ဖြည့်ပါ",
 "bank_option_required":"လက်ခံမည့်ဘဏ်ကိုရွေးပါ",
 "withdraw_amount_required":"ထုတ်ယူလိုသည့် ‌ငွေပမာဏ",
 "sein_lucky_office_hours":"Sein Lucky ရုံးဖွင့်ချိန်များ",
 "mon-sat":"တနင်္လာ - စနေ",
-"top-up_approved_5_minutes ":"ရုံးဖွင့်ချိန်တွင် (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
-"if_not_in_office_hours" :"ရုံးဖွင့်ချိန်ကျော်ပြီးနောက်ငွေဖြည့်လျှင် ရုံးစဖွင့်ချိန်မှ (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။"
+"top-up_approved_5_minutes":"ရုံးဖွင့်ချိန်တွင် (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
+"if_not_in_office_hours" :"ရုံးဖွင့်ချိန်ကျော်ပြီးနောက်ငွေဖြည့်လျှင် ရုံးစဖွင့်ချိန်မှ (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
+"amount_invalid":"ငွေမလုံလောက်ပါ။"
 
 }
 
