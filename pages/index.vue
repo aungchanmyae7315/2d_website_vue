@@ -114,7 +114,7 @@
             </div>
           </div>
           
-           <div class="card_one" data-aos="fade-up" >
+           <div class="card_one">
             <div class="card_item">
               <h5 class="time_number">12:00 PM</h5>
             
@@ -377,14 +377,11 @@ export default {
   }else {
    // alert('mm')
       //this.isActive = false
-         setInterval(function() {
-        this.$axios.get('/v2/v1/kwee_live')
+        this.$axios.get('/v1/twod-result/live')
               .then(response => {
-                 this.info = response.data[0]
-               // console.log(this.info)
+                this.info = response.data.data
                
               })
-         }.bind(this), 3000)
   }
     
       this.$axios.get('/v1/twod-result/live')
