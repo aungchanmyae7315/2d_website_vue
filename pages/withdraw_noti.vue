@@ -88,7 +88,7 @@ export default {
      methods: {
          goBack() {
 
-              this.$router.push(`/notification?lang=${this.$store.state.locale}`); 
+              this.$router.push(`notification?lang=${this.$store.state.locale}`); 
                const loading = this.$loading({
                 lock: true,
                 text: 'Loading',

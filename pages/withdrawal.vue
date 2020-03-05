@@ -317,7 +317,7 @@ export default {
                     if(this.bank_type !== null) {
                         this.loaded = true;
                     }
-                    console.log(this.bank_type = response.data.data)
+                   this.bank_type = response.data.data
             });
      },
 }
