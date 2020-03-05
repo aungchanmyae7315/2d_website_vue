@@ -42,7 +42,7 @@
                         <el-button type="text" @click="con_number">Constellation 07,18,24,35,69</el-button>
                         <el-button type="text" @click="con_number_R">Constellation R 70,81,42,53,96</el-button>
                         <el-button type="text" @click="con_number_power">Power 05, 16, 27, 38,49</el-button>
-                        <el-button type="text" @click="con_number_power_R">Power R 05,16,27,38</el-button>
+                        <el-button type="text" @click="con_number_power_R">Power R 05,16,27,38,49</el-button>
                     </div>
                         
                         <p>{{$t('20_selection_number')}}</p>
@@ -459,7 +459,7 @@ const oe_option = ['10','12','14','16','18','30','32','34','36','38','50','52','
 const con_number_option = ['07','18','24','35','69']
 const con_number_R_option = ['70','81','42','53','96']
 const con_number_power_option = ['05','16','27','38','49']
-const con_number_power_R_option = ['50','61','72','83']
+const con_number_power_R_option = ['50','61','72','83','94']
 const btw_00_19_option = ['00','01','02','03','04','05','06','07','08','09','10','11','12','13',
                             '14','15','16','17','18','19'
 

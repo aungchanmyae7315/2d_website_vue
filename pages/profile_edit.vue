@@ -16,7 +16,7 @@
                 </div>
                 <div class="avatar-preview">
                    
-                    <div id="imagePreview" v-if="this.profile.image == null">
+                    <div id="imagePreview" v-if="this.profile.profile == null">
                         <img src="~static/images/icons/me_img.png" alt="" style="width:140px">
                          
                      

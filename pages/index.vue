@@ -21,7 +21,7 @@
               <div class="demo-type">
                 <nuxt-link :to="`${$t('edit_profile_index')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" v-if="this.profile.profile == null"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
-                  <el-avatar :size="60" v-else ><img :src="this.profile.image" alt=""></el-avatar>
+                  <el-avatar :size="60" v-else ><img :src="this.profile.profile" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
                     <li><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
@@ -330,6 +330,7 @@ export default {
      setInterval(() => this.updateCurrentTime(), 1 * 1000);
     
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
+    // alert('dd')
       // this.isActive = true
       setInterval(function() {
              this.$axios.get('/v2/v1/kwee_live')

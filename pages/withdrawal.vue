@@ -127,7 +127,7 @@
     .choose_pay img {
         width:40px;
         height: auto;
-        margin-right:40px;
+       
         -webkit-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
         -moz-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
         box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);

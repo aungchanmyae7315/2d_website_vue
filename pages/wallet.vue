@@ -18,12 +18,14 @@
               </div>
         
               <div v-else class="demo-type">
-                 <el-avatar :size="60" v-if="this.profile.image == null"> 
-                    <img src="~static/images/icons/me_img.png" alt="">
+                 <el-avatar :size="60" v-if="this.profile.profile == null"> 
+                   <img src="~static/images/icons/me_img.png" alt="">
+                  
                   
                   </el-avatar>
                   <el-avatar :size="60" v-else > 
-                   <img :src="this.profile.image" alt="">
+                  
+                       <img :src="this.profile.profile" alt="">
                   
                   </el-avatar>
                 <div  class="avatar_text">
@@ -70,7 +72,7 @@
                           <li style="font-size:12px;">{{bank_info.bank_name}}</li>
                           <li class="bank_number">
                             <span class="code text-red">{{ bank_info.card_number }}</span>
-                            <input type="hidden" :id="'code'+(b+1)" :value="bank_info.card_number">
+                            <input type="hidden" :id="'code'+(bank_info.id)" :value="bank_info.card_number">
                           </li>
                         </ul>
                         </div>
@@ -301,6 +303,7 @@
       },
 
        copyTestingCode (data) {
+        
           let testingCodeToCopy = document.querySelector('#code'+data)
           testingCodeToCopy.setAttribute('type', 'text')    
           testingCodeToCopy.select()

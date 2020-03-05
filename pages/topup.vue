@@ -236,7 +236,7 @@ export default {
                 //  console.log(formData);
                 // console.log(token)
               
-            this.$axios.post('/v1/slip_post',
+            this.$axios.post('/v2/v1/slip_post',
                   formData
                  ,{
                   headers: {

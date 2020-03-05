@@ -136,7 +136,8 @@ export default {
                     twod_id:  localStorage.getItem('check_btn'),
                     amount: localStorage.getItem('bet_amount') ,
                 }
-          this.$axios.post("/v2/v1/2d_web/bet",
+                console.log(data)
+          this.$axios.post("/v2/v1/2d/bet",
                            data,
                     {
                            
@@ -152,12 +153,14 @@ export default {
                       this.res_error = response.data.message
                       this.res_message = response.data.data
                 
+                
                       if(this.res_error == 'fail') {
                          this.$message({
                           message: this.res_message,
                           type: 'warning'
                         });
                       }else {
+                       
                           this.$router.push(`bet_success?lang=${this.$store.state.locale}`);
                       }
                       // this.bet = response.data.data

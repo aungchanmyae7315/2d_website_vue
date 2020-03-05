@@ -7,7 +7,7 @@
        
          <div  v-if ="$store.state.isLoggedIn">
               <div class="demo-type">
-                 <el-avatar v-if="this.profile.image == null" :size="60"><img src="~static/images/icons/me_img.png" alt=""> </el-avatar>
+                 <el-avatar v-if="this.profile.profile == null" :size="60"><img src="~static/images/icons/me_img.png" alt=""> </el-avatar>
                  <el-avatar v-else :size="60"><img :src="this.profile.profile " alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
@@ -118,6 +118,7 @@ export default {
                          }
                         })
                     .then(response => {
+                      // console.log(response)
                       // location.reload();
                      this.profile = response.data.data
                     
