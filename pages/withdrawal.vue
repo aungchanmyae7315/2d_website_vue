@@ -12,7 +12,44 @@
                 </el-header>
                 <p>{{$t('Choose your receiving account')}}</p>
                 <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
-                <el-card>
+    <el-form-item 
+            
+            prop="radio1"
+            :rules="[
+                { required: true, message: $t('bank_option_required')}, 
+            ]">
+                
+<carousel :autoplay="false" :nav="false" v-if="loaded" :items =4>
+    
+    <div class="bank_type" v-for="(bank, i) in bank_type" :key="i">
+      
+            
+
+                <div @click="id_bank(bank.id)" >
+
+                    <el-radio-group v-model="ruleForm.radio1">
+                    
+                    <el-radio-button    :label="bank.bank_name">
+                    
+                        <img :src="bank.bank_icon" alt="">
+                        <!-- <span>{{bank.bank_name}}</span> -->
+                    </el-radio-button> 
+                    </el-radio-group>
+                </div>
+            
+              
+                            
+    </div>
+
+    
+</carousel>
+    </el-form-item>
+
+
+
+
+
+                <!-- <el-card>
                   
                         <ul class="choose_pay" v-for="(bank, i) in bank_type" :key="i">
                            
@@ -26,7 +63,7 @@
                                 ]"
                                 
                                 >  
-                                    <!-- {{bank}} -->
+                                   
                                     <div @click="id_bank(bank.id)" >
 
                                         <el-radio-group v-model="ruleForm.radio1">
@@ -39,20 +76,19 @@
                                         </el-radio-group>
                                     </div>
                                 </el-form-item>
-                                 <!-- <img src="~/static/images/topup_withdraw/kbz_img.png" alt="">
-                                 <el-radio-button  label="KBZ Bank"></el-radio-button> -->
+                                
                             </li>
                             
                         </ul>
 
                   
-                </el-card>
+                </el-card> -->
                 
                     <el-form-item
                     :label="$t('Receiving Account')"
                     prop="card_number"
                     :rules="[
-                        { required: true, message: $t('bank_card_number_require')},
+                        { required: true, message: $t('bank_card_number_required')},
                         
                     ]"
                     
@@ -131,7 +167,7 @@
     .choose_pay img {
         width:40px;
         height: auto;
-        margin-right:15px;
+        margin-right:9px;
         -webkit-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
         -moz-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
         box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
@@ -140,20 +176,23 @@
         color:#158220;
         font-weight: bold;
         border:0;
+        text-align: left;
         background: unset;
         box-shadow:unset;
+        border: 2px solid #158220;
+        border-radius: 9px;
     }
 
-      .withdrawal .el-radio-button__orig-radio:checked+.el-radio-button__inner::after {
+      /* .withdrawal .el-radio-button__orig-radio:checked+.el-radio-button__inner::after {
           content: "\2713";
 
         font-size: 15px;
         width: 20px;
-        margin-left:40px;
+        margin-left:20px;
         height: 20px;
-        float: right;
+        
        
-      }
+      } */
     .withdrawal .el-radio-button__inner {
         border:0;
     }
@@ -174,12 +213,26 @@
         border:0;
         padding:0;
     }
+   .bank_type img {
+       width:65px !important;
+       height: auto !important;
+      
+       border-radius: 9px;
     
+       box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+   }
+   .owl-carousel .owl-stage-outer {
+       padding:0 11px;
+   }
+   
 </style>
 
 <script>
 import axios from 'axios'
+import carousel from 'vue-owl-carousel'
+
 export default {
+    components: { carousel },
     data() {
         return {
             ruleForm: {
@@ -189,7 +242,7 @@ export default {
                 radio1:'',
 
           },
-            
+            loaded:'',
             bank_type:'',
             
             
@@ -209,15 +262,16 @@ export default {
             this.$refs[formName].validate((valid) => {
             if (valid) {
                 let token = localStorage.getItem('token');
-     
+     console.log(token)
                 var data = {
                     bank_type_id:this.bank_id,
                     card_number:this.ruleForm.card_number,
                     amount: this.ruleForm.tran_amount,
                     password: this.ruleForm.password,
                 }
+                console.log(data)
        
-                this.$axios.post("/v1/withdraw",
+                this.$axios.post("/v2/v1/withdraw",
                            data,
                     {
                            
@@ -257,11 +311,12 @@ export default {
              
         }
     },
-    created() {
+    mounted() {
         this.$axios.get("/v1/bank-type")
-    
-            
                 .then(response => {
+                    if(this.bank_type !== null) {
+                        this.loaded = true;
+                    }
                     console.log(this.bank_type = response.data.data)
             });
      },

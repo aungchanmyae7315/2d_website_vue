@@ -9,7 +9,7 @@ export default {
     middleware: 'i18n'   // middleware all pages of the application
   },
   generate: {
-    routes: ['/', '/about', '/mm', '/mm/about']
+    
   },
   /*
   ** Headers of the page
