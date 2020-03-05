@@ -14,16 +14,16 @@
                
                  <el-card shadow="always">
                     <el-row type="flex" class="row-bg"  justify="space-between">
-                        <el-col :span="8"><div class="result_time">12:00 PM</div></el-col>
-                        <el-col :span="8"><div class="result_date">{{result.date}}</div></el-col>
-                        <el-col :span="8"><div class="result_number">{{result.result_1200}}</div></el-col>
+                        <el-col :span="6"><div class="result_time">12:00 PM</div></el-col>
+                        <el-col :span="12"><div class="result_date">{{result.date}}</div></el-col>
+                        <el-col :span="6"><div class="result_number">{{result.result_1200}}</div></el-col>
                     </el-row>
                 </el-card>
                 <el-card shadow="always">
                     <el-row type="flex" class="row-bg"  justify="space-between">
-                        <el-col :span="8"><div class="result_time">04:30 PM</div></el-col>
-                        <el-col :span="8"><div class="result_date">{{result.date}}</div></el-col>
-                        <el-col :span="8"><div class="result_number">{{result.result_430}}</div></el-col>
+                        <el-col :span="6"><div class="result_time">04:30 PM</div></el-col>
+                        <el-col :span="12"><div class="result_date">{{result.date}}</div></el-col>
+                        <el-col :span="6"><div class="result_number">{{result.result_430}}</div></el-col>
                     </el-row>
                 </el-card>
            

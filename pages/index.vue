@@ -353,7 +353,7 @@ export default {
               })
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
  
-
+    // alert('ik');
        setInterval(function() {
       this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
