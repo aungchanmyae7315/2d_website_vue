@@ -178,6 +178,10 @@
 "enter_referral_code":"ရည်ညွှန်းကုဒ်ဖြည့်ပါ",
 "summit_referral_code":"ရည်ညွှန်းကုဒ်တင်သွင်းမည်",
 "referral_code":"ရည်ညွှန်းကုဒ်",
-"login_success":"အကောင့်၀င်ခြင်းအောင်မြင်ပါသည်"
+"login_success":"အကောင့်၀င်ခြင်းအောင်မြင်ပါသည်",
+"Bank_account_number_required":"ဘဏ်အကောင့်ဖြည့်ပါ",
+"bank_card_number_require":"ဘဏ်ကဒ်နံပါတ်ဖြည့်ပါ",
+"bank_option_required":"လက်ခံမည့်ဘဏ်ကိုရွေးပါ",
+"withdraw_amount_required":"ထုတ်ယူလိုသည့် ‌ငွေပမာဏ"
 }
 

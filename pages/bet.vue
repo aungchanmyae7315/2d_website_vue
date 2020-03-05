@@ -340,17 +340,7 @@
        cursor: no-drop !important;
        display: none;
    }
-     /* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0;
-}
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance:textfield !important;
-}
 
    @media screen and (max-width:320px) {
        .select_number_two .el-button {

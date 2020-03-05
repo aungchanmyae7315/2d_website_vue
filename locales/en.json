@@ -179,7 +179,12 @@
   "enter_referral_code":"Enter a referral code",
   "summit_referral_code":"Sumit Referral Code",
   "referral_code":"Referral Code",
-  "login_success":"Login Success"
+  "login_success":"Login Success",
+  "Bank_account_number_required":"Bank account number",
+  "bank_card_number_required":"Bank Card Number is required",
+  "bank_option_required":"Bank option is required",
+  "withdraw_amount_required":"Withdraw Amount is required"
+  
   
 }
 

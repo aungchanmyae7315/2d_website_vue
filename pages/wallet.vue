@@ -176,6 +176,7 @@
       margin-top:-1px !important;
     }
     .copy-btn {
+      cursor: pointer;
       background: #fff;
       padding:4px 7px;
       border-radius: 23px;

@@ -21,7 +21,7 @@
                                
                                 prop="radio1"
                                 :rules="[
-                                    { required: true, message: 'Bank option is required'},
+                                    { required: true, message: $t('bank_option_required')},
                                     
                                 ]"
                                 
@@ -30,8 +30,12 @@
                                     <div @click="id_bank(bank.id)" >
 
                                         <el-radio-group v-model="ruleForm.radio1">
-                                        <img :src="bank.bank_icon" alt="">
-                                        <el-radio-button    :label="bank.bank_name"></el-radio-button> 
+                                      
+                                        <el-radio-button    :label="bank.bank_name">
+                                        
+                                          <img :src="bank.bank_icon" alt="">
+                                          <span>{{bank.bank_name}}</span>
+                                        </el-radio-button> 
                                         </el-radio-group>
                                     </div>
                                 </el-form-item>
@@ -48,7 +52,7 @@
                     :label="$t('Receiving Account')"
                     prop="card_number"
                     :rules="[
-                        { required: true, message: 'Bank Card Number is required'},
+                        { required: true, message: $t('bank_card_number_require')},
                         
                     ]"
                     
@@ -61,7 +65,7 @@
                         :label="$t('Cash Amount')"
                         prop="tran_amount"
                         :rules="[
-                            { required: true, message: 'Withdraw Amount is required'},
+                            { required: true,  message: $t('withdraw_amount_required')},
                             
                         ]"
                         
@@ -70,10 +74,10 @@
                     </el-form-item>
                     <!-- <el-form-item label="Password" class="password tran_input" > -->
                         <el-form-item class="tran_amount tran_input"
-                            :label="$t('Password')"
+                            :label="$t('Password_placeholder')"
                             prop="password"
                             :rules="[
-                                { required: true, message: 'Password is required'},
+                                { required: true, message: $t('Password')},
                                 
                             ]"
                             
@@ -127,7 +131,7 @@
     .choose_pay img {
         width:40px;
         height: auto;
-       
+        margin-right:15px;
         -webkit-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
         -moz-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
         box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
@@ -166,6 +170,11 @@
         background-color: #158220;
         color:#fff;
     }
+    .el-radio-button:first-child .el-radio-button__inner {
+        border:0;
+        padding:0;
+    }
+    
 </style>
 
 <script>

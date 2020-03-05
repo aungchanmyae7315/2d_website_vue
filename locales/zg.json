@@ -178,6 +178,10 @@
 "enter_referral_code":"ရည္ၫႊန္းကုဒ္ျဖည့္ပါ",
 "summit_referral_code":"ရည္ၫႊန္းကုဒ္တင္သြင္းမည္",
 "referral_code":"ရည္ၫႊန္းကုဒ္",
-"login_success":"အေကာင့္၀င္ျခင္းေအာင္ျမင္ပါသည္"
+"login_success":"အေကာင့္၀င္ျခင္းေအာင္ျမင္ပါသည္",
+"Bank_account_number_required":"ဘဏ္အေကာင့္ျဖည့္ပါ",
+"bank_card_number_require":"ဘဏ္ကဒ္နံပါတ္ျဖည့္ပါ",
+"bank_option_required":"လက္ခံမည့္ဘဏ္ကိုေ႐ြးပါ",
+"withdraw_amount_required":"ထုတ္ယူလိုသည့္ ‌ေငြပမာဏ"
 }
 
