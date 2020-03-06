@@ -190,6 +190,7 @@
   "if_not_in_office_hours" :"If not in office hours, your top-up will be approved within 5 minutes once we start working." ,
   "amount_invalid":"The amount is invalid",
   "refel_code_success":"Referral Code Successful!",
-  "you_had_refel_code":"You had already entered a referral code."
+  "you_had_refel_code":"You had already entered a referral code.",
+  "refel_code_invalid":"Your referal code is invalid"
 }
 

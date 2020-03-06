@@ -123,7 +123,7 @@
                   <!-- <div @click="firstFunction(); secondFunction();"></div> -->
                <!-- <input type="button" value="super duper cool button" @click="submitted = true" :disabled="submitted">
                  -->
-                     <el-button round @click="withdrawal('ruleForm'); "  :disabled='submitted' >{{$t('Confirm')}}</el-button>
+                     <el-button round @click="withdrawal('ruleForm')"  :disabled='submitted' >{{$t('Confirm')}}</el-button>
                   </el-form>
                     </div>
                 </div>
@@ -266,14 +266,14 @@ export default {
             this.$refs[formName].validate((valid) => {
             if (valid) {
                 let token = localStorage.getItem('token');
-    // console.log(token)
+     console.log(token)
                 var data = {
                     bank_type_id:this.bank_id,
                     card_number:this.ruleForm.card_number,
                     amount: this.ruleForm.tran_amount,
                     password: this.ruleForm.password,
                 }
-               // console.log(data)
+              
        
                 this.$axios.post("/v2/v1/withdraw",
                            data,
@@ -287,29 +287,30 @@ export default {
                         })
                 
                     .then(response => {
-                     console.log(response.data)
+                    //  console.log(response)
                       this.res_amount = response.data.message,
-                 
+                        // this.message = response
                      this.res_data = response.data.data
+                      
+                    if(this.res_amount == "fail" ) {
+                        alert('helddddo')
+                            this.$notify({
+                                title: 'Warning',
+                                message:this.res_data,
+                            type: 'warning'
+                            }); 
+                    }else {
+                      
+                        this.submitted = true
+                        this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
                     
-                      if(this.res_amount == "fail" ) {
-                        
-                  this.$notify({
-                    title: 'Warning',
-                    message:this.res_data,
-                type: 'warning'
-                  }); 
-                }else {
-                    this.submitted = true
-                     this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
-                  
-                }
+                    }
                 })
              
                  
             
             } else {
-            
+               
                 console.log('error submit!!');
                 return false;
             }

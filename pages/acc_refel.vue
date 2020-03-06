@@ -79,8 +79,10 @@ export default {
                                 
                                 if(this.error_msg == 'fail'){
                                     this.$message({
-                                        message:  this.res_data,
-                                        type: 'warning'
+                                        message:this.$t('refel_code_invalid'),
+                                        type: 'warning',
+                                        showClose: true,
+                                        // duration:0
                                         });
                                 }else {
                                     // this.$message({

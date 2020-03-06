@@ -190,7 +190,8 @@
 "if_not_in_office_hours" :"If not in office hours, your top-up will be approved within 5 minutes once we start working." ,
 "amount_invalid":"余额不足",
 "refel_code_success":"推荐码提交成功。",
-"you_had_refel_code":"你已经输入过推荐码。"
+"you_had_refel_code":"你已经输入过推荐码。",
+"refel_code_invalid":"Your referal code is invalid"
 
 }
 
