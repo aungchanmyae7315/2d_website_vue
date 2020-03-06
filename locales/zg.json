@@ -9,7 +9,7 @@
   "Enter transferred amount": "လြဲေငြပမာဏျဖည့္ပါ",
   "Upload Bank transferred Slip": "ေငြလြဲမွတ္တမ္း ဓာတ္ပုံတင္ပါ",
   "please upload bank slip photo here": "ေငြလြဲမွတ္တမ္း ထည့္ရန္  ",
-  "Submit": "တင္ျပမည္",
+"Submit": "တင္ျပမည္",
   "Cash Withdrawal": "ေငြထုတ္မည္",
   "Choose your receiving account": "ေငြလက္ခံမည့္ အေကာင့္ကို‌ေ႐ြးပါ",
   "Enter the amount and password": "ထုတ္ေငြပမာဏႏွင့္ စကားဝွက္ျဖည့္ပါ",
@@ -185,12 +185,12 @@
 "withdraw_amount_required":"ထုတ္ယူလိုသည့္ ‌ေငြပမာဏ",
 "sein_lucky_office_hours":"Sein Lucky ႐ုံးဖြင့္ခ်ိန္မ်ား",
 "mon-sat":"တနလၤာ - စေန",
-"top-up_approved_5_minutes":"႐ုံးဖြင့္ခ်ိန္တြင္ (၅) မိနစ္အတြင္း ေငြဝင္ပါမည္။",
+"topup_approved_5_minutes":"႐ုံးဖြင့္ခ်ိန္တြင္ (၅) မိနစ္အတြင္း ေငြဝင္ပါမည္။",
 "if_not_in_office_hours" :"႐ုံးဖြင့္ခ်ိန္ေက်ာ္ၿပီးေနာက္ေငြျဖည့္လွ်င္ ႐ုံးစဖြင့္ခ်ိန္မွ (၅) မိနစ္အတြင္း ေငြဝင္ပါမည္။",
 "amount_invalid":"ေငြမလုံေလာက္ပါ။",
 "refel_code_success":"ရည္ၫႊန္းကုဒ္ ျဖည့္ၿပီးပါၿပီ",
-"you_had_refel_code":"ရည္ၫႊန္းကုဒ္ ျဖည့္ၿပီးပါၿပီ",
-"refel_code_invalid":"ရည္ၫႊန္းကုဒ္မွားေနပါသည္"
-
+"you_had_refel_code":"ရည္ၫႊန္းကုဒ္ ျဖည့္ၿပီးပါၿပီ", 
+"refel_code_invalid":"ရည္ၫႊန္းကုဒ္မွားေနပါသည္",
+"copy_success":"ကူးယူ ၿပီးပါၿပီ။",
+"password_invalid":"စကားဝွက္မွားေနပါသည္"
 }
-

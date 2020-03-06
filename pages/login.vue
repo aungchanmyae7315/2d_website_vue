@@ -177,7 +177,7 @@ import axios from 'axios'
                      this.success_message = response.data.data,
                     
                      this.$notify({
-                        title: 'Success',
+                     
                         
                         //message: $t('set_your_password'),
                         message:  this.$t('login_success'),

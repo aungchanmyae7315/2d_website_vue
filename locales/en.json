@@ -191,6 +191,9 @@
   "amount_invalid":"The amount is invalid",
   "refel_code_success":"Referral Code Successful!",
   "you_had_refel_code":"You had already entered a referral code.",
-  "refel_code_invalid":"Your referal code is invalid"
+  "refel_code_invalid":"Your referal code is invalid",
+  "copy_success":"Copied Successful",
+  "password_invalid":"Password is invalid"
+  
 }
 

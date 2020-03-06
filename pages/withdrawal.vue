@@ -287,20 +287,33 @@ export default {
                         })
                 
                     .then(response => {
-                    //  console.log(response)
-                      this.res_amount = response.data.message,
+                     console.log(response)
+                      this.res_status = response.data.status,
                         // this.message = response
-                     this.res_data = response.data.data
+                     this.res_data_status = response.data.data
                       
-                    if(this.res_amount == "fail" ) {
-                        alert('helddddo')
+                    if(this.res_status == 3 ) {
+                       
                             this.$notify({
-                                title: 'Warning',
-                                message:this.res_data,
+                               duration:0,
+                                message:this.$t('password_invalid'),
                             type: 'warning'
                             }); 
+                    }else if(this.res_status == 2) {
+                              this.$notify({
+                               
+                                message:this.$t('amount_invalid'),
+                                type: 'warning'
+                            }); 
+                    }else if(this.res_status == 1 ) {
+                            
+                            this.$notify({
+                               
+                                message:this.$t('amount_invalid'),
+                                type: 'warning'
+                            }); 
                     }else {
-                      
+                           
                         this.submitted = true
                         this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
                     

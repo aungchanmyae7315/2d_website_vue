@@ -313,7 +313,7 @@
             var successful = document.execCommand('copy');
             var msg = successful ? 'successful' : 'unsuccessful';
              this.$message({
-               message:'Copied'+' '+ msg,
+               message:this.$t('copy_success'),
               position: 'top',
               showClose: true,
           
