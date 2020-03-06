@@ -188,6 +188,8 @@
   "mon-sat":"Mon - Sat",
   "topup_approved_5_minutes":"Top-up is pending and will be approved 5 minutes within in office hours.",
   "if_not_in_office_hours" :"If not in office hours, your top-up will be approved within 5 minutes once we start working." ,
-  "amount_invalid":"The amount is invalid"
+  "amount_invalid":"The amount is invalid",
+  "refel_code_success":"Referral Code Successful!",
+  "you_had_refel_code":"You had already entered a referral code."
 }
 

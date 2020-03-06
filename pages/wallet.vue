@@ -58,7 +58,7 @@
                      <a href="https://www.seinlucky.com/withdraw"><p class="under-below">{{$t('How to withdraw money?')}}</p></a>
                   </div>
                     
-                <el-card data-aos="fade-up" data-aos-duration="800">
+                <el-card style="width:100%" data-aos="fade-up" data-aos-duration="800">
                   
 
                   <h5>{{ $t('Sein Lucky Bank Accounts') }}</h5>
@@ -69,7 +69,7 @@
                       <img :src="bank_info.bank_icon" alt="">
                       <div  class="avatar_text">
                         <ul>
-                          <li style="font-size:12px;">{{bank_info.bank_name}}</li>
+                          <li style="font-size:10px;">{{bank_info.bank_name}}</li>
                           <li class="bank_number">
                             <span class="code text-red">{{ bank_info.card_number }}</span>
                             <input type="hidden" :id="'code'+(bank_info.id)" :value="bank_info.card_number">
@@ -232,7 +232,7 @@
       height:auto;
       float:left;
       border-radius: 9px;
-      margin-right:8px;
+      /* margin-right:8px; */
     }
     .logout_wallet ul li span {
       position: relative;
@@ -312,10 +312,11 @@
           try {
             var successful = document.execCommand('copy');
             var msg = successful ? 'successful' : 'unsuccessful';
-             this.$notify({
+             this.$message({
                message:'Copied'+' '+ msg,
-              position: 'bottom-right',
-              showClose: false
+              position: 'top',
+              showClose: true,
+          
             });
             
           } catch (err) {

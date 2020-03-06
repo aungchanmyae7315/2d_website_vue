@@ -188,7 +188,9 @@
 "mon-sat":"Mon - Sat",
 "top-up_approved_5_minutes ":"Top-up is pending and will be approved 5 minutes within in office hours.",
 "if_not_in_office_hours" :"If not in office hours, your top-up will be approved within 5 minutes once we start working." ,
-"amount_invalid":"余额不足"
+"amount_invalid":"余额不足",
+"refel_code_success":"推荐码提交成功。",
+"you_had_refel_code":"你已经输入过推荐码。"
 
 }
 

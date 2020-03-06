@@ -63,8 +63,8 @@ export default {
                             referal_code:this.ruleForm.referal_code
 
                         }
-                        console.log(token)
-                        console.log(data_code)
+                        // console.log(token)
+                        // console.log(data_code)
                     //    alert(data_code)
                 
                         this.$axios.post("/v2/v1/upload_referal_code",data_code,
@@ -84,7 +84,7 @@ export default {
                                         });
                                 }else {
                                     this.$message({
-                                    message: ',You had already entered a referral code',
+                                    message: this.$t('you_had_refel_code'),
                                     type: 'success'
                                     });
                                     this.$router.push(`/?lang=${this.$store.state.locale}`); 

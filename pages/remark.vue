@@ -156,8 +156,10 @@ export default {
                 
                       if(this.res_error == 'fail') {
                          this.$message({
-                          message: this.res_message,
-                          type: 'warning'
+                            showClose: true,
+                          message: this.$t('amount_invalid'),
+                          type: 'warning',
+                        //   duration:0
                         });
                       }else {
                        
@@ -174,6 +176,9 @@ export default {
 }
 </script>
 <style>
+.el-message .el-icon-warning {
+    margin:0 10px;
+}
     .remark {
         text-align: center;
      

@@ -94,7 +94,7 @@
                     
                     >  
                     <!-- <el-form-item label="Bank Card Number" class="tran_input" > -->
-                        <el-input   type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
+                        <el-input @change="submitted = false"  type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
                     </el-form-item>
                     <!-- <el-form-item label="Withdraw Amount" class="tran_amount tran_input" > -->
                     <el-form-item class="tran_amount tran_input"
@@ -120,10 +120,10 @@
                             >  
                         <el-input type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
                     </el-form-item>
-                  
-              
-                
-                     <el-button round @click="withdrawal('ruleForm')">{{$t('Confirm')}}</el-button>
+                  <!-- <div @click="firstFunction(); secondFunction();"></div> -->
+               <!-- <input type="button" value="super duper cool button" @click="submitted = true" :disabled="submitted">
+                 -->
+                     <el-button round @click="withdrawal('ruleForm'); "  :disabled='submitted' >{{$t('Confirm')}}</el-button>
                   </el-form>
                     </div>
                 </div>
@@ -222,8 +222,11 @@
        box-shadow: 0 2px 6px rgba(0,0,0,0.25);
    }
    .owl-carousel .owl-stage-outer {
-       padding:0 11px;
+       padding: 10px 11px 0 11px;
    }
+   .el-button.is-disabled {
+    background: red;
+}
    
 </style>
 
@@ -235,6 +238,7 @@ export default {
     components: { carousel },
     data() {
         return {
+            	submitted:false,
             ruleForm: {
                 card_number:'',
                 tran_amount:'',
@@ -283,18 +287,20 @@ export default {
                         })
                 
                     .then(response => {
-                     console.log(this.with = response.data)
+                     console.log(response.data)
                       this.res_amount = response.data.message,
                  
                      this.res_data = response.data.data
                     
                       if(this.res_amount == "fail" ) {
+                        
                   this.$notify({
                     title: 'Warning',
-                    message: this.$t('amount_invalid'),
+                    message:this.res_data,
                 type: 'warning'
-                  });
+                  }); 
                 }else {
+                    this.submitted = true
                      this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
                   
                 }

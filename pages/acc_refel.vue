@@ -83,11 +83,11 @@ export default {
                                         type: 'warning'
                                         });
                                 }else {
-                                    this.$message({
-                                    message: ',You had already entered a referral code',
-                                    type: 'success'
-                                    });
-                                    this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                                    // this.$message({
+                                    // message: ',You had already entered a referral code',
+                                    // type: 'success'
+                                    // });
+                                    this.$router.push(`refel_success?lang=${this.$store.state.locale}`); 
                                 }
                                 
                             // console.log(this.name_update = response.data.data)
