@@ -1,4 +1,3 @@
-const dir = "/"
 export default {
   
   server: {
@@ -40,8 +39,8 @@ export default {
       { src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: `${dir}/favicon.ico` },
-      //  { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
+      // { rel: 'icon', type: 'image/x-icon', href: `${dir}/favicon.ico` },
+       { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
       // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons' },
       // { rel: 'stylesheet', href: 'https://unpkg.com/vue-material/dist/vue-material.min.css' },
       { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css' },
@@ -63,31 +62,11 @@ export default {
   'og:description':'test',
   theme_color:'#FFFFFF',
   background_color:'#FFFFFF',
-  start_url:`${dir}/`,
+  start_url:`/`,
   short_name:"test",
   icons:[{
-    src:`${dir}/icon.png`,
+    src:`/icon.png`,
     size:"144x144",
-    type:"image/png"
-  },{
-    src:`${dir}/apple-touch-icon.png`,
-    size:"128x128",
-    type:"image/png"
-  },{
-    src:`${dir}/apple-touch-icon.png`,
-    size:"152x152",
-    type:"image/png"
-  },{
-    src:`${dir}/apple-touch-icon.png`,
-    size:"180x180",
-    type:"image/png"
-  },{
-    src:`${dir}/apple-touch-icon.png`,
-    size:"192x192",
-    type:"image/png"
-  },{
-    src:`${dir}/apple-touch-icon.png`,
-    size:"256x256",
     type:"image/png"
   }
 ]
