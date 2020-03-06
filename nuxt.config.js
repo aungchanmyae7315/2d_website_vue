@@ -40,7 +40,8 @@ export default {
     ],
     link: [
       // { rel: 'icon', type: 'image/x-icon', href: `${dir}/favicon.ico` },
-       { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
+       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+       { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons' },
       // { rel: 'stylesheet', href: 'https://unpkg.com/vue-material/dist/vue-material.min.css' },
       { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css' },
@@ -52,26 +53,26 @@ export default {
   /*
   ** Customize the progress-bar color
   */
- manifest: {
-  name: "test",
-  lang: 'ja',
-  // 'display':'standalone',
-  title:'test',
-  'og:title':'test',
-  description:'test',
-  'og:description':'test',
-  theme_color:'#FFFFFF',
-  background_color:'#FFFFFF',
-  start_url:`/`,
-  short_name:"test",
-  icons:[{
-    src:`/icon.png`,
-    size:"144x144",
-    type:"image/png"
-  }
-]
+//  manifest: {
+//   name: "test",
+//   lang: 'ja',
+//   // 'display':'standalone',
+//   title:'test',
+//   'og:title':'test',
+//   description:'test',
+//   'og:description':'test',
+//   theme_color:'#FFFFFF',
+//   background_color:'#FFFFFF',
+//   start_url:`/`,
+//   short_name:"test",
+//   icons:[{
+//     src:`/icon.png`,
+//     size:"144x144",
+//     type:"image/png"
+//   }
+// ]
 
-},
+// },
 
   /*
   ** Global CSS
