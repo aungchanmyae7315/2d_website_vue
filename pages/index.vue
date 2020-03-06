@@ -92,7 +92,7 @@
                           <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.result_1200}}</span>
                           <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
                           <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
-                          <span v-else>{{this.info.live}}</span>
+                          <span v-else>{{this.info_api.live}}</span>
                       </h2>
                       
                 </div>
@@ -125,16 +125,16 @@
                      <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_1200}}</h4>
                           <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_1200}}</h4>
                           <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
-                          <h4 v-else>{{this.info.set_430}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_1200}}</h4>
+                          <h4 v-else>{{this.info_api.set_1200}}</h4>
                   </div>
                   <div class="col">
                       <span>Value</span>
                        <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_1200}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_1200}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
-                          <h4 v-else>{{this.info.set_430}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_1200}}</h4>
+                          <h4 v-else>{{this.info_api.val_1200}}</h4>
                   </div>
                   <div class="col">
                       <span>2D</span>
@@ -158,7 +158,7 @@
                           <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
                           <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
                           <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
-                          <h4 v-else>{{this.info.set_430}}</h4>
+                          <h4 v-else>{{this.info_api.set_430}}</h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
@@ -166,14 +166,14 @@
                           <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
                           <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
-                          <h4 v-else>{{this.info.set_430}}</h4>
+                          <h4 v-else>{{this.info_api.val_430}}</h4>
                         
                       </div>
                       <div class="col">
                           <span>2D</span>
                           <h4 class="static" style="font-weight:bold">
                        
-                          {{this.info.result_430}}
+                          {{this.info_api.result_430}}
                       </h4>
                           <!-- <h4 class="result_num">{{this.info.result_430}}</h4> -->
                       </div>
@@ -190,11 +190,11 @@
                       </div>
                       <div class="col">
                           <span>Modern</span>
-                          <h4>{{this.info.modern_930}}</h4>
+                          <h4>{{this.info_api.modern_930}}</h4>
                       </div>
                       <div class="col">
                           <span>Internet</span>
-                          <h4>{{this.info.internet_930}}</h4>
+                          <h4>{{this.info_api.internet_930}}</h4>
                       </div>
                     </div>
                 </div>
@@ -209,11 +209,11 @@
                       </div>
                       <div class="col">
                           <span>Modern</span>
-                          <h4>{{this.info.modern_200}}</h4>
+                          <h4>{{this.info_api.modern_200}}</h4>
                       </div>
                       <div class="col">
                           <span>Internet</span>
-                          <h4>{{this.info.internet_200}}</h4>
+                          <h4>{{this.info_api.internet_200}}</h4>
                       </div>
                     </div>
                 </div>
@@ -349,7 +349,7 @@ export default {
      
        this.$axios.get('/v1/twod-result/live')
               .then(response => {
-                this.info = response.data.data
+                this.info_api = response.data.data
               })
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
  
@@ -372,15 +372,17 @@ export default {
         //alert('foursssss')
         this.$axios.get('/v1/twod-result/live')
               .then(response => {
-                this.info = response.data.data
+                this.info_api = response.data.data
                
               })
   }else {
-   // alert('mm')
+    //alert('mm')
       //this.isActive = false
         this.$axios.get('/v1/twod-result/live')
+        
               .then(response => {
-                this.info = response.data.data
+                console.log(response.data.data)
+                this.info_api = response.data.data
                
               })
   }

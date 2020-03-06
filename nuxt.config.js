@@ -23,7 +23,7 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'apple-mobile-web-app-capable', content: 'yes' },
       { name: 'apple-mobile-web-app-status-bar-style', content:'black'},
-      { name: 'apple-mobile-web-app-title', content:"test"},
+      { name: 'apple-mobile-web-app-title', content:"Sein Lucky"},
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     script: [
@@ -89,8 +89,8 @@ export default {
   */
  axios: {
   credentials: false,
-  //baseURL: "https://api.2dboss.com/api/",
-  baseURL: "https://build.seinlucky.com/api/",
+  baseURL: "https://api.2dboss.com/api/",
+  //baseURL: "https://build.seinlucky.com/api/",
 
   proxyHeaders: false,
   headers: {
