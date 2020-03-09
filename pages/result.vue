@@ -14,16 +14,16 @@
                
                  <el-card shadow="always">
                     <el-row type="flex" class="row-bg"  justify="space-between">
-                        <el-col :span="6"><div class="result_time">12:00 PM</div></el-col>
+                        <el-col :span="7"><div class="result_time">12:00 PM</div></el-col>
                         <el-col :span="12"><div class="result_date">{{result.date}}</div></el-col>
-                        <el-col :span="6"><div class="result_number">{{result.result_1200}}</div></el-col>
+                        <el-col :span="5"><div class="result_number">{{result.result_1200}}</div></el-col>
                     </el-row>
                 </el-card>
                 <el-card shadow="always">
                     <el-row type="flex" class="row-bg"  justify="space-between">
-                        <el-col :span="6"><div class="result_time">04:30 PM</div></el-col>
+                        <el-col :span="7"><div class="result_time">04:30 PM</div></el-col>
                         <el-col :span="12"><div class="result_date">{{result.date}}</div></el-col>
-                        <el-col :span="6"><div class="result_number">{{result.result_430}}</div></el-col>
+                        <el-col :span="5"><div class="result_number">{{result.result_430}}</div></el-col>
                     </el-row>
                 </el-card>
            
@@ -78,8 +78,9 @@
         padding:3px 0;
     }
     .result_time , .result_date {
-       margin:17px;
-       font-size: 15px;
+       margin:17px 10px;
+       padding-left:12px;
+       font-size: 11px;
     }
 </style>
 

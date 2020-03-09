@@ -51,7 +51,7 @@
             <el-carousel  trigger="click" height="150px">
                <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
                   <div>
-                     <img :src="img_slide.slider_image" value="img_slide">
+                     <img :src="img_slide.slider_image" value="img_slide" style="width:100%;">
                   </div>
                    
               </el-carousel-item>

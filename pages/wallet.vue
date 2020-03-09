@@ -58,7 +58,7 @@
                      <a href="https://www.seinlucky.com/withdraw"><p class="under-below">{{$t('How to withdraw money?')}}</p></a>
                   </div>
                     
-                <el-card style="width:100%" data-aos="fade-up" data-aos-duration="800">
+                <el-card style="width:98%" data-aos="fade-up" data-aos-duration="800">
                   
 
                   <h5>{{ $t('Sein Lucky Bank Accounts') }}</h5>
@@ -68,11 +68,11 @@
                      <div class="demo-type wallet_type">
                       <img :src="bank_info.bank_icon" alt="">
                       <div  class="avatar_text">
-                        <ul>
+                        <ul style="padding-top:18px;">
                           <li style="font-size:10px;">{{bank_info.bank_name}}</li>
-                          <li class="bank_number">
+                          <li style="font-size:10px;" class="bank_number">
                             <span class="code text-red">{{ bank_info.card_number }}</span>
-                            <input type="hidden" :id="'code'+(bank_info.id)" :value="bank_info.card_number">
+                            <input type="hidden" readonly :id="'code'+(bank_info.id)" :value="bank_info.card_number">
                           </li>
                         </ul>
                         </div>
@@ -228,7 +228,7 @@
       padding:5px;
     }
     .wallet_type img {
-      width:55px;
+      width:50px;
       height:auto;
       float:left;
       border-radius: 9px;
@@ -254,6 +254,11 @@
       -webkit-text-underline-position: under;
       -ms-text-underline-position: below;
       text-underline-position: under; 
+    }
+    @media screen and (max-width: 320px) {
+      .wallet_type img {
+        width:46px;
+      }
     }
 </style>
 <script>
@@ -307,6 +312,7 @@
         
           let testingCodeToCopy = document.querySelector('#code'+data)
           testingCodeToCopy.setAttribute('type', 'text')    
+           testingCodeToCopy.setAttribute('readonly', true);
           testingCodeToCopy.select()
 
           try {

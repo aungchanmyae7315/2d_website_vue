@@ -205,6 +205,8 @@ export default {
     }
     .acc_items li a img {
         padding: 0 10px;
+        width:48px;
+        height:auto;
         
     }
     .me_header  .avatar_text {
