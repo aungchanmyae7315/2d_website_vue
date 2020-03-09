@@ -8,6 +8,36 @@
    
   
  }
+
+ /* css zawgyi unicode conventer end */
+@font-face {
+  font-family: 'Zawgyi-One';
+  /* src: {{asset('/fonts/Zawgyi-One_V3.1.ttf')}}, IE9 Compat Modes */
+  src: url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi')format(‘embedded-opentype’), IE6-IE8
+  url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi') format(‘woff’), /* Modern Browsers */
+  url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi'), /* Safari, Android, iOS */
+  url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi') format(‘svg’); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+  
+  }
+   body{font-family:'Zawgyi-One'!important;}
+  
+  @font-face {
+  font-family: 'Myanmar3';
+  src: url('https://mmwebfonts.comquas.com/fonts/?font=myanmar3'); /* IE9 Compat Modes */
+  src: url('https://mmwebfonts.comquas.com/fonts/?font=myanmar3') format(‘embedded-opentype’), /* IE6-IE8 */
+  url('https://mmwebfonts.comquas.com/fonts/?font=myanmar3') format(‘woff’), /* Modern Browsers */
+  url('https://mmwebfonts.comquas.com/fonts/?font=myanmar3') format(‘truetype’), /* Safari, Android, iOS */
+  url('https://mmwebfonts.comquas.com/fonts/?font=myanmar3') format(‘svg’); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+  
+  }
+  
+   body{font-family:'Myanmar3'!important;}
+  
+  /* css zawgyi unicode conventer end */
      /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -241,7 +271,7 @@ input[type=number] {
     padding:0 10px;
     position:relative;
    
-    top:120px;
+    top:126px;
     z-index: 2;
     background: rgba(25, 61, 26, 0.705);
     margin: 0;

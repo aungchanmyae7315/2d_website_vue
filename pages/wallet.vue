@@ -54,8 +54,8 @@
              <div class="longText" id="hidingScrollBar">
                 <div class=" hideScrollBar_wallet ">
                   <div class="topup_withdraw">
-                     <a href="https://www.seinlucky.com/topup"> <p class="under-below">{{$t('How to top up money?')}}</p></a>
-                     <a href="https://www.seinlucky.com/withdraw"><p class="under-below">{{$t('How to withdraw money?')}}</p></a>
+                     <a href="https://www.seinlucky.com/topup"> <img src="~static/images/topup_withdraw/learn_icon.png" alt="" > <p class="under-below">{{$t('How to top up money?')}}</p></a>
+                     <a href="https://www.seinlucky.com/withdraw"> <img src="~static/images/topup_withdraw/learn_icon.png" alt=""><p class="under-below">{{$t('How to withdraw money?')}}</p></a>
                   </div>
                     
                 <el-card style="width:98%" data-aos="fade-up" data-aos-duration="800">
@@ -241,10 +241,19 @@
     }
     .topup_withdraw {
       margin-bottom:20px;
+      text-align: left;
 
+    }
+    .topup_withdraw img {
+      width:20px;
+      margin-right:15px;
+      margin-left:5px;
+      height:auto;
+      float: left;
     }
     .topup_withdraw  a  {
       color:#fff;
+      
       text-decoration: underline;
       text-decoration-style: solid;
     }

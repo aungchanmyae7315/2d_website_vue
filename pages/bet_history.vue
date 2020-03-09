@@ -62,9 +62,7 @@ export default {
         goBack() {
              this.$router.push(`bet_status?lang=${this.$store.state.locale}`); 
          },
-        handleClose(done) {
-       
-      },
+   
     
      
         bet_date(data) {

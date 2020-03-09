@@ -204,13 +204,7 @@ import axios from 'axios'
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-       handleClose(done) {
-        this.$confirm('Are you sure to close this dialog?')
-          .then(_ => {
-            done();
-          })
-          .catch(_ => {});
-      }
+
     }
   }
 </script>

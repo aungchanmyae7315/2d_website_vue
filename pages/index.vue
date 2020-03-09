@@ -15,7 +15,9 @@
                      <div class="change_lang_icon">
                      <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
                        <el-button type="text" @click="dialogVisible = true">
-                        <img src="~static/images/changelang.png" alt="">
+                        <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
+                         <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
+                         <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
                     <!-- </nuxt-link> -->
                   </div>
@@ -23,16 +25,13 @@
                    
                     :visible.sync="dialogVisible"
                     class="change_lang_modal"
-                    width="70%"
-                    :before-close="handleClose">
+                    width="70%">
+                   
                      <div class="lang">
                         <el-dropdown @command="changeLang"  style="text-align:center">
-                        <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
-                            {{$t('Language')}}
-                        </span> -->
-                      
+                         
                             <el-dropdown-item  round command='en'>English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'>မြန်မာ ယူနီကုဒ်</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'>Myanmar</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
                             <el-dropdown-item  round command='zh'>中文</el-dropdown-item>
                       
@@ -50,7 +49,10 @@
            
               <div class="demo-type">
                 <nuxt-link :to="`${$t('edit_profile_index')}?lang=${$store.state.locale}`">
-                 <el-avatar :size="60" v-if="this.profile.profile == null"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
+                 <el-avatar :size="60" v-if="this.profile.profile == null">
+                   <img src="~static/images/icons/me_img.png" alt="">
+                   
+                   </el-avatar>
                   <el-avatar :size="60" v-else ><img :src="this.profile.profile" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
@@ -66,7 +68,9 @@
                   <div class="change_lang_icon">
                      <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
                        <el-button type="text" @click="dialogVisible = true">
-                        <img src="~static/images/changelang.png" alt="">
+                         <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
+                         <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
+                         <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
                     <!-- </nuxt-link> -->
                   </div>
@@ -74,8 +78,8 @@
                    
                     :visible.sync="dialogVisible"
                     class="change_lang_modal"
-                    width="70%"
-                    :before-close="handleClose">
+                    width="70%">
+                   
                      <div class="lang">
                         <el-dropdown @command="changeLang"  style="text-align:center">
                         <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
@@ -83,7 +87,7 @@
                         </span> -->
                       
                             <el-dropdown-item  round command='en'>English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'>မြန်မာ ယူနီကုဒ်</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'>Myanmar</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
                             <el-dropdown-item  round command='zh'>中文</el-dropdown-item>
                       
@@ -106,7 +110,12 @@
             <el-carousel  trigger="click" height="155px">
                <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
                   <div>
-                     <img :src="img_slide.slider_image" value="img_slide" style="width:100%;height:155px;">
+                    <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:155px;">
+                      <div slot="placeholder" class="image-slot">
+                        Loading<span class="dot">...</span>
+                      </div>
+                    </el-image>
+                   
                   </div>
                    
               </el-carousel-item>
@@ -502,6 +511,8 @@ export default {
 
 <style>
 
+
+
   .el-carousel {
     border-radius: 22px;
     -webkit-border-radius:22px;
@@ -563,7 +574,7 @@ export default {
 /* CSS Document */
 .scroll-left {
   overflow: hidden;
-  height:36px;	
+  height:31px;	
   position: relative;
   width:auto;
 }

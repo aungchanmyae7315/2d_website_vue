@@ -144,9 +144,7 @@ export default {
        goBack() {
              this.$router.push(`bet_history?lang=${this.$store.state.locale}`); 
          },
-        handleClose(done) {
-       
-      },
+    
     
   
     },

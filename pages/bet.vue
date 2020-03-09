@@ -7,7 +7,7 @@
                 </el-page-header>
             <!-- </nuxt-link> -->
            
-            <el-row style="padding-top:15px;">
+            <el-row style="padding-top:10px;">
                 <el-col :span="6">
                     
                     <div v-if="ruleForm.check_btn[0] != null">
@@ -100,7 +100,7 @@
                 </el-col>
                 <el-col :span="18">
                     
-                            <el-form-item
+                            <el-form-item style="margin-bottom:10px;"
                             
                             prop="amount"
                             :rules="[

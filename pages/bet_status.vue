@@ -165,9 +165,7 @@ export default {
         goBack() {
              this.$router.push(`me?lang=${this.$store.state.locale}`); 
          },
-        handleClose(done) {
-       
-      },
+   
     
        
     },
