@@ -89,7 +89,7 @@
                        <h2 class="static" 
                           v-bind:class="{ live_number: isActive, 'text-danger': hasError }">
                          <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
-                          <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.result_1200}}</span>
+                          <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.result_1200}}</span>
                           <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
                           <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
                           <span v-else>{{this.info_api.live}}</span>
@@ -432,6 +432,9 @@ export default {
 
   .el-carousel {
     border-radius: 22px;
+    -webkit-border-radius:22px;
+    -moz-border-radius: 22px;
+
   }
    
   .main_page {
