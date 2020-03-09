@@ -141,18 +141,24 @@ input[type=number] {
     text-align: center;
    
   }
-  .result_icon {
+  .change_lang_icon  , .result_icon{
     float: right;
   }
-  .result_icon img {
+  .change_lang_icon img {
     width:40px;
     height:auto;
-    padding:10px 0;
+   
+  }
+
+  .change_lang_modal {
+   
+    width:100%;
   }
   .header_icon {
     width:23px;
     height: auto;
   }
+ 
   .noti img {
       width:24px;
       height:auto;

@@ -45,6 +45,7 @@
                        <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href="" @click="loading" v-loading.fullscreen.lock="fullscreenLoading"><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
                          <li><nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
+                           <li><nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
                          <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 

@@ -53,26 +53,7 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-//  manifest: {
-//   name: "test",
-//   lang: 'ja',
-//   // 'display':'standalone',
-//   title:'test',
-//   'og:title':'test',
-//   description:'test',
-//   'og:description':'test',
-//   theme_color:'#FFFFFF',
-//   background_color:'#FFFFFF',
-//   start_url:`/`,
-//   short_name:"test",
-//   icons:[{
-//     src:`/icon.png`,
-//     size:"144x144",
-//     type:"image/png"
-//   }
-// ]
 
-// },
 
   /*
   ** Global CSS

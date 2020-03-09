@@ -6,15 +6,45 @@
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
         <div class="" v-if ="!$store.state.isLoggedIn">
-             <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
+            
               <div class="demo-type">
-                 <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
-                  <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
+                 <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
+                    <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
+                    <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
+                  </nuxt-link>
+                     <div class="change_lang_icon">
+                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
+                       <el-button type="text" @click="dialogVisible = true">
+                        <img src="~static/images/changelang.png" alt="">
+                      </el-button>
+                    <!-- </nuxt-link> -->
+                  </div>
+                  <el-dialog
+                   
+                    :visible.sync="dialogVisible"
+                    class="change_lang_modal"
+                    width="70%"
+                    :before-close="handleClose">
+                     <div class="lang">
+                        <el-dropdown @command="changeLang"  style="text-align:center">
+                        <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
+                            {{$t('Language')}}
+                        </span> -->
+                      
+                            <el-dropdown-item  round command='en'>English</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'>မြန်မာ ယူနီကုဒ်</el-dropdown-item>
+                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
+                            <el-dropdown-item  round command='zh'>中文</el-dropdown-item>
+                      
+                      
+                        </el-dropdown>   
+                    </div>
 
                    
+                  </el-dialog>
               </div>
                
-            </nuxt-link>
+           
         </div>
         <div v-else>
            
@@ -33,11 +63,36 @@
                   </ul>
                   </div>
                 </nuxt-link>
-                  <div class="result_icon">
-                     <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`">
-                        <img src="~static/images/2d_result_icon.png" alt="">
-                    </nuxt-link>
+                  <div class="change_lang_icon">
+                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
+                       <el-button type="text" @click="dialogVisible = true">
+                        <img src="~static/images/changelang.png" alt="">
+                      </el-button>
+                    <!-- </nuxt-link> -->
                   </div>
+                  <el-dialog
+                   
+                    :visible.sync="dialogVisible"
+                    class="change_lang_modal"
+                    width="70%"
+                    :before-close="handleClose">
+                     <div class="lang">
+                        <el-dropdown @command="changeLang"  style="text-align:center">
+                        <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
+                            {{$t('Language')}}
+                        </span> -->
+                      
+                            <el-dropdown-item  round command='en'>English</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'>မြန်မာ ယူနီကုဒ်</el-dropdown-item>
+                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
+                            <el-dropdown-item  round command='zh'>中文</el-dropdown-item>
+                      
+                      
+                        </el-dropdown>   
+                    </div>
+
+                   
+                  </el-dialog>
                  <!-- <span  class="avatar_text">5000 MMk</span> -->
                    
                    
@@ -48,10 +103,10 @@
 
           <div class="block" data-aos="fade-up" data-aos-duration="700">
   
-            <el-carousel  trigger="click" height="150px">
+            <el-carousel  trigger="click" height="155px">
                <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
                   <div>
-                     <img :src="img_slide.slider_image" value="img_slide" style="width:100%;">
+                     <img :src="img_slide.slider_image" value="img_slide" style="width:100%;height:155px;">
                   </div>
                    
               </el-carousel-item>
@@ -64,22 +119,11 @@
                                <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
                               {{this.slider_text.text}}</p>
                           </div>
-                        
-                             <!-- <div class="scroll-left">
-                              <marquee direction="" onmouseover="this.stop();" onmouseout="this.start();">
-                                <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
-                                {{this.slider_text.text}}
-                              </marquee>
-                              </div> -->
-                             
-                        
                            </h3> 
                     </div>
-                  
-          
             </el-carousel>
 
-          </div>
+          </div>  
           <div class="row n_d_t">
             <div class="col">
                
@@ -257,6 +301,7 @@ export default {
   
   data() {
     return {
+        dialogVisible: false,
        isActive: true,
       hasError: false,
       currentTime: '',
@@ -279,12 +324,39 @@ export default {
       profile:'',
       slider_text:'',
       breakTime:null,
+      
 
       //   activeIndex2: '1',
      
     }
   },
    methods: {
+      changeLang (lang) {
+       
+      //mutate 'locale' in store
+      this.$store.commit('SET_LANG', lang)
+      //re-route to the current page but with the selected language in a query string
+      this.dialogVisible = false
+       this.$router.push(`/?lang=${this.$store.state.locale}`);
+      // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
+    },
+      submitLang() {
+                  
+                    //  const loading = this.$loading({
+                    //       lock: true,
+                    //       text: 'Loading',
+                    //       spinner: 'el-icon-loading',
+                    //       background: 'rgba(0, 0, 0, 0.7)'
+                    //     });
+                    //       setTimeout(() => {
+                    //       loading.close();
+                    //     }, 2000);
+                    //   this.$route.fullPath.replace(/^\/mm/, '/home')
+                    //  return redirect(route.fullPath.replace(/^\/mm/, '/'))
+                    // this.store.mm
+                       this.$store.commit('SET_LANG', 'hello')
+                        
+        },
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
@@ -434,6 +506,9 @@ export default {
     border-radius: 22px;
     -webkit-border-radius:22px;
     -moz-border-radius: 22px;
+    -webkit-box-shadow: -1px 1px 16px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 1px 16px -4px rgba(0,0,0,0.75);
+    box-shadow: -1px 1px 16px -4px rgba(0,0,0,0.75);
 
   }
    
@@ -497,13 +572,98 @@ export default {
   white-space:nowrap;
   height: 100%;
   margin: 0;
-  line-height: 25px;
+  line-height: 31px;
   text-align: left;
   /* Apply animation to this element */	
   -moz-animation: scroll-left 10s linear infinite;
   -webkit-animation: scroll-left 10s linear infinite;
   animation: scroll-left 10s linear infinite;
 }
+ /* change language css */
+  .main_page .lang {
+    text-align: center;
+    margin:0 auto;
+}
+.main_page .el-dialog {
+  border-radius: 21px !important;
+}
+
+.lang .el-dropdown {
+    padding:27px;
+    -webkit-box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
+    box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
+}
+.main_page .lang .el-dropdown-menu__item{
+    margin:20px auto;
+    background: #158220;
+    color:#fff;
+    border-radius: 21px;
+    
+}
+.lang .el-dropdown-link {
+    font-size: 18px;
+    font-weight: bold;
+}
+.language_type .el-dropdown-menu__item:not(.is-disabled):hover {
+    background: #158220;
+    color:#fff;
+    border-radius: 21px;
+}
+.lang .el-button.is-round {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    left: 0;
+    margin: 20px;
+    bottom: 0;
+}
+.language_type {
+    padding:20px;
+}
+.language_type .el-header {
+   background-color :#fff;
+
+}
+.language_type ul {
+    padding:0;
+    margin:150px auto;
+    list-style:none;
+}
+.language_type ul li {
+    max-width: 480px;
+    width:50%;
+    padding:10px;
+    text-align: center;
+    border-radius: 23px;
+    margin:20px auto;
+    color:#000;
+    text-transform:capitalize;
+    
+}
+.language_type ul li a {
+    text-decoration: none;
+   
+}
+.language_type .active {
+    background:#158220;
+    color:#fff;
+    display: block;
+    font-weight: bold;
+}
+.el-page-header__left {
+    margin:0;
+}
+.language_type .el-page-header {
+    line-height: 43px;
+    color:#000;
+   
+}
+.language_type .el-page-header__content {
+    color:#000;
+    font-weight: bold;
+}
+  /* change lang css end */
 /* Move it (define the animation) */
 @-moz-keyframes scroll-left {
   0%   { -moz-transform: translateX(100%); }

@@ -14,7 +14,7 @@
               
                     <el-dropdown-item round command='en'>English</el-dropdown-item>
                     <el-dropdown-item round command='uni'>မြန်မာ ယူနီကုဒ်</el-dropdown-item>
-                    <el-dropdown-item round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item>
+                    <!-- <el-dropdown-item round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
                      <el-dropdown-item round command='zh'>中文</el-dropdown-item>
               
               
@@ -66,9 +66,9 @@ export default {
                 
         //     }
         // },
-        goBack() {
-                this.$router.push(`/?lang=${this.$store.state.locale}`); 
-        },
+        // goBack() {
+        //         this.$router.push(`/?lang=${this.$store.state.locale}`); 
+        // },
          submitLang() {
                      const loading = this.$loading({
                           lock: true,
