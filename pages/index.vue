@@ -97,12 +97,7 @@
 
                    
                   </el-dialog>
-                 <!-- <span  class="avatar_text">5000 MMk</span> -->
-                   
-                   
               </div>
-               
-         
         </div>
 
           <div class="block" data-aos="fade-up" data-aos-duration="700">
@@ -137,7 +132,6 @@
             <div class="col">
                
                 <div class="number">
-
                       <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
                        <h2 class="static" 
                           v-bind:class="{ live_number: isActive, 'text-danger': hasError }">
@@ -299,7 +293,10 @@ export default {
   actions: {},
   layout: 'homeLayout',
   mounted() {
-  
+      this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
+    })
      this.updateIsLoggedIn();
        this.updateLang();
      
@@ -411,21 +408,14 @@ export default {
      setInterval(() => this.updateCurrentTime(), 1 * 1000);
     
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-    // alert('dd')
-      // this.isActive = true
       setInterval(function() {
              this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
             
               })      
-        }.bind(this), 3000)
-   
-    
-    
-     
+        }.bind(this), 3000)   
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-    //  alert('two')
    
      
        this.$axios.get('/v1/twod-result/live')
@@ -434,45 +424,30 @@ export default {
               })
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
  
-    // alert('ik');
        setInterval(function() {
       this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
-               
-             //  console.log(this.info)
+
               })
             }.bind(this), 3000)
   
-               
-             
-      
-   
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
-     //this.isActive = false
-        //alert('foursssss')
+
         this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
                
               })
   }else {
-    //alert('mm')
-      //this.isActive = false
         this.$axios.get('/v1/twod-result/live')
-        
-              .then(response => {
-                console.log(response.data.data)
-                this.info_api = response.data.data
-               
-              })
+          .then(response => {
+            this.info_api = response.data.data
+          })
   }
-    
       this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
-              // console.log(this.info_api)
-               //console.log('back')
               })
           
           this.$axios.get('/v2/v1/slider_image')
@@ -483,8 +458,6 @@ export default {
           this.$axios.get('/v2/v1/slider_text')
               .then(response => {
                this.slider_text = response.data.data[0]
-              //  console.log(response.data)
-             
               })
               
          let token = localStorage.getItem('token');
@@ -496,14 +469,10 @@ export default {
                         })
                     .then(response => {
                      this.profile = response.data.data
-                     //console.log(this.profile)
 
                 })
-      }
-      
-        
+      }  
     },
-
 }
 
 
@@ -673,6 +642,10 @@ export default {
 .language_type .el-page-header__content {
     color:#000;
     font-weight: bold;
+}
+.main_page .el-dialog__wrapper {
+  background: #151E28;
+  opacity:1;
 }
   /* change lang css end */
 /* Move it (define the animation) */

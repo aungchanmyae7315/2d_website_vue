@@ -78,7 +78,7 @@ export default {
                         });
                           setTimeout(() => {
                           loading.close();
-                        }, 2000);
+                        }, 1000);
                     //   this.$route.fullPath.replace(/^\/mm/, '/home')
                     //  return redirect(route.fullPath.replace(/^\/mm/, '/'))
                     // this.store.mm

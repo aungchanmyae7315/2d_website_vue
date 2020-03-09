@@ -236,6 +236,12 @@ import carousel from 'vue-owl-carousel'
 
 export default {
     components: { carousel },
+    mounted() {
+      this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+    })
+    },
     data() {
         return {
             	submitted:false,

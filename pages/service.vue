@@ -27,6 +27,10 @@
  import axios from 'axios'
 export default {
      layout: 'serviceLayout',
+      mounted() {
+   
+     
+    },
      data() {
        return {
          contact:[],
@@ -79,7 +83,7 @@ export default {
     font-family:'Oswald';
     font-weight:700;
     position:relative;  
-    margin: 60px auto 20px auto;
+    margin: 30px auto 20px auto;
     font-size: 16px;
     line-height: 15px;
     width: 282px;

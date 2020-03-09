@@ -83,21 +83,25 @@ export default {
         }
     },
     mounted() {
-      
+     
+      this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+        })
     },
      methods: {
          goBack() {
 
               this.$router.push(`notification?lang=${this.$store.state.locale}`); 
-               const loading = this.$loading({
-                lock: true,
-                text: 'Loading',
-                spinner: 'el-icon-loading',
-                background: 'rgba(0, 0, 0, 0.7)'
-                });
-                setTimeout(() => {
-                loading.close();
-                }, 2000);
+            //    const loading = this.$loading({
+            //     lock: true,
+            //     text: 'Loading',
+            //     spinner: 'el-icon-loading',
+            //     background: 'rgba(0, 0, 0, 0.7)'
+            //     });
+            //     setTimeout(() => {
+            //     loading.close();
+            //     }, 2000);
          },
 
      },

@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading" class="loading-page">
-    <p>Loading...</p>
+   <img src="~/static/icons/loading.svg" alt="Loading...">
   </div>
 </template>
 
@@ -27,7 +27,8 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
+  background: #14612D;
+  opacity: .9;
   text-align: center;
   padding-top: 200px;
   font-size: 30px;

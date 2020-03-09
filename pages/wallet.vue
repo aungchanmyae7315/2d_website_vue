@@ -66,7 +66,12 @@
                     
                     <div v-for="(bank_info, b) in bank_account" :key="b">
                      <div class="demo-type wallet_type">
-                      <img :src="bank_info.bank_icon" alt="">
+                     
+                       <el-image :src="bank_info.bank_icon">
+                        <div slot="placeholder" class="image-slot">
+                          Loading<span class="dot">...</span>
+                        </div>
+                      </el-image>
                       <div  class="avatar_text">
                         <ul style="padding-top:18px;">
                           <li style="font-size:10px;">{{bank_info.bank_name}}</li>
@@ -246,8 +251,7 @@
     }
     .topup_withdraw img {
       width:20px;
-      margin-right:15px;
-      margin-left:5px;
+      margin:5px 15px;
       height:auto;
       float: left;
     }
@@ -275,6 +279,8 @@
   export default {
      
      mounted() {
+     
+    
       this.updateIsLoggedIn();
      
    },

@@ -585,6 +585,13 @@ const tail_9_option = ['09','19','29','39','49','59','69','79','89','99'
 import axios from 'axios'
 export default {
     mounted() {
+        
+   
+      this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+      })
+    
         this.updateIsLoggedIn();
     },
  

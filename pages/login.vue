@@ -172,7 +172,7 @@ import axios from 'axios'
                         });
                         setTimeout(() => {
                           loading.close();
-                        }, 2000);
+                        }, 1000);
                      
                      this.success_message = response.data.data,
                     

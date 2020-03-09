@@ -111,6 +111,8 @@
 export default {
      
     mounted() {
+   
+     
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');
     if(token) {
@@ -157,7 +159,7 @@ export default {
         });
         setTimeout(() => {
           loading.close();
-        }, 2000);
+        }, 1000);
       
     },
         updateIsLoggedIn() {

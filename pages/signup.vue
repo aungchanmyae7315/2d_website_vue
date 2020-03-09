@@ -134,6 +134,12 @@ import axios from 'axios'
 
   export default {
       layout: 'loginLayout',
+      mounted() {
+        this.$nextTick(() => {
+        this.$nuxt.$loading.start()
+        setTimeout(() => this.$nuxt.$loading.finish(), 500)
+      })
+      },
     data() {
       return {
           fullscreenLoading: false,

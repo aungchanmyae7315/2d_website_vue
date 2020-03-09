@@ -164,7 +164,11 @@
  import axios from 'axios'
   export default {
     mounted() {
-  
+    
+      this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      setTimeout(() => this.$nuxt.$loading.finish(), 500)
+          })
       let token = localStorage.getItem('token');
       if(token) {
           this.$axios.get("/v1/profile",
