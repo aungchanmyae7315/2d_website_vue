@@ -186,6 +186,7 @@ input[type=number] {
   .lang_icon img{
     width:40px;
     height:auto;
+    margin-right:5px;
   }
 
   .change_lang_modal {
