@@ -27,13 +27,13 @@
                     class="change_lang_modal"
                     width="70%">
                    
-                     <div class="lang">
+                     <div class="lang lang_icon">
                         <el-dropdown @command="changeLang"  style="text-align:center">
                          
-                            <el-dropdown-item  round command='en'>English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'>Myanmar</el-dropdown-item>
+                            <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">Myanmar</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'>中文</el-dropdown-item>
+                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
                       
                       
                         </el-dropdown>   
@@ -48,7 +48,11 @@
         <div v-else>
            
               <div class="demo-type">
-                <nuxt-link :to="`${$t('edit_profile_index')}?lang=${$store.state.locale}`">
+               
+                
+                 <el-row >
+                  <el-col :span="21">
+                        <nuxt-link :to="`${$t('edit_profile_index')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" v-if="this.profile.profile == null">
                    <img src="~static/images/icons/me_img.png" alt="">
                    
@@ -65,7 +69,13 @@
                   </ul>
                   </div>
                 </nuxt-link>
-                  <div class="change_lang_icon">
+                  </el-col>
+                  <!-- <el-col :span="3">
+                    <Music></Music>
+                     
+                  </el-col> -->
+                   <el-col :span="3">
+                      <div class="change_lang_icon">
                      <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
                        <el-button type="text" @click="dialogVisible = true">
                          <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
@@ -74,22 +84,26 @@
                       </el-button>
                     <!-- </nuxt-link> -->
                   </div>
+                   </el-col>
+                </el-row>
+                 
+                  
                   <el-dialog
                    
                     :visible.sync="dialogVisible"
                     class="change_lang_modal"
                     width="70%">
-                   
-                     <div class="lang">
+
+                     <div class="lang lang_icon">
                         <el-dropdown @command="changeLang"  style="text-align:center">
                         <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
                             {{$t('Language')}}
                         </span> -->
                       
-                            <el-dropdown-item  round command='en'>English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'>Myanmar</el-dropdown-item>
+                            <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">Myanmar</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'>中文</el-dropdown-item>
+                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
                       
                       
                         </el-dropdown>   
@@ -133,11 +147,17 @@
                
                 <div class="number">
                       <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
-                       <h2 class="static" 
+                      <h2 v-if="!this.info && !this.info_api" style="color:#fff;font-size:41px;line-height:100px"><i class="el-icon-loading"></i></h2>
+                           
+                       <h2 class="static"  v-else
                           v-bind:class="{ live_number: isActive, 'text-danger': hasError }">
+                          
                          <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
                           <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.result_1200}}</span>
-                          <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
+                          <h2 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">
+                              
+                             {{this.info.live}}
+                          </h2>
                           <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
                           <span v-else>{{this.info_api.live}}</span>
                       </h2>
@@ -283,7 +303,7 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Music from '~/components/Music.vue'
 import axios from 'axios'
 
 export default {
@@ -297,12 +317,14 @@ export default {
       this.$nuxt.$loading.start()
       setTimeout(() => this.$nuxt.$loading.finish(), 1000)
     })
+    this.getDataKwee();
      this.updateIsLoggedIn();
        this.updateLang();
      
    },
   components: {
-    Logo
+  
+    Music
   },
   
   data() {
@@ -337,6 +359,15 @@ export default {
     }
   },
    methods: {
+         async getDataKwee() {
+            setInterval(function() {
+            this.$axios.get('/v2/v1/kwee_live')
+              .then(response => {
+               this.info = response.data[0]
+
+              })
+            }.bind(this), 3000)
+        },
       changeLang (lang) {
        
       //mutate 'locale' in store
@@ -348,19 +379,7 @@ export default {
     },
       submitLang() {
                   
-                    //  const loading = this.$loading({
-                    //       lock: true,
-                    //       text: 'Loading',
-                    //       spinner: 'el-icon-loading',
-                    //       background: 'rgba(0, 0, 0, 0.7)'
-                    //     });
-                    //       setTimeout(() => {
-                    //       loading.close();
-                    //     }, 2000);
-                    //   this.$route.fullPath.replace(/^\/mm/, '/home')
-                    //  return redirect(route.fullPath.replace(/^\/mm/, '/'))
-                    // this.store.mm
-                       this.$store.commit('SET_LANG', 'hello')
+            this.$store.commit('SET_LANG', 'hello')
                         
         },
        updateCurrentTime() {
@@ -370,6 +389,7 @@ export default {
           } else if(this.currentTime > this.time_04_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
+             this.getDataKwee();
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
@@ -417,39 +437,44 @@ export default {
         }.bind(this), 3000)   
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
-     
+      //  setInterval(function() {
        this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
               })
+        //  }.bind(this), 3000)
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
- 
-       setInterval(function() {
-      this.$axios.get('/v2/v1/kwee_live')
-              .then(response => {
-               this.info = response.data[0]
+//  alert('dd')
+      //  setInterval(function() {
+      // this.$axios.get('/v2/v1/kwee_live')
+      //         .then(response => {
+      //          this.info = response.data[0]
 
-              })
-            }.bind(this), 3000)
+      //         })
+      //       }.bind(this), 3000)
   
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
-
+      // setInterval(function() {
         this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
                
               })
+        // }.bind(this), 3000)
   }else {
+      // setInterval(function() {
         this.$axios.get('/v1/twod-result/live')
           .then(response => {
             this.info_api = response.data.data
           })
+      // }.bind(this), 3000)
   }
-      this.$axios.get('/v1/twod-result/live')
+      //  setInterval(function() {
+        this.$axios.get('/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
               })
-          
+      //  }.bind(this), 3000)
           this.$axios.get('/v2/v1/slider_image')
               .then(response => {
                this.slider_images = response.data.data
@@ -570,9 +595,9 @@ export default {
 
 .lang .el-dropdown {
     padding:27px;
-    -webkit-box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
-    -moz-box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
-    box-shadow: 1px 0px 17px -13px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 .main_page .lang .el-dropdown-menu__item{
     margin:20px auto;
@@ -643,9 +668,13 @@ export default {
     color:#000;
     font-weight: bold;
 }
+.main_page .el-dialog {
+  max-width: 480px;
+  width:90%;
+}
 .main_page .el-dialog__wrapper {
-  background: #151E28;
-  opacity:1;
+  background: rgba(7, 14, 7, 0.8);
+  
 }
   /* change lang css end */
 /* Move it (define the animation) */

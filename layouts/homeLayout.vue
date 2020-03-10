@@ -118,14 +118,7 @@ export default {
       
     },
 
-     play: function(event) {
-      var a = this.$refs.audioElm;
-      if (a.paused) {
-        a.play();
-      } else {
-        a.pause();
-      }
-    }
+    
   }
 }
 </script>

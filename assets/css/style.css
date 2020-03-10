@@ -175,9 +175,17 @@ input[type=number] {
     float: right;
   }
   .change_lang_icon img {
-    width:40px;
+    width:37px;
     height:auto;
    
+  }
+  .lang_icon  .el-dropdown-menu__item {
+    text-align: left;
+    padding:0 20px 0 3px;
+  }
+  .lang_icon img{
+    width:40px;
+    height:auto;
   }
 
   .change_lang_modal {
@@ -195,9 +203,7 @@ input[type=number] {
       
   }
   .music_icon {
-    position: relative;
-    left: 20px;
-    top: 7px;
+    
 }
   .noti {
       float: left;
@@ -230,7 +236,8 @@ input[type=number] {
   }
   .avatar_text ul {
     list-style: none;
-    padding:10px;
+    padding:10px 2px;
+   
   }
   .avatar_text {
       display: inline-block;
@@ -307,9 +314,8 @@ input[type=number] {
   .number h2 {
     color:rgba(255, 255, 255, 1);
     font-size: 75pt;
-
     text-align: center;
-    margin:0 auto;
+    margin-top:19px;
     
 }
 .number::before {
@@ -519,9 +525,6 @@ input[type=number] {
   .date_time .d_t_item span {
     font-size: 11pt;
   }
-  .music_icon {
-    left:12px;
-  }
   .bet_container .el-dialog {
     width:92% !important;
   }
@@ -582,12 +585,13 @@ input[type=number] {
   cursor: pointer;
   text-indent: -999999px;
  
-  background-image: url('~static/images/icons/music_off.png');
+  /* background-image: url('~static/images/icons/music_off.png'); */
   background-repeat:no-repeat;
   background-position:center;
-  background-size:25px;
+  background-size:30px;
+  padding:5px;
   position: relative;
-  bottom:7px;
+  top:15px;
 }
 .play {
   background-image: url('~static/images/icons/music_off.png');
