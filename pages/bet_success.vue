@@ -4,7 +4,7 @@
             <img src="~static/images/refel_page/refel_img_two.png" class="">
             <h4 style="padding-top:10px;">{{$t('bet_succ')}}</h4>
             <el-footer>
-                   <nuxt-link  :to="`${$t('home')}?lang=${$store.state.locale}`">
+                   <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`">
                          <el-button  round="">{{$t('Confirm')}}</el-button>
                    </nuxt-link>
             </el-footer>

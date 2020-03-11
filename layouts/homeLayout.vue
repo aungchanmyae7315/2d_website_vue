@@ -63,7 +63,7 @@
             width="100%"
             line-height="0px"
             active-text-color="#ffd04b">
-              <nuxt-link :to="`${$t('home')}?lang=${$store.state.locale}`">
+              <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
             <el-menu-item index="1">
             
               <img src="~static/icons_header/dimond_t_icon.png" alt="">

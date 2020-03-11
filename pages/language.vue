@@ -24,7 +24,7 @@
 
 
          <div class="footer_btn" >
-             <nuxt-link :to="`${$t('home')}?lang=${$store.state.locale}`">
+             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
                          <el-button type="success" style="width:100%"  round @click="submitLang('')"  v-loading.fullscreen.lock="fullscreenLoading">{{$t('Submit')}}</el-button>
             </nuxt-link>
         </div>
