@@ -147,9 +147,9 @@
                
                 <div class="number">
                       <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
-                      <h2 v-if="!this.info && !this.info_api" style="color:#fff;font-size:41px;line-height:100px"><i class="el-icon-loading"></i></h2>
+                      <!-- <h2 v-if="!this.info && !this.info_api" style="color:#fff;font-size:41px;line-height:100px"><i class="el-icon-loading"></i></h2> -->
                            
-                       <h2 class="static"  v-else
+                       <h2 class="static"  
                           v-bind:class="{ live_number: isActive, 'text-danger': hasError }">
                           
                          <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
