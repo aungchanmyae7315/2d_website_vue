@@ -154,10 +154,7 @@
                           
                          <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
                           <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.result_1200}}</span>
-                          <h2 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">
-                              
-                             {{this.info.live}}
-                          </h2>
+                          <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
                           <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
                           <span v-else>{{this.info_api.live}}</span>
                       </h2>
