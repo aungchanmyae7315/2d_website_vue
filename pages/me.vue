@@ -38,6 +38,8 @@
                 <div  v-if ="!$store.state.isLoggedIn">
                        <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
                        <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
+                        <li><nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
                 </div>

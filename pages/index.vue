@@ -103,7 +103,7 @@
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
                             <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">Myanmar</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
+                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">Chinese</el-dropdown-item>
                       
                       
                         </el-dropdown>   
@@ -318,6 +318,7 @@ export default {
       setTimeout(() => this.$nuxt.$loading.finish(), 1000)
     })
     this.getDataKwee();
+    this.getDataresult();
      this.updateIsLoggedIn();
        this.updateLang();
      
@@ -360,14 +361,21 @@ export default {
   },
    methods: {
          async getDataKwee() {
-            setInterval(function() {
+            // setInterval(function() {
             this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
 
               })
-            }.bind(this), 3000)
-        },
+            // }.bind(this), 3000)
+          },
+          async getDataresult() {
+            this.$axios.get('/v1/twod-result/live')
+              .then(response => {
+                this.info_api = response.data.data
+               
+              })
+          },
       changeLang (lang) {
        
       //mutate 'locale' in store
@@ -386,6 +394,7 @@ export default {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
             this.breakTime = '12:01 PM';
+             this.getDataresult();
           } else if(this.currentTime > this.time_04_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
@@ -393,7 +402,9 @@ export default {
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
+             this.getDataresult();
           }else{
+            
              this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
@@ -428,13 +439,13 @@ export default {
      setInterval(() => this.updateCurrentTime(), 1 * 1000);
     
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-      setInterval(function() {
+      // setInterval(function() {
              this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
             
               })      
-        }.bind(this), 3000)   
+        // }.bind(this), 3000)   
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
       //  setInterval(function() {
@@ -455,11 +466,11 @@ export default {
   
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
       // setInterval(function() {
-        this.$axios.get('/v1/twod-result/live')
-              .then(response => {
-                this.info_api = response.data.data
+        // this.$axios.get('/v1/twod-result/live')
+        //       .then(response => {
+        //         this.info_api = response.data.data
                
-              })
+        //       })
         // }.bind(this), 3000)
   }else {
       // setInterval(function() {

@@ -3,29 +3,22 @@
 
 
  <div class="sign_page signup">
-          <nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`">
-                          <el-page-header style="color:#000" title=""  >
+        <!-- <nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"> -->
+                          <el-page-header @back="goBack" style="color:#000" title=""  >
                 </el-page-header> 
-            </nuxt-link>
-       
+            <!-- </nuxt-link> -->
           <el-form v-if="active===1"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
            
         
         <div class="sign_up_text">
-            <h4>{{$t('What_phone_number')}}</h4>
+            <h4>What's Your<br>  Phone Number Forgot</h4>
         </div>
              <div class="phone_input">
 
 
 
-
-
-
-
-
-
             <el-form-item
-              :label="$t('phone')"
+              :label="$t('Phone_placeholder')"
               prop="phone"
               :rules="[
                 { required: true, message: $t('What_phone_number') },
@@ -45,20 +38,20 @@
            
         
          <div class="sign_up_text">
-                <h4>{{$t('we_sent_OTP')}}</h4>
+                <h4>We have sent OTP<br> on your number</h4>
             </div>
              <div class="phone_input">
 
             <el-form-item
-              label="OTP"
+              label="Otp"
               prop="otp"
               :rules="[
-                 { required: true, message: $t('otp_require') },
+                { required: true, message: $t('we_sent_OTP') },
                 
               ]"
                
             >  
-                <el-input type="otp" placeholder="OTP" prefix-icon="el-icon-otp" v-model="ruleForm.otp"  ></el-input>
+                <el-input type="otp" placeholder="Phone" prefix-icon="el-icon-otp" v-model="ruleForm.otp"  ></el-input>
                
             </el-form-item>
             
@@ -90,11 +83,11 @@
 
         <el-form v-if="active===3" :model="ruleForm"  ref="ruleForm" class="demo-ruleForm" >
            <div class="sign_up_text">
-            <h4>{{$t('set_your_password')}}</h4>
+            <h4>Set your Password</h4>
         </div>
              <div class="phone_input">
             <el-form-item
-              :label="$t('Password')"
+             label="Password"
                     prop="password"
                     :rules="[
                       { required: true, message: $t('set_your_password') },
@@ -107,7 +100,7 @@
             </el-form-item>
             
              </div>
-             <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Confirm')}}</el-button>
+             <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Submit')}}</el-button>
         </el-form>
         
         <div class="step_bar">
@@ -134,15 +127,8 @@ import axios from 'axios'
 
   export default {
       layout: 'loginLayout',
-      mounted() {
-        this.$nextTick(() => {
-        this.$nuxt.$loading.start()
-        setTimeout(() => this.$nuxt.$loading.finish(), 500)
-      })
-      },
     data() {
       return {
-          fullscreenLoading: false,
        errors:[],
     name:null,
   
@@ -162,42 +148,46 @@ import axios from 'axios'
       };
     },
      methods: {
-       
+       goBack() {
+             this.$router.push(`login/?lang=${this.$store.state.locale}`); 
+         },
   
   
       next(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
          
-          this.$axios.post('/v1/send-otp', {
+          this.$axios.post('/v1/forgot_password_OTP', {
                     phone: this.ruleForm.phone,
                   
                 })
-               
+
                 .then(response => {
-                 
-                  this.res_phone = response.data.message,
-                 
-                  this.res_data = response.data.data,
-                  //  console.log(this.ruleForm.phone),
+                console.log(response.data.message),
+                this.error_mes = response.data.data
+                this.res_mes = response.data.message
+                    if(this.res_mes === 'fail') {
+                         this.$message({
+                            showClose: true,
+                            message: 'this.error_mes',
+                            type: 'error',
+                            center:true,
+                             duration: 0
+                           
+                            });
+                    }else {
+                            if (this.active++ > 2) this.active = 0;
+                    }
+
+
+                console.log(this.ruleForm.phone),
                
                 this.userOtp = response.data,
                 this.$store.commit('setOtp', this.userOtp),
                 console.log(this.userOtp)
-                 if(this.res_phone == "fail" ) {
-                  this.$notify({
-                    title: 'Warning',
-                    message: this.res_data,
-                    type: 'warning'
-                  });
-                }else {
-                    if (this.active++ > 2) this.active = 0;
-                  
-                }
                 });
-        //      
-                
-              //if (this.active++ > 2) this.active = 0;
+            
+            
 
           } else {
             console.log('error submit!!');
@@ -213,7 +203,6 @@ import axios from 'axios'
        nextTwo(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-           // console.log(this.otp_error)
             if(this.active++ > 2) this.active=0;
           } else {
           
@@ -228,41 +217,34 @@ import axios from 'axios'
        submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            // alert(this.ruleForm.phone),
-            //  alert(this.ruleForm.otp)
-            //   alert(this.ruleForm.password)
-            this.$axios.post('/v1/register', {
+            this.$axios.post('/v1/forgot-password', {
                     phone: this.ruleForm.phone,
                     otp: this.ruleForm.otp,
                     password: this.ruleForm.password
                 })
                 .then(response => {
-                  //console.log(response)
-                  this.otp_error = response.data.message
-                  this.otp_data = response.data.data
-                  //console.log(this.otp_error)
-                  
-                  if(this.otp_error == 'fail') {
-                      // this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                  console.log(response.data)
+                  this.otp_error = response.data.data
+                  if(response.data.result == '0') {
+                      this.$router.push(`/?lang=${this.$store.state.locale}`); 
                       this.$message({
                         showClose: true,
                         center: true,
                        
-                        message: this.otp_data,
+                        message: this.otp_error,
                         type: 'error'
                       });
-                      //  if (this.active++ > 2) this.active = 0;
+                       if (this.active++ > 2) this.active = 0;
                      
                   }
                   else {
-                    //alert('heee')
                      this.token = response.data.access_token;
                        this.userInfo = response.data,
                       this.$store.commit('logIn', this.userInfo),
                         this.$store.commit('accessToken', this.token);
-                     // console.log(this.userInfo)
+                      console.log(this.userInfo)
                        if (this.active++ > 2) this.active = 0;
-                          this.$router.push(`signup_refels?lang=${this.$store.state.locale}`); 
+                         this.$router.push(`/?lang=${this.$store.state.locale}`); 
                   }
                 })
                 // .then(response => ( 
@@ -289,7 +271,7 @@ import axios from 'axios'
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-       
+      
     }
   }
   </script>
@@ -304,13 +286,14 @@ import axios from 'axios'
        max-width: 480px;
       width:100%;
   }
-  .el-step__head.is-process  ,.el-step__title.is-process{
-    color:#b8b8b8;
-  }
   .step_bar {
       max-width: 480px;
       width:100%;
 
+  }
+   .el-step__head.is-process  ,.el-step__title.is-process{
+    color:#b8b8b8;
+    border-color:#b8b8b8;
   }
   .sign_up_text {
       text-align: center;

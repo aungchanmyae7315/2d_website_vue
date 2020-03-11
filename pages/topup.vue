@@ -45,7 +45,7 @@
             </el-form>
           
            
-              <el-button round @click="slip_upload('ruleForm')">{{$t('Submit')}}</el-button>
+              <el-button round @click="slip_upload('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
         </div>
        
     </section>
@@ -176,6 +176,7 @@ export default {
     },
     data() {
         return {
+          submitted:false,
             ruleForm: {
                   tran_amount:'',
             },
@@ -252,6 +253,7 @@ export default {
                      //console.log(this.topup_info = response.data.data)
                      console.log(response)
                 })
+                  this.submitted = true
                  this.$router.push(`topup_success?lang=${this.$store.state.locale}`); 
                  
             
