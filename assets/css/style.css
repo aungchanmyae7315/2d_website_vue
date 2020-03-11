@@ -332,12 +332,62 @@ input[type=number] {
   color: #FEDC54 !important;
   font-weight: bold;
 }
-@keyframes live_numer-animate {
+@keyframes live_numer-animate { 
+  0% {
+      opacity: 0;
+      -webkit-opacity: 0;
+      animation-timing-function: ease-in;
+      -webkit-animation-timing-function: ease-in;
+  }
+  25% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    animation-timing-function: ease-in;
+    -webkit-animation-timing-function: ease-in;
+  }
+  50% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    animation-timing-function: ease-in;
+    -webkit-animation-timing-function: ease-in;
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    animation-timing-function: ease-in;
+    -webkit-animation-timing-function: ease-in;
+  }
+}
+@-webkit-keyframes live_numer-animate {
+  0% {
+      -webkit-opacity: 0;
+      -webkit-animation-timing-function: ease-in;
+  }
+  25% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    animation-timing-function: ease-in;
+    -webkit-animation-timing-function: ease-in;
+  }
+  50% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    animation-timing-function: ease-in;
+    -webkit-animation-timing-function: ease-in;
+  }
+  100% {
+    opacity: 1;
+    -webkit-opacity: 1;
+    animation-timing-function: ease-in;
+    -webkit-animation-timing-function: ease-in;
+  }
+}
+/* @keyframes live_numer-animate {
   0%   { opacity: 0; }
   25%   { opacity: 1; }
   50%   { opacity: 1; }
   100% { opacity: 1; }
-}
+} */
 .live_number {
   -webkit-animation: live_numer-animate 3s infinite;
   animation:         live_numer-animate 3s infinite;
