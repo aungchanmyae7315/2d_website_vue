@@ -361,13 +361,13 @@ export default {
   },
    methods: {
          async getDataKwee() {
-            // setInterval(function() {
+            setInterval(function() {
             this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
                this.info = response.data[0]
 
               })
-            // }.bind(this), 3000)
+            }.bind(this), 3000)
           },
           async getDataresult() {
             this.$axios.get('/v1/twod-result/live')
@@ -439,13 +439,13 @@ export default {
      setInterval(() => this.updateCurrentTime(), 1 * 1000);
     
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-      // setInterval(function() {
+      setInterval(function() {
              this.$axios.get('/v2/v1/kwee_live')
               .then(response => {
               this.info = response.data[0]
             
               })      
-        // }.bind(this), 3000)   
+        }.bind(this), 3000)   
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
       //  setInterval(function() {

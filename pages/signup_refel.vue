@@ -91,6 +91,7 @@ export default {
                                         });
                                 }else {
                                     this.$message({
+                                    showClose: true,
                                     message: this.$t('you_had_refel_code'),
                                     type: 'success'
                                     });

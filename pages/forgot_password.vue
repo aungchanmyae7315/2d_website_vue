@@ -10,17 +10,17 @@
            <p>စကားဝှက်မေ့သွားပါက အောက်ပါ ဝန်ဆောင်မှု ဖုန်းနံပါတ်တစ်ခုသို့ ဆက်သွယ်မေးမြန်းနိုင်ပါသည်။</p>
            <p>အကောင့်ပိုင်ဆိုင်‌ကြောင်း အထောက်အထား မေးခွန်းများ ဖြေဆိုရပါမည်။</p><br>
            <el-card shadow="always">
-                <div style="float:left;margin-top:6px;"><i class="el-icon-mobile-phone" style="color:#5AAF46;padding:0 10px;font-size:21;font-weight:bold;"></i>09774123333</div>
-                 <a href="tel:123-456-7890"><el-button round style="float:right;margin:0 auto 20px auto;background:#F0F0FF;color:#5AAF46">Call Now</el-button></a>
+                <div style="float:left;margin-top:6px;"><i class="el-icon-mobile-phone" style="color:#5AAF46;padding:0 10px;font-size:21;font-weight:bold;"></i>09401778547</div>
+                 <a href="tel:09401778547"><el-button round style="float:right;margin:0 auto 20px auto;background:#F0F0FF;color:#5AAF46">Call Now</el-button></a>
             </el-card>
             <el-card shadow="always">
-                <div style="float:left;margin-top:6px;"><i class="el-icon-mobile-phone" style="color:#5AAF46;padding:0 10px;font-size:21;font-weight:bold;"></i>09764123368</div>
-                 <a href="tel:123-456-7890"><el-button round style="float:right;margin:0 auto 20px auto;background:#F0F0FF;color:#5AAF46">Call Now</el-button></a>
+                <div style="float:left;margin-top:6px;"><i class="el-icon-mobile-phone" style="color:#5AAF46;padding:0 10px;font-size:21;font-weight:bold;"></i>09889973993</div>
+                 <a href="tel:09889973993"><el-button round style="float:right;margin:0 auto 20px auto;background:#F0F0FF;color:#5AAF46">Call Now</el-button></a>
             </el-card>
-            <el-card shadow="always">
+            <!-- <el-card shadow="always">
                 <div style="float:left;margin-top:6px;"><i class="el-icon-mobile-phone" style="color:#5AAF46;padding:0 10px;font-size:21;font-weight:bold;"></i>09774134567</div>
                  <a href="tel:123-456-7890"><el-button round style="float:right;margin:0 auto 20px auto;background:#F0F0FF;color:#5AAF46">Call Now</el-button></a>
-            </el-card>
+            </el-card> -->
       </section>
       
     </div>

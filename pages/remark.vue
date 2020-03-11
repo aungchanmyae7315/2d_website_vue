@@ -141,7 +141,7 @@ export default {
                     amount: localStorage.getItem('bet_amount') ,
                 }
                 console.log(data)
-          this.$axios.post("/v2/v1/2d/bet",
+          this.$axios.post("/v2/v1/2d_web/bet",
                            data,
                     {
                            
