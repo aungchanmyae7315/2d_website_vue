@@ -683,7 +683,7 @@ export default {
     },
      methods: {
          goBack() {
-             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+             this.$router.push(`home?lang=${this.$store.state.locale}`); 
          },
          updateCurrentTime() {
          this.currentTime = moment().format('HH:mm:ss');

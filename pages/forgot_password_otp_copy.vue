@@ -149,7 +149,7 @@ import axios from 'axios'
     },
      methods: {
        goBack() {
-             this.$router.push(`login/?lang=${this.$store.state.locale}`); 
+             this.$router.push(`login?lang=${this.$store.state.locale}`); 
          },
   
   
@@ -226,7 +226,7 @@ import axios from 'axios'
                   console.log(response.data)
                   this.otp_error = response.data.data
                   if(response.data.result == '0') {
-                      this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                      this.$router.push(`home?lang=${this.$store.state.locale}`); 
                       this.$message({
                         showClose: true,
                         center: true,
@@ -244,7 +244,7 @@ import axios from 'axios'
                         this.$store.commit('accessToken', this.token);
                       console.log(this.userInfo)
                        if (this.active++ > 2) this.active = 0;
-                         this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                         this.$router.push(`home?lang=${this.$store.state.locale}`); 
                   }
                 })
                 // .then(response => ( 

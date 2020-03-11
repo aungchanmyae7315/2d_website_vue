@@ -16,7 +16,7 @@
             text-color="#fff"
             width="100%"
             active-text-color="#ffd04b">
-             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
+             <nuxt-link :to="`${$t('home')}?lang=${$store.state.locale}`">
             <el-menu-item index="1">
              <img src="~static/icons_header/dimond_icon.png" alt="">
                 <h5 class="main_icon">{{$t('home_title')}}</h5>

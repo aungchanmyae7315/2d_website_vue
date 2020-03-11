@@ -90,7 +90,7 @@ export default {
     },
     methods: {
         goBack() {
-             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+             this.$router.push(`home?lang=${this.$store.state.locale}`); 
          },
       cur_id(data) {
          this.$store.commit('noti_id', data);

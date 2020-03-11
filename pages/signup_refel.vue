@@ -95,7 +95,7 @@ export default {
                                     message: this.$t('you_had_refel_code'),
                                     type: 'success'
                                     });
-                                    this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                                    this.$router.push(`home?lang=${this.$store.state.locale}`); 
                                 }
                                 
                             // console.log(this.name_update = response.data.data)
@@ -116,7 +116,7 @@ export default {
          
     },
         skip() {
-             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+             this.$router.push(`home?lang=${this.$store.state.locale}`); 
         }
     }
 }
