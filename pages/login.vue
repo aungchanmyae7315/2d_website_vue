@@ -79,7 +79,7 @@
             </el-form-item>
         </el-form>
 
-        <h6>Or</h6>
+        <!-- <h6>Or</h6> -->
         <div class="">
             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
                   <el-button type="default" round>{{$t('Skip')}}</el-button>

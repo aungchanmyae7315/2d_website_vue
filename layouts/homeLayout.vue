@@ -18,15 +18,33 @@
             <li>
                  <img src="~static/images/logo.png" class="logo" alt="logo">
             </li>
-              <li class="" v-if ="!$store.state.isLoggedIn">
-
+             
+            <li class="download_btn" @click="drawer = true" >
+                   App<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
             </li>
-            <!-- <li v-else style="float:right;padding-right:20px;">
-                   <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
-            </li> -->
+           
           </ul>
              
-          
+      
+<el-drawer
+ 
+  :visible.sync="drawer"
+
+  size="100%"
+ >
+  <div>
+       <img src="~static/images/logo.png" class="logo_download" alt="logo">
+       <p>APP ‌ဖုန်းထဲထည့်သွင်းပြီးပါက Browser မှဝင်စရာမလိုပဲ တိုက်ရိုက်အသုံးပြုနိုင်သည်။</p>
+       <div class="two_download_btn">
+       <a href="https://www.seinlucky.com/download/seinlucky.apk">
+          <el-button round ><img src="~static/images/icons/ios_download_icon.png" alt="">Android APP</el-button>
+          </a>
+           <nuxt-link  :to="`${$t('ios_install_guide')}?lang=${$store.state.locale}`"> 
+           <el-button round ><img src="~static/images/icons/andriod_download_icon.png" alt="">iOS APP</el-button>
+           </nuxt-link>
+       </div>
+  </div>
+</el-drawer>
               
                
           
@@ -101,10 +119,12 @@
 export default {
   data() {
     return {
+       drawer: false,
        fullscreenLoading: false
     }
   },
   methods: {
+    
     loading() {
         const loading = this.$loading({
           lock: true,
@@ -222,6 +242,61 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+.download_btn {
+    float: right;
+    border-radius: 9px;
+    background: #FFBA15;
+    position: absolute;
+    right: 20px;
+    padding: 0 12px;
+    line-height: 35px;
+    font-weight: bold;
+}
+.main_container .el-drawer__header {
+  margin:0 ;
+  text-align: right;
+}
+.main_container .el-drawer__close-btn {
+  text-align: right;
+  font-size:32px;
+}
+.main_container .el-drawer {
+  max-width: 480px;
+  width:100%;
+  margin:0 auto;
+  background: rgba(13, 24, 13, 0.95) !important;
+ 
+  padding:20px;
+  color:#fff;
+}
+.main_container .el-drawer__container {
+  left:0;
+}
+.logo_download {
+  width:200px;
+  height:auto;
+}
+.main_container .el-drawer__body {
+  text-align: center;
+}
+.two_download_btn img {
+  width:30px;
+  height:auto;
+  margin:0 15px;
+}
+.two_download_btn .el-button {
+  background: unset;
+  color:#fff;
+  max-width: 480px;
+  width:100%;
+  margin:20px auto;
+}
+.two_download_btn .el-button:hover {
+  background-color: rgb(7, 102, 37);
+}
+.two_download_btn .el-button {
+  border:1px solid #fff !important;
 }
 </style>
 

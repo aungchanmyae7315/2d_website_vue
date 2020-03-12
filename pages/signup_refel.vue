@@ -2,7 +2,7 @@
     <main class="signup_refel_page">
                  <div class="longText" id="hidingScrollBar">
                     <div class="hideScrollBar_refel">
-                    <img src="~static/images/refel_page/refel_img_one.png" class="refel_img">
+                    <!-- <img src="~static/images/refel_page/refel_img_one.png" class="refel_img"> -->
                         <div class="refel_img_two">
                             <img src="~static/images/refel_page/refel_img_two.png" class="">
                         </div>

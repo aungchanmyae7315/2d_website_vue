@@ -489,6 +489,7 @@ export default {
 
           this.$axios.get('/v2/v1/slider_text')
               .then(response => {
+               
                this.slider_text = response.data.data[0]
               })
               

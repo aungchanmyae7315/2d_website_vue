@@ -13,6 +13,7 @@ export default {
   generate: {
     
   },
+ 
   /*
   ** Headers of the page
   */
@@ -61,6 +62,10 @@ export default {
   css: [
     '~/assets/css/style.css',
     'element-ui/lib/theme-chalk/index.css'
+  ],
+  download: [
+    '~/assets/download/SeinLucky.apk',
+    
   ],
   js: [
     '~/assets/js/index.js',

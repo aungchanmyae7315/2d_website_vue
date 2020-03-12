@@ -589,7 +589,7 @@ export default {
    
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+    //   setTimeout(() => this.$nuxt.$loading.finish(), 2000)
       })
     
         this.updateIsLoggedIn();
@@ -622,6 +622,7 @@ export default {
        this.$axios.get('/v2/v1/close_time')
              
               .then(response => {
+                  console.log(response)
                     this.time = response.data.data
                     this.morning_from = response.data.data[0].from
                     this.morning_to = response.data.data[0].to
@@ -630,6 +631,7 @@ export default {
 
                     var currentTime = moment().format('HH:mm:ss');
                     var currentDate  = moment().day();
+                     this.$nuxt.$loading.finish()
                   //  console.log(currentDate)
                     // setInterval(() => this.updateCurrentTime(), 1 * 1000);
                     // console.log(this.morning_from)
@@ -655,7 +657,7 @@ export default {
                     }else {
                          this.isActive = false
                          
-                        
+                       
                     }
 
                     if(currentDate == 0 || currentDate == 6) {
