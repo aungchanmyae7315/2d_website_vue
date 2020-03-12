@@ -193,7 +193,8 @@
   "you_had_refel_code":"You had already entered a referral code.",
   "refel_code_invalid":"Your referal code is invalid",
   "copy_success":"Copied Successful",
-  "password_invalid":"Password is invalid"
+  "password_invalid":"Password is invalid",
+  "remove_image":"Remove Image"
   
 }
 

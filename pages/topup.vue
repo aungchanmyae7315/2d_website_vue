@@ -24,7 +24,7 @@
                         
                         <img  :src="url" alt="" id="imagePreview_top">
                    
-                        <el-button type="text" @click="removeImage">Remove image</el-button> 
+                        <el-button type="text" @click="removeImage">{{$t('remove_image')}}</el-button> 
                 </div>
                  
                     

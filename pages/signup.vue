@@ -262,7 +262,7 @@ import axios from 'axios'
                         this.$store.commit('accessToken', this.token);
                      // console.log(this.userInfo)
                        if (this.active++ > 2) this.active = 0;
-                          this.$router.push(`signup_refels?lang=${this.$store.state.locale}`); 
+                          this.$router.push(`signup_refel?lang=${this.$store.state.locale}`); 
                   }
                 })
                 // .then(response => ( 
