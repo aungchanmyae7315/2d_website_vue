@@ -37,10 +37,10 @@
        <p>APP ‌ဖုန်းထဲထည့်သွင်းပြီးပါက Browser မှဝင်စရာမလိုပဲ တိုက်ရိုက်အသုံးပြုနိုင်သည်။</p>
        <div class="two_download_btn">
        <a href="https://www.seinlucky.com/download/seinlucky.apk">
-          <el-button round ><img src="~static/images/icons/ios_download_icon.png" alt="">Android APP</el-button>
+          <el-button round ><img src="~static/images/icons/andriod_download_icon.png" alt="">Android APP</el-button>
           </a>
            <nuxt-link  :to="`${$t('ios_install_guide')}?lang=${$store.state.locale}`"> 
-           <el-button round ><img src="~static/images/icons/andriod_download_icon.png" alt="">iOS APP</el-button>
+           <el-button round ><img src="~static/images/icons/ios_download_icon.png" alt="">iOS APP</el-button>
            </nuxt-link>
        </div>
   </div>
@@ -270,7 +270,7 @@ html {
   padding:20px;
   color:#fff;
 }
-.main_container .el-drawer__container {
+.main_container .el-drawer.ltr, .el-drawer.rtl, .el-drawer__container {
   left:0;
 }
 .logo_download {

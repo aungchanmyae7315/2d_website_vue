@@ -11,22 +11,22 @@
                 <div class="hideScrollBar">
                     <h4>iPhone ထဲသို့ Sein Lucky ထည့်သွင်းနည်း</h4>
                     <p>(၁ / ၅) iPhone ၏ Safari ကို ဖွင့်ပါ။</p>
-                   <img src="~static/images/install_ios_img1.png" alt="" class="noti_icon">
+                   <img src="~static/images/install_ios_img1.png" alt="" class="">
                    <br>
                    <p>(၂ / ၅) Sein Lucky App ၏ ဝက်ဆိုဒ် ww.SeinLucky123.com ကိုဝင်ပါ။</p>
-                    <img src="~static/images/install_ios_img2.png" alt="" class="noti_icon">
+                    <img src="~static/images/install_ios_img2.png" alt="" class="">
                     <br>
                     <p>(၃ / ၅) Share bottom(ရှဲခလုတ်) ကိုနှိပ်ပါ။</p>
-                    <img src="~static/images/install_ios_img3.png" alt="" class="noti_icon">
+                    <img src="~static/images/install_ios_img3.png" alt="" class="">
                     <br>
                     <p>(၄ / ၅) "Add to Home Screen" ကိုနှိပ်ပါ။</p>
-                    <img src="~static/images/install_ios_img4.png" alt="" class="noti_icon">
+                    <img src="~static/images/install_ios_img3.png" alt="" class="">
                     <br>
                      <p>(၅ / ၅) "Add"ကို နိပ်ပါ။</p>
-                    <img src="~static/images/install_ios_img4.png" alt="" class="noti_icon">
+                    <img src="~static/images/install_ios_img4.png" alt="" class="">
                     <br>
                      <p>သင်ဟာ Sein Lucky ကို သင်၏ဖုန်းထဲသိုထည့်ပြီးပါပြီ။</p>
-                    <img src="~static/images/install_ios_img5.png" alt="" class="noti_icon">
+                    <img src="~static/images/install_ios_img5.png" alt="" class="">
                     
                  
                 </div>
