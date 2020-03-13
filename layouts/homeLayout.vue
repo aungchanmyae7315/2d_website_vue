@@ -19,7 +19,7 @@
                  <img src="~static/images/logo.png" class="logo" alt="logo">
             </li>
              
-            <li class="download_btn" @click="drawer = true" >
+            <li class="download_btn" @click="dialog = true" >
                    App<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
             </li>
            
@@ -28,8 +28,8 @@
       
 <el-drawer
  
-  :visible.sync="drawer"
-
+  :visible.sync="dialog"
+  :append-to-body="true"
   size="100%"
  >
   <div>
@@ -119,7 +119,7 @@
 export default {
   data() {
     return {
-       drawer: false,
+       dialog: false,
        fullscreenLoading: false
     }
   },
@@ -244,6 +244,7 @@ html {
   background-color: #35495e;
 }
 .download_btn {
+    cursor: pointer;
     float: right;
     border-radius: 9px;
     background: #FFBA15;
@@ -253,15 +254,15 @@ html {
     line-height: 35px;
     font-weight: bold;
 }
-.main_container .el-drawer__header {
+.el-drawer__header {
   margin:0 ;
   text-align: right;
 }
-.main_container .el-drawer__close-btn {
+.el-drawer__close-btn {
   text-align: right;
   font-size:32px;
 }
-.main_container .el-drawer {
+.el-drawer{
   max-width: 480px;
   width:100%;
   margin:0 auto;
@@ -270,14 +271,14 @@ html {
   padding:20px;
   color:#fff;
 }
-.main_container .el-drawer.ltr, .el-drawer.rtl, .el-drawer__container {
+.el-drawer.ltr, .el-drawer.rtl, .el-drawer__container {
   left:0;
 }
 .logo_download {
   width:200px;
   height:auto;
 }
-.main_container .el-drawer__body {
+.el-drawer__body {
   text-align: center;
 }
 .two_download_btn img {

@@ -17,13 +17,14 @@
                     <img src="~static/images/install_ios_img2.png" alt="" class="">
                     <br>
                     <p>(၃ / ၅) Share bottom(ရှဲခလုတ်) ကိုနှိပ်ပါ။</p>
-                    <img src="~static/images/install_ios_img3.png" alt="" class="">
+                    <img src="~static/images/install_ios_img4.png" alt="" class="">
                     <br>
                     <p>(၄ / ၅) "Add to Home Screen" ကိုနှိပ်ပါ။</p>
-                    <img src="~static/images/install_ios_img3.png" alt="" class="">
+                    <img src="~static/images/install_ios_img3.png" alt=""  class="">
                     <br>
                      <p>(၅ / ၅) "Add"ကို နိပ်ပါ။</p>
-                    <img src="~static/images/install_ios_img4.png" alt="" class="">
+                    <img src="~static/images/install_ios_img.jpg" alt="" style="width:78%;border-radius:9px;box-shadow: -2px 7px 56px -2px rgba(0,0,0,0.75);" class="">
+                    <br>
                     <br>
                      <p>သင်ဟာ Sein Lucky ကို သင်၏ဖုန်းထဲသိုထည့်ပြီးပါပြီ။</p>
                     <img src="~static/images/install_ios_img5.png" alt="" class="">
