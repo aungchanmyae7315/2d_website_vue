@@ -13,7 +13,7 @@
                     <p>(၁ / ၅) iPhone ၏ Safari ကို ဖွင့်ပါ။</p>
                    <img src="~static/images/install_ios_img1.png" alt="" class="">
                    <br>
-                   <p>(၂ / ၅) Sein Lucky App ၏ ဝက်ဆိုဒ် ww.SeinLucky123.com ကိုဝင်ပါ။</p>
+                   <p>(၂ / ၅) Sein Lucky App ၏ ဝက်ဆိုဒ် www.SeinLucky123.com ကိုဝင်ပါ။</p>
                     <img src="~static/images/install_ios_img2.png" alt="" class="">
                     <br>
                     <p>(၃ / ၅) Share bottom(ရှဲခလုတ်) ကိုနှိပ်ပါ။</p>
