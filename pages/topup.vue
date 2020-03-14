@@ -14,8 +14,8 @@
                <p>{{$t('please_transfer_top-up_money_to_one')}}</p>
         <div id="bank_copy_list">
             <ul class="see_more_list" >
-                <li  v-if="b < limit_by" v-for="(bank_info, b) in bank_account" :key="b">
-                    <div class="demo-type wallet_type">
+                <li  v-for="(bank_info, b) in bank_account" :key="b">
+                    <div class="demo-type wallet_type"  v-if="b < limit_by">
                      
                             
                               <el-image :src="bank_info.bank_icon">
