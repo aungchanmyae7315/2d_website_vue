@@ -194,7 +194,11 @@
   "refel_code_invalid":"Your referal code is invalid",
   "copy_success":"Copied Successful",
   "password_invalid":"Password is invalid",
-  "remove_image":"Remove Image"
+  "remove_image":"Remove Image",
+  "please_transfer_top-up_money_to_one":"1. Please transfer top-up money to one of the following bank account of Sein Lucky. Than take a photo or screenshot of the bank transfer slip.",
+  "upload_he_image_of_the_bank" :"2. Upload the image of the bank transfer slip.",
+  "Please_enter_transferred" :"3. Please enter transferred amount.",
+  "need_help?_please_contact":"Need help? Please contact following numbers."
   
 }
 

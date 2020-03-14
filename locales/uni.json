@@ -193,5 +193,11 @@
 "refel_code_invalid":"ရည်ညွှန်းကုဒ်မှားနေပါသည်",
 "copy_success":"ကူးယူ ပြီးပါပြီ။",
 "password_invalid":"စကားဝှက်မှားနေပါသည်",
-"remove_image":"ပုံဖျက်မည်"
+"remove_image":"ပုံဖျက်မည်",
+"please_transfer_top-up_money_to_one":"၁. သင်၏ Sein Lucky အကောင့်သို့ ဖြည့်လိုသော ငွေပမာဏကို အောက်ပါ Sein Lucky ဘဏ်အကောင့် တစ်ခုထဲသို့ငွေအရင်လွှဲပါ။ ငွေလွှဲမှတ်တမ်းကို ဓာတ်ပုံ (သို့) စခရင်ရှော့ (Screenshot) ရိုက်ထားပါ။",
+"upload_he_image_of_the_bank" :"၂. ဘဏ်မှငွေလွှဲပြီးနောက် ငွေလွှဲမှတ်တမ်းဓာတ်ပုံ/ screenshot ကိုတင်ပါ။",
+"Please_enter_transferred" :"၃. လွှဲခဲ့သော ငွေပမာဏကို ဖြည့်ပါ။",
+"need_help?_please_contact":"ငွေမဖြည့်တတ်ပါက ဆက်သွယ်ရန် ဖုန်းများ"
+  
+
 }

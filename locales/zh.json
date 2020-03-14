@@ -194,7 +194,12 @@
 "refel_code_invalid":"Your referal code is invalid",
 "copy_success":"Copied Successful",
 "password_invalid":"Password is invalid",
-"remove_image":"Remove Image"
+"remove_image":"Remove Image",
+"please_transfer_top-up_money_to_one":"1. 请先转账到到Sein Lucky的银行账户后，并保存转账证明照片或 截图。",
+"upload_he_image_of_the_bank" :"2. 转账后，请上传转账证明。",
+"Please_enter_transferred" :"3. 请输入转账金额",
+"need_help?_please_contact":"如不懂或有什么疑问，请联系客服电话。"
+
 
 }
 

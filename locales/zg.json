@@ -193,5 +193,11 @@
 "refel_code_invalid":"ရည္ၫႊန္းကုဒ္မွားေနပါသည္",
 "copy_success":"ကူးယူ ၿပီးပါၿပီ။",
 "password_invalid":"စကားဝွက္မွားေနပါသည္",
-"remove_image":"ပုံဖ်က္မည္"
+"remove_image":"ပုံဖ်က္မည္",
+"please_transfer_top-up_money_to_one":"၁. သင္၏ Sein Lucky အေကာင့္သို႔ ျဖည့္လိုေသာ ေငြပမာဏကို ေအာက္ပါ Sein Lucky ဘဏ္အေကာင့္ တစ္ခုထဲသို႔ေငြအရင္လႊဲပါ။ ေငြလႊဲမွတ္တမ္းကို ဓာတ္ပုံ (သို႔) စခရင္ေရွာ့ (Screenshot) ႐ိုက္ထားပါ။",
+"upload_he_image_of_the_bank" :"၂. ဘဏ္မွေငြလႊဲၿပီးေနာက္ ေငြလႊဲမွတ္တမ္းဓာတ္ပုံ/ screenshot ကိုတင္ပါ။",
+"Please_enter_transferred" :"၃. လႊဲခဲ့ေသာ ေငြပမာဏကို ျဖည့္ပါ။",
+"need_help?_please_contact":"ေငြမျဖည့္တတ္ပါက ဆက္သြယ္ရန္ ဖုန္းမ်ား"
+  
+
 }

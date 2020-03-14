@@ -11,11 +11,12 @@
             </el-header>
             <!-- <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p> -->
               <!-- <h5>{{$t('Upload Bank transferred Slip')}}</h5> -->
-               <p>၁. သင်၏ Sein Lucky အကောင့်သို့ ဖြည့်လိုသော ငွေပမာဏကို အောက်ပါ Sein Lucky ဘဏ်အကောင့် တစ်ခုထဲသို့ငွေအရင်လွှဲပါ။ ငွေလွှဲမှတ်တမ်းကို ဓာတ်ပုံ (သို့) စခရင်ရှော့ (Screenshot) ရိုက်ထားပါ။</p>
+               <p>{{$t('please_transfer_top-up_money_to_one')}}</p>
         <div id="bank_copy_list">
             <ul class="see_more_list" >
                 <li  v-if="b < limit_by" v-for="(bank_info, b) in bank_account" :key="b">
                     <div class="demo-type wallet_type">
+                     
                             
                               <el-image :src="bank_info.bank_icon">
                                 <div slot="placeholder" class="image-slot">
@@ -42,12 +43,12 @@
             </ul>
             <div class="show_more">
                 <a href="javascript:void(0)" 
-                @click="simple_toggle(default_limit, bank_account.length)">{{ limit_by===2?'Show more': 'Hide more'}}
+                @click="simple_toggle(default_limit, bank_account.length)">{{ limit_by===2?'Show more': 'Show Less'}}
               </a>
             </div>
           
         </div>
-        <p>၂. ဘဏ်မှငွေလွှဲပြီးနောက် ငွေလွှဲမှတ်တမ်းဓာတ်ပုံ/ screenshot ကိုတင်ပါ။</p>
+        <p>{{$t('upload_he_image_of_the_bank')}}</p>
 
 
 
@@ -71,7 +72,7 @@
                 
             </div>
 
-            <p>၃. လွှဲခဲ့သော ငွေပမာဏကို ဖြည့်ပါ။</p>
+            <p>{{$t('Please_enter_transferred')}}</p>
             <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                  <el-form-item 
                   prop="tran_amount"
@@ -84,7 +85,7 @@
                 </el-form-item>
             </el-form>
 
-            <p>ငွေမဖြည့်တတ်ပါက ဆက်သွယ်ရန် ဖုန်းများ</p>
+            <p>{{$t('need_help?_please_contact')}}</p>
                     <ul class="topup_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium" type="info"  @click="dial(phone)"   icon="el-icon-phone" >{{phone}}</el-button></li>
 
