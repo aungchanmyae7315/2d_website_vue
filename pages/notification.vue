@@ -94,7 +94,7 @@ export default {
          },
       cur_id(data) {
          this.$store.commit('noti_id', data);
-           this.$router.push(`withdraw_noti?lang=${this.$store.state.locale}`); 
+           this.$router.push(`/withdraw_noti?lang=${this.$store.state.locale}`); 
        
       }
      },

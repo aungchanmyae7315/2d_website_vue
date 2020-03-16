@@ -149,7 +149,7 @@ import axios from 'axios'
     },
      methods: {
        goBack() {
-             this.$router.push(`login?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/login?lang=${this.$store.state.locale}`); 
          },
   
   

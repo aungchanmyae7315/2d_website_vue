@@ -260,7 +260,7 @@ export default {
     },
     methods: {
         goBack() {
-             this.$router.push(`wallet?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/wallet?lang=${this.$store.state.locale}`); 
             
          },
         id_bank(data) {
@@ -322,7 +322,7 @@ export default {
                     }else {
                            
                         this.submitted = true
-                        this.$router.push(`withdraw_success?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/withdraw_success?lang=${this.$store.state.locale}`); 
                     
                     }
                 })

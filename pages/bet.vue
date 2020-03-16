@@ -713,7 +713,7 @@ export default {
 
                             
                           this.$store.commit('betAmount',bet_amount);
-                         this.$router.push(`remark?lang=${this.$store.state.locale}`); 
+                         this.$router.push(`/remark?lang=${this.$store.state.locale}`); 
                         //  `${$t('remark')}?lang=${$store.state.locale}`
                     }
 

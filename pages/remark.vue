@@ -123,12 +123,12 @@ export default {
     
      methods: {
       goBack() {
-             this.$router.push(`bet?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/bet?lang=${this.$store.state.locale}`); 
          },
        back_bet() {
          
          localStorage.removeItem('odds');
-           this.$router.push(`bet?lang=${this.$store.state.locale}`); 
+           this.$router.push(`/bet?lang=${this.$store.state.locale}`); 
        },
        
        submit_bet() {
@@ -167,7 +167,7 @@ export default {
                         });
                       }else {
                        
-                          this.$router.push(`bet_success?lang=${this.$store.state.locale}`);
+                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                       }
                       // this.bet = response.data.data
                     

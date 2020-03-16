@@ -7,7 +7,7 @@
                 
             </li>
             <li v-else>
-                 <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`">
+                 <nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`">
 
                   <div class="noti" type="primary" @click="loading"
                   v-loading.fullscreen.lock="fullscreenLoading">
@@ -39,7 +39,7 @@
        <a href="https://www.seinlucky.com/download/seinlucky.apk">
           <el-button round ><img src="~static/images/icons/andriod_download_icon.png" alt="">Android APP</el-button>
           </a>
-           <nuxt-link  :to="`${$t('ios_install_guide')}?lang=${$store.state.locale}`"> 
+           <nuxt-link  :to="`${$t('/ios_install_guide')}?lang=${$store.state.locale}`"> 
            <el-button round ><img src="~static/images/icons/ios_download_icon.png" alt="">iOS APP</el-button>
            </nuxt-link>
        </div>
@@ -89,19 +89,19 @@
               
             </el-menu-item>
             </nuxt-link>
-             <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`"> 
+             <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`"> 
             <el-menu-item index="2">
                <img src="~static/icons_header/wallet_icon.png" alt="">
                 <h5 class="main_icon">{{$t('wallet_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
-              <nuxt-link :to="`${$t('service')}?lang=${$store.state.locale}`">
+              <nuxt-link :to="`${$t('/service')}?lang=${$store.state.locale}`">
             <el-menu-item index="3">
               <img src="~static/icons_header/service_icon.png" alt="">
                <h5 class="main_icon">{{$t('service_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
-             <nuxt-link :to="`${$t('me')}?lang=${$store.state.locale}`">
+             <nuxt-link :to="`${$t('/me')}?lang=${$store.state.locale}`">
              <el-menu-item index="4">
                <img src="~static/icons_header/me_icon.png" alt="">
                 <h5 class="main_icon">{{$t('me_title')}}</h5>

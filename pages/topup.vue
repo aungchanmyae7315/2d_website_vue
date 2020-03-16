@@ -365,7 +365,7 @@ export default {
         },
        
           goBack() {
-             this.$router.push(`wallet?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/wallet?lang=${this.$store.state.locale}`); 
          },
           toggleDropdown() {
             this.display = !this.display
@@ -429,7 +429,7 @@ export default {
                      console.log(response)
                 })
                   this.submitted = true
-                 this.$router.push(`topup_success?lang=${this.$store.state.locale}`); 
+                 this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
                  
             
           } else {

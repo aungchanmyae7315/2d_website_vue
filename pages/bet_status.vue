@@ -8,7 +8,7 @@
                  <span class="time_status">{{this.time_stauts}}</span>
            <!-- </nuxt-link> -->
 
-         <nuxt-link :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
+         <nuxt-link :to="`${$t('/bet_history')}?lang=${$store.state.locale}`">
              <img src="~static/images/icons/bet_status_icon.png" alt="" class="bet_status_icon">
         </nuxt-link>
       </el-header>
@@ -31,7 +31,7 @@
             </tbody>
         </table>
         <div style="text-align:center;padding:20px;">
-            <nuxt-link :to="`${$t('bet_history')}?lang=${$store.state.locale}`">
+            <nuxt-link :to="`${$t('/bet_history')}?lang=${$store.state.locale}`">
                 <el-button class="bet_history_btn" type="info" round>{{$t('Click to see Bet History')}}</el-button>
             </nuxt-link>
         </div>
@@ -163,7 +163,7 @@ export default {
     },
     methods: {
         goBack() {
-             this.$router.push(`me?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/me?lang=${this.$store.state.locale}`); 
          },
    
     

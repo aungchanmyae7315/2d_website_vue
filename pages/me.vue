@@ -12,7 +12,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li>{{this.profile.name}}</li>
-                    <nuxt-link :to="`${$t('profile_edit')}?lang=${$store.state.locale}`">
+                    <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`">
                      <li class="edit_profile">{{$t('edit_profile')}}</li>
                     </nuxt-link>
                   </ul>
@@ -21,7 +21,7 @@
               </div>
         </div>
         <div v-else> 
-            <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
+            <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
            <div class="demo-type">
                   <el-avatar :size="60" ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                   <span  class="avatar_text">{{$t('Please Login first')}}</span>
@@ -36,22 +36,22 @@
                
             
                 <div  v-if ="!$store.state.isLoggedIn">
-                       <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
-                       <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
-                       <li><nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
-                        <li><nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
-                        <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
+                        <li><nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
+                        <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
                 </div>
                 <div v-else> 
-                       <li><nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"><a href="" @click="loading" v-loading.fullscreen.lock="fullscreenLoading"><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
-                        <li><nuxt-link  :to="`${$t('bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
-                         <li><nuxt-link  :to="`${$t('bet_history')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
-                           <li><nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
-                        <li><nuxt-link  :to="`${$t('language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
+                       <li><nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`"><a href="" @click="loading" v-loading.fullscreen.lock="fullscreenLoading"><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
+                        <li><nuxt-link  :to="`${$t('/bet_status')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/bet.png" alt=""> {{$t('Bet Status')}}</a></nuxt-link></li>
+                         <li><nuxt-link  :to="`${$t('/bet_history')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
+                           <li><nuxt-link :to="`${$t('/result')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
+                        <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
-                         <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
-                          <li v-else><nuxt-link :to="`${$t('refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
+                         <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
+                          <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
                 </div>
               
@@ -77,19 +77,19 @@
               <h5 class="main_icon" >{{$t('home_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
-             <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`">
+             <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
             <el-menu-item index="2">
                <img src="~static/icons_header/wallet_icon.png" alt="">
                <h5 class="main_icon">{{$t('wallet_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
-            <nuxt-link :to="`${$t('service')}?lang=${$store.state.locale}`">
+            <nuxt-link :to="`${$t('/service')}?lang=${$store.state.locale}`">
             <el-menu-item index="3">
                 <img src="~static/icons_header/service_icon.png" alt="">
                 <h5 class="main_icon" >{{$t('service_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
-             <nuxt-link :to="`${$t('me')}?lang=${$store.state.locale}`">
+             <nuxt-link :to="`${$t('/me')}?lang=${$store.state.locale}`">
              <el-menu-item index="4">
                <img src="~static/icons_header/me_t_icon.png" alt="">
                <h5 class="main_icon" style="font-weight:bold">{{$t('me_title')}}</h5>

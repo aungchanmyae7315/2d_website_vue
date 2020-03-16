@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         goBack() {
-             this.$router.push(`bet_status?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/bet_status?lang=${this.$store.state.locale}`); 
          },
    
     
@@ -68,7 +68,7 @@ export default {
         bet_date(data) {
           this.$store.commit('bet_date', data)
        
-            this.$router.push(`bet_detail?lang=${this.$store.state.locale}`); 
+            this.$router.push(`/bet_detail?lang=${this.$store.state.locale}`); 
 
         },
     },

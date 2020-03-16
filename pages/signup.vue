@@ -3,7 +3,7 @@
 
 
  <div class="sign_page signup">
-          <nuxt-link  :to="`${$t('login')}?lang=${$store.state.locale}`">
+          <nuxt-link  :to="`${$t('/login')}?lang=${$store.state.locale}`">
                           <el-page-header style="color:#000" title=""  >
                 </el-page-header> 
             </nuxt-link>
@@ -262,7 +262,7 @@ import axios from 'axios'
                         this.$store.commit('accessToken', this.token);
                      // console.log(this.userInfo)
                        if (this.active++ > 2) this.active = 0;
-                          this.$router.push(`signup_refel?lang=${this.$store.state.locale}`); 
+                          this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`); 
                   }
                 })
                 // .then(response => ( 

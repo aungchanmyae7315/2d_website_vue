@@ -8,7 +8,7 @@
         <div class="" v-if ="!$store.state.isLoggedIn">
             
               <div class="demo-type">
-                 <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
+                 <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
                     <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                     <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
                   </nuxt-link>
@@ -52,7 +52,7 @@
                 
                  <el-row >
                   <el-col :span="21">
-                        <nuxt-link :to="`${$t('edit_profile_index')}?lang=${$store.state.locale}`">
+                        <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" v-if="this.profile.profile == null">
                    <img src="~static/images/icons/me_img.png" alt="">
                    
@@ -336,7 +336,7 @@
 
 
             <div class="bet_btn">
-              <nuxt-link :to="`${$t('bet')}?lang=${$store.state.locale}`">
+              <nuxt-link :to="`${$t('/sbet')}?lang=${$store.state.locale}`">
                  <el-button type="" round>{{$t('Bet')}}</el-button>
               </nuxt-link>
                

@@ -68,7 +68,7 @@ export default {
     },
      methods: {
         goBack() {
-             this.$router.push(`login?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/login?lang=${this.$store.state.locale}`); 
          },
      },
      created() {

@@ -73,7 +73,7 @@
           <el-button type="success" round @click="submitForm('ruleForm')">{{$t('login_title')}}</el-button>
 
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
-                          <nuxt-link :to="`${$t('Forgotpassword')}?lang=${$store.state.locale}`">
+                          <nuxt-link :to="`${$t('/Forgotpassword')}?lang=${$store.state.locale}`">
                 <el-button type="text"  style="color:#158220">{{$t('forgot_password')}}</el-button>
                           </nuxt-link>
             </el-form-item>
@@ -84,7 +84,7 @@
             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
                   <el-button type="default" round>{{$t('Skip')}}</el-button>
             </nuxt-link>
-           <nuxt-link :to="`${$t('signup')}?lang=${$store.state.locale}`">
+           <nuxt-link :to="`${$t('/signup')}?lang=${$store.state.locale}`">
                 <el-button type="warning" round>{{$t('sign_up_new')}}</el-button>
            </nuxt-link>
           

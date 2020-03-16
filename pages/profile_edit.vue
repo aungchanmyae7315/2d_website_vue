@@ -199,7 +199,7 @@
     },
     methods: {
       goBack() {
-             this.$router.push(`me?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/me?lang=${this.$store.state.locale}`); 
          },
 
       onFileChange(e) {
@@ -257,7 +257,7 @@
                 })
 
 
-                this.$router.push(`me?lang=${this.$store.state.locale}`); 
+                this.$router.push(`/me?lang=${this.$store.state.locale}`); 
     }
 
 

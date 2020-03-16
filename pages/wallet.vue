@@ -3,7 +3,7 @@
       <el-header class="wallet_header" >
         
               <div v-if="!$store.state.isLoggedIn" class="demo-type logout_wallet">
-                 <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
+                 <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" >  <img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
@@ -40,10 +40,10 @@
               </div>
            
                 <div v-else class="btn_group_wallet">
-                  <nuxt-link  :to="`${$t('withdrawal')}?lang=${$store.state.locale}`">
+                  <nuxt-link  :to="`${$t('/withdrawal')}?lang=${$store.state.locale}`">
                     <el-button round class="withdraw_btn">{{ $t('Withdrawal') }}</el-button>
                   </nuxt-link>
-                <nuxt-link  :to="`${$t('topup')}?lang=${$store.state.locale}`">
+                <nuxt-link  :to="`${$t('/topup')}?lang=${$store.state.locale}`">
                       <el-button type="warning" round>{{ $t('Top Up') }}</el-button>
                 </nuxt-link>
               
@@ -110,19 +110,19 @@
                         <h5 class="main_icon">{{$t('home_title')}}</h5>
                     </el-menu-item>
                 </nuxt-link>
-                <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`">
+                <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
                   <el-menu-item index="2">
                       <img src="~static/icons_header/wallet_t_icon.png" alt="">
                       <h5 class="main_icon" style="font-weight:bold">{{$t('wallet_title')}}</h5>
                   </el-menu-item>
                 </nuxt-link>
-                 <nuxt-link  :to="`${$t('service')}?lang=${$store.state.locale}`">
+                 <nuxt-link  :to="`${$t('/service')}?lang=${$store.state.locale}`">
                   <el-menu-item index="3">
                     <img src="~static/icons_header/service_icon.png" alt="">
                     <h5 class="main_icon">{{$t('service_title')}}</h5>
                   </el-menu-item>
                 </nuxt-link>
-                <nuxt-link  :to="`${$t('me')}?lang=${$store.state.locale}`">
+                <nuxt-link  :to="`${$t('/me')}?lang=${$store.state.locale}`">
                   <el-menu-item index="4">
                     <img src="~static/icons_header/me_icon.png" alt="">
                     <h5 class="main_icon">{{$t('me_title')}}</h5>
