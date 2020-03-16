@@ -293,7 +293,7 @@ html {
   padding:0 30px;
 }
 .two_download_btn {
-  margin-top:150px;
+  margin-top:100px;
 }
 .two_download_btn img {
   max-width: 480px;
