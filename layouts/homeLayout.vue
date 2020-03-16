@@ -36,12 +36,22 @@
        <img src="~static/images/logo.png" class="logo_download" alt="logo">
        <p>APP ‌ဖုန်းထဲထည့်သွင်းပြီးပါက Browser မှဝင်စရာမလိုပဲ တိုက်ရိုက်အသုံးပြုနိုင်သည်။</p>
        <div class="two_download_btn">
-       <a href="https://www.seinlucky.com/download/seinlucky.apk">
-          <el-button round ><img src="~static/images/icons/andriod_download_icon.png" alt="">Android APP</el-button>
-          </a>
-           <nuxt-link  :to="`${$t('/ios_install_guide')}?lang=${$store.state.locale}`"> 
-           <el-button round ><img src="~static/images/icons/ios_download_icon.png" alt="">iOS APP</el-button>
-           </nuxt-link>
+         <div>
+             <a href="https://www.seinlucky.com/download/seinlucky.apk">
+                <img src="~static/images/icons/andriod_download_img.png" alt="">
+              </a>
+         </div>
+           <div>
+             <a href="https://play.google.com/store/apps/details?id=seinlucky.com&hl=en">
+                <img src="~static/images/icons/playstore_download_img.png" alt="">
+              </a>
+         </div>
+          <div>
+               <nuxt-link  :to="`${$t('/ios_install_guide')}?lang=${$store.state.locale}`"> 
+                  <img src="~static/images/icons/ios_download_img.png" alt="">
+              </nuxt-link>
+          </div>
+          
        </div>
   </div>
 </el-drawer>
@@ -280,11 +290,19 @@ html {
 }
 .el-drawer__body {
   text-align: center;
+  padding:0 30px;
+}
+.two_download_btn {
+  margin-top:180px;
 }
 .two_download_btn img {
-  width:30px;
+  max-width: 480px;
+  width:130px;
+  border:2px solid #fff;
+  border-radius: 9px;
   height:auto;
-  margin:0 15px;
+  margin:20px auto;
+  display: block;
 }
 .two_download_btn .el-button {
   background: unset;

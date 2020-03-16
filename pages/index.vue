@@ -1,12 +1,12 @@
 <template>
- 
+        
         
       <el-main class="main_page">
-        
+        <!-- <Online></Online> -->
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
         <div class="" v-if ="!$store.state.isLoggedIn">
-            
+
               <div class="demo-type">
                  <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
                     <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
@@ -351,6 +351,7 @@
 
 <script>
 import Music from '~/components/Music.vue'
+import Online from '~/components/Online.vue'
 import axios from 'axios'
 
 export default {
@@ -373,7 +374,8 @@ export default {
    },
   components: {
   
-    Music
+    Music,
+    Online
   },
   
   data() {
@@ -415,7 +417,7 @@ export default {
                this.info = response.data[0]
 
               })
-            }.bind(this), 3000)
+            }.bind(this), 5000)
           },
           async getDataresult() {
             this.$axios.get('/v1/twod-result/live')
@@ -493,7 +495,7 @@ export default {
               this.info = response.data[0]
             
               })      
-        }.bind(this), 3000)   
+        }.bind(this), 5000)   
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
       //  setInterval(function() {
