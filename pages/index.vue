@@ -336,7 +336,7 @@
 
 
             <div class="bet_btn">
-              <nuxt-link :to="`${$t('/sbet')}?lang=${$store.state.locale}`">
+              <nuxt-link :to="`${$t('/bet')}?lang=${$store.state.locale}`">
                  <el-button type="" round>{{$t('Bet')}}</el-button>
               </nuxt-link>
                
