@@ -36,21 +36,22 @@
        <img src="~static/images/logo.png" class="logo_download" alt="logo">
        <p>APP ‌ဖုန်းထဲထည့်သွင်းပြီးပါက Browser မှဝင်စရာမလိုပဲ တိုက်ရိုက်အသုံးပြုနိုင်သည်။</p>
        <div class="two_download_btn">
-         <div>
-             <a href="https://www.seinlucky.com/download/seinlucky.apk">
-                <img src="~static/images/icons/andriod_download_img.png" alt="">
-              </a>
-         </div>
-           <div>
-             <a href="https://play.google.com/store/apps/details?id=seinlucky.com&hl=en">
-                <img src="~static/images/icons/playstore_download_img.png" alt="">
-              </a>
-         </div>
           <div>
                <nuxt-link  :to="`${$t('/ios_install_guide')}?lang=${$store.state.locale}`"> 
                   <img src="~static/images/icons/ios_download_img.png" alt="">
               </nuxt-link>
           </div>
+           <div>
+             <a href="https://play.google.com/store/apps/details?id=seinlucky.com&hl=en">
+                <img src="~static/images/icons/playstore_download_img.png" alt="">
+              </a>
+         </div>
+         
+          <div>
+             <a href="https://www.seinlucky.com/download/seinlucky.apk">
+                <img src="~static/images/icons/andriod_download_img.png" alt="">
+              </a>
+         </div>
           
        </div>
   </div>
