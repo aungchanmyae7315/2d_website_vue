@@ -11,7 +11,8 @@ export default {
     middleware: 'i18n'   // middleware all pages of the application
   },
   generate: {
-    
+    fallback: true,
+    interval: 100
   },
  
   /*
