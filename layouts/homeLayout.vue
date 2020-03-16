@@ -317,6 +317,7 @@ html {
 .two_download_btn .el-button {
   border:1px solid #fff !important;
 }
+
 </style>
 
 
