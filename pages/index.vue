@@ -359,6 +359,7 @@ export default {
   mutations: {},
   actions: {},
   layout: 'homeLayout',
+
   mounted() {
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
