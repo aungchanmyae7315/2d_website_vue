@@ -652,23 +652,23 @@ export default {
   background: #93dbe9;
   animation: ldio-ct1tsjzqdg5 1s linear infinite;
   animation-delay: -0.5s;
-    width:20px;
-  height:20px;
+    width:15px;
+  height:15px;
 
 }
 .card_one_loading div:nth-child(2) {
   background: #689cc5;
   animation: ldio-ct1tsjzqdg5 1s linear infinite;
   animation-delay: 0s;
-  width:20px;
-  height:20px;
+  width:15px;
+  height:15px;
 }
 .card_one_loading div:nth-child(3) {
   background: #93dbe9;
   animation: ldio-ct1tsjzqdg5-o 1s linear infinite;
   animation-delay: -0.5s;
-    width:20px;
-  height:20px;
+    width:15px;
+  height:15px;
 
 }
 

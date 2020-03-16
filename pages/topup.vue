@@ -56,8 +56,7 @@
             <div class="avatar-upload">
                     <div class="avatar-edit" v-if="!url">
                         <label for="imageUpload" class="upload_icon_top"> <i slot="default" class="el-icon-plus"></i><span style="padding-left:15px;position:relative;bottom:6px">ငွေလွှဲမှတ်တမ်း ပုံတင်မည်။</span></label>
-                        
-                        <input type='file' accept="image/*" @change="onFileChange" id="imageUpload"  />
+                        <input type="file" @change="onFileChange" id="imageUpload"  accept=".jpg, .jpeg, .png">
                         <div slot="tip" class="el-upload__tip"></div>
                     </div>
             
