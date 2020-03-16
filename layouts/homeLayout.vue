@@ -304,6 +304,7 @@ html {
   margin:20px auto;
   display: block;
 }
+
 .two_download_btn .el-button {
   background: unset;
   color:#fff;
