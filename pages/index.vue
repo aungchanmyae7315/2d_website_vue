@@ -147,7 +147,7 @@
                
                 <div class="number">
                       <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
-                      <h2  v-if="!this.info.live && !this.info_api.result_1200" >
+                      <h2 v-if="!this.info.live && !this.info_api.result_1200"    >
                         <div class="loadingio-spinner-dual-ball-ty27h70p24 ">
                             <div class="ldio-ct1tsjzqdg5">
                                 <div></div>
@@ -157,7 +157,7 @@
                         </div>
                       </h2>
                            
-                       <h2 v-else  class="static"  v-bind:class="{ live_number: isActive, 'text-danger': hasError }"> 
+                       <h2 v-else   class="static"  v-bind:class="{ live_number: isActive, 'text-danger': hasError }"> 
                           
                          <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
                           <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.result_1200}}</span>
@@ -194,7 +194,7 @@
                   <div class="col">
                       <span>Set</span>
                        <h4  v-if="!this.info.set_1200 && !this.info_api.set_1200"    class="card_loading">
-                        <div class="loadingio-spinner-dual-ball-ty27h70p24">
+                        <div class="loadingio-spinner-card_one_loading">
                             <div class="card_one_loading">
                                 <div></div>
                                 <div></div>
@@ -213,7 +213,7 @@
                   <div class="col">
                       <span>Value</span>
                        <h4  v-if="!this.info.val_1200 && !this.info_api.val_1200"    class="card_loading">
-                        <div class="loadingio-spinner-dual-ball-ty27h70p24">
+                        <div class="loadingio-spinner-card_one_loading">
                             <div class="card_one_loading">
                                 <div></div>
                                 <div></div>
@@ -247,7 +247,7 @@
                       <div class="col">
                           <span>Set</span>
                           <h4  v-if="!this.info.set_430 && !this.info_api.set_430"    class="card_loading">
-                            <div class="loadingio-spinner-dual-ball-ty27h70p24">
+                            <div class="loadingio-spinner-card_one_loading">
                                 <div class="card_one_loading">
                                     <div></div>
                                     <div></div>
@@ -265,8 +265,8 @@
                       </div>
                       <div class="col">
                           <span>Value</span>
-                           <h4  v-if="!this.info.val_430 && !this.info_api.val_430"    class="card_loading">
-                            <div class="loadingio-spinner-dual-ball-ty27h70p24">
+                           <h4   v-if="!this.info.val_430 && !this.info_api.val_430"    class="card_loading">
+                            <div class="loadingio-spinner-card_one_loading">
                                 <div class="card_one_loading">
                                     <div></div>
                                     <div></div>
@@ -274,7 +274,7 @@
                                 </div>
                             </div>
                           </h4>
-                          <h4 v-else>
+                          <h4  v-else>
                             <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
                             <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
                             <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
@@ -578,9 +578,20 @@ export default {
 }
 
 .loadingio-spinner-dual-ball-ty27h70p24 {
-  width: 125px;
-  height: 125px;
+  width: 100%;
+  height: 100%;
  position: absolute;
+ top:0;;
+ right:0;
+  overflow: hidden;
+
+}
+.loadingio-spinner-card_one_loading {
+  width: 100%;
+  height: 100%;
+ position: absolute;
+ top:22px;
+ right:32px;
   overflow: hidden;
 
 }
@@ -596,23 +607,23 @@ export default {
   background: #93dbe9;
   animation: ldio-ct1tsjzqdg5 1s linear infinite;
   animation-delay: -0.5s;
-    width:20px;
-  height:20px;
+    width:30px;
+  height:30px;
 
 }
 .ldio-ct1tsjzqdg5 div:nth-child(2) {
   background: #689cc5;
   animation: ldio-ct1tsjzqdg5 1s linear infinite;
   animation-delay: 0s;
-  width:20px;
-  height:20px;
+  width:30px;
+  height:30px;
 }
 .ldio-ct1tsjzqdg5 div:nth-child(3) {
   background: #93dbe9;
   animation: ldio-ct1tsjzqdg5-o 1s linear infinite;
   animation-delay: -0.5s;
-    width:20px;
-  height:20px;
+    width:30px;
+  height:30px;
 
 }
 
@@ -661,8 +672,8 @@ export default {
 }
 
 .card_one_loading {
-  width: 100%;
-  height: 100%;
+  width: 40px;
+  height: 40px;
   position: relative;
   left:0;
   bottom:55px;
