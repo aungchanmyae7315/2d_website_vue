@@ -268,6 +268,7 @@ html {
   margin:0 ;
   text-align: right;
 }
+
 .el-drawer__close-btn {
   text-align: right;
   font-size:32px;
