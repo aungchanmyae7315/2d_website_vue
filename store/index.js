@@ -22,10 +22,10 @@ const createStore = () => {
         },
         mutations: {
             SET_LANG(state, locale) {
-                if (state.locales.indexOf(locale) !== -1) {
+                // if (state.locales.indexOf(locale) !== -1) {
                   state.locale = locale
                   localStorage.setItem('locale', JSON.stringify(locale));
-                }
+                // }
               },
 
             logIn(state, userInfo) {
