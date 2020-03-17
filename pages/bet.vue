@@ -115,18 +115,18 @@
                             </el-form-item>
                 </el-col>
             </el-row>
-             <!-- <span v-text="currentTime"></span> -->
-            <!-- <el-row>
+          
+            <!-- <el-row> -->
                 
                      
-                <el-col :span="12"><div class="betclose_text">Bet Close: 11:55:00</div></el-col>
-                <el-col v-if ="!$store.state.isLoggedIn" :span="12"> <div class="balance_amount"></div></el-col>
-                <el-col v-else :span="12"> <div class="balance_amount">Balance: {{this.profile.wallet}}</div></el-col>
+                <!-- <el-col :span="12"><div class="betclose_text"></div></el-col> -->
+                <el-col v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
+                <el-col v-else> <div class="balance_amount" style="float:right">Balance: {{this.profile.wallet}}</div></el-col>
         
-            </el-row> -->
+            <!-- </el-row> -->
 
                <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
-                 <nuxt-link :to="`${$t('login')}?lang=${$store.state.locale}`">
+                 <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
                     <el-button  type="warning" round>{{$t('Please Login first')}}</el-button>
                  </nuxt-link>
              </div>
@@ -278,6 +278,7 @@
     }
     .balance_amount {
         text-align: right;
+        padding:0 10px 10px 0;
     }
     .betclose_text {
         color:#CCCCCC;
@@ -586,7 +587,11 @@ import axios from 'axios'
 export default {
     mounted() {
         
-   
+//    setInterval(() => {
+//       this.evening_time = moment(this.evening_time.subtract(1, 'seconds'))
+      
+//     }, 1000);
+
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
     //   setTimeout(() => this.$nuxt.$loading.finish(), 2000)
@@ -594,17 +599,54 @@ export default {
     
         this.updateIsLoggedIn();
     },
+    computed: {
+            // CountDownTime: function(){
+            //        this.currentTime = moment().format('HH:mm:ss');
+            //         this.currentDate  = moment().day();
+                
+            //  if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
+            //            return this.evening_time = 'Close';
+                      
+            //         }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
+            //            console.log('twoooo')
+            //             return this.evening_time.format('HH:mm:ss');
+            //         }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
+            //             console.log('three')
+            //                 return this.evening_time = 'Close';
+            //         }else if(this.currentTime > this.evening_to) {
+            //             console.log("ffff")
+            //             console.log(this.evening_time)
+            //              return this.evening_time.format('HH:mm:ss');
+            //              //alert('four')
+            //         }else {
+            //             console.log('five')
+            //             return this.evening_time.format('HH:mm:ss');
+                         
+                       
+            //         }
+
+            //         if(this.currentDate == 0 || this.currentDate == 6) {
+            //               return this.evening_time = 'Close';
+            //         }
+            // }
+    },
  
     data() {
         return {
+            time:'',
+            // evening_time: moment(100 * 10 * 1000),
             isActive:true,
             hasError:'',
-             currentTime: '',
-             morning_from:this.morning_from,
-             morning_to:'',
-             evening_from:'',
-             evening_to:'',
-            
+            currentTime: '',
+            morning_from:this.morning_from,
+            morning_to:'',
+            evening_from:'',
+            evening_to:'',
+           
+            morningTime_9_30:'09:30:00',
+            time_12_00:'12:01:00',
+            time_01_00:'13:00:00',
+            time_04_30:'16:30:00',
               isLoggedIn: true,
                 ruleForm: {
                     amount:'',
@@ -619,6 +661,10 @@ export default {
         }
     },
     created() {
+    //    this.breakTime = moment().format('h:mm:ss a')
+    //  setInterval(() => this.CountDownTime(), 1 * 1000);
+
+
        this.$axios.get('/v2/v1/close_time')
              
               .then(response => {
@@ -628,20 +674,10 @@ export default {
                     this.morning_to = response.data.data[0].to
                     this.evening_from = response.data.data[1].from
                     this.evening_to = response.data.data[1].to
-
+          
                     var currentTime = moment().format('HH:mm:ss');
                     var currentDate  = moment().day();
                      this.$nuxt.$loading.finish()
-                  //  console.log(currentDate)
-                    // setInterval(() => this.updateCurrentTime(), 1 * 1000);
-                    // console.log(this.morning_from)
-                    //  console.log(this.morning_to)
-                    //   console.log(this.evening_from)
-                    //    console.log(this.evening_to)
-                    //    console.log(currentTime)
-
-
-
                     if(currentTime  >  this.morning_from && currentTime < this.morning_to ) {
                         this.isActive = true
                      //alert('one')
@@ -729,7 +765,7 @@ export default {
             
       },
         
-            
+  
 
       small_number(val) {
            this.ruleForm.check_btn = val ? small_option : [];

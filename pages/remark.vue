@@ -210,13 +210,8 @@ export default {
 }
 
 .remark .btn_group {
-   position: fixed;
-    right: 0;
     bottom: 22px;
     background: #fff;
-    left: 0;
-    bottom: 0;
-    padding: 20px;
     max-width: 480px;
     width:100%;
 }

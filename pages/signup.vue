@@ -41,7 +41,7 @@
                <el-button type="success" round @click="next('ruleForm')">{{$t('Next')}}</el-button>
         
           </el-form>
-            <el-form v-if="active===2"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+            <!-- <el-form v-if="active===2"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
            
         
          <div class="sign_up_text">
@@ -65,7 +65,7 @@
              </div>
                <el-button type="success" round @click="nextTwo('ruleForm')">{{$t('Next')}}</el-button>
         
-          </el-form>
+          </el-form> -->
         <!-- <el-form v-if="active===2" :model="ruleForm" ref="ruleForm"   class="demo-ruleForm" >
           <div class="sign_up_text">
                 <h4>We have sent OTP<br> on your number</h4>
@@ -88,7 +88,7 @@
              <el-button type="success" round @click="nextTwo('ruleForm')">next</el-button>
         </el-form> -->
 
-        <el-form v-if="active===3" :model="ruleForm"  ref="ruleForm" class="demo-ruleForm" >
+        <el-form v-if="active===2" :model="ruleForm"  ref="ruleForm" class="demo-ruleForm" >
            <div class="sign_up_text">
             <h4>{{$t('set_your_password')}}</h4>
         </div>
@@ -116,7 +116,7 @@
             <el-steps :active="active" align-center finish-status="success">
               <el-step >Hello</el-step>
               <el-step >Tow</el-step>
-              <el-step > Therew</el-step>
+              <!-- <el-step > Therew</el-step> -->
             </el-steps>
        
          </div>
@@ -169,34 +169,34 @@ import axios from 'axios'
         this.$refs[formName].validate((valid) => {
           if (valid) {
          
-          this.$axios.post('/v1/send-otp', {
-                    phone: this.ruleForm.phone,
+          // this.$axios.post('/v1/send-otp', {
+          //           phone: this.ruleForm.phone,
                   
-                })
+          //       })
                
-                .then(response => {
+          //       .then(response => {
                  
-                  this.res_phone = response.data.message,
+          //         this.res_phone = response.data.message,
                  
-                  this.res_data = response.data.data,
-                  //  console.log(this.ruleForm.phone),
+          //         this.res_data = response.data.data,
+          //         //  console.log(this.ruleForm.phone),
                
-                this.userOtp = response.data,
-                this.$store.commit('setOtp', this.userOtp),
-                console.log(this.userOtp)
-                 if(this.res_phone == "fail" ) {
-                  this.$notify({
-                    title: 'Warning',
-                    message: this.res_data,
-                    type: 'warning'
-                  });
-                }else {
-                    if (this.active++ > 2) this.active = 0;
+          //       this.userOtp = response.data,
+          //       this.$store.commit('setOtp', this.userOtp),
+          //       console.log(this.userOtp)
+          //        if(this.res_phone == "fail" ) {
+          //         this.$notify({
+          //           title: 'Warning',
+          //           message: this.res_data,
+          //           type: 'warning'
+          //         });
+          //       }else {
+          //           if (this.active++ > 1) this.active = 0;
                   
-                }
-                });
+          //       }
+          //       });
         //      
-                
+                  if (this.active++ > 1) this.active = 0;
               //if (this.active++ > 2) this.active = 0;
 
           } else {
@@ -210,18 +210,18 @@ import axios from 'axios'
                   // this.$store.commit("setPhone", this.userPhone); 
                 // 
       },
-       nextTwo(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-           // console.log(this.otp_error)
-            if(this.active++ > 2) this.active=0;
-          } else {
+      //  nextTwo(formName) {
+      //   this.$refs[formName].validate((valid) => {
+      //     if (valid) {
+      //      // console.log(this.otp_error)
+      //       if(this.active++ > 2) this.active=0;
+      //     } else {
           
-            console.log('error submit!!');
-            return false;
-          }
-        });
-       },
+      //       console.log('error submit!!');
+      //       return false;
+      //     }
+      //   });
+      //  },
       // nextTwo() {
       //   if(this.active++ > 2) this.active=0;
       // },
@@ -231,40 +231,75 @@ import axios from 'axios'
             // alert(this.ruleForm.phone),
             //  alert(this.ruleForm.otp)
             //   alert(this.ruleForm.password)
-            this.$axios.post('/v1/register', {
+            this.$axios.post('/v2/v1/register', {
                     phone: this.ruleForm.phone,
-                    otp: this.ruleForm.otp,
+                    // otp: this.ruleForm.otp,
                     password: this.ruleForm.password
                 })
                 .then(response => {
-                  //console.log(response)
-                  this.otp_error = response.data.message
-                  this.otp_data = response.data.data
-                  //console.log(this.otp_error)
-                  
-                  if(this.otp_error == 'fail') {
-                      // this.$router.push(`/?lang=${this.$store.state.locale}`); 
-                      this.$message({
-                        showClose: true,
-                        center: true,
-                       
-                        message: this.otp_data,
-                        type: 'error'
-                      });
-                      //  if (this.active++ > 2) this.active = 0;
-                     
-                  }
-                  else {
-                    //alert('heee')
-                     this.token = response.data.access_token;
+                    console.log(response)
+                    
+                   this.token = response.data.access_token;
                        this.userInfo = response.data,
                       this.$store.commit('logIn', this.userInfo),
                         this.$store.commit('accessToken', this.token);
-                     // console.log(this.userInfo)
-                       if (this.active++ > 2) this.active = 0;
-                          this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`); 
-                  }
+                   this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`); 
+                  //console.log(response)
+                  // this.otp_error = response.data.message
+                  // this.otp_data = response.data.data
+                  //console.log(this.otp_error)
+                  
+                  // if(this.otp_error == 'fail') {
+                  //     // this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                  //     this.$message({
+                  //       showClose: true,
+                  //       center: true,
+                       
+                  //       message: this.otp_data,
+                  //       type: 'error'
+                  //     });
+                  //     //  if (this.active++ > 2) this.active = 0;
+                     
+                  // }
+                  // else {
+                  //   //alert('heee')
+                  //    this.token = response.data.access_token;
+                  //      this.userInfo = response.data,
+                  //     this.$store.commit('logIn', this.userInfo),
+                  //       this.$store.commit('accessToken', this.token);
+                  //    // console.log(this.userInfo)
+                  //      if (this.active++ > 2) this.active = 0;
+                  //         this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`); 
+                  // }
                 })
+                .catch(error => {
+                  console.log(error.response.data)
+                  if(error.response.data.errors.password) {
+                       console.log(error.response.data.errors.password[0])
+                           
+                              this.$message({
+                                showClose: true,
+                                center: true,
+                            
+                                message: error.response.data.errors.password[0],
+                                type: 'error'
+                              });
+                  }else {
+                     console.log(error.response.data.errors.phone[0])
+                           if (this.active++ > 1) this.active = 1;
+                        this.$message({
+                          showClose: true,
+                          center: true,
+                      
+                          message: error.response.data.errors.phone[0],
+                          type: 'error'
+                        });
+                  }
+                          
+                              
+                 });
+              
+                // .then(respon)
                 // .then(response => ( 
                 //    this.otp_error = response.data.result,
                 //   //  if(response.data.result == '0') 
