@@ -1,12 +1,12 @@
 <template>
- 
+        
         
       <el-main class="main_page">
-        
+        <!-- <Online></Online> -->
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
         <div class="" v-if ="!$store.state.isLoggedIn">
-            
+
               <div class="demo-type">
                  <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
                     <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
@@ -351,6 +351,7 @@
 
 <script>
 import Music from '~/components/Music.vue'
+import Online from '~/components/Online.vue'
 import axios from 'axios'
 
 export default {
@@ -363,17 +364,18 @@ export default {
   mounted() {
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
-    })
-    this.getDataKwee();
-    this.getDataresult();
+      setTimeout(() => this.$nuxt.$loading.finish(), 5000)
+      })
+      this.getDataKwee();
+      this.getDataresult();
      this.updateIsLoggedIn();
        this.updateLang();
      
    },
   components: {
   
-    Music
+    Music,
+    Online
   },
   
   data() {
@@ -415,7 +417,7 @@ export default {
                this.info = response.data[0]
 
               })
-            }.bind(this), 3000)
+            }.bind(this), 9000)
           },
           async getDataresult() {
             this.$axios.get('/v1/twod-result/live')
@@ -462,6 +464,30 @@ export default {
        this.currentDate = moment().format("YYYY D MMMM  dddd")
         
        },
+       ServerCurrentTime() {
+         if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
+            this.isActive = false
+            this.breakTime = '12:01 PM';
+           
+          } else if(this.currentTime > this.time_04_30){
+            this.isActive = false
+            this.breakTime = '4:30 PM'; 
+            
+          }else if(this.currentTime < this.morningTime_9_30){
+            this.isActive = false
+            this.breakTime = '4:30 PM'; 
+            
+          }else{
+            
+             this.isActive = true
+            this.breakTime = moment().format('h:mm A');
+          }
+
+       this.currentTime = moment().format('HH:mm:ss');
+
+       this.currentDate = moment().format("YYYY D MMMM  dddd")
+        
+       },
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
@@ -484,7 +510,7 @@ export default {
       this.currentDate = moment().format("YYYY D MMMM  dddd")
       this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
-     setInterval(() => this.updateCurrentTime(), 1 * 1000);
+     setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
       setInterval(function() {
@@ -493,7 +519,7 @@ export default {
               this.info = response.data[0]
             
               })      
-        }.bind(this), 3000)   
+        }.bind(this), 9000)   
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
       //  setInterval(function() {
@@ -504,13 +530,7 @@ export default {
         //  }.bind(this), 3000)
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
 //  alert('dd')
-      //  setInterval(function() {
-      // this.$axios.get('/v2/v1/kwee_live')
-      //         .then(response => {
-      //          this.info = response.data[0]
-
-      //         })
-      //       }.bind(this), 3000)
+  
   
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
       // setInterval(function() {
@@ -533,7 +553,7 @@ export default {
               .then(response => {
                 this.info_api = response.data.data
               })
-      //  }.bind(this), 3000)
+      //  }.bind(this), 9000)
           this.$axios.get('/v2/v1/slider_image')
               .then(response => {
                this.slider_images = response.data.data
@@ -652,23 +672,23 @@ export default {
   background: #93dbe9;
   animation: ldio-ct1tsjzqdg5 1s linear infinite;
   animation-delay: -0.5s;
-    width:20px;
-  height:20px;
+    width:15px;
+  height:15px;
 
 }
 .card_one_loading div:nth-child(2) {
   background: #689cc5;
   animation: ldio-ct1tsjzqdg5 1s linear infinite;
   animation-delay: 0s;
-  width:20px;
-  height:20px;
+  width:15px;
+  height:15px;
 }
 .card_one_loading div:nth-child(3) {
   background: #93dbe9;
   animation: ldio-ct1tsjzqdg5-o 1s linear infinite;
   animation-delay: -0.5s;
-    width:20px;
-  height:20px;
+    width:15px;
+  height:15px;
 
 }
 
