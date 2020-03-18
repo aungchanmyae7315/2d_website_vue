@@ -7,11 +7,12 @@
                  <span>{{$t('sein_lucky_office_hours')}}</span>
                   <el-divider></el-divider>
                 <span>{{$t('mon-sat')}}</span><br>
-                <span>9:00 AM - 5:30 PM</span>
+                <span>နံနက် 9:00 AM - 11:40 AM</span>
+                 <span>ညနေ 12:00 PM - 3:40 PM</span>
 
             </el-card>
-            <p style="color:#5AAF46">{{$t('topup_approved_5_minutes')}}</p>
-            <p>{{$t('if_not_in_office_hours')}}</p>
+            <p style="color:#5AAF46">သတ်မှတ်ချိန်အတွင်းငွေဖြည့်ပါက (၁၀) မိနစ်အတွင်း ငွေရောက်ပါမည်။</p>
+            <p>သတ်မှတ်ချိန်ကျော်လွန်သွားပါက လာမည့် ငွေဖြည့် section တွင် ပြန်ဖြည့်ပေးပါမည်။</p>
              <el-button @click="goBack" round="">{{$t('Confirm')}}</el-button>
         </section>
        
