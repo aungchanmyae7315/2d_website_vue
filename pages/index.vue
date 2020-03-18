@@ -362,14 +362,15 @@ export default {
   layout: 'homeLayout',
 
   mounted() {
-      this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 5000)
-      })
+        this.$axios.get('/v2/v1/kwee_live')
+              .then(response => {
+               this.info = response.data[0]
+
+              })
       this.getDataKwee();
       this.getDataresult();
-     this.updateIsLoggedIn();
-       this.updateLang();
+      this.updateIsLoggedIn();
+      this.updateLang();
      
    },
   components: {

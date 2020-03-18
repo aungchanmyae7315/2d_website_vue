@@ -198,7 +198,25 @@
 "please_transfer_top-up_money_to_one":"1. 请先转账到到Sein Lucky的银行账户后，并保存转账证明照片或 截图。",
 "upload_he_image_of_the_bank" :"2. 转账后，请上传转账证明。",
 "Please_enter_transferred" :"3. 请输入转账金额",
-"need_help?_please_contact":"如不懂或有什么疑问，请联系客服电话。"
+"need_help?_please_contact":"如不懂或有什么疑问，请联系客服电话。",
+"enter_your_current_password":"请输入当前密码",
+"what_current_password":"当前密码",
+"current_password":"当前密码",
+"change_password_text":"修改密码",
+"enter_your_new_password":"请输入新密码",
+"new_password":"新密码",
+"confirm_new_password":"确认密码",
+"enter_your_password":"请输入密码",
+"password":"密码",
+"confirm_password":"确认新密码",
+"Password_will_be_required_withdrawal":"请记住你新设置的登录密码，提现时需要登录填写密码。",
+"successfully_changed_your_password":"新密码 设置成功。",
+"new_password_invalid":"密码格式错误",
+"new_password_invalid_again":"密码格式错误，请再次输入",
+"sign_up_password_invalid":"密码格式错误",
+"sign_up_password_invalid_again":"密码格式错误，请再次输入",
+"two_input_do_not_match" :"密码两次输入需要一致!"
+
 
 
 }

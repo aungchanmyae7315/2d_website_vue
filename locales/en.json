@@ -199,7 +199,25 @@
   "please_transfer_top-up_money_to_one":"1. Please transfer top-up money to one of the following bank account of Sein Lucky. Than take a photo or screenshot of the bank transfer slip.",
   "upload_he_image_of_the_bank" :"2. Upload the image of the bank transfer slip.",
   "Please_enter_transferred" :"3. Please enter transferred amount.",
-  "need_help?_please_contact":"Need help? Please contact following numbers."
+  "need_help?_please_contact":"Need help? Please contact following numbers.",
+  "enter_your_current_password":"Enter your current password",
+  "what_current_password":"What is Current Password",
+  "current_password":"Current password",
+  "change_password_text":"Change Password",
+  "enter_your_new_password":"Enter your new password",
+  "new_password":"New password",
+  "confirm_new_password":"Confirm new password",
+  "enter_your_password":"Enter your password",
+  "password":"Password",
+  "confirm_password":"Confirm new password",
+  "Password_will_be_required_withdrawal":"Password will be required to make withdrawal. You need to remember your password.",
+  "successfully_changed_your_password":"Successfully changed your password",
+  "new_password_invalid":"Password is invalid ",
+  "new_password_invalid_again":"Password is invalid again",
+  "sign_up_password_invalid":"Password is invalid ",
+  "sign_up_password_invalid_again":"Password is invalid again",
+  "two_input_do_not_match" :"Two inputs don't match!"
+
   
 }
 

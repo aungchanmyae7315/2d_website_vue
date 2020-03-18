@@ -197,7 +197,26 @@
 "please_transfer_top-up_money_to_one":"၁. သင္၏ Sein Lucky အေကာင့္သို႔ ျဖည့္လိုေသာ ေငြပမာဏကို ေအာက္ပါ Sein Lucky ဘဏ္အေကာင့္ တစ္ခုထဲသို႔ေငြအရင္လႊဲပါ။ ေငြလႊဲမွတ္တမ္းကို ဓာတ္ပုံ (သို႔) စခရင္ေရွာ့ (Screenshot) ႐ိုက္ထားပါ။",
 "upload_he_image_of_the_bank" :"၂. ဘဏ္မွေငြလႊဲၿပီးေနာက္ ေငြလႊဲမွတ္တမ္းဓာတ္ပုံ/ screenshot ကိုတင္ပါ။",
 "Please_enter_transferred" :"၃. လႊဲခဲ့ေသာ ေငြပမာဏကို ျဖည့္ပါ။",
-"need_help?_please_contact":"ေငြမျဖည့္တတ္ပါက ဆက္သြယ္ရန္ ဖုန္းမ်ား"
+"need_help?_please_contact":"ေငြမျဖည့္တတ္ပါက ဆက္သြယ္ရန္ ဖုန္းမ်ား",
+"enter_your_current_password":"လက္ရွိစကားဝွက္ကိုျဖည့္ပါ",
+"what_current_password":"လက္ရွိစကားဝွက္ကိုျဖည့္ေပးပါ",
+"current_password":"လက္ရွိစကားဝွက္ ",
+"change_password_text":"စကားဝွက္ ေျပာင္းမည္",
+"enter_your_new_password":"စကားဝွက္အသစ္ျဖည့္ပါ",
+"new_password":"စကားဝွက္ အသစ္",
+"confirm_new_password":"စကားဝွက္ အသစ္ အတည္ျပဳမည္",
+"enter_your_password":"စကားဝွက္ျဖည့္ပါ",
+"password":"စကားဝွက္",
+"confirm_password":"စကားဝွက္ အတည္ျပဳမည္",
+"Password_will_be_required_withdrawal":"စကားဝွက္ေသခ်ာမွတ္ထားဖို႔လိုပါသည္။ေငြထုတ္လွ်င္ စကားဝွက္လိုအပ္ပါမည္။",
+"successfully_changed_your_password":"စကားဝွက္ေျပာင္းလဲျခင္း ေအာင္ျမင္ပါသည္" ,
+"new_password_invalid":"စကားဝွက္ အသစ္ထည့္ေပးပါ",
+"new_password_invalid_again":"ေနာက္တစ္ႀကိမ္စကားဝွက္ အသစ္ထည့္ေပးပါ",
+"sign_up_password_invalid":"စကားဝွက္ ထည့္ေပးပါ ",
+"sign_up_password_invalid_again":"ေနာက္တစ္ႀကိမ္စကားဝွက္ ထည့္ေပးပါ",
+"two_input_do_not_match" :"စကားဝွက္ အသစ္ႏွစ္ခု မတူညီပါ"
+  
+
   
 
 }

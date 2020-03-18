@@ -88,23 +88,25 @@
              <el-button type="success" round @click="nextTwo('ruleForm')">next</el-button>
         </el-form> -->
 
-        <el-form v-if="active===2" :model="ruleForm"  ref="ruleForm" class="demo-ruleForm" >
+        <el-form v-if="active===2" :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="demo-ruleForm" >
            <div class="sign_up_text">
             <h4>{{$t('set_your_password')}}</h4>
         </div>
              <div class="phone_input">
-            <el-form-item
-              :label="$t('Password')"
-                    prop="password"
-                    :rules="[
-                      { required: true, message: $t('set_your_password') },
-                     
-                    ]"
-               
-            >  
-                <el-input type="password" show-password placeholder="Password" prefix-icon="el-icon-lock" v-model="ruleForm.password" autocomplete="off"></el-input>
-               
-            </el-form-item>
+             <el-form-item
+                        prop="pass"
+                       
+                >  
+                    <el-input type="password" show-password :placeholder="$t('password')" prefix-icon="el-icon-lock" v-model="ruleForm.pass" ></el-input>
+                
+                </el-form-item>
+                <el-form-item
+                        prop="checkPass"
+                       
+                >  
+                    <el-input type="password" show-password :placeholder="$t('confirm_password')" prefix-icon="el-icon-lock" v-model="ruleForm.checkPass" ></el-input>
+                
+                </el-form-item>
             
              </div>
              <el-button type="success" round @click="submitForm('ruleForm')">{{$t('Confirm')}}</el-button>
@@ -141,26 +143,65 @@ import axios from 'axios'
       })
       },
     data() {
+       var validatePass = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error(this.$t('sign_up_password_invalid')));
+        } else {
+          if (this.ruleForm.checkPass !== '') {
+            this.$refs.ruleForm.validateField('checkPass');
+          }
+          callback();
+        }
+      };
+      var validatePass2 = (rule, value, callback) => {
+        if (value === '') {
+          callback(new Error(this.$t('sign_up_password_invalid_again')));
+        } else if (value !== this.ruleForm.pass) {
+          callback(new Error(this.$t('two_input_do_not_match')));
+        } else {
+          callback();
+        }
+      };
       return {
+          active: 1,
           fullscreenLoading: false,
-       errors:[],
-    name:null,
-  
-      
-        active: 1,
-         input: '',
-        
         ruleForm: {
             phone:'',
-            otp:'',
-           password: '',
-
+            pass: '',
+            checkPass: '',
+        
         },
+        rules: {
+          pass: [
+            { validator: validatePass, trigger: 'blur' }
+          ],
+          checkPass: [
+            { validator: validatePass2, trigger: 'blur' }
+          ],
+         
+        }
+      };
+    },
+    //   return {
+    //       fullscreenLoading: false,
+    //    errors:[],
+    //    name:null,
+  
+      
+    //     active: 1,
+    //      input: '',
+        
+    //     ruleForm: {
+    //         phone:'',
+    //         otp:'',
+    //        password: '',
+
+    //     },
       
          
          
-      };
-    },
+    //   };
+    // },
      methods: {
        
   
@@ -234,7 +275,7 @@ import axios from 'axios'
             this.$axios.post('/v2/v1/register', {
                     phone: this.ruleForm.phone,
                     // otp: this.ruleForm.otp,
-                    password: this.ruleForm.password
+                    password: this.ruleForm.pass
                 })
                 .then(response => {
                     console.log(response)

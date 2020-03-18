@@ -51,7 +51,9 @@
 
 
                <el-button round @click="profile_edit">{{$t('Confirm')}}</el-button>
-
+               <nuxt-link  :to="`${$t('change_password')}?lang=${$store.state.locale}`">
+                  <el-button type="text">{{$t('change_password_text')}}</el-button>
+               </nuxt-link>
     </div>
 </template>
 
@@ -62,7 +64,7 @@
     background: #158220;
     color:#fff;
     font-weight: bold;
-    margin-top:150px;
+    margin-top:50px;
 }
     .profile_edit .el-input__inner {
         background-color: #E6E6E6;

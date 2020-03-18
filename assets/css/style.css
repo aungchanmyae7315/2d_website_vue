@@ -491,7 +491,9 @@ input[type=number] {
     border-radius: 36px;
   }
 
-
+.all_btn {
+  margin-top:15px;
+}
 .longText{
   max-width: 480px;
   width: 100%;

@@ -121,7 +121,7 @@
                      
                 <!-- <el-col :span="12"><div class="betclose_text"></div></el-col> -->
                 <el-col v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                <el-col v-else> <div class="balance_amount" style="float:right">Balance: {{this.profile.wallet}}</div></el-col>
+                <el-col v-else> <div class="balance_amount" style="float:right">{{$t('you_balance')}}: {{this.profile.wallet}}</div></el-col>
         
             <!-- </el-row> -->
 
