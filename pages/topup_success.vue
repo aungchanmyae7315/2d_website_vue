@@ -7,7 +7,7 @@
                  <span>{{$t('sein_lucky_office_hours')}}</span>
                   <el-divider></el-divider>
                 <span>{{$t('mon-sat')}}</span><br>
-                <span>နံနက် 9:00 AM - 11:40 AM</span>
+                <span>နံနက် 9:00 AM - 11:40 AM</span><br>
                  <span>ညနေ 12:00 PM - 3:40 PM</span>
 
             </el-card>
