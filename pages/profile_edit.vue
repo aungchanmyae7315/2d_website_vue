@@ -247,13 +247,14 @@
                     name: $('#ok').val(),
 
                   }
-         
+               
                 this.$axios.post("/v1/profile/update",data_name,
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
                         })
                     .then(response => {
+                      console.log(response)
                      console.log(this.name_update = response.data.data)
 
                 })

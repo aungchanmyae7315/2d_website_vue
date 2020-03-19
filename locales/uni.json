@@ -214,7 +214,12 @@
 "new_password_invalid_again":"နောက်တစ်ကြိမ်စကားဝှက် အသစ်ထည့်ပေးပါ",
 "sign_up_password_invalid":"စကားဝှက် ထည့်ပေးပါ ",
 "sign_up_password_invalid_again":"နောက်တစ်ကြိမ်စကားဝှက် ထည့်ပေးပါ",
-"two_input_do_not_match" :"စကားဝှက် အသစ်နှစ်ခု မတူညီပါ"
+"two_input_do_not_match" :"စကားဝှက် အသစ်နှစ်ခု မတူညီပါ",
+"top-up_is_pending_approved_10_minutes":"သတ်မှတ်ချိန်အတွင်းငွေဖြည့်ပါက(၁၀) မိနစ်အတွင်း ငွေရောက်ပါမည်။",
+"after_the_top_up_section":"သတ်မှတ်ချိန်ကျော်လွန်သွားပါက လာမည့် ငွေဖြည့် section တွင်ပြန်ဖြည့်ပေးပါမည်။",
+"ok":"ကောင်းပြီ",
+"morning":"နံနက်",
+"evening":"ညနေ"
   
 
   

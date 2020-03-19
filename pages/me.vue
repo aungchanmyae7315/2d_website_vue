@@ -11,7 +11,8 @@
                  <el-avatar v-else :size="60"><img :src="this.profile.profile " alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li>{{this.profile.name}}</li>
+                  <li v-if="this.profile.name == null">{{this.profile.phone}}</li>
+                     <li v-else>{{this.profile.name}}</li>
                     <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`">
                      <li class="edit_profile">{{$t('edit_profile')}}</li>
                     </nuxt-link>
@@ -124,7 +125,7 @@ export default {
                   }
                 })
             .then(response => {
-              // console.log(response)
+               console.log(response)
               // location.reload();
               this.profile = response.data.data
         })

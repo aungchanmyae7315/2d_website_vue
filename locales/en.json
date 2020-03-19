@@ -216,7 +216,12 @@
   "new_password_invalid_again":"Password is invalid again",
   "sign_up_password_invalid":"Password is invalid ",
   "sign_up_password_invalid_again":"Password is invalid again",
-  "two_input_do_not_match" :"Two inputs don't match!"
+  "two_input_do_not_match" :"Two inputs don't match!",
+  "top-up_is_pending_approved_10_minutes":"Top-up is pending and will be approved 10 minutes within top up sections.",
+  "after_the_top_up_section":"After the top up section is over, your top up will be approved in next section.",
+  "ok":"Ok",
+  "morning":"Morning",
+  "evening":"Evening"
 
   
 }
