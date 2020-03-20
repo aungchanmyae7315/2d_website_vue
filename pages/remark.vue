@@ -66,7 +66,7 @@
                  <div class="btn_group">
                      
                   
-                          <el-button  type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
+                          <el-button :disabled='submitted'  type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
                   
                     
                   </div>
@@ -96,6 +96,7 @@ export default {
           name :'',
           phone:'',
           bet_odds:'',
+          submitted:false,
 
         }
     },
@@ -166,7 +167,7 @@ export default {
                         //   duration:0
                         });
                       }else {
-                       
+                          this.submitted = true
                           this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                       }
                       // this.bet = response.data.data

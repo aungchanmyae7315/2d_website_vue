@@ -23,7 +23,7 @@
   "Please enter your bank account number correctly. we are not liable for entering wrong card number.": "Please enter your bank account number correctly. we are not liable for entering wrong card number.",
   "Confirm": "Confirm",
   "Receiving Account": "Receiving Account",
-  "Please Login first": "Please Login First",
+  "Please Login first": "Login",
   "Point Rewards": "Point Rewards",
   "Points": "Points",
   "Point History": "Point History",
@@ -118,7 +118,7 @@
   "/withdrawal":"/withdrawal",
   "/signup":"/signup",
   "/English":"/English",
-  "/Forgot_password":"/forgot_Password",
+  "/forgot_password_text":"Forgot Password ?",
   
 
   "back":"Back",
@@ -226,12 +226,14 @@
 
 
 
-  "if_the_photo_can_not_upload_on_your_device":"If the photo can not upload on your device, ",
+  "if_the_photo_can_not_upload_on_your_device":"If the photo can not upload on your device, pls use Sein Lucky's browser version. ",
   "click_here":"Click here",
   "to_user_browser_version":"pls use Sein Lucky's browser version.",
   "show_more":"Show More",
   "show_less":"Show Less",
-  "please_upload_photo_here":"Please upload photo here"
+  "please_upload_photo_here":"Please upload photo here",
+  "bet_close_time":"Bet Close",
+  "close_text":"Close"
   
 }
 

@@ -5,9 +5,9 @@
                 <el-page-header  @back="goBack" title=""  :content="`${$t('bet_status_title')}`">
                    
                 </el-page-header>
-                <span style="text-align:center">
-                    <span class="time_status">{{this.time_stauts}} Section</span>
-                </span>
+                <p class="time_status" >
+                    <span>{{this.time_status}} Section</span>
+                </p>
                  
            <!-- </nuxt-link> -->
 
@@ -144,10 +144,11 @@
         
     }
     .time_status {
-        position: relative;
-        bottom:2px;
-        left:190px;
+        position: absolute;
+        text-align: center;
         color:#000;
+        right:0;
+        left:0;
         
     }
 </style>
@@ -160,8 +161,8 @@ export default {
            
             bet_stauts:'',
             dialogVisible: false,
-            time_stauts:'',
-            time:this.time_stauts
+            time_status:'',
+            time:this.time_status
         }
     },
     methods: {
@@ -185,8 +186,8 @@ export default {
                     .then(response => {
                         // console.log(response.data.data)
                      this.bet_stauts = response.data.data  
-                    this.time_stauts = response.data.time
-                    console.log(this.time_stauts)
+                    this.time_status = response.data.time
+                   // console.log(this.time_stauts)
                 })
      }
 }

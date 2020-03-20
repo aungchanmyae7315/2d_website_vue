@@ -14,33 +14,16 @@
                   <el-dropdown-item round command='en'>English</el-dropdown-item>
                 </li>
                 <li>
-                   <el-dropdown-item round command='uni'>ယူနီကုဒ်</el-dropdown-item>
+                   <el-dropdown-item round command='uni'>Myanmar</el-dropdown-item>
                 </li>
                 <li>
-                 <el-dropdown-item round command='zg'> ေဇာ္ဂ်ီ</el-dropdown-item>
-                </li>
-                <li>
-                   <el-dropdown-item round command='zh'>中文</el-dropdown-item>
+                   <el-dropdown-item round command='zh'>Chinese</el-dropdown-item>
                 </li>
                 
               </ul>
                 </el-dropdown>   
                 <div id="app">
-</div>
-              <!-- <div class="lang">
-                <el-dropdown @command="changeLang" style="text-align:center">
-                <span class="el-dropdown-link" style='cursor: pointer;'>
-                    {{$t('Language')}}
-                </span>
-                
-                    <el-dropdown-item round command='en'>English</el-dropdown-item>
-                    <el-dropdown-item round command='uni'>Myanmar Unicode</el-dropdown-item>
-                    <el-dropdown-item round command='zg'>Myanmar Zawgyi</el-dropdown-item>
-                     <el-dropdown-item round command='zh'>China</el-dropdown-item>
-
-
-                </el-dropdown>   
-            </div> -->
+              </div>
           </div>
 
       <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
@@ -74,7 +57,7 @@
 
                 <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
                           <nuxt-link :to="`${$t('/forgot_password')}?lang=${$store.state.locale}`">
-                <el-button type="text"  style="color:#158220">{{$t('forgot_password_text')}}</el-button>
+                <el-button type="text"  style="color:#158220">{{$t('/forgot_password_text')}}</el-button>
                           </nuxt-link>
             </el-form-item>
         </el-form>

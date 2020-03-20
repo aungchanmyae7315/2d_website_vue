@@ -8,7 +8,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li>
-                      <span>{{$t('Please Login first')}}</span>
+                      <span class="avatar_text_logout">{{$t('Please Login first')}}</span>
                       
                       </li>
                   
@@ -31,7 +31,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li>{{ $t('my_balance') }}</li>
-                    <li class="amount_mmk">{{this.profile.wallet}}</li>
+                    <li class="amount_mmk">{{this.profile.wallet}} {{$t('kyat')}}</li>
                   </ul>
                   </div>
               </div>

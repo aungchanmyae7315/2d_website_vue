@@ -25,7 +25,7 @@
             <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
            <div class="demo-type">
                   <el-avatar :size="60" ><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
-                  <span  class="avatar_text">{{$t('Please Login first')}}</span>
+                  <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
                 </div>
             </nuxt-link>
         </div>

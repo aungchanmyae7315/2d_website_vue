@@ -12,7 +12,7 @@
             <!-- <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p> -->
               <!-- <h5>{{$t('Upload Bank transferred Slip')}}</h5> -->
                <p>{{$t('please_transfer_top-up_money_to_one')}}</p>
-        <div id="bank_copy_list">
+        <!-- <div id="bank_copy_list">
             <ul class="see_more_list" >
                 <li  v-for="(bank_info, b) in bank_account" :key="b">
                     <div class="demo-type wallet_type"  v-if="b < limit_by">
@@ -47,7 +47,7 @@
               </a>
             </div>
           
-        </div>
+        </div> -->
         <p>{{$t('upload_he_image_of_the_bank')}}</p>
 
 
@@ -55,7 +55,19 @@
 
             <div class="avatar-upload">
                     <div class="avatar-edit" v-if="!url">
-                        <label for="imageUpload" class="upload_icon_top"> <i slot="default" class="el-icon-plus"></i><span style="padding-left:15px;position:relative;bottom:6px">{{$t('please_upload_photo_here')}}</span></label>
+                        <label for="imageUpload" class="upload_icon_top"> 
+                          <div class="upload_over_lay">
+
+                         
+                          <div class="upload_img_bg" >
+                            
+                          </div>
+                            
+                         </div>
+
+                        <span >{{$t('please_upload_photo_here')}}</span>
+                        </label>
+                          <i slot="default" class="el-icon-plus"></i>
                         <input type="file" @change="onFileChange" id="imageUpload"  accept=".jpg, .jpeg, .png">
                         <div slot="tip" class="el-upload__tip"></div>
                     </div>
@@ -71,7 +83,7 @@
                 
             </div>
             <div style="text-align:center;">
-                  <p><a   style="color:#b8b8b8" href="https://www.seinlucky123.com">{{$t('if_the_photo_can_not_upload_on_your_device')}}{{$t('to_user_browser_version')}}<span style="color:blue">{{$t('click_here')}}</span> </a></p>
+                  <p>{{$t('if_the_photo_can_not_upload_on_your_device')}}</p>
             </div>
           
 
@@ -87,13 +99,14 @@
                     <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
                 </el-form-item>
             </el-form>
-
+                <el-button round @click="slip_upload('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
+                 <el-divider></el-divider>
             <p>{{$t('need_help?_please_contact')}}</p>
                     <ul class="topup_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium" type="info"  @click="dial(phone)"   icon="el-icon-phone" >{{phone}}</el-button></li>
 
                     </ul>
-            <el-button round @click="slip_upload('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
+        
         </div>
        
     </section>
@@ -103,7 +116,7 @@
 <style>
 
     .topup {
-        padding:0 20px;
+        padding:0 20px 50px  20px;
     }
     .topup .el-header {
        background-color :#fff;
@@ -139,26 +152,31 @@
         color:#000;
     }
     .topup .el-icon-plus:before {
+        position: absolute;
+        left:0;
+        right:0;
+        width:40px;
+        height: 40px;
+        z-index: 999;
+        bottom:105px;
         content: "\e6d9";
         font-size: 27px;
-        color: #fff;
-       
+        color: #0187E0;
+        background: #fff;
+        border-radius: 50px;
+        padding:7px;
         font-weight: bold;
     }
     .topup .el-button.is-round{
-        
         position: relative;
-        margin-top:10px;
         max-width: 480px;
         width:100%;
-        margin-bottom:20px;
         background-color: #158220;
         color:#fff;
     }
 .topup .avatar-upload {
   position: relative;
-  
-  margin: 30px auto;
+  margin-bottom:30px;
 }
  .topup .avatar-upload .avatar-edit {
   margin:0 auto;
@@ -174,7 +192,8 @@
 
 .topup .avatar-upload .avatar-preview , #imagePreview_top {
   width:100%;
-  height:200px;
+  height:190px;
+  border-radius: 9px;
   position: relative;
   text-align: center;
   margin:0 auto;
@@ -198,14 +217,10 @@
 .topup .upload_icon_top {
 
     width: 100%;
-    z-index: 88;
-    color:#fff;
-    padding:6px;
-    border-radius: 21px;
-    background-color: #FFBA15;
-    -webkit-box-shadow: 3px 9px 28px -7px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 9px 28px -7px rgba(0,0,0,0.75);
-  box-shadow: 3px 9px 28px -7px rgba(0,0,0,0.75);
+    opacity: .5;
+    border-radius: 9px;
+    background-color: #0092D9;
+   
     
 }
 .wallet_type .el-avatar--circle {
@@ -271,7 +286,24 @@
     .topup_contact li {
       margin:20px auto;
     }
-
+    .upload_img_bg {
+      position: absolute;
+      top: 16%;
+      left: 25%;
+      background-image: url(/_nuxt/static/images/slip_upload_img.jpeg);
+      background-size:100% 100%;
+      max-width: 480px;
+      width:50%;
+      height:50%;
+      background-repeat: no-repeat;
+      z-index: -1;
+    }
+    .upload_over_lay {
+      width:100%;
+      height: 150px;
+      background-color:rgba(22, 131, 218, 0.22);
+      z-index: 99;
+    }
 </style>
 
 <script>
@@ -295,7 +327,7 @@ export default {
           profile:'',
           message:'',
            display: false,
-          submitted:false,
+            submitted:false,
             ruleForm: {
                   tran_amount:'',
             },

@@ -54,23 +54,27 @@
                 
                  <el-row >
                   <el-col :span="21">
-                        <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
-                 <el-avatar :size="60" v-if="this.profile.profile == null">
+                     
+                    <el-avatar :size="60" v-if="this.profile.profile == null">
                    <img src="~static/images/icons/me_img.png" alt="">
                    
                    </el-avatar>
                   <el-avatar :size="60" v-else ><img :src="this.profile.profile" alt=""></el-avatar>
                 <div  class="avatar_text">
                   <ul>
-                    <li><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
-                        <span v-else >{{this.profile.name}}</span>
-                     
+                       <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
+                          <li style="color:#fff"><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
+                              <span v-else >{{this.profile.name}}</span>
+                          
 
-                    </li>
-                    <li  class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.profile.wallet}} {{$t('kyat')}}</li>
+                          </li>
+                     </nuxt-link>
+                    <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
+                          <li  class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.profile.wallet}} {{$t('kyat')}}</li>
+                    </nuxt-link>
                   </ul>
                   </div>
-                </nuxt-link>
+              
                   </el-col>
                   <!-- <el-col :span="3">
                     <Music></Music>

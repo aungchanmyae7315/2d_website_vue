@@ -98,7 +98,7 @@
   "/withdrawal":"/withdrawal",
   "/signup":"/signup",
   "/English":"/English",
-  "forgot_password_text":"စကားဝှက်မေ့နေသလား?",
+  "/forgot_password_text":"စကားဝှက်မေ့နေသလား?",
 
   "/notification":"/notification",
 
@@ -143,7 +143,7 @@
 "edit_profile" : "ပြင်မည်",
 "you_balance":"လက်ကျန်ငွေ",
 
-"bet_succ":"ထီးထိုးအောင်မြင်သည်",
+"bet_succ":"ထီထိုးအောင်မြင်သည်",
 "fast_btn":"အမြန်ရွေး",
 "clear_btn":"ဖျက်မည်",
 "sign_up_new":"အကောင့်သစ်ဖွင့်မည်",
@@ -195,9 +195,9 @@
 "copy_success":"ကူးယူ ပြီးပါပြီ။",
 "password_invalid":"စကားဝှက်မှားနေပါသည်",
 "remove_image":"ပုံဖျက်မည်",
-"please_transfer_top-up_money_to_one":"၁. သင်၏ Sein Lucky အကောင့်သို့ ဖြည့်လိုသော ငွေပမာဏကို အောက်ပါ Sein Lucky ဘဏ်အကောင့် တစ်ခုထဲသို့ငွေအရင်လွှဲပါ။ ငွေလွှဲမှတ်တမ်းကို ဓာတ်ပုံ (သို့) စခရင်ရှော့ (Screenshot) ရိုက်ထားပါ။",
-"upload_he_image_of_the_bank" :"၂. ဘဏ်မှငွေလွှဲပြီးနောက် ငွေလွှဲမှတ်တမ်းဓာတ်ပုံ/ screenshot ကိုတင်ပါ။",
-"Please_enter_transferred" :"၃. လွှဲခဲ့သော ငွေပမာဏကို ဖြည့်ပါ။",
+"please_transfer_top-up_money_to_one":"(၁) သင်၏ Sein Lucky အကောင့်သို့ ဖြည့်လိုသော ငွေပမာဏကို အောက်ပါ Sein Lucky ဘဏ်အကောင့် တစ်ခုထဲသို့ငွေအရင်လွှဲပါ။",
+"upload_he_image_of_the_bank" :"(၂) ဘဏ်မှငွေလွှဲပြီးနောက် ငွေလွှဲမှတ်တမ်းဓာတ်ပုံ/ screenshot ကိုတင်ပါ။",
+"Please_enter_transferred" :"(၃) လွှဲခဲ့သော ငွေပမာဏကို ဖြည့်ပါ။",
 "need_help?_please_contact":"ငွေမဖြည့်တတ်ပါက ဆက်သွယ်ရန် ဖုန်းများ",
 "enter_your_current_password":"လက်ရှိစကားဝှက်ကိုဖြည့်ပါ",
 "what_current_password":"လက်ရှိစကားဝှက်ကိုဖြည့်ပေးပါ",
@@ -230,7 +230,8 @@
 
 "show_more":"အခြားဘဏ်များကြည့်ရန်",
 "show_less":"ပြန်သိမ်းရန်",
-"please_upload_photo_here":"ငွေလွှဲမှတ်တမ်း ပုံတင်မည်။"
-  
+"please_upload_photo_here":"ငွေလွှဲမှတ်တမ်း ပုံတင်ပါ",
+"bet_close_time":"ပိတ်မည်အချိန်",
+"close_text":"အချိန်ကျော်လွန်သွားပါပြီ"
 
 }
