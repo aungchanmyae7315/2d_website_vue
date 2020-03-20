@@ -290,7 +290,7 @@
       position: absolute;
       top: 16%;
       left: 25%;
-      background-image: url(/_nuxt/static/images/slip_upload_img.jpeg);
+      background-image: url('~static/images/slip_upload_img.jpeg');
       background-size:100% 100%;
       max-width: 480px;
       width:50%;
