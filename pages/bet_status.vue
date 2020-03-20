@@ -5,7 +5,10 @@
                 <el-page-header  @back="goBack" title=""  :content="`${$t('bet_status_title')}`">
                    
                 </el-page-header>
-                 <span class="time_status">{{this.time_stauts}}</span>
+                <span style="text-align:center">
+                    <span class="time_status">{{this.time_stauts}} Section</span>
+                </span>
+                 
            <!-- </nuxt-link> -->
 
          <nuxt-link :to="`${$t('/bet_history')}?lang=${$store.state.locale}`">
@@ -31,7 +34,7 @@
             </tbody>
         </table>
         <div style="text-align:center;padding:20px;">
-            <nuxt-link :to="`${$t('/bet_history')}?lang=${$store.state.locale}`">
+            <nuxt-link :to="`${$t('/bet_history_btn')}?lang=${$store.state.locale}`">
                 <el-button class="bet_history_btn" type="info" round>{{$t('Click to see Bet History')}}</el-button>
             </nuxt-link>
         </div>
@@ -90,7 +93,7 @@
     .bet_status .el-page-header__content {
         color:#000;
         font-weight: bold;
-        margin:0 37px;
+       
     }
     .list_bet_info ul {
         padding:20px;
@@ -142,10 +145,10 @@
     }
     .time_status {
         position: relative;
-        bottom:32px;
-        left:240px;
+        bottom:2px;
+        left:190px;
         color:#000;
-        font-weight: bold;
+        
     }
 </style>
 
@@ -180,7 +183,7 @@ export default {
                          }
                         })
                     .then(response => {
-                 
+                        // console.log(response.data.data)
                      this.bet_stauts = response.data.data  
                     this.time_stauts = response.data.time
                     console.log(this.time_stauts)

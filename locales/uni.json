@@ -88,7 +88,7 @@
   "login_title":"လော့အင်ဝင်မယ်",
   "profile_edit_title":"ပြင်မည်",
   "remark_title":"ထိုးမည့်ဂဏန်းများ",
-  "result_title":"ထွက်ဂဏန်းများ",
+  "result_title":"2D ထွက်ဂဏန်းများ",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"ငွေဖြည့်မည်",
 
@@ -119,6 +119,7 @@
   "/signup_refel":"/signup_refel",
   "/topup":"/topup",
   "/ios_install_guide":"/ios_install_guide",
+  "/bet_history_btn":"/bet_history_btn",
 
 
   "back":"နောက်သို့",
@@ -219,8 +220,16 @@
 "after_the_top_up_section":"သတ်မှတ်ချိန်ကျော်လွန်သွားပါက လာမည့် ငွေဖြည့် section တွင်ပြန်ဖြည့်ပေးပါမည်။",
 "ok":"ကောင်းပြီ",
 "morning":"နံနက်",
-"evening":"ညနေ"
-  
+"evening":"ညနေ",
+
+
+
+"if_the_photo_can_not_upload_on_your_device":" မှတ်ပုံတင်၍ မရပါက  Sein Lucky ကို Browser တွင်  အသုံးပြုပါ။ ",
+"click_here":"ဤစာကိုနှိပ်ပါ",
+"to_user_browser_version":" Browser တွင် အသုံးပြုရန် ။",
+
+"show_more":"အခြားဘဏ်များကြည့်ရန်",
+"show_less":"ပြန်သိမ်းရန်"
 
   
 

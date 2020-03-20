@@ -116,14 +116,15 @@
                 </el-col>
             </el-row>
           
-            <!-- <el-row> -->
-                
-                     
+            <el-row> 
+                <el-col >Bet Time : {{this.time_countdown}} </el-col>
+                     <p class="countdown"></p>
                 <!-- <el-col :span="12"><div class="betclose_text"></div></el-col> -->
+                
                 <el-col v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
                 <el-col v-else> <div class="balance_amount" style="float:right">{{$t('you_balance')}}: {{this.profile.wallet}}</div></el-col>
         
-            <!-- </el-row> -->
+            </el-row>
 
                <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
                  <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
@@ -586,11 +587,7 @@ const tail_9_option = ['09','19','29','39','49','59','69','79','89','99'
 import axios from 'axios'
 export default {
     mounted() {
-        
-//    setInterval(() => {
-//       this.evening_time = moment(this.evening_time.subtract(1, 'seconds'))
-      
-//     }, 1000);
+
 
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
@@ -598,43 +595,23 @@ export default {
       })
     
         this.updateIsLoggedIn();
+
+        setInterval(() => {
+            this.BetCurrentTime();
+            var oneSecondAgo = moment(this.time_countdown).subtract(1, 'seconds');
+           // this.one_result = moment(this.one_result.subtract(1, 'seconds'))
+
+    }, 1000);
     },
     computed: {
-            // CountDownTime: function(){
-            //        this.currentTime = moment().format('HH:mm:ss');
-            //         this.currentDate  = moment().day();
-                
-            //  if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
-            //            return this.evening_time = 'Close';
-                      
-            //         }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
-            //            console.log('twoooo')
-            //             return this.evening_time.format('HH:mm:ss');
-            //         }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
-            //             console.log('three')
-            //                 return this.evening_time = 'Close';
-            //         }else if(this.currentTime > this.evening_to) {
-            //             console.log("ffff")
-            //             console.log(this.evening_time)
-            //              return this.evening_time.format('HH:mm:ss');
-            //              //alert('four')
-            //         }else {
-            //             console.log('five')
-            //             return this.evening_time.format('HH:mm:ss');
-                         
-                       
-            //         }
-
-            //         if(this.currentDate == 0 || this.currentDate == 6) {
-            //               return this.evening_time = 'Close';
-            //         }
-            // }
+            
     },
  
     data() {
         return {
-            time:'',
-            // evening_time: moment(100 * 10 * 1000),
+            time_countdown:'',
+            one_result:'',
+            evening_time:'',
             isActive:true,
             hasError:'',
             currentTime: '',
@@ -661,14 +638,13 @@ export default {
         }
     },
     created() {
-    //    this.breakTime = moment().format('h:mm:ss a')
-    //  setInterval(() => this.CountDownTime(), 1 * 1000);
-
+       this.breakTime = moment().format('h:mm:ss a')
+       
 
        this.$axios.get('/v2/v1/close_time')
              
               .then(response => {
-                  console.log(response)
+                //   console.log(response)
                     this.time = response.data.data
                     this.morning_from = response.data.data[0].from
                     this.morning_to = response.data.data[0].to
@@ -720,6 +696,76 @@ export default {
                
     },
      methods: {
+        convertMS( milliseconds ) {
+            var day, hour, minute, seconds;
+            seconds = Math.floor(milliseconds / 1000);
+            minute = Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            hour = Math.floor(minute / 60);
+            minute = minute % 60;
+            day = Math.floor(hour / 24);
+            hour = hour % 24;
+            return {
+                day: day,
+                hour: hour,
+                minute: minute,
+                seconds: seconds
+            };
+        },
+            BetCurrentTime(){
+                   this.currentTime = moment().format('HH:mm:ss');
+            
+                
+
+                   
+
+
+                    // var cu_time= new Date("12/01/2019 " + this.currentTime);
+                    var mo_from= new Date("03/20/2019 " + this.morning_from);
+                    var ev_to = new Date("03/19/2019 " + this.currentTime);
+                    
+              
+                    var difference =  mo_from - ev_to;             
+                 
+
+
+                    var getAllTime = this.convertMS(difference);
+                    // var close_hour = getAllTime.hour
+                    //  var close_min = getAllTime.hour
+                   
+
+
+                    
+                    
+
+                  
+                
+                
+                if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
+                    console.log('one')
+                       return this.evening_time = 'Close';
+                      
+                    }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
+                       console.log('two')
+                        return this.time_countdown
+                    }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
+                         console.log('three')
+                            return this.evening_time = 'Close';
+                    }else if(this.currentTime > this.evening_to) {
+                        console.log('four')
+                         return this.time_countdown
+                        
+                    }else {
+                        // console.log('five')
+                        return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
+                         
+                    }
+
+                    if(this.currentDate == 0 || this.currentDate == 6) {
+                          return this.evening_time = 'Close';
+                    }
+                },
+
          goBack() {
              this.$router.push(`/?lang=${this.$store.state.locale}`); 
          },

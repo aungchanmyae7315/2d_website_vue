@@ -43,7 +43,7 @@
             </ul>
             <div class="show_more">
                 <a href="javascript:void(0)" 
-                @click="simple_toggle(default_limit, bank_account.length)">{{ limit_by===2?'Show more': 'Show Less'}}
+                @click="simple_toggle(default_limit, bank_account.length)">{{ limit_by===2? $t('show_more'): $t('show_less')}}
               </a>
             </div>
           
@@ -70,6 +70,10 @@
                     
                 
             </div>
+            <div style="text-align:center;">
+                  <p><a   style="color:#b8b8b8" href="https://www.seinlucky123.com">{{$t('if_the_photo_can_not_upload_on_your_device')}}{{$t('to_user_browser_version')}}<span style="color:blue">{{$t('click_here')}}</span> </a></p>
+            </div>
+          
 
             <p>{{$t('Please_enter_transferred')}}</p>
             <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >

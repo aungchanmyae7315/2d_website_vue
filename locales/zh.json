@@ -81,7 +81,7 @@
   "login_title":"Login",
   "profile_edit_title":"Profile Edit",
   "remark_title":"Remark",
-  "result_title":"Result",
+  "result_title":"2D Result",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"Topup",
 
@@ -111,6 +111,7 @@
   "/signup_refel":"/signup_refel",
   "/topup":"/topup",
   "/ios_install_guide":"/ios_install_guide",
+  "/bet_history_btn":"/bet_history_btn",
 
 
 "/withdraw_noti":"/withdraw_noti",
@@ -220,10 +221,15 @@
 "after_the_top_up_section":"After the top up section is over, your top up will be approved in next section.",
 "ok":"Ok",
 "morning":"Morning",
-"evening":"Evening"
+"evening":"Evening",
 
 
+"if_the_photo_can_not_upload_on_your_device":"某些设备会有上传不了照片的问题，",
+"click_here":"请点击这里使用网页版",
+"to_user_browser_version":"如果有此问题",
 
+"show_more":"展开更多",
+"show_less":"收起"
 
 }
 

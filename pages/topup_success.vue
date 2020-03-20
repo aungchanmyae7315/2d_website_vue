@@ -27,7 +27,7 @@
     .topup_success img {
         width:60px;
         height: auto;
-        padding-top:60px;
+        padding-top:30px;
         padding-bottom:20px;
     }
      .topup_success .el-button.is-round{

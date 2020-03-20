@@ -3,8 +3,10 @@
         
       <el-main class="main_page">
         <!-- <Online></Online> -->
+       
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
+            <!-- <AutoLogout></AutoLogout> -->
         <div class="" v-if ="!$store.state.isLoggedIn">
 
               <div class="demo-type">
@@ -352,6 +354,7 @@
 <script>
 import Music from '~/components/Music.vue'
 import Online from '~/components/Online.vue'
+import AutoLogout from '~/components/AutoLogout.vue'
 import axios from 'axios'
 
 export default {
@@ -376,7 +379,8 @@ export default {
   components: {
   
     Music,
-    Online
+    Online,
+    AutoLogout
   },
   
   data() {

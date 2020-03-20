@@ -6,35 +6,81 @@
                 </el-page-header>
            <!-- </nuxt-link> -->
       </el-header>
-      <div class="result_item">
-            <div v-for="(result,t) in twod_result" :key="t" data-aos="fade-down"
-                data-aos-easing="linear"
-                data-aos-duration="500">
-           
+    <div class="result_item">
+        <div v-for="(result,t) in twod_result" :key="t" data-aos="fade-up" data-aos-easing="linear">  
+             <p>{{result.date}}</p>
+            <el-card shadow="always">
+                 <h6 class="result_time_number" style="color:#FEDC54">12:00 PM</h6>
+               <div class="row">
+                   <div class="col">
+                      <span>Set</span>
+                      <h4>{{result.set_1200}}</h4>
+                   </div>
+                   <div class="col">
+                        <span>Value</span>
+                        <h4>{{result.val_1200}}</h4>
+                   </div>
+                   <div class="col">
+                        <span>2D</span>
+                        <h4 style="color:#FEDC54;font-weight:bold;">{{result.result_1200}}</h4>
+                   </div>
+               </div>
+                <el-divider></el-divider>
+                <h6 class="result_time_number" style="color:#FEDC54">4:30 PM</h6>
+                <div class="row">
+                    <div class="col">
+                        <span>Set</span>
+                        <h4>{{result.set_430}}</h4>
+                    </div>
+                    <div class="col">
+                            <span>Value</span>
+                            <h4>{{result.val_430}}</h4>
+                    </div>
+                    <div class="col">
+                            <span>2D</span>
+                            <h4 style="color:#FEDC54;font-weight:bold;">{{result.result_430}}</h4>
+                    </div>
+                </div>
+                 <el-divider></el-divider>
+                <div class="card_item">
+                
+                    <div class="row">
+                      
+                      <div class="col" style="padding-top:15px">
+                          <h6 class="result_time_number" >9:30 AM</h6>
+                      </div>
+                      <div class="col">
+                          <span>Modern</span>
+                          <h4>{{result.modern_930}}</h4>
+                      </div>
+                      <div class="col">
+                          <span>Internet</span>
+                          <h4>{{result.internet_930}}</h4>
+                      </div>
+                    </div>
+                     <el-divider></el-divider>
+                     <div class="row">
+                      
+                      <div class="col" style="padding-top:15px">
+                          <h6 class="result_time_number">2:00 PM</h6>
+                      </div>
+                      <div class="col">
+                          <span>Modern</span>
+                          <h4>{{result.modern_200}}</h4>
+                      </div>
+                      <div class="col">
+                          <span>Internet</span>
+                          <h4>{{result.internet_200}}</h4>
+                      </div>
+                    </div>
+
+                </div>
                
-                 <el-card shadow="always">
-                    <el-row type="flex" class="row-bg"  justify="space-between">
-                        <el-col :span="7"><div class="result_time">12:00 PM</div></el-col>
-                        <el-col :span="12"><div class="result_date">{{result.date}}</div></el-col>
-                        <el-col :span="5"><div class="result_number">{{result.result_1200}}</div></el-col>
-                    </el-row>
-                </el-card>
-                <el-card shadow="always">
-                    <el-row type="flex" class="row-bg"  justify="space-between">
-                        <el-col :span="7"><div class="result_time">04:30 PM</div></el-col>
-                        <el-col :span="12"><div class="result_date">{{result.date}}</div></el-col>
-                        <el-col :span="5"><div class="result_number">{{result.result_430}}</div></el-col>
-                    </el-row>
-                </el-card>
-           
-            </div>
+            </el-card>
         </div>
-      <div >
-         
-
-
-      </div>
     </div>
+</div>
+
 </template>
 
 <style>
@@ -55,12 +101,18 @@
         font-weight: bold;
     }
     .result_item {
-        background: #F3FBFF;
+       
         padding:20px;
     }
-    .result_item .el-card {
+    .result_item h4 {
+        font-size: 15px;
+    }
+    .result .el-card {
+        
+        color:#fff;
         margin:15px auto;
         border-radius: 10px;
+        text-align: center;
     }
     .result_item .el-col .result_number {
         width:52px;
@@ -71,16 +123,27 @@
         color: #fff;
         font-size: 32px;
         padding: 5px 10px;
-        border-radius: 10px;
+        border-radius: 13px;
         margin-right:3px;
     }
     .result .el-card__body {
-        padding:3px 0;
+        background:#252E39;
+        border:2px solid #FFEA72;
+        border-radius: 10px;
+       
     }
+    
     .result_time , .result_date {
        margin:17px 10px;
        padding-left:12px;
        font-size: 11px;
+    }
+    .result_item .el-divider {
+        background: #696767;
+        margin:12px auto;
+    }
+    .result_item span {
+        font-size: 13px;
     }
 </style>
 
@@ -90,8 +153,9 @@ export default {
     mounted() {
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
-        })
+      })
+
+      
     },
     data() {
         return {
@@ -108,7 +172,9 @@ export default {
       
                 
                     .then(response => {
+                        console.log(response.data.data)
                      this.twod_result = response.data.data
+                     this.$nuxt.$loading.finish()
                 })
      }
 }

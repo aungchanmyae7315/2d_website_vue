@@ -43,7 +43,7 @@
           </el-form>
 
 
-        <el-form v-if="active===2" :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm" >
+        <el-form v-if="active===2" :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="demo-ruleForm" >
            <div class="sign_up_text">
             <h4>{{$t('enter_your_new_password')}}</h4>
         </div>

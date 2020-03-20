@@ -79,41 +79,7 @@ export default {
         color:#BDC5BE;
         font-size:20px;
     }
-    h6        {
-    color:#BDC5BE;
-    font-family:'Oswald';
-    font-weight:700;
-    position:relative;  
-    margin: 30px auto 20px auto;
-    font-size: 16px;
-    line-height: 15px;
-    width: 282px;
-}
-
-h6:before, h6:after {
-  background:#BDC5BE;
-  content:"";
-  display:block;
-  height:1px;
-  position:absolute;
-  width:125px;
-}
-
-h6:before  {  
-  left:0;
-  top:9px;
-  border-radius: 90px 0 0 90px;
-  -moz-border-radius: 90px 0 0 90px;
-  -webkit-border-radius: 90px 0 0 90px;
-}
-
-h6:after   {
-  right:0;
-  top:9px;
-  border-radius: 0 90px 90px 0;
-  -moz-border-radius: 0 90px 90px 0;
-  -webkit-border-radius:  0 90px 90px 0;
-}
+   
     .service_contact {
         margin:0;
         padding:0;
