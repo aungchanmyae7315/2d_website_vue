@@ -66,8 +66,9 @@
                          </div>
 
                         <span >{{$t('please_upload_photo_here')}}</span>
+                         <i slot="default" class="el-icon-plus"></i>
                         </label>
-                          <i slot="default" class="el-icon-plus"></i>
+                         
                         <input type="file" @change="onFileChange" id="imageUpload"  accept=".jpg, .jpeg, .png">
                         <div slot="tip" class="el-upload__tip"></div>
                     </div>
@@ -158,7 +159,7 @@
         width:40px;
         height: 40px;
         z-index: 999;
-        bottom:105px;
+        bottom:76px;
         content: "\e6d9";
         font-size: 27px;
         color: #0187E0;
