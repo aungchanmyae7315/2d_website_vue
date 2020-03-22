@@ -83,6 +83,7 @@
                     
                 
             </div>
+            <p v-show="lee" style="color:red;font-size:12px">{{$t('please_upload_slip_file')}}</p>
             <div style="text-align:center;">
                   <p>{{$t('if_the_photo_can_not_upload_on_your_device')}}</p>
             </div>
@@ -332,7 +333,7 @@ export default {
             ruleForm: {
                   tran_amount:'',
             },
-          
+              lee:false,
               image:'',
               url:'',
                image:'',
@@ -449,7 +450,9 @@ export default {
 
                 //  console.log(formData);
                 // console.log(token)
-              
+                if(this.image) {
+                  this.lee = false
+                       
             this.$axios.post('/v2/v1/slip_post',
                   formData
                  ,{
@@ -465,9 +468,14 @@ export default {
                      console.log(response)
                 })
                   this.submitted = true
-                 this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
+                this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
                  
             
+                }else {
+                   this.lee = true
+                }
+
+         
           } else {
           
             console.log('error submit!!');
