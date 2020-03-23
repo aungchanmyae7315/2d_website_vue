@@ -33,9 +33,9 @@
                         <el-dropdown @command="changeLang"  style="text-align:center">
                          
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">Myanmar</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">Chinese</el-dropdown-item>
+                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
                       
                       
                         </el-dropdown>   
@@ -107,9 +107,9 @@
                         </span> -->
                       
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">Myanmar</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">Chinese</el-dropdown-item>
+                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
                       
                       
                         </el-dropdown>   

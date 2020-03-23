@@ -117,12 +117,12 @@ input[type=number] {
      bottom: 0;
  }
  .footer_btn {
-   position: absolute;
-   bottom:8px;
+   /* position: absolute;
+   bottom:8px; */
    max-width: 480px;
    width:100%;
-   right:0;
-   left:0;
+   /* right:0;
+   left:0; */
    padding:0 20px;
  }
  .el-footer  {

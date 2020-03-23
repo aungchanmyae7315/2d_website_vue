@@ -588,7 +588,7 @@ const tail_9_option = ['09','19','29','39','49','59','69','79','89','99'
 import axios from 'axios'
 export default {
     mounted() {
-
+           
 
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
@@ -599,10 +599,12 @@ export default {
 
         setInterval(() => {
             this.BetCurrentTime();
-          //  var oneSecondAgo = moment(this.time_countdown).subtract(1, 'seconds');
-           // this.one_result = moment(this.one_result.subtract(1, 'seconds'))
-
-    }, 1000);
+                 var currentDate  = moment().day();
+                 if(currentDate == 0 || currentDate == 6) {
+                         this.isActive = true
+                           this.time_countdown = this.$root.$t('close_text');
+                    }
+        }, 1000);
     },
     computed: {
             
@@ -657,29 +659,19 @@ export default {
                      this.$nuxt.$loading.finish()
                     if(currentTime  >  this.morning_from && currentTime < this.morning_to ) {
                         this.isActive = true
-                     //alert('one')
                     }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
                         this.isActive = false
-                         //alert('two')
                     }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
                         this.isActive = true
-                             //alert('three')
                     }else if(currentTime > this.evening_to) {
                         this.isActive = false
-                         //alert('four')
                     }else {
-                         this.isActive = false
-                         
-                       
+                         this.isActive = false  
                     }
 
                     if(currentDate == 0 || currentDate == 6) {
                         this.isActive = true
                     }
-
-
-                    
-
                 })
     
         let token = localStorage.getItem('token');
@@ -690,11 +682,10 @@ export default {
                          }
                         })
                     .then(response => {
-                     console.log(this.profile = response.data.data)
+                     this.profile = response.data.data
 
                 })
-        }
-               
+        }       
     },
      methods: {
         convertMS( milliseconds ) {
@@ -730,32 +721,20 @@ export default {
                 var getAllTime_two = this.convertMS(difference_two);
    
                 if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
-                      // console.log('one')
-                             this.isActive = true
-                       return this.time_countdown = $t('close');
-                      
+                        this.isActive = true
+                       return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
-                        // console.log('two')
                        this.isActive = false
                         return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
                     }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
-                    //    console.log('three')
                          this.isActive = true
-                            return this.time_countdown = $t('close');
+                        return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.currentTime > this.evening_to) {
-                    //    console.log('four')
                          this.isActive = false
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
-                        
                     }else {
-                      // console.log('five')
                        this.isActive = false
                         return this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
-                    }
-
-                    if(this.currentDate == 0 || this.currentDate == 6) {
-                         this.isActive = true
-                          return this.time_countdown = $t('close');
                     }
                 },
 
@@ -771,7 +750,6 @@ export default {
         hasUserInfo() {
             return Boolean(localStorage.getItem('userInfo'));
         },
-
         clear_btn() {
             this.ruleForm.check_btn = [];
         },
@@ -783,12 +761,9 @@ export default {
 
                         var data = this.ruleForm.check_btn  
                         this.$store.commit('getBet', data);
-                        var bet_amount = this.ruleForm.amount
-
-                            
-                          this.$store.commit('betAmount',bet_amount);
-                         this.$router.push(`/remark?lang=${this.$store.state.locale}`); 
-                        //  `${$t('remark')}?lang=${$store.state.locale}`
+                        var bet_amount = this.ruleForm.amount  
+                        this.$store.commit('betAmount',bet_amount);
+                        this.$router.push(`/remark?lang=${this.$store.state.locale}`); 
                     }
 
                 } else {
@@ -796,15 +771,8 @@ export default {
                     console.log('error submit!!');
                     return false;
                 }
-            });
-      
-      
-            
-            
+            });    
       },
-        
-  
-
       small_number(val) {
            this.ruleForm.check_btn = val ? small_option : [];
            this.dialogFormVisible = false

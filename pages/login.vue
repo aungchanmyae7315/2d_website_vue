@@ -14,10 +14,10 @@
                   <el-dropdown-item round command='en'>English</el-dropdown-item>
                 </li>
                 <li>
-                   <el-dropdown-item round command='uni'>Myanmar</el-dropdown-item>
+                   <el-dropdown-item round command='uni'>မြန်မာ</el-dropdown-item>
                 </li>
                 <li>
-                   <el-dropdown-item round command='zh'>Chinese</el-dropdown-item>
+                   <el-dropdown-item round command='zh'>中文</el-dropdown-item>
                 </li>
                 
               </ul>
