@@ -132,6 +132,13 @@
 <script>
  import axios from 'axios'
 export default {
+     mounted() {
+      this.$nextTick(() => {
+      this.$nuxt.$loading.start()
+      })
+
+      
+    },
     data() {
         return {
            
@@ -160,6 +167,7 @@ export default {
                     })
             
                 .then(response => {
+                      this.$nuxt.$loading.finish()
                     this.bet_detail = response.data.data
             })
      }

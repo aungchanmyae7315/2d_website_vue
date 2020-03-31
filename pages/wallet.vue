@@ -116,6 +116,12 @@
                       <h5 class="main_icon" style="font-weight:bold">{{$t('wallet_title')}}</h5>
                   </el-menu-item>
                 </nuxt-link>
+                 <nuxt-link :to="`${$t('/promotion')}?lang=${$store.state.locale}`"> 
+                <el-menu-item index="2">
+                  <img src="~static/icons_header/promotion_icon.png" alt="">
+                    <h5 class="main_icon">{{$t('promotion_title')}}</h5>
+                </el-menu-item>
+                </nuxt-link>
                  <nuxt-link  :to="`${$t('/service')}?lang=${$store.state.locale}`">
                   <el-menu-item index="3">
                     <img src="~static/icons_header/service_icon.png" alt="">

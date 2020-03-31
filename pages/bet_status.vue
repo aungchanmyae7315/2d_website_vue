@@ -156,6 +156,11 @@
 <script>
  import axios from 'axios'
 export default {
+     mounted() {
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start()
+      })
+    },
     data() {
         return {
            
@@ -184,7 +189,8 @@ export default {
                          }
                         })
                     .then(response => {
-                        // console.log(response.data.data)
+                          this.$nuxt.$loading.finish()
+                        console.log(response.data.data)
                      this.bet_stauts = response.data.data  
                     this.time_status = response.data.time
                    // console.log(this.time_stauts)

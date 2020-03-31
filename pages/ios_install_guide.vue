@@ -69,7 +69,7 @@ export default {
     }, 
     methods:{ 
          goBack() { 
-             this.$router.push(`/?lang=${this.$store.state.locale}`);  
+             this.$router.push(`/download?lang=${this.$store.state.locale}`);  
          }, 
     } 
 } 

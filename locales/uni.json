@@ -73,6 +73,7 @@
   "/edit_profile_index":"/edit_profile_index",
   "home_title":"ပင်မ",
   "wallet_title":"ပိုက်ဆံအိတ်",
+  "promotion_title":"ပရိုမိုရှင်းများ",
   "service_title":"ဝန်ဆောင်မှုဖုန်း",
   "me_title":"ကျွန်ုပ်",
 
@@ -172,7 +173,7 @@
 "head":"ထိပ်",
 "tail":"နောက်",
 "registartion_success":"မှတ်ပုံတင်ခြင်း ‌‌အောင်မြင်သည်",
-"we_are_so_delighted":"စတင်အသုံးပြုမှုုအတွက် ဝမ်း‌‌မြောက်မိပါတယ်",
+"we_are_so_delighted":"စတင်အသုံးပြုမှုအတွက် ဝမ်းမြောက်မိပါတယ်။",
 "optional":"နောက်ထပ်",
 "have_referral_code":"ရည်ညွှန်းကုဒ် ရှိ‌‌‌လား",
 "please_enter_referral_code":"ရည်ညွှန်းကုဒ်ဖြည့်၍ ကံစမ်းမဲဆုငွေလက်ဆောင် ရယူလိုက်ပါ",
@@ -232,7 +233,11 @@
 "show_less":"ပြန်သိမ်းရန်",
 "please_upload_photo_here":"ငွေလွှဲမှတ်တမ်း ပုံတင်ပါ",
 "bet_close_time":"ပိတ်မည်အချိန်",
-"close_text":"ပိတ်သွားပါပြီ",
-"please_upload_slip_file":" ငွေလွှဲမှတ်တမ်းဓာတ်ပုံ  တင်ပါ"
+"close_text":"ပိတ်ပါပြီ",
+"please_upload_slip_file":" ငွေလွှဲမှတ်တမ်းဓာတ်ပုံ  တင်ပါ",
+"seinlucky_point_title" :"Sein Lucky ပွိုင့်",
+"seinlucky_point_text" :"Sein Lucky ပွိုင့်ကို ငွေသားဖြင့်ထုတ်ယူ၍မရပါ။ သို့သော် Sein Lucky ၏ ပွိုင့်ဖြင့် Sein Lucky တွင် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက Sein Lucky Company မှ ငွေသားဖြင့် ပြန်လျော်ပေးပါသည်။",
+"seinlucky_point_free":"Sein Lucky ပွိုင့်ကိုအခုပဲ အခမဲ့ရယူလိုက်ပါ။",
+"seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ"
 
 }

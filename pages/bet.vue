@@ -117,26 +117,38 @@
             </el-row>
           
             <el-row> 
+                  <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
+                        <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
+                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.wallet}} {{$t('kyat')}}</div></el-col>
+                  </nuxt-link>
+                 <el-col :span="10" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
+            </el-row>
+             <el-row> 
+                  <nuxt-link :to="`${$t('/seinlucky_point')}?lang=${$store.state.locale}`">
+                        <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
+                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.point_wallet}}</div></el-col>
+                    </nuxt-link>
+              
+                       <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
+                        <el-col :span="24" style="font-size:13px;text-align:right"> 
+                        <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
+                            <el-button  type="warning" round>{{$t('Please Login first')}}</el-button>
+                        </nuxt-link>
+                        </el-col>
+                         </div>
+                            <div v-else class="bet_login_btn">
+                            <el-col :span="10">
+                                  <el-button  :disabled='submitted'    type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
+                            </el-col>
+                                  
+                        
+                            </div>
                
-        
-                <!-- <el-col :span="12"><div class="betclose_text"></div></el-col> -->
-                
-                <el-col :span="12" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                <el-col :span="12" v-else> <div class="balance_amount" style="float:left;font-size:13px">{{$t('you_balance')}}: {{this.profile.wallet}} {{$t('kyat')}}</div></el-col>
-        
-                 <el-col :span="12" style="font-size:13px;text-align:right"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
             </el-row>
 
-               <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
-                 <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
-                    <el-button  type="warning" round>{{$t('Please Login first')}}</el-button>
-                 </nuxt-link>
-             </div>
-            <div v-else class="bet_login_btn">
-
-                    <el-button     type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
-           
-            </div>
+             
+              
+            
             
         </el-header>
        <el-main>
@@ -279,8 +291,21 @@
         
     }
     .balance_amount {
+        color:#fff;
+        float: left;
+        font-size: 13px;
         text-align: right;
-        padding:0 10px 10px 0;
+        padding:3px 10px 10px 0;
+    }
+    .balance_amount img {
+        width:30px;
+        height: auto;
+    }
+    .bet_close_time {
+        font-size: 13px;
+        text-align: center;
+        padding-top:8px;
+        
     }
     .betclose_text {
         color:#CCCCCC;
@@ -354,6 +379,9 @@
        }
        .select_number .el-button {
            width:20px;
+       }
+       .balance_amount , .bet_close_time {
+           font-size: 11px;
        }
    }
    @media screen and (max-width:414px) {
@@ -592,7 +620,7 @@ export default {
 
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
-    //   setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+     setTimeout(() => this.$nuxt.$loading.finish(), 2000)
       })
     
         this.updateIsLoggedIn();
@@ -612,6 +640,7 @@ export default {
  
     data() {
         return {
+            submitted:false,
             time_countdown:'',
             one_result:'',
             evening_time:'',
@@ -647,8 +676,10 @@ export default {
        this.$axios.get('/v2/v1/close_time')
              
               .then(response => {
+                
                 //   console.log(response)
                     this.time = response.data.data
+                     
                     this.morning_from = response.data.data[0].from
                     this.morning_to = response.data.data[0].to
                     this.evening_from = response.data.data[1].from
@@ -656,7 +687,7 @@ export default {
           
                     var currentTime = moment().format('HH:mm:ss');
                     var currentDate  = moment().day();
-                     this.$nuxt.$loading.finish()
+                
                     if(currentTime  >  this.morning_from && currentTime < this.morning_to ) {
                         this.isActive = true
                     }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
@@ -682,8 +713,10 @@ export default {
                          }
                         })
                     .then(response => {
+                        console.log(response)
                      this.profile = response.data.data
-
+                    this.currentTime = response.data.data.time;
+                    console.log(this.currentTime)
                 })
         }       
     },
@@ -705,7 +738,7 @@ export default {
             };
         },
             BetCurrentTime(){
-                this.currentTime = moment().format('HH:mm:ss');
+               this.currentTime = moment().format('HH:mm:ss');
     
                 // var cu_time= new Date("12/01/2019 " + this.currentTime);
                 var mo_from= new Date("03/20/2019 " + this.morning_from);
@@ -733,8 +766,10 @@ export default {
                          this.isActive = false
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }else {
+                        //   this.isActive = true
+                        // return this.time_countdown = this.$root.$t('close_text');
                        this.isActive = false
-                        return this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
+                       return this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }
                 },
 
@@ -763,6 +798,7 @@ export default {
                         this.$store.commit('getBet', data);
                         var bet_amount = this.ruleForm.amount  
                         this.$store.commit('betAmount',bet_amount);
+                        this.submitted = true
                         this.$router.push(`/remark?lang=${this.$store.state.locale}`); 
                     }
 

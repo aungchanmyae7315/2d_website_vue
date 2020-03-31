@@ -2,7 +2,7 @@
     <main class="remark">
        <el-header>
            <!-- <nuxt-link  :to="`${$t('bet')}?lang=${$store.state.locale}`"> -->
-               <el-page-header title="" @back="goBack"  :content="`${$t('remark_title')}`">
+               <el-page-header title="" @back="goBack"  content="ထိုးဂဏာန်းအတည်ပြုစာရင်း">
                 </el-page-header>
            <!-- </nuxt-link> -->
       </el-header>
@@ -62,11 +62,38 @@
                  
                  
                 </el-card> 
+                <h6>ထိုးဂဏာန်းအတည်ပြုစာရင်း</h6>
+                <el-card class="point_amount">
+                     <el-radio v-model="radio" label="2" >
+                         <div>
+                                <img v-if="radio == 2" src="~static/images/point_icon.png"  alt="">
+                                <img v-else src="~static/images/point_t_icon.png"  alt="">
+                         </div>
+                       
+                         <p> လက်ကျန်ပွိုင့်</p>
+                         <h6> {{profile.point_wallet}} </h6>
+                    </el-radio>
+                       <el-divider direction="vertical"></el-divider>
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                            <img v-if="radio == 1" src="~static/images/amount_icon.png"  alt="">
+                            <img v-else src="~static/images/amount_t_icon.png"  alt="">
+                        </div>
+                        
+                       <p> လက်ကျန်ငွေ</p> 
+                       <h6>{{profile.wallet}}</h6>
+                        
+                    </el-radio>
+                   
+                </el-card>
+                
 
                  <div class="btn_group">
                      
-                  
-                          <el-button :disabled='submitted'  type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
+                        
+                            
+                          <el-button v-if="radio == 1" :disabled='submitted'  type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
+                          <el-button v-else :disabled='submitted'  type="submit"  @click="submit_point" class="bet_submit" round>  {{$t('Bet')}}</el-button>
                   
                     
                   </div>
@@ -83,13 +110,13 @@ export default {
   getters: {},
   mutations: {},
   actions: {},
-  mounted () {
-
+  mounted() {
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      setTimeout(() => this.$nuxt.$loading.finish(), 500)
-    })
-},
+      })
+
+      
+    },
     data() {
         return {
           bet_amount: localStorage.getItem('bet_amount'),
@@ -97,7 +124,8 @@ export default {
           phone:'',
           bet_odds:'',
           submitted:false,
-
+          radio: '1',
+          profile:''
         }
     },
     created() {
@@ -110,10 +138,24 @@ export default {
               
                       })
                   .then(response => {
+                      this.$nuxt.$loading.finish()
                     console.log(response)
                   this.bet_odds = response.data
 
               })
+          let token = localStorage.getItem('token');
+        if(token) {
+             this.$axios.get("/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                        console.log(response)
+                     this.profile = response.data.data
+
+                })
+        }      
     
     },
     computed: {
@@ -133,6 +175,7 @@ export default {
        },
        
        submit_bet() {
+             this.submitted = true
           let token = localStorage.getItem('token');
 
                 var data = {
@@ -154,7 +197,70 @@ export default {
                         })
                 
                     .then(response => {
-                     
+                 
+                    this.res_mor_error = response.data.status
+                    console.log(this.res_mor_error) 
+                    if(this.res_mor_error == "morning"  ) {
+                         this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                        //   duration:0
+                        });
+                    }else if(this.res_error == 'true') {
+                        this.$message({
+                            showClose: true,
+                          message: this.$t('amount_invalid'),
+                          type: 'warning',
+                        //   duration:0
+                        });
+                    }else {
+                          
+                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                    }
+                    //   this.res_error = response.data.message
+                    //   this.res_message = response.data.data
+                
+                
+                    //   if(this.res_error == 'true') {
+                    //      this.$message({
+                    //         showClose: true,
+                    //       message: this.$t('amount_invalid'),
+                    //       type: 'warning',
+                    //     //   duration:0
+                    //     });
+                    //   }else {
+                    //       this.submitted = true
+                    //       this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                    //   }
+                      // this.bet = response.data.data
+                    
+                })
+               
+       },
+        submit_point() {
+          let token = localStorage.getItem('token');
+
+                var data = {
+                    client_name:this.name,
+                    client_phone:this.phone,
+                    twod_id:  localStorage.getItem('check_btn'),
+                    point: localStorage.getItem('bet_amount') ,
+                }
+                console.log(data)
+            this.$axios.post("/v2/v1/2d_point/bet",
+                           data,
+                    {
+                           
+
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         },
+                          
+                        })
+                
+                    .then(response => {
+                     console.log(response)
                       this.res_error = response.data.message
                       this.res_message = response.data.data
                 
@@ -171,12 +277,8 @@ export default {
                           this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                       }
                       // this.bet = response.data.data
-                    
-                })
-               
-       },
-     
-      
+                })   
+       },     
     }
 }
 </script>
@@ -197,7 +299,7 @@ export default {
         margin-top:30px;
     }
 .remark .el-card {
-    margin:50px auto;
+    margin:20px auto;
     border-radius: 17px;
 }
 .remark .el-form-item {
@@ -261,4 +363,30 @@ export default {
         color:#fff;
         font-weight: bold;
     }
+    .point_amount img{
+        width:40px;
+        padding-bottom:15px;
+        height:auto;
+    }
+    .point_amount .el-radio__input.is-checked+.el-radio__label {
+        color:#158220;
+        font-weight: bold;
+    }
+    .point_amount .el-radio__input {
+        display: none;
+    }
+    .point_amount .el-divider--vertical {
+        height:3em;
+        bottom:35px;
+    }
+    .point_amount .el-radio , .el-radio__label {
+        margin:0;
+        padding:0 30px;
+        line-height: 0;
+    }
+    .point_amount .el-card__body {
+        padding:10px 0 0 0;
+    }
+
+
 </style>

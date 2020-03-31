@@ -214,7 +214,11 @@
 "new_password_invalid_again":"ေနာက္တစ္ႀကိမ္စကားဝွက္ အသစ္ထည့္ေပးပါ",
 "sign_up_password_invalid":"စကားဝွက္ ထည့္ေပးပါ ",
 "sign_up_password_invalid_again":"ေနာက္တစ္ႀကိမ္စကားဝွက္ ထည့္ေပးပါ",
-"two_input_do_not_match" :"စကားဝွက္ အသစ္ႏွစ္ခု မတူညီပါ"
+"two_input_do_not_match" :"စကားဝွက္ အသစ္ႏွစ္ခု မတူညီပါ",
+"seinlucky_point_title" :"Sein Lucky ပွိုင့်",
+"seinlucky_point_text" :"Sein Lucky ပွိုင့်ကို ငွေသားဖြင့်ထုတ်ယူ၍မရပါ။ သို့သော် Sein Lucky ၏ ပွိုင့်ဖြင့် Sein Lucky တွင် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက Sein Lucky Company မှ ငွေသားဖြင့် ပြန်လျော်ပေးပါသည်။",
+"seinlucky_point_free":"Sein Lucky ပွိုင့်ကိုအခုပဲ အခမဲ့ရယူလိုက်ပါ။",
+"seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ"
   
 
   

@@ -1,95 +1,79 @@
 <template>
-    <main class="sign_up_main el-main">
+     <main class="sign_up_main el-main">
       
     <div class="longText_login" id="hidingScrollBar_login">
          <div class="hideScrollBar_login">
-           <img src="~static/images/login_page/login_bg.png" class="login_bg">
-          <div class="main_login_page">
-              <div class="language">
-                <el-dropdown @command="changeLang"  style="text-align:center">
-              
-              <ul>
-                  
-                <li>
-                  <el-dropdown-item round command='en'>English</el-dropdown-item>
-                </li>
-                <li>
-                   <el-dropdown-item round command='uni'>မြန်မာ</el-dropdown-item>
-                </li>
-                <li>
-                   <el-dropdown-item round command='zh'>中文</el-dropdown-item>
-                </li>
+              <img src="~static/images/login_page/login_bg.png" class="login_bg">
+                    <div class="main_login_page">
+                        <div class="language">
+                            <el-dropdown @command="changeLang"  style="text-align:center">
+                        
+                        <ul>
+                            
+                            <li>
+                            <el-dropdown-item round command='en'>English</el-dropdown-item>
+                            </li>
+                            <li>
+                            <el-dropdown-item round command='uni'>မြန်မာ</el-dropdown-item>
+                            </li>
+                            <li>
+                            <el-dropdown-item round command='zh'>中文</el-dropdown-item>
+                            </li>
+                            
+                        </ul>
+                            </el-dropdown>   
+                           
+                        </div>
+                    </div>
+        <div class="form_padding">
+                <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                    <el-form-item
+                    
+                    prop="phone"
+                    :rules="[
+                        { required: true, message: $t('What_phone_number') },
+                        
+                    ]"
+                    
+                    >  
+                        <el-input type="number"  :placeholder="$t('Phone_placeholder')+' '+'(09 ပါထည့်ဖြည့်ပါ)'" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                    
+                    </el-form-item>
+                    
                 
-              </ul>
-                </el-dropdown>   
-                <div id="app">
-              </div>
+
+                    
+                    <el-form-item
+                        prop="password"
+                        :rules="[
+                        { required: true, message: $t('set_your_password') },
+                    
+                        ]"
+                    >
+                        <el-input type="password" show-password :placeholder="$t('Password')"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
+                    </el-form-item>
+                    <el-form-item>
+                <el-button type="success" round @click="submitForm('ruleForm')">{{$t('login_title')}}</el-button>
+
+                        <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
+                                <nuxt-link :to="`${$t('/forgot_password')}?lang=${$store.state.locale}`">
+                        <el-button type="text"  style="color:#158220">{{$t('/forgot_password_text')}}</el-button>
+                                </nuxt-link>
+                    </el-form-item>
+                </el-form>
           </div>
-
-      <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
-            <el-form-item
-             
-              prop="phone"
-              :rules="[
-                   { required: true, message: $t('What_phone_number') },
-                
-              ]"
-               
-            >  
-                <el-input type="number"  :placeholder="$t('Phone_placeholder')" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
-               
-            </el-form-item>
-            
-        
-
-            
-            <el-form-item
-                prop="password"
-                :rules="[
-                 { required: true, message: $t('set_your_password') },
-             
-                ]"
-            >
-                <el-input type="password" show-password :placeholder="$t('Password')"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
-            </el-form-item>
-            <el-form-item>
-          <el-button type="success" round @click="submitForm('ruleForm')">{{$t('login_title')}}</el-button>
-
-                <!-- <el-button @click="resetForm('numberValidateForm')">Reset</el-button> -->
-                          <nuxt-link :to="`${$t('/forgot_password')}?lang=${$store.state.locale}`">
-                <el-button type="text"  style="color:#158220">{{$t('/forgot_password_text')}}</el-button>
-                          </nuxt-link>
-            </el-form-item>
-        </el-form>
-
-        <!-- <h6>Or</h6> -->
-        <div class="">
             <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-                  <el-button type="default" round>{{$t('Skip')}}</el-button>
+                    <el-button type="default" round>{{$t('Skip')}}</el-button>
+                </nuxt-link>
+            <nuxt-link :to="`${$t('/signup')}?lang=${$store.state.locale}`">
+                    <el-button type="warning" round>{{$t('sign_up_new')}}</el-button>
             </nuxt-link>
-           <nuxt-link :to="`${$t('/signup')}?lang=${$store.state.locale}`">
-                <el-button type="warning" round>{{$t('sign_up_new')}}</el-button>
-           </nuxt-link>
-          
-        </div>
-         
-
-              
-
          </div>
-        
-      
-     
-        
-    <!-- forgot password modal box     -->
-
-
-    
-     
-         </div>
-         </div>
+    </div>
     </main>
- </template>
+</template>
+
+ 
 <script>
 import axios from 'axios'
 // import store from './vuex/store'
@@ -123,8 +107,13 @@ import axios from 'axios'
             this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
          },
       submitForm(formName) {
+        
          this.$refs[formName].validate((valid) => {
+           
           if (valid) {
+             this.$nextTick(() => {
+              this.$nuxt.$loading.start()
+              })
              this.$axios.post('/v1/login', {
                     phone: this.ruleForm.phone,
                     password: this.ruleForm.password,
@@ -132,7 +121,7 @@ import axios from 'axios'
                 })
               
                .then(response => {
-                
+                this.$nuxt.$loading.finish()
                   if(response.data.result == '0'){
                     this.error_message = response.data.data,
                     console.log(this.message)
@@ -147,15 +136,7 @@ import axios from 'axios'
                     
                     this.$store.commit('logIn', this.userInfo);
                     this.$store.commit('accessToken', this.token);
-                     const loading = this.$loading({
-                          lock: true,
-                          text: 'Loading',
-                          spinner: 'el-icon-loading',
-                          background: 'rgba(0, 0, 0, 0.7)'
-                        });
-                        setTimeout(() => {
-                          loading.close();
-                        }, 1000);
+                    
                      
                      this.success_message = response.data.data,
                     
@@ -211,7 +192,10 @@ import axios from 'axios'
   overflow: auto;
   padding-bottom: 20px; /*This would hide the scroll bar of the bottom if there is one*/
 }
-  
+.form_padding {
+    padding:0 30px;
+}
+
   .login_bg {
     max-width:414px;
     width:100%;
@@ -259,41 +243,7 @@ import axios from 'axios'
     text-decoration :none;
     color:#57A11E;
   }
-   h6        {
-    color:#BDC5BE;
-    font-family:'Oswald';
-    font-weight:700;
-    position:relative;  
-    margin: 60px auto 20px auto;
-    font-size: 16px;
-    line-height: 15px;
-    width: 282px;
-}
-
-h6:before, h6:after {
-  background:#BDC5BE;
-  content:"";
-  display:block;
-  height:1px;
-  position:absolute;
-  width:125px;
-}
-
-h6:before  {  
-  left:0;
-  top:9px;
-  border-radius: 90px 0 0 90px;
-  -moz-border-radius: 90px 0 0 90px;
-  -webkit-border-radius: 90px 0 0 90px;
-}
-
-h6:after   {
-  right:0;
-  top:9px;
-  border-radius: 0 90px 90px 0;
-  -moz-border-radius: 0 90px 90px 0;
-  -webkit-border-radius:  0 90px 90px 0;
-}
+   
 .btn_group_sig {
   display :inline-flex;
 }

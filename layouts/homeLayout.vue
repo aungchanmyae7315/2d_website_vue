@@ -19,44 +19,15 @@
                  <img src="~static/images/logo.png" class="logo" alt="logo">
             </li>
              
-            <li class="download_btn" @click="dialog = true" >
+            <li class="download_btn" >
+                 <nuxt-link  :to="`${$t('/download')}?lang=${$store.state.locale}`">
                    App<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
+                </nuxt-link>
             </li>
            
           </ul>
              
-      
-<el-drawer
  
-  :visible.sync="dialog"
-  :append-to-body="true"
-  size="100%"
- >
-  <div>
-       <img src="~static/images/logo.png" class="logo_download" alt="logo">
-       <p>APP ‌ဖုန်းထဲထည့်သွင်းပြီးပါက Browser မှဝင်စရာမလိုပဲ တိုက်ရိုက်အသုံးပြုနိုင်သည်။</p>
-       <div class="two_download_btn">
-          <div>
-               <nuxt-link  :to="`${$t('/ios_install_guide')}?lang=${$store.state.locale}`"> 
-                  <img src="~static/images/icons/ios_download_img.png" alt="">
-              </nuxt-link>
-          </div>
-           <div>
-             <a href="https://play.google.com/store/apps/details?id=seinlucky.com&hl=en">
-                <img src="~static/images/icons/playstore_download_img.png" alt="">
-              </a>
-         </div>
-         
-          <div>
-             <a href="https://www.seinlucky.com/download/seinlucky.apk">
-                <img src="~static/images/icons/andriod_download_img.png" alt="">
-              </a>
-         </div>
-          
-       </div>
-  </div>
-</el-drawer>
-              
                
           
             <!-- <el-col :span="4">
@@ -104,6 +75,12 @@
             <el-menu-item index="2">
                <img src="~static/icons_header/wallet_icon.png" alt="">
                 <h5 class="main_icon">{{$t('wallet_title')}}</h5>
+            </el-menu-item>
+            </nuxt-link>
+             <nuxt-link :to="`${$t('/promotion')}?lang=${$store.state.locale}`"> 
+            <el-menu-item index="2">
+               <img src="~static/icons_header/promotion_icon.png" alt="">
+                <h5 class="main_icon">{{$t('promotion_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
               <nuxt-link :to="`${$t('/service')}?lang=${$store.state.locale}`">
@@ -191,7 +168,7 @@ html {
     
   }
 .el-menu-item {
-  padding:0 20px;
+  padding:0 2px;
 }
 .el-menu-demo  {
   display: flex;
@@ -254,6 +231,7 @@ html {
   background-color: #35495e;
 }
 .download_btn {
+    color:#fff;
     cursor: pointer;
     float: right;
     border-radius: 9px;
@@ -263,6 +241,9 @@ html {
     padding: 0 12px;
     line-height: 35px;
     font-weight: bold;
+}
+.download_btn a {
+  color:#000 !important;
 }
 .el-drawer__header {
   margin:0 ;

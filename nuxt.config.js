@@ -31,6 +31,7 @@ export default {
     script: [
       
       // { src: '' },
+      { src: 'https://unpkg.com/vue-image-upload-resize' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js' },
       { src: 'https://unpkg.com/aos@next/dist/aos.js' },
@@ -76,8 +77,8 @@ export default {
   */
  axios: {
   credentials: false,
-  baseURL: "https://api.2dboss.com/api/",
-  //baseURL: "https://build.seinlucky.com/api/",
+//baseURL: "https://api.2dboss.com/api/",
+ //baseURL: "https://build.seinlucky.com/api/",
 
   proxyHeaders: false,
   headers: {

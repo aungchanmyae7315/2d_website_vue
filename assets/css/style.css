@@ -69,7 +69,7 @@ input[type=number] {
    width:60px;
  }
  .el-menu-item {
-   padding:0 20px;
+   padding:0 2px;
    text-align: center;
    line-height: 44px !important;
  }
@@ -495,7 +495,7 @@ input[type=number] {
   }
 
 .all_btn {
-  margin-top:15px;
+  margin-top:50px;
 }
 .longText{
   max-width: 480px;

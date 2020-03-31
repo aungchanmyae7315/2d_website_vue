@@ -2,20 +2,28 @@
    <div class="main_container withdraw_noti">
       <el-header>
            <!-- <nuxt-link  :to="`${$t('notification')}?lang=${$store.state.locale}`"> -->
-                 <el-page-header @back="goBack" title=""  :content="`${$t('Withdrawal')}`">
+                 <el-page-header @back="goBack" title="">
                 </el-page-header>
            <!-- </nuxt-link> -->
       </el-header>
       <section class="withdraw_notifi">
            <div class="refel_img_two">
-            <img src="~static/images/noti_page/noti_icon3.png" class="">
-        </div>
+            <img v-if="notification_detail.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" class="">
+            <img v-else-if="notification_detail.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" class="">
+
+            </div>
       <el-card data-aos="zoom-out-down"
         data-aos-easing="linear"
         data-aos-duration="500">
-          <h5 class="win_text">{{notification_detail.description}} </h5>
-      
-        <div class="row win_item">
+          <h5 class="title">{{notification_detail.title}} </h5>
+           <h5 class="amount">{{notification_detail.amount}} ကျပ် </h5>
+            <div class="footer_card" v-if="notification_detail.status == 'withdrawl'">
+                <p>ငွေထုတ်ချိန်  {{notification_detail.read_at}}</p>
+            </div>
+            <div class="footer_card" v-else-if="notification_detail.status == 'top_up'">
+                <p>ငွေသွင်းချိန်  {{notification_detail.read_at}}</p>
+            </div>
+        <!-- <div class="row win_item">
                 <div class="col">
                     <div class="">
                         <h5  style="font-size:10pt;color:#47940D;">Reat at</h5>
@@ -31,7 +39,7 @@
                           <span>{{notification_detail.created_at}}</span><br>
                     </div>
                 </div>
-          </div>
+          </div> -->
       </el-card>
 
       </section>
@@ -46,13 +54,16 @@
       .withdraw_noti .el-page-header {
         line-height: 43px;
         color:#fff;
-        padding:0 20px;
+        padding:10px 20px;
     }
     .withdraw_noti .el-page-header__content {
         color:#fff;
     }
     .withdraw_noti .el-page-header__left {
         margin:0;
+    }
+    .withdraw_notifi .el-card {
+        border-radius: 13px;
     }
         .refel_img_two img {
         width:80px;
@@ -61,16 +72,24 @@
         top: 43px;
         z-index: 1;
     }
-    .win_text {
-        padding:20px;
+    .title {
+        padding:0 20px;
         margin-top:20px;
         text-align: center;
+        font-size: 15px;
     }
-
-    .win_item span {
-        color:#858585;
-        font-size: 10pt;
+    .amount {
+        color:#158220;
+        padding:7px 0;
+        font-weight: bold;
     }
+    .footer_card {
+        border-top:1px solid #0000001A;
+    }
+    .footer_card p {
+        margin: 15px auto 0 auto;
+    }
+   
         
 </style>
 
@@ -117,6 +136,7 @@ export default {
                         })
                 
                     .then(response => {
+                       
                      console.log(this.notification_detail = response.data.data)
                 })
      }

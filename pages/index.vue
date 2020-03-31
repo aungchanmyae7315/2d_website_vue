@@ -120,6 +120,10 @@
               </div>
         </div>
 
+<!-- <h3>User Agent:</h3>
+<div id="userAgentDiv"></div> -->
+
+
           <div class="block" data-aos="fade-up" data-aos-duration="700">
   
             <el-carousel  trigger="click" height="155px">
@@ -141,7 +145,7 @@
                           <div class="scroll-left">
                             <p> 
                                <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
-                              {{this.slider_text.text}}</p>
+                              {{this.slider_text}}</p>
                           </div>
                            </h3> 
                     </div>
@@ -379,6 +383,32 @@ export default {
       this.updateIsLoggedIn();
       this.updateLang();
      
+
+
+
+
+
+
+
+// var userAgent = navigator.userAgent||navigator.vendor||window.opera;
+// document.getElementById("userAgentDiv").innerHTML = userAgent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
    },
   components: {
   
@@ -435,6 +465,7 @@ export default {
                
               })
           },
+        
       changeLang (lang) {
        
       //mutate 'locale' in store
@@ -453,6 +484,7 @@ export default {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
             this.breakTime = '12:01 PM';
+           
              this.getDataresult();
           } else if(this.currentTime > this.time_04_30){
             this.isActive = false
@@ -461,6 +493,7 @@ export default {
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
+            console.log('Hello')
              this.getDataresult();
           }else{
             
@@ -468,18 +501,18 @@ export default {
             this.breakTime = moment().format('h:mm A');
           }
 
-       this.currentTime = moment().format('HH:mm:ss');
+      // this.currentTime = moment().format('HH:mm:ss');
 
        this.currentDate = moment().format("YYYY D MMMM  dddd")
         
        },
        ServerCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-            this.isActive = false
+           // this.isActive = false
             this.breakTime = '12:01 PM';
            
           } else if(this.currentTime > this.time_04_30){
-            this.isActive = false
+            // this.isActive = false
             this.breakTime = '4:30 PM'; 
             
           }else if(this.currentTime < this.morningTime_9_30){
@@ -492,7 +525,7 @@ export default {
             this.breakTime = moment().format('h:mm A');
           }
 
-       this.currentTime = moment().format('HH:mm:ss');
+      // this.currentTime = moment().format('HH:mm:ss');
 
        this.currentDate = moment().format("YYYY D MMMM  dddd")
         
@@ -517,7 +550,7 @@ export default {
      created() {
       
       this.currentDate = moment().format("YYYY D MMMM  dddd")
-      this.currentTime = moment().format('HH:mm:ss ');
+     // this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
      setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
@@ -531,12 +564,37 @@ export default {
         }.bind(this), 9000)   
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
-      //  setInterval(function() {
-       this.$axios.get('/v1/twod-result/live')
+      var stop_Interval =  setInterval(function() {
+        
+       this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
+                console.log(response)
+                console.log(response.data.data.status_1200)
+             
+                if(response.data.data.status_1200 == "backend") {
+                      console.log("kwee_live")
+                      console.log('one')
+                       this.isActive = false
+                       clearTimeout(stop_Interval);
+                        
+                          this.$axios.get('/v2/v1/kwee_live')
+                            .then(response => {
+                            this.info = response.data[0]
+                          
+                            })      
+                }else {
+                  console.log("result")
+                  console.log('two')
+                       this.isActive = true
+                      this.$axios.get('/v2/v1/twod-result/live')
+                    .then(response => {
+                      this.info_api = response.data.data
+                    
+                    })
+                }
                 this.info_api = response.data.data
               })
-        //  }.bind(this), 3000)
+         }.bind(this), 3000)
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
 //  alert('dd')
   
@@ -550,12 +608,38 @@ export default {
         //       })
         // }.bind(this), 3000)
   }else {
-      // setInterval(function() {
-        this.$axios.get('/v1/twod-result/live')
-          .then(response => {
-            this.info_api = response.data.data
-          })
-      // }.bind(this), 3000)
+     console.log('ppp')
+      // var ok =  setInterval(function() {
+        
+       this.$axios.get('/v2/v1/twod-result/live')
+              .then(response => {
+                console.log(response)
+                console.log(response.data.data.status_1200)
+               
+                if(response.data.data.status_430 == "backend") {
+                      console.log("kwee_live")
+                      console.log('chang')
+                         this.isActive = false
+                       clearTimeout(ok); 
+                     
+
+                          this.$axios.get('/v2/v1/kwee_live')
+                            .then(response => {
+                            this.info = response.data[0]
+                          
+                            })      
+                }else {
+                    //    this.isActive = true
+                    //   this.$axios.get('/v2/v1/twod-result/live')
+                    // .then(response => {
+                    //   this.info_api = response.data.data
+                    
+                    // })
+                    
+                }
+                this.info_api = response.data.data
+              })
+        //  }.bind(this), 3000)
   }
       //  setInterval(function() {
         this.$axios.get('/v1/twod-result/live')
@@ -570,7 +654,7 @@ export default {
 
           this.$axios.get('/v2/v1/slider_text')
               .then(response => {
-               
+               console.log(response)
                this.slider_text = response.data.data[0]
               })
               
@@ -583,6 +667,9 @@ export default {
                         })
                     .then(response => {
                      this.profile = response.data.data
+                     this.currentTime = response.data.data.time
+                  
+                     console.log(this.currentTime)
 
                 })
       }  

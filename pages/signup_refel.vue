@@ -27,11 +27,15 @@
                                     
                                     >  
                                     <el-input :placeholder="$t('enter_referral_code')" v-model="ruleForm.referal_code"></el-input>
+                                   <div style="padding-top:20px;">
+                                         <el-button type="info"  round @click="submitRefel('ruleForm')"> တင်ပါမည်</el-button>
+                                   </div>
+                                    
                              </el-form-item>
                         </el-form>
                         </el-card>
-                        <el-button type="info" class="submitRefel" round @click="skip()">{{$t('Skip')}}</el-button>
-                         <el-button type="success" class="submitRefel" round @click="submitRefel('ruleForm')">{{$t('summit_referral_code')}}</el-button>
+                        <p style="padding-top:20px;">ရည်ညွှန်းကုဒ်မရှိလျှင် ကျော်သွားနိုင်ပါသည်။</p>
+                         <el-button type="success" class="submitRefel" round @click="skip()">ရည်ညှန်းကုဒ်မရှိပါ</el-button>
                          
                 </div>
              </div>
@@ -183,8 +187,11 @@ export default {
   font-size:17px;
  
 }
+.signup_refel_page .el-form-item {
+    margin:0;
+}
 .submitRefel {
-    margin-top:100px;
+    margin-top:20px;
     margin-bottom:20px;
     /* width:100%; */
 }

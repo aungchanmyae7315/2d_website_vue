@@ -21,11 +21,13 @@
     "aos": "^3.0.0-beta.6",
     "axios": "^0.19.2",
     "element-ui": "^2.13.0",
+    "mobile-device-detect": "^0.3.3",
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",
     "nuxt-i18n": "^6.5.0",
     "vee-validate": "^3.2.5",
     "vue-i18n": "^8.15.3",
+    "vue-image-upload-resize": "^2.3.0",
     "vue-loading-spinner": "^1.0.11",
     "vue-owl-carousel": "^2.0.3",
     "vue-spinner": "^1.0.3"

@@ -50,6 +50,11 @@ const createStore = () => {
             
                 
             },
+            promotion_id(state, data) {
+                // console.log("Token", token);
+                state.data = data;
+                localStorage.setItem('promotion_id', (data));  
+            },
             bet_date(state, data) {
                 state.data = data;
                 localStorage.setItem('bet_date', (data));

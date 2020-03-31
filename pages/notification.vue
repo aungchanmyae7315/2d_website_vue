@@ -6,10 +6,8 @@
                 </el-page-header>
             <!-- </nuxt-link> -->
       </el-header>
-      <section v-if="notification"  >
-          <p style="text-align:center;color:#b8b8b8"> No notification</p>
-      </section>
-        <section v-else class="noti_content" >
+     
+        <section class="noti_content" >
             
             <ul v-for="(noti ,n) in notification" :key="n" class="noti_text"  data-aos="fade-down"
         data-aos-easing="linear"
@@ -19,18 +17,21 @@
                 
                     <li @click="cur_id(noti.notification_id)" >
                     
-                    <img src="~static/images/noti_page/noti_icon2.png" alt="" class="noti_icon">
+                   
+                    <img  v-if="noti.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" alt="" class="noti_icon">
+                    <img  v-else-if="noti.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" alt="" class="noti_icon">
+                    <img  v-else-if="noti.status == 'result'"  src="~static/images/noti_page/win_icon.png" alt="" class="noti_icon">
+                    <img  v-else-if="noti.status == 'result'"  src="~static/images/noti_page/win_icon.png" alt="" class="noti_icon">
                     <div style="color:#000;">{{noti.title}}</div>
-                    <div style="color:#b8b8b8;">{{noti.description}}</div>
+                    <div style="color:#158220;">{{noti.amount}} ကျပ်</div>
+                     <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    
                     <div class="el_icon_right">
                          <i  class="el-icon-arrow-right" ></i>
                     </div>
                    
                      <el-divider></el-divider>
                 </li>
-               
-             
-                
 
             </ul>
             
@@ -61,18 +62,18 @@
         list-style:none;
     }
     .noti_text .noti_icon {
-       width: 30px;
+       width: 65px;
         height: auto;
         float: left;
         display: block;
-        /* padding: 22px; */
-        margin: 10px 15px 10px 0;
+        margin-top:-6px;   
+        margin-right:5px; 
     }
     .el_icon_right {
         float: right;
         position: relative;
         right:3px;
-        bottom:30px;
+        bottom:47px;
     }
 
 </style>
@@ -103,15 +104,17 @@ export default {
          let token = localStorage.getItem('token');
         
         if(token) {
-                this.$axios.get("/v1/notification",
+                this.$axios.get("/v2/v1/notification",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
                         })
                     .then(response => {
-
+                        console.log(response.data)
                     this.notification = response.data.data
+                   // console.log(this.notification.stauts)
                      var noti_id = this.notification.notification_id
+                     //console.log(noti_id)
                     
                 })
         }

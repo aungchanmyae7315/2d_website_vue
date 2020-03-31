@@ -1,6 +1,11 @@
 <template>
   
-    <div class="main_container">
+    <div class="download">
+    <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> 
+    <div class="back_page_home">
+       <img src="~static/images/back_home_icon.png" alt="">
+    </div>
+    </nuxt-link>
     
       
 
@@ -17,7 +22,8 @@
              <a href="https://play.google.com/store/apps/details?id=seinlucky.com&hl=en">
                 <img src="~static/images/icons/playstore_download_img.png" alt="">
               </a>
-         </div>
+            </div>
+          
          
           <div>
              <a href="https://www.seinlucky.com/download/seinlucky.apk">
@@ -58,7 +64,7 @@ export default {
 }
 </script>
 <style>
-.main_container {
+.download {
    
     color:#fff;
     text-align: center;
@@ -66,7 +72,7 @@ export default {
     background: rgba(13, 24, 13, 0.95) !important;
 }
 .download_page_btn {
-    padding:30px;
+    padding:40px 30px;
 }
 
 .logo_download {
@@ -103,7 +109,11 @@ export default {
 .two_download_btn .el-button {
   border:1px solid #fff !important;
 }
-
+.back_page_home img{
+  width:25px;
+  float: left;
+  margin:20px 0 20px 20px;
+}
 </style>
 
 

@@ -71,6 +71,7 @@
   "/edit_profile_index":"/edit_profile_index",
   "home_title":"主页",
   "wallet_title":"钱包",
+  "promotion_title":"Promotion",
   "service_title":"客服",
   "me_title":"我的",
 
@@ -233,7 +234,11 @@
 "please_upload_photo_here":"点击传转账证明照片",
 "bet_close_time":"关彩倒计时",
 "close_text":"Close",
-"please_upload_slip_file":"Please upload bank slip"
+"please_upload_slip_file":"Please upload bank slip",
+"seinlucky_point_title" :"Sein Lucky ပွိုင့်",
+"seinlucky_point_text" :"Sein Lucky ပွိုင့်ကို ငွေသားဖြင့်ထုတ်ယူ၍မရပါ။ သို့သော် Sein Lucky ၏ ပွိုင့်ဖြင့် Sein Lucky တွင် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက Sein Lucky Company မှ ငွေသားဖြင့် ပြန်လျော်ပေးပါသည်။",
+"seinlucky_point_free":"Sein Lucky ပွိုင့်ကိုအခုပဲ အခမဲ့ရယူလိုက်ပါ။",
+"seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ"
 
 
 }

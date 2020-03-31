@@ -71,6 +71,7 @@
   "/edit_profile_index":"/edit_profile_index",
   "home_title":"Home",
   "wallet_title":"Wallet",
+  "promotion_title":"Promotion",
   "service_title":"Service",
   "me_title":"Me",
 
@@ -234,6 +235,10 @@
   "please_upload_photo_here":"Please upload photo here",
   "bet_close_time":"Bet Close",
   "close_text":"Close",
-  "please_upload_slip_file":"Please upload bank slip"
+  "please_upload_slip_file":"Please upload bank slip",
+  "seinlucky_point_title" :"Sein Lucky ပွိုင့်",
+  "seinlucky_point_text" :"Sein Lucky ပွိုင့်ကို ငွေသားဖြင့်ထုတ်ယူ၍မရပါ။ သို့သော် Sein Lucky ၏ ပွိုင့်ဖြင့် Sein Lucky တွင် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက Sein Lucky Company မှ ငွေသားဖြင့် ပြန်လျော်ပေးပါသည်။",
+  "seinlucky_point_free":"Sein Lucky ပွိုင့်ကိုအခုပဲ အခမဲ့ရယူလိုက်ပါ။",
+  "seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ"
 }
 

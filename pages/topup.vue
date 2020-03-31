@@ -439,6 +439,7 @@ export default {
     //     this.$message.warning(`The limit is 1, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
     //   },
         slip_upload(formName) {
+            this.submitted = true
              this.$refs[formName].validate((valid) => {
           if (valid) {
               let token = localStorage.getItem('token');
@@ -464,10 +465,11 @@ export default {
                
                 
                     .then(response => {
+                      
                      //console.log(this.topup_info = response.data.data)
                      console.log(response)
                 })
-                  this.submitted = true
+                
                 this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
                  
             

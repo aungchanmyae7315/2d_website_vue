@@ -26,7 +26,7 @@
               ]"
                
             >  
-                <el-input type="phone" placeholder="09 xxx xxx xxx" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                <el-input type="number" placeholder="09 xxx xxx xxx" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                
             </el-form-item>
             

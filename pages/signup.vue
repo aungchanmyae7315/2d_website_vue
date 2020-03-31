@@ -25,7 +25,7 @@
 
 
             <el-form-item
-              :label="$t('phone')"
+              :label="$t('phone') +' '+ '(09 ပါထည့်ဖြည့်ပါ )'"
               prop="phone"
               :rules="[
                 { required: true, message: $t('What_phone_number') },
@@ -33,7 +33,7 @@
               ]"
                
             >  
-                <el-input type="phone" placeholder="09 xxx xxx xxx" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                <el-input type="number" placeholder="09 xxx xxx xxx" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                
             </el-form-item>
             
@@ -390,7 +390,7 @@ import axios from 'axios'
   }
   .sign_up_text {
       text-align: center;
-      margin:80px auto;
+      margin:15px auto;
   }
     .phone_input .el-input__inner {
         background: #eee8e8;
@@ -398,7 +398,7 @@ import axios from 'axios'
         color:#000;
     }
     .phone_input {
-        margin-bottom:120px;
+        margin-bottom:80px;
     }
     .sign_page .el-button.is-round {
         width:100%;
