@@ -124,7 +124,7 @@
                  <el-col :span="10" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
             </el-row>
              <el-row> 
-                  <nuxt-link :to="`${$t('/seinlucky_point')}?lang=${$store.state.locale}`">
+                  <nuxt-link :to="`${$t('seinlucky_point')}?lang=${$store.state.locale}`">
                         <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
                         <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.point_wallet}}</div></el-col>
                     </nuxt-link>
@@ -619,13 +619,13 @@ export default {
            
 
       this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-     setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+        // this.$nuxt.$loading.start()
+        // setTimeout(() => this.$nuxt.$loading.finish(), 2000)
       })
     
         this.updateIsLoggedIn();
 
-        setInterval(() => {
+        this.isActiveItvId = setInterval(() => {
             this.BetCurrentTime();
                  var currentDate  = moment().day();
                  if(currentDate == 0 || currentDate == 6) {
@@ -637,7 +637,12 @@ export default {
     computed: {
             
     },
- 
+    destroyed () {
+        clearInterval(this.isActiveItvId);
+    },
+    beforeDestroy () {
+        clearInterval(this.isActiveItvId);
+    }, 
     data() {
         return {
             submitted:false,
@@ -667,6 +672,7 @@ export default {
                 btns: btn_options,
                 cities: cityOptions,
                 profile:'', 
+                isActiveItvId:0,
         }
     },
     created() {

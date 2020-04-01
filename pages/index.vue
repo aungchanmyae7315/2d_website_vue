@@ -373,11 +373,11 @@ export default {
   layout: 'homeLayout',
 
   mounted() {
-        this.$axios.get('/v2/v1/kwee_live')
-              .then(response => {
-               this.info = response.data[0]
+        // this.$axios.get('/v2/v1/kwee_live')
+        //       .then(response => {
+        //        this.info = response.data[0]
 
-              })
+        //       })
       this.getDataKwee();
       this.getDataresult();
       this.updateIsLoggedIn();
@@ -442,24 +442,38 @@ export default {
       profile:'',
       slider_text:'',
       breakTime:null,
-      
-
+      kweeliveItvId:0,
+      serverCurTimeItvId:0,
       //   activeIndex2: '1',
      
     }
   },
+  destroyed () {
+    clearInterval(this.kweeliveItvId);
+    clearInterval(this.serverCurTimeItvId);
+  },
+  beforeDestroy () {
+    clearInterval(this.kweeliveItvId);
+    clearInterval(this.serverCurTimeItvId);
+  },
    methods: {
+     //luke
+     getKweeLiveData(){
+          this.$axios.get('/v2/v1/kwee_live')
+            .then(response => {
+              this.info = response.data[0]
+            })
+     },
+     itvKweeLiveData(){
+          this.kweeliveItvId = setInterval(function() {
+            this.getKweeLiveData();
+          }.bind(this), 3000)
+     },
          async getDataKwee() {
-            setInterval(function() {
-            this.$axios.get('/v2/v1/kwee_live')
-              .then(response => {
-               this.info = response.data[0]
-
-              })
-            }.bind(this), 9000)
+           this.itvKweeLiveData();
           },
           async getDataresult() {
-            this.$axios.get('/v1/twod-result/live')
+            this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
                 this.info_api = response.data.data
                
@@ -552,16 +566,10 @@ export default {
       this.currentDate = moment().format("YYYY D MMMM  dddd")
      // this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
-     setInterval(() => this.ServerCurrentTime(), 1 * 1000);
+     this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
   if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-      setInterval(function() {
-             this.$axios.get('/v2/v1/kwee_live')
-              .then(response => {
-              this.info = response.data[0]
-            
-              })      
-        }.bind(this), 9000)   
+
   }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
       var stop_Interval =  setInterval(function() {
@@ -577,11 +585,11 @@ export default {
                        this.isActive = false
                        clearTimeout(stop_Interval);
                         
-                          this.$axios.get('/v2/v1/kwee_live')
-                            .then(response => {
-                            this.info = response.data[0]
+                          // this.$axios.get('/v2/v1/kwee_live')
+                          //   .then(response => {
+                          //   this.info = response.data[0]
                           
-                            })      
+                          //   })      
                 }else {
                   console.log("result")
                   console.log('two')
@@ -600,13 +608,7 @@ export default {
   
   
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
-      // setInterval(function() {
-        // this.$axios.get('/v1/twod-result/live')
-        //       .then(response => {
-        //         this.info_api = response.data.data
-               
-        //       })
-        // }.bind(this), 3000)
+
   }else {
      console.log('ppp')
       // var ok =  setInterval(function() {
@@ -620,21 +622,9 @@ export default {
                       console.log("kwee_live")
                       console.log('chang')
                          this.isActive = false
-                       clearTimeout(ok); 
-                     
 
-                          this.$axios.get('/v2/v1/kwee_live')
-                            .then(response => {
-                            this.info = response.data[0]
-                          
-                            })      
                 }else {
-                    //    this.isActive = true
-                    //   this.$axios.get('/v2/v1/twod-result/live')
-                    // .then(response => {
-                    //   this.info_api = response.data.data
-                    
-                    // })
+
                     
                 }
                 this.info_api = response.data.data
@@ -642,10 +632,10 @@ export default {
         //  }.bind(this), 3000)
   }
       //  setInterval(function() {
-        this.$axios.get('/v1/twod-result/live')
-              .then(response => {
-                this.info_api = response.data.data
-              })
+      //   this.$axios.get('/v2/v1/twod-result/live')
+      //         .then(response => {
+      //           this.info_api = response.data.data
+      //         })
       //  }.bind(this), 9000)
           this.$axios.get('/v2/v1/slider_image')
               .then(response => {
