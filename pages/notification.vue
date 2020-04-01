@@ -10,8 +10,7 @@
         <section class="noti_content" >
             
             <ul v-for="(noti ,n) in notification" :key="n" class="noti_text"  data-aos="fade-down"
-        data-aos-easing="linear"
-        data-aos-duration="500">
+        data-aos-easing="linear">
                 
 
                 
@@ -20,12 +19,21 @@
                    
                     <img  v-if="noti.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" alt="" class="noti_icon">
                     <img  v-else-if="noti.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" alt="" class="noti_icon">
-                    <img  v-else-if="noti.status == 'result'"  src="~static/images/noti_page/win_icon.png" alt="" class="noti_icon">
-                    <img  v-else-if="noti.status == 'result'"  src="~static/images/noti_page/win_icon.png" alt="" class="noti_icon">
-                    <div style="color:#000;">{{noti.title}}</div>
-                    <div style="color:#158220;">{{noti.amount}} ကျပ်</div>
-                     <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    <img  v-else-if="noti.status == 'win'"  src="~static/images/noti_page/win_icon.png" alt="" class="noti_icon">
+                   
+                    <img  v-else-if="noti.status == 'result'"  src="~static/images/noti_page/morning_result_icon.png" alt="" class="noti_icon">
+                    <div v-if="noti.status == 'win'">
+                         <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.amount.win_amt}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+                    <div v-else>
+                         <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.amount}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     
+                    </div>
+                   
                     <div class="el_icon_right">
                          <i  class="el-icon-arrow-right" ></i>
                     </div>
@@ -53,6 +61,9 @@
     .noti_content {
         padding:0 20px;
         margin-top:20px;
+    }
+    .noti_content .el-divider--horizontal {
+        margin:13px auto;
     }
     .noti_text {
         padding:0;

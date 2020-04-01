@@ -30,7 +30,9 @@ export default {
     ],
     script: [
       
-      // { src: '' },
+      // { src: '' },Kyaw Wai Yan Lin
+
+      { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js'},
       { src: 'https://unpkg.com/vue-image-upload-resize' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js' },
@@ -77,8 +79,8 @@ export default {
   */
  axios: {
   credentials: false,
-  baseURL: "https://api.2dboss.com/api/",
- //baseURL: "https://build.seinlucky.com/api/",
+  //baseURL: "https://api.2dboss.com/api/",
+ baseURL: "https://build.seinlucky.com/api/",
 
   proxyHeaders: false,
   headers: {
@@ -102,10 +104,20 @@ export default {
   ** Nuxt.js modules
   */
  modules: [
-
+  '@nuxtjs/onesignal',
+  '@nuxtjs/pwa',
   '@nuxtjs/axios',
  
 ],
+oneSignal: {
+  init: {
+    appId: 'd5bebee9-1535-4496-855c-1a061af2880c',
+    allowLocalhostAsSecureOrigin: true,
+    welcomeNotification: {
+        disable: true
+    }
+  }
+},
 
   /*
   ** Build configuration

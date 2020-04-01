@@ -197,7 +197,7 @@ export default {
                         })
                 
                     .then(response => {
-                 
+                        console.log(response)
                     this.res_mor_error = response.data.status
                     console.log(this.res_mor_error) 
                     if(this.res_mor_error == "morning"  ) {
@@ -207,35 +207,32 @@ export default {
                           type: 'warning',
                         //   duration:0
                         });
-                    }else if(this.res_error == 'true') {
+                    }else if(response.data.status ==  2) {
                         this.$message({
                             showClose: true,
                           message: this.$t('amount_invalid'),
                           type: 'warning',
                         //   duration:0
                         });
-                    }else {
-                          
-                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                    }else if (response.data.status == 6) {
+                       this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                           duration:10000
+                        });
                     }
-                    //   this.res_error = response.data.message
-                    //   this.res_message = response.data.data
-                
-                
-                    //   if(this.res_error == 'true') {
-                    //      this.$message({
-                    //         showClose: true,
-                    //       message: this.$t('amount_invalid'),
-                    //       type: 'warning',
-                    //     //   duration:0
-                    //     });
-                    //   }else {
-                    //       this.submitted = true
-                    //       this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
-                    //   }
-                      // this.bet = response.data.data
-                    
+                    else {
+                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                    }  
                 })
+                .catch(error => {
+                   this.$message({
+                            showClose: true,
+                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                          type: 'warning',
+                        });
+                });
                
        },
         submit_point() {
@@ -251,8 +248,6 @@ export default {
             this.$axios.post("/v2/v1/2d_point/bet",
                            data,
                     {
-                           
-
                         headers: {
                                "Authorization": "Bearer "+token
                          },
@@ -260,24 +255,42 @@ export default {
                         })
                 
                     .then(response => {
-                     console.log(response)
-                      this.res_error = response.data.message
-                      this.res_message = response.data.data
-                
-                
-                      if(this.res_error == 'fail') {
+                        console.log(response)
+                    this.res_mor_error = response.data.status
+                    console.log(this.res_mor_error) 
+                    if(this.res_mor_error == "morning"  ) {
                          this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                        //   duration:0
+                        });
+                    }else if(response.data.status ==  4) {
+                        this.$message({
                             showClose: true,
                           message: this.$t('amount_invalid'),
                           type: 'warning',
                         //   duration:0
                         });
-                      }else {
-                          this.submitted = true
+                    }else if (response.data.status == 6) {
+                       this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                          duration:10000
+                        });
+                    }
+                    else {
                           this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
-                      }
-                      // this.bet = response.data.data
-                })   
+                    }  
+                })
+                .catch(error => {
+                   this.$message({
+                            showClose: true,
+                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                          type: 'warning',
+                        });
+                });
        },     
     }
 }

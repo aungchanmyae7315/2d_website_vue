@@ -373,45 +373,14 @@ export default {
   layout: 'homeLayout',
 
   mounted() {
-        // this.$axios.get('/v2/v1/kwee_live')
-        //       .then(response => {
-        //        this.info = response.data[0]
-
-        //       })
       this.getDataKwee();
       this.getDataresult();
       this.updateIsLoggedIn();
       this.updateLang();
-     
-
-
-
-
-
-
-
-// var userAgent = navigator.userAgent||navigator.vendor||window.opera;
-// document.getElementById("userAgentDiv").innerHTML = userAgent;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      this.getKweeLiveData();
 
    },
   components: {
-  
     Music,
     Online,
     AutoLogout
@@ -445,7 +414,6 @@ export default {
       kweeliveItvId:0,
       serverCurTimeItvId:0,
       //   activeIndex2: '1',
-     
     }
   },
   destroyed () {
@@ -458,7 +426,7 @@ export default {
   },
    methods: {
      //luke
-     getKweeLiveData(){
+     async getKweeLiveData(){
           this.$axios.get('/v2/v1/kwee_live')
             .then(response => {
               this.info = response.data[0]
@@ -481,7 +449,6 @@ export default {
           },
         
       changeLang (lang) {
-       
       //mutate 'locale' in store
       this.$store.commit('SET_LANG', lang)
       //re-route to the current page but with the selected language in a query string
@@ -489,10 +456,8 @@ export default {
        this.$router.push(`/?lang=${this.$store.state.locale}`);
       // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
     },
-      submitLang() {
-                  
-            this.$store.commit('SET_LANG', 'hello')
-                        
+      submitLang() {      
+            this.$store.commit('SET_LANG', 'hello')            
         },
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
@@ -514,9 +479,7 @@ export default {
              this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
-
       // this.currentTime = moment().format('HH:mm:ss');
-
        this.currentDate = moment().format("YYYY D MMMM  dddd")
         
        },
@@ -538,9 +501,7 @@ export default {
              this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
-
       // this.currentTime = moment().format('HH:mm:ss');
-
        this.currentDate = moment().format("YYYY D MMMM  dddd")
         
        },
@@ -558,8 +519,6 @@ export default {
       hasLang() {
         return Boolean(localStorage.getItem('locale'));
       },
-
-
     },
      created() {
       
@@ -568,9 +527,9 @@ export default {
        this.breakTime = moment().format('h:mm:ss a')
      this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
-  if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
+    if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
 
-  }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
+    }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
       var stop_Interval =  setInterval(function() {
         
@@ -583,13 +542,7 @@ export default {
                       console.log("kwee_live")
                       console.log('one')
                        this.isActive = false
-                       clearTimeout(stop_Interval);
-                        
-                          // this.$axios.get('/v2/v1/kwee_live')
-                          //   .then(response => {
-                          //   this.info = response.data[0]
-                          
-                          //   })      
+                       clearTimeout(stop_Interval);  
                 }else {
                   console.log("result")
                   console.log('two')
@@ -604,15 +557,10 @@ export default {
               })
          }.bind(this), 3000)
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-//  alert('dd')
-  
-  
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
 
   }else {
      console.log('ppp')
-      // var ok =  setInterval(function() {
-        
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
                 console.log(response)
@@ -624,19 +572,11 @@ export default {
                          this.isActive = false
 
                 }else {
-
-                    
                 }
                 this.info_api = response.data.data
               })
         //  }.bind(this), 3000)
   }
-      //  setInterval(function() {
-      //   this.$axios.get('/v2/v1/twod-result/live')
-      //         .then(response => {
-      //           this.info_api = response.data.data
-      //         })
-      //  }.bind(this), 9000)
           this.$axios.get('/v2/v1/slider_image')
               .then(response => {
                this.slider_images = response.data.data

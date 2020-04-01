@@ -10,37 +10,65 @@
            <div class="refel_img_two">
             <img v-if="notification_detail.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" class="">
             <img v-else-if="notification_detail.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" class="">
+              <img v-else-if="notification_detail.status == 'win'"  src="~static/images/noti_page/win_icon.png" class="">
+            </div>
+        <div  v-if="notification_detail.status == 'win'">
+            <el-card>
+                <h6 v-if="this.profile.name == null " class="win_name">{{this.profile.phone}}</h6>
+                <h6 v-else class="win_name">{{this.profile.name}}</h6>
+                <h6>{{notification_detail.description}}</h6>
+                <h5 class="amount">{{notification_detail.amount.win_amt}} {{$t('kyat')}} </h5>
+                <div class="footer_card">
+                    <br>
+                    <el-row class="win_detail">
+                        <el-col :span='12' style="text-align:left">
+                            <span>ငွေသွင်းချိန်</span> 
+                        </el-col>
+                            <el-col :span = '12' style="text-align:left">
+                            <span>: {{notification_detail.read_at}}</span>
+                        </el-col>
+                            <el-col :span='12' style="text-align:left">
+                            <span>ပေါက်ဂဏာန်း</span> 
+                        </el-col>
+                            <el-col :span = '12' style="text-align:left">
+                            <span>: {{notification_detail.amount.number}}</span>
+                        </el-col>
+                            <el-col :span='12' style="text-align:left">
+                            <span>ထိုးငွေ</span> 
+                        </el-col>
+                            <el-col :span = '12' style="text-align:left">
+                            <span>: {{notification_detail.amount.bet_amt}} {{$t('kyat')}}</span>
+                        </el-col>
+                    </el-row>
+                    
+                    </div>
+            </el-card>
+          
+            <img src="~static/images/noti_page/win_stat_icon.png" alt="" class="win_star_icon">
+            <el-card>   
+                 <h6  style="text-align:left;font-weight:bold">{{this.profile.name}}</h6>
+                 <p style="text-align:left">နှင့်အတူ Sein Lucky မှ ထပ်တူဝမ်းမြောက်ပါသည်။ သည်ထက်မက အောင်မြင်ပါစေ။</p>
+            </el-card>
+        </div>
+        <div  v-else >
+            <el-card data-aos="zoom-out-down"
+            data-aos-easing="linear">
+            <h5 class="title">{{notification_detail.title}} </h5>
+            <h5 class="amount">{{notification_detail.amount}} ကျပ် </h5>
+                <div class="footer_card" v-if="notification_detail.status == 'withdrawl'">
+                    <p>ငွေထုတ်ချိန်  {{notification_detail.read_at}}</p>
+                </div>
+                <div class="footer_card" v-else-if="notification_detail.status == 'top_up'">
+                    <p>ငွေသွင်းချိန်  {{notification_detail.read_at}}</p>
+                </div>
+            
+        </el-card>
+        </div>
 
-            </div>
-      <el-card data-aos="zoom-out-down"
-        data-aos-easing="linear"
-        data-aos-duration="500">
-          <h5 class="title">{{notification_detail.title}} </h5>
-           <h5 class="amount">{{notification_detail.amount}} ကျပ် </h5>
-            <div class="footer_card" v-if="notification_detail.status == 'withdrawl'">
-                <p>ငွေထုတ်ချိန်  {{notification_detail.read_at}}</p>
-            </div>
-            <div class="footer_card" v-else-if="notification_detail.status == 'top_up'">
-                <p>ငွေသွင်းချိန်  {{notification_detail.read_at}}</p>
-            </div>
-        <!-- <div class="row win_item">
-                <div class="col">
-                    <div class="">
-                        <h5  style="font-size:10pt;color:#47940D;">Reat at</h5>
-                        <span>{{notification_detail.read_at}}</span><br>
-                       
-                    </div>
-                    
-                </div>
-                <div class="col">
-                    
-                    <div class="">
-                        <h5 style="font-size:10pt">Created at:</h5>
-                          <span>{{notification_detail.created_at}}</span><br>
-                    </div>
-                </div>
-          </div> -->
-      </el-card>
+      
+    
+    
+     
 
       </section>
       
@@ -89,7 +117,20 @@
     .footer_card p {
         margin: 15px auto 0 auto;
     }
-   
+    .win_detail span {
+        font-size: 13px;
+    }
+   .win_star_icon {
+        width: 40px;
+        top: 23px;
+        left: 106px;
+        position: relative;
+
+   }
+   .win_name {
+       padding-top:25px;
+       font-weight: bold;
+   }
         
 </style>
 
@@ -98,7 +139,8 @@ import axios from 'axios'
 export default {
     data() {
         return {
-           notification_detail:''
+           notification_detail:'',
+           profile:''
         }
     },
     mounted() {
@@ -139,6 +181,19 @@ export default {
                        
                      console.log(this.notification_detail = response.data.data)
                 })
+          // let token = localStorage.getItem('token');
+        if(token) {
+              this.$axios.get("/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     this.profile = response.data.data
+                        console.log(this.profile)
+                })
+        }
+                
      }
 }
 </script>
