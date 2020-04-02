@@ -110,15 +110,7 @@ export default {
   '@nuxtjs/axios',
  
 ],
-// oneSignal: {
-//   init: {
-//     appId: 'd5bebee9-1535-4496-855c-1a061af2880c',
-//     allowLocalhostAsSecureOrigin: true,
-//     welcomeNotification: {
-//         disable: true
-//     }
-//   }
-// },
+// 
 
   /*
   ** Build configuration
