@@ -125,7 +125,7 @@ export default {
 }
 .promotion img {
     width:50px;
-    height: auto;
+    height: 50px;
     border-radius: 50px;
 }
 .icon_right i {

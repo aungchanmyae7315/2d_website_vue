@@ -124,9 +124,9 @@
                  <el-col :span="10" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
             </el-row>
              <el-row> 
-                  <nuxt-link :to="`${$t('seinlucky_point')}?lang=${$store.state.locale}`">
+                  <nuxt-link :to="`${$t('/seinlucky_point')}?lang=${$store.state.locale}`">
                         <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.point_wallet}}</div></el-col>
+                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">သင်လက်ကျန်ပွိုင့်  : {{this.profile.point_wallet}}</div></el-col>
                     </nuxt-link>
               
                        <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
