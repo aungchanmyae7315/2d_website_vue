@@ -114,7 +114,7 @@ import axios from 'axios'
              this.$nextTick(() => {
               this.$nuxt.$loading.start()
               })
-             this.$axios.post('/v1/login', {
+             this.$axios.post('/v2/v1/login', {
                     phone: this.ruleForm.phone,
                     password: this.ruleForm.password,
                     

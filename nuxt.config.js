@@ -79,9 +79,9 @@ export default {
   */
  axios: {
   credentials: false,
-  //baseURL: "https://api.2dboss.com/api/",
+  baseURL: "https://api.2dboss.com/api/",
 //  baseURL: "https://build.seinlucky.com/api/",
-baseURL: "http://build.seinchanthar.com/api/",
+  // baseURL: "http://build.seinchanthar.com/api/",
 
   proxyHeaders: false,
   headers: {
@@ -105,20 +105,20 @@ baseURL: "http://build.seinchanthar.com/api/",
   ** Nuxt.js modules
   */
  modules: [
-  '@nuxtjs/onesignal',
+  // '@nuxtjs/onesignal',
 
   '@nuxtjs/axios',
  
 ],
-oneSignal: {
-  init: {
-    appId: 'd5bebee9-1535-4496-855c-1a061af2880c',
-    allowLocalhostAsSecureOrigin: true,
-    welcomeNotification: {
-        disable: true
-    }
-  }
-},
+// oneSignal: {
+//   init: {
+//     appId: 'd5bebee9-1535-4496-855c-1a061af2880c',
+//     allowLocalhostAsSecureOrigin: true,
+//     welcomeNotification: {
+//         disable: true
+//     }
+//   }
+// },
 
   /*
   ** Build configuration

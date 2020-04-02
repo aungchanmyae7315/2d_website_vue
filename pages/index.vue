@@ -561,6 +561,7 @@ export default {
 
   }else {
      console.log('ppp')
+      var ok =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
                 console.log(response)
@@ -572,10 +573,16 @@ export default {
                          this.isActive = false
 
                 }else {
+                        this.isActive = true
+                      this.$axios.get('/v2/v1/twod-result/live')
+                    .then(response => {
+                      this.info_api = response.data.data
+                    
+                    })
                 }
                 this.info_api = response.data.data
               })
-        //  }.bind(this), 3000)
+         }.bind(this), 3000)
   }
           this.$axios.get('/v2/v1/slider_image')
               .then(response => {

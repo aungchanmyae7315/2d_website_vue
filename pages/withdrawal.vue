@@ -339,8 +339,9 @@ export default {
         }
     },
     mounted() {
-        this.$axios.get("/v1/bank-type")
+        this.$axios.get("/v2/v1/bank-type")
                 .then(response => {
+                    console.log(response)
                     if(this.bank_type !== null) {
                         this.loaded = true;
                     }
