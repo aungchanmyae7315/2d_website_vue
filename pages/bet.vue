@@ -652,6 +652,7 @@ export default {
             isActive:true,
             hasError:'',
             currentTime: '',
+            serverTime:'',
             morning_from:this.morning_from,
             morning_to:'',
             evening_from:'',
@@ -694,13 +695,13 @@ export default {
                     var currentTime = moment().format('HH:mm:ss');
                     var currentDate  = moment().day();
                 
-                    if(currentTime  >  this.morning_from && currentTime < this.morning_to ) {
+                    if(this.serverTime  >  this.morning_from && this.serverTime < this.morning_to ) {
                         this.isActive = true
-                    }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
+                    }else if(this.serverTime > this.morning_to && this.serverTime <  this.evening_from ) {
                         this.isActive = false
-                    }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
+                    }else if(this.serverTime > this.evening_from && this.serverTime < this.evening_to ) {
                         this.isActive = true
-                    }else if(currentTime > this.evening_to) {
+                    }else if(this.serverTime > this.evening_to) {
                         this.isActive = false
                     }else {
                          this.isActive = false  
@@ -721,7 +722,7 @@ export default {
                     .then(response => {
                         console.log(response)
                      this.profile = response.data.data
-                    this.currentTime = response.data.data.time;
+                    this.serverTime = response.data.data.time;
                     console.log(this.currentTime)
                 })
         }       
@@ -759,16 +760,16 @@ export default {
                 var getAllTime = this.convertMS(difference);
                 var getAllTime_two = this.convertMS(difference_two);
    
-                if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
+                if(this.serverTime  >  this.morning_from && this.serverTime < this.morning_to ) {
                         this.isActive = true
                        return this.time_countdown = this.$root.$t('close_text');
-                    }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
+                    }else if(this.serverTime > this.morning_to && this.serverTime <  this.evening_from ) {
                        this.isActive = false
                         return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
-                    }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
+                    }else if(this.serverTime > this.evening_from && this.serverTime < this.evening_to ) {
                          this.isActive = true
                         return this.time_countdown = this.$root.$t('close_text');
-                    }else if(this.currentTime > this.evening_to) {
+                    }else if(this.serverTime > this.evening_to) {
                          this.isActive = false
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }else {
