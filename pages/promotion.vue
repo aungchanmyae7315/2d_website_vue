@@ -21,7 +21,7 @@
                             </div>
                             <div class="card-body">
                                 <h5 class="card-title">{{promotion.title}}</h5>
-                                <p class="card-text">{{promotion.description}}</p>
+                                <p class="card-text">{{promotion.sub_title}}</p>
                             </div>
                             <div class="icon_right">
                                 <i class="el-icon-arrow-right"></i>
