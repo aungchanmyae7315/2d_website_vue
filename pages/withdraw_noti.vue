@@ -8,9 +8,12 @@
       </el-header>
       <section class="withdraw_notifi">
            <div class="refel_img_two">
-            <img v-if="notification_detail.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" class="">
-            <img v-else-if="notification_detail.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" class="">
-              <img v-else-if="notification_detail.status == 'win'"  src="~static/images/noti_page/win_icon.png" class="">
+                <img v-if="notification_detail.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" class="">
+                <img v-else-if="notification_detail.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" class="">
+                <img v-else-if="notification_detail.status == 'win'"  src="~static/images/noti_page/win_icon.png" class="">
+                <img v-else-if="notification_detail.status == 'referal_code'"  src="~static/images/noti_page/new_member_icon.png" class="">
+                <img v-else-if="notification_detail.status == 'reward_5000'"  src="~static/images/noti_page/one_week_noti_icon.png" class="">
+                <img v-else-if="notification_detail.status == 'bet_reward'"  src="~static/images/noti_page/bet_reward_icon.png" class="">
             </div>
         <div  v-if="notification_detail.status == 'win'">
             <el-card>
@@ -50,6 +53,68 @@
                  <p style="text-align:left">နှင့်အတူ Sein Lucky မှ ထပ်တူဝမ်းမြောက်ပါသည်။ သည်ထက်မက အောင်မြင်ပါစေ။</p>
             </el-card>
         </div>
+        
+         <div  v-else-if="notification_detail.status == 'referal_code'">
+             <el-card data-aos="zoom-out-down"
+                data-aos-easing="linear">
+                <h5 class="title">{{notification_detail.title}} </h5>
+                <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5>
+                <div class="footer_card" >
+                    <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
+                </div>
+            
+            
+            </el-card>
+              <img src="~static/images/noti_page/new_member_small.png" alt="" class="win_star_icon">
+            <el-card>   
+                 <h6  style="text-align:left;font-weight:bold">ဘာကြောင့် ပွိုင့်ရရှိတာလဲ။</h6>
+                 <p style="text-align:left">သင်ဟာ အကောင့်ဖွင့်ချိန်တွင် ရည်ညွှန်းကုဒ် ဖြည့်သောကြောင့် ယခု ပွိုင့်လက်ဆောင်ရရှိပါသည်။</p>
+                 <h6  style="text-align:left;font-weight:bold">ပွိုင့်ကို ဘာလုပ်လို့ရသလဲ။</h6>
+                 <p style="text-align:left">ပွိုင့်ကို ငွေသားဖြင့်မထုတ်နိုင်ပါ။ သို့သော် ပွိုင့်ဖြင့် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက ငွေသားဖြင့် ပြန်လျော်ပေးသောကြောင့် ပိုက်ဆံထုတ်နိုင်ပါသည်။</p>
+            </el-card>
+        </div>
+
+         <div  v-else-if="notification_detail.status == 'reward_5000'">
+             <el-card data-aos="zoom-out-down"
+                data-aos-easing="linear">
+                <h5 class="title">{{notification_detail.title}} </h5>
+                <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5>
+                <div class="footer_card" >
+                    <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
+                </div>
+            
+            
+            </el-card>
+              <img src="~static/images/noti_page/new_member_small.png" alt="" class="win_star_icon">
+            <el-card>   
+                 <h6  style="text-align:left;font-weight:bold">ဘာကြောင့် ပွိုင့်ရရှိတာလဲ။</h6>
+                 <p style="text-align:left">သင်ဟာ အကောင့်ဖွင့်ချိန်တွင် ရည်ညွှန်းကုဒ် ဖြည့်သောကြောင့် ယခု ပွိုင့်လက်ဆောင်ရရှိပါသည်။</p>
+                 <h6  style="text-align:left;font-weight:bold">ပွိုင့်ကို ဘာလုပ်လို့ရသလဲ။</h6>
+                 <p style="text-align:left">ပွိုင့်ကို ငွေသားဖြင့်မထုတ်နိုင်ပါ။ သို့သော် ပွိုင့်ဖြင့် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက ငွေသားဖြင့် ပြန်လျော်ပေးသောကြောင့် ပိုက်ဆံထုတ်နိုင်ပါသည်။</p>
+            </el-card>
+        </div>
+
+         <div  v-else-if="notification_detail.status == 'bet_reward'">
+             <el-card data-aos="zoom-out-down"
+                data-aos-easing="linear">
+                <h5 class="title">{{notification_detail.title}} </h5>
+                <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5>
+                <div class="footer_card" >
+                    <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
+                </div>
+            
+            
+            </el-card>
+              <img src="~static/images/noti_page/new_member_small.png" alt="" class="win_star_icon">
+            <el-card>   
+                 <h6  style="text-align:left;font-weight:bold">ဘာကြောင့် ပွိုင့်ရရှိတာလဲ။</h6>
+                 <p style="text-align:left">သင်ဟာ အကောင့်ဖွင့်ချိန်တွင် ရည်ညွှန်းကုဒ် ဖြည့်သောကြောင့် ယခု ပွိုင့်လက်ဆောင်ရရှိပါသည်။</p>
+                 <h6  style="text-align:left;font-weight:bold">ပွိုင့်ကို ဘာလုပ်လို့ရသလဲ။</h6>
+                 <p style="text-align:left">ပွိုင့်ကို ငွေသားဖြင့်မထုတ်နိုင်ပါ။ သို့သော် ပွိုင့်ဖြင့် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက ငွေသားဖြင့် ပြန်လျော်ပေးသောကြောင့် ပိုက်ဆံထုတ်နိုင်ပါသည်။</p>
+            </el-card>
+        </div>
+
+       
         <div  v-else >
             <el-card data-aos="zoom-out-down"
             data-aos-easing="linear">
