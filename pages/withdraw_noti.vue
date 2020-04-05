@@ -11,6 +11,8 @@
                 <img v-if="notification_detail.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'win'"  src="~static/images/noti_page/win_icon.png" class="">
+                <img  v-else-if="noti.status == 'morning_result'"  src="~static/images/noti_page/morning_result_icon.png" alt="" class="noti_icon">
+                <img  v-else-if="noti.status == 'evening_result'"  src="~static/images/noti_page/evening_result_icon.png" alt="" class="noti_icon">
                 <img v-else-if="notification_detail.status == 'referal_code'"  src="~static/images/noti_page/new_member_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'reward_5000'"  src="~static/images/noti_page/one_week_noti_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'bet_reward'"  src="~static/images/noti_page/bet_reward_icon.png" class="">
@@ -53,7 +55,33 @@
                  <p style="text-align:left">နှင့်အတူ Sein Lucky မှ ထပ်တူဝမ်းမြောက်ပါသည်။ သည်ထက်မက အောင်မြင်ပါစေ။</p>
             </el-card>
         </div>
-        
+
+         <div  v-else-if="notification_detail.status == 'morning_result'">
+             <el-card data-aos="zoom-out-down"
+                data-aos-easing="linear">
+                <h5 class="title">{{notification_detail.title}} </h5>
+                <!-- <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5> -->
+                <div class="footer_card" >
+                    <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
+                </div>
+            
+            
+            </el-card>
+        </div>
+
+         <div  v-else-if="notification_detail.status == 'evening_result'">
+             <el-card data-aos="zoom-out-down"
+                data-aos-easing="linear">
+                <h5 class="title">{{notification_detail.title}} </h5>
+                <!-- <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5> -->
+                <div class="footer_card" >
+                    <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
+                </div>
+            
+            
+            </el-card>
+        </div>
+
          <div  v-else-if="notification_detail.status == 'referal_code'">
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
