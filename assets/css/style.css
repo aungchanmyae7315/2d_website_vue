@@ -601,7 +601,22 @@ input[type=number] {
 }
 
 
- 
+.seinlucky_icon {
+  width: 30px;
+  height: auto;
+  float: left;
+  position: relative;
+  bottom: 42px;
+  left: 90px;
+}
+.seinlucky_text {
+ position: relative;
+  bottom:13px;
+  left: 40px;
+  color:green;
+  font-size: 14px; 
+  
+}
  
 
 

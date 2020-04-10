@@ -9,8 +9,8 @@
         
       </el-header>
        <div class="demo-image">
-            <img src="~static/images/icons/seinlucky_logo.png" alt="" class="seinlucky_icon">
-        <span  class="seinlucky_text">SeinLucky</span>
+             <img src="~static/images/icons/seinlucky_logo.png" alt="" class="seinlucky_icon">
+            <span  class="seinlucky_text">SeinLucky</span>
         </div>
 
        <table class="table">
@@ -71,7 +71,7 @@ export default {
     },
     methods: {
         goBack() {
-             this.$router.push(`/me?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/bet_status?lang=${this.$store.state.locale}`); 
          },
    
     
@@ -95,8 +95,7 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
-                        this.$nuxt.$loading.finish()
+                    this.$nuxt.$loading.finish()
                      this.bet_historys = response.data.data   
                 })
      }

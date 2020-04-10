@@ -10,10 +10,13 @@
                 </p>
                  
            <!-- </nuxt-link> -->
-
-         <nuxt-link :to="`${$t('/bet_history')}?lang=${$store.state.locale}`">
+           <div class="demo-image">
+             <img src="~static/images/icons/seinlucky_logo.png" alt="" class="seinlucky_icon">
+            <span  class="seinlucky_text">SeinLucky</span>
+            </div>
+         <!-- <nuxt-link :to="`${$t('/bet_history')}?lang=${$store.state.locale}`">
              <img src="~static/images/icons/bet_status_icon.png" alt="" class="bet_status_icon">
-        </nuxt-link>
+        </nuxt-link> -->
       </el-header>
 
        <table class="table" style="width:95%" >
@@ -126,14 +129,7 @@
     .bet_status .el-dialog {
         border-radius: 13px;
     }
-    .bet_status_icon {
-        width: 25px;
-        height: auto;
-        float: right;
-        position: relative;
-        bottom: 34px;
-        right: 24px;
-    }
+
     .bet_status .table td, .table th {
         font-weight: unset;
     }
