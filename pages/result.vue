@@ -6,6 +6,7 @@
                 </el-page-header>
            <!-- </nuxt-link> -->
       </el-header>
+
     <div class="result_item">
         <div v-for="(result,t) in twod_result" :key="t" data-aos="fade-up" data-aos-easing="linear">  
              <p>{{result.date}}</p>

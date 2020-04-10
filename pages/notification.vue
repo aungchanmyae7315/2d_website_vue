@@ -37,13 +37,13 @@
                     </div>
                      <div v-else-if="noti.status == 'morning_result'">
                         <div style="color:#000;">{{noti.title}}</div>
-                        <div style="color:#158220;">{{noti.data.number}} ကျပ်</div>
+                        <div style="color:#158220;">{{noti.data.number}}</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
                       <div v-else-if="noti.status == 'evening_result'">
                         <div style="color:#000;">{{noti.title}}</div>
-                        <div style="color:#158220;">{{noti.data.number}} ကျပ်</div>
+                        <div style="color:#158220;">{{noti.data.number}}</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
