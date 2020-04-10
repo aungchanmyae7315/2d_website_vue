@@ -31,13 +31,13 @@
              <nuxt-link :to="`${$t('/promotion')}?lang=${$store.state.locale}`"> 
             <el-menu-item index="2">
                <img src="~static/icons_header/promotion_t_icon.png" alt="">
-                <h5 class="main_icon">{{$t('promotion_title')}}</h5>
+                <h5 class="main_icon" style="font-weight:bold;color:gold">{{$t('promotion_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
             <nuxt-link :to="`${$t('/service')}?lang=${$store.state.locale}`">
             <el-menu-item index="3">
                 <img src="~static/icons_header/service_icon.png" alt="">
-                <h5 class="main_icon" style="font-weight:bold">{{$t('service_title')}}</h5>
+                <h5 class="main_icon" >{{$t('service_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
               <nuxt-link :to="`${$t('/me')}?lang=${$store.state.locale}`">

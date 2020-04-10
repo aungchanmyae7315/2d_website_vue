@@ -74,7 +74,7 @@ input[type=number] {
    line-height: 44px !important;
  }
  .el-menu-item  {
-   color:#fff !important;
+   color:rgb(231, 229, 229) !important;
     background:unset !important;
  }
  .el-main {

@@ -67,7 +67,7 @@
             <el-menu-item index="1">
             
               <img src="~static/icons_header/dimond_t_icon.png" alt="">
-             <h5 class="main_icon" style="font-weight:bold">{{$t('home_title')}}</h5>
+             <h5 class="main_icon" style="font-weight:bold;color:gold;">{{$t('home_title')}}</h5>
               
             </el-menu-item>
             </nuxt-link>
