@@ -11,8 +11,8 @@
                 <img v-if="notification_detail.status == 'withdrawl'"  src="~static/images/noti_page/withdraw_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'top_up'"  src="~static/images/noti_page/topup_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'win'"  src="~static/images/noti_page/win_icon.png" class="">
-                <img  v-else-if="noti.status == 'morning_result'"  src="~static/images/noti_page/morning_result_icon.png" alt="" class="noti_icon">
-                <img  v-else-if="noti.status == 'evening_result'"  src="~static/images/noti_page/evening_result_icon.png" alt="" class="noti_icon">
+                <img  v-else-if="notification_detail.status == 'morning_result'"  src="~static/images/noti_page/morning_result_icon.png" alt="" class="noti_icon">
+                <img  v-else-if="notification_detail.status == 'evening_result'"  src="~static/images/noti_page/evening_result_icon.png" alt="" class="noti_icon">
                 <img v-else-if="notification_detail.status == 'referal_code'"  src="~static/images/noti_page/new_member_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'reward_5000'"  src="~static/images/noti_page/one_week_noti_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'bet_reward'"  src="~static/images/noti_page/bet_reward_icon.png" class="">
@@ -22,7 +22,7 @@
                 <h6 v-if="this.profile.name == null " class="win_name">{{this.profile.phone}}</h6>
                 <h6 v-else class="win_name">{{this.profile.name}}</h6>
                 <h6>{{notification_detail.description}}</h6>
-                <h5 class="amount">{{notification_detail.amount.win_amt}} {{$t('kyat')}} </h5>
+                <h5 class="amount">{{notification_detail.data.win_amt}} {{$t('kyat')}} </h5>
                 <div class="footer_card">
                     <br>
                     <el-row class="win_detail">
@@ -30,19 +30,19 @@
                             <span>ငွေသွင်းချိန်</span> 
                         </el-col>
                             <el-col :span = '12' style="text-align:left">
-                            <span>: {{notification_detail.read_at}}</span>
+                            <span>: {{notification_detail.data.time}}</span>
                         </el-col>
                             <el-col :span='12' style="text-align:left">
                             <span>ပေါက်ဂဏာန်း</span> 
                         </el-col>
                             <el-col :span = '12' style="text-align:left">
-                            <span>: {{notification_detail.amount.number}}</span>
+                            <span>: {{notification_detail.data.number}}</span>
                         </el-col>
                             <el-col :span='12' style="text-align:left">
                             <span>ထိုးငွေ</span> 
                         </el-col>
                             <el-col :span = '12' style="text-align:left">
-                            <span>: {{notification_detail.amount.bet_amt}} {{$t('kyat')}}</span>
+                            <span>: {{notification_detail.data.bet_amt}} {{$t('kyat')}}</span>
                         </el-col>
                     </el-row>
                     
@@ -50,8 +50,10 @@
             </el-card>
           
             <img src="~static/images/noti_page/win_stat_icon.png" alt="" class="win_star_icon">
-            <el-card>   
-                 <h6  style="text-align:left;font-weight:bold">{{this.profile.name}}</h6>
+            <el-card>  
+                  <h6 style="text-align:left;font-weight:bold" v-if="this.profile.name == null " class="">{{this.profile.phone}}</h6>
+                <h6 style="text-align:left;font-weight:bold" v-else class="">{{this.profile.name}}</h6> 
+              
                  <p style="text-align:left">နှင့်အတူ Sein Lucky မှ ထပ်တူဝမ်းမြောက်ပါသည်။ သည်ထက်မက အောင်မြင်ပါစေ။</p>
             </el-card>
         </div>
@@ -60,9 +62,9 @@
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
                 <h5 class="title">{{notification_detail.title}} </h5>
-                <!-- <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5> -->
+                <h5 class="amount">{{notification_detail.data.number}}  </h5>
                 <div class="footer_card" >
-                    <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
+                    <p>ရက်စွဲ  {{notification_detail.data.time}}</p>
                 </div>
             
             
@@ -73,9 +75,9 @@
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
                 <h5 class="title">{{notification_detail.title}} </h5>
-                <!-- <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5> -->
+                <h5 class="amount">{{notification_detail.data.number}}  </h5> 
                 <div class="footer_card" >
-                    <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
+                    <p>ရက်စွဲ  {{notification_detail.data.time}}</p>
                 </div>
             
             
@@ -86,7 +88,7 @@
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
                 <h5 class="title">{{notification_detail.title}} </h5>
-                <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5>
+                <h5 class="amount">{{notification_detail.data.amount}} ကျပ်  </h5>
                 <div class="footer_card" >
                     <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
                 </div>
@@ -106,7 +108,7 @@
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
                 <h5 class="title">{{notification_detail.title}} </h5>
-                <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5>
+                <h5 class="amount">{{notification_detail.data.amount}} ကျပ်  </h5>
                 <div class="footer_card" >
                     <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
                 </div>
@@ -116,7 +118,7 @@
               <img src="~static/images/noti_page/new_member_small.png" alt="" class="win_star_icon">
             <el-card>   
                  <h6  style="text-align:left;font-weight:bold">ဘာကြောင့် ပွိုင့်ရရှိတာလဲ။</h6>
-                 <p style="text-align:left">သင်ဟာ အကောင့်ဖွင့်ချိန်တွင် ရည်ညွှန်းကုဒ် ဖြည့်သောကြောင့် ယခု ပွိုင့်လက်ဆောင်ရရှိပါသည်။</p>
+                 <p style="text-align:left">သင်သည် Sein Lucky App ကို {{notification_detail.data.get_by}} အား မိတ်ဆက်ပေးခဲ့ပြီး ထိုသူ၏ ထီထိုးငွေသည် (20,000) ကျော်ပြီဖြစ်သောကြောင့် သင့် အား Sein Lucky မှ (5,000) ပွိုင့် ချီးမြှင့်လိုက်ပါသည်။</p>
                  <h6  style="text-align:left;font-weight:bold">ပွိုင့်ကို ဘာလုပ်လို့ရသလဲ။</h6>
                  <p style="text-align:left">ပွိုင့်ကို ငွေသားဖြင့်မထုတ်နိုင်ပါ။ သို့သော် ပွိုင့်ဖြင့် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက ငွေသားဖြင့် ပြန်လျော်ပေးသောကြောင့် ပိုက်ဆံထုတ်နိုင်ပါသည်။</p>
             </el-card>
@@ -126,7 +128,7 @@
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
                 <h5 class="title">{{notification_detail.title}} </h5>
-                <h5 class="amount">{{notification_detail.amount}} ကျပ်  </h5>
+                <h5 class="amount">{{notification_detail.data.amount}} ကျပ်  </h5>
                 <div class="footer_card" >
                     <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
                 </div>
@@ -143,19 +145,30 @@
         </div>
 
        
-        <div  v-else >
+        <div  v-else-if="notification_detail.status == 'withdrawl'">
             <el-card data-aos="zoom-out-down"
             data-aos-easing="linear">
             <h5 class="title">{{notification_detail.title}} </h5>
-            <h5 class="amount">{{notification_detail.amount}} ကျပ် </h5>
-                <div class="footer_card" v-if="notification_detail.status == 'withdrawl'">
-                    <p>ငွေထုတ်ချိန်  {{notification_detail.read_at}}</p>
+            <h5 class="amount">{{notification_detail.data.amount}} ကျပ် </h5>
+                <div class="footer_card">
+                    <p>ငွေထုတ်ချိန်  {{notification_detail.data.time}}</p>
                 </div>
-                <div class="footer_card" v-else-if="notification_detail.status == 'top_up'">
-                    <p>ငွေသွင်းချိန်  {{notification_detail.read_at}}</p>
+
+            
+             </el-card>
+        </div>
+
+          
+        <div  v-else-if="notification_detail.status == 'top_up'">
+            <el-card data-aos="zoom-out-down"
+            data-aos-easing="linear">
+            <h5 class="title">{{notification_detail.title}} </h5>
+            <h5 class="amount">{{notification_detail.data.amount}} ကျပ် </h5>
+                <div class="footer_card">
+                    <p>ငွေသွင်းချိန်  {{notification_detail.data.time}}</p>
                 </div>
             
-        </el-card>
+            </el-card>
         </div>
 
       
@@ -233,6 +246,7 @@ export default {
     data() {
         return {
            notification_detail:'',
+           status:'',
            profile:''
         }
     },
@@ -271,8 +285,10 @@ export default {
                         })
                 
                     .then(response => {
-                       
-                     console.log(this.notification_detail = response.data.data)
+                       console.log(response)
+                    this.notification_detail = response.data.data
+                    console.log('leee pal')
+                    console.log(this.notification_detail)
                 })
           // let token = localStorage.getItem('token');
         if(token) {

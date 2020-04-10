@@ -81,7 +81,7 @@ export default {
   credentials: false,
   //baseURL: "https://api.2dboss.com/api/",
 // baseURL: "https://build.seinlucky.com/api/",
-  baseURL: "http://build.seinchanthar.com/api/",
+  baseURL: "https://build.seinchanthar.com/api/",
 
   proxyHeaders: false,
   headers: {

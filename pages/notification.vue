@@ -6,7 +6,10 @@
                 </el-page-header>
             <!-- </nuxt-link> -->
       </el-header>
-     
+         <section v-if="!this.notification"  >
+          <p style="text-align:center;color:#b8b8b8"> No notification</p>
+         </section>
+        <section v-else class="noti_content" >
         <section class="noti_content" >
             
             <ul v-for="(noti ,n) in notification" :key="n" class="noti_text"  data-aos="fade-down"
@@ -29,7 +32,18 @@
 
                     <div v-if="noti.status == 'win'">
                          <div style="color:#000;">{{noti.title}}</div>
-                        <div style="color:#158220;">{{noti.amount.win_amt}} ကျပ်</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+                     <div v-else-if="noti.status == 'morning_result'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.number}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+
+                      <div v-else-if="noti.status == 'evening_result'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.number}} ကျပ်</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
@@ -51,12 +65,22 @@
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
-                   
+                    <div v-else-if="noti.status == 'top_up'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+
+                      <div v-else-if="noti.status == 'withdrawl'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
 
 
                     <div v-else>
                          <div style="color:#000;">{{noti.title}}</div>
-                        <div style="color:#158220;">{{noti.amount}} ကျပ်</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     
                     </div>
@@ -83,7 +107,19 @@
 
                     <div v-if="noti.status == 'win'">
                          <div style="color:#000;">{{noti.title}}</div>
-                        <div style="color:#158220;">{{noti.amount.win_amt}} ကျပ်</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+
+                      <div v-else-if="noti.status == 'morning_result'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.number}}</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+
+                      <div v-else-if="noti.status == 'evening_result'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.number}}</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
@@ -105,12 +141,24 @@
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
+                      <div v-else-if="noti.status == 'top_up'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+
+                      <div v-else-if="noti.status == 'withdrawl'">
+                        <div style="color:#000;">{{noti.title}}</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
+                        <div style="color:#b8b8b8;">{{noti.ago}}</div>
+                    </div>
+
                    
 
 
                     <div v-else>
                          <div style="color:#000;">{{noti.title}}</div>
-                        <div style="color:#158220;">{{noti.amount}} ကျပ်</div>
+                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     
                     </div>
@@ -179,6 +227,10 @@
 import axios from 'axios'
 export default {
     mounted() {
+          this.$nextTick(() => {
+        this.$nuxt.$loading.start()
+        // setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+      })
     },
     data() {
         return {
@@ -211,6 +263,7 @@ export default {
                     .then(response => {
                         console.log(response.data)
                     this.notification = response.data.data
+                    this.$nuxt.$loading.finish()
                    // console.log(this.notification.stauts)
                      var noti_id = this.notification.notification_id
                      //console.log(noti_id)

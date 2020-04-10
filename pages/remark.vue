@@ -63,7 +63,7 @@
                  
                 </el-card> 
                 <h6>ထိုးဂဏာန်းအတည်ပြုစာရင်း</h6>
-                <el-card class="point_amount">
+                <!-- <el-card class="point_amount">
                      <el-radio v-model="radio" label="2" >
                          <div>
                                 <img v-if="radio == 2" src="~static/images/point_icon.png"  alt="">
@@ -78,6 +78,52 @@
                         <div>
                             <img v-if="radio == 1" src="~static/images/amount_icon.png"  alt="">
                             <img v-else src="~static/images/amount_t_icon.png"  alt="">
+                        </div>
+                        
+                       <p> လက်ကျန်ငွေ</p> 
+                       <h6>{{profile.wallet}}</h6>
+                        
+                    </el-radio>
+                   
+                </el-card> -->
+                <el-card v-if="radio == 1" class="point_amount">
+                     <el-radio v-model="radio" label="2" >
+                         <div>
+                                <img src="~static/images/point_t_icon.png"  alt="">
+                               
+                         </div>
+                       
+                         <p> လက်ကျန်ပွိုင့်</p>
+                         <h6> {{profile.point_wallet}} </h6>
+                    </el-radio>
+                       <el-divider direction="vertical"></el-divider>
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                            <img src="~static/images/amount_icon.png"  alt="">
+                          
+                        </div>
+                        
+                       <p> လက်ကျန်ငွေ</p> 
+                       <h6>{{profile.wallet}}</h6>
+                        
+                    </el-radio>
+                   
+                </el-card>
+                <el-card v-else class="point_amount">
+                     <el-radio v-model="radio" label="2" >
+                         <div>
+                                
+                                <img src="~static/images/point_icon.png"  alt="">
+                         </div>
+                       
+                         <p> လက်ကျန်ပွိုင့်</p>
+                         <h6> {{profile.point_wallet}} </h6>
+                    </el-radio>
+                       <el-divider direction="vertical"></el-divider>
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                           
+                            <img src="~static/images/amount_t_icon.png"  alt="">
                         </div>
                         
                        <p> လက်ကျန်ငွေ</p> 

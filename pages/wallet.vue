@@ -18,16 +18,19 @@
               </div>
         
               <div v-else class="demo-type">
+              <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" v-if="this.profile.profile == null"> 
                    <img src="~static/images/icons/me_img.png" alt="">
                   
                   
                   </el-avatar>
+                  
                   <el-avatar :size="60" v-else > 
                   
                        <img :src="this.profile.profile" alt="">
                   
                   </el-avatar>
+              </nuxt-link>
                 <div  class="avatar_text">
                   <ul>
                     <li>{{ $t('my_balance') }}</li>

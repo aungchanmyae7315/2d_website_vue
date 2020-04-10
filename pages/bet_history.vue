@@ -91,6 +91,7 @@ export default {
                          }
                         })
                     .then(response => {
+                        console.log(response)
                         this.$nuxt.$loading.finish()
                      this.bet_historys = response.data.data   
                 })

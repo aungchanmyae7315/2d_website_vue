@@ -21,7 +21,8 @@
                                 
                                 <div style="margin:0"> {{bet_list_detail.date}}</div>
                                 <div style="margin-right:0;"> {{bet_list_detail.number}}</div>
-                                <div style="margin-right:0;padding-right:20px">{{bet_list_detail.result_amount}}</div>
+                                <div style="margin-right:0;padding-right:20px" v-if="bet_list_detail.wallet_status == 'wallet'">{{bet_list_detail.result_amount}} ကျပ်</div>
+                                 <div style="margin-right:0;padding-right:20px" v-else>{{bet_list_detail.result_amount}} ပွိုင့်</div>
                             </template>
 
                             <el-row>
@@ -168,6 +169,7 @@ export default {
             
                 .then(response => {
                       this.$nuxt.$loading.finish()
+                      console.log(response)
                     this.bet_detail = response.data.data
             })
      }

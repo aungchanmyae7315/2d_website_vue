@@ -7,10 +7,10 @@
            <!-- </nuxt-link> -->
          </el-header>
                     <!-- <img src="~static/images/refel_page/refel_img_one.png" class="refel_img"> -->
-            <img src="~static/images/promotion_img.jpeg" alt="" class="promotion_img">
+            <img :src="promotion_detail.image" alt="" class="promotion_img">
         <div class="contant_promo">
             <h6>{{promotion_detail.title}}</h6>
-            <p>{{promotion_detail.description}}</p>
+            <p v-html="promotion_detail.description "></p>
         </div>
    
     </main>

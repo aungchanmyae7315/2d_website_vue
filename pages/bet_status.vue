@@ -24,14 +24,17 @@
                 <th style="text-align:right">{{$t('Amount')}}</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <!-- @click="dialogVisible = true" -->
-                <tr  v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id">
+                <tr   v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id">
                 <th scope="row">{{bet_list.created_at}}</th>  
                 <td>{{bet_list.number}}</td> 
-                <td style="text-align:right">{{bet_list.amount}}</td>  
+                <td style="text-align:right" v-if="bet_list.wallet_status == 'wallet'">{{bet_list.amount}} ကျပ်</td>
+                <td style="text-align:right" v-else>{{bet_list.amount}} ပွိုင့်</td>  
                 </tr>
+               
             </tbody>
+           
         </table>
         <div style="text-align:center;padding:20px;">
             <nuxt-link :to="`${$t('/bet_history_btn')}?lang=${$store.state.locale}`">

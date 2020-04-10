@@ -31,7 +31,7 @@
                         </el-form>
                         </el-card>
                         <el-button type="info" class="submitRefel" round @click="skip()">{{$t('Skip')}}</el-button>
-                         <el-button type="success" class="submitRefel" round @click="submitRefel('ruleForm')">{{$t('summit_referral_code')}}</el-button>
+                         <el-button type="success" class="submitRefel" :disabled='submitted' round @click="submitRefel('ruleForm')">{{$t('summit_referral_code')}}</el-button>
                          
                 </div>
              </div>
@@ -45,6 +45,7 @@ export default {
     
     data() {
         return {
+             submitted:false,
             ruleForm: {
                  referal_code:'',
 
@@ -56,8 +57,11 @@ export default {
     },
     methods: {
          submitRefel(formName) {
+            
+              
               this.$refs[formName].validate((valid) => {
              if (valid) {
+                  this.submitted = true
                 // alert(this.ruleForm.referal_code)
                         let token = localStorage.getItem('token');
                         var data_code = {

@@ -44,7 +44,7 @@
 
         <el-form  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
             <el-form-item  class="edit_name" >
-                <el-input  required type="text" placeholder="Your Full Name" id="ok" v-model="profile.name"  autocomplete="off"></el-input>
+                <el-input  required type="text" placeholder="အမည်အပြည်အစုံဖြည့်ပါ" id="ok" v-model="profile.name"  autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
                 <p>{{$t('registered_phone')}}: {{this.profile.phone}}</p>
