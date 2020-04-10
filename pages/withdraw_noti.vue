@@ -22,7 +22,7 @@
                 <h6 v-if="this.profile.name == null " class="win_name">{{this.profile.phone}}</h6>
                 <h6 v-else class="win_name">{{this.profile.name}}</h6>
                 <h6>{{notification_detail.description}}</h6>
-                <h5 class="amount">{{notification_detail.data.win_amt}} {{$t('kyat')}} </h5>
+                <h5 class="amount">{{notification_detail.data.win_amt}}  </h5>
                 <div class="footer_card">
                     <br>
                     <el-row class="win_detail">
@@ -42,7 +42,7 @@
                             <span>ထိုးငွေ</span> 
                         </el-col>
                             <el-col :span = '12' style="text-align:left">
-                            <span>: {{notification_detail.data.bet_amt}} {{$t('kyat')}}</span>
+                            <span>: {{notification_detail.data.bet_amt}} </span>
                         </el-col>
                     </el-row>
                     

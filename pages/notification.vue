@@ -32,7 +32,7 @@
 
                     <div v-if="noti.status == 'win'">
                          <div style="color:#000;">{{noti.title}}</div>
-                        <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
+                        <div style="color:#158220;">{{noti.data.win_amt}}</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
                      <div v-else-if="noti.status == 'morning_result'">
