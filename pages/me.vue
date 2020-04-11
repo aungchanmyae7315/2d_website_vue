@@ -111,7 +111,7 @@
              <nuxt-link :to="`${$t('/me')}?lang=${$store.state.locale}`">
              <el-menu-item index="4">
                <img src="~static/icons_header/me_t_icon.png" alt="">
-               <h5 class="main_icon" style="font-weight:bold;color:gold">{{$t('me_title')}}</h5>
+               <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('me_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
 
