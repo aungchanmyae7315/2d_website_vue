@@ -115,10 +115,10 @@
 
             <el-row> 
                   <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                        <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.wallet}} {{$t('kyat')}}</div></el-col>
+                        <el-col :span="13" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
+                        <el-col :span="13" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.wallet}} {{$t('kyat')}}</div></el-col>
                   </nuxt-link>
-                 <el-col :span="10" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
+                 <el-col :span="11" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
             </el-row>
              <el-row> 
                   <nuxt-link :to="`${$t('/seinlucky_point')}?lang=${$store.state.locale}`">
@@ -367,11 +367,55 @@
        .balance_amount , .bet_close_time {
            font-size: 11px;
        }
+       .bet_login_btn .el-button.is-round {
+           font-size: 12px;
+       }
+       .bet_container .el-header {
+           padding:15px;
+       }
+       .bet_container .el-input__inner {
+           height:36px;
+       }
+       .fast_btn {
+           padding:12px;
+           font-size: 10px;
+       }
+      
    }
+    @media screen and (max-width:290px) {
+         .select_number_two .el-button {
+           width:46px;
+       }
+       .single_btn .el-button {
+           width:39px;
+       }
+       .select_number .el-button {
+           width:20px;
+       }
+       .balance_amount , .bet_close_time {
+           font-size: 10px;
+       }
+    }
    @media screen and (max-width:414px) {
       .select_number .el-button {
           width:26.5px;
       }
+       .balance_amount , .bet_close_time {
+           font-size: 11px;
+       }
+       .bet_login_btn .el-button.is-round {
+           font-size: 12px;
+       }
+       .bet_container .el-header {
+           padding:15px;
+       }
+       .bet_container .el-input__inner {
+           height:36px;
+       }
+       .fast_btn {
+           padding:12px;
+           font-size: 10px;
+       }
    }
    @media screen and (max-width:360px) {
       .select_number .el-button{

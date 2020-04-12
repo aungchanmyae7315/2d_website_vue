@@ -190,7 +190,7 @@
                    
  
                       <span>updated at:</span><br>
-                      <span v-text="currentDate"></span><br>
+                      <span v-text="currentDate">Hello</span><br>
                       <!-- <span v-if="currentTime == ''" v-text="currentTime"></span> -->
                         <span v-text="this.breakTime"></span>
                   </div>
