@@ -381,6 +381,13 @@ export default {
   layout: 'homeLayout',
 
   mounted() {
+    var m = window.location.href.match(/device_id=([^&]+)/i);
+    if (m != null){
+      var deviceId = m[1];
+      alert(deviceId);
+      localStorage.setItem("deviceId", deviceId);
+    }  
+
       this.getDataKwee();
       this.getDataresult();
       this.updateIsLoggedIn();

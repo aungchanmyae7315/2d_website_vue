@@ -1,7 +1,8 @@
 
 export default function ({ $axios, redirect }) {
     $axios.onRequest(config => {
-      console.log('Making request to ' + config.url)
+	config.headers.common['device-id'] = localStorage.getItem("deviceId");
+	    console.log('Making request to ' + config.url)
     })
   
     $axios.onError(error => {
