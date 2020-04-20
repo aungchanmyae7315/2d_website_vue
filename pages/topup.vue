@@ -31,7 +31,7 @@
                     <el-radio v-model="radio" label="1">
                         <div>
                           
-                            <img src="~static/images/wavemoney.jpg"  alt="">
+                            <img src="~static/images/wavemoney.jpg" class="active_img"  alt="">
                           
                         </div>
 
@@ -40,10 +40,10 @@
              </el-row>
              <el-row v-else class="point_amount">
                   <el-col :span="12" style="text-align:right" >
-                    <el-radio v-model="radio" label="2" >
+                    <el-radio v-model="radio" label="2"  >
                          <div>
                                 
-                                <img src="~static/images/kbz.jpg"  alt="">
+                                <img src="~static/images/kbz.jpg" class="active_img"  alt="">
                          </div>
 
                     </el-radio>
@@ -200,6 +200,12 @@
         /* width:100%; */
         border-radius: 13px;
         height:70px;
+       
+    }
+    .active_img {
+        -webkit-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
+        -moz-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
+        box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
     }
     .topup .el-dialog--center .el-dialog__body {
         padding:20px;
