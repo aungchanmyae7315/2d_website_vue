@@ -82,12 +82,13 @@
                         </el-form-item>
                     </el-form>
                      <p>လုပ်ငန်းစဥ်အမှတ်</p>
+
                     <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                         <el-form-item 
 
                         prop="slip_code"
                     :rules="[
-                        { required: true, message: $t('amount_required')},
+                        { required: true, message: 'လုပ်ငန်းစဥ်အမှတ် ဖြည့်ပါ'},
                         
                     ]"
                         class="tran_input" >
@@ -137,7 +138,7 @@
 
                         prop="slip_code"
                     :rules="[
-                        { required: true, message: $t('amount_required')},
+                        { required: true, message: 'လုပ်ဆောင်မှုအမှတ်  ဖြည့်ပါ'},
                         
                     ]"
                         class="tran_input" >
