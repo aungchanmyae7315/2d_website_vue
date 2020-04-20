@@ -80,10 +80,10 @@
                         class="tran_input" >
                             <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
                         </el-form-item>
-                    </el-form>
+                    
                      <p>လုပ်ငန်းစဥ်အမှတ်</p>
 
-                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                  
                         <el-form-item 
 
                         prop="slip_code"
@@ -131,9 +131,9 @@
                         class="tran_input" >
                             <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
                         </el-form-item>
-                    </el-form>
+                   
                      <p>လုပ်ဆောင်မှုအမှတ်</p>
-                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                  
                         <el-form-item 
 
                         prop="slip_code"
