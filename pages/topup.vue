@@ -9,100 +9,172 @@
                 </el-page-header>
                  <!-- </nuxt-link> -->
             </el-header>
-            <!-- <p>{{$t('After bank transferring is finished, please enter your amount and upload your bank slip below.')}}</p> -->
-              <!-- <h5>{{$t('Upload Bank transferred Slip')}}</h5> -->
+
                <p>{{$t('please_transfer_top-up_money_to_one')}}</p>
-        <!-- <div id="bank_copy_list">
-            <ul class="see_more_list" >
-                <li  v-for="(bank_info, b) in bank_account" :key="b">
-                    <div class="demo-type wallet_type"  v-if="b < limit_by">
-                     
-                            
-                              <el-image :src="bank_info.bank_icon">
-                                <div slot="placeholder" class="image-slot">
-                                  Loading<span class="dot">...</span>
-                                </div>
-                              </el-image>
-                              <div  class="avatar_text">
-                                <ul style="padding-top:18px;">
-                                  <li style="font-size:10px;">{{bank_info.bank_name}}</li>
-                                  <li style="font-size:10px;" class="bank_number">
-                                    <span class="code text-red">{{ bank_info.card_number }}</span>
-                                    <input type="hidden" readonly :id="'code'+(bank_info.id)" :value="bank_info.card_number">
-                                  </li>
-                                </ul>
-                                </div>
-                                <div class="result_icon">
-                                    <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode(bank_info.id)">
-                                    {{ $t('Copy') }}
-                                  </span>
-                                  </div>
-                              </div>
-                            
-                </li>
-            </ul>
-            <div class="show_more">
-                <a href="javascript:void(0)" 
-                @click="simple_toggle(default_limit, bank_account.length)">{{ limit_by===2? $t('show_more'): $t('show_less')}}
-              </a>
-            </div>
-          
-        </div> -->
+
         <p>{{$t('upload_he_image_of_the_bank')}}</p>
 
+        
 
+            <el-row  v-if="radio == 1" class="point_amount">
+                <el-col :span="12" style="text-align:right">
+                      <el-radio v-model="radio" label="2" >
+                         <div>
+                                <img src="~static/images/kbz_t.jpg"  alt="">
+                               
+                         </div>
+                       
+                       
+                    </el-radio>
+                </el-col>
+                <el-col :span="12" style="text-align:left">
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                          
+                            <img src="~static/images/wavemoney.jpg"  alt="">
+                          
+                        </div>
 
-
-            <div class="avatar-upload">
-                    <div class="avatar-edit" v-if="!url">
-                        <label for="imageUpload" class="upload_icon_top"> 
-                          <div class="upload_over_lay">
-
-                         
-                          <div class="upload_img_bg" >
-                            
-                          </div>
-                            
+                    </el-radio>
+                </el-col>
+             </el-row>
+             <el-row v-else class="point_amount">
+                  <el-col :span="12" style="text-align:right" >
+                    <el-radio v-model="radio" label="2" >
+                         <div>
+                                
+                                <img src="~static/images/kbz.jpg"  alt="">
                          </div>
 
-                        <span >{{$t('please_upload_photo_here')}}</span>
-                         <i slot="default" class="el-icon-plus"></i>
-                        </label>
-                         
-                        <input type="file" @change="onFileChange" id="imageUpload"  accept=".jpg, .jpeg, .png">
-                        <div slot="tip" class="el-upload__tip"></div>
-                    </div>
-            
-                <div class="avatar-preview" v-else>
+                    </el-radio>
+                  </el-col>
+                  <el-col :span="12" style="text-align:left">
+                          
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                           
+                            <img src="~static/images/wavemoney_t.jpg"  alt="">
+                        </div>
                         
-                        <img  :src="url" alt="" id="imagePreview_top">
-                   
-                        <el-button type="text" @click="removeImage">{{$t('remove_image')}}</el-button> 
-                </div>
-                 
-                    
-                
-            </div>
-            <p v-show="lee" style="color:red;font-size:12px">{{$t('please_upload_slip_file')}}</p>
-            <div style="text-align:center;">
-                  <p>{{$t('if_the_photo_can_not_upload_on_your_device')}}</p>
-            </div>
-          
+                     
+                        
+                    </el-radio>
+                  </el-col>
+             </el-row>
 
-            <p>{{$t('Please_enter_transferred')}}</p>
-            <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
-                 <el-form-item 
-                  prop="tran_amount"
-              :rules="[
-                { required: true, message: $t('amount_required')},
-                
-              ]"
-                  class="tran_input" >
-                    <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
-                </el-form-item>
-            </el-form>
-                <el-button round @click="slip_upload('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
-                 <el-divider></el-divider>
+     
+               
+            
+               
+           
+           
+                <div v-if="radio == 1">
+                    <p>{{$t('Please_enter_transferred')}}</p>
+                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                        <el-form-item 
+                        prop="tran_amount"
+                    :rules="[
+                        { required: true, message: $t('amount_required')},
+                        
+                    ]"
+                        class="tran_input" >
+                            <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                        </el-form-item>
+                    </el-form>
+                     <p>လုပ်ငန်းစဥ်အမှတ်</p>
+                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                        <el-form-item 
+
+                        prop="tran_amount"
+                    :rules="[
+                        { required: true, message: $t('amount_required')},
+                        
+                    ]"
+                        class="tran_input" >
+                        <el-row>
+                            <el-col :span="18">
+                                 <el-input   type="number" placeholder="ဂဏန်းအားလုံးဖြည့်ပါ" v-model="ruleForm.slip_code"></el-input>
+                            </el-col>
+                            <el-col :span="6" style="text-align:center">
+                                <el-button type="text"  @click="centerDialogVisible = true">နမူနာ</el-button>
+                                    <el-dialog
+                                        
+                                        :visible.sync="centerDialogVisible"
+                                        width="90%"
+                                        center>
+                                        <div style="text-align:center">
+                                             <img src="~static/images/wavemoney_example.png"  alt="">
+                                        </div>
+                                         
+                                       
+                                    </el-dialog>
+                            </el-col>
+                        </el-row>
+                           
+                        
+                        </el-form-item>
+                    </el-form>
+                   
+                         <el-button round @click="slip_upload_wave('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
+                </div>
+                <div v-else>
+                   
+                     <p>{{$t('Please_enter_transferred')}}</p>
+                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                        <el-form-item 
+                        prop="tran_amount"
+                    :rules="[
+                        { required: true, message: $t('amount_required')},
+                        
+                    ]"
+                        class="tran_input" >
+                            <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                        </el-form-item>
+                    </el-form>
+                     <p>လုပ်ဆောင်မှုအမှတ်</p>
+                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                        <el-form-item 
+
+                        prop="tran_amount"
+                    :rules="[
+                        { required: true, message: $t('amount_required')},
+                        
+                    ]"
+                        class="tran_input" >
+                        <el-row>
+                            <el-col :span="18">
+                                 <el-input   type="number" placeholder="နောက်ဆုံးဂဏန်း (၆) လုံးဖြည့်ပါ" v-model="ruleForm.slip_code"></el-input>
+                            </el-col>
+                            <el-col :span="6" style="text-align:center">
+                                <el-button type="text"  @click="centerDialogVisible = true">နမူနာ</el-button>
+                                    <el-dialog
+                                        
+                                        :visible.sync="centerDialogVisible"
+                                        width="90%"
+                                        center>
+                                        <div style="text-align:center">
+                                             <img src="~static/images/kbz_example.png"  alt="">
+                                        </div>
+                                         
+                                       
+                                    </el-dialog>
+                            </el-col>
+                        </el-row>
+                           
+                        
+                        </el-form-item>
+                    </el-form>
+                   
+                         <el-button round @click="slip_upload_kbz('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
+              
+                </div>
+
+           
+           
+
+
+
+            <br>
             <p>{{$t('need_help?_please_contact')}}</p>
                     <ul class="topup_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium" type="info"  @click="dial(phone)"   icon="el-icon-phone" >{{phone}}</el-button></li>
@@ -123,6 +195,30 @@
     .topup .el-header {
        background-color :#fff;
 
+    }
+     .topup .point_amount img{
+        /* width:100%; */
+        border-radius: 13px;
+        height:70px;
+    }
+    .topup .el-dialog--center .el-dialog__body {
+        padding:20px;
+    }
+    .topup .point_amount .el-radio__input.is-checked+.el-radio__label {
+        color:#158220;
+        font-weight: bold;
+    }
+    .topup .point_amount .el-radio__input {
+        display: none;
+    }
+
+    .topup .point_amount .el-radio , .el-radio__label {
+        margin:0;
+        padding:0 30px;
+        line-height: 0;
+    }
+    .topup .point_amount .el-card__body {
+        padding:10px 0 0 0;
     }
     .el-page-header__left {
         margin:0;
@@ -175,6 +271,9 @@
         width:100%;
         background-color: #158220;
         color:#fff;
+    }
+    .topup .el-dialog {
+        border-radius: 26px;
     }
 .topup .avatar-upload {
   position: relative;
@@ -312,14 +411,21 @@
 import axios from 'axios'
 export default {
     mounted() {
+
+    
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
       setTimeout(() => this.$nuxt.$loading.finish(), 500)
-    })
+    });
+
+
+    
     },
     data() {
         return { 
-          
+            bank_type:'',
+            radio: '1',
+            centerDialogVisible: false,
           default_limit: 2,
           limit_by: 2,
           contact:[],
@@ -333,7 +439,7 @@ export default {
             ruleForm: {
                   tran_amount:'',
             },
-              lee:false,
+             
               image:'',
               url:'',
                image:'',
@@ -371,6 +477,10 @@ export default {
                 
     },
     methods: {
+         id_bank(data) {
+            this.bank_id = data;
+           
+        },
          simple_toggle(default_limit, filters_length) {
             this.limit_by = (this.limit_by === default_limit) ? filters_length : default_limit;
         },
@@ -421,66 +531,144 @@ export default {
       this.url = '';
     },
 
-    //     handleRemove(file, fileList) {
-    //     console.log(file, fileList);
-    //     // this.$store.commit('file', this.file);
-    //   },
-    //   handlePreview(e) {
-    //        var files = e.target.files || e.dataTransfer.files;
-    //   if (!files.length)
-    //     return;
-
-    //   this.image = e.target.files[0];
-    //    this.file = URL.createObjectURL(this.image);
-    //         console.log(file);
-
-    //   },
-    //    handleExceed(files, fileList) {
-    //     this.$message.warning(`The limit is 1, you selected ${files.length} files this time, add up to ${files.length + fileList.length} totally`);
-    //   },
-        slip_upload(formName) {
+        slip_upload_kbz(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {
+              
               let token = localStorage.getItem('token');
-            
+            this.bank_id = 1
+        var data = {
+                    bank_type_id:this.bank_id,
+                   
+                    amount: this.ruleForm.tran_amount,
+                    slip_code: this.ruleForm.slip_code,
+                }
+             
+              console.log(data)
+              //console.log(token)
+       
+                this.$axios.post("/v2/v1/slip_automatch",
+                           data,
+                    {
+                           
 
-                let formData = new FormData();
-                formData.append('image', this.image);
-                 formData.append('amount', this.ruleForm.tran_amount);
-
-                //  console.log(formData);
-                // console.log(token)
-                if(this.image) {
-                  this.lee = false
-                       
-            this.$axios.post('/v2/v1/slip_post',
-                  formData
-                 ,{
-                  headers: {
-                    "Authorization": "Bearer "+token,
-                    'content-type': 'multipart/form-data'
-                  }
-                })
-               
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         },
+                          
+                        })
                 
                     .then(response => {
+                        console.log(response)
                      //console.log(this.topup_info = response.data.data)
-                     console.log(response)
-                })
-                  this.submitted = true
+                     this.error_msg = response.data
+                     console.log(this.error_msg)
+
+                             this.submitted = true
                 this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
                  
+                })
+                 .catch(error => {
+                     if(error.response.data.errors.slip_code == 'The slip code must be at least 6 characters.') {
+                          this.$message({
+                            showClose: true,
+                          message: 'အနည်းဆုံး ဂဏန်း ၆ လုံးဖြည့်ပေးပါ ',
+                          type: 'warning',
+                        });
+                     }else if(error.response.data.errors.slip_code == 'The slip code may not be greater than 6 characters.') {
+                          this.$message({
+                            showClose: true,
+                          message: 'ဂဏန်း ၆  ထက်ပိုနေပါသည် ',
+                          type: 'warning',
+                        });
+                     }else {
+                         this.$message({
+                            showClose: true,
+                          message: 'လုပ်ငန်းစဥ်အမှတ် မှားနေပါသည် ',
+                          type: 'warning',
+                        });
+      
+                     }
+
+                  
+                });
+        
             
-                }else {
-                   this.lee = true
-                }
+    
 
          
-          } else {
-          
-            console.log('error submit!!');
-            return false;
-          }
+          } 
+        });
+
+        },
+
+           slip_upload_wave(formName) {
+             this.$refs[formName].validate((valid) => {
+          if (valid) {
+              
+              let token = localStorage.getItem('token');
+            this.bank_id = 2
+        var data = {
+                    bank_type_id:this.bank_id,
+                   
+                    amount: this.ruleForm.tran_amount,
+                    slip_code: this.ruleForm.slip_code,
+                }
+             
+              console.log(data)
+              //console.log(token)
+       
+                this.$axios.post("/v2/v1/slip_automatch",
+                           data,
+                    {
+                           
+
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         },
+                          
+                        })
+                
+                    .then(response => {
+                        console.log(response)
+                     //console.log(this.topup_info = response.data.data)
+                     this.error_msg = response.data
+                     console.log(this.error_msg)
+
+                             this.submitted = true
+                this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
+                 
+                })
+                 .catch(error => {
+                     if(error.response.data.errors.slip_code == 'The slip code must be at least 6 characters.') {
+                          this.$message({
+                            showClose: true,
+                          message: 'အနည်းဆုံး ဂဏန်း ၆ လုံးဖြည့်ပေးပါ ',
+                          type: 'warning',
+                        });
+                     }else if(error.response.data.errors.slip_code == 'The slip code may not be greater than 6 characters.') {
+                          this.$message({
+                            showClose: true,
+                          message: 'ဂဏန်း ၆  ထက်ပိုနေပါသည် ',
+                          type: 'warning',
+                        });
+                     }else {
+                         this.$message({
+                            showClose: true,
+                          message: 'လုပ်ငန်းစဥ်အမှတ် မှားနေပါသည် ',
+                          type: 'warning',
+                        });
+      
+                     }
+
+                  
+                });
+        
+            
+    
+
+         
+          } 
         });
 
         },
