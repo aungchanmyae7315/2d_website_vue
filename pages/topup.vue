@@ -444,6 +444,7 @@ export default {
             submitted:false,
             ruleForm: {
                   tran_amount:'',
+                  slip_code:'',
             },
              
               image:'',
