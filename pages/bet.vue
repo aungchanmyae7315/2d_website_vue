@@ -728,7 +728,7 @@ export default {
                 // var cu_time= new Date("12/01/2019 " + this.currentTime);
                 var mo_from= new Date("03/20/2019 " + this.morning_from);
                 var ev_to = new Date("03/19/2019 " + this.currentTime);
-                var mo_to= new Date("03/20/2019 " + this.evening_to);
+                var mo_to= new Date("03/20/2019 " + this.evening_from);
                 var ev_from = new Date("03/20/2019 " + this.currentTime);
                 var difference =  mo_from - ev_to;   
                 var difference_two = mo_to - ev_from;
