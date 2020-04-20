@@ -85,7 +85,7 @@
                     <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                         <el-form-item 
 
-                        prop="tran_amount"
+                        prop="slip_code"
                     :rules="[
                         { required: true, message: $t('amount_required')},
                         
@@ -140,7 +140,7 @@
                         { required: true, message: $t('amount_required')},
                         
                     ]"
-                        class="tran_input" >
+                        class="slip_code" >
                         <el-row>
                             <el-col :span="18">
                                  <el-input   type="number" placeholder="နောက်ဆုံးဂဏန်း (၆) လုံးဖြည့်ပါ" v-model="ruleForm.slip_code"></el-input>
