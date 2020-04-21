@@ -82,5 +82,8 @@ export default {
     padding:30px;
     text-align:left;
 }
+.contant_promo img {
+    width:100% !important;
+}
    
 </style>

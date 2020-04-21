@@ -44,7 +44,7 @@
                        <li><nuxt-link  :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
                         <li><nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
-
+                          <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">App မျှဝေရန်</a></nuxt-link></li>
                 </div>
                 <div v-else-if="!isMobile()">
                         <li><nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`"><a href="" @click="loading" v-loading.fullscreen.lock="fullscreenLoading"><img src="~static/icons_acc_me/noti.png" alt=""> {{$t('Notifications')}}</a></nuxt-link></li>
@@ -52,7 +52,7 @@
                         <li><nuxt-link  :to="`${$t('/bet_history')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
                         <li><nuxt-link :to="`${$t('/result')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
-
+                        <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">App မျှဝေရန်</a></nuxt-link></li>
                 
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
                 </div>
@@ -64,8 +64,15 @@
                         <li><nuxt-link :to="`${$t('/result')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
-                         <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
-                          <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
+
+                        <div v-if="this.device_id !== null">
+                              <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
+                              <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('referral_code')}}</a></nuxt-link></li> 
+                        </div>
+                        <div v-else>
+
+                        </div>
+                         
 
                         <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
                 </div>
@@ -137,7 +144,7 @@ export default {
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');
     if(token) {
-       this.$axios.get("/v1/profile",
+       this.$axios.get("/v2/v1/profile",
             {headers: {
                         "Authorization": "Bearer "+token
                   }
@@ -146,6 +153,8 @@ export default {
                console.log(response)
               // location.reload();
               this.profile = response.data.data
+              this.device_id = response.data.data.device_id
+             
         })
          this.$axios.get("/v2/v1/referal_code",
             {headers: {
@@ -164,9 +173,11 @@ export default {
    },
     data() {
       return {
+
         fullscreenLoading: false,
         profile:'',
-        get_refel:''
+        get_refel:'',
+        device_id:''
       };
     },
     

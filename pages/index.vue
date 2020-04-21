@@ -623,12 +623,18 @@ export default {
                         })
                     .then(response => {
                      this.profile = response.data.data
-                     this.currentTime = response.data.data.time
+                    
                   
-                     console.log(this.currentTime)
+                  
 
                 })
-      }  
+      }
+        this.$axios.get('/v2/v1/server_time')
+              .then(response => {
+                console.log(response.data)
+               this.currentTime = response.data
+              })
+
     },
 }
 

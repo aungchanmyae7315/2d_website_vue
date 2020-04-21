@@ -216,39 +216,36 @@ import axios from 'axios'
                 .then(response => {
 
                    this.token = response.data.access_token;
+                   this.device_id = response.data.device_id
+                   console.log(this.device_id)
                       this.userInfo = response.data,
                       this.$nuxt.$loading.finish()
                    
                       // console.log(this.userInfo)
                       this.$store.commit('logIn', this.userInfo)
                         this.$store.commit('accessToken', this.token)
-                    
-                 // this.$router.push(`/?lang=${this.$store.state.locale}`);
 
-                    if(!this.isMobile()) {
-                       this.$router.push(`/?lang=${this.$store.state.locale}`);
-                      // alert('chrome')
-                      //  this.$router.push(`/?lang=${this.$store.state.locale}`);
+                    if(!this.isMobile() || this.device_id == null) {
+
+                      this.$router.push(`/?lang=${this.$store.state.locale}`);
                         
                     }else {
-                      //  alert('mobile')
-                        this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
+                      
+                       this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
                     }
           
                 })
                 .catch(error => {
-                   if(!isMobile()) {
-                       this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
-                      alert('mobile')
-                      //  this.$router.push(`/?lang=${this.$store.state.locale}`);
+
+                   if(!this.isMobile() || this.device_id == null) {
+
+                       this.$router.push(`/?lang=${this.$store.state.locale}`);
                         
                     }else {
-                       alert('not mobile')
-                        this.$router.push(`/?lang=${this.$store.state.locale}`);
+                        this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
+                     
                     }
-                  // console.log('leeepal')
-                  // console.log(error.response.data)
-                  
+
                   if(error.response.data.errors.password) {
                        console.log(error.response.data.errors.password[0])
                            
