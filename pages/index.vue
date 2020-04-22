@@ -124,9 +124,6 @@
               </div>
         </div>
 
-<!-- <h3>User Agent:</h3>
-<div id="userAgentDiv"></div> -->
-
 
           <div class="block" data-aos="fade-up" data-aos-duration="700">
   
@@ -190,9 +187,15 @@
                    
  
                       <span>updated at:</span><br>
-                      <span v-text="currentDate">Hello</span><br>
-                      <!-- <span v-if="currentTime == ''" v-text="currentTime"></span> -->
-                        <span v-text="this.breakTime"></span>
+
+                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="currentDate"></span>
+                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="currentDate"></span>
+                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="currentDate"></span>
+                      <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
+                      <span v-else v-text="this.last_date"></span>
+                      <br>
+                  
+                      <span v-text="this.breakTime"></span>
                   </div>
 
                   
@@ -347,11 +350,6 @@
                     </div>
                 </div>
             </div>
-<!-- <div  v-if="!isMobile()" id="">This is Chrome</div> 
-
-<div  v-else id="">This is mobile</div>  -->
-
-
 
             <div class="bet_btn">
               <nuxt-link :to="`${$t('/bet')}?lang=${$store.state.locale}`">
@@ -406,7 +404,8 @@ export default {
   
   data() {
     return {
-        dialogVisible: false,
+      last_date:'',
+      dialogVisible: false,
        isActive: true,
       hasError: false,
       currentTime: '',
@@ -561,20 +560,16 @@ export default {
         
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
-                console.log(response)
-                console.log(response.data.data.status_1200)
-             
+
                 if(response.data.data.status_1200 == "backend") {
-                      console.log("kwee_live")
-                      console.log('one')
+                    
                        this.isActive = false
                        clearTimeout(stop_Interval);  
                 }else {
-                  console.log("result")
-                  console.log('two')
                        this.isActive = true
                       this.$axios.get('/v2/v1/twod-result/live')
                     .then(response => {
+                     
                       this.info_api = response.data.data
                     
                     })
@@ -586,22 +581,20 @@ export default {
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
 
   }else {
-     console.log('ppp')
+     
       var ok =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
-                console.log(response)
-                console.log(response.data.data.status_1200)
-               
+                  this.last_date = response.data.data.last_date
                 if(response.data.data.status_430 == "backend") {
-                      console.log("kwee_live")
-                      console.log('chang')
+                    
                          this.isActive = false
 
                 }else {
                         this.isActive = true
                       this.$axios.get('/v2/v1/twod-result/live')
                     .then(response => {
+                       this.last_date = response.data.data.last_date
                       this.info_api = response.data.data
                     
                     })
@@ -630,12 +623,18 @@ export default {
                         })
                     .then(response => {
                      this.profile = response.data.data
-                     this.currentTime = response.data.data.time
+                    
                   
-                     console.log(this.currentTime)
+                  
 
                 })
-      }  
+      }
+        this.$axios.get('/v2/v1/server_time')
+              .then(response => {
+                console.log(response.data)
+               this.currentTime = response.data
+              })
+
     },
 }
 

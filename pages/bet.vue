@@ -655,9 +655,12 @@ export default {
                 profile:'', 
         }
     },
+  
+                
     created() {
        this.breakTime = moment().format('h:mm:ss a')
        
+
        this.$axios.get('/v2/v1/close_time')
              
               .then(response => {
@@ -672,19 +675,19 @@ export default {
           
                     var currentTime = moment().format('HH:mm:ss');
                     var currentDate  = moment().day();
-                    
                 
-                    if(currentTime  >  this.morning_from && currentTime < this.morning_to ) {
+                    if(this.serverTime  >  this.morning_from && this.serverTime < this.morning_to ) {
                         this.isActive = true
-                    }else if(currentTime > this.morning_to && currentTime <  this.evening_from ) {
+                    }else if(this.serverTime > this.morning_to && this.serverTime <  this.evening_from ) {
                         this.isActive = false
-                    }else if(currentTime > this.evening_from && currentTime < this.evening_to ) {
+                    }else if(this.serverTime > this.evening_from && this.serverTime < this.evening_to ) {
                         this.isActive = true
-                    }else if(currentTime > this.evening_to) {
+                    }else if(this.serverTime > this.evening_to) {
                         this.isActive = false
                     }else {
                          this.isActive = false  
                     }
+
                     if(currentDate == 0 || currentDate == 6) {
                         this.isActive = true
                     }
@@ -700,11 +703,16 @@ export default {
                     .then(response => {
                         console.log(response)
                      this.profile = response.data.data
-                    this.currentTime = response.data.data.time;
-                    console.log(this.currentTime)
+                   
                 })
-        }       
+        } 
+          this.$axios.get('/v2/v1/server_time')
+              .then(response => {
+                console.log(response.data)
+               this.server_time = response.data
+              })        
     },
+    
      methods: {
         convertMS( milliseconds ) {
             var day, hour, minute, seconds;
