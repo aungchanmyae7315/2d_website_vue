@@ -188,10 +188,10 @@
         
        <el-dialog class="choose_lang"
         :visible.sync="centerDialogVisible"
-        width="35%"
+       
         >
         <span style="text-align:center">
-           <el-radio v-model="radio" label="1" ><el-button @click="drawerone = true ; centerDialogVisible = false" class="share_img" round="">Zawgyi ဖြင့်မျှဝေရန်</el-button></el-radio>
+           <el-radio v-model="radio" label="1" ><el-button @click="drawerone = true ; centerDialogVisible = false" class="share_img" round="">Zawgyi ဖြင့်မျှဝေရန်</el-button></el-radio><br>
             <el-radio v-model="radio" label="2" ><el-button @click="drawertwo = true ; centerDialogVisible = false"  class="share_text" round="">Unicode ဖြင့်မျှဝေရန်</el-button></el-radio>
         </span>
       </el-dialog>
@@ -202,6 +202,10 @@
     
 </template>
 <style>
+.share_page .el-dialog {
+  max-width: 480px;
+  width:90%;
+}
 .share_page {
     padding:0 30px;
 }
