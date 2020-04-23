@@ -1,5 +1,8 @@
 <template>
    <main>
+           <el-header class="service_header" >
+             <img src="~static/images/logo.png" class="logo" alt="logo">
+           </el-header>
          <el-main>
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_service">
@@ -8,10 +11,20 @@
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
-                    <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
+                    <p style="color:#BDC5BE;font-size:13px;">ဝန်ဆောင်မှုအချိန် Mon - Sun 9:00 am - 6:00 pm</p>
+                    <!-- <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
 
-                    </ul>
+                    </ul> -->
+                    <el-card v-for="(phone , p) in contact" :key="p" class="phone_card">
+                        <h6>{{phone.type}}</h6>
+                        <ul v-for="(ph_item, ne) in phone.phone_number" :key="ne.id" class="contact_phone">
+                          
+                          <li class="phone_item"><i class="el-icon-phone"></i> {{ph_item.phone}}</li>
+                           <li><el-button size="medium"  @click="dial(ph_item.phone)"   round>ခေါ်မည်</el-button></li>
+                        </ul>
+                    </el-card>
+
                   <!-- <h6>Or</h6>
                   <p class="contact_chat">{{$t('You can just message to us')}} </p>
                     <el-button type="primary">Chat with our customer service</el-button> -->
@@ -29,7 +42,9 @@ export default {
 
      layout: 'serviceLayout',
       mounted() {
-   
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start()
+        })
      
     },
      data() {
@@ -39,26 +54,39 @@ export default {
      },
      methods: {
     dial: function(data){
+      alert(data)
       window.location ='tel:'+data;
     },
      },
     created() {
-       this.$axios.get("/v1/contact")
+       this.$axios.get("/v2/v1/contact")
     
             
                 .then(response => {
-                    this.contact = response.data.data[0].phone_number
+                  this.$nuxt.$loading.finish()
+                  console.log(response.data)
+                    this.contact = response.data.data
             });
      },
 }
 </script>
 <style>
+ .header {
+        background-color :#2A612D;
+}
+.service_header {
+  position: fixed;
+  max-width: 480px;
+  width:100%;
+  text-align: center;
+}
 .hideScrollBar_service {
       width: 100%;
     height: 100%;
     overflow: auto;
     margin-left: 17px;
     padding-right: 28px;
+    padding-top:60px;
 }
   .service {
         text-align:center;
@@ -69,10 +97,9 @@ export default {
     width:unset;
   }
 
-    .service .contact_text {
+    .service .contact_text  {
         color:#BDC5BE;
-        margin-bottom:50px;
-        font-size:18px;
+        font-size:17px;
         font-weight: bold;
     }
     .service .contact_chat {
@@ -106,4 +133,33 @@ export default {
         color:#35343A;
         font-size:16px;
     }
+    .service .el-card {
+      background-color: #252E39;
+      border: 2px solid #FFEA72;
+      border-radius: 13px;
+      margin:20px auto;
+    }
+    .phone_card h6 {
+      text-align: left;
+      padding-bottom:20px;
+      color:#fff;
+    }
+    .contact_phone {
+      padding:0;
+      margin:0;
+      list-style: none;
+      display: inline-flex;
+      color:#fff;
+    }
+
+
+  .contact_phone li i {
+    font-size: 17px;
+    padding-right:15px;
+  }
+  .phone_item {
+    padding-right:50px;
+    padding-bottom:30px;
+  }
+    
 </style>
