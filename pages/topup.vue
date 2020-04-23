@@ -178,7 +178,7 @@
             <br>
             <p>{{$t('need_help?_please_contact')}}</p>
                     <ul class="topup_contact" v-for="(phone , p) in contact" :key="p">
-                        <li><el-button size="medium" type="info"  @click="dial(phone)"   icon="el-icon-phone" >{{phone}}</el-button></li>
+                        <li><el-button size="medium" type="info"  @click="dial(phone.phone)"   icon="el-icon-phone" >{{phone.phone}}</el-button></li>
 
                     </ul>
         
@@ -544,7 +544,7 @@ export default {
           if (valid) {
               
               let token = localStorage.getItem('token');
-            this.bank_id = 1
+            this.bank_id = 3
         var data = {
                     bank_type_id:this.bank_id,
                    
@@ -615,7 +615,7 @@ export default {
           if (valid) {
               
               let token = localStorage.getItem('token');
-            this.bank_id = 2
+            this.bank_id = 4
         var data = {
                     bank_type_id:this.bank_id,
                    
