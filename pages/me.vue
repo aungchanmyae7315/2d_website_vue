@@ -1,7 +1,7 @@
 
 
 <template>
-    <el-main>
+    <el-main class="me">
        <div class="main_container">
      <el-header class="me_header" >
        
@@ -54,7 +54,7 @@
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">App မျှဝေရန်</a></nuxt-link></li>
                 
-                        <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
+                        <li><a href="#"  @click="dialogVisible = true"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
                 </div>
                 
                 <div v-else> 
@@ -73,10 +73,21 @@
 
                         </div>
                          
-
-                        <li><a href="" @click="logout()"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
+                        <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">App မျှဝေရန်</a></nuxt-link></li>
+                        <li><a href="#"  @click="dialogVisible = true"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
                 </div>
             </ul>   
+
+            <el-dialog
+            class="me_dialog"
+  
+  :visible.sync="dialogVisible">
+  <span>Do you want to log out from your account?</span>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">Cancel</el-button>
+    <el-button type="primary" @click=" logout(); dialogVisible = false">Log Out</el-button>
+  </span>
+</el-dialog>
             
       </el-main>
    
@@ -173,7 +184,7 @@ export default {
    },
     data() {
       return {
-
+         dialogVisible: false,
         fullscreenLoading: false,
         profile:'',
         get_refel:'',
@@ -208,8 +219,9 @@ export default {
         return Boolean(localStorage.getItem('userInfo'));
       },
         logout() {
+         
             this.$store.commit('logOut');
-              this.$router.push(`/?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
       },
     },
     created() {
@@ -250,6 +262,18 @@ export default {
         width:48px;
         height:auto;
         
+    }
+    .me .el-dialog {
+      max-width: 480px;
+      width:90%;
+    }
+    .me_dialog .el-dialog__header {
+      display: none !important;
+    }
+    .me_dialog .el-dialog__footer {
+      display: inline-flex !important;
+      text-align: center !important;
+      padding-bottom:20px !important;
     }
     .me_header  .avatar_text {
         bottom:19px;
