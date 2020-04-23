@@ -17,7 +17,9 @@
 
                     </ul> -->
                     <el-card v-for="(phone , p) in contact" :key="p" class="phone_card">
-                        <h6>{{phone.type}}</h6>
+                        <h6 v-if="phone.type == 'Customer Service'">{{$t('customer_service_title')}}</h6>
+                        <h6 v-else-if="phone.type == 'TopUp Service'">{{$t('topup_withdrawal_help')}}</h6>
+                         <h6 v-else-if="phone.type == 'TopUp'">{{$t('it_support')}}</h6>
                         <ul v-for="(ph_item, ne) in phone.phone_number" :key="ne.id" class="contact_phone">
                           
                           <li class="phone_item"><i class="el-icon-phone"></i> {{ph_item.phone}}</li>
