@@ -214,7 +214,7 @@ import axios from 'axios'
                     password: this.ruleForm.pass
                 })
                 .then(response => {
-
+                    console.log(response.data.status)
                    this.token = response.data.access_token;
                    this.device_id = response.data.device_id
                    console.log(this.device_id)
@@ -225,26 +225,28 @@ import axios from 'axios'
                       this.$store.commit('logIn', this.userInfo)
                         this.$store.commit('accessToken', this.token)
 
-                    if(!this.isMobile() || this.device_id == null) {
+                    if(response.data.status == 1) {
 
-                      this.$router.push(`/?lang=${this.$store.state.locale}`);
+                      this.$router.push(`/signup_successChrome?lang=${this.$store.state.locale}`);
                         
-                    }else {
-                      
+                    }else if (response.data.status == 2) {
+                      this.$router.push(`/signup_successNrc?lang=${this.$store.state.locale}`);
+                    }
+                    else {
                        this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
                     }
           
                 })
                 .catch(error => {
 
-                   if(!this.isMobile() || this.device_id == null) {
+                  //  if(!this.isMobile() || this.device_id == null) {
 
-                       this.$router.push(`/?lang=${this.$store.state.locale}`);
+                  //      this.$router.push(`/signup_successChrome?lang=${this.$store.state.locale}`);
                         
-                    }else {
-                        this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
+                  //   }else {
+                  //       this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
                      
-                    }
+                  //   }
 
                   if(error.response.data.errors.password) {
                        console.log(error.response.data.errors.password[0])
@@ -257,10 +259,10 @@ import axios from 'axios'
                                 type: 'error'
                               });
                   }else if(error.response.data.errors.phone) {
-                    console.log('pal lee')
+                    console.log('pal')
                      console.log(error.response.data.errors.phone[0])
                     
-                           if (this.active++ > 1) this.active = 1;
+                          
                         this.$message({
                           showClose: true,
                           center: true,
@@ -268,6 +270,8 @@ import axios from 'axios'
                           message: error.response.data.errors.phone[0],
                           type: 'error'
                         });
+                         if (this.active++ > 1) this.active = 1;
+                         this.$nuxt.$loading.finish()
                   }else {
                     console.log('ok')
                     //  if(!isMobile()) {

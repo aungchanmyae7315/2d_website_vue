@@ -2,7 +2,7 @@
     <main class="seinlucky_point">
         <el-header>
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
-               <el-page-header title="" @back="goBack"  :content="`${$t('Title')}`">
+               <el-page-header title="" @back="goBack"  :content="`${$t('Promotion Detail')}`">
                 </el-page-header>
            <!-- </nuxt-link> -->
          </el-header>
@@ -60,6 +60,7 @@ export default {
  .seinlucky_point .el-header {
        background-color :#fff;
 
+
     }
     .el-page-header__left {
         margin:0;
@@ -85,5 +86,11 @@ export default {
 .contant_promo img {
     width:100% !important;
 }
+.contant_promo h6 {
+    font-size: 23px;
+    padding-bottom:20px;
+    font-weight: bold;
+}
+
    
 </style>
