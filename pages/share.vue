@@ -37,7 +37,7 @@
                       description="Share Referal Code From Seinlucky"
                       :quote="$t('ကျွန်တော်ရည်ညွန်းကုဒ်')+' '+this.referal_code+' '+' ထည့်ပြီးအကောင့်သစ်ဖွင့်လိုက်ပါနော်'"
                       hashtags="seinlucky"
-                      image="https://images.pexels.com/photos/3879062/pexels-photo-3879062.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+                    
                       twitter-user="seinlucky"
                       inline-template>
                        
@@ -110,8 +110,7 @@
                       description="Share Referal Code From Seinlucky"
                         :quote="$t('ကြၽန္ေတာ္ရည္ၫြန္းကုဒ္')+' '+this.referal_code+' '+'ထည့္ၿပီးအေကာင့္သစ္ဖြင့္လိုက္ပါေနာ္'"
                     
-                      hashtags="seinlucky"
-                      media="https://images.unsplash.com/photo-1533093818119-ac1fa47a6d59?ixlib"
+                      hashtags="seinlucky" media="https://images.unsplash.com/photo-1533093818119-ac1fa47a6d59?ixlib"
                       twitter-user="vuejs"
                       inline-template>
                        
@@ -182,7 +181,7 @@
                       description="Share Referal Code From Seinlucky"
                       :quote="$t('ကျွန်တော်ရည်ညွန်းကုဒ်')+' '+this.referal_code+' '+'ထည့်ပြီးအကောင့်သစ်ဖွင့်လိုက်ပါနော်'"
                       hashtags="seinlucky"
-                      media="https://images.unsplash.com/photo-1533093818119-ac1fa47a6d59?ixlib"
+                     
                       twitter-user="vuejs"
                       inline-template>
                        

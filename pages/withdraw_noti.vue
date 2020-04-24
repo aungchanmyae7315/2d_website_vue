@@ -196,7 +196,7 @@
                       description="Share Referal Code From Seinlucky"
                       :quote="$t('ကျွန်တော်ရည်ညွန်းကုဒ်')+' '+this.referal_code+' '+'ထည့်ပြီးအကောင့်သစ်ဖွင့်လိုက်ပါနော်'"
                       hashtags="seinlucky"
-                      media="https://images.unsplash.com/photo-1533093818119-ac1fa47a6d59?ixlib"
+                    
                       twitter-user="vuejs"
                       inline-template>
                        
