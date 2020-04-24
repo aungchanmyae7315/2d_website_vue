@@ -32,7 +32,8 @@
       :with-header="false">
   
   
-       <social-sharing :networks="overriddenNetworks" url="https://images.pexels.com/photos/3879062/pexels-photo-3879062.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+       <social-sharing :networks="overriddenNetworks" 
+                      :url="url"
                       title="SeinLucky"
                       description="Share Referal Code From Seinlucky"
                       :quote="$t('ကျွန်တော်ရည်ညွန်းကုဒ်')+' '+this.referal_code+' '+' ထည့်ပြီးအကောင့်သစ်ဖွင့်လိုက်ပါနော်'"
@@ -105,12 +106,15 @@
           size="35%"
         :with-header="false">
 
-        <social-sharing url="https://facebook.com/"
+        <social-sharing :networks="overriddenNetworks" 
+
+                      
                       title="SeinLucky"
                       description="Share Referal Code From Seinlucky"
                         :quote="$t('ကြၽန္ေတာ္ရည္ၫြန္းကုဒ္')+' '+this.referal_code+' '+'ထည့္ၿပီးအေကာင့္သစ္ဖြင့္လိုက္ပါေနာ္'"
                     
-                      hashtags="seinlucky" media="https://images.unsplash.com/photo-1533093818119-ac1fa47a6d59?ixlib"
+                      hashtags="seinlucky"
+                      
                       twitter-user="vuejs"
                       inline-template>
                        
@@ -176,7 +180,8 @@
           size="35%"
         :with-header="false">
         
-        <social-sharing url="https://facebook.com/"
+        <social-sharing :networks="overriddenNetworks" 
+                       
                       title="SeinLucky"
                       description="Share Referal Code From Seinlucky"
                       :quote="$t('ကျွန်တော်ရည်ညွန်းကုဒ်')+' '+this.referal_code+' '+'ထည့်ပြီးအကောင့်သစ်ဖွင့်လိုက်ပါနော်'"
@@ -545,7 +550,9 @@ export default {
             "type": "popup"
           },
         },
+            url:this.url,
             share_img:'',
+            share_url:'',
               referal_code:'',
               drawer: false,
               drawerone:false,
@@ -556,8 +563,9 @@ export default {
         }
     },
     methods: {
+      
       shareBtn() {
-
+ var app = this;
           var node = document.getElementById('my-node');
  
         htmlToImage.toPng(node)
@@ -565,7 +573,7 @@ export default {
          
           var img = new Image();
           img.src = dataUrl;
-           
+          
             //document.body.appendChild(img);
             console.log(img.src)
            
@@ -585,18 +593,17 @@ export default {
                 })
                
                 
-                    .then(response => {
-                      console.log('all response')
-                     //console.log(this.topup_info = response.data.data)
+                   .then(response => {
                      console.log(response.data)
-
-                     //this.img_url = response.data
-                })
+                      app.url = response.data;
+                     
+                    })
+            
+                  var link = document.createElement('a');
+                  link.download = 'seinlucky.jpeg';
+                  link.href = dataUrl;
+                  link.click();
             }
-            var link = document.createElement('a');
-            link.download = 'seinlucky.jpeg';
-            link.href = dataUrl;
-            link.click();
         })
         .catch(function (error) {
           console.error('oops, something went wrong!', error);

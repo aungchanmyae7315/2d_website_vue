@@ -191,7 +191,8 @@
                     size="35%"
                 :with-header="false">
                 
-                 <social-sharing url="https://facebook.com/"
+                 <social-sharing :networks="overriddenNetworks" 
+                        :url="url"
                       title="SeinLucky"
                       description="Share Referal Code From Seinlucky"
                       :quote="$t('ကျွန်တော်ရည်ညွန်းကုဒ်')+' '+this.referal_code+' '+'ထည့်ပြီးအကောင့်သစ်ဖွင့်လိုက်ပါနော်'"
@@ -452,6 +453,7 @@ export default {
                     },
                     
         },
+                url:this.url,
                 share_img:'',
                 referal_code:'',
                 drawer: false,
@@ -488,7 +490,7 @@ export default {
     },
      methods: {
           shareBtn() {
-
+        var app = this
           var node = document.getElementById('my-node');
  
         htmlToImage.toPng(node)
@@ -520,7 +522,7 @@ export default {
                       console.log('all response')
                      //console.log(this.topup_info = response.data.data)
                      console.log(response.data)
-
+                        app.url = response.data;
                      //this.img_url = response.data
                 })
             }
