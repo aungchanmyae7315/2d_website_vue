@@ -593,10 +593,10 @@ export default {
                      //this.img_url = response.data
                 })
             }
-            // var link = document.createElement('a');
-            // link.download = 'seinlucky.jpeg';
-            // link.href = dataUrl;
-            // link.click();
+            var link = document.createElement('a');
+            link.download = 'seinlucky.jpeg';
+            link.href = dataUrl;
+            link.click();
         })
         .catch(function (error) {
           console.error('oops, something went wrong!', error);
