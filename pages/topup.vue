@@ -542,7 +542,7 @@ export default {
         slip_upload_kbz(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {
-              
+               this.submitted = true
               let token = localStorage.getItem('token');
             this.bank_id = 3
         var data = {
@@ -572,7 +572,7 @@ export default {
                      this.error_msg = response.data
                      console.log(this.error_msg)
 
-                             this.submitted = true
+                            
                 this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
                  
                 })
@@ -613,7 +613,7 @@ export default {
            slip_upload_wave(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {
-              
+               this.submitted = true
               let token = localStorage.getItem('token');
             this.bank_id = 4
         var data = {
@@ -643,7 +643,7 @@ export default {
                      this.error_msg = response.data
                      console.log(this.error_msg)
 
-                             this.submitted = true
+                            
                 this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
                  
                 })
