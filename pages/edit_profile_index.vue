@@ -48,6 +48,7 @@
             </el-form-item>
         </el-form>
                 <p>{{$t('registered_phone')}}: {{this.profile.phone}}</p>
+                  <p>ကျွန်ုပ်၏ ရည်ညွှန်းကုဒ် : {{this.referal_code}}</p>
 
                <el-button round @click="profile_edit">{{$t('Confirm')}}</el-button>
                <nuxt-link  :to="`${$t('change_password')}?lang=${$store.state.locale}`">
@@ -178,6 +179,20 @@
                 console.log(this.profile.name)
 
           })
+        this.$axios.get("/v2/v1/referal_code",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                      
+                     this.referal_code = response.data.data.generate_code
+                     console.log(this.referal_code)
+                    
+                  
+                  
+
+                })
       }
                 
     },
@@ -188,7 +203,7 @@
 
         },
        
-       
+        referal_code:'',
         profile:'',
         image:'',
         
