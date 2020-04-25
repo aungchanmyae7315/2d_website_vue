@@ -78,7 +78,27 @@
                         
                     ]"
                         class="tran_input" >
-                            <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                        <el-row>
+                          <el-col :span="18">
+                             <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                          </el-col>
+                          <el-col :span="6" style="text-align:center">
+                             <el-button type="text"  @click="centerDialogVisible_Wave = true">နမူနာ</el-button>
+                              <el-dialog
+                                        
+                                        :visible.sync="centerDialogVisible_Wave"
+                                        width="90%"
+                                        center>
+                                        <div style="text-align:center">
+                                          
+                                             <img src="~static/images/wave_amount.png"  alt="" class="amount_example_img">
+                                        </div>
+                                         
+                                       
+                                    </el-dialog>
+                          </el-col>
+                        </el-row>
+                           
                         </el-form-item>
                     
                      <p>လုပ်ငန်းစဥ်အမှတ်</p>
@@ -104,7 +124,7 @@
                                         width="90%"
                                         center>
                                         <div style="text-align:center">
-                                             <img src="~static/images/wavemoney_example.png"  alt="">
+                                             <img src="~static/images/wavemoney_example.png"  alt="" >
                                         </div>
                                          
                                        
@@ -129,7 +149,26 @@
                         
                     ]"
                         class="tran_input" >
-                            <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                            <el-row>
+                              <el-col :span="18">
+                                <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                              </el-col>
+                              <el-col :span="6" style="text-align:center">
+                                <el-button type="text"  @click="centerDialogVisible_Kbz = true">နမူနာ</el-button>
+                                 <el-dialog
+                                        
+                                        :visible.sync="centerDialogVisible_Kbz"
+                                        width="90%"
+                                        center>
+                                  
+                                        <div style="text-align:center">
+                                             <img src="~static/images/kbz_amount.png"  alt="" class="amount_example_img">
+                                        </div>
+                                         
+                                       
+                                    </el-dialog>
+                              </el-col>
+                            </el-row>
                         </el-form-item>
                    
                      <p>လုပ်ဆောင်မှုအမှတ်</p>
@@ -154,7 +193,20 @@
                                         width="90%"
                                         center>
                                         <div style="text-align:center">
-                                             <img src="~static/images/kbz_example.png"  alt="">
+                                         
+               
+
+<carousel :autoplay="true" :nav="false" :items =3 :width="100">
+
+   <img src="~static/images/kbz_example.png"  alt="">
+
+     <img src="~static/images/kbz_example.png"  alt="">
+
+     <img src="~static/images/kbz_example.png"  alt="">
+
+
+</carousel>
+                                            
                                         </div>
                                          
                                        
@@ -202,6 +254,11 @@
         border-radius: 13px;
         height:70px;
        
+    }
+    .amount_example_img {
+      max-width: 480px;
+      width:100%;
+      height:auto;
     }
     .active_img {
         -webkit-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
@@ -416,7 +473,9 @@
 
 <script>
 import axios from 'axios'
+import carousel from 'vue-owl-carousel'
 export default {
+   components: { carousel },
     mounted() {
 
     
@@ -430,9 +489,12 @@ export default {
     },
     data() {
         return { 
+          default : 1,
             bank_type:'',
             radio: '1',
             centerDialogVisible: false,
+            centerDialogVisible_Wave:false,
+             centerDialogVisible_Kbz:false,
           default_limit: 2,
           limit_by: 2,
           contact:[],

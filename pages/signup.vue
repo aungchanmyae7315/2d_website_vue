@@ -214,7 +214,7 @@ import axios from 'axios'
                     password: this.ruleForm.pass
                 })
                 .then(response => {
-                    console.log(response.data.status)
+                  console.log(response)
                    this.token = response.data.access_token;
                    this.device_id = response.data.device_id
                    console.log(this.device_id)
@@ -226,14 +226,15 @@ import axios from 'axios'
                         this.$store.commit('accessToken', this.token)
 
                     if(response.data.status == 1) {
-
                       this.$router.push(`/signup_successChrome?lang=${this.$store.state.locale}`);
                         
                     }else if (response.data.status == 2) {
                       this.$router.push(`/signup_successNrc?lang=${this.$store.state.locale}`);
                     }
-                    else {
+                    else if(this.device_id !== null) {
                        this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
+                    }else {
+                      console.log('not Direction')
                     }
           
                 })

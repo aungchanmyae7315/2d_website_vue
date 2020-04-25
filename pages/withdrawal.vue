@@ -245,7 +245,7 @@ export default {
     data() {
         return {
             	submitted:false,
-            ruleForm: {
+                ruleForm: {
                 card_number:'',
                 tran_amount:'',
                 password:'',
