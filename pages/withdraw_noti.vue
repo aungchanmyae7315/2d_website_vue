@@ -402,7 +402,7 @@
           justify-content: center;
 }
 .social_img {
-  width:60px
+  width:60px;
 }
 .share_btn_win {
     text-align: center;

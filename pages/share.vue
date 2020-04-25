@@ -254,7 +254,7 @@
         >
         <span style="text-align:center">
             <p>သူငယ်ချင်း ~ 2D ထိုးမယ်ဆို မြန်လည်းမြန်၊ စိတ်လည်းချရတဲ့ Sein Lucky App ပါပဲအခုပဲ ဒေါင်းလိုက်ပါ။ ရည်ညွှန်းကုဒ်(<span style="color:green"> {{ this.referal_code }} </span>) ဖြည့်ရင်ထီထိုးဖို 200 ကျပ်လက်ဆောင်ရမယ်နော်။ 
-                </p><p>ဒေါင်းလုတ်ရန်လင့်ကိုနှိပ်ပါ </p> <a href="https://www.down2d.com/" target="_blank">wwww.down2d.com</a>
+                </p><p>ဒေါင်းလုတ်ရန်လင့်ကိုနှိပ်ပါ </p> <a href="https://www.down2d.com/" target="_blank">wwww.down2d.com</a><br>
            <el-radio v-model="radio" label="1" ><el-button @click="drawerone = true ; centerDialogVisible = false" class="share_img" round="">Zawgyi ဖြင့်မျှဝေရန်</el-button></el-radio><br>
             <el-radio v-model="radio" label="2" ><el-button @click="drawertwo = true ; centerDialogVisible = false"  class="share_text" round="">Unicode ဖြင့်မျှဝေရန်</el-button></el-radio>
         </span>
@@ -400,7 +400,7 @@
           justify-content: center;
 }
 .social_img {
-  width:60px
+  width:60px ;
 }
 .share_page .el-header {
        background-color :#fff;
