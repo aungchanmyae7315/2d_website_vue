@@ -19,8 +19,8 @@
                 
                 </div>
                 
-                  <el-button  class="share_img share_btn" @click="shareBtn();  drawer = true" round="">ပုံကို ရှဲမည်</el-button>
-                  <el-button class="share_text share_btn" @click=" centerDialogVisible = true" round="">စာဖြင့်ရှဲမည်</el-button>
+                  <el-button  class="share_img share_btn" @click="shareBtn()" round="">ပုံကို သိမ်းမည်</el-button> <!-- drawer = true -->
+                  <!-- <el-button class="share_text share_btn" @click=" centerDialogVisible = true" round="">စာဖြင့်ရှဲမည်</el-button> -->
               </section>
 
 

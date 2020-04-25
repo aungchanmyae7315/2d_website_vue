@@ -29,7 +29,7 @@
                 </el-col>
                 <el-col :span="12" style="text-align:left">
                     <el-radio v-model="radio" label="1">
-                        <div>
+                        <div class="border_img">
                           
                             <img src="~static/images/wavemoney.jpg" class="active_img"  alt="">
                           
@@ -41,7 +41,7 @@
              <el-row v-else class="point_amount">
                   <el-col :span="12" style="text-align:right" >
                     <el-radio v-model="radio" label="2"  >
-                         <div>
+                         <div class="border_img">
                                 
                                 <img src="~static/images/kbz.jpg" class="active_img"  alt="">
                          </div>
@@ -87,11 +87,11 @@
                               <el-dialog
                                         
                                         :visible.sync="centerDialogVisible_Wave"
-                                        width="90%"
+                                        
                                         center>
                                         <div style="text-align:center">
                                           
-                                             <img src="~static/images/wave_amount.png"  alt="" class="amount_example_img">
+                                             <img src="~static/images/wavemoney_amount.png"  alt="" style="width:100%">
                                         </div>
                                          
                                        
@@ -121,7 +121,7 @@
                                     <el-dialog
                                         
                                         :visible.sync="centerDialogVisible"
-                                        width="90%"
+                                        
                                         center>
                                         <div style="text-align:center">
                                              <img src="~static/images/wavemoney_example.png"  alt="" >
@@ -158,11 +158,11 @@
                                  <el-dialog
                                         
                                         :visible.sync="centerDialogVisible_Kbz"
-                                        width="90%"
+                                       
                                         center>
                                   
                                         <div style="text-align:center">
-                                             <img src="~static/images/kbz_amount.png"  alt="" class="amount_example_img">
+                                             <img src="~static/images/kbz_amount.png"  alt="" style="width:100%">
                                         </div>
                                          
                                        
@@ -190,21 +190,25 @@
                                     <el-dialog
                                         
                                         :visible.sync="centerDialogVisible"
-                                        width="90%"
+                                        
                                         center>
                                         <div style="text-align:center">
                                          
                
 
-<carousel :autoplay="true" :nav="false" :items =3 :width="100">
-
-   <img src="~static/images/kbz_example.png"  alt="">
-
-     <img src="~static/images/kbz_example.png"  alt="">
-
-     <img src="~static/images/kbz_example.png"  alt="">
-
-
+<carousel :autoplay="false" :nav="false" :items =1>
+    <div class="item">
+      <p>၁. KBZ Pay app ထဲမှ "မှတ်တမ်း"ထဲသို့ဝင်ပါ။</p>
+      <img src="~static/images/kbz_ex_one.png"  alt="" class="amount_example_img">
+    </div>
+     <div class="item">
+       <p>၂. ငွေလွှဲစားရင်ကိုဖွင့်ပါ</p>
+      <img src="~static/images/kbz_ex_two.png"  alt="" class="amount_example_img">
+    </div>
+     <div class="item">
+       <p>၃. အသေးစိတ်ထဲတွင် လုပ်ဆောင်မှုအမှတ် နောက်ဆုံးဂဏန်း(၆)လုံးကြည့်ပါ။</p>
+      <img src="~static/images/kbz_ex_three.png"  alt="" class="amount_example_img">
+    </div>
 </carousel>
                                             
                                         </div>
@@ -255,10 +259,17 @@
         height:70px;
        
     }
-    .amount_example_img {
+    .border_img {
+      border:2px solid #3A7D1F;
+      border-radius: 13px;
+    }
+    /* .owl-item  , .owl-stage {
       max-width: 480px;
-      width:100%;
+      width:100% !important;
       height:auto;
+    } */
+    .topup .owl-carousel .owl-item{
+      padding:0 10px;
     }
     .active_img {
         -webkit-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
@@ -489,7 +500,7 @@ export default {
     },
     data() {
         return { 
-          default : 1,
+         
             bank_type:'',
             radio: '1',
             centerDialogVisible: false,
