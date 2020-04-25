@@ -31,7 +31,7 @@
                     <el-radio v-model="radio" label="1">
                         <div class="border_img">
                           
-                            <img src="~static/images/wavemoney.jpg" class="active_img"  alt="">
+                            <img src="~static/images/wavepay.jpg" class="active_img"  alt="">
                           
                         </div>
 
@@ -53,7 +53,7 @@
                     <el-radio v-model="radio" label="1">
                         <div>
                            
-                            <img src="~static/images/wavemoney_t.jpg"  alt="">
+                            <img src="~static/images/wavepay_t.jpg"  alt="">
                         </div>
                         
                      
