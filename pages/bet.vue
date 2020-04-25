@@ -615,10 +615,10 @@ export default {
         setInterval(() => {
             this.BetCurrentTime();
                  var currentDate  = moment().day();
-                 if(currentDate == 0 || currentDate == 6) {
-                         this.isActive = true
-                           this.time_countdown = this.$root.$t('close_text');
-                    }
+                // if(currentDate == 0 || currentDate == 6) {
+                       //  this.isActive = true
+                          // this.time_countdown = this.$root.$t('close_text');
+                  //  }
         }, 1000);
     },
     computed: {
@@ -688,9 +688,9 @@ export default {
                          this.isActive = false  
                     }
 
-                    if(currentDate == 0 || currentDate == 6) {
-                        this.isActive = true
-                    }
+                    // if(currentDate == 0 || currentDate == 6) {
+                    //     this.isActive = true
+                    // }
                 })
     
         let token = localStorage.getItem('token');
