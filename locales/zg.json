@@ -64,7 +64,7 @@
   "Skip" : "ေက်ာ္မည္",
   "Sign_up" :"အေကာင့္ဖြင့္ရန္",
   "Unicode":"ယူနီကုတ္",
-  "Zawgyi" :"ေဇာ္ဂ်ီကုတ္",
+  "Myanmar" :"ျမန္မာ",
   "China" :"中文",
   "Next" : "ေရွ႕သို႔",
 
@@ -73,6 +73,7 @@
   "/edit_profile_index":"/edit_profile_index",
   "home_title":"ပင္မ",
   "wallet_title":"ပိုက္ဆံအိတ္",
+  "promotion_title":"ပ႐ိုမိုရွင္းမ်ား",
   "service_title":"ဝန္ေဆာင္မႈဖုန္း",
   "me_title":"ကြၽႏ္ုပ္",
 
@@ -88,7 +89,7 @@
   "login_title":"ေလာ့အင္ဝင္မယ္",
   "profile_edit_title":"ျပင္မည္",
   "remark_title":"ထိုးမည့္ဂဏန္းမ်ား",
-  "result_title":"ထြက္ဂဏန္းမ်ား",
+  "result_title":"2D ထြက္ဂဏန္းမ်ား",
   "signup_refel_title":"Sein Lucky အေကာင့္အသစ္ဖြင့္မည္",
   "topup_title":"ေငြျဖည့္မည္",
 
@@ -98,7 +99,7 @@
   "/withdrawal":"/withdrawal",
   "/signup":"/signup",
   "/English":"/English",
-  "forgot_password_text":"စကားဝွက္ေမ့ေနသလား?",
+  "/forgot_password_text":"စကားဝွက္ေမ့ေနသလား?",
 
   "/notification":"/notification",
 
@@ -119,6 +120,7 @@
   "/signup_refel":"/signup_refel",
   "/topup":"/topup",
   "/ios_install_guide":"/ios_install_guide",
+  "/bet_history_btn":"/bet_history_btn",
 
 
   "back":"ေနာက္သို႔",
@@ -142,7 +144,7 @@
 "edit_profile" : "ျပင္မည္",
 "you_balance":"လက္က်န္ေငြ",
 
-"bet_succ":"ထီးထိုးေအာင္ျမင္သည္",
+"bet_succ":"ထီထိုးေအာင္ျမင္သည္",
 "fast_btn":"အျမန္ေ႐ြး",
 "clear_btn":"ဖ်က္မည္",
 "sign_up_new":"အေကာင့္သစ္ဖြင့္မည္",
@@ -171,7 +173,7 @@
 "head":"ထိပ္",
 "tail":"ေနာက္",
 "registartion_success":"မွတ္ပုံတင္ျခင္း ‌‌ေအာင္ျမင္သည္",
-"we_are_so_delighted":"စတင္အသုံးျပဳမႈုအတြက္ ဝမ္း‌‌ေျမာက္မိပါတယ္",
+"we_are_so_delighted":"စတင္အသုံးျပဳမႈအတြက္ ဝမ္းေျမာက္မိပါတယ္။",
 "optional":"ေနာက္ထပ္",
 "have_referral_code":"ရည္ၫႊန္းကုဒ္ ရွိ‌‌‌လား",
 "please_enter_referral_code":"ရည္ၫႊန္းကုဒ္ျဖည့္၍ ကံစမ္းမဲဆုေငြလက္ေဆာင္ ရယူလိုက္ပါ",
@@ -183,7 +185,7 @@
 "bank_card_number_required":"ဘဏ္ကဒ္နံပါတ္ျဖည့္ပါ",
 "bank_option_required":"လက္ခံမည့္ဘဏ္ကိုေ႐ြးပါ",
 "withdraw_amount_required":"ထုတ္ယူလိုသည့္ ‌ေငြပမာဏ",
-"sein_lucky_office_hours":"Sein Lucky ႐ုံးဖြင့္ခ်ိန္မ်ား",
+"sein_lucky_office_hours":"Sein Lucky ေငြျဖည့္ခ်ိန္မ်ား",
 "mon-sat":"တနလၤာ - စေန",
 "topup_approved_5_minutes":"႐ုံးဖြင့္ခ်ိန္တြင္ (၅) မိနစ္အတြင္း ေငြဝင္ပါမည္။",
 "if_not_in_office_hours" :"႐ုံးဖြင့္ခ်ိန္ေက်ာ္ၿပီးေနာက္ေငြျဖည့္လွ်င္ ႐ုံးစဖြင့္ခ်ိန္မွ (၅) မိနစ္အတြင္း ေငြဝင္ပါမည္။",
@@ -194,9 +196,9 @@
 "copy_success":"ကူးယူ ၿပီးပါၿပီ။",
 "password_invalid":"စကားဝွက္မွားေနပါသည္",
 "remove_image":"ပုံဖ်က္မည္",
-"please_transfer_top-up_money_to_one":"၁. သင္၏ Sein Lucky အေကာင့္သို႔ ျဖည့္လိုေသာ ေငြပမာဏကို ေအာက္ပါ Sein Lucky ဘဏ္အေကာင့္ တစ္ခုထဲသို႔ေငြအရင္လႊဲပါ။ ေငြလႊဲမွတ္တမ္းကို ဓာတ္ပုံ (သို႔) စခရင္ေရွာ့ (Screenshot) ႐ိုက္ထားပါ။",
-"upload_he_image_of_the_bank" :"၂. ဘဏ္မွေငြလႊဲၿပီးေနာက္ ေငြလႊဲမွတ္တမ္းဓာတ္ပုံ/ screenshot ကိုတင္ပါ။",
-"Please_enter_transferred" :"၃. လႊဲခဲ့ေသာ ေငြပမာဏကို ျဖည့္ပါ။",
+"please_transfer_top-up_money_to_one":"(၁) သင္၏ Sein Lucky အေကာင့္သို႔ ျဖည့္လိုေသာ ေငြပမာဏကို ေအာက္ပါ Sein Lucky ဘဏ္အေကာင့္ တစ္ခုထဲသို႔ေငြအရင္လႊဲပါ။ ေငြလႊဲမွတ္တမ္းကို ဓာတ္ပုံ (သို႔) စခရင္ေရွာ့ (Screenshot) ႐ိုက္ထားပါ။",
+"upload_he_image_of_the_bank" :"(၂) ေငြလႊဲခဲ့ေသာဘဏ္ကိုေ႐ြးပါ",
+"Please_enter_transferred" :"လႊဲခဲ့ေသာ ေငြပမာဏကို ျဖည့္ပါ။",
 "need_help?_please_contact":"ေငြမျဖည့္တတ္ပါက ဆက္သြယ္ရန္ ဖုန္းမ်ား",
 "enter_your_current_password":"လက္ရွိစကားဝွက္ကိုျဖည့္ပါ",
 "what_current_password":"လက္ရွိစကားဝွက္ကိုျဖည့္ေပးပါ",
@@ -215,12 +217,38 @@
 "sign_up_password_invalid":"စကားဝွက္ ထည့္ေပးပါ ",
 "sign_up_password_invalid_again":"ေနာက္တစ္ႀကိမ္စကားဝွက္ ထည့္ေပးပါ",
 "two_input_do_not_match" :"စကားဝွက္ အသစ္ႏွစ္ခု မတူညီပါ",
-"seinlucky_point_title" :"Sein Lucky ပွိုင့်",
-"seinlucky_point_text" :"Sein Lucky ပွိုင့်ကို ငွေသားဖြင့်ထုတ်ယူ၍မရပါ။ သို့သော် Sein Lucky ၏ ပွိုင့်ဖြင့် Sein Lucky တွင် ထီထိုးနိုင်ပြီး ထီပေါက်ပါက Sein Lucky Company မှ ငွေသားဖြင့် ပြန်လျော်ပေးပါသည်။",
-"seinlucky_point_free":"Sein Lucky ပွိုင့်ကိုအခုပဲ အခမဲ့ရယူလိုက်ပါ။",
-"seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ",
-"seinlucky_point":"Seinlucky Point"
+"top-up_is_pending_approved_10_minutes":"သတ္မွတ္ခ်ိန္အတြင္းေငြျဖည့္ပါက(၁၀) မိနစ္အတြင္း ေငြေရာက္ပါမည္။",
+"after_the_top_up_section":"သတ္မွတ္ခ်ိန္ေက်ာ္လြန္သြားပါက လာမည့္ ေငြျဖည့္ section တြင္ျပန္ျဖည့္ေပးပါမည္။",
+"ok":"ေကာင္းၿပီ",
+"morning":"နံနက္",
+"evening":"ညေန",
 
-  
+
+
+"if_the_photo_can_not_upload_on_your_device":" ပုံတင္၍ မရပါက  Sein Lucky ကို Browser တြင္  အသုံးျပဳပါ။ ",
+"click_here":"ဤစာကိုႏွိပ္ပါ",
+"to_user_browser_version":" Browser တြင္ အသုံးျပဳရန္ ။",
+
+"show_more":"အျခားဘဏ္မ်ားၾကည့္ရန္",
+"show_less":"ျပန္သိမ္းရန္",
+"please_upload_photo_here":"ေငြလႊဲမွတ္တမ္း ပုံတင္ပါ",
+"bet_close_time":"ပိတ္မည္အခ်ိန္",
+"close_text":"ပိတ္ပါၿပီ",
+"please_upload_slip_file":" ေငြလႊဲမွတ္တမ္းဓာတ္ပုံ  တင္ပါ",
+"seinlucky_point_title" :"Sein Lucky ပြိဳင့္",
+"seinlucky_point_text" :"Sein Lucky ပြိဳင့္ကို ေငြသားျဖင့္ထုတ္ယူ၍မရပါ။ သို႔ေသာ္ Sein Lucky ၏ ပြိဳင့္ျဖင့္ Sein Lucky တြင္ ထီထိုးႏိုင္ၿပီး ထီေပါက္ပါက Sein Lucky Company မွ ေငြသားျဖင့္ ျပန္ေလ်ာ္ေပးပါသည္။",
+"seinlucky_point_free":"Sein Lucky ပြိဳင့္ကိုအခုပဲ အခမဲ့ရယူလိုက္ပါ။",
+"seinlucky_point_btn":"ရယူနည္းကို ၾကည့္ရန္ႏွိပ္ပါ",
+"seinlucky_point":"Seinlucky Point",
+"/seinlucky_point":"/seinlucky_point",
+"customer_service_title":"အေထြေထြ ဝန္ေဆာင္မႈဖုန္း",
+"topup_withdrawal_help":"ေငြသြင္း၊ေငြထုတ္ အကူအညီ",
+"it_support":"ေဆာ့ဝဲ App အကူအညီ",
+"save_photo":"ပုံကိုသိမ္းမယ္",
+"promotion":"ပ႐ိုမိုးရွင္းမ်ား",
+"promotion_detail":"ပ႐ိုမိုးရွင္း အေသးစိတ္",
+"logout":"အေကာင့္ထြက္မည္",
+"logout_confirm":"ေသခ်ာသည္",
+"cancel":"ပယ္မည္"
 
 }
