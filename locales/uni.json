@@ -243,5 +243,12 @@
 "/seinlucky_point":"/seinlucky_point",
 "customer_service_title":"အထွေထွေ ဝန်ဆောင်မှုဖုန်း",
 "topup_withdrawal_help":"ငွေသွင်း၊ငွေထုတ် အကူအညီ",
-"it_support":"ဆော့ဝဲ App အကူအညီ"
+"it_support":"ဆော့ဝဲ App အကူအညီ",
+"save_photo":"ပုံကိုသိမ်းမယ်",
+"promotion":"ပရိုမိုးရှင်းများ",
+"promotion_detail":"ပရိုမိုးရှင်း အသေးစိတ်",
+"logout":"အကောင့်ထွက်မည်",
+"logout_confirm":"သေချာသည်",
+"cancel":"ပယ်မည်"
+
 }

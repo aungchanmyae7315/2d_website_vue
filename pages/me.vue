@@ -82,10 +82,10 @@
             class="me_dialog"
   
   :visible.sync="dialogVisible">
-  <span>Do you want to log out from your account?</span>
+  <span>{{$t('logout')}}</span>
   <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">Cancel</el-button>
-    <el-button type="primary" @click=" logout(); dialogVisible = false">Log Out</el-button>
+    <el-button @click="dialogVisible = false">{{$t('cancel')}}</el-button>
+    <el-button type="primary" @click=" logout(); dialogVisible = false">{{$t('logout_confirm')}}</el-button>
   </span>
 </el-dialog>
             

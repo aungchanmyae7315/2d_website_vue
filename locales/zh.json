@@ -243,7 +243,14 @@
 "/seinlucky_point":"/seinlucky_point",
 "customer_service_title":"客户电话",
 "topup_withdrawal_help":"充值、提现帮助",
-"it_support":"软件、账号问题"
+"it_support":"软件、账号问题",
+"save_photo":"保存图片",
+"promotion":"活动详细",
+"promotion_detail":"活动",
+"logout":"退出账号？",
+"logout_confirm":"确定",
+"cancel":"取消"
+
 
 }
 

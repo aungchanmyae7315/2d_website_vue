@@ -2,7 +2,7 @@
     <main class="seinlucky_point">
         <el-header>
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
-               <el-page-header title="" @back="goBack"  :content="`${$t('Promotion Detail')}`">
+               <el-page-header title="" @back="goBack"  :content="`${$t('promotion_detail')}`">
                 </el-page-header>
            <!-- </nuxt-link> -->
          </el-header>

@@ -244,7 +244,13 @@
   "/seinlucky_point":"/seinlucky_point",
   "customer_service_title":"Customer Service",
   "topup_withdrawal_help":"Top-up/Withdrawal Help",
-  "it_support":"IT Support"
+  "it_support":"IT Support",
+  "save_photo":"Save Photo",
+  "promotion":"Promotion",
+  "promotion_detail":"Promotin Detail",
+  "logout":"Loggout?",
+  "logout_confirm":"Confirm",
+  "cancel":"Cancel"
 
 }
 
