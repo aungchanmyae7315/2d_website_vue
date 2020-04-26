@@ -29,11 +29,11 @@
                 </el-col>
                 <el-col :span="12" style="text-align:left">
                     <el-radio v-model="radio" label="1">
-                        <div class="border_img">
+                        
                           
                             <img src="~static/images/wavepay.jpg" class="active_img"  alt="">
                           
-                        </div>
+                      
 
                     </el-radio>
                 </el-col>
@@ -41,10 +41,10 @@
              <el-row v-else class="point_amount">
                   <el-col :span="12" style="text-align:right" >
                     <el-radio v-model="radio" label="2"  >
-                         <div class="border_img">
+                        
                                 
                                 <img src="~static/images/kbz.jpg" class="active_img"  alt="">
-                         </div>
+                         
 
                     </el-radio>
                   </el-col>
@@ -259,19 +259,15 @@
         height:70px;
        
     }
-    .border_img {
-      border:2px solid #3A7D1F;
-      border-radius: 13px;
-    }
-    /* .owl-item  , .owl-stage {
-      max-width: 480px;
-      width:100% !important;
-      height:auto;
-    } */
     .topup .owl-carousel .owl-item{
       padding:0 10px;
     }
+    .topup  .el-radio__label {
+      padding:0;
+    }
     .active_img {
+       border:2px solid #3A7D1F;
+      border-radius: 13px;
         -webkit-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
         -moz-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
         box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
@@ -615,7 +611,7 @@ export default {
         slip_upload_kbz(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {
-               this.submitted = true
+               
               let token = localStorage.getItem('token');
             this.bank_id = 3
         var data = {
@@ -640,6 +636,7 @@ export default {
                         })
                 
                     .then(response => {
+                      this.submitted = true
                         console.log(response)
                      //console.log(this.topup_info = response.data.data)
                      this.error_msg = response.data
@@ -656,18 +653,22 @@ export default {
                           message: 'အနည်းဆုံး ဂဏန်း ၆ လုံးဖြည့်ပေးပါ ',
                           type: 'warning',
                         });
+                      
+
                      }else if(error.response.data.errors.slip_code == 'The slip code may not be greater than 6 characters.') {
                           this.$message({
                             showClose: true,
                           message: 'ဂဏန်း ၆  ထက်ပိုနေပါသည် ',
                           type: 'warning',
                         });
+                       
                      }else {
                          this.$message({
                             showClose: true,
                           message: 'လုပ်ငန်းစဥ်အမှတ် မှားနေပါသည် ',
                           type: 'warning',
                         });
+                       
       
                      }
 
@@ -686,7 +687,7 @@ export default {
            slip_upload_wave(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {
-               this.submitted = true
+            
               let token = localStorage.getItem('token');
             this.bank_id = 4
         var data = {
@@ -711,6 +712,7 @@ export default {
                         })
                 
                     .then(response => {
+                         this.submitted = true
                         console.log(response)
                      //console.log(this.topup_info = response.data.data)
                      this.error_msg = response.data

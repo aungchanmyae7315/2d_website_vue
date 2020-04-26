@@ -99,6 +99,7 @@
     .bet_status .el-page-header__content {
         color:#000;
         font-weight: bold;
+        margin-left:130px;
        
     }
     .list_bet_info ul {

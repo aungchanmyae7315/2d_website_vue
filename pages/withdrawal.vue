@@ -46,43 +46,6 @@
     </el-form-item>
 
 
-
-
-
-                <!-- <el-card>
-                  
-                        <ul class="choose_pay" v-for="(bank, i) in bank_type" :key="i">
-                           
-                            <li >   
-                                <el-form-item 
-                               
-                                prop="radio1"
-                                :rules="[
-                                    { required: true, message: $t('bank_option_required')},
-                                    
-                                ]"
-                                
-                                >  
-                                   
-                                    <div @click="id_bank(bank.id)" >
-
-                                        <el-radio-group v-model="ruleForm.radio1">
-                                      
-                                        <el-radio-button    :label="bank.bank_name">
-                                        
-                                          <img :src="bank.bank_icon" alt="">
-                                          <span>{{bank.bank_name}}</span>
-                                        </el-radio-button> 
-                                        </el-radio-group>
-                                    </div>
-                                </el-form-item>
-                                
-                            </li>
-                            
-                        </ul>
-
-                  
-                </el-card> -->
                 
                     <el-form-item
                     :label="$t('Receiving Account')"
@@ -110,7 +73,7 @@
                     </el-form-item>
                     <!-- <el-form-item label="Password" class="password tran_input" > -->
                         <el-form-item class="tran_amount tran_input"
-                            :label="$t('Password_placeholder')"
+                            :label="'SeinLucky '+$t('Password_placeholder')"
                             prop="password"
                             :rules="[
                                 { required: true, message: $t('Password')},
