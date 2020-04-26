@@ -24,7 +24,7 @@
                 <h6 v-if="this.profile.name == null " class="win_name">{{this.profile.phone}}</h6>
                 <h6 v-else class="win_name">{{this.profile.name}}</h6>
                 <h6>{{notification_detail.description}}</h6>
-                <h5 class="amount">{{notification_detail.data.win_amt}}  </h5>
+                <h5 class="amount">{{notification_detail.data.win_amt}} MMK  </h5>
                 <div class="footer_card">
                     <br>
                     <el-row class="win_detail">
@@ -44,7 +44,7 @@
                             <span>ထိုးငွေ</span> 
                         </el-col>
                             <el-col :span = '12' style="text-align:left">
-                            <span>: {{notification_detail.data.bet_amt}} </span>
+                            <span>: {{notification_detail.data.bet_amt}}  ကျပ် </span>
                         </el-col>
                     </el-row>
                     
@@ -60,7 +60,7 @@
             </el-card>
             </div>
             <div class="share_btn_win">
-                 <el-button  class="share_img share_btn" @click="shareBtn(); drawer = true" round="">ပုံကို ရှဲမည်</el-button>
+                 <el-button  class="share_img share_btn" @click="shareBtn()" round="">ပုံကို သိမ်းမည်</el-button>
             </div>
         </div>
 
@@ -94,7 +94,7 @@
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
                 <h5 class="title">{{notification_detail.title}} </h5>
-                <h5 class="amount">{{notification_detail.data.amount}} ကျပ်  </h5>
+                <h5 class="amount">{{notification_detail.data.amount}}  ကျပ် </h5>
                 <div class="footer_card" >
                     <p>ပွိုင့်ဝင်ချိန်  {{notification_detail.read_at}}</p>
                 </div>
@@ -406,7 +406,7 @@
 }
 .share_btn_win {
     text-align: center;
-    margin:20px auto;
+    margin:10px auto;
 }
 .share_btn_win .el-button.is-round {
     width:100%;

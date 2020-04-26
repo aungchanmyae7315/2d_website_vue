@@ -150,7 +150,9 @@
 export default {
 
     mounted() {
-
+    this.$nextTick(() => {
+        this.$nuxt.$loading.start()
+        })
      
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');
@@ -161,10 +163,11 @@ export default {
                   }
                 })
             .then(response => {
-               console.log(response)
-              // location.reload();
+              //console.log(response)
+                this.$nuxt.$loading.finish()
+                this.device_id = response.data.data.device_id
               this.profile = response.data.data
-              this.device_id = response.data.data.device_id
+            
              
         })
          this.$axios.get("/v2/v1/referal_code",
@@ -173,7 +176,7 @@ export default {
                   }
                 })
             .then(response => {
-             
+               this.$nuxt.$loading.finish()
               // location.reload();
               this.get_refel = response.data.data.referal_code
               // console.log(this.get_refel)
