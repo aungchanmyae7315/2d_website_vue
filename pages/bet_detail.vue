@@ -20,76 +20,22 @@
             <el-col  :span="6"><div style="text-align:right;padding-right:20px" class="">{{$t('Amount')}}</div></el-col>
         </el-row>
      
-                 <el-collapse accordion>
+               <ul class="bet_detail_list"  v-for="(bet_list_detail,b) in bet_detail" :key="b">
+                   <el-row>
+                       <el-col :span="12">
+                            <li style="margin:0"> {{bet_list_detail.date}}</li>
+                       </el-col>
+                       <el-col :span="6">
+                             <li style="margin-right:0;"> {{bet_list_detail.number}}</li>
+                       </el-col>
+                       <el-col :span="6">
+                             <li style="margi-right:0;" v-if="bet_list_detail.wallet_status == 'wallet'">{{bet_list_detail.amount}} ကျပ်</li>
+                            <li style="margin-right:0;" v-else>{{bet_list_detail.amount}} ပွိုင့်</li>
+                       </el-col>
+                   </el-row>
                     
-                        <el-collapse-item   v-for="(bet_list_detail,b) in bet_detail" :key="b">
-                            <template slot="title">
-                                
-                                <div style="margin:0"> {{bet_list_detail.date}}</div>
-                                <div style="margin-right:0;"> {{bet_list_detail.number}}</div>
-                                <div style="margin-right:0;padding-right:20px" v-if="bet_list_detail.wallet_status == 'wallet'">{{bet_list_detail.result_amount}} ကျပ်</div>
-                                 <div style="margin-right:0;padding-right:20px" v-else>{{bet_list_detail.result_amount}} ပွိုင့်</div>
-                            </template>
-
-                            <el-row>
-                                <el-col :span="12">
-                                   <p style="text-align:right">{{$t('name')}} :</p>
-                                 
-                                </el-col>
-                                <el-col :span="12">
-                                      <p style="text-align:left;padding-left:10px">{{bet_list_detail.user_name}}</p>
-                                </el-col>
-                            </el-row>
-                             <el-row>
-                                <el-col :span="12">
-                                   <p style="text-align:right">{{$t('phone')}} :</p>
-                                 
-                                </el-col>
-                                <el-col :span="12">
-                                      <p style="text-align:left;padding-left:10px">{{bet_list_detail.user_phone}}</p>
-                                </el-col>
-                            </el-row>
-                             <el-row>
-                                <el-col :span="12">
-                                   <p style="text-align:right">{{$t('no')}} :</p>
-                                 
-                                </el-col>
-                                <el-col :span="12">
-                                      <p style="text-align:left;padding-left:10px">{{bet_list_detail.number}}</p>
-                                </el-col>
-                            </el-row>
-                             <el-row>
-                                <el-col :span="12">
-                                   <p style="text-align:right">{{$t('odds')}} :</p>
-                                 
-                                </el-col>
-                                <el-col :span="12">
-                                      <p style="text-align:left;padding-left:10px">{{bet_list_detail.odds}}</p>
-                                </el-col>
-                            </el-row>
-                             <el-row>
-                                <el-col :span="12">
-                                   <p style="text-align:right">{{$t('Amount')}} :</p>
-                                 
-                                </el-col>
-                                <el-col :span="12">
-                                      <p style="text-align:left;padding-left:10px"> {{bet_list_detail.amount}}</p>
-                                </el-col>
-                            </el-row>
-                             <el-row>
-                                <el-col :span="12">
-                                   <p style="text-align:right">{{$t('win_lose_amount')}} :</p>
-                                 
-                                </el-col>
-                                <el-col :span="12">
-                                      <p style="text-align:left;padding-left:10px"> {{bet_list_detail.result_amount}}</p>
-                                </el-col>
-                            </el-row>
-
-                        </el-collapse-item>
-                   
-                </el-collapse>
-        
+               </ul>
+            
         
     </div>
 </template>
@@ -120,19 +66,20 @@
     .bet_detail .table thead th {
         border:unset;
     }
-    .bet_detail .el-collapse-item__wrap {
-        background-color: #00000029;
-    }
-     .el-collapse .el-row {
-        border-bottom:1px solid #b8b8b8 !important;
-        padding-top:15px;
-    }
-    .el-collapse-item__arrow {
+    .bet_detail_list {
+        list-style: none;
+        padding:20px;
         margin:0;
+        border-bottom: 1px solid #b9b9b9;
     }
-    .el-collapse-item__header {
-        padding:0 20px;
+    .bet_detail_list li {
+       
+        display: inline-block;
+       
     }
+  
+    
+
 
 </style>
 

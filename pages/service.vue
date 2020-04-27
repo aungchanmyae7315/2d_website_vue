@@ -11,7 +11,7 @@
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
-                    <p style="color:#BDC5BE;font-size:13px;">ဝန်ဆောင်မှုအချိန် Mon - Sun 9:00 am - 6:00 pm</p>
+                    <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time')}}</p>
                     <!-- <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
 

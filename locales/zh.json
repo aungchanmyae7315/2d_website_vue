@@ -71,7 +71,7 @@
   "/edit_profile_index":"/edit_profile_index",
   "home_title":"主页",
   "wallet_title":"钱包",
-  "promotion_title":"Promotion",
+  "promotion_title":"活动",
   "service_title":"客服",
   "me_title":"我的",
 
@@ -249,7 +249,9 @@
 "promotion_detail":"活动",
 "logout":"退出账号？",
 "logout_confirm":"确定",
-"cancel":"取消"
+"cancel":"取消",
+"service_time":"联系客服时间 每天 早上 9:00 am - 下午 6:00 pm"
+
 
 
 }
