@@ -105,6 +105,14 @@ import axios from 'axios'
             this.$store.commit('SET_LANG', lang)
             //re-route to the current page but with the selected language in a query string
             this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
+              this.$axios.get("/v2/v1/add_language")
+    
+            
+                .then(response => {
+                 
+                  console.log(response)
+                   
+            });
          },
       submitForm(formName) {
         

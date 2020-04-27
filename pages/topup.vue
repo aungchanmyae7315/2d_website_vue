@@ -67,7 +67,7 @@
             
                
            
-           
+              <br>
                 <div v-if="radio == 1">
                     <p>{{$t('Please_enter_transferred')}}</p>
                     <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
@@ -91,7 +91,7 @@
                                         center>
                                         <div style="text-align:center">
                                           
-                                             <img src="~static/images/wavemoney_amount.png"  alt="" style="width:100%">
+                                             <img src="~static/images/wavemoney_amount.jpg"  alt="" style="width:100%">
                                         </div>
                                          
                                        
@@ -101,14 +101,14 @@
                            
                         </el-form-item>
                     
-                     <p>လုပ်ငန်းစဥ်အမှတ်</p>
+                     <p>လုပ်ငန်းစဉ်အမှတ်</p>
 
                   
                         <el-form-item 
 
                         prop="slip_code"
                     :rules="[
-                        { required: true, message: 'လုပ်ငန်းစဥ်အမှတ် ဖြည့်ပါ'},
+                        { required: true, message: 'လုပ်ငန်းစဉ်အမှတ် ဖြည့်ပါ'},
                         
                     ]"
                         class="tran_input" >
@@ -124,7 +124,7 @@
                                         
                                         center>
                                         <div style="text-align:center">
-                                             <img src="~static/images/wavemoney_example.png"  alt="" >
+                                             <img src="~static/images/wavemoney_example.jpg"  alt="" style="width:100%" >
                                         </div>
                                          
                                        
@@ -162,7 +162,7 @@
                                         center>
                                   
                                         <div style="text-align:center">
-                                             <img src="~static/images/kbz_amount.png"  alt="" style="width:100%">
+                                             <img src="~static/images/kbz_amount.jpg"  alt="" style="width:100%">
                                         </div>
                                          
                                        
@@ -199,15 +199,15 @@
 <carousel :autoplay="false" :nav="false" :items =1>
     <div class="item">
       <p>၁. KBZ Pay app ထဲမှ "မှတ်တမ်း"ထဲသို့ဝင်ပါ။</p>
-      <img src="~static/images/kbz_ex_one.png"  alt="" class="amount_example_img">
+      <img src="~static/images/kbz_ex_one.jpg"  alt="" class="amount_example_img">
     </div>
      <div class="item">
        <p>၂. ငွေလွှဲစားရင်ကိုဖွင့်ပါ</p>
-      <img src="~static/images/kbz_ex_two.png"  alt="" class="amount_example_img">
+      <img src="~static/images/kbz_ex_two.jpg"  alt="" class="amount_example_img">
     </div>
      <div class="item">
        <p>၃. အသေးစိတ်ထဲတွင် လုပ်ဆောင်မှုအမှတ် နောက်ဆုံးဂဏန်း(၆)လုံးကြည့်ပါ။</p>
-      <img src="~static/images/kbz_ex_three.png"  alt="" class="amount_example_img">
+      <img src="~static/images/kbz_ex_three.jpg"  alt="" class="amount_example_img">
     </div>
 </carousel>
                                             
@@ -266,6 +266,7 @@
       padding:0;
     }
     .active_img {
+      padding:3px;
        border:2px solid #3A7D1F;
       border-radius: 13px;
         -webkit-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
@@ -344,6 +345,8 @@
         color:#fff;
     }
     .topup .el-dialog {
+      max-width: 480px;
+      width:90%;
         border-radius: 26px;
     }
 .topup .avatar-upload {

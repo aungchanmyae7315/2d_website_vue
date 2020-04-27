@@ -27,7 +27,7 @@
                     <img  v-else-if="noti.status == 'morning_result'"  src="~static/images/noti_page/morning_result_icon_t.png" alt="" class="noti_icon">
                     <img  v-else-if="noti.status == 'evening_result'"  src="~static/images/noti_page/evening_result_icon_t.png" alt="" class="noti_icon">
                     <img  v-else-if="noti.status == 'referal_code'"  src="~static/images/noti_page/new_member_icon_t.png" alt="" class="noti_icon">
-                    <img  v-else-if="noti.status == 'reward_5000'"  src="~static/images/noti_page/one_week_noti_icon_t.png" alt="" class="noti_icon">
+                    <img  v-else-if="noti.status == 'point_5000_reward'"  src="~static/images/noti_page/one_week_noti_icon_t.png" alt="" class="noti_icon">
                     <img  v-else-if="noti.status == 'bet_reward'"  src="~static/images/noti_page/bet_reward_icon_t.png" alt="" class="noti_icon">
 
                     <div v-if="noti.status == 'win'">
@@ -53,7 +53,7 @@
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
-                    <div v-else-if="noti.status == 'reward_5000'">
+                    <div v-else-if="noti.status == 'point_5000_reward'">
                         <div style="color:#000;">{{noti.title}}</div>
                         <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
@@ -102,7 +102,7 @@
                     <img  v-else-if="noti.status == 'morning_result'"  src="~static/images/noti_page/morning_result_icon.png" alt="" class="noti_icon">
                     <img  v-else-if="noti.status == 'evening_result'"  src="~static/images/noti_page/evening_result_icon.png" alt="" class="noti_icon">
                     <img  v-else-if="noti.status == 'referal_code'"  src="~static/images/noti_page/new_member_icon.png" alt="" class="noti_icon">
-                    <img  v-else-if="noti.status == 'reward_5000'"  src="~static/images/noti_page/one_week_noti_icon.png" alt="" class="noti_icon">
+                    <img  v-else-if="noti.status == 'point_5000_reward'"  src="~static/images/noti_page/one_week_noti_icon.png" alt="" class="noti_icon">
                     <img  v-else-if="noti.status == 'bet_reward'"  src="~static/images/noti_page/bet_reward_icon.png" alt="" class="noti_icon">
 
                     <div v-if="noti.status == 'win'">
@@ -129,7 +129,7 @@
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
                     </div>
 
-                    <div v-else-if="noti.status == 'reward_5000'">
+                    <div v-else-if="noti.status == 'point_5000_reward'">
                         <div style="color:#000;">{{noti.title}}</div>
                         <div style="color:#158220;">{{noti.data.amount}} ကျပ်</div>
                         <div style="color:#b8b8b8;">{{noti.ago}}</div>
