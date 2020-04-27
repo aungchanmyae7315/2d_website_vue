@@ -82,7 +82,7 @@
   "login_title":"登录",
   "profile_edit_title":"Profile Edit",
   "remark_title":"Remark",
-  "result_title":"2D Result",
+  "result_title":"中奖号码",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"Topup",
 
@@ -250,9 +250,16 @@
 "logout":"退出账号？",
 "logout_confirm":"确定",
 "cancel":"取消",
-"service_time":"联系客服时间 每天 早上 9:00 am - 下午 6:00 pm"
-
-
+"service_time":"联系客服时间 每天 早上 9:00 am - 下午 6:00 pm",
+"slip_number":"交易单号",
+"slip_kbz_number":"交易编号",
+"slip_number_placeholder":"交易单号",
+"example_text":"查看样本",
+"app_share":"分享App 领取5,000 积分",
+"my_referral_code":"我的推荐码",
+"phone_call":"Call",
+"full_name":"Enter Your Full Name"
+ 
 
 }
 

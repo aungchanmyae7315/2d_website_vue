@@ -44,11 +44,11 @@
 
         <el-form  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
             <el-form-item  class="edit_name" >
-                <el-input  required type="text" placeholder="အမည်အပြည်အစုံဖြည့်ပါ" id="ok" v-model="profile.name"  autocomplete="off"></el-input>
+                <el-input  required type="text" :placeholder="$t('full_name')" id="ok" v-model="profile.name"  autocomplete="off"></el-input>
             </el-form-item>
         </el-form>
                  <p>{{$t('registered_phone')}}: {{this.profile.phone}}</p>
-                  <p>ကျွန်ုပ်၏ ရည်ညွှန်းကုဒ် : {{this.referal_code}}</p>
+                  <p>{{$t('my_referral_code')}} : {{this.referal_code}}</p>
 
 
                <el-button round @click="profile_edit">{{$t('Confirm')}}</el-button>

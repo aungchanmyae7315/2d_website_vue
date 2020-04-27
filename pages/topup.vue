@@ -83,7 +83,7 @@
                              <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
                           </el-col>
                           <el-col :span="6" style="text-align:center">
-                             <el-button type="text"  @click="centerDialogVisible_Wave = true">နမူနာ</el-button>
+                             <el-button type="text"  @click="centerDialogVisible_Wave = true">{{$t('example_text')}}</el-button>
                               <el-dialog
                                         
                                         :visible.sync="centerDialogVisible_Wave"
@@ -101,23 +101,23 @@
                            
                         </el-form-item>
                     
-                     <p>လုပ်ငန်းစဉ်အမှတ်</p>
+                     <p>{{$t('slip_number')}}</p>
 
                   
                         <el-form-item 
 
                         prop="slip_code"
                     :rules="[
-                        { required: true, message: 'လုပ်ငန်းစဉ်အမှတ် ဖြည့်ပါ'},
+                        { required: true, message:  $t('slip_number')},
                         
                     ]"
                         class="tran_input" >
                         <el-row>
                             <el-col :span="18">
-                                 <el-input   type="number" placeholder="ဂဏန်းအားလုံးဖြည့်ပါ" v-model="ruleForm.slip_code"></el-input>
+                                 <el-input   type="number" :placeholder="$t('slip_number')" v-model="ruleForm.slip_code"></el-input>
                             </el-col>
                             <el-col :span="6" style="text-align:center">
-                                <el-button type="text"  @click="centerDialogVisible = true">နမူနာ</el-button>
+                                <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
                                     <el-dialog
                                         
                                         :visible.sync="centerDialogVisible"
@@ -154,7 +154,7 @@
                                 <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
                               </el-col>
                               <el-col :span="6" style="text-align:center">
-                                <el-button type="text"  @click="centerDialogVisible_Kbz = true">နမူနာ</el-button>
+                                <el-button type="text"  @click="centerDialogVisible_Kbz = true">{{$t('example_text')}}</el-button>
                                  <el-dialog
                                         
                                         :visible.sync="centerDialogVisible_Kbz"
@@ -171,22 +171,22 @@
                             </el-row>
                         </el-form-item>
                    
-                     <p>လုပ်ဆောင်မှုအမှတ်</p>
+                     <p>{{$t('slip_kbz_number')}}</p>
                   
                         <el-form-item 
 
                         prop="slip_code"
                     :rules="[
-                        { required: true, message: 'လုပ်ဆောင်မှုအမှတ်  ဖြည့်ပါ'},
+                        { required: true, message: $t('slip_kbz_number')},
                         
                     ]"
                         class="tran_input" >
                         <el-row>
                             <el-col :span="18">
-                                 <el-input   type="number" placeholder="နောက်ဆုံးဂဏန်း (၆) လုံးဖြည့်ပါ" v-model="ruleForm.slip_code"></el-input>
+                                 <el-input   type="number" :placeholder="$t('slip_kbz_number')" v-model="ruleForm.slip_code"></el-input>
                             </el-col>
                             <el-col :span="6" style="text-align:center">
-                                <el-button type="text"  @click="centerDialogVisible = true">နမူနာ</el-button>
+                                <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
                                     <el-dialog
                                         
                                         :visible.sync="centerDialogVisible"
