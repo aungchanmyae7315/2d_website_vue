@@ -56,7 +56,6 @@ export default {
      },
      methods: {
     dial: function(data){
-      alert(data)
       window.location ='tel:'+data;
     },
      },
