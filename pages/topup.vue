@@ -196,7 +196,7 @@
                                          
                
 
-<carousel :autoplay="false" :nav="false" :items =1>
+<carousel :autoplay="false" :nav="true" :items =1>
     <div class="item">
       <p>၁. KBZ Pay app ထဲမှ "မှတ်တမ်း"ထဲသို့ဝင်ပါ။</p>
       <img src="~static/images/kbz_ex_one.jpg"  alt="" class="amount_example_img">
