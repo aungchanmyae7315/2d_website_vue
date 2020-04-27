@@ -251,7 +251,17 @@
   "logout":"Loggout?",
   "logout_confirm":"Confirm",
   "cancel":"Cancel",
-  "service_time":"Phone Customer Service Time Daily 9:00 am -  6:00 pm"
+  "service_time":"Phone Customer Service Time Daily 9:00 am -  6:00 pm",
+  "slip_number":"Transaction ID",
+  "slip_kbz_number":"Transcation No",
+  "slip_number_placeholder":"Transaction Enter",
+  "example_text":"View sample",
+  "app_share":"Share App and win 5,000 points",
+  "my_referral_code":"My Referral Code",
+  "phone_call":"Call",
+  "full_name":"Enter Your Full Name"
+ 
+
 
 }
 

@@ -23,7 +23,7 @@
                         <ul v-for="(ph_item, ne) in phone.phone_number" :key="ne.id" class="contact_phone">
                           
                           <li class="phone_item"><i class="el-icon-phone"></i> {{ph_item.phone}}</li>
-                           <li><el-button size="medium"  @click="dial(ph_item.phone)"   round>ခေါ်မည်</el-button></li>
+                           <li><el-button size="medium"  @click="dial(ph_item.phone)"   round>{{$t('phone_call')}}</el-button></li>
                         </ul>
                     </el-card>
 
