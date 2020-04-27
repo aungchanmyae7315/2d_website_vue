@@ -12,10 +12,10 @@
                     {{$t('Language')}}
                 </span> -->
               
-                  <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
+                            <el-dropdown-item round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
+                            <el-dropdown-item   round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
                             <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
+                            <el-dropdown-item   round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
               
               
                 </el-dropdown>   
@@ -52,23 +52,31 @@ export default {
              this.$router.push(`/me?lang=${this.$store.state.locale}`); 
          },
          changeLang (lang) {
+            
       //mutate 'locale' in store
       this.$store.commit('SET_LANG', lang)
       //re-route to the current page but with the selected language in a query string
       this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
+        this.$axios.get("/v2/v1/add_language?language=ch")
+    
+            
+                .then(response => {
+                 
+                  console.log(response)
+                   
+            });
+         this.$axios.get("/v2/v1/get_language")
+    
+            
+                .then(response => {
+                 
+                  console.log(response)
+                   
+            });
+             
+     
     },
-        // isSelected: function (code) {
-        //     const vm = this
-        //     const selectedLocale = this.$i18n.locale
-
-        //     if (code == selectedLocale) {
-        //         return 'active'
-                
-        //     }
-        // },
-        // goBack() {
-        //         this.$router.push(`/?lang=${this.$store.state.locale}`); 
-        // },
+ 
          submitLang() {
                      const loading = this.$loading({
                           lock: true,

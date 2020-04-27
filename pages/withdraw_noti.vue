@@ -15,7 +15,7 @@
                 <img  v-else-if="notification_detail.status == 'morning_result'"  src="~static/images/noti_page/morning_result_icon.png" alt="" class="noti_icon">
                 <img  v-else-if="notification_detail.status == 'evening_result'"  src="~static/images/noti_page/evening_result_icon.png" alt="" class="noti_icon">
                 <img v-else-if="notification_detail.status == 'referal_code'"  src="~static/images/noti_page/new_member_icon.png" class="">
-                <img v-else-if="notification_detail.status == 'reward_5000'"  src="~static/images/noti_page/one_week_noti_icon.png" class="">
+                <img v-else-if="notification_detail.status == 'point_5000_reward'"  src="~static/images/noti_page/one_week_noti_icon.png" class="">
                 <img v-else-if="notification_detail.status == 'bet_reward'"  src="~static/images/noti_page/bet_reward_icon.png" class="">
             </div>
         <div  v-if="notification_detail.status == 'win'">
@@ -110,7 +110,7 @@
             </el-card>
         </div>
 
-         <div  v-else-if="notification_detail.status == 'reward_5000'">
+         <div  v-else-if="notification_detail.status == 'point_5000_reward'">
              <el-card data-aos="zoom-out-down"
                 data-aos-easing="linear">
                 <h5 class="title">{{notification_detail.title}} </h5>
@@ -290,6 +290,9 @@
         top: 43px;
         z-index: 1;
     }
+    .refel_img_two {
+      margin-top:-50px;
+    }
     .title {
         padding:0 20px;
         margin-top:20px;
@@ -298,7 +301,7 @@
     }
     .amount {
         color:#158220;
-        padding:7px 0;
+      
         font-weight: bold;
     }
     .footer_card {
