@@ -444,8 +444,8 @@ export default {
         if (navigator.share) {
           navigator.share({
           title: 'Sein Lucky',
-          text: 'Sein Lucky မှာ 2D ထိုးဖူးလား၊ စိတ်ချရတယ်၊ ငွေသွင်းငွေထုတ် မြန်ဆန်တယ်။ အကောင့်ဖွင့်ရင် ရည်ညွှန်းကုဒ်' + this.referal_code + ' ဖြည့်ဖိုမမေ့နဲ့နော်။ ဒေါင်းလုတ်ရန် လင့်ကိုနှိပ်ပါ။ shorturl.at/nxKS6',
-          url: 'https://play.google.com/store/apps/details?id=seinlucky.com&hl=en',
+          text: 'Sein Lucky မှာ 2D ထိုးဖူးလား၊ စိတ်ချရတယ်၊ ငွေသွင်းငွေထုတ် မြန်ဆန်တယ်။ အကောင့်ဖွင့်ရင် ရည်ညွှန်းကုဒ်' +'(' + this.referal_code + ')' + ' ဖြည့်ဖိုမမေ့နဲ့နော်။ ဒေါင်းလုတ်ရန် လင့်ကိုနှိပ်ပါ။ shorturl.at/nxKS6',
+          url: '',
         })
             .then(() => console.log('Successful share'))
             .catch((error) => console.log('Error sharing', error));
