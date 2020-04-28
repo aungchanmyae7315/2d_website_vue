@@ -18,8 +18,8 @@
                   </el-card>
                 
                 </div>
-                
-                  <el-button  class="share_img share_btn" @click="shareBtn()" round="">{{$t('save_photo')}}</el-button> <!-- drawer = true -->
+                <el-button v-if="this.device_id !== null "  class="share_img share_btn" @click="share()" round="">{{$t('app_share')}}</el-button> <!-- drawer = true -->
+                  <el-button else  class="share_img share_btn" @click="shareBtn();drawer = true" round="">{{$t('app_share')}}</el-button> <!-- drawer = true -->
                   <!-- <el-button class="share_text share_btn" @click=" centerDialogVisible = true" round="">စာဖြင့်ရှဲမည်</el-button> -->
               </section>
 
@@ -466,7 +466,7 @@
     }
     .share_page .el-button.is-round {
       max-width: 480px;
-        width:38%;
+        width:100%;
     }
     .share_page .el-drawer {
         max-width: 480px;
@@ -512,11 +512,23 @@ Vue.use(VueSelect)
 
 export default {
     mounted() {
-      
-
+   
 
         let token = localStorage.getItem('token');
       if(token) {
+         this.$axios.get("/v2/v1/profile",
+            {headers: {
+                        "Authorization": "Bearer "+token
+                  }
+                })
+            .then(response => {
+              //console.log(response)
+               
+                this.device_id = response.data.data.device_id
+             
+            
+             
+        })
          this.$axios.get("/v2/v1/referal_code",
                     {headers: {
                                "Authorization": "Bearer "+token
@@ -553,6 +565,7 @@ export default {
             url:this.url,
             share_img:'',
             share_url:'',
+            device_id:'',
               referal_code:'',
               drawer: false,
               drawerone:false,
@@ -563,9 +576,20 @@ export default {
         }
     },
     methods: {
-      
+      share() {
+        if (navigator.share) {
+          navigator.share({
+          title: 'Sein Lucky',
+          text: 'Sein Lucky မှာ 2D ထိုးဖူးလား၊ စိတ်ချရတယ်၊ ငွေသွင်းငွေထုတ် မြန်ဆန်တယ်။ အကောင့်ဖွင့်ရင် ရည်ညွှန်းကုဒ်' + this.referal_code + ' ဖြည့်ဖိုမမေ့နဲ့နော်။ ဒေါင်းလုတ်ရန် လင့်ကိုနှိပ်ပါ။ shorturl.at/nxKS6',
+          url: 'https://play.google.com/store/apps/details?id=seinlucky.com&hl=en',
+        })
+            .then(() => console.log('Successful share'))
+            .catch((error) => console.log('Error sharing', error));
+        }
+      },
+       
       shareBtn() {
- var app = this;
+          var app = this;
           var node = document.getElementById('my-node');
  
         htmlToImage.toPng(node)

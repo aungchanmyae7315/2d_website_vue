@@ -382,7 +382,6 @@ export default {
     var m = window.location.href.match(/device_id=([^&]+)/i);
     if (m != null){
       var deviceId = m[1];
-      alert(deviceId);
       localStorage.setItem("deviceId", deviceId);
     }  
 
