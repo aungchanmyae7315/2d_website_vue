@@ -15,12 +15,20 @@ const createStore = () => {
             locale: 'en',
             token:'',
             file:'',
+            sliderImage:[],
+            sliderText:''
         
         },
         getters: {
           
         },
         mutations: {
+            setSliderImage(state, sliderImage){
+                state.sliderImage = sliderImage;
+            },
+            setSliderText(state, sliderText){
+                state.sliderText = sliderText;
+            },
             SET_LANG(state, locale) {
                 if (state.locales.indexOf(locale) !== -1) {
                   state.locale = locale

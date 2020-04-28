@@ -64,7 +64,7 @@
             line-height="0px"
             active-text-color="#ffd04b">
               <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-            <el-menu-item index="1">
+            <el-menu-item index="1" @click="HomeRefresh">
             
               <img src="~static/icons_header/dimond_t_icon.png" alt="">
              <h5 class="main_icon" style="font-weight:bold;color:#ccab48;">{{$t('home_title')}}</h5>
@@ -112,7 +112,9 @@ export default {
     }
   },
   methods: {
-    
+    HomeRefresh() {
+      location.reload();
+    },
     loading() {
         const loading = this.$loading({
           lock: true,
