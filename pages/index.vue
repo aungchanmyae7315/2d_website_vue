@@ -394,9 +394,7 @@ export default {
 
    },
   components: {
-    Music,
-    Online,
-    AutoLogout
+
   },
   
   data() {
