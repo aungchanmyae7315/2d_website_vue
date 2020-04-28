@@ -388,10 +388,15 @@ export default {
       this.updateIsLoggedIn();
       this.updateLang();
       this.getKweeLiveData();
+       
 
+let lang = localStorage.getItem('locale');
 
-
-
+      this.$axios.get(`/v2/v1/add_language?language=${lang}`)
+        .then(response => {
+          
+          console.log(response)         
+        });
    },
   components: {
 
