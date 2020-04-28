@@ -614,7 +614,7 @@ export default {
         slip_upload_kbz(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {
-               
+               this.submitted = true
               let token = localStorage.getItem('token');
             this.bank_id = 3
         var data = {
@@ -639,7 +639,7 @@ export default {
                         })
                 
                     .then(response => {
-                      this.submitted = true
+                      
                         console.log(response)
                      //console.log(this.topup_info = response.data.data)
                      this.error_msg = response.data
@@ -650,6 +650,7 @@ export default {
                  
                 })
                  .catch(error => {
+                   this.submitted = false
                      if(error.response.data.errors.slip_code == 'The slip code must be at least 6 characters.') {
                           this.$message({
                             showClose: true,
@@ -659,6 +660,7 @@ export default {
                       
 
                      }else if(error.response.data.errors.slip_code == 'The slip code may not be greater than 6 characters.') {
+                       this.submitted = false
                           this.$message({
                             showClose: true,
                           message: 'ဂဏန်း ၆  ထက်ပိုနေပါသည် ',
@@ -666,6 +668,7 @@ export default {
                         });
                        
                      }else {
+                       this.submitted = false
                          this.$message({
                             showClose: true,
                           message: 'လုပ်ငန်းစဥ်အမှတ် မှားနေပါသည် ',
@@ -690,7 +693,7 @@ export default {
            slip_upload_wave(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {
-            
+              this.submitted = true
               let token = localStorage.getItem('token');
             this.bank_id = 4
         var data = {
@@ -715,7 +718,7 @@ export default {
                         })
                 
                     .then(response => {
-                         this.submitted = true
+                       
                         console.log(response)
                      //console.log(this.topup_info = response.data.data)
                      this.error_msg = response.data
@@ -726,6 +729,7 @@ export default {
                  
                 })
                  .catch(error => {
+                     this.submitted = false
                      if(error.response.data.errors.slip_code == 'The slip code must be at least 6 characters.') {
                           this.$message({
                             showClose: true,
@@ -733,12 +737,14 @@ export default {
                           type: 'warning',
                         });
                      }else if(error.response.data.errors.slip_code == 'The slip code may not be greater than 6 characters.') {
+                         this.submitted = false
                           this.$message({
                             showClose: true,
                           message: 'ဂဏန်း ၆  ထက်ပိုနေပါသည် ',
                           type: 'warning',
                         });
                      }else {
+                         this.submitted = false
                          this.$message({
                             showClose: true,
                           message: 'လုပ်ငန်းစဥ်အမှတ် မှားနေပါသည် ',
