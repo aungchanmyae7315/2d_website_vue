@@ -24,7 +24,7 @@
                 <tr @click="bet_date(bet_list_hist.date)" v-for="(bet_list_hist,b) in bet_historys" :key="b" >
               
                 <th scope="row">{{bet_list_hist.date}}</th>  
-                <td style="text-align:right">{{bet_list_hist.result_amount}}</td>  
+                <td style="text-align:right">{{bet_list_hist.amount}}</td>  
               
                 </tr>
             </tbody>
