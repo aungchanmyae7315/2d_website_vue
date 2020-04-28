@@ -472,6 +472,23 @@ export default {
       //re-route to the current page but with the selected language in a query string
       this.dialogVisible = false
        this.$router.push(`/?lang=${this.$store.state.locale}`);
+        this.$axios.get(`/v2/v1/add_language?language=${lang}`)
+    
+            
+                .then(response => {
+                 
+                  console.log(response)
+                   
+        });
+         this.$axios.get("/v2/v1/get_language")
+    
+            
+                .then(response => {
+                 
+                  console.log(response)
+                   
+            });
+             
       // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
     },
       submitLang() {      
