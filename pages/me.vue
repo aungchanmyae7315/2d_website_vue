@@ -15,9 +15,9 @@
                   <ul>
                   <li v-if="this.profile.name == null">{{this.profile.phone}}</li>
                      <li v-else>{{this.profile.name}}</li>
-                    <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`">
-                     <li class="edit_profile">{{$t('edit_profile')}}</li>
-                    </nuxt-link>
+                    <!-- <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`"> -->
+                     <li>{{$t('my_referral_code')}}: <span class="edit_profile">{{this.get_refel}}</span></li>
+                    <!-- </nuxt-link> -->
                   </ul>
                   </div>
             
@@ -178,8 +178,9 @@ export default {
             .then(response => {
                this.$nuxt.$loading.finish()
               // location.reload();
-              this.get_refel = response.data.data.referal_code
-              // console.log(this.get_refel)
+              console.log(response)
+              this.get_refel = response.data.data.generate_code
+              console.log(this.get_refel)
               
         })
     }
