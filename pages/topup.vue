@@ -641,12 +641,19 @@ export default {
                     .then(response => {
                       
                         console.log(response)
-                     //console.log(this.topup_info = response.data.data)
-                     this.error_msg = response.data
-                     console.log(this.error_msg)
-
-                            
-                this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
+                      this.same_slip_number_ms = response.data.message       
+             
+                  if(this.same_slip_number_ms == 'fail') {
+                    this.submitted = false
+                      this.$message({
+                            showClose: true,
+                          message: 'Your Slip Code is exist',
+                          type: 'warning',
+                        });
+                }else {
+                  this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
+                }
+                
                  
                 })
                  .catch(error => {
@@ -674,17 +681,8 @@ export default {
                           message: 'လုပ်ငန်းစဥ်အမှတ် မှားနေပါသည် ',
                           type: 'warning',
                         });
-                       
-      
-                     }
-
-                  
+                     } 
                 });
-        
-            
-    
-
-         
           } 
         });
 
@@ -718,15 +716,19 @@ export default {
                         })
                 
                     .then(response => {
-                       
-                        console.log(response)
-                     //console.log(this.topup_info = response.data.data)
-                     this.error_msg = response.data
-                     console.log(this.error_msg)
+                     this.same_slip_number_ms = response.data.message
 
+                if(this.same_slip_number_ms == 'fail') {
+                    this.submitted = false
+                      this.$message({
+                            showClose: true,
+                          message: 'Your Slip Code is exist',
+                          type: 'warning',
+                        });
+                }else {
+                  this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
+                }
                             
-                this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
-                 
                 })
                  .catch(error => {
                      this.submitted = false
