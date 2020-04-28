@@ -366,9 +366,7 @@
 </template>
 
 <script>
-import Music from '~/components/Music.vue'
-import Online from '~/components/Online.vue'
-import AutoLogout from '~/components/AutoLogout.vue'
+
 import axios from 'axios'
 
 export default {
@@ -444,12 +442,14 @@ export default {
   
 
      //luke
-     async getKweeLiveData(){
-          this.$axios.get('/v2/v1/kwee_live')
+        async getKweeLiveData(){
+          this.$axios.get('/luke/kwee_live')
             .then(response => {
-              this.info = response.data[0]
+              this.info = response.data[0];
+	      //console.dir(this.info);
             })
      },
+
      itvKweeLiveData(){
           this.kweeliveItvId = setInterval(function() {
             this.getKweeLiveData();
@@ -613,16 +613,33 @@ export default {
               })
          }.bind(this), 3000)
   }
-          this.$axios.get('/v2/v1/slider_image')
-              .then(response => {
-               this.slider_images = response.data.data
-              })
+          var self = this;
+          if (this.$store.state.sliderImage.length > 0){
+            self.slider_images = this.$store.state.sliderImage;
+          }
+          else{
+            setTimeout(function(){
+              self.$axios.get('/v2/v1/slider_image')
+                .then(response => {
+                self.slider_images = response.data.data
+                self.$store.commit('setSliderImage', response.data.data);
+                })
+            }, 2000);
+          }
 
-          this.$axios.get('/v2/v1/slider_text')
-              .then(response => {
-               console.log(response)
-               this.slider_text = response.data.data[0]
-              })
+          if (this.$store.state.sliderText.length > 0){
+            self.slider_text = this.$store.state.sliderText;
+          }
+          else{
+            setTimeout(function(){
+            self.$axios.get('/v2/v1/slider_text')
+                .then(response => {
+                console.log(response)
+                self.slider_text = response.data.data[0];
+                self.$store.commit('setSliderText', response.data.data);
+                })
+            }, 4000);
+          }
               
          let token = localStorage.getItem('token');
       if(token) {
