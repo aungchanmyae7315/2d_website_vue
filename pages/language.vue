@@ -64,7 +64,7 @@ export default {
                  
                   console.log(response)
                    
-            });
+        });
          this.$axios.get("/v2/v1/get_language")
     
             
