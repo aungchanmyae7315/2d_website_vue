@@ -464,7 +464,7 @@ export default {
           img.src = dataUrl;
           
             //document.body.appendChild(img);
-            console.log(img.src)
+            // console.log(img.src)
            
             //   let token = localStorage.getItem('token');
             // if(token) {
