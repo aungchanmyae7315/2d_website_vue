@@ -565,6 +565,7 @@ export default {
             url:this.url,
             share_img:'',
             share_url:'',
+            device_id:'',
               referal_code:'',
               drawer: false,
               drawerone:false,
