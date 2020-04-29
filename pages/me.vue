@@ -65,12 +65,12 @@
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
 
-                        <div v-if="this.device_id == null">
-                             
+                        <div v-if="this.device_id !== null && this.hide_oneDay == 1 ">
+                              <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li> 
+                              <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li> 
                         </div>
                         <div v-else>
-                             <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li> 
-                              <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li> 
+
                         </div>
                          
                         <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">{{$t('app_share')}} </a></nuxt-link></li>
@@ -166,10 +166,9 @@ export default {
                   }
                 })
             .then(response => {
-              console.log(response)
+              //console.log(response)
                 // this.$nuxt.$loading.finish()
                 this.device_id = response.data.data.device_id
-                console.log(this.device_id)
               this.profile = response.data.data
             
              
@@ -184,6 +183,8 @@ export default {
               // location.reload();
               console.log(response)
               this.get_refel = response.data.data.generate_code
+              this.hide_oneDay = response.data.data.status
+              console.log(this.hide_oneDay)
               console.log(this.get_refel)
               
         })
@@ -196,7 +197,8 @@ export default {
         fullscreenLoading: false,
         profile:'',
         get_refel:'',
-        device_id:''
+        device_id:'',
+        hide_oneDay:''
       };
     },
     
