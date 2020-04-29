@@ -61,8 +61,10 @@
             </div>
             <div class="share_btn_win">
                  <span >
-                    <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
-                    <el-button    class="" @click="SavePhoto()" type="text">{{$t('save_photo')}}</el-button> 
+                  
+                    <el-button    class="" @click="SavePhoto()" type="text">
+                        <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                      {{$t('save_photo')}}</el-button> 
                 </span>
             </div>
         </div>
@@ -269,7 +271,8 @@
 </template>
 <style >
     .share_icon {
-        width:30px;
+        width:30px; 
+        margin-bottom:10px;
         height: auto;
       }
       .el-button--text {

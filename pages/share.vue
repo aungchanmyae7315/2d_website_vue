@@ -18,20 +18,25 @@
                   </el-card>
                 
                 </div>
-                <div  v-if="isMobile()">
+                <div  v-if="isMobile() && this.device_id == null">
                   <el-row class="share_t_btn">
                     <el-col :span="12">
                       <span>
-                           <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
-                          <el-button    class="" @click="SavePhoto()" type="text">{{$t('save_photo')}}</el-button> 
+                          
+                          <el-button    class="" @click="SavePhoto()" type="text">
+                             <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                             {{$t('save_photo')}}</el-button> 
                       </span>
                        
                     </el-col>
                     <el-col :span="12">
-                      <span v-if="this.device_id == null">
-                           <img src="~static/icon_share/share_icon.png" alt="" class="share_icon"><br>
-                           <el-button    class=" " @click="share()" type="text">{{$t('app_share_btn')}}</el-button> 
+                      <span>
+                          
+                           <el-button    class=" " @click="share()" type="text">
+                              <img src="~static/icon_share/share_icon.png" alt="" class="share_icon"><br>
+                              {{$t('app_share_btn')}}</el-button> 
                       </span>
+                     
                      
                        
                        
@@ -41,8 +46,10 @@
                 </div>
                 <div v-else class="share_t_btn">
                       <span>
-                           <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
-                          <el-button    class="" @click="SavePhoto()" type="text">{{$t('save_photo')}}</el-button> 
+                          
+                          <el-button    class="" @click="SavePhoto()" type="text">
+                             <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                             {{$t('save_photo')}}</el-button> 
                       </span>
                 </div>
 
@@ -362,6 +369,7 @@
   }
   .share_icon {
     width:30px;
+    margin-bottom:10px;
     height: auto;
   }
   .share_t_btn .el-button--text {
@@ -370,6 +378,7 @@
   .share_t_btn .el-button--text:focus, .el-button--text:hover {
     color:#36793f;
     font-weight: bold;
+
   }
 
 
