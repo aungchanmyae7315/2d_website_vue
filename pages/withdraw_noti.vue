@@ -60,7 +60,10 @@
             </el-card>
             </div>
             <div class="share_btn_win">
-                 <el-button  class="share_img share_btn" @click="shareBtn()" round="">ပုံကို သိမ်းမည်</el-button>
+                 <span >
+                    <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                    <el-button    class="" @click="SavePhoto()" type="text">{{$t('save_photo')}}</el-button> 
+                </span>
             </div>
         </div>
 
@@ -265,6 +268,17 @@
     
 </template>
 <style >
+    .share_icon {
+        width:30px;
+        height: auto;
+      }
+      .el-button--text {
+        color:#36793F;
+      }
+      .el-button--text:focus {
+        color:#36793f;
+        font-weight: bold;
+      }
     .withdraw_notifi {
         text-align: center;
         padding:20px;
@@ -492,7 +506,7 @@ export default {
         })
     },
      methods: {
-          shareBtn() {
+          SavePhoto() {
         var app = this
           var node = document.getElementById('my-node');
  
@@ -505,30 +519,30 @@ export default {
             //document.body.appendChild(img);
             console.log(img.src)
            
-              let token = localStorage.getItem('token');
-            if(token) {
+            //   let token = localStorage.getItem('token');
+            // if(token) {
            
-             let formData = new FormData();
-                formData.append('image', img.src);
+            //  let formData = new FormData();
+            //     formData.append('image', img.src);
 
-              axios.post('https://build.seinchanthar.com/api/v2/v1/social_image',
-                  formData
-                 ,{
-                  headers: {
-                    "Authorization": "Bearer "+token,
-                    'content-type': 'multipart/form-data'
-                  }
-                })
+            //   axios.post('https://build.seinchanthar.com/api/v2/v1/social_image',
+            //       formData
+            //      ,{
+            //       headers: {
+            //         "Authorization": "Bearer "+token,
+            //         'content-type': 'multipart/form-data'
+            //       }
+            //     })
                
                 
-                    .then(response => {
-                      console.log('all response')
-                     //console.log(this.topup_info = response.data.data)
-                     console.log(response.data)
-                        app.url = response.data;
-                     //this.img_url = response.data
-                })
-            }
+            //         .then(response => {
+            //           console.log('all response')
+            //          //console.log(this.topup_info = response.data.data)
+            //          console.log(response.data)
+            //             app.url = response.data;
+            //          //this.img_url = response.data
+            //     })
+            // }
             var link = document.createElement('a');
             link.download = 'seinlucky.jpeg';
             link.href = dataUrl;
