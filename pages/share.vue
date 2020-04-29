@@ -18,7 +18,7 @@
                   </el-card>
                 
                 </div>
-                <div  v-if=" this.device_id !== null && !isMobile()">
+                <div  v-if=" this.device_id !== null">
                    <span>
                           
                           <el-button    class="" @click="SavePhoto()" type="text">
@@ -54,7 +54,8 @@
                   </el-row>
                      
                 </div>
-                <div v-else>
+               
+                <div v-else-if="!isMobile()">
                     <span>
                           
                           <el-button    class="" @click="SavePhoto()" type="text">
