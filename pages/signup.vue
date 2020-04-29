@@ -229,11 +229,13 @@ import axios from 'axios'
                       this.$router.push(`/signup_successChrome?lang=${this.$store.state.locale}`);
                         
                     }else if (response.data.status == 1) {
-                      this.$router.push(`/signup_successNrc?lang=${this.$store.state.locale}`);
+                      this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
+                      
                     }
-                    else if(this.device_id !== null) {
-                       this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
-                    }else {
+                    else if(response.data.status == 3) {
+                        this.$router.push(`/signup_successNrc?lang=${this.$store.state.locale}`);
+                    }
+                    else {
                       console.log('not Direction')
                     }
           
