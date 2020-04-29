@@ -377,12 +377,20 @@ export default {
   layout: 'homeLayout',
 
   mounted() {
+<<<<<<< HEAD
     var m = window.location.href.match(/device_id=([^&]+)/i);
+=======
+     var m = window.location.href.match(/device_id=([^&]+)/i);
+>>>>>>> e2b0696023cc725c4282f2308b160fdf0e360bf0
     if (m != null){
       var deviceId = m[1];
       localStorage.setItem("deviceId", deviceId);
     }  
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> e2b0696023cc725c4282f2308b160fdf0e360bf0
       this.getDataKwee();
       this.getDataresult();
       this.updateIsLoggedIn();
@@ -601,7 +609,7 @@ let lang = localStorage.getItem('locale');
 
   }else {
      
-      var ok =  setInterval(function() {
+      // var ok =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
                   this.last_date = response.data.data.last_date
@@ -610,17 +618,17 @@ let lang = localStorage.getItem('locale');
                          this.isActive = false
 
                 }else {
-                        this.isActive = true
-                      this.$axios.get('/v2/v1/twod-result/live')
-                    .then(response => {
-                       this.last_date = response.data.data.last_date
-                      this.info_api = response.data.data
+                    //     this.isActive = true
+                    //   this.$axios.get('/v2/v1/twod-result/live')
+                    // .then(response => {
+                    //    this.last_date = response.data.data.last_date
+                    //   this.info_api = response.data.data
                     
-                    })
+                    // })
                 }
                 this.info_api = response.data.data
               })
-         }.bind(this), 3000)
+        //  }.bind(this), 3000)
   }
           var self = this;
           if (this.$store.state.sliderImage.length > 0){
