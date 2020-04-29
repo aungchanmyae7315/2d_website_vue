@@ -44,7 +44,7 @@
                   </el-row>
                   
                 </div>
-                <div v-else-if="this.device_id !== null" class="share_t_btn">
+                <div v-else-if="this.device_id !== null && !isMobile()" class="share_t_btn">
                       <span>
                           
                           <el-button    class="" @click="SavePhoto()" type="text">
