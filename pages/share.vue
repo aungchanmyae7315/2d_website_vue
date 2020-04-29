@@ -19,18 +19,31 @@
                 
                 </div>
                 <div  v-if="isMobile()">
-                  <el-row>
+                  <el-row class="share_t_btn">
                     <el-col :span="12">
-                         <el-button    class="share_img share_btn" @click="share()" round="">{{$t('app_share_btn')}}</el-button> <!-- drawer = true -->
+                      <span>
+                           <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                          <el-button    class="" @click="SavePhoto()" type="text">{{$t('save_photo')}}</el-button> 
+                      </span>
+                       
                     </el-col>
-                    <el-col :span="12" style="padding-top:10px;">
-                        <el-button    class="share_img share_text" @click="SavePhoto()" round="">{{$t('save_photo')}}</el-button> <!-- drawer = true -->
+                    <el-col :span="12">
+                      <span v-if="this.device_id == null">
+                           <img src="~static/icon_share/share_icon.png" alt="" class="share_icon"><br>
+                           <el-button    class=" " @click="share()" type="text">{{$t('app_share_btn')}}</el-button> 
+                      </span>
+                     
+                       
+                       
                     </el-col>
                   </el-row>
                   
                 </div>
                 <div v-else>
-                       <el-button  class="share_img share_text" @click="SavePhoto()" round="">{{$t('save_photo')}}</el-button> <!-- drawer = true -->
+                      <span>
+                           <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                          <el-button    class="" @click="SavePhoto()" type="text">{{$t('save_photo')}}</el-button> 
+                      </span>
                 </div>
 
                 
@@ -346,6 +359,17 @@
   .choose_lang .el-button.is-round {
     max-width: 480px;
     width:88%;
+  }
+  .share_icon {
+    width:30px;
+    height: auto;
+  }
+  .share_t_btn .el-button--text {
+    color:#36793F;
+  }
+  .share_t_btn .el-button--text:focus {
+    color:#36793f;
+    font-weight: bold;
   }
 
 
