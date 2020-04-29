@@ -176,7 +176,7 @@ export default {
                   }
                 })
             .then(response => {
-               this.$nuxt.$loading.finish()
+              //  this.$nuxt.$loading.finish()
               // location.reload();
               console.log(response)
               this.get_refel = response.data.data.generate_code
