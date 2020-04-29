@@ -377,20 +377,12 @@ export default {
   layout: 'homeLayout',
 
   mounted() {
-<<<<<<< HEAD
-    var m = window.location.href.match(/device_id=([^&]+)/i);
-=======
      var m = window.location.href.match(/device_id=([^&]+)/i);
->>>>>>> e2b0696023cc725c4282f2308b160fdf0e360bf0
     if (m != null){
       var deviceId = m[1];
       localStorage.setItem("deviceId", deviceId);
     }  
-<<<<<<< HEAD
-
-=======
     
->>>>>>> e2b0696023cc725c4282f2308b160fdf0e360bf0
       this.getDataKwee();
       this.getDataresult();
       this.updateIsLoggedIn();
