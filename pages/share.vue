@@ -18,7 +18,7 @@
                   </el-card>
                 
                 </div>
-                <div  v-if="isMobile() && this.device_id == null">
+                <div  v-if=" this.device_id == null && isMobile()">
                   <el-row class="share_t_btn">
                     <el-col :span="12">
                       <span>
