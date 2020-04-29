@@ -272,6 +272,13 @@
         width:30px;
         height: auto;
       }
+      .el-button--text {
+        color:#36793F;
+      }
+      .el-button--text:focus {
+        color:#36793f;
+        font-weight: bold;
+      }
     .withdraw_notifi {
         text-align: center;
         padding:20px;

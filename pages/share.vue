@@ -364,10 +364,10 @@
     width:30px;
     height: auto;
   }
-  .share_t_btn .el-button--text {
+  .el-button--text {
     color:#36793F;
   }
-  .share_t_btn .el-button--text:focus {
+  .el-button--text:focus {
     color:#36793f;
     font-weight: bold;
   }
