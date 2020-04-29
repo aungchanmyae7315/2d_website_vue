@@ -44,7 +44,15 @@
                   </el-row>
                   
                 </div>
-                <div v-else class="share_t_btn">
+                <div v-else-if="this.device_id !== null" class="share_t_btn">
+                      <span>
+                          
+                          <el-button    class="" @click="SavePhoto()" type="text">
+                             <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                             {{$t('save_photo')}}</el-button> 
+                      </span>
+                </div>
+                 <div v-else class="share_t_btn">
                       <span>
                           
                           <el-button    class="" @click="SavePhoto()" type="text">
