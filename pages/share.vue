@@ -18,7 +18,17 @@
                   </el-card>
                 
                 </div>
-                <div  v-if=" this.device_id == null && isMobile()">
+                <div  v-if=" this.device_id !== null && !isMobile()">
+                   <span>
+                          
+                          <el-button    class="" @click="SavePhoto()" type="text">
+                             <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
+                             {{$t('save_photo')}}</el-button> 
+                      </span>
+                  
+                </div>
+                
+                <div v-else-if="this.device_id == null && isMobile()" class="share_t_btn">
                   <el-row class="share_t_btn">
                     <el-col :span="12">
                       <span>
@@ -42,18 +52,10 @@
                        
                     </el-col>
                   </el-row>
-                  
+                     
                 </div>
-                <div v-else-if="this.device_id !== null && !isMobile()" class="share_t_btn">
-                      <span>
-                          
-                          <el-button    class="" @click="SavePhoto()" type="text">
-                             <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
-                             {{$t('save_photo')}}</el-button> 
-                      </span>
-                </div>
-                 <div v-else class="share_t_btn">
-                      <span>
+                <div v-else>
+                    <span>
                           
                           <el-button    class="" @click="SavePhoto()" type="text">
                              <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
