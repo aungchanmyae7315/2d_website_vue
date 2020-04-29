@@ -152,6 +152,9 @@ export default {
     mounted() {
     this.$nextTick(() => {
         this.$nuxt.$loading.start()
+        setTimeout(() => {
+            this.$nuxt.$loading.finish()
+        }, 2000);
         })
      
      this.updateIsLoggedIn();
@@ -164,7 +167,7 @@ export default {
                 })
             .then(response => {
               //console.log(response)
-                this.$nuxt.$loading.finish()
+                // this.$nuxt.$loading.finish()
                 this.device_id = response.data.data.device_id
               this.profile = response.data.data
             
