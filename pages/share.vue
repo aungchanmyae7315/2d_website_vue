@@ -39,7 +39,7 @@
                   </el-row>
                   
                 </div>
-                <div v-else>
+                <div v-else class="share_t_btn">
                       <span>
                            <img src="~static/icon_share/down_arrow_icon.png" alt="" class="share_icon"><br>
                           <el-button    class="" @click="SavePhoto()" type="text">{{$t('save_photo')}}</el-button> 
@@ -364,10 +364,10 @@
     width:30px;
     height: auto;
   }
-  .el-button--text {
+  .share_t_btn .el-button--text {
     color:#36793F;
   }
-  .el-button--text:focus {
+  .share_t_btn .el-button--text:focus, .el-button--text:hover {
     color:#36793f;
     font-weight: bold;
   }
