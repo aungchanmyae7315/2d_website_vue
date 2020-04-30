@@ -600,11 +600,11 @@ import axios from 'axios'
 export default {
     mounted() {
            
-      this.$nextTick(() => {
-      this.$nuxt.$loading.start()
+    //   this.$nextTick(() => {
+    //   this.$nuxt.$loading.start()
    
-     setTimeout(() => this.$nuxt.$loading.finish(), 2000)
-      })
+    //  setTimeout(() => this.$nuxt.$loading.finish(), 2000)
+    //   })
     
         this.updateIsLoggedIn();
         setInterval(() => {
