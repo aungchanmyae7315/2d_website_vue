@@ -37,24 +37,6 @@
                             <el-col :span="4">  <el-button type="text"  @click="same_number">{{$t('same')}}</el-button></el-col>
                         </el-row>
                     
-                    <div class="con_power">
-                        <p>Constellation Power</p>
-                        <el-button type="text" @click="con_number">Constellation 07,18,24,35,69</el-button>
-                        <el-button type="text" @click="con_number_R">Constellation R 70,81,42,53,96</el-button>
-                        <el-button type="text" @click="con_number_power">Power 05, 16, 27, 38,49</el-button>
-                        <el-button type="text" @click="con_number_power_R">Power R 05,16,27,38,49</el-button>
-                    </div>
-                        
-                        <p>{{$t('20_selection_number')}}</p>
-                        <el-row  class="select_number_two">
-                            <el-col :span="5">  <el-button type="text" @click="btw_00_19">00-19</el-button></el-col>
-                            <el-col :span="5"><el-button type="text" @click="btw_20_39">20-39</el-button></el-col>
-                            <el-col :span="5"> <el-button type="text"  @click="btw_40_59">40-59</el-button></el-col>
-                            <el-col :span="5"><el-button type="text" @click="btw_60_79">60-79</el-button></el-col>    
-                                <el-col :span="5"><el-button type="text" @click="btw_80_99">80-99</el-button></el-col>    
-                        </el-row>
-                        
-                
                         <div class="select_number">
                             <el-button type="text" @click="with_0">0</el-button>
                             <el-button type="text" @click="with_1">1</el-button>
@@ -89,9 +71,22 @@
                             <el-button type="text" @click="tail_8">8</el-button> 
                             <el-button type="text" @click="tail_9">9</el-button>
                         </div>
-    
+                        <div class="con_power">
+                            <p>Constellation Power</p>
+                            <el-button type="text" @click="con_number">Constellation 07,18,24,35,69</el-button>
+                            <el-button type="text" @click="con_number_R">Constellation R 70,81,42,53,96</el-button>
+                            <el-button type="text" @click="con_number_power">Power 05, 16, 27, 38,49</el-button>
+                            <el-button type="text" @click="con_number_power_R">Power R 05,16,27,38,49</el-button>
+                        </div>
                     
-        
+                          <p>{{$t('20_selection_number')}}</p>
+                        <el-row  class="select_number_two">
+                            <el-col :span="5">  <el-button type="text" @click="btw_00_19">00-19</el-button></el-col>
+                            <el-col :span="5"><el-button type="text" @click="btw_20_39">20-39</el-button></el-col>
+                            <el-col :span="5"> <el-button type="text"  @click="btw_40_59">40-59</el-button></el-col>
+                            <el-col :span="5"><el-button type="text" @click="btw_60_79">60-79</el-button></el-col>    
+                                <el-col :span="5"><el-button type="text" @click="btw_80_99">80-99</el-button></el-col>    
+                        </el-row>
                         
                 </el-dialog>
                 </el-col>
@@ -107,7 +102,7 @@
                             
                             >  
                           
-                                <el-input class type="number" placeholder="200 Ks(min)"  v-model="ruleForm.amount"  ></el-input>
+                                <el-input class type="number" placeholder="100 Ks(min)"  v-model="ruleForm.amount"  ></el-input>
                             
                             </el-form-item>
                 </el-col>
@@ -116,14 +111,14 @@
             <el-row> 
                   <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
                         <el-col :span="13" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="13" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.wallet}} {{$t('kyat')}}</div></el-col>
+                        <el-col :span="13" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.thousands_separators(myWallet)}} {{$t('kyat')}}</div></el-col>
                   </nuxt-link>
                  <el-col :span="11" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
             </el-row>
              <el-row> 
                   <nuxt-link :to="`${$t('/seinlucky_point')}?lang=${$store.state.locale}`">
                         <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance')}}: {{this.profile.point_wallet}}</div></el-col>
+                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance')}}: {{this.thousands_separators(myPointWallet)}}</div></el-col>
                     </nuxt-link>
 
                        <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
@@ -477,7 +472,7 @@ const small_option = ['00','01', '02', '03', '04','05','06','07','08','09','10',
                       '11','12','13','14','15','16','17','18','19','20',
                       '21','22','23','24','25','26','27','28','29','30',
                       '31','32','33','34','35','36','37','38','39','40',
-                      '41','42','43','44','45','46','47','48','49','50',
+                      '41','42','43','44','45','46','47','48','49',
     
 ]
 const same_option = ['00','11', '22', '33', '44','55','66','77','88','99'
@@ -653,6 +648,8 @@ export default {
                 btns: btn_options,
                 cities: cityOptions,
                 profile:'', 
+                myWallet:'',
+                myPointWallet:''
         }
     },
   
@@ -703,6 +700,8 @@ export default {
                     .then(response => {
                         console.log(response)
                      this.profile = response.data.data
+                     this.myWallet = this.profile.wallet
+                      this.myPointWallet = this.profile.point_wallet
                    
                 })
         } 
@@ -714,6 +713,11 @@ export default {
     },
     
      methods: {
+        thousands_separators(num){
+          var num_parts = num.toString().split(".");
+          num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          return num_parts.join(".");
+        },
         convertMS( milliseconds ) {
             var day, hour, minute, seconds;
             seconds = Math.floor(milliseconds / 1000);

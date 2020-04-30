@@ -34,7 +34,7 @@
                 <div  class="avatar_text">
                   <ul>
                     <li>{{ $t('my_balance') }}</li>
-                    <li class="amount_mmk">{{this.profile.wallet}} {{$t('kyat')}}</li>
+                    <li class="amount_mmk">{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
                   </ul>
                   </div>
               </div>
@@ -299,7 +299,8 @@
         card_number:'',
         visible: false,
         profile:'',
-        message:''
+        message:'',
+        myWallet:'',
       };
     },
      created() {
@@ -317,6 +318,7 @@
                         })
                     .then(response => {
                      this.profile = response.data.data
+                     this.myWallet = this.profile.wallet
 
                 })
         }
@@ -324,6 +326,11 @@
     },
 
     methods: {
+       thousands_separators(num){
+          var num_parts = num.toString().split(".");
+          num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          return num_parts.join(".");
+        },
 
        updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());

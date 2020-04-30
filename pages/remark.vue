@@ -94,7 +94,7 @@
                          </div>
                        
                          <p> လက်ကျန်ပွိုင့်</p>
-                         <h6> {{profile.point_wallet}} </h6>
+                         <h6> {{this.thousands_separators(myPointWallet)}} </h6>
                     </el-radio>
                        <el-divider direction="vertical"></el-divider>
                     <el-radio v-model="radio" label="1">
@@ -104,7 +104,7 @@
                         </div>
                         
                        <p> လက်ကျန်ငွေ</p> 
-                       <h6>{{profile.wallet}}</h6>
+                       <h6>{{this.thousands_separators(myWallet)}}</h6>
                         
                     </el-radio>
                    
@@ -171,7 +171,9 @@ export default {
           bet_odds:'',
           submitted:false,
           radio: '1',
-          profile:''
+          profile:'',
+          myWallet:'',
+          myPointWallet:''
         }
     },
     created() {
@@ -199,6 +201,8 @@ export default {
                     .then(response => {
                         console.log(response)
                      this.profile = response.data.data
+                      this.myWallet = this.profile.wallet
+                      this.myPointWallet = this.profile.point_wallet
 
                 })
         }      
@@ -211,6 +215,11 @@ export default {
     },
     
      methods: {
+       thousands_separators(num){
+          var num_parts = num.toString().split(".");
+          num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          return num_parts.join(".");
+    },
       goBack() {
              this.$router.push(`/bet?lang=${this.$store.state.locale}`); 
          },
@@ -372,7 +381,7 @@ export default {
 }
 
 .remark .btn_group {
-    bottom: 22px;
+    margin-bottom:40px;
     background: #fff;
     max-width: 480px;
     width:100%;

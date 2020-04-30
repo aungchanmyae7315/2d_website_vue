@@ -7,8 +7,8 @@
                  <span>{{$t('sein_lucky_office_hours')}}</span>
                   <el-divider></el-divider>
                 <span>{{$t('mon-sat')}}</span><br>
-                <span>{{$t('morning')}} 9:00 AM - 11:40 AM</span><br>
-                 <span>{{$t('evening')}} 12:00 PM - 3:40 PM</span>
+                <span>{{$t('morning')}} 9:00 AM - 11:50 AM</span><br>
+                 <span>{{$t('evening')}} 12:00 PM - 06:00 PM</span>
 
             </el-card>
             <p style="color:#5AAF46">{{$t('top-up_is_pending_approved_10_minutes')}}</p>

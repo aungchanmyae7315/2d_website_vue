@@ -497,7 +497,11 @@ export default {
       },
        
       SavePhoto() {
-        
+         this.$message({
+          showClose: true,
+          message: 'Downloading photo',
+          type: 'success'
+        });
           var app = this;
           var node = document.getElementById('my-node');
  

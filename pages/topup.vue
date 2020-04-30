@@ -114,7 +114,7 @@
                         class="tran_input" >
                         <el-row>
                             <el-col :span="18">
-                                 <el-input   type="number" :placeholder="$t('slip_number')" v-model="ruleForm.slip_code"></el-input>
+                                 <el-input   type="number" :placeholder="$t('slip_number_s')" v-model="ruleForm.slip_code"></el-input>
                             </el-col>
                             <el-col :span="6" style="text-align:center">
                                 <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
@@ -183,7 +183,7 @@
                         class="tran_input" >
                         <el-row>
                             <el-col :span="18">
-                                 <el-input   type="number" :placeholder="$t('slip_kbz_number')" v-model="ruleForm.slip_code"></el-input>
+                                 <el-input   type="number" :placeholder="$t('slip_kbz_number_s')" v-model="ruleForm.slip_code"></el-input>
                             </el-col>
                             <el-col :span="6" style="text-align:center">
                                 <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
@@ -198,7 +198,7 @@
 
 <carousel :autoplay="false" :nav="true" :items =1>
     <div class="item">
-      <p>၁. KBZ Pay app ထဲမှ "မှတ်တမ်း"ထဲသို့ဝင်ပါ။</p>
+      <p style="padding:0;">၁. KBZ Pay app ထဲမှ "မှတ်တမ်း"ထဲသို့ဝင်ပါ။</p>
       <img src="~static/images/kbz_ex_one.jpg"  alt="" class="amount_example_img">
     </div>
      <div class="item">
@@ -249,6 +249,12 @@
     .topup {
         padding:0 20px 50px  20px;
     }
+    .topup .el-dialog__header {
+      padding:0;
+    }
+    .topup .owl-theme .owl-nav {
+      margin:0;
+    }
     .topup .el-header {
        background-color :#fff;
 
@@ -264,6 +270,10 @@
     }
     .topup  .el-radio__label {
       padding:0;
+    }
+    .topup .owl-theme .owl-nav {
+      padding:0;
+      margin:0;
     }
     .active_img {
       padding:3px;
