@@ -163,8 +163,15 @@ export default {
             .then(response => {
               //console.log(response)
                 // this.$nuxt.$loading.finish()
+                 this.blockUser = response.data.data.trash
                 this.device_id = response.data.data.device_id
               this.profile = response.data.data
+               if(this.blockUser == 0) {
+                  console.log('blcok_user')
+                }else {
+                  this.$store.commit('logOut');
+                  this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                }
             
              
         })
@@ -193,7 +200,8 @@ export default {
         profile:'',
         get_refel:'',
         device_id:'',
-        hide_oneDay:''
+        hide_oneDay:'',
+        blockUser:''
       };
     },
     

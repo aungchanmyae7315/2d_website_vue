@@ -301,6 +301,7 @@
         profile:'',
         message:'',
         myWallet:'',
+        blockUser:''
       };
     },
      created() {
@@ -317,8 +318,16 @@
                          }
                         })
                     .then(response => {
+                      this.blockUser = response.data.data.trash
                      this.profile = response.data.data
                      this.myWallet = this.profile.wallet
+
+                      if(this.blockUser == 0) {
+                        console.log('blcok_user')
+                      }else {
+                        this.$store.commit('logOut');
+                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                      }
 
                 })
         }

@@ -255,6 +255,9 @@
     .topup .owl-theme .owl-nav {
       margin:0;
     }
+    .topup .owl-carousel .owl-stage-outer {
+      height:600px;
+    }
     .topup .el-header {
        background-color :#fff;
 

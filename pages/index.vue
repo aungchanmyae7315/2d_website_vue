@@ -377,6 +377,7 @@ export default {
 
 
   mounted() {
+ 
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -437,6 +438,7 @@ let lang = localStorage.getItem('locale');
       kweeliveItvId:0,
       serverCurTimeItvId:0,
       myWallet:'',
+      blockUser:''
     
     
       //   activeIndex2: '1',
@@ -673,8 +675,17 @@ let lang = localStorage.getItem('locale');
                          }
                         })
                     .then(response => {
+                      this.blockUser = response.data.data.trash
+                    
                      this.profile = response.data.data
                     this.myWallet = this.profile.wallet 
+
+                     if(this.blockUser == 0) {
+                        console.log('blcok_user')
+                      }else {
+                        this.$store.commit('logOut');
+                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                      }
                   
                   
 
