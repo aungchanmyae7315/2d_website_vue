@@ -488,7 +488,7 @@ export default {
         if (navigator.share) {
           navigator.share({
           title: 'Sein Lucky',
-          text: 'Sein Lucky မှာ 2D ထိုးဖူးလား၊ စိတ်ချရတယ်၊ ငွေသွင်းငွေထုတ် မြန်ဆန်တယ်။ အကောင့်ဖွင့်ရင် ရည်ညွှန်းကုဒ်' +'(' + this.referal_code + ')' + ' ဖြည့်ဖိုမမေ့နဲ့နော်။ ဒေါင်းလုတ်ရန် လင့်ကိုနှိပ်ပါ။ shorturl.at/nxKS6',
+          text: this.$t('share_first_text') +'(' + this.referal_code + ')' + this.$t('share_second_second') + 'shorturl.at/nxKS6',
           
         })
             .then(() => console.log('Successful share'))

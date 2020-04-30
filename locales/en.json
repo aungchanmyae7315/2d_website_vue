@@ -254,17 +254,18 @@
   "cancel":"Cancel",
   "service_time":"Phone Customer Service Time Daily 9:00 am -  6:00 pm",
   "slip_number":"Transaction ID",
-  "slip_number_s":"Transaction ID",
+  "slip_number_s":"Transaction ID last 6 digit",
   "slip_kbz_number":"Transcation No",
-  "slip_kbz_number_s":"Transcation No",
+  "slip_kbz_number_s":"Transcation No 6 digit",
   "slip_number_placeholder":"Transaction Enter",
   "example_text":"View sample",
   "app_share":"Share App and win 5,000 points",
   "app_share_btn":"Share App",
   "my_referral_code":"My Referral Code",
   "phone_call":"Call",
-  "full_name":"Enter Your Full Name"
- 
+  "full_name":"Enter Your Full Name",
+  "share_first_text":"Use Sein Lucky for 2D, the biggest and most reliable platform in Myanmar. Enter referral code",
+ "share_second_second":"when registering. Click the link to download"
 
 
 }

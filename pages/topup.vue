@@ -186,34 +186,30 @@
                                  <el-input   type="number" :placeholder="$t('slip_kbz_number_s')" v-model="ruleForm.slip_code"></el-input>
                             </el-col>
                             <el-col :span="6" style="text-align:center">
-                                <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
-                                    <el-dialog
-                                        
-                                        :visible.sync="centerDialogVisible"
-                                        
-                                        center>
-                                        <div style="text-align:center">
-                                         
-               
-
-<carousel :autoplay="false" :nav="true" :items =1>
-    <div class="item">
-      <p style="padding:0;">၁. KBZ Pay app ထဲမှ "မှတ်တမ်း"ထဲသို့ဝင်ပါ။</p>
-      <img src="~static/images/kbz_ex_one.jpg"  alt="" class="amount_example_img">
-    </div>
-     <div class="item">
-       <p>၂. ငွေလွှဲစားရင်ကိုဖွင့်ပါ</p>
-      <img src="~static/images/kbz_ex_two.jpg"  alt="" class="amount_example_img">
-    </div>
-     <div class="item">
-       <p>၃. အသေးစိတ်ထဲတွင် လုပ်ဆောင်မှုအမှတ် နောက်ဆုံးဂဏန်း(၆)လုံးကြည့်ပါ။</p>
-      <img src="~static/images/kbz_ex_three.jpg"  alt="" class="amount_example_img">
-    </div>
-</carousel>
-                                            
-                                        </div>
-                                         
-                                       
+                              <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
+                                  <el-dialog
+                                      
+                                      :visible.sync="centerDialogVisible"
+                                      
+                                      center>
+                                      <div style="text-align:center">
+                                                                
+                                        <carousel :autoplay="false" :nav="true" :items =1>
+                                            <div class="item">
+                                              <p style="padding:0;">၁. KBZ Pay app ထဲမှ "မှတ်တမ်း"ထဲသို့ဝင်ပါ။</p>
+                                              <img src="~static/images/kbz_ex_one.jpg"  alt="" class="amount_example_img">
+                                            </div>
+                                            <div class="item">
+                                              <p>၂. ငွေလွှဲစားရင်ကိုဖွင့်ပါ</p>
+                                              <img src="~static/images/kbz_ex_two.jpg"  alt="" class="amount_example_img">
+                                            </div>
+                                            <div class="item">
+                                              <p>၃. အသေးစိတ်ထဲတွင် လုပ်ဆောင်မှုအမှတ် နောက်ဆုံးဂဏန်း(၆)လုံးကြည့်ပါ။</p>
+                                              <img src="~static/images/kbz_ex_three.jpg"  alt="" class="amount_example_img">
+                                            </div>
+                                        </carousel>
+                                                                      
+                                      </div>
                                     </el-dialog>
                             </el-col>
                         </el-row>

@@ -127,7 +127,7 @@
 
           <div class="block" data-aos="fade-up" data-aos-duration="700">
   
-            <el-carousel  trigger="click" height="155px">
+            <el-carousel  trigger="click" height="155px" arrow="always">
                <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
                   <div>
                      <a :href="img_slide.link" target="_blank">
