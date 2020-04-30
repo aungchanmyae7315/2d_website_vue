@@ -208,6 +208,7 @@
                                               <img src="~static/images/kbz_ex_three.jpg"  alt="" class="amount_example_img">
                                             </div>
                                         </carousel>
+                                        
                                                                       
                                       </div>
                                     </el-dialog>
@@ -495,9 +496,12 @@ import axios from 'axios'
 import carousel from 'vue-owl-carousel'
 export default {
    components: { carousel },
+ 
     mounted() {
 
-    
+     $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>');
+    $( ".owl-next").html('<i class="fa fa-chevron-right"></i>');
+
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
       setTimeout(() => this.$nuxt.$loading.finish(), 500)

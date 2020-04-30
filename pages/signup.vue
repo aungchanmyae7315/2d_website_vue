@@ -341,11 +341,10 @@ import axios from 'axios'
         color:#000;
     }
     .phone_input {
-        margin-bottom:80px;
+        margin-bottom:50px;
     }
     .sign_page .el-button.is-round {
         width:100%;
-        margin:20px auto;
     }
     .phone_input .el-input__prefix {
         color:green;
