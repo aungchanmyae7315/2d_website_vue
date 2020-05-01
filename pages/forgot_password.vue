@@ -11,7 +11,7 @@
            <p>အကောင့်ပိုင်ဆိုင်‌ကြောင်း အထောက်အထား မေးခွန်းများ ဖြေဆိုရပါမည်။</p><br>
           
            <el-card shadow="always" v-for="(phone , p) in contact" :key="p">
-                <div style="float:left;margin-top:6px;"><i class="el-icon-mobile-phone" style="color:#5AAF46;padding:0 10px;font-size:21;font-weight:bold;"></i>{{phone}}</div>
+                <div style="float:left;margin-top:6px;"><i class="el-icon-mobile-phone" style="color:#5AAF46;padding:0 10px;font-size:21;font-weight:bold;"></i>{{phone.phone}}</div>
                 <el-button round @click="dial(phone)"  style="float:right;margin:0 auto 20px auto;background:#F0F0FF;color:#5AAF46">Call Now</el-button>
             </el-card>
            
