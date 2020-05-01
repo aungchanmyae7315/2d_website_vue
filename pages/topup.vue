@@ -101,7 +101,7 @@
                            
                         </el-form-item>
                     
-                     <p>{{$t('slip_number')}}</p>
+                     <p>{{$t('slip_number')}} ( <span style="color:orange">နောက်ဆုံးဂဏန်း ၆ လုံး</span>)</p>
 
                   
                         <el-form-item 
@@ -171,7 +171,7 @@
                             </el-row>
                         </el-form-item>
                    
-                     <p>{{$t('slip_kbz_number')}}</p>
+                     <p>{{$t('slip_kbz_number')}} ( <span style="color:orange">နောက်ဆုံးဂဏန်း ၆ လုံး</span>)</p>
                   
                         <el-form-item 
 
