@@ -629,7 +629,7 @@ export default {
           if (valid) {
                this.submitted = true
               let token = localStorage.getItem('token');
-            this.bank_id = 3
+            this.bank_id = 2
         var data = {
                     bank_type_id:this.bank_id,
                    
@@ -706,7 +706,7 @@ export default {
           if (valid) {
               this.submitted = true
               let token = localStorage.getItem('token');
-            this.bank_id = 4
+            this.bank_id = 15
         var data = {
                     bank_type_id:this.bank_id,
                    
