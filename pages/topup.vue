@@ -561,7 +561,7 @@ export default {
 
                 })
         }
-         this.$axios.get("/v1/contact")
+         this.$axios.get("v2/v1/contact")
     
             
                 .then(response => {
