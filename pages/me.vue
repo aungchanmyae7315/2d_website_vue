@@ -44,6 +44,9 @@
                        <li><nuxt-link  :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/betstatus_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('bet_history_title')}}</a></nuxt-link></li>
                         <li><nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`"><a href=""><img src="~static/images/icons/2d_result_icon.png" class="me_bet_stauts_icon" alt=""> {{$t('result_title')}}</a></nuxt-link></li>
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
+                        <li style="color:white;padding-left:15px;">
+                          Version: {{$store.state.webAppVersion}}
+                        </li>
                           <!-- <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">App မျှဝေရန် dd</a></nuxt-link></li> -->
                 </div>
                 <!-- <div v-else-if="!isMobile()">
@@ -75,6 +78,9 @@
                          
                         <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">{{$t('app_share')}} </a></nuxt-link></li>
                         <li><a href="#"  @click="dialogVisible = true"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
+                        <li style="color:white;padding-left:15px;">
+                          Version: {{$store.state.webAppVersion}}
+                        </li>
                 </div>
             </ul>   
 

@@ -385,24 +385,32 @@ export default {
       var deviceId = m[1];
       localStorage.setItem("deviceId", deviceId);
     }
-
-
+    //console.dir(this.$store.state.webAppVersion.length);
+    if (this.$store.state.webAppVersion.length == 0){
+      this.$axios.get(`/web-app-version`)
+        .then(response => {
+          // console.dir("version");
+          // console.log(response)   
+          // console.dir(response.data.version);      
+          this.$store.commit('setWebAppVersion', response.data.version);
+        });
+    }
  
     
       this.getDataKwee();
-      this.getDataresult();
+      //this.getDataresult();
       this.updateIsLoggedIn();
       this.updateLang();
-      this.getKweeLiveData();
+      //this.getKweeLiveData();
        
 
-let lang = localStorage.getItem('locale');
-
-      this.$axios.get(`/v2/v1/add_language?language=${lang}`)
-        .then(response => {
+      let lang = localStorage.getItem('locale');
+      this.$store.commit('SET_LANG', lang);
+      // this.$axios.get(`/v2/v1/add_language?language=${lang}`)
+      //   .then(response => {
           
-          console.log(response)         
-        });
+      //     console.log(response)         
+      //   });
    },
   components: {
 
@@ -487,6 +495,8 @@ let lang = localStorage.getItem('locale');
           async getDataresult() {
             this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
+                console.dir("twod-result/live");
+                console.dir(response);
                 this.info_api = response.data.data
                
               })
@@ -676,10 +686,11 @@ let lang = localStorage.getItem('locale');
                         })
                     .then(response => {
                       this.blockUser = response.data.data.trash
-                    
+                    //console.dir(response.data);
                      this.profile = response.data.data
                     this.myWallet = this.profile.wallet 
-
+                    this.currentTime = response.data.data.time;
+                    console.dir(response.data.data.time);
                      if(this.blockUser == 0) {
                         console.log('blcok_user')
                       }else {
@@ -691,12 +702,13 @@ let lang = localStorage.getItem('locale');
 
                 })
       }
+      else{
         this.$axios.get('/v2/v1/server_time')
               .then(response => {
                 console.log(response.data)
                this.currentTime = response.data
               })
-
+      }
     },
 }
 

@@ -7,7 +7,19 @@ export default function ({ isHMR, app, store, route, params, error, redirect }) 
     return error({ message: 'This page could not be found.', statusCode: 404 })
   }
   //Mutate the store's locale once we understand which locale is being requested prior to each page render
-  store.commit('SET_LANG', locale)
+  //store.commit('SET_LANG', locale)
+  
   // Set locale from the query string '?lang='**''
   app.i18n.locale = store.state.locale  
+
+  if (!route.fullPath.match(/wav=/)){
+    if (route.fullPath == "/"){
+      var newUrl = route.fullPath+"?wav="+store.state.webAppVersion;
+    }
+    else{
+      var newUrl = route.fullPath+"&wav="+store.state.webAppVersion;
+    }
+    redirect(newUrl);
+  }
+  //console.dir(route.fullPath);
 }

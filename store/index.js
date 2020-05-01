@@ -15,6 +15,7 @@ const createStore = () => {
             locale: 'en',
             token:'',
             file:'',
+            webAppVersion:'',
             sliderImage:[],
             sliderText:''
         
@@ -23,6 +24,9 @@ const createStore = () => {
           
         },
         mutations: {
+            setWebAppVersion(state, version){
+                state.webAppVersion = version;
+            },
             setSliderImage(state, sliderImage){
                 state.sliderImage = sliderImage;
             },
