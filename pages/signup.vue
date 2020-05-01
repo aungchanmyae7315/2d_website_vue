@@ -329,6 +329,7 @@ import axios from 'axios'
   .step_bar {
       max-width: 480px;
       width:100%;
+      margin-top:20px;
 
   }
   .sign_up_text {
