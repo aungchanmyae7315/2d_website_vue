@@ -5,7 +5,7 @@ export default {
     host: '0.0.0.0' // default: localhost
   },
   
-  loading: '~/components/loading.vue',
+  //loading: '~/components/loading.vue',
   mode: 'spa',
   router: {              // customize nuxt.js router (vue-router).
     middleware: 'i18n'   // middleware all pages of the application
@@ -80,13 +80,14 @@ export default {
  axios: {
   credentials: false,
   //debug:true,
-  //baseURL: "https://api.2dboss.com/api/",
+  baseURL: "https://api.2dboss.com/api/",
  //baseURL: "https://seinlucky123.com/api/",
  //baseURL: "https://build.seinchanthar.com/api/",
-  proxy:true,
-  //proxyHeaders: false,
+  proxy:false,
+  proxyHeaders: false,
   headers: {
-    'Content-Type': 'application/json',
+    //'Content-Type': 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded',
     'X-Requested-With': 'XMLHttpRequest'
   }
 },
@@ -109,25 +110,26 @@ export default {
  // '@nuxtjs/onesignal',
 
   '@nuxtjs/axios',
-  '@nuxtjs/proxy' 
+  // '@nuxtjs/proxy' 
 ],
-proxy: {
-  '/v2': {
-    target: 'https://api.2dboss.com/api/',
-    // pathRewrite: {
-    //   '^/api' : '/'
-    //   }
-    },
-  '/v1': {
-    target: 'https://luke.2dboss.com/api/',
-  },
-  '/luke': {
-    target: 'https://luke.2dboss.com/api/',
-  },  
-  '/web-app-version': {
-    target: 'https://version.seinlucky123.com',
-  },      
-},
+// proxy: {
+//   '/v2': {
+//     target: 'https://api.2dboss.com/api/',
+//     // pathRewrite: {
+//     //   '^/api' : '/'
+//     //   }
+//     },
+//   '/v1': {
+//     target: 'https://luke.2dboss.com/api/',
+//   },
+//   '/luke': {
+//     target: 'https://luke.2dboss.com/api/',
+//   },  
+//   '/web-app-version': {
+//     target: 'https://version.seinlucky123.com',
+//   },      
+// },
+
 // 
 // oneSignal: {
 //   init: {

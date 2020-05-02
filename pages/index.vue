@@ -657,6 +657,7 @@ export default {
             setTimeout(function(){
               self.$axios.get('/v2/v1/slider_image')
                 .then(response => {
+                console.dir(response.data.data);
                 self.slider_images = response.data.data
                 self.$store.commit('setSliderImage', response.data.data);
                 })

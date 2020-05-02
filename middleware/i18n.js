@@ -1,5 +1,6 @@
 export default function ({ isHMR, app, store, route, params, error, redirect }) {
   const defaultLocale = app.i18n.fallbackLocale
+  console.dir("aaaaaaaaaa");
   // If middleware is called from hot module replacement, ignore it
   if (isHMR) return
   const locale = route.query.lang || defaultLocale
@@ -11,7 +12,7 @@ export default function ({ isHMR, app, store, route, params, error, redirect }) 
 
   // Set locale from the query string '?lang='**''
   app.i18n.locale = store.state.locale  
-
+  //console.dir(route);
   if (!route.fullPath.match(/wav=/)){
     if (route.fullPath == "/"){
       var newUrl = route.fullPath+"?wav="+store.state.webAppVersion;
