@@ -584,7 +584,7 @@ export default {
                 })
           // let token = localStorage.getItem('token');
         if(token) {
-              this.$axios.get("/v1/profile",
+              this.$axios.get("/v2/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

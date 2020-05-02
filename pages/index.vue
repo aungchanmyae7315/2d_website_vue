@@ -679,7 +679,7 @@ export default {
               
          let token = localStorage.getItem('token');
       if(token) {
-         this.$axios.get("/v1/profile",
+         this.$axios.get("/v2/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
@@ -690,7 +690,7 @@ export default {
                      this.profile = response.data.data
                     this.myWallet = this.profile.wallet 
                     this.currentTime = response.data.data.time;
-                    console.dir(response.data.data.time);
+                    //console.dir(response.data.data.time);
                      if(this.blockUser == 0) {
                         console.log('blcok_user')
                       }else {

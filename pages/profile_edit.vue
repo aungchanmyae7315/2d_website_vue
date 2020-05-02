@@ -174,7 +174,7 @@
           })
       let token = localStorage.getItem('token');
       if(token) {
-          this.$axios.get("/v1/profile",
+          this.$axios.get("/v2/v1/profile",
               {headers: {
                           "Authorization": "Bearer "+token
                     }
@@ -243,7 +243,7 @@
 
                  console.log(formData);
 
-                this.$axios.post('/v1/profile-photo/update',
+                this.$axios.post('/v2/v1/profile-photo/update',
                   formData
                  ,{
                   headers: {
@@ -263,7 +263,7 @@
 
                   }
                
-                this.$axios.post("/v1/profile/update",data_name,
+                this.$axios.post("/v2/v1/profile/update",data_name,
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

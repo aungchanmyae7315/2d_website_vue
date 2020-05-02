@@ -8,7 +8,7 @@ export default function ({ isHMR, app, store, route, params, error, redirect }) 
   }
   //Mutate the store's locale once we understand which locale is being requested prior to each page render
   //store.commit('SET_LANG', locale)
-  
+
   // Set locale from the query string '?lang='**''
   app.i18n.locale = store.state.locale  
 
@@ -21,5 +21,6 @@ export default function ({ isHMR, app, store, route, params, error, redirect }) 
     }
     redirect(newUrl);
   }
+
   //console.dir(route.fullPath);
 }

@@ -79,11 +79,12 @@ export default {
   */
  axios: {
   credentials: false,
-  baseURL: "https://api.2dboss.com/api/",
+  //debug:true,
+  //baseURL: "https://api.2dboss.com/api/",
  //baseURL: "https://seinlucky123.com/api/",
  //baseURL: "https://build.seinchanthar.com/api/",
-
-  proxyHeaders: false,
+  proxy:true,
+  //proxyHeaders: false,
   headers: {
     'Content-Type': 'application/json',
     'X-Requested-With': 'XMLHttpRequest'
@@ -94,7 +95,7 @@ export default {
     '@/plugins/axios',
     '@/plugins/aos',
     '~/plugins/i18n.js',
-  
+
   ],
   /*
   ** Nuxt.js dev-modules
@@ -108,8 +109,25 @@ export default {
  // '@nuxtjs/onesignal',
 
   '@nuxtjs/axios',
- 
+  '@nuxtjs/proxy' 
 ],
+proxy: {
+  '/v2': {
+    target: 'https://api.2dboss.com/api/',
+    // pathRewrite: {
+    //   '^/api' : '/'
+    //   }
+    },
+  '/v1': {
+    target: 'https://luke.2dboss.com/api/',
+  },
+  '/luke': {
+    target: 'https://luke.2dboss.com/api/',
+  },  
+  '/web-app-version': {
+    target: 'https://version.seinlucky123.com',
+  },      
+},
 // 
 // oneSignal: {
 //   init: {

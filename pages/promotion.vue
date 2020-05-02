@@ -42,10 +42,18 @@
 export default {
      layout: 'promotionLayout',
      mounted() {
-      this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-      })
-      
+    //   this.$nextTick(() => {
+    //   this.$nuxt.$loading.start()
+    //   })
+       this.$axios.get("/v2/v1/promotion")
+    
+            
+                .then(response => {
+                    console.log(response.data.data)
+                    this.$nuxt.$loading.finish()
+                    this.promotions = response.data.data
+            });
+                  
     },
      data() {
        return {
@@ -60,14 +68,14 @@ export default {
       }
      },
     created() {
-       this.$axios.get("/v2/v1/promotion")
+    //    this.$axios.get("/v2/v1/promotion")
     
             
-                .then(response => {
-                    console.log(response.data.data)
-                    this.$nuxt.$loading.finish()
-                    this.promotions = response.data.data
-            });
+    //             .then(response => {
+    //                 console.log(response.data.data)
+    //                 this.$nuxt.$loading.finish()
+    //                 this.promotions = response.data.data
+    //         });
      },
 }
 </script>

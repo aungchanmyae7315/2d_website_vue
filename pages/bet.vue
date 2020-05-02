@@ -692,7 +692,7 @@ export default {
     
         let token = localStorage.getItem('token');
         if(token) {
-             this.$axios.get("/v1/profile",
+             this.$axios.get("/v2/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
@@ -702,19 +702,21 @@ export default {
                      this.profile = response.data.data
                      this.myWallet = this.profile.wallet
                       this.myPointWallet = this.profile.point_wallet
-                   
+                    this.server_time = response.data.data.time;
                 })
         } 
+        else{
           this.$axios.get('/v2/v1/server_time')
               .then(response => {
                 console.log(response.data)
                this.server_time = response.data
-              })        
+              })   
+        }           
     },
     
      methods: {
         thousands_separators(num){
-            console.dir(num);
+            //console.dir(num);
           if (num == undefined){
               return "";
           }  
