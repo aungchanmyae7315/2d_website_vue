@@ -86,8 +86,8 @@ export default {
   proxy:false,
   proxyHeaders: false,
   headers: {
-    //'Content-Type': 'application/json',
-    'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/json',
+    //'Content-Type': 'application/x-www-form-urlencoded',
     'X-Requested-With': 'XMLHttpRequest'
   }
 },

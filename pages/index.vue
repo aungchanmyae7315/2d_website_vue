@@ -389,9 +389,6 @@ export default {
     if (this.$store.state.webAppVersion.length == 0){
       this.$axios.get(`/web-app-version`)
         .then(response => {
-          // console.dir("version");
-          // console.log(response)   
-          // console.dir(response.data.version);      
           this.$store.commit('setWebAppVersion', response.data.version);
         });
     }
@@ -401,7 +398,7 @@ export default {
       //this.getDataresult();
       this.updateIsLoggedIn();
       this.updateLang();
-      //this.getKweeLiveData();
+      this.getKweeLiveData();
        
 
       let lang = localStorage.getItem('locale');
