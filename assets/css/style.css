@@ -266,13 +266,13 @@ input[type=number] {
     list-style: none;
   }
   
-  .el-carousel_label .slide_inner_icon {
+  .run_bar .slide_inner_icon {
      width:20px;
      height: auto;
      padding:0;
      margin:0;
   }
-  .el-carousel_label h3 {
+  .run_bar {
     color: goldenrod;
     font-size: 14px;
     opacity: 0.95;
@@ -280,7 +280,9 @@ input[type=number] {
     padding:0 10px;
     position:relative;
    
-    top:126px;
+    bottom:38px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
     z-index: 2;
     background: rgba(25, 61, 26, 0.705);
     margin: 0;
@@ -419,9 +421,9 @@ input[type=number] {
     font-size: 14pt;
     color:rgba(173, 174, 183, 1);
 }
-.n_d_t {
+/* .n_d_t {
     margin:25px auto 0px auto;
-}
+} */
 .card_one , .card_two{
   
    border:2px solid #FFEA72;
