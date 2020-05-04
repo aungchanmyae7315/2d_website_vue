@@ -16,7 +16,7 @@
                   <li v-if="this.profile.name == null">{{this.profile.phone}}</li>
                      <li v-else>{{this.profile.name}}</li>
                     <!-- <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`"> -->
-                     <li>{{$t('my_referral_code')}}: <span class="edit_profile">{{this.get_refel}}</span></li>
+                     <li>{{$t('my_referral_code')}}: <span class="edit_profile">{{this.get_refel_gen}}</span></li>
                     <!-- </nuxt-link> -->
                   </ul>
                   </div>
@@ -191,6 +191,7 @@ export default {
               // location.reload();
               console.log(response)
               this.get_refel = response.data.data.referal_code
+              this.get_refel_gen = response.data.data.generate_code
               this.hide_oneDay = response.data.data.status
               console.log(this.hide_oneDay)
               console.log(this.get_refel)
@@ -205,6 +206,7 @@ export default {
         fullscreenLoading: false,
         profile:'',
         get_refel:'',
+        get_refel_gen:'',
         device_id:'',
         hide_oneDay:'',
         blockUser:''
