@@ -124,8 +124,27 @@
               </div>
         </div>
 
-
-          <div class="block" data-aos="fade-up" data-aos-duration="700">
+        <carousel :autoplay="false" :nav="false" v-if="loaded" :items =1>
+    
+            <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
+                 <a :href="img_slide.link" target="_blank">
+                    <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:160px;">
+                      <div slot="placeholder" class="image-slot">
+                        Loading<span class="dot">...</span>
+                      </div>
+                    </el-image>
+                  </a>
+            </div>
+        </carousel>
+        <h3 class="run_bar"> 
+          <div class="scroll-left">
+            <p> 
+                <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
+              {{this.slider_text.text}}</p>
+          </div>
+        </h3>
+                   
+          <!-- <div class="block" data-aos="fade-up" data-aos-duration="700">
   
             <el-carousel  trigger="click" height="155px" arrow="always">
                <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
@@ -153,7 +172,7 @@
                     </div>
             </el-carousel>
 
-          </div>  
+          </div>   -->
           <div class="row n_d_t">
             <div class="col">
                
@@ -367,9 +386,10 @@
 <script>
 
 import axios from 'axios'
+import carousel from 'vue-owl-carousel'
 
 export default {
-
+ components: { carousel },
     getters: {},
   mutations: {},
   actions: {},
@@ -378,6 +398,73 @@ export default {
 
   mounted() {
  
+
+  var self = this;
+          if (this.$store.state.sliderImage.length > 0){
+            self.slider_images = this.$store.state.sliderImage;
+             if(this.slider_images  !== null) {
+                        this.loaded = true;
+                    }
+          }
+          else{
+            // setTimeout(function(){
+              self.$axios.get('/v2/v1/slider_image')
+                .then(response => {
+                  
+                console.dir(response.data.data);
+                 
+                 if(self.slider_images  !== null) {
+                        this.loaded = true;
+                    }
+
+                self.slider_images = response.data.data
+               
+
+                // self.$store.commit('setSliderImage', response.data.data);
+                })
+               
+            // }, 2000);
+              self.$axios.get('/v2/v1/slider_text')
+                .then(response => {
+                console.log(response)
+                 if(self.slider_text  !== null) {
+                        this.loaded = true;
+                    }
+                self.slider_text = response.data.data[0];
+                })
+
+                }
+                
+
+          // if (this.$store.state.sliderText.length > 0){
+          //    if(self.slider_text  !== null) {
+          //               this.loaded = true;
+          //           }
+          //   self.slider_text = this.$store.state.sliderText;
+          // }
+          // else{
+          //   setTimeout(function(){
+          //   self.$axios.get('/v2/v1/slider_text')
+          //       .then(response => {
+          //       console.log(response)
+          //        if(self.slider_text  !== null) {
+          //               this.loaded = true;
+          //           }
+          //       self.slider_text = response.data.data[0];
+          //       self.$store.commit('setSliderText', response.data.data);
+          //       })
+          //   }, 4000);
+          // }
+
+
+
+
+
+
+
+
+
+
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -409,13 +496,13 @@ export default {
       //     console.log(response)         
       //   });
    },
-  components: {
 
-  },
   
   
   data() {
+    
     return {
+     
       last_date:'',
       dialogVisible: false,
        isActive: true,
@@ -443,11 +530,12 @@ export default {
       kweeliveItvId:0,
       serverCurTimeItvId:0,
       myWallet:'',
-      blockUser:''
-    
+      blockUser:'',
+      loaded:'',
     
       //   activeIndex2: '1',
     }
+    
   },
  
   destroyed () {
@@ -646,34 +734,7 @@ export default {
               })
         //  }.bind(this), 3000)
   }
-          var self = this;
-          if (this.$store.state.sliderImage.length > 0){
-            self.slider_images = this.$store.state.sliderImage;
-          }
-          else{
-            setTimeout(function(){
-              self.$axios.get('/v2/v1/slider_image')
-                .then(response => {
-                console.dir(response.data.data);
-                self.slider_images = response.data.data
-                self.$store.commit('setSliderImage', response.data.data);
-                })
-            }, 2000);
-          }
-
-          if (this.$store.state.sliderText.length > 0){
-            self.slider_text = this.$store.state.sliderText;
-          }
-          else{
-            setTimeout(function(){
-            self.$axios.get('/v2/v1/slider_text')
-                .then(response => {
-                console.log(response)
-                self.slider_text = response.data.data[0];
-                self.$store.commit('setSliderText', response.data.data);
-                })
-            }, 4000);
-          }
+        
               
          let token = localStorage.getItem('token');
       if(token) {
@@ -715,7 +776,18 @@ export default {
 
 <style>
 
-
+.owl-theme .owl-nav.disabled + .owl-dots {
+  position: absolute;
+  right:0;
+  left:0;
+  top:97px;
+}
+.main_page .owl-carousel .owl-stage-outer {
+  padding:0 !important;
+}
+.main_page .el-image {
+  border-radius: 24px !important;
+}
 @keyframes ldio-ct1tsjzqdg5-o {
     0%    { opacity: 1; transform: translate(0 0) }
    49.99% { opacity: 1; transform: translate(40px,0) }
