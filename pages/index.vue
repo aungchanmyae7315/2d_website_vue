@@ -427,9 +427,7 @@ export default {
               self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
                 console.log(response)
-                 if(self.slider_text  !== null) {
-                        this.loaded = true;
-                    }
+              
                 self.slider_text = response.data.data[0];
                 })
 
