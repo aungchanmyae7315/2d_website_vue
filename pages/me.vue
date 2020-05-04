@@ -190,7 +190,7 @@ export default {
               //  this.$nuxt.$loading.finish()
               // location.reload();
               console.log(response)
-              this.get_refel = response.data.data.generate_code
+              this.get_refel = response.data.data.referal_code
               this.hide_oneDay = response.data.data.status
               console.log(this.hide_oneDay)
               console.log(this.get_refel)
