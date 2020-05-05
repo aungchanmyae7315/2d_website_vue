@@ -211,7 +211,7 @@
                       <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="currentDate"></span>
                       <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="currentDate"></span>
                       <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
-                      <span v-else v-text="this.last_date"></span>
+                      <span v-else v-text="currentDate"></span>
                       <br>
                   
                       <span v-text="this.breakTime"></span>
