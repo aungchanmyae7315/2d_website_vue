@@ -94,7 +94,7 @@
                          </div>
                        
                          <p> လက်ကျန်ပွိုင့်</p>
-                         <h6> {{this.thousands_separators(myPointWallet)}} </h6>
+                         <h6> {{this.myPointWallet}} </h6>
                     </el-radio>
                        <el-divider direction="vertical"></el-divider>
                     <el-radio v-model="radio" label="1">
@@ -104,7 +104,7 @@
                         </div>
                         
                        <p> လက်ကျန်ငွေ</p> 
-                       <h6>{{this.thousands_separators(myWallet)}}</h6>
+                       <h6>{{this.myWallet}}</h6>
                         
                     </el-radio>
                    
@@ -117,7 +117,7 @@
                          </div>
                        
                          <p> လက်ကျန်ပွိုင့်</p>
-                         <h6> {{profile.point_wallet}} </h6>
+                         <h6> {{this.myPointWallet}} </h6>
                     </el-radio>
                        <el-divider direction="vertical"></el-divider>
                     <el-radio v-model="radio" label="1">
@@ -127,7 +127,7 @@
                         </div>
                         
                        <p> လက်ကျန်ငွေ</p> 
-                       <h6>{{profile.wallet}}</h6>
+                       <h6>{{this.myWallet}}</h6>
                         
                     </el-radio>
                    
@@ -201,8 +201,8 @@ export default {
                     .then(response => {
                         console.log(response)
                      this.profile = response.data.data
-                      this.myWallet = this.profile.wallet
-                      this.myPointWallet = this.profile.point_wallet
+                      this.myWallet = this.thousands_separators(this.profile.wallet)
+                      this.myPointWallet = this.thousands_separators(this.profile.point)
 
                 })
         }      

@@ -118,7 +118,7 @@
              <el-row> 
                   <nuxt-link :to="`${$t('/seinlucky_point')}?lang=${$store.state.locale}`">
                         <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance_point')}}: {{this.thousands_separators(myPointWallet)}}</div></el-col>
+                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance_point')}}: {{this.thousands_separators(myPointWallet)}} </div></el-col>
                     </nuxt-link>
 
                        <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
@@ -701,7 +701,7 @@ export default {
                         console.log(response)
                      this.profile = response.data.data
                      this.myWallet = this.profile.wallet
-                      this.myPointWallet = this.profile.point_wallet
+                      this.myPointWallet = this.profile.point
                     this.server_time = response.data.data.time;
                 })
         } 
