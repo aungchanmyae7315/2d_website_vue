@@ -278,7 +278,7 @@
 
     .topup .point_amount .el-radio , .el-radio__label {
         margin:0;
-        padding:0 25px;
+        padding:0 15px;
         line-height: 0;
     }
     .topup .point_amount .el-card__body {
