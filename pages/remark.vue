@@ -104,7 +104,7 @@
                         </div>
                         
                        <p> လက်ကျန်ငွေ</p> 
-                       <h6>{{this.myWallet}}</h6>
+                       <h6>{{this.myWallet}} {{$t('kyat')}}</h6>
                         
                     </el-radio>
                    
@@ -127,7 +127,7 @@
                         </div>
                         
                        <p> လက်ကျန်ငွေ</p> 
-                       <h6>{{this.myWallet}}</h6>
+                       <h6>{{this.myWallet}} {{$t('kyat')}}</h6>
                         
                     </el-radio>
                    
