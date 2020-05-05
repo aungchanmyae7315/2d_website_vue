@@ -611,7 +611,7 @@ export default {
             this.BetCurrentTime();
                  var currentDate  = moment().day();
                  console.log(currentDate)
-                if(currentDate == 2 || currentDate == 6) {
+                if(currentDate == 2 || currentDate == 3) {
                         this.isActive = true
                           this.time_countdown = this.$root.$t('close_text');
                    }
