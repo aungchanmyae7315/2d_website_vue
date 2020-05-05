@@ -610,10 +610,11 @@ export default {
         setInterval(() => {
             this.BetCurrentTime();
                  var currentDate  = moment().day();
-                // if(currentDate == 0 || currentDate == 6) {
-                       //  this.isActive = true
-                          // this.time_countdown = this.$root.$t('close_text');
-                  //  }
+                 console.log(currentDate)
+                if(currentDate == 2 || currentDate == 6) {
+                        this.isActive = true
+                          this.time_countdown = this.$root.$t('close_text');
+                   }
         }, 1000);
     },
     computed: {

@@ -12,64 +12,48 @@
 
                <p>{{$t('please_transfer_top-up_money_to_one')}}</p>
 
-        <p>{{$t('upload_he_image_of_the_bank')}}</p>
+                <p>{{$t('upload_he_image_of_the_bank')}}</p>
 
-        
-
-            <el-row  v-if="radio == 1" class="point_amount">
-                <el-col :span="12" style="text-align:right">
-                      <el-radio v-model="radio" label="2" >
+               <el-card v-if="radio == 1" class="point_amount">
+                     <el-radio v-model="radio" label="2" >
                          <div>
                                 <img src="~static/images/kbz_t.jpg"  alt="">
                                
                          </div>
-                       
-                       
                     </el-radio>
-                </el-col>
-                <el-col :span="12" style="text-align:left">
+                       <el-divider direction="vertical"></el-divider>
                     <el-radio v-model="radio" label="1">
-                        
+                        <div>
+                            <img src="~static/images/wavepay.jpg"  alt="">
                           
-                            <img src="~static/images/wavepay.jpg" class="active_img"  alt="">
-                          
-                      
-
+                        </div>
                     </el-radio>
-                </el-col>
-             </el-row>
-             <el-row v-else class="point_amount">
-                  <el-col :span="12" style="text-align:right" >
-                    <el-radio v-model="radio" label="2"  >
-                        
+                   
+                </el-card>
+                <el-card v-else class="point_amount">
+                     <el-radio v-model="radio" label="2" >
+                         <div>
                                 
-                                <img src="~static/images/kbz.jpg" class="active_img"  alt="">
-                         
-
+                                <img v-if="radio == 2" src="~static/images/kbz.jpg"  alt="">
+                                 <img v-else src="~static/images/kbz_t.jpg"  alt="">
+                         </div>
                     </el-radio>
-                  </el-col>
-                  <el-col :span="12" style="text-align:left">
-                          
+                       <el-divider direction="vertical"></el-divider>
                     <el-radio v-model="radio" label="1">
                         <div>
                            
                             <img src="~static/images/wavepay_t.jpg"  alt="">
                         </div>
                         
+                    </el-radio>
+                   
+                </el-card>
+               
+
+                 <div class="btn_group" v-if="radio == 1">
+                      <p>{{$t('Please_enter_transferred')}}</p>
                      
                         
-                    </el-radio>
-                  </el-col>
-             </el-row>
-
-     
-               
-            
-               
-           
-              <br>
-                <div v-if="radio == 1">
-                    <p>{{$t('Please_enter_transferred')}}</p>
                     <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                         <el-form-item 
                         prop="tran_amount"
@@ -137,11 +121,10 @@
                     </el-form>
                    
                          <el-button round @click="slip_upload_wave('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
-                </div>
-                <div v-else>
-                   
-                     <p>{{$t('Please_enter_transferred')}}</p>
-                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                  </div>
+                  <div class="btn_group" v-else-if="radio == 2">
+                       <p>{{$t('Please_enter_transferred')}}</p>
+                          <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                         <el-form-item 
                         prop="tran_amount"
                     :rules="[
@@ -220,13 +203,12 @@
                     </el-form>
                    
                          <el-button round @click="slip_upload_kbz('ruleForm')"  :disabled='submitted'>{{$t('Submit')}}</el-button>
-              
-                </div>
-
-           
-           
-
-
+                  
+                  </div>
+                  <div v-else>
+                    <br>
+                      Please Choose Bank Type
+                  </div>
 
             <br>
             <p>{{$t('need_help?_please_contact')}}</p>
@@ -296,11 +278,11 @@
 
     .topup .point_amount .el-radio , .el-radio__label {
         margin:0;
-        padding:0 30px;
+        padding:0 25px;
         line-height: 0;
     }
     .topup .point_amount .el-card__body {
-        padding:10px 0 0 0;
+       text-align: center;
     }
     .el-page-header__left {
         margin:0;
@@ -499,8 +481,6 @@ export default {
  
     mounted() {
 
-     $( ".owl-prev").html('<i class="fa fa-chevron-left"></i>');
-    $( ".owl-next").html('<i class="fa fa-chevron-right"></i>');
 
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
@@ -514,7 +494,7 @@ export default {
         return { 
          
             bank_type:'',
-            radio: '1',
+            radio: '',
             centerDialogVisible: false,
             centerDialogVisible_Wave:false,
              centerDialogVisible_Kbz:false,
@@ -661,7 +641,7 @@ export default {
                     this.submitted = false
                       this.$message({
                             showClose: true,
-                          message: 'Your Slip Code is exist',
+                          message: 'သင်၏ Slip Code  အသုံးပြုပြီးပါပြီ ',
                           type: 'warning',
                         });
                 }else {
