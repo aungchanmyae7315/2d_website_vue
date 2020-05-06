@@ -140,6 +140,33 @@
        <el-main>
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_bet">
+                   <el-card class="holiday" v-bind:class="{ bet_off: isMorningEvening}">
+                       <img src="~static/images/icons/sat_sun_off_icon.png" alt="">
+                       <p>ထီထိုးချိန်ကျော်လွန်သွားပါပြီ</p>
+                       <el-row style="color:#fff;">
+                           <el-col :span="8">
+                               <div>မနက်</div>
+                                 <div>ည</div>
+                           </el-col>
+                           <el-col :span="16">
+                               <div>11:55 AM - 12:01 PM</div>
+                               <div>03:55 PM - 04:30 PM</div>
+                           </el-col>
+                       </el-row>
+                    </el-card>
+                   <el-card class="holiday" v-bind:class="{ bet_off: isHoliday}">
+                       <img src="~static/images/icons/sat_sun_off_icon.png" alt="">
+                       <p>စနေ၊ တနင်္ဂနွေနေ့များတွင် ထီပိတ်ပါသည်။</p>
+                    </el-card>
+                     <el-card class="holiday" v-bind:class="{ bet_off: isHolidays}">
+                       <img src="~static/images/icons/sat_sun_off_icon.png" alt="">
+                       <h6 >Holiday Name</h6>
+                       <span>ယနေ့ "{{this.holidays.name}}"</span>
+                       <span>ဖြစ်သောကြောင့် ထီပိတ်ပါသည်။</span>
+                       <el-button type="info" @click="offDate" round class="holiday_btn">
+                           အခြားထီပိတ်ရက်များကိုကြည့်ရန် နှိပ်ပါ
+                       </el-button>
+                    </el-card>
                 <div class="all_btn" v-bind:class="{ bet_off: isActive}">
                     
                    
@@ -160,10 +187,33 @@
         </div>
         </el-main>
             </el-form>
+           
     </section>
     
 </template>
 <style>
+    .holiday {
+        border: 2px solid #FFEA72;
+        border-radius: 13px;
+        padding: 0  20px;
+        margin: 50px auto;
+        background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);
+    }
+
+    .holiday img {
+        width:80px;
+        height:auto;
+    }
+    .holiday p , .holiday h6 , .holiday span{
+        color:#fff;
+    }
+    .holiday_btn {
+        background: linear-gradient(#24A7EC, #1C55C8);
+        color:#fff;
+        font-weight: bold;
+        border:0;
+        margin:10px auto;
+    }
     .bet_container .el-header {
         color:#fff;
         padding:20px;
@@ -236,6 +286,7 @@
     .fast_btn {
         background: #D4E2FF;
         color: green;
+        width:90%;
        
     }
  
@@ -600,19 +651,25 @@ import axios from 'axios'
 export default {
     mounted() {
            
-    //   this.$nextTick(() => {
-    //   this.$nuxt.$loading.start()
-   
-    //  setTimeout(() => this.$nuxt.$loading.finish(), 2000)
-    //   })
+        this.$axios.get('/v2/v1/holiday')
+              .then(response => {
+                
+               this.holidays = response.data
+             
+                if(this.holidays.status == 1) {
+                    this.isHolidays = false
+                     this.isMorningEvening  = false
+                }
+              })   
     
         this.updateIsLoggedIn();
         setInterval(() => {
             this.BetCurrentTime();
                  var currentDate  = moment().day();
-                 console.log(currentDate)
-                if(currentDate == 2 || currentDate == 3) {
+                
+                if(currentDate == 0 || currentDate == 6) {
                         this.isActive = true
+                        this.isHoliday = false
                           this.time_countdown = this.$root.$t('close_text');
                    }
         }, 1000);
@@ -623,11 +680,15 @@ export default {
  
     data() {
         return {
+            holidays:'',
             submitted:false,
             time_countdown:'',
             one_result:'',
             evening_time:'',
             isActive:true,
+            isHoliday:true,
+            isHolidays:true,
+            isMorningEvening:true,
             hasError:'',
             currentTime: '',
             morning_from:this.morning_from,
@@ -676,10 +737,13 @@ export default {
                 
                     if(this.serverTime  >  this.morning_from && this.serverTime < this.morning_to ) {
                         this.isActive = true
+                        
                     }else if(this.serverTime > this.morning_to && this.serverTime <  this.evening_from ) {
                         this.isActive = false
+                        
                     }else if(this.serverTime > this.evening_from && this.serverTime < this.evening_to ) {
                         this.isActive = true
+                       
                     }else if(this.serverTime > this.evening_to) {
                         this.isActive = false
                     }else {
@@ -699,7 +763,7 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
+                     
                      this.profile = response.data.data
                      this.myWallet = this.profile.wallet
                       this.myPointWallet = this.profile.point
@@ -709,7 +773,7 @@ export default {
         else{
           this.$axios.get('/v2/v1/server_time')
               .then(response => {
-                console.log(response.data)
+               
                this.server_time = response.data
               })   
         }           
@@ -741,6 +805,10 @@ export default {
                 seconds: seconds
             };
         },
+        offDate() {
+            alert('ol')
+            this.$router.push(`/holiday_page?lang=${this.$store.state.locale}`); 
+        },
             BetCurrentTime(){
                this.currentTime = moment().format('HH:mm:ss');
     
@@ -756,12 +824,14 @@ export default {
    
                 if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
                         this.isActive = true
+                         this.isMorningEvening  = false
                        return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
                        this.isActive = false
                         return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
                     }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
                          this.isActive = true
+                        this.isMorningEvening  = false
                         return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.currentTime > this.evening_to) {
                          this.isActive = false
