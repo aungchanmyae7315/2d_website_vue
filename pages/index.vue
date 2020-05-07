@@ -142,8 +142,7 @@
                 <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
               {{this.slider_text.text}}</p>
           </div>
-        </h3>
-                   
+        </h3>     
           <!-- <div class="block" data-aos="fade-up" data-aos-duration="700">
   
             <el-carousel  trigger="click" height="155px" arrow="always">
