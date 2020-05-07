@@ -44,6 +44,9 @@ export default {
 .main_topup_youtube .el-page-header__content {
     color:#fff;
 }
+.main_topup_youtube .hideScrollBar {
+    padding-top:0;
+}
 .topup_youtube {
     padding:0 20px;
 }

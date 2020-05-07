@@ -10,9 +10,9 @@
                  <!-- </nuxt-link> -->
             </el-header>
 
-               <p>{{$t('please_transfer_top-up_money_to_one')}}</p>
+               <p style="color:#000;">{{$t('please_transfer_top-up_money_to_one')}}</p>
 
-                <p>{{$t('upload_he_image_of_the_bank')}}</p>
+                <p style="color:#000;">{{$t('upload_he_image_of_the_bank')}}</p>
 
                <el-card v-if="radio == 1" class="point_amount">
                      <el-radio v-model="radio" label="2" >
@@ -206,8 +206,7 @@
                   
                   </div>
                   <div v-else>
-                    <br>
-                      Please Choose Bank Type
+
                   </div>
 
             <br>

@@ -12,7 +12,7 @@ const createStore = () => {
             getBet:'',
             updateLang:true,
             locales: ['en', 'uni','zg','zh'],
-            locale: 'en',
+            locale: 'uni',
             token:'',
             file:'',
             webAppVersion:'',
