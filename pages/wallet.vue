@@ -57,8 +57,8 @@
              <div class="longText" id="hidingScrollBar">
                 <div class=" hideScrollBar_wallet ">
                   <div class="topup_withdraw">
-                     <a href="https://www.seinlucky.com/topup"> <img src="~static/images/topup_withdraw/learn_icon.png" alt="" > <p class="under-below">{{$t('How to top up money?')}}</p></a>
-                     <a href="https://www.seinlucky.com/withdraw"> <img src="~static/images/topup_withdraw/learn_icon.png" alt=""><p class="under-below">{{$t('How to withdraw money?')}}</p></a>
+                        <nuxt-link  :to="`${$t('/topup_youtube')}?lang=${$store.state.locale}`"><img src="~static/images/topup_withdraw/learn_icon.png" alt="" > <p class="under-below">{{$t('How to top up money?')}}</p></nuxt-link>
+                         <nuxt-link  :to="`${$t('/withdraw_youtube')}?lang=${$store.state.locale}`"> <img src="~static/images/topup_withdraw/learn_icon.png" alt=""><p class="under-below">{{$t('How to withdraw money?')}}</p></nuxt-link>
                   </div>
                     
                 <el-card style="width:98%" data-aos="fade-up" data-aos-duration="800">

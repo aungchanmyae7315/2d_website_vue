@@ -144,13 +144,13 @@
                        <img src="~static/images/icons/sat_sun_off_icon.png" alt="">
                        <p>ထီထိုးချိန်ကျော်လွန်သွားပါပြီ</p>
                        <el-row style="color:#fff;">
-                           <el-col :span="8">
+                           <el-col :span="4">
                                <div>မနက်</div>
                                  <div>ည</div>
                            </el-col>
-                           <el-col :span="16">
-                               <div>11:55 AM - 12:01 PM</div>
-                               <div>03:55 PM - 04:30 PM</div>
+                           <el-col :span="20">
+                               <div>{{this.morning_from}} AM - {{this.morning_to}} PM</div>
+                               <div>{{this.evening_from}} PM - {{this.evening_to}} PM</div>
                            </el-col>
                        </el-row>
                     </el-card>
@@ -195,7 +195,6 @@
     .holiday {
         border: 2px solid #FFEA72;
         border-radius: 13px;
-        padding: 0  20px;
         margin: 50px auto;
         background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);
     }
@@ -773,7 +772,7 @@ export default {
         else{
           this.$axios.get('/v2/v1/server_time')
               .then(response => {
-               
+               console.log(response)
                this.server_time = response.data
               })   
         }           
@@ -821,22 +820,28 @@ export default {
                 var difference_two = mo_to - ev_from;
                 var getAllTime = this.convertMS(difference);
                 var getAllTime_two = this.convertMS(difference_two);
-   
+                    console.log(this.morning_to)
                 if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
                         this.isActive = true
                          this.isMorningEvening  = false
                        return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
+                        this.isMorningEvening = true
                        this.isActive = false
                         return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
                     }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
                          this.isActive = true
+                       
+                      
                         this.isMorningEvening  = false
                         return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.currentTime > this.evening_to) {
+
                          this.isActive = false
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }else {
+                        
+                        this.isMorningEvening = false
                         //   this.isActive = true
                         // return this.time_countdown = this.$root.$t('close_text');
                        this.isActive = false
