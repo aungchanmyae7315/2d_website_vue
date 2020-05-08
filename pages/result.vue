@@ -169,7 +169,7 @@ export default {
          },
      },
      created() {
-          this.$axios.get("/v1/twod-result")
+          this.$axios.get("/v2/v1/twod-result")
       
                 
                     .then(response => {
