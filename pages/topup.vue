@@ -525,7 +525,7 @@ export default {
     },
      created() {
       
-          this.$axios.get('/v1/admin-bank')
+          this.$axios.get('/v2/v1/smart_bank_type')
               .then(response => {
                  this.kbz_bank_id = response.data.data[0].id
                  this.wave_bank_id = response.data.data[1].id
