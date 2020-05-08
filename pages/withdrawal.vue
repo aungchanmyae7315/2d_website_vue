@@ -264,20 +264,21 @@ export default {
                      this.res_data_status = response.data.data
                       
                     if(this.res_status == 3 ) {
-                       
+                         this.submitted = false
                             this.$notify({
                                duration:0,
                                 message:this.$t('password_invalid'),
                             type: 'warning'
                             }); 
                     }else if(this.res_status == 2) {
+                          this.submitted = false
                               this.$notify({
                                
                                 message:this.$t('amount_invalid'),
                                 type: 'warning'
                             }); 
                     }else if(this.res_status == 1 ) {
-                            
+                              this.submitted = false
                             this.$notify({
                                
                                 message:this.$t('amount_invalid'),

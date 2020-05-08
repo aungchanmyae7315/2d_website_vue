@@ -77,14 +77,14 @@
                       </el-image>
                       <div  class="avatar_text">
                         <ul style="padding-top:18px;">
-                          <li style="font-size:10px;">{{bank_info.bank_name}}</li>
-                          <li style="font-size:10px;" class="bank_number">
+                          <li style="font-size:14px;">{{bank_info.bank_name}}</li>
+                          <li style="font-size:14px;" class="bank_number">
                             <span class="code text-red">{{ bank_info.card_number }}</span>
                             <input type="hidden" readonly :id="'code'+(bank_info.id)" :value="bank_info.card_number">
                           </li>
                         </ul>
                         </div>
-                        <div class="result_icon">
+                        <div class="result_icon" style="padding-top:18px;">
                             <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode(bank_info.id)">
                             {{ $t('Copy') }}
                           </span>

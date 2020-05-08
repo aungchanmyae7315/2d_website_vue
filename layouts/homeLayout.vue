@@ -7,13 +7,13 @@
                 
             </li>
             <li v-else>
-                 <nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`">
+                 <nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`"> 
 
-                  <div class="noti" type="primary" @click="loading"
-                  v-loading.fullscreen.lock="fullscreenLoading">
-                    <img src="~static/images/noti.png" alt="logo">
+                  <div @click="goNotiPage" class="noti" type="primary">
+                    <img v-if="this.readed == 'null' " src="~static/images/noti.png" alt="logo">
+                     <img v-else src="~static/images/noti_t.png" alt="logo">
                   </div>
-                  </nuxt-link>
+                   </nuxt-link> 
             </li>
             <li>
                  <img src="~static/images/logo.png" class="logo" alt="logo">
@@ -105,8 +105,28 @@
 </template>
 <script>
 export default {
+  mounted() {
+      let token = localStorage.getItem('token');
+        var data =  moment().format('YYYY-MM-DD HH:mm:ss')
+        console.log(data)
+        if(token) {
+                this.$axios.get("/v2/v1/notification",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                   
+                        this.readed = response.data.read_at
+                  console.log('lee pal')
+                     console.log(this.readed)
+                    
+                })
+        }
+  },
   data() {
     return {
+      readed:'',
        dialog: false,
        fullscreenLoading: false
     }
@@ -114,6 +134,24 @@ export default {
   methods: {
     HomeRefresh() {
       location.reload();
+    },
+    goNotiPage() {
+         let token = localStorage.getItem('token');
+         var data =  moment().format('YYYY-MM-DD HH:mm:ss')
+        if(token) {
+                this.$axios.get("/v2/v1/notification?read_at="+data,
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                      
+                      this.readed = response.data.read_at
+                  console.log(this.readed)
+                     //console.log(noti_id)
+                    
+                })
+        }
     },
     loading() {
         const loading = this.$loading({
