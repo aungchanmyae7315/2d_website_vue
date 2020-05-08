@@ -719,7 +719,7 @@ export default {
                          this.isActive = false
 
                 }else {
-                    //     this.isActive = true
+                        this.isActive = false
                     //   this.$axios.get('/v2/v1/twod-result/live')
                     // .then(response => {
                     //    this.last_date = response.data.data.last_date
@@ -778,6 +778,10 @@ export default {
   right:0;
   left:0;
   top:97px;
+}
+.owl-carousel .owl-dots.disabled  {
+  display: block !important;
+  border:0;
 }
 .main_page .owl-carousel .owl-stage-outer {
   padding:0 !important;
