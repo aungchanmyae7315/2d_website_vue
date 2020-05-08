@@ -840,8 +840,8 @@ export default {
                          this.isActive = false
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }else {
-                        
-                        this.isMorningEvening = false
+                    
+                        this.isMorningEvening = true
                         //   this.isActive = true
                         // return this.time_countdown = this.$root.$t('close_text');
                        this.isActive = false
