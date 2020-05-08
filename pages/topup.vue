@@ -491,7 +491,8 @@ export default {
     },
     data() {
         return { 
-         
+            kbz_bank_id:'',
+            wave_bank_id:'',
             bank_type:'',
             radio: '',
             centerDialogVisible: false,
@@ -526,6 +527,9 @@ export default {
       
           this.$axios.get('/v1/admin-bank')
               .then(response => {
+                 this.kbz_bank_id = response.data.data[0].id
+                 this.wave_bank_id = response.data.data[1].id
+                
                 this.bank_account = response.data.data
               })  
           let token = localStorage.getItem('token');
@@ -609,9 +613,9 @@ export default {
           if (valid) {
                this.submitted = true
               let token = localStorage.getItem('token');
-            this.bank_id = 2
+          
         var data = {
-                    bank_type_id:this.bank_id,
+                    bank_type_id:this.kbz_bank_id,
                    
                     amount: this.ruleForm.tran_amount,
                     slip_code: this.ruleForm.slip_code,
@@ -686,9 +690,9 @@ export default {
           if (valid) {
               this.submitted = true
               let token = localStorage.getItem('token');
-            this.bank_id = 15
+          
         var data = {
-                    bank_type_id:this.bank_id,
+                    bank_type_id:this.wave_bank_id,
                    
                     amount: this.ruleForm.tran_amount,
                     slip_code: this.ruleForm.slip_code,
