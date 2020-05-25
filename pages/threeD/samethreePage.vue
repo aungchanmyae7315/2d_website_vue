@@ -12,20 +12,37 @@
            
         <section class="contact_sameThree">
             <h6>(၃) လုံးပူး ဂဏန်းများ</h6>
-            <el-form >
-                <el-form-item> 
-                    <el-checkbox-group v-model="bet_number">
+           <el-form :model="numberValidateForm"  ref="numberValidateForm"  class="demo-ruleForm">
+                 <el-form-item
+                           
+                    prop="bet_number"
+                    :rules="[
+                    { required: true, message: 'bet is required'},
+                    
+                    ]">  
+                    <el-checkbox-group v-model="numberValidateForm.bet_number">
                     <el-checkbox-button v-for="same in SameNumber" :label="same" :key="same">{{same}}</el-checkbox-button>
                 </el-checkbox-group>
                 </el-form-item>
-            </el-form>
-            <el-input class type="number" placeholder="100 Ks(min)"  v-model="amountThreeD"  ></el-input>
-            <div class="bet_btn">
+            <el-form-item
+                                   
+          prop="amountThreeD"
+          :rules="[
+              { required: true, message: 'please enter bet amount' },
+              
+          ]"
           
-                 <el-button type="" @click="sameNumberSubmit" round>{{$t('Bet')}}</el-button>
+          >  
+          <el-input id="form-name" type="number"  placeholder="Bet Amount" v-model.number="numberValidateForm.amountThreeD"></el-input>
+    </el-form-item>
+            <!-- <el-input class type="number" placeholder="100 Ks(min)"  v-model="amountThreeD"  ></el-input> -->
+            <div class="bet_btn">
+                
+                 <el-button type="" @click="sameNumberSubmit('numberValidateForm')" :disabled='submitted' round>{{$t('Bet')}}</el-button>
              
                
             </div>
+             </el-form>
         </section>
      
     
@@ -43,9 +60,14 @@ export default {
     },
     data() {
         return {
-             bet_number: [],
-             amountThreeD:'',
+             numberValidateForm: { 
+                 amountThreeD:'',
+                  bet_number: [],
+             },
+            
+            
             SameNumber: sameThreeOptions,
+             submitted:false,
           
         }
         
@@ -58,13 +80,23 @@ export default {
              this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
          },
 
-        sameNumberSubmit() {
-              var data = this.bet_number  
+        sameNumberSubmit(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+                var data = this.numberValidateForm.bet_number  
             this.$store.commit('getBetThreeD', data);
-            var data = this.amountThreeD  
+            var data = this.numberValidateForm.amountThreeD  
             this.$store.commit('betAmountThreeD',data);
+              this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
 
-            this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+
+
+          
         }
 
     },

@@ -98,7 +98,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
     </el-card>
   </div>
     <div class="threed_betBtn">
-        <el-button round @click="betAll" type="info">{{$t('Bet')}}</el-button>
+        <el-button round @click="betAll" :disabled='submitted' type="info">{{$t('Bet')}}</el-button>
     </div>
      
 </div>
@@ -130,6 +130,7 @@ export default {
 },
     data() {
         return {
+              submitted:false,
               dialogVisible: false,
               myWallet:'',
               amount:localStorage.getItem('amountThreeD'),
@@ -142,12 +143,6 @@ export default {
                  }
                  
                },
-
-              // rules: {
-              //    number: [
-              //     { required: true, message: 'Please input activity form', trigger: 'blur' }
-              //   ]
-              // }
         }
         
     },
@@ -171,11 +166,7 @@ export default {
            
           }
         });
- 
-          // this.items.push({number:this.item.number, amount:this.item.amount, edit:this.item.edit})
-          // this.item = [];
-          // $('#form-name').focus();
-       
+
          },
         betAll() {
        
@@ -196,7 +187,9 @@ export default {
                         })
                     .then(response => {
                      console.log(response)
+                     this.submitted = true
                      if(response.data.status == 2) {
+                       this.submitted = false
                         this.$message({
                             showClose: true,
                           message: this.$t('amount_invalid'),
@@ -204,6 +197,7 @@ export default {
                         //   duration:0
                         });
                      }else if (response.data.status == 6) {
+                       this.submitted = false
                        this.$message({
                             showClose: true,
                           message: response.data.data,
@@ -212,7 +206,8 @@ export default {
                         });
                     }
                     else {
-                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                      this.submitted = true
+                         // this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                     } 
                      // this.$router.push(`/bet_success?lang=${this.$store.state.locale}`); 
                     
