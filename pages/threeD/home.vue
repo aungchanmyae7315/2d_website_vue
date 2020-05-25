@@ -276,9 +276,7 @@ export default {
             // setTimeout(function(){
               self.$axios.get('/v2/v1/slider_image?name=3D')
                 .then(response => {
-                    console.log(response.data.data)
-                console.dir(response.data.data);
-                 
+                   
                  if(self.slider_images  !== null) {
                         this.loaded = true;
                     }
@@ -287,8 +285,7 @@ export default {
                 })
               self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
-                console.log(response)
-              
+
                 self.slider_text = response.data.data[0];
                 })
 
@@ -422,8 +419,7 @@ export default {
           })
           data = data.filter(unique);
           this.Rnumber = data
-          console.log(this.Rnumber)
-          
+
     },
     change(res) {
       JSON.stringify(res)
@@ -434,7 +430,7 @@ export default {
         }
         
         this.threed = data;
-        console.log(data);
+       
       });
 
 
@@ -447,16 +443,15 @@ export default {
         this.resultThree = res[2].label.toString()
        
         this.result_number = this.resultOne+this.resultTwo+this.resultThree
-        console.log(this.bet_number)
-        console.log(this.result_number)
+     
        
         if(this.result_number && this.bet_number.length > 0) {
               this.all_number =  this.bet_number+','+this.result_number
-              console.log('one')
+
                var data = this.all_number  
       
         }else  {
-           console.log('twos')
+          
            this.all_number =  this.result_number
             var data = this.all_number  
         }
@@ -498,16 +493,13 @@ export default {
             
                 .then(response => {
                  
-                  console.log(response)
-                   
+          
         });
          this.$axios.get("/v2/v1/get_language")
     
             
                 .then(response => {
-                 
-                  console.log(response)
-                   
+
             });
              
       // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
@@ -549,7 +541,7 @@ export default {
                     this.currentTime = response.data.data.time;
                     //console.dir(response.data.data.time);
                      if(this.blockUser == 0) {
-                        console.log('blcok_user')
+                       
                       }else {
                         this.$store.commit('logOut');
                         this.$router.push(`/home?lang=${this.$store.state.locale}`); 
