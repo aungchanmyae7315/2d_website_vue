@@ -326,7 +326,7 @@
                         console.log('blcok_user')
                       }else {
                         this.$store.commit('logOut');
-                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                       }
 
                 })

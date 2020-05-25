@@ -62,7 +62,7 @@
                     </el-form-item>
                 </el-form>
           </div>
-            <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
+            <nuxt-link :to="`${$t('/home')}?lang=${$store.state.locale}`">
                     <el-button type="default" round>{{$t('Skip')}}</el-button>
                 </nuxt-link>
             <nuxt-link :to="`${$t('/signup')}?lang=${$store.state.locale}`">
@@ -166,7 +166,7 @@ import axios from 'axios'
                          //duration:0
                        
                       });
-                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                          
                   }
                  

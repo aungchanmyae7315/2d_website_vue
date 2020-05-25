@@ -89,7 +89,7 @@
   "login_title":"လော့အင်ဝင်မယ်",
   "profile_edit_title":"ပြင်မည်",
   "remark_title":"ထိုးမည့်ဂဏန်းများ",
-  "result_title":"2D ထွက်ဂဏန်းများ",
+  "result_title":"ထွက်ဂဏန်းများ",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"ငွေဖြည့်မည်",
 
@@ -177,7 +177,7 @@
 "we_are_so_delighted":"စတင်အသုံးပြုမှုအတွက် ဝမ်းမြောက်မိပါတယ်။",
 "optional":"နောက်ထပ်",
 "have_referral_code":"ရည်ညွှန်းကုဒ် ရှိ‌‌‌လား",
-"please_enter_referral_code":"ရည်ညွှန်းကုဒ်ဖြည့်၍ ကံစမ်းမဲဆုငွေလက်ဆောင် ရယူလိုက်ပါ",
+"please_enter_referral_code":"သင့်အား App ကို မိတ်ဆက်ပေးသောသူ၏ ရည်ညွှန်းကုဒ်ကို ဖြည့်ပါ။ (သင်၏ရည်ညွှန်းကုဒ်ကို ဖြည့်ရန်မဟုတ်ပါ။ )",
 "enter_referral_code":"ရည်ညွှန်းကုဒ်ဖြည့်ပါ",
 "summit_referral_code":"ရည်ညွှန်းကုဒ်တင်သွင်းမည်",
 "referral_code":"ရည်ညွှန်းကုဒ်",
@@ -246,13 +246,16 @@
 "customer_service_title":"အထွေထွေ ဝန်ဆောင်မှုဖုန်း",
 "topup_withdrawal_help":"ငွေသွင်း၊ငွေထုတ် အကူအညီ",
 "it_support":"ဆော့ဝဲ App အကူအညီ",
+"agent_info":"ကိုယ်စားလှယ်ဝင်ဖို့ စုံစမ်းရန်",
 "save_photo":"ပုံကိုသိမ်းမယ်",
 "promotion":"ပရိုမိုးရှင်းများ",
 "promotion_detail":"ပရိုမိုးရှင်း အသေးစိတ်",
 "logout":"အကောင့်ထွက်မည်",
 "logout_confirm":"သေချာသည်",
 "cancel":"ပယ်မည်",
-"service_time":"ဖုန်းဝန်ဆောင်မှုအချိန် နေ့စဉ် နံနက် 9:00 am - ညနေ 6:00 pm",
+"service_time_one":"ဝန်ဆောင်မှုအချိန်" ,
+"service_time_two":"တနင်္လာနေ့ ~ စနေနေ့ ",
+"service_time_three":" နံနက် 9:00 AM  မှ ညနေ 5:30 PM",
 "slip_number":"လုပ်ငန်းစဉ်အမှတ်",
 "slip_number_s":"လုပ်ငန်းစဉ်အမှတ်နောက်ဆုံးဂဏန်း ၆ လုံး",
 "slip_kbz_number":"လုပ်ဆောင်မှုအမှတ်စဉ်",
@@ -261,13 +264,18 @@
 "example_text":"နမူနာပုံ",
 "app_share":"App မျှဝေပြီး ၅,၀၀၀ ပွိင့်ယူမယ်",
 "app_share_btn":"App မျှဝေမည်",
-"my_referral_code":"ကျွန်ုပ်ရည်ညွှန်းကုဒ်",
+"my_referral_code":"ရည်ညွှန်းကုဒ်ဖြည့်ပါ",
+"you_referral_code":"သင်၏ရည်ညွှန်းကုဒ်",
 "fill_referral_code":"ရည်ညွှန်းကုဒ် ဖြည့်ပါ",
 "phone_call":"ခေါ်မည်",
 "full_name":"အမည်အပြည်အစုံဖြည့်ပါ",
 "share_first_text":"Sein Lucky မှာ 2D ထိုးဖူးလား၊ စိတ်ချရတယ်၊ ငွေသွင်းငွေထုတ် မြန်ဆန်တယ်။ အကောင့်ဖွင့်ရင် ရည်ညွှန်းကုဒ် ",
 "share_second_second":"ဖြည့်ဖိုမမေ့နဲ့နော်။ ဒေါင်းလုတ်ရန် လင့်ကိုနှိပ်ပါ။",
-"bet_offday_title":"2D ပိတ်ရက်များ"
+"bet_offday_title":"2D ပိတ်ရက်များ",
+"download_app":"ဒေါင်းလုပ်App",
+"you_not_input":"သင်ဖြည့်ရန်မဟုတ်ပါ။ အခြားသူအား App မတ်ဆက်ပေးသောအခါ ဤကုဒ်ကိုဖြည့်ခိုင်းပါ။",
+"last_5day_bet_history":"လွန်ခဲ့သော(၅) ရက်၏ ထီထိုးမှတ်တမ်း"
+
 
 
 

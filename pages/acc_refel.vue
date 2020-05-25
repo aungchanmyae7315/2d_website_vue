@@ -7,13 +7,14 @@
                             <img src="~static/images/refel_page/refel_img_two.png" class="">
                         </div>
                      -->
+                         <h5 style="color:#85CE61;font-weight:bold">{{$t('you_referral_code')}}</h5>
                         <el-card class="box-card">
                             
                             <!-- <h3 >Registartion Successful!!</h3> -->
-                            <h5>{{$t('we_are_so_delighted')}}</h5> 
+                          <!--  <h5>{{$t('we_are_so_delighted')}}</h5> -->
                         
                             <!-- <h2 class="background"><span>Optional</span></h2> -->
-                            <h4>{{$t('have_referral_code')}}</h4>
+                           <!-- <h4>{{$t('have_referral_code')}}</h4> -->
                             <p>{{$t('please_enter_referral_code')}}
                             </p>
                         <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
@@ -131,7 +132,7 @@ export default {
     .acc_refel_img {
         width:140px;
         height:auto;
-        margin:50px auto;
+        margin:20px auto;
     } 
     .refel_img_two img {
         width:80px;
@@ -183,7 +184,7 @@ export default {
  
 }
 .submitRefel {
-    margin-top:100px;
+    margin-top:20px;
     margin-bottom:20px;
     /* width:100%; */
 }

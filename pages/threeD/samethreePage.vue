@@ -1,0 +1,128 @@
+<template>
+    <el-main class="samethreeD_main">
+       
+       <el-header>
+           <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
+               <el-page-header title="" @back="goBack" >
+                     
+                </el-page-header>
+                 <img src="~static/images/logo.png" class="logo_samethreenumber" alt="logo">
+           <!-- </nuxt-link> -->
+        </el-header>
+           
+        <section class="contact_sameThree">
+            <h6>(၃) လုံးပူး ဂဏန်းများ</h6>
+            <el-form >
+                <el-form-item> 
+                    <el-checkbox-group v-model="bet_number">
+                    <el-checkbox-button v-for="same in SameNumber" :label="same" :key="same">{{same}}</el-checkbox-button>
+                </el-checkbox-group>
+                </el-form-item>
+            </el-form>
+            <el-input class type="number" placeholder="100 Ks(min)"  v-model="amountThreeD"  ></el-input>
+            <div class="bet_btn">
+          
+                 <el-button type="" @click="sameNumberSubmit" round>{{$t('Bet')}}</el-button>
+             
+               
+            </div>
+        </section>
+     
+    
+    </el-main>
+</template>
+
+<script>
+ const sameThreeOptions = ['111', '222', '333','444','555','666',
+ '777','888','999','000'];
+  
+export default {
+    mounted() {
+
+
+    },
+    data() {
+        return {
+             bet_number: [],
+             amountThreeD:'',
+            SameNumber: sameThreeOptions,
+          
+        }
+        
+    },
+    components: {
+     
+  },
+    methods: {
+        goBack() {
+             this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
+         },
+
+        sameNumberSubmit() {
+              var data = this.bet_number  
+            this.$store.commit('getBetThreeD', data);
+            var data = this.amountThreeD  
+            this.$store.commit('betAmountThreeD',data);
+
+            this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+        }
+
+    },
+    computed: {
+       
+       
+       
+    }
+}
+</script>
+
+<style>
+    .contact_sameThree {
+        padding:0 20px;
+    }
+    .samethreeD_main .el-header {
+        padding:20px;
+    }
+    .logo_samethreenumber {
+        width:130px;
+        position: relative;
+        bottom:30px;
+
+    }
+    .contact_sameThree {
+        padding-top:20px;
+    }
+    .contact_sameThree h6 {
+        color:#fff;
+        padding-bottom:40px;
+    }
+    .contact_sameThree .el-checkbox-button__inner {
+        background-color:#1A1A1A;
+        border:0;
+        margin:5px;
+        color:#AAAAAA;
+        border-radius: 9px;
+    }
+    .contact_sameThree .el-checkbox-button:first-child .el-checkbox-button__inner  ,
+     .el-checkbox-button:last-child .el-checkbox-button__inner{
+        border:0;
+        
+        border-radius: 9px;
+    }
+    .contact_sameThree .el-checkbox-button.is-checked .el-checkbox-button__inner {
+        background: #FFEA72;
+        color:#000;
+        box-shadow:unset;
+        font-weight: bold;
+    }
+    .contact_sameThree .el-input__inner {
+        background: #252E39;
+        border:1px solid #FFEA72;
+        color:#fff;
+    }
+    .contact_sameThree .bet_btn {
+        bottom:unset;
+        padding-top:25px;
+    }
+</style>
+

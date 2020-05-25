@@ -274,7 +274,7 @@ import axios from 'axios'
                   }else {
                     console.log('ok')
                     //  if(!isMobile()) {
-                    //    this.$router.push(`/?lang=${this.$store.state.locale}`);
+                    //    this.$router.push(`/home?lang=${this.$store.state.locale}`);
                     // }else {
                     //     this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
                     // }

@@ -4,7 +4,7 @@
     <el-main class="me">
        <div class="main_container">
      <el-header class="me_header" >
-       
+
          <div  v-if ="$store.state.isLoggedIn">
               <div class="demo-type">
                <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
@@ -16,7 +16,7 @@
                   <li v-if="this.profile.name == null">{{this.profile.phone}}</li>
                      <li v-else>{{this.profile.name}}</li>
                     <!-- <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`"> -->
-                     <li>{{$t('my_referral_code')}}: <span class="edit_profile">{{this.get_refel_gen}}</span></li>
+                     <li>{{$t('you_referral_code')}}: <span class="edit_profile">{{this.get_refel_gen}}</span></li>
                     <!-- </nuxt-link> -->
                   </ul>
                   </div>
@@ -35,6 +35,8 @@
            
       </el-header>
       <el-main>
+            <div class="longText" id="hidingScrollBar">
+              <div class="hideScrollBar">
            <ul class="acc_items">
               
             
@@ -68,7 +70,7 @@
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
 
-                        <div v-if="this.device_id !== null && this.hide_oneDay == 1 ">
+                        <div v-if="this.device_id !== null ">
                               <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('fill_referral_code')}}</a></nuxt-link></li> 
                               <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li> 
                         </div>
@@ -94,7 +96,9 @@
     <el-button type="primary" @click=" logout(); dialogVisible = false">{{$t('logout_confirm')}}</el-button>
   </span>
 </el-dialog>
-            
+                  
+</div>
+</div>     
       </el-main>
    
      <el-footer class="footer">
@@ -144,8 +148,7 @@
         </el-footer>
   </div>
         
-           
-    
+
       </el-main>
 
 </template>
@@ -176,7 +179,7 @@ export default {
                   console.log('blcok_user')
                 }else {
                   this.$store.commit('logOut');
-                  this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                  this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                 }
             
              
@@ -242,7 +245,7 @@ export default {
         logout() {
          
             this.$store.commit('logOut');
-             this.$router.push(`/?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/home?lang=${this.$store.state.locale}`); 
       },
     },
     created() {

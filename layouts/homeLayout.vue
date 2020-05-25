@@ -21,7 +21,7 @@
              
             <li class="download_btn" >
                  <nuxt-link  :to="`${$t('/download')}?lang=${$store.state.locale}`">
-                   App<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
+                    {{$t('download_app')}}<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
                 </nuxt-link>
             </li>
            
@@ -64,10 +64,10 @@
             line-height="0px"
             active-text-color="#ffd04b">
               <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-            <el-menu-item index="1" @click="HomeRefresh">
+            <el-menu-item index="1" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
             
               <img src="~static/icons_header/dimond_t_icon.png" alt="">
-             <h5 class="main_icon" style="font-weight:bold;color:#ccab48;">{{$t('home_title')}}</h5>
+             <h5 class="main_icon" style="font-weight:bold;color:#ccab48;">Refresh</h5>
               
             </el-menu-item>
             </nuxt-link>
@@ -118,7 +118,7 @@ export default {
                     .then(response => {
                    
                         this.readed = response.data.read_at
-                  console.log('lee pal')
+                
                      console.log(this.readed)
                     
                 })
@@ -133,7 +133,12 @@ export default {
   },
   methods: {
     HomeRefresh() {
-      location.reload();
+      this.fullscreenLoading = true;
+        setTimeout(() => {
+          
+          this.fullscreenLoading = false;
+          location.reload();
+        }, 1000);
     },
     goNotiPage() {
          let token = localStorage.getItem('token');
@@ -217,6 +222,19 @@ html {
   max-width:480px;
   width:100%;
 }
+.el-loading-mask {
+  background: unset !important;
+}
+.el-loading-mask.is-fullscreen .el-loading-spinner {
+  margin-top:80px !important;
+  position: relative;
+  top:0;
+
+}
+.el-loading-spinner .path {
+  stroke: gray;
+  
+}
 .header {
     background:#2E3192;
     position: fixed;
@@ -284,6 +302,7 @@ html {
 }
 .download_btn a {
   color:#000 !important;
+   font-size: 11px;
 }
 .el-drawer__header {
   margin:0 ;

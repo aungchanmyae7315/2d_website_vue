@@ -1,12 +1,19 @@
 <template>
         
         
-      <el-main class="main_page">
+      <el-main class="main_page twod_home">
         <!-- <Online></Online> -->
-       
+          <el-header>
+           <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
+               <el-page-header title="" @back="goBack" >
+                     
+                </el-page-header>
+                 <img src="~static/images/logo.png" class="logo" alt="logo">
+           <!-- </nuxt-link> -->
+      </el-header>
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
-        
+            <!-- <AutoLogout></AutoLogout> -->
         <div class="" v-if ="!$store.state.isLoggedIn">
 
               <div class="demo-type">
@@ -143,26 +150,6 @@
               {{this.slider_text.text}}</p>
           </div>
         </h3>
-         <div class="choose_2d_3d" data-aos="fade-up" data-aos-duration="700">
-            <el-row>
-              <el-col :span="12">
-                <nuxt-link :to="`${$t('/home')}?lang=${$store.state.locale}`"> 
-                   
-                         <img src="~static/images/twod_card.png" alt="" class="twod_card">
-                    
-                </nuxt-link>
-              </el-col>
-              <el-col :span="12">
-                 <nuxt-link :to="`${$t('/threeD/home')}?lang=${$store.state.locale}`"> 
-                 
-                        <img src="~static/images/threed_card.png" alt="" class="threed_card">
-                  
-                </nuxt-link>
-              </el-col>
-            </el-row>
-          
-          
-           </div>
           <!-- <div class="block" data-aos="fade-up" data-aos-duration="700">
   
             <el-carousel  trigger="click" height="155px" arrow="always">
@@ -192,12 +179,12 @@
             </el-carousel>
 
           </div>   -->
-          <!-- <div class="row n_d_t">
+          <div class="row n_d_t">
             <div class="col">
                
                 <div class="number">
-                    
-                      <h2 v-if="!this.info.live && !this.info_api.result_1200">
+                      <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
+                      <h2 v-if="!this.info.live && !this.info_api.result_1200"    >
                         <div class="loadingio-spinner-dual-ball-ty27h70p24 ">
                             <div class="ldio-ct1tsjzqdg5">
                                 <div></div>
@@ -224,13 +211,14 @@
                   <div class="d_t_item">
                    
  
+                     
                       <span>updated at:</span><br>
 
-                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="currentDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="currentDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="currentDate"></span>
+                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="serverDate"></span>
+                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="serverDate"></span>
+                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="serverDate"></span>
                       <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
-                      <span v-else v-text="currentDate"></span>
+                      <span v-else v-text="this.last_date"></span>
                       <br>
                   
                       <span v-text="this.breakTime"></span>
@@ -239,9 +227,9 @@
                   
                 </div>
             </div>
-          </div> -->
+          </div>
           
-           <!-- <div class="card_one">
+           <div class="card_one">
             <div class="card_item">
               <h5 class="time_number">12:00 PM</h5>
             
@@ -294,8 +282,8 @@
                   </div>
                 </div>
               </div>
-            </div> -->
-            <!-- <div class="card_two">
+            </div>
+            <div class="card_two">
                 <div class="card_item">
                   <h5 class="time_number">4:30 PM</h5>
                     <div class="row">
@@ -345,12 +333,12 @@
                        
                           {{this.info_api.result_430}}
                       </h4>
-                         
+                          <!-- <h4 class="result_num">{{this.info.result_430}}</h4> -->
                       </div>
                     </div>
                 </div>
-            </div> -->
-            <!-- <div class="card_three">
+            </div>
+            <div class="card_three">
                 <div class="card_item">
                 
                     <div class="row">
@@ -368,8 +356,8 @@
                       </div>
                     </div>
                 </div>
-            </div> -->
-            <!-- <div class="card_three " >
+            </div>
+            <div class="card_three " >
                 <div class="card_item">
                 
                     <div class="row">
@@ -387,14 +375,14 @@
                       </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
 
-            <!-- <div class="bet_btn">
+            <div class="bet_btn">
               <nuxt-link :to="`${$t('/bet')}?lang=${$store.state.locale}`">
                  <el-button type="" round>{{$t('Bet')}}</el-button>
               </nuxt-link>
                
-            </div> -->
+            </div>
       </div>
     </div>
 
@@ -412,7 +400,7 @@ export default {
     getters: {},
   mutations: {},
   actions: {},
-  layout: 'homeLayout',
+ // layout: 'homeLayout',
 
 
   mounted() {
@@ -427,7 +415,7 @@ export default {
           }
           else{
             // setTimeout(function(){
-              self.$axios.get('/v2/v1/slider_image?name=home')
+              self.$axios.get('/v2/v1/slider_image?name=2D')
                 .then(response => {
                   
                 console.dir(response.data.data);
@@ -519,7 +507,7 @@ export default {
   data() {
     
     return {
-     
+     serverDate:'',
       last_date:'',
       dialogVisible: false,
        isActive: true,
@@ -554,6 +542,7 @@ export default {
     }
     
   },
+
  
   destroyed () {
     clearInterval(this.kweeliveItvId);
@@ -564,6 +553,9 @@ export default {
     clearInterval(this.serverCurTimeItvId);
   },
    methods: {
+    goBack() {
+       this.$router.push(`/?lang=${this.$store.state.locale}`);
+    },
     thousands_separators(num){
       var num_parts = num.toString().split(".");
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -778,13 +770,17 @@ export default {
 
                 })
       }
-      else{
-        this.$axios.get('/v2/v1/server_time')
+    
+          this.$axios.get('/v2/v1/server_time')
               .then(response => {
-                console.log(response.data)
-               this.currentTime = response.data
+                // console.log(response.data.time)
+                //  console.log(response.data.date)
+               this.currentTime = response.data.time
+               this.serverDate  = response.data.date
+               console.log(this.currentTime)
+               console.log(this.serverDate)
               })
-      }
+      
     },
 }
 
@@ -792,20 +788,19 @@ export default {
 </script>
 
 <style>
-
-.choose_2d_3d .el-card {
-  margin:20px;
+.twod_home .el-header {
+  padding:20px;
+  color:#fff;
 }
+.twod_home .hideScrollBar {
+  padding-top:0;
+}
+.twod_home .logo {
 
-
-
-
-
-
-
-
-
-
+  height: auto;
+  position: relative;
+  top:-31px;
+}
 .owl-theme .owl-nav.disabled + .owl-dots {
   position: absolute;
   right:0;

@@ -432,7 +432,7 @@ export default {
       this.$store.commit('SET_LANG', lang)
       //re-route to the current page but with the selected language in a query string
       this.dialogVisible = false
-       this.$router.push(`/?lang=${this.$store.state.locale}`);
+       this.$router.push(`/home?lang=${this.$store.state.locale}`);
       // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
     },
       submitLang() {

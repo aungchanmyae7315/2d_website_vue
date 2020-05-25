@@ -116,7 +116,7 @@
                  <el-col :span="11" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
             </el-row>
              <el-row> 
-                  <nuxt-link :to="`${$t('/seinlucky_point')}?lang=${$store.state.locale}`">
+                  <nuxt-link :to="`${$t('/share')}?lang=${$store.state.locale}`">
                         <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
                         <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance_point')}}: {{this.thousands_separators(myPointWallet)}} </div></el-col>
                     </nuxt-link>
@@ -734,16 +734,16 @@ export default {
                     var currentTime = moment().format('HH:mm:ss');
                     var currentDate  = moment().day();
                 
-                    if(this.serverTime  >  this.morning_from && this.serverTime < this.morning_to ) {
+                    if(this.server_time  >  this.morning_from && this.server_time < this.morning_to ) {
                         this.isActive = true
                         
-                    }else if(this.serverTime > this.morning_to && this.serverTime <  this.evening_from ) {
+                    }else if(this.server_time > this.morning_to && this.server_time <  this.evening_from ) {
                         this.isActive = false
                         
-                    }else if(this.serverTime > this.evening_from && this.serverTime < this.evening_to ) {
+                    }else if(this.server_time > this.evening_from && this.server_time < this.evening_to ) {
                         this.isActive = true
                        
-                    }else if(this.serverTime > this.evening_to) {
+                    }else if(this.server_time > this.evening_to) {
                         this.isActive = false
                     }else {
                          this.isActive = false  
@@ -769,13 +769,15 @@ export default {
                     this.server_time = response.data.data.time;
                 })
         } 
-        else{
+        
           this.$axios.get('/v2/v1/server_time')
               .then(response => {
-               console.log(response)
-               this.server_time = response.data
-              })   
-        }           
+                // console.log(response.data.time)
+                //  console.log(response.data.date)
+               this.server_time = response.data.time
+               this.serverDate  = response.data.date
+               
+              }) 
     },
     
      methods: {
@@ -805,7 +807,7 @@ export default {
             };
         },
         offDate() {
-            alert('ol')
+          
             this.$router.push(`/holiday_page?lang=${this.$store.state.locale}`); 
         },
             BetCurrentTime(){
@@ -821,21 +823,21 @@ export default {
                 var getAllTime = this.convertMS(difference);
                 var getAllTime_two = this.convertMS(difference_two);
                     console.log(this.morning_to)
-                if(this.currentTime  >  this.morning_from && this.currentTime < this.morning_to ) {
+                if(this.server_time  >  this.morning_from && this.server_time < this.morning_to ) {
                         this.isActive = true
                          this.isMorningEvening  = false
                        return this.time_countdown = this.$root.$t('close_text');
-                    }else if(this.currentTime > this.morning_to && this.currentTime <  this.evening_from ) {
+                    }else if(this.server_time > this.morning_to && this.server_time <  this.evening_from ) {
                         this.isMorningEvening = true
                        this.isActive = false
                         return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
-                    }else if(this.currentTime > this.evening_from && this.currentTime < this.evening_to ) {
+                    }else if(this.server_time > this.evening_from && this.server_time < this.evening_to ) {
                          this.isActive = true
                        
                       
                         this.isMorningEvening  = false
                         return this.time_countdown = this.$root.$t('close_text');
-                    }else if(this.currentTime > this.evening_to) {
+                    }else if(this.server_time > this.evening_to) {
 
                          this.isActive = false
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
@@ -850,7 +852,7 @@ export default {
                     }
                 },
         goBack() {
-            this.$router.push(`/?lang=${this.$store.state.locale}`); 
+            this.$router.push(`/home?lang=${this.$store.state.locale}`); 
         },
         updateCurrentTime() {
             this.currentTime = moment().format('HH:mm:ss');  

@@ -104,9 +104,18 @@ const createStore = () => {
                 state.check_btn = check_btn;
                 //console.log(check_btn)
             },
+            getBetThreeD(state, bet_number) {
+                localStorage.setItem('bet_numberThreeD', bet_number);
+                state.bet_number = bet_number;
+            },
             betAmount(state, bet_amount){
                 localStorage.setItem('bet_amount', bet_amount);
                 state.bet_amount = bet_amount;
+                //console.log(bet_amount)
+            },
+            betAmountThreeD(state, amountThreeD){
+                localStorage.setItem('amountThreeD', amountThreeD);
+                state.amountThreeD = amountThreeD;
                 //console.log(bet_amount)
             },
             file(state, file){
