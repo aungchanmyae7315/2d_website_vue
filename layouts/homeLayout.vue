@@ -10,13 +10,13 @@
                  <nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`"> 
 
                   <div @click="goNotiPage" class="noti" type="primary">
-                    <img v-if="this.readed == 'null' " src="~static/images/noti.png" alt="logo">
-                     <img v-else src="~static/images/noti_t.png" alt="logo">
+                    <img v-if="this.readed == 'null' " src="~static/images/noti.png" alt="logo" >
+                     <img v-else src="~static/images/noti_t.png" alt="logo" >
                   </div>
                    </nuxt-link> 
             </li>
             <li>
-                 <img src="~static/images/logo.png" class="logo" alt="logo">
+                 <img src="~static/images/logo.png" class="logo" alt="logo" style="margin-right:40px;">
             </li>
              
             <li class="download_btn" >

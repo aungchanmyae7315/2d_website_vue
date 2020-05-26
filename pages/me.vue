@@ -245,7 +245,7 @@ export default {
         logout() {
          
             this.$store.commit('logOut');
-             this.$router.push(`/home?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
       },
     },
     created() {
