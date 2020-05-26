@@ -24,35 +24,7 @@
                     <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                     <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
                   </nuxt-link>
-                     <div class="change_lang_icon">
-                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
-                       <el-button type="text" @click="dialogVisible = true">
-                        <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
-                      </el-button>
-                    <!-- </nuxt-link> -->
-                  </div>
-                  <el-dialog
-                   
-                    :visible.sync="dialogVisible"
-                    class="change_lang_modal"
-                    width="70%">
-                   
-                     <div class="lang lang_icon">
-                        <el-dropdown @command="changeLang"  style="text-align:center">
-                         
-                            <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
-                      
-                      
-                        </el-dropdown>   
-                    </div>
-
-                   
-                  </el-dialog>
+                    
               </div>
                
            
@@ -63,7 +35,7 @@
                
                 
                  <el-row >
-                  <el-col :span="21">
+                  <el-col :span="17">
                       <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
                         <el-avatar :size="60" v-if="this.profile.profile == null">
                           <img src="~static/images/icons/me_img.png" alt="">
@@ -91,47 +63,22 @@
                   </div>
               
                   </el-col>
-                  <!-- <el-col :span="3">
-                    <Music></Music>
-                     
-                  </el-col> -->
-                   <el-col :span="3">
-                      <div class="change_lang_icon">
-                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
-                       <el-button type="text" @click="dialogVisible = true">
-                         <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
-                      </el-button>
-                    <!-- </nuxt-link> -->
-                  </div>
+                   <el-col :span="7">
+                        <div id="app-timer" class="count_time_threed">
+                      <ul>
+                       
+                        <li>
+                             <h5>ထီပိတ်ရက်ကျန်ချိန်</h5>
+                        </li>
+                        <li>
+                             <div v-for="(time ,k) in times" :key="k">
+                                <h6 class="card-title">{{time.time}}</h6>
+                              </div>
+                        </li>
+                      </ul>
+                    </div>
                    </el-col>
                 </el-row>
-                 
-                  
-                  <el-dialog
-                   
-                    :visible.sync="dialogVisible"
-                    class="change_lang_modal"
-                    width="70%">
-
-                     <div class="lang lang_icon">
-                        <el-dropdown @command="changeLang"  style="text-align:center">
-                        <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
-                            {{$t('Language')}}
-                        </span> -->
-                      
-                            <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
-                      
-                      
-                        </el-dropdown>   
-                    </div>
-
-                   
-                  </el-dialog>
               </div>
         </div>
           <carousel :autoplay="false" :nav="false" v-if="loaded" :items =1>
@@ -160,11 +107,11 @@
                     <el-button  class="book_btn" type="warning">Book</el-button>
                 </el-col>
                 <el-col :span="18" style="padding-left:15px;">
-                    <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">Same Thee</el-button>
+                    <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
                 </el-col>
             </el-row>
            <div>
-   
+            <p class="choose_bet_title">လောင်းမည့်ဂဏန်းရွေးပါ။</p>
           <div class="picker">
             <VuePicker :data="pickData"
               :showToolbar="true"
@@ -213,6 +160,7 @@
 
 <script>
 
+import Vue from 'vue'
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
  const cityOptions = ['000', '111', '222', '333'];
@@ -306,9 +254,7 @@ export default {
     }
 
       this.updateIsLoggedIn();
-      this.updateLang();
-      let lang = localStorage.getItem('locale');
-      this.$store.commit('SET_LANG', lang);
+     
 
    },
 
@@ -318,7 +264,16 @@ export default {
     
     return {
      
-     
+      endTime: '',
+      times: [
+        { id: 0, text: "D", time: 45 },
+        { id: 1, text: " H", time: 35 },
+        { id: 2, text: "M ", time: 25 },
+        { id: 3, text: "S", time: 15 }
+      ],
+      a: 1,
+      progress: 50,
+
       dialogVisible: false,
       slider_images:'',
       activeIndex: '1',
@@ -357,14 +312,8 @@ export default {
     
   },
  
-  destroyed () {
-    clearInterval(this.kweeliveItvId);
-    clearInterval(this.serverCurTimeItvId);
-  },
-  beforeDestroy () {
-    clearInterval(this.kweeliveItvId);
-    clearInterval(this.serverCurTimeItvId);
-  },
+
+
    methods: {
     thousands_separators(num){
       var num_parts = num.toString().split(".");
@@ -470,44 +419,11 @@ export default {
             num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return num_parts.join(".");
         },
-     //luke
-        async getKweeLiveData(){
-          this.$axios.get('/luke/kwee_live')
-            .then(response => {
-              this.info = response.data[0];
-	      //console.dir(this.info);
-            })
-     },
-
+    
    
         
         
-      changeLang (lang) {
-      //mutate 'locale' in store
-      this.$store.commit('SET_LANG', lang)
-      //re-route to the current page but with the selected language in a query string
-      this.dialogVisible = false
-       this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`);
-        this.$axios.get(`/v2/v1/add_language?language=${lang}`)
-    
-            
-                .then(response => {
-                 
-          
-        });
-         this.$axios.get("/v2/v1/get_language")
-    
-            
-                .then(response => {
-
-            });
-             
-      // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
-    },
-      submitLang() {      
-            this.$store.commit('SET_LANG', 'hello')            
-        },
-     
+   
       
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
@@ -517,14 +433,35 @@ export default {
       },
 
 
-      updateLang() {
-        this.$store.commit('updateLang', this.hasLang());
+      updateTimer: function(){
+        this.getTimeRemaining();
+        this.updateProgressBar();
       },
-      hasLang() {
-        return Boolean(localStorage.getItem('locale'));
-      },
+       getTimeRemaining: function() {
+        let t = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
+        
+        // console.log(this.progress);
+        this.times[3].time = Math.floor(t / 1000 % 60) ;
+        this.times[2].time = Math.floor(t / 1000 / 60 % 60) + ':';
+        this.times[1].time = Math.floor(t / (1000 * 60 * 60) % 24) +':';
+        this.times[0].time = Math.floor(t / (1000 * 60 * 60 * 24)) +' '+'ရက်' + ' ';
+    },
+     updateProgressBar: function(){
+      //TODO fix progress bar
+      // let interval = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
+      // this.progress = Math.floor(this.currentTime / Date.parse(new Date(this.endTime))*100);
+    }
+
     },
      created() {
+         this.$axios.get('/v2/v1/threed/count_down')
+              .then(response => {
+                  this.endTime = response.data.end_date
+              }) 
+        this.updateTimer();
+    // console.log("date is " + new Date());
+    // console.log("abc is: " + this.a);
+    let timeinterval = setInterval(this.updateTimer, 1000);
               
          let token = localStorage.getItem('token');
       if(token) {
@@ -621,7 +558,7 @@ export default {
   }
 .pickerbox[data-v-4804d034] {
   position: unset !important; 
-  margin:20px auto 0px auto;
+  margin:0px auto 20px auto;
      width: unset !important;
     height: unset !important; 
     left: unset !important; 
@@ -629,11 +566,16 @@ export default {
     background: rgba(0, 0, 0, 0.7) !important;
     z-index: 9999;
     overflow: hidden;
-    border-radius: 13px;
+    border-radius: 21px;
     border-color:darkgoldenrod;
     border:2px solid #F5DF73;
   
 
+}
+.choose_bet_title {
+  color:#fff;
+  margin-top:25px;
+  text-align: left;
 }
   .vue-picker[data-v-4804d034] {
     position: unset  !important;
@@ -763,6 +705,25 @@ export default {
   background: linear-gradient(#26B6F2, #1A39BC);
   border:0;
   border-radius: 9px;
+}
+.count_time_threed  ul{
+  padding:13px 0;
+  margin:0;
+  list-style: none;
+  text-align: right;
+}
+.count_time_threed ul li {
+  display:flex;
+}
+.count_time_threed h5 {
+  font-size:11px;
+  color:#fff;
+  font-weight: bold;
+}
+.count_time_threed h6 {
+  color:#FFEA72;
+  font-weight: bold;
+  margin:0;
 }
 /* Move it (define the animation) */
 @-moz-keyframes scroll-left {
