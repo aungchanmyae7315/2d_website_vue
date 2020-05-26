@@ -659,7 +659,7 @@ export default {
     }
     .r_btn {
       position: relative;
-      bottom:132px;
+      bottom:152px;
       left:123px;
       background-color: #1E6CD2;
       color:#fff;
