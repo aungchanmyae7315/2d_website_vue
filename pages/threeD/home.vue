@@ -8,7 +8,7 @@
                <el-page-header title="" @back="goBack" >
                      
                 </el-page-header>
-                 <img src="~static/images/threed_logo.png" class="logo" alt="logo">
+                 <img src="~static/images/threed_logo.png" class="logo" alt="logo" style="width:145px">
                   
            <!-- </nuxt-link> -->
       </el-header>
