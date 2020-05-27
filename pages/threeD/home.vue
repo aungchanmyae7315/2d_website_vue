@@ -117,39 +117,59 @@
             </el-row>
            <div>
             <p class="choose_bet_title">လောင်းမည့်ဂဏန်းရွေးပါ။</p>
-          <div class="picker">
+          <el-row>
+            <el-col :span="18">
+                 <div class="picker">
             <VuePicker :data="pickData"
-              :showToolbar="true"
+              :showToolbar="false"
               :pickerbox="false"
               :header="false"
             
               @confirm="confirm"
+
+
               @change = "change"
               
               :confirmText="confirmText"
+
                 :visible="true"
             
             />
 
             
-              <el-button @click="rBtn(threed)" :class="{'is-active': isActive}" class="r_btn">R</el-button>
+         
             </div>
+            </el-col>
+            <el-col :span="6">
+                     <el-button @click="rBtn(threed)" :class="{'is-active': isActive}" class="r_btn">R</el-button>
+            </el-col>
+          </el-row>
+         
           </div>
-          
-            <el-form v-if="isActive"  class="contact_sameThree">
+          <el-form :model="ruleForm" :rules="rules" ref="ruleForm"  class="demo-ruleForm">
+            <div v-if="isActive"  class="contact_sameThree">
           
             <el-form-item> 
                 <el-checkbox-group v-model="bet_number">
                   <el-checkbox-button v-for="city in this.Rnumber" :label="city" :key="city">{{city}}</el-checkbox-button>
               </el-checkbox-group>
             </el-form-item>
-          </el-form>
-
+          </div>
+           <el-form-item
+                                   
+          prop="amountThreeD"
+          :rules="[
+              { required: true, message: 'please enter bet amount' },
+              
+          ]"
           
-            <el-input class style="color:yello !important" type="number" placeholder="ထီထိုးငွေပမာဏဖြည့်ပါ 100 Ks(min)"  v-model="amountThreeD"  ></el-input>
+          >  
+          <el-input id="form-name" type="number"  placeholder="ထီထိုးငွေပမာဏဖြည့်ပါ 100 Ks(min)" v-model="ruleForm.amountThreeD"></el-input>
+    </el-form-item>
+        
                     
-                    
- 
+            <el-button  @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('ထီထိုးမည်')}}</el-button>     
+          </el-form>
            
       </section>
 
@@ -173,7 +193,7 @@ import carousel from 'vue-owl-carousel'
      var oneCol = []
     var twoCol = []
     var threeCol = []
-     var fourCol = []
+    
  
   for (let i = 0; i < 10; i++ ) {
      
@@ -191,11 +211,7 @@ import carousel from 'vue-owl-carousel'
     })
    
   }
-    fourCol.push({
-       visible:true,
-       label:' ',
-       maskClick:false
-    })
+   
 export default {
  components: { 
      carousel,
@@ -204,7 +220,7 @@ export default {
     getters: {},
   mutations: {},
   actions: {},
-  
+  props:['value'],
 
 
   mounted() {
@@ -268,6 +284,8 @@ export default {
   data() {
     
     return {
+      pickerValue:this.selectedDate,
+
       isActive: false,
       endTime: '',
       times: [
@@ -292,7 +310,10 @@ export default {
       blockUser:'',
       loaded:'',
       bet_number: [],
-            amountThreeD:'',
+      ruleForm: {
+          amountThreeD:'',
+      },
+          
             
             profile:'',
             myWallet:'',  
@@ -304,7 +325,7 @@ export default {
             oneCol,
             twoCol,
             threeCol,
-            fourCol
+            
             ],
             threed:[],
             result: '',
@@ -390,32 +411,37 @@ export default {
 
     },
 
-       confirm (res) {
-          
-        this.resultOne = res[0].label.toString()
-         this.resultTwo = res[1].label.toString()
-        this.resultThree = res[2].label.toString()
-       
-        this.result_number = this.resultOne+this.resultTwo+this.resultThree
-     
-       
-        if(this.result_number && this.bet_number.length > 0) {
-              this.all_number =  this.bet_number
+    submitThreed(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+                this.result_number =(this.threed[0].toString())+this.threed[1]+(this.threed[2].toString())
+       console.log(this.result_number)
+       if(this.isActive) {
+        
+           this.all_number =  this.bet_number
 
                var data = this.all_number  
       
-        }else  {
-          
-           this.all_number =  this.result_number
+       }else {
+       
+            this.all_number =  this.result_number
             var data = this.all_number  
-        }
-
-        this.$store.commit('getBetThreeD', data);
-        var data = this.amountThreeD  
+       }
+         this.$store.commit('getBetThreeD', data);
+        var data = this.ruleForm.amountThreeD  
         this.$store.commit('betAmountThreeD',data);
 
         this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
-      },
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+    
+     
+
+    },
+
         goBack() {
              this.$router.push(`/?lang=${this.$store.state.locale}`); 
          },
@@ -456,6 +482,7 @@ export default {
       // let interval = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
       // this.progress = Math.floor(this.currentTime / Date.parse(new Date(this.endTime))*100);
     }
+    
 
     },
      created() {
@@ -522,10 +549,11 @@ export default {
     margin:0;
 }
 .threed_home .contact_sameThree {
-    padding:0 40px;
-    margin-top:-20px;
+    padding:5px 40px;
+    
 }
 .contact_sameThree .el-checkbox-button__inner {
+    
     background-color: #1A1A1A;
     border: 0;
     margin: 5px;
@@ -545,6 +573,7 @@ export default {
    border: 0;
    border-radius: 9px;
 }
+
 
 
 .owl-theme .owl-nav.disabled + .owl-dots {
@@ -606,26 +635,19 @@ export default {
       background: linear-gradient(#FDD164, #BB8834); 
   }
 .el-button.is-active, .el-button.is-plain:active {
-  background-color: #0098e9;
+  background-color:#0071DB;
   color:#fff;
   font-weight: bold;
 }
 
-  .picker .header {
-   
-    cursor: not-allow;
-    pointer-events: none;
-    font-size: 17px;
-    font-weight: bold;
-    border:unset;
-    width:120px;
-    margin:0 auto;
-    border-radius: 36px;
-    position: absolute !important;
-    top:570px;
-      width:100px;
-      border-radius: 21px;
-  }
+ .submitThreed_btn {
+     background: linear-gradient(#FDD164, #BB8834);
+     font-size:15px;
+     border-radius: 20px;
+    width:100px;
+    margin-top:15px;
+     border:0;
+ }
 
   .picker .mask[data-v-4804d034] {
         background-size: 100% 70px !important;
@@ -670,6 +692,7 @@ export default {
         text-align: center;
    }
    .threed_home .el-input__inner {
+      margin-top:20px;
        background-color: #252E39;
        color:#fff;
    }
@@ -684,13 +707,15 @@ export default {
     .threeD_items .el-row .el-button {
         width:100%;
         height:40px;
+        border:1px solid #fff;
     
     }
     .r_btn {
       position: relative;
-      bottom:112px;
-      left:123px;
-      background-color: #4B545E;
+      width:unset !important;
+      top:75px;
+      left:5px;
+      background-color: #0098e9;
       color:#fff;
       border-radius: 9px;
     }
