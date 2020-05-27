@@ -79,14 +79,14 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
         </td>
         <td >
             <div style="width:100%;display:flex">
-              <button style="margin:5px;" v-if="!item.edit"  @click="item.edit = !item.edit" class="btn btn-info"><i class="el-icon-edit"></i></button>
-              <button style="margin:5px;" v-else  @click="item.edit = !item.edit" class="btn btn-info"><i class="el-icon-finished"></i></button>
-              <button  style="margin:5px;" @click="removeItem(index)" class="btn btn-danger"><i class="el-icon-delete"></i></button>
+              <button style="margin:5px;" v-if="!item.edit"  @click="item.edit = !item.edit" class="btn "><i class="el-icon-edit"></i></button>
+              <button style="margin:5px;" v-else  @click="item.edit = !item.edit" class="btn "><i class="el-icon-finished"></i></button>
+              <button  style="margin:5px;" @click="removeItem(index)" class="btn "><i class="el-icon-delete"></i></button>
             </div>
          
         </td>
       </tr>
-      <tr>
+      <tr style="color:yellow;font-weight:bold">
          <td>စုစုပေါင်း<br>ထိုးငွေ</td>  
           <td>{{total}} {{$t('kyat')}}</td>
         </tr>
@@ -204,14 +204,28 @@ export default {
                           type: 'warning',
                            duration:10000
                         });
-                    }
-                    else {
+                    }else if (response.data.status == 7) {
+                       this.submitted = false
+                       this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                           duration:10000
+                        });
+                    } else {
                       this.submitted = true
-                         // this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                     } 
-                     // this.$router.push(`/bet_success?lang=${this.$store.state.locale}`); 
                     
+
                 })
+                 .catch(error => {
+                   this.$message({
+                            showClose: true,
+                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                          type: 'warning',
+                        });
+                });
         } 
         
         },
@@ -285,7 +299,7 @@ export default {
   }
   .threed_betBtn {
     text-align: center;
-    margin:30px auto;
+    margin:10px auto 30px auto;
     padding:0 20px;
   }
   .threed_betBtn .el-button {

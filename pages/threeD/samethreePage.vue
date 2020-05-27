@@ -126,13 +126,15 @@ export default {
     }
     .contact_sameThree h6 {
         color:#fff;
-        padding-bottom:40px;
+        
     }
     .contact_sameThree .el-checkbox-button__inner {
         background-color:#1A1A1A;
         border:0;
+        font-size: 14px;
+        font-weight: bold;
         margin:5px;
-        color:#AAAAAA;
+        color:#fff;
         border-radius: 9px;
     }
     .contact_sameThree .el-checkbox-button:first-child .el-checkbox-button__inner  ,
@@ -154,7 +156,6 @@ export default {
     }
     .contact_sameThree .bet_btn {
         bottom:unset;
-        padding-top:25px;
     }
 </style>
 

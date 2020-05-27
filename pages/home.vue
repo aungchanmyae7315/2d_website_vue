@@ -8,7 +8,7 @@
                <el-page-header title="" @back="goBack" >
                      
                 </el-page-header>
-                 <img src="~static/images/logo.png" class="logo" alt="logo">
+                 <img src="~static/images/twod_logo.png" class="logo" alt="logo">
            <!-- </nuxt-link> -->
       </el-header>
         <div class="longText" id="hidingScrollBar">

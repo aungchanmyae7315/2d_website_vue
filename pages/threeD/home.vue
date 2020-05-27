@@ -8,7 +8,7 @@
                <el-page-header title="" @back="goBack" >
                      
                 </el-page-header>
-                 <img src="~static/images/logo.png" class="logo" alt="logo">
+                 <img src="~static/images/threed_logo.png" class="logo" alt="logo">
                   
            <!-- </nuxt-link> -->
       </el-header>
@@ -70,10 +70,15 @@
                         <li>
                              <h5>ထီပိတ်ရက်ကျန်ချိန်</h5>
                         </li>
-                        <li>
+                        <li v-if="this.endTime != '-'">
                              <div v-for="(time ,k) in times" :key="k">
                                 <h6 class="card-title">{{time.time}}</h6>
                               </div>
+                        </li>
+                         <li v-else>
+                            
+                                <h6 class="card-title">ပိတ်ပါပြီ</h6>
+                      
                         </li>
                       </ul>
                     </div>
@@ -104,7 +109,7 @@
           
          <el-row>
                  <el-col :span="6">
-                    <el-button  class="book_btn" type="warning">Book</el-button>
+                    <el-button  class="book_btn" type="text"></el-button>
                 </el-col>
                 <el-col :span="18" style="padding-left:15px;">
                     <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
@@ -116,6 +121,7 @@
             <VuePicker :data="pickData"
               :showToolbar="true"
               :pickerbox="false"
+              :header="false"
             
               @confirm="confirm"
               @change = "change"
@@ -126,11 +132,11 @@
             />
 
             
-              <el-button @click="rBtn(threed)" class="r_btn">R</el-button>
+              <el-button @click="rBtn(threed)" :class="{'is-active': isActive}" class="r_btn">R</el-button>
             </div>
           </div>
           
-            <el-form  class="contact_sameThree">
+            <el-form v-if="isActive"  class="contact_sameThree">
           
             <el-form-item> 
                 <el-checkbox-group v-model="bet_number">
@@ -140,11 +146,10 @@
           </el-form>
 
           
-            <el-input class type="number" placeholder="100 Ks(min)"  v-model="amountThreeD"  ></el-input>
+            <el-input class style="color:yello !important" type="number" placeholder="ထီထိုးငွေပမာဏဖြည့်ပါ 100 Ks(min)"  v-model="amountThreeD"  ></el-input>
                     
-
-          
                     
+ 
            
       </section>
 
@@ -170,7 +175,7 @@ import carousel from 'vue-owl-carousel'
     var threeCol = []
      var fourCol = []
  
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 10; i++ ) {
      
     oneCol.push({
       label:  i ,
@@ -263,7 +268,7 @@ export default {
   data() {
     
     return {
-     
+      isActive: false,
       endTime: '',
       times: [
         { id: 0, text: "D", time: 45 },
@@ -337,7 +342,7 @@ export default {
     rBtn(threed) {
       console.log(threed)
       // let threed = [2,2,3];
-
+          	this.isActive = !this.isActive;
           const permArr = [],usedChars = [];
           const rotate = (input) => {
             let ch;
@@ -395,7 +400,7 @@ export default {
      
        
         if(this.result_number && this.bet_number.length > 0) {
-              this.all_number =  this.bet_number+','+this.result_number
+              this.all_number =  this.bet_number
 
                var data = this.all_number  
       
@@ -456,6 +461,7 @@ export default {
      created() {
          this.$axios.get('/v2/v1/threed/count_down')
               .then(response => {
+                console.log(response)
                   this.endTime = response.data.end_date
               }) 
         this.updateTimer();
@@ -523,7 +529,9 @@ export default {
     background-color: #1A1A1A;
     border: 0;
     margin: 5px;
-    color: #AAAAAA;
+    color: #fff;
+    font-size:14px;
+    font-weight: bold;
     border-radius: 9px;
 }
 .contact_sameThree .el-checkbox-button.is-checked .el-checkbox-button__inner {
@@ -558,12 +566,11 @@ export default {
   }
 .pickerbox[data-v-4804d034] {
   position: unset !important; 
-  margin:0px auto 20px auto;
      width: unset !important;
     height: unset !important; 
     left: unset !important; 
     top: unset !important; 
-    background: rgba(0, 0, 0, 0.7) !important;
+     background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%) !important;
     z-index: 9999;
     overflow: hidden;
     border-radius: 21px;
@@ -572,15 +579,21 @@ export default {
   
 
 }
+.colums[data-v-4804d034] {
+  margin:0 55px !important;
+}
+.content[data-v-4804d034] {
+  height:180px !important;
+}
 .choose_bet_title {
   color:#fff;
   margin-top:25px;
   text-align: left;
 }
+
   .vue-picker[data-v-4804d034] {
     position: unset  !important;
-
-   background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);
+    background: unset !important;
     user-select: none;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
@@ -592,6 +605,12 @@ export default {
      pointer-events:auto !important;
       background: linear-gradient(#FDD164, #BB8834); 
   }
+.el-button.is-active, .el-button.is-plain:active {
+  background-color: #0098e9;
+  color:#fff;
+  font-weight: bold;
+}
+
   .picker .header {
    
     cursor: not-allow;
@@ -602,16 +621,20 @@ export default {
     width:120px;
     margin:0 auto;
     border-radius: 36px;
-      position: fixed !important;
-      top:575px;
+    position: absolute !important;
+    top:530px;
       width:100px;
       border-radius: 21px;
   }
+
   .picker .mask[data-v-4804d034] {
+        background-size: 100% 70px !important;
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.136), rgba(255, 255, 255, 0.034)), linear-gradient(0deg, rgba(255, 255, 255, 0.034), rgba(255, 255, 255, 0.136));
   }
   .picker .list li[data-v-1a173b4c] {
     color:#fff;
+    position: relative;
+    top:-14px;
     font-weight: bold;
   }
   .picker .header .left {
@@ -623,6 +646,11 @@ export default {
   .picker .title[data-v-6ffe26b0] {
     display: none;
   }
+  .colums[data-v-4804d034] {
+    font-size: 24px !important;
+
+  }
+
   .contact_rthree .el-checkbox-button.is-checked .el-checkbox-button__inner {
         background: #FFEA72;
         color:#000;
@@ -655,18 +683,23 @@ export default {
 
     .threeD_items .el-row .el-button {
         width:100%;
+        height:40px;
     
     }
     .r_btn {
       position: relative;
-      bottom:152px;
+      bottom:112px;
       left:123px;
-      background-color: #1E6CD2;
+      background-color: #4B545E;
       color:#fff;
       border-radius: 9px;
     }
     .book_btn {
         border-radius: 9px;
+        background-image: url(~static/threed_img/dream_book.jpg);
+        background-position:center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
     }
     .choose_number_box p {
         text-align: left;
@@ -722,6 +755,7 @@ export default {
 }
 .count_time_threed h6 {
   color:#FFEA72;
+  font-size:12px;
   font-weight: bold;
   margin:0;
 }

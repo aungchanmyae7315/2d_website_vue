@@ -166,7 +166,7 @@ import axios from 'axios'
                          //duration:0
                        
                       });
-                        this.$router.push(`/home?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
                          
                   }
                  

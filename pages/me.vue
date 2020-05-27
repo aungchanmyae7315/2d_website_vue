@@ -78,7 +78,7 @@
 
                         </div>
                          
-                        <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">{{$t('app_share')}} </a></nuxt-link></li>
+                        <!-- <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">{{$t('app_share')}} </a></nuxt-link></li> -->
                         <li><a href="#"  @click="dialogVisible = true"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>
                         <li style="color:white;padding-left:15px;">
                           Version: {{$store.state.webAppVersion}}
