@@ -622,7 +622,7 @@ export default {
     margin:0 auto;
     border-radius: 36px;
     position: absolute !important;
-    top:530px;
+    top:570px;
       width:100px;
       border-radius: 21px;
   }
