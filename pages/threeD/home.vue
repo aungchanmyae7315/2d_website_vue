@@ -724,6 +724,7 @@ export default {
       border-radius: 9px;
     }
     .book_btn {
+      width:75px !important;
         border-radius: 9px;
         background-image: url(~static/threed_img/dream_book.jpg);
         background-position:center;
