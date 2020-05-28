@@ -61,6 +61,9 @@
        background-color :#fff;
       
     }
+       .bet_history .table td, .table th {
+        border:0 ;
+    }
     .el-page-header__left {
         margin:0;
     }

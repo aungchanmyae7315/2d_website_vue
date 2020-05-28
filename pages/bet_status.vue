@@ -5,14 +5,15 @@
                 <el-page-header  @back="goBack" title=""  :content="`${$t('bet_status_title')}`">
                    
                 </el-page-header>
-                <p class="time_status" >
-                    <span>{{this.time_status}} Section</span>
-                </p>
+               
     
       </el-header>
       <div class="bet_status_tag">
            <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="2D" name="first">
+             <p class="time_status" >
+                    <span>{{this.time_status}} Section</span>
+                </p>
              <table class="table" style="width:100%" >
             <thead>
                 <tr>
@@ -39,15 +40,15 @@
             <thead>
                 <tr>
                 <th>{{$t('date_time')}}</th>
-                <th>{{$t('no')}}</th>
+               
                 <th style="text-align:right">{{$t('Amount')}}</th>
                 </tr>
             </thead>
             <tbody >
                 <!-- @click="dialogVisible = true" -->
-                <tr   v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id">
-                <th scope="row">{{bet_list.created_at}}</th>  
-                <td>{{bet_list.number}}</td> 
+                <tr   @click="bet_date(bet_list.date)"  v-for="(bet_list,b) in bet_stauts_threed" :key="b" :id="bet_list.id">
+                <th scope="row">{{bet_list.date}}</th>  
+               
                 <td style="text-align:right" v-if="bet_list.wallet_status == 'wallet'">{{bet_list.amount}} ကျပ်</td>
                 <td style="text-align:right" v-else>{{bet_list.amount}} ပွိုင့်</td>  
                 </tr>
@@ -77,6 +78,9 @@
     .bet_status .el-header {
        background-color :#fff;
       
+    }
+    .bet_status .table td, .table th {
+        border:0 ;
     }
     .el-page-header__left {
         margin:0;
@@ -138,7 +142,7 @@
         text-align: center;
         color:#000;
         right:0;
-        top:44px;
+      
         font-size:12px; 
         left:0;
         
@@ -181,6 +185,12 @@ export default {
         }
     },
     methods: {
+         bet_date(data) {
+          this.$store.commit('bet_date', data)
+       
+            this.$router.push(`/threeD/bet_threed_detail?lang=${this.$store.state.locale}`); 
+
+        },
         goBack() {
              this.$router.push(`/me?lang=${this.$store.state.locale}`); 
          },
@@ -214,9 +224,12 @@ export default {
                          }
                         })
                     .then(response => {
+                        console.log(response)
+                        
                           this.$nuxt.$loading.finish()
-                        console.log(response.data.data)
-                     this.bet_stauts_threed = response.data.data  
+                       
+                     this.bet_stauts_threed = response.data.data 
+                     console.log(this.bet_stauts_threed)
                     this.time_status = response.data.time
                    // console.log(this.time_stauts)
                 })

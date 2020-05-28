@@ -186,7 +186,7 @@ export default {
                         })
                     .then(response => {
                      console.log(response)
-                     console.log('lee pal')
+                    
                      this.submitted = true
                      if(response.data.status == 2) {
                        this.submitted = false
