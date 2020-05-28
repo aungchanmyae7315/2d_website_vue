@@ -553,6 +553,7 @@ export default {
     margin:0;
 }
 .threed_home .contact_sameThree {
+    padding-top:20px;
     padding-right:80px;
     text-align: left;
     
@@ -697,7 +698,7 @@ export default {
         text-align: center;
    }
    .threed_home .el-input__inner {
-      margin-top:20px;
+      margin-top:10px;
        background-color: #252E39;
        color:#fff;
    }
