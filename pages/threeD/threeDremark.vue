@@ -67,13 +67,13 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
       <tr v-for="(item, index) in items" :key="index">
         <td>
             <div style="width:100%">
-          <input style="width:100%" v-if="item.edit" type="text" v-model="item.number"  v-on:keyup.enter="item.edit = !item.edit">
+          <input style="width:100%" v-if="item.edit" type="number" v-model="item.number"  v-on:keyup.enter="item.edit = !item.edit">
           <span v-else>{{item.number}} </span>
             </div>
         </td>
         <td >
             <div style="width:100%">
-          <input style="width:100%" v-if="item.edit" type="text" v-model="item.amount" v-on:keyup.enter="item.edit = !item.edit">
+          <input style="width:100%" v-if="item.edit" type="number" v-model="item.amount" v-on:keyup.enter="item.edit = !item.edit">
           <span v-else>{{item.amount}} </span>
            </div>
         </td>
