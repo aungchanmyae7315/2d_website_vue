@@ -169,9 +169,8 @@ export default {
 
          },
         betAll() {
-       
-            console.log(this.items)
-            this.ok = 22
+         
+           
            var data=  {
              data:this.items
            }
@@ -187,6 +186,7 @@ export default {
                         })
                     .then(response => {
                      console.log(response)
+                     console.log('lee pal')
                      this.submitted = true
                      if(response.data.status == 2) {
                        this.submitted = false
@@ -205,6 +205,15 @@ export default {
                            duration:10000
                         });
                     }else if (response.data.status == 7) {
+                       this.submitted = false
+                       this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                           duration:10000
+                        });
+                    } 
+                    else if (response.data.status == 5) {
                        this.submitted = false
                        this.$message({
                             showClose: true,

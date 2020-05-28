@@ -168,9 +168,16 @@
           >  
           <el-input id="form-name" type="number"  placeholder="ထီထိုးငွေပမာဏဖြည့်ပါ 100 Ks(min)" v-model="ruleForm.amountThreeD"></el-input>
     </el-form-item>
-        
-                    
-            <el-button  @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('ထီထိုးမည်')}}</el-button>     
+    <div  v-if ="!$store.state.isLoggedIn">
+         <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
+            <el-button style="width:100%" class="submitThreed_btn">{{$t('Please Login first')}}</el-button>
+      </nuxt-link>
+    </div>
+    <div v-else>
+           <el-button   @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('ထီထိုးမည်')}}</el-button>     
+    </div>
+     
+         
           </el-form>
            
       </section>
