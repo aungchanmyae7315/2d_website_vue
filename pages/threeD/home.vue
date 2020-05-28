@@ -68,19 +68,18 @@
                       <ul>
                        
                         <li>
-                            
+                              <h5>ထီပိတ်ရက်ကျန်ချိန်</h5>
                         </li>
                         <li v-if="this.holiday == 0">
-                          <!-- <p>ထီထိုးလို့ မရပါ</p> -->
-                             <!-- <div v-for="(time ,k) in times" :key="k">
-                                <h6 class="card-title">{{time.time}}</h6>
-                              </div> -->
-                        </li>
-                         <li v-else>
-                             <h5>ထီပိတ်ရက်ကျန်ချိန်</h5>
+                            
                               <div v-for="(time ,k) in times" :key="k">
                                 <h6 class="card-title">{{time.time}}</h6>
                               </div>
+                     
+                        </li>
+                         <li v-else>
+                             <h5>ထီပိတ်ပါပြီ</h5>
+                             
                       
                         </li>
                       </ul>
@@ -493,7 +492,7 @@ export default {
          this.$axios.get('/v2/v1/threed/count_down')
               .then(response => {
                 console.log(response)
-                  this.endTime = response.data.start_date
+                  this.endTime = response.data.next_start_date
                   this.holiday = response.data.data
               }) 
         this.updateTimer();
