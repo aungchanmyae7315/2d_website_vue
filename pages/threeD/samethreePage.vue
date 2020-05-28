@@ -34,6 +34,7 @@
           
           >  
           <el-input id="form-name" type="number"  placeholder="Bet Amount" v-model.number="numberValidateForm.amountThreeD"></el-input>
+          <p style="color:#fff;float:right">{{$t('you_balance')}} : {{this.myWallet}} {{$t('kyat')}}</p>
     </el-form-item>
             <!-- <el-input class type="number" placeholder="100 Ks(min)"  v-model="amountThreeD"  ></el-input> -->
             <div class="bet_btn">
@@ -55,7 +56,21 @@
   
 export default {
     mounted() {
+        let token = localStorage.getItem('token');
+          if(token) {
+             this.$axios.get("/v2/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                        console.log(response)
+                        this.profile = response.data.data
+                      this.myWallet = this.thousands_separators(this.profile.wallet)
+                  
 
+                })
+        }  
 
     },
     data() {
@@ -65,7 +80,7 @@ export default {
                   bet_number: [],
              },
             
-            
+            myWallet:'',
             SameNumber: sameThreeOptions,
              submitted:false,
           
@@ -76,6 +91,11 @@ export default {
      
   },
     methods: {
+         thousands_separators(num){
+            var num_parts = num.toString().split(".");
+            num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            return num_parts.join(".");
+        },
         goBack() {
              this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
          },

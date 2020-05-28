@@ -86,7 +86,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
          
         </td>
       </tr>
-      <tr style="color:yellow;font-weight:bold">
+      <tr style="color:orange;font-weight:bold">
          <td>စုစုပေါင်း<br>ထိုးငွေ</td>  
           <td>{{total}} {{$t('kyat')}}</td>
         </tr>

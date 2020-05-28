@@ -553,7 +553,8 @@ export default {
     margin:0;
 }
 .threed_home .contact_sameThree {
-    padding:5px 40px;
+    padding-right:80px;
+    text-align: left;
     
 }
 .contact_sameThree .el-checkbox-button__inner {
