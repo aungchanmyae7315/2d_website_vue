@@ -70,14 +70,17 @@
                         <li>
                              <h5>ထီပိတ်ရက်ကျန်ချိန်</h5>
                         </li>
-                        <li v-if="this.endTime != '-'">
-                             <div v-for="(time ,k) in times" :key="k">
+                        <li v-if="this.holiday == 0">
+                          <p>ထီထိုးလို့ မရပါ</p>
+                             <!-- <div v-for="(time ,k) in times" :key="k">
                                 <h6 class="card-title">{{time.time}}</h6>
-                              </div>
+                              </div> -->
                         </li>
                          <li v-else>
                             
-                                <h6 class="card-title">ပိတ်ပါပြီ</h6>
+                              <div v-for="(time ,k) in times" :key="k">
+                                <h6 class="card-title">{{time.time}}</h6>
+                              </div>
                       
                         </li>
                       </ul>
@@ -125,7 +128,7 @@
               :pickerbox="false"
               :header="false"
             
-              @confirm="confirm"
+            
 
 
               @change = "change"
@@ -146,7 +149,7 @@
           </el-row>
          
           </div>
-          <el-form :model="ruleForm" :rules="rules" ref="ruleForm"  class="demo-ruleForm">
+          <el-form :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
             <div v-if="isActive"  class="contact_sameThree">
           
             <el-form-item> 
@@ -294,6 +297,7 @@ export default {
         { id: 2, text: "M ", time: 25 },
         { id: 3, text: "S", time: 15 }
       ],
+      holiday:'',
       a: 1,
       progress: 50,
 
@@ -489,7 +493,8 @@ export default {
          this.$axios.get('/v2/v1/threed/count_down')
               .then(response => {
                 console.log(response)
-                  this.endTime = response.data.end_date
+                  this.endTime = response.data.start_date
+                  this.holiday = response.data.data
               }) 
         this.updateTimer();
     // console.log("date is " + new Date());
