@@ -34,7 +34,7 @@
           
           >  
           <el-input id="form-name" type="number"  placeholder="Bet Amount" v-model.number="numberValidateForm.amountThreeD"></el-input>
-          <p style="color:#fff;float:right">{{$t('you_balance')}} : {{this.myWallet}} {{$t('kyat')}}</p>
+          <p style="color:#fff;float:right;margin:0">{{$t('you_balance')}} : {{this.myWallet}} {{$t('kyat')}}</p>
     </el-form-item>
             <!-- <el-input class type="number" placeholder="100 Ks(min)"  v-model="amountThreeD"  ></el-input> -->
             <div class="bet_btn">
@@ -134,6 +134,9 @@ export default {
     }
     .samethreeD_main .el-header {
         padding:20px;
+    }
+    .samethreeD_main .el-form-item {
+        margin:0;
     }
     .logo_samethreenumber {
         width:130px;

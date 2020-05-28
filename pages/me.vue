@@ -35,8 +35,7 @@
            
       </el-header>
       <el-main>
-            <div class="longText" id="hidingScrollBar">
-              <div class="hideScrollBar">
+  
            <ul class="acc_items">
               
             
@@ -97,8 +96,7 @@
   </span>
 </el-dialog>
                   
-</div>
-</div>     
+  
       </el-main>
    
      <el-footer class="footer">

@@ -11,7 +11,10 @@
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
-                    <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time')}}</p>
+                    <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_one')}}</p>
+                     <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_two')}}</p>
+                      <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_three')}}</p>
+
                     <!-- <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
 
