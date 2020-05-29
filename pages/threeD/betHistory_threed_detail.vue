@@ -23,14 +23,13 @@
                <ul class="bet_detail_list"  v-for="(bet_list_detail,b) in bet_detail" :key="b">
                    <el-row>
                       <el-col :span="12">
-                            <li style="margin:0"> {{bet_list_detail.created_at}}</li>
+                            <li style="margin:0"> {{bet_list_detail.datetime}}</li>
                        </el-col>
                        <el-col :span="6">
                              <li style="margin-right:0;"> {{bet_list_detail.number}}</li>
                        </el-col>
                        <el-col :span="6" style="text-align:right">
-                             <li style="margi-right:0;text-align:right" v-if="bet_list_detail.wallet_status == 'wallet'">{{bet_list_detail.amount}} ကျပ်</li>
-                            <li style="margin-right:0; text-align:right" v-else>{{bet_list_detail.amount}} ပွိုင့်</li>
+                             <li style="margi-right:0;text-align:right" >{{bet_list_detail.amount}} ကျပ်</li>
                        </el-col>
                    </el-row>
                     
@@ -114,7 +113,7 @@ export default {
         let token = localStorage.getItem('token');
 
         let bet_date = localStorage.getItem('bet_date');
-           this.$axios.get("/v2/v1/threed/betStatusBydate?date="+bet_date,
+           this.$axios.get("/v2/v1/threed/historyByDate?date="+bet_date,
                 {headers: {
                             "Authorization": "Bearer "+token
                         }

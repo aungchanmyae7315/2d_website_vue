@@ -133,7 +133,7 @@ export default {
          bet_date_threed(data) {
           this.$store.commit('bet_date', data)
        
-            this.$router.push(`/threeD/bet_threed_detail?lang=${this.$store.state.locale}`); 
+            this.$router.push(`/threeD/betHistory_threed_detail?lang=${this.$store.state.locale}`); 
 
         },
     },
@@ -143,7 +143,7 @@ export default {
          let token = localStorage.getItem('token');
         
         
-                this.$axios.get("/v1/history",
+                this.$axios.get("/v2/v1/history",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }

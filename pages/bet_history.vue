@@ -143,7 +143,7 @@ export default {
          let token = localStorage.getItem('token');
         
         
-                this.$axios.get("/v1/history",
+                this.$axios.get("/v2/v1/history",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
