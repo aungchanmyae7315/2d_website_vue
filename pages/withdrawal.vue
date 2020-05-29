@@ -228,6 +228,7 @@ export default {
          },
         id_bank(data) {
             this.bank_id = data;
+             this.submitted = false
            
         },
        

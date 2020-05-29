@@ -87,6 +87,7 @@ export default {
     overflow: auto;
     margin-left: 17px;
     padding-right: 28px;
+    padding-bottom:200px;
 }
 .promotion {
     text-align:center;

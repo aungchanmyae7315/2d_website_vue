@@ -7,12 +7,15 @@
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_service">
                   <div class="service">
-                  <img src="~static/icons_service/Customer_services_icon.png" alt="" data-aos="fade-down"
+                  <img src="~static/icons_service/Customer_services_icon.png" alt="" data-aos="fade-down" style="width:100px"
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
-                    <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time')}}</p>
-                    <!-- <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
+                    <p style="color:#b8b8b8;font-size:13px;margin:0">{{$t('service_time_one')}}</p>
+                     <p style="color:#b8b8b8;font-size:13px;margin:0">{{$t('service_time_two')}}</p>
+                      <p style="color:#b8b8b8;font-size:13px;margin:0">{{$t('service_time_three')}}</p>
+
+               <!-- <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
                         <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
 
                     </ul> -->
@@ -20,6 +23,7 @@
                         <h6 v-if="phone.type == 'Customer Service'">{{$t('customer_service_title')}}</h6>
                         <h6 v-else-if="phone.type == 'Top-up\/Withdrawal Help'">{{$t('topup_withdrawal_help')}}</h6>
                          <h6 v-else-if="phone.type == 'IT Support'">{{$t('it_support')}}</h6>
+                        <h6 v-else-if="phone.type == 'Agent Information (Viber Only)'">{{$t('agent_info')}}</h6>
                         <ul v-for="(ph_item, ne) in phone.phone_number" :key="ne.id" class="contact_phone">
                           
                           <li class="phone_item"><i class="el-icon-phone"></i> {{ph_item.phone}}</li>
@@ -96,6 +100,9 @@ export default {
     }
   .service .el-button.is-round {
     width:unset;
+  }
+  .service_header .logo {
+    margin:0;
   }
 
     .service .contact_text  {

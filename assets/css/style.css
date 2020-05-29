@@ -169,6 +169,7 @@ input[type=number] {
     width:107px;
     height:auto;
     text-align: center;
+    margin-right:40px;
    
   }
   .change_lang_icon  , .result_icon{
@@ -475,7 +476,7 @@ input[type=number] {
   }
   .bet_btn {
     text-align: center;
-    margin-left: -16px;
+    margin-left: -18px;
     display: block;
     position: fixed;
     bottom: 75px;
