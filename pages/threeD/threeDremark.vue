@@ -47,7 +47,6 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
     <el-button type="primary" @click="addItem('numberValidateForm')">{{$t('add')}}</el-button>
   </span>
 </el-dialog>
-       
     <!-- <input type="text" id="form-name" v-model="ruleForm.number" placeholder="Bet Number" class="form-control"> 
     <input type="text" v-model="ruleForm.amount" placeholder="Bet Amount" class="form-control" v-on:keyup.enter="addItem"> -->
     </el-form>
