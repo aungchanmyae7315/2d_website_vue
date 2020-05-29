@@ -114,7 +114,7 @@
                     </el-menu-item>
                 </nuxt-link>
                 <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                  <el-menu-item index="2">
+                  <el-menu-item index="2"  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
                       <img src="~static/icons_header/dimond_t_icon.png" alt="">
                       <h5 class="main_icon" style="font-weight:bold;color:#ccab48">Refresh</h5>
                   </el-menu-item>
@@ -295,6 +295,7 @@
    },
     data() {
       return {
+        fullscreenLoading: false,
         bank_account:'',
         card_number:'',
         visible: false,
@@ -335,6 +336,14 @@
     },
 
     methods: {
+       HomeRefresh() {
+      this.fullscreenLoading = true;
+        setTimeout(() => {
+          
+          this.fullscreenLoading = false;
+          location.reload();
+        }, 1000);
+    },
        thousands_separators(num){
           var num_parts = num.toString().split(".");
           num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
