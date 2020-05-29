@@ -23,6 +23,7 @@
                         <h6 v-if="phone.type == 'Customer Service'">{{$t('customer_service_title')}}</h6>
                         <h6 v-else-if="phone.type == 'Top-up\/Withdrawal Help'">{{$t('topup_withdrawal_help')}}</h6>
                          <h6 v-else-if="phone.type == 'IT Support'">{{$t('it_support')}}</h6>
+                        <h6 v-else-if="phone.type == 'Agent Information (Viber Only)'">{{$t('agent_info')}}</h6>
                         <ul v-for="(ph_item, ne) in phone.phone_number" :key="ne.id" class="contact_phone">
                           
                           <li class="phone_item"><i class="el-icon-phone"></i> {{ph_item.phone}}</li>
@@ -99,6 +100,9 @@ export default {
     }
   .service .el-button.is-round {
     width:unset;
+  }
+  .service_header .logo {
+    margin:0;
   }
 
     .service .contact_text  {

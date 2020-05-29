@@ -223,14 +223,13 @@
                 <div class="date_time">
                   <div class="d_t_item">
                    
- 
-                      <span>updated at:</span><br>
+                <span>updated at:</span><br>
 
-                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="currentDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="currentDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="currentDate"></span>
+                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="serverDate"></span>
+                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="serverDate"></span>
+                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="serverDate"></span>
                       <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
-                      <span v-else v-text="currentDate"></span>
+                      <span v-else v-text="this.last_date"></span>
                       <br>
                   
                       <span v-text="this.breakTime"></span>
@@ -525,6 +524,7 @@ export default {
        isActive: true,
       hasError: false,
       currentTime: '',
+      serverDate:'',
       morningTime_9_30:'09:30:00',
       time_12_00:'12:01:00',
       time_01_00:'13:00:00',
@@ -778,13 +778,18 @@ export default {
 
                 })
       }
-      else{
-        this.$axios.get('/v2/v1/server_time')
+    
+          this.$axios.get('/v2/v1/server_time')
               .then(response => {
-                console.log(response.data)
-               this.currentTime = response.data
+                // console.log(response.data.time)
+                //  console.log(response.data.date)
+               this.currentTime = response.data.time
+               this.serverDate  = response.data.date
+                 console.log(this.currentTime)
+                 console.log(this.serverDate)
+              
               })
-      }
+      
     },
 }
 

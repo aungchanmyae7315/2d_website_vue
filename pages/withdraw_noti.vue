@@ -579,7 +579,7 @@ export default {
                     .then(response => {
                        console.log(response)
                     this.notification_detail = response.data.data
-                    console.log('leee pal')
+                  
                     console.log(this.notification_detail)
                 })
           // let token = localStorage.getItem('token');
