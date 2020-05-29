@@ -15,18 +15,20 @@
         </div>
 
        <el-row style="padding:23px;">
-         
-            <el-col :span="12"><div class="">{{$t('no')}}</div></el-col>
-            <el-col  :span="12"><div style="text-align:right;" class="">{{$t('Amount')}}</div></el-col>
+         <el-col :span="12"><div class="">{{$t('date_time')}}</div></el-col>
+            <el-col :span="6"><div class="">{{$t('no')}}</div></el-col>
+            <el-col  :span="6"><div style="text-align:right;padding-right:20px" class="">{{$t('Amount')}}</div></el-col>
         </el-row>
      
                <ul class="bet_detail_list"  v-for="(bet_list_detail,b) in bet_detail" :key="b">
                    <el-row>
-                     
-                       <el-col :span="12">
+                      <el-col :span="12">
+                            <li style="margin:0"> {{bet_list_detail.created_at}}</li>
+                       </el-col>
+                       <el-col :span="6">
                              <li style="margin-right:0;"> {{bet_list_detail.number}}</li>
                        </el-col>
-                       <el-col :span="12" style="text-align:right">
+                       <el-col :span="6" style="text-align:right">
                              <li style="margi-right:0;text-align:right" v-if="bet_list_detail.wallet_status == 'wallet'">{{bet_list_detail.amount}} ကျပ်</li>
                             <li style="margin-right:0; text-align:right" v-else>{{bet_list_detail.amount}} ပွိုင့်</li>
                        </el-col>

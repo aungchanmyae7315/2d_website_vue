@@ -43,7 +43,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr @click="bet_date(bet_list_hist.date)" v-for="(bet_list_hist,b) in bet_historys_threed" :key="b" >
+                                <tr @click="bet_date_threed(bet_list_hist.date)" v-for="(bet_list_hist,b) in bet_historys_threed" :key="b" >
                             
                                 <th scope="row">{{bet_list_hist.date}}</th>  
                                 <td style="text-align:right">{{bet_list_hist.amount}}</td>  
@@ -128,6 +128,12 @@ export default {
           this.$store.commit('bet_date', data)
        
             this.$router.push(`/bet_detail?lang=${this.$store.state.locale}`); 
+
+        },
+         bet_date_threed(data) {
+          this.$store.commit('bet_date', data)
+       
+            this.$router.push(`/threeD/bet_threed_detail?lang=${this.$store.state.locale}`); 
 
         },
     },

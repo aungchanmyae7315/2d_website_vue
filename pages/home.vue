@@ -21,16 +21,15 @@
                     <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                     <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
                   </nuxt-link>
-                     <div class="change_lang_icon">
-                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
+                     <!-- <div class="change_lang_icon">
+                  
                        <el-button type="text" @click="dialogVisible = true">
                         <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
-                    <!-- </nuxt-link> -->
-                  </div>
-                  <el-dialog
+                  </div> -->
+                  <!-- <el-dialog
                    
                     :visible.sync="dialogVisible"
                     class="change_lang_modal"
@@ -41,7 +40,7 @@
                          
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
                             <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
+                         
                             <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
                       
                       
@@ -49,7 +48,7 @@
                     </div>
 
                    
-                  </el-dialog>
+                  </el-dialog> -->
               </div>
                
            
@@ -92,19 +91,19 @@
                      
                   </el-col> -->
                    <el-col :span="3">
-                      <div class="change_lang_icon">
-                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
+                      <!-- <div class="change_lang_icon">
+                    
                        <el-button type="text" @click="dialogVisible = true">
                          <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
-                    <!-- </nuxt-link> -->
-                  </div>
+ 
+                    </div> -->
                    </el-col>
                 </el-row>
                  
-                  
+<!--                   
                   <el-dialog
                    
                     :visible.sync="dialogVisible"
@@ -113,21 +112,16 @@
 
                      <div class="lang lang_icon">
                         <el-dropdown @command="changeLang"  style="text-align:center">
-                        <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
-                            {{$t('Language')}}
-                        </span> -->
-                      
+          
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
                             <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
                             <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
-                      
-                      
+
                         </el-dropdown>   
                     </div>
 
                    
-                  </el-dialog>
+                  </el-dialog> -->
               </div>
         </div>
 
@@ -439,37 +433,6 @@ export default {
                 })
 
                 }
-                
-
-          // if (this.$store.state.sliderText.length > 0){
-          //    if(self.slider_text  !== null) {
-          //               this.loaded = true;
-          //           }
-          //   self.slider_text = this.$store.state.sliderText;
-          // }
-          // else{
-          //   setTimeout(function(){
-          //   self.$axios.get('/v2/v1/slider_text')
-          //       .then(response => {
-          //       console.log(response)
-          //        if(self.slider_text  !== null) {
-          //               this.loaded = true;
-          //           }
-          //       self.slider_text = response.data.data[0];
-          //       self.$store.commit('setSliderText', response.data.data);
-          //       })
-          //   }, 4000);
-          // }
-
-
-
-
-
-
-
-
-
-
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -489,7 +452,7 @@ export default {
       this.getDataKwee();
       //this.getDataresult();
       this.updateIsLoggedIn();
-      this.updateLang();
+      // this.updateLang();
       this.getKweeLiveData();
        
 
@@ -596,34 +559,33 @@ export default {
               })
           },
         
-      changeLang (lang) {
-      //mutate 'locale' in store
-      this.$store.commit('SET_LANG', lang)
-      //re-route to the current page but with the selected language in a query string
-      this.dialogVisible = false
-       this.$router.push(`/?lang=${this.$store.state.locale}`);
-        this.$axios.get(`/v2/v1/add_language?language=${lang}`)
+    //   changeLang (lang) {
+     
+    //   this.$store.commit('SET_LANG', lang)
+      
+    //   this.dialogVisible = false
+    //    this.$router.push(`/?lang=${this.$store.state.locale}`);
+    //     this.$axios.get(`/v2/v1/add_language?language=${lang}`)
     
             
-                .then(response => {
+    //             .then(response => {
                  
-                  console.log(response)
+    //               console.log(response)
                    
-        });
-         this.$axios.get("/v2/v1/get_language")
+    //     });
+    //      this.$axios.get("/v2/v1/get_language")
     
             
-                .then(response => {
+    //             .then(response => {
                  
-                  console.log(response)
+    //               console.log(response)
                    
-            });
+    //         });
              
-      // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
-    },
-      submitLang() {      
-            this.$store.commit('SET_LANG', 'hello')            
-        },
+    // },
+      // submitLang() {      
+      //       this.$store.commit('SET_LANG', 'hello')            
+      //   },
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
@@ -678,12 +640,12 @@ export default {
       },
 
 
-      updateLang() {
-        this.$store.commit('updateLang', this.hasLang());
-      },
-      hasLang() {
-        return Boolean(localStorage.getItem('locale'));
-      },
+      // updateLang() {
+      //   this.$store.commit('updateLang', this.hasLang());
+      // },
+      // hasLang() {
+      //   return Boolean(localStorage.getItem('locale'));
+      // },
     },
      created() {
       

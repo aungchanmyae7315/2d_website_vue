@@ -7,7 +7,7 @@
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_service">
                   <div class="service">
-                  <img src="~static/icons_service/Customer_services_icon.png" alt="" data-aos="fade-down"
+                  <img src="~static/icons_service/Customer_services_icon.png" alt="" style="width:120px" data-aos="fade-down"
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>

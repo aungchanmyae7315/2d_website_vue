@@ -49,8 +49,8 @@
                 <tr   @click="bet_date(bet_list.date)"  v-for="(bet_list,b) in bet_stauts_threed" :key="b" :id="bet_list.id">
                 <th scope="row">{{bet_list.date}}</th>  
                
-                <td style="text-align:right" v-if="bet_list.wallet_status == 'wallet'">{{bet_list.amount}} ကျပ်</td>
-                <td style="text-align:right" v-else>{{bet_list.amount}} ပွိုင့်</td>  
+                <td style="text-align:right">{{bet_list.amount}} ကျပ်</td>
+                
                 </tr>
                
             </tbody>
@@ -180,7 +180,7 @@ export default {
             bet_stauts_threed:'',
             dialogVisible: false,
             time_status:'',
-            time:this.time_status,
+            // time:this.time_status,
              activeName: 'first'
         }
     },
@@ -213,10 +213,10 @@ export default {
                         })
                     .then(response => {
                           this.$nuxt.$loading.finish()
-                        console.log(response.data.data)
+                      
                      this.bet_stauts = response.data.data  
                     this.time_status = response.data.time
-                   // console.log(this.time_stauts)
+                  
                 })
                  this.$axios.get("/v2/v1/threed/betStatus",
                     {headers: {
@@ -230,8 +230,7 @@ export default {
                        
                      this.bet_stauts_threed = response.data.data 
                      console.log(this.bet_stauts_threed)
-                    this.time_status = response.data.time
-                   // console.log(this.time_stauts)
+                  
                 })
      }
 }

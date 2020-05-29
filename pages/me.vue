@@ -16,7 +16,7 @@
                   <li v-if="this.profile.name == null">{{this.profile.phone}}</li>
                      <li v-else>{{this.profile.name}}</li>
                     <!-- <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`"> -->
-                     <li>{{$t('you_referral_code')}}: <span class="edit_profile">{{this.get_refel_gen}}</span></li>
+                     <!-- <li>{{$t('you_referral_code')}}: <span class="edit_profile">{{this.get_refel_gen}}</span></li> -->
                     <!-- </nuxt-link> -->
                   </ul>
                   </div>
