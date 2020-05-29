@@ -8,8 +8,12 @@
                <el-page-header title="" @back="goBack" >
                      
                 </el-page-header>
+
                  <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo">
            <!-- </nuxt-link> -->
+              <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
+                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+              </div>
       </el-header>
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
@@ -470,7 +474,8 @@ export default {
   data() {
     
     return {
-     serverDate:'',
+        fullscreenLoading: false,
+      serverDate:'',
       last_date:'',
       dialogVisible: false,
        isActive: true,
@@ -516,6 +521,14 @@ export default {
     clearInterval(this.serverCurTimeItvId);
   },
    methods: {
+    HomeRefresh() {
+      this.fullscreenLoading = true;
+        setTimeout(() => {
+          
+          this.fullscreenLoading = false;
+          location.reload();
+        }, 1000);
+    },
     goBack() {
        this.$router.push(`/?lang=${this.$store.state.locale}`);
     },

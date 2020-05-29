@@ -173,6 +173,14 @@ input[type=number] {
   
    
   }
+  .refresh_icon img {
+    width: 30px;
+    height: auto;
+    font-weight: bold;
+    position: relative;
+    bottom: 72px;
+    float: right;
+  }
   .change_lang_icon  , .result_icon{
     float: right;
   }

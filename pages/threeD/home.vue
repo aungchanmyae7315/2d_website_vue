@@ -9,7 +9,9 @@
                      
                 </el-page-header>
                  <img src="~static/images/threed_logo.png" class="logo" alt="logo" style="width:145px">
-                  
+              <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
+                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+              </div>
            <!-- </nuxt-link> -->
       </el-header>
        
@@ -293,6 +295,7 @@ export default {
   data() {
     
     return {
+       fullscreenLoading: false,
       pickerValue:this.selectedDate,
 
       isActive: false,
@@ -351,6 +354,14 @@ export default {
 
 
    methods: {
+     HomeRefresh() {
+      this.fullscreenLoading = true;
+        setTimeout(() => {
+          
+          this.fullscreenLoading = false;
+          location.reload();
+        }, 1000);
+    },
     thousands_separators(num){
       var num_parts = num.toString().split(".");
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");

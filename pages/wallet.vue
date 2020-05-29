@@ -115,8 +115,8 @@
                 </nuxt-link>
                 <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
                   <el-menu-item index="2">
-                      <img src="~static/icons_header/wallet_t_icon.png" alt="">
-                      <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('wallet_title')}}</h5>
+                      <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                      <h5 class="main_icon" style="font-weight:bold;color:#ccab48">Refresh</h5>
                   </el-menu-item>
                 </nuxt-link>
                  <nuxt-link :to="`${$t('/promotion')}?lang=${$store.state.locale}`"> 
