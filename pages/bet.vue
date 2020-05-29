@@ -347,8 +347,7 @@
         border-radius: 32px;
         border:2pt solid #FFEA72;
         max-width: 480px;
-        z-index: 99;
-       
+        z-index: 99;  
         
     }
     .modal_bet .el-button {
