@@ -179,7 +179,7 @@ input[type=number] {
     font-weight: bold;
     position: relative;
     bottom: 72px;
-    float: right;
+    left:200px;
   }
   .change_lang_icon  , .result_icon{
     float: right;
@@ -563,6 +563,9 @@ input[type=number] {
 }
 }
 @media screen and (max-width:768px) {
+  .refresh_icon img {
+    left:180px;
+  }
   .hideScrollBar {
    margin-left:15px;
   }
@@ -583,6 +586,9 @@ input[type=number] {
   .hideScrollBar {
     margin-left:13px;
   }
+  .refresh_icon img {
+    left:150px;
+  }
 
 
 }
@@ -601,7 +607,13 @@ input[type=number] {
   }
 
 }
+@media screen and (max-width:350px) { 
+  .refresh_icon img {
+    left:130px;
+  }
+}
 @media screen and (min-width:460px) {
+ 
   .bet_container .el-dialog {
     width:57% !important;
   }
