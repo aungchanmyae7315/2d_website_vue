@@ -547,7 +547,8 @@ export default {
 
 </script>
 
-<style>
+
+<style scoped lang="scss">
 
 .choose_2d_3d .el-card {
   margin:20px;
