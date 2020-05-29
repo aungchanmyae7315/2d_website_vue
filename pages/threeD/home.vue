@@ -80,8 +80,7 @@
                      
                         </li>
                          <li v-else>
-                             <h5>{{$t('threed_bet_close')}}</h5>
-                             
+                             <h5>{{$t('threed_bet_close')}}</h5>     
                       
                         </li>
                       </ul>

@@ -29,7 +29,6 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
               { required: true, message: $t('bet_number_required') },
               
           ]"
-          
           >  
           <el-input id="form-name" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" :placeholder="$t('bet_number_add')" v-model.number="numberValidateForm.item.number"></el-input>
     </el-form-item>
