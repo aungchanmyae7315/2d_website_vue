@@ -51,7 +51,6 @@ export default {
       this.$nextTick(() => {
         this.$nuxt.$loading.start()
         })
-     
     },
      data() {
        return {

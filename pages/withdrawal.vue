@@ -216,9 +216,7 @@ export default {
 
           },
             loaded:'',
-            bank_type:'',
-            
-            
+            bank_type:'',   
         }
     },
     methods: {

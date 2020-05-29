@@ -75,7 +75,6 @@
         display: inline-block;
        
     }
-  
 
 </style>
 

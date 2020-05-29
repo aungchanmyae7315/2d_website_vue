@@ -281,7 +281,6 @@ import axios from 'axios'
   .step_bar {
       max-width: 480px;
       width:100%;
-
   }
   .sign_up_text {
       text-align: center;

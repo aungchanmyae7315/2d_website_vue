@@ -8,7 +8,6 @@
                <el-page-header title="" @back="goBack" >
                      
                 </el-page-header>
-
                  <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo">
            <!-- </nuxt-link> -->
               <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">

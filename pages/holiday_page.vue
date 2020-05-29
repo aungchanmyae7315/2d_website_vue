@@ -91,7 +91,6 @@ export default {
 
          let token = localStorage.getItem('token');
         
-        
                 this.$axios.get("/v2/v1/holiday/list",
                     {headers: {
                                "Authorization": "Bearer "+token

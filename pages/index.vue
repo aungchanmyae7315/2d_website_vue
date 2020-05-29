@@ -602,8 +602,7 @@ export default {
                 this.info_api = response.data.data
                
               })
-          },
-        
+          }, 
       changeLang (lang) {
       //mutate 'locale' in store
       this.$store.commit('SET_LANG', lang)

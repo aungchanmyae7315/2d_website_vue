@@ -78,7 +78,6 @@
                     <p>ရက်စွဲ  {{notification_detail.data.time}}</p>
                 </div>
             
-            
             </el-card>
         </div>
 

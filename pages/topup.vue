@@ -607,7 +607,6 @@ export default {
     removeImage: function (e) {
       this.url = '';
     },
-
         slip_upload_kbz(formName) {
              this.$refs[formName].validate((valid) => {
           if (valid) {

@@ -36,7 +36,6 @@
                     
                </ul>
             
-        
     </div>
 </template>
 <style>

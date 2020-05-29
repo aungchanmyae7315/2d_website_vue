@@ -237,7 +237,6 @@ import axios from 'axios'
           
                 })
                 .catch(error => {
-
                   //  if(!this.isMobile() || this.device_id == null) {
 
                   //      this.$router.push(`/signup_successChrome?lang=${this.$store.state.locale}`);

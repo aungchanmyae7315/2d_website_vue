@@ -314,7 +314,6 @@ import axios from 'axios'
     .phone_input .el-input__prefix {
         color:green;
     }
-    
   </style>
 
 

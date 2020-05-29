@@ -669,7 +669,6 @@ export default {
         text-align: left;
         color:#fff;
         padding-top:10px;
-
     }
     .choose_number_box .el-card {
         border-radius: 21px;

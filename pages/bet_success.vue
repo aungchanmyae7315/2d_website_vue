@@ -10,7 +10,6 @@
             </el-footer>
             
         </section>
-       
     </main>
 </template>
 <style>

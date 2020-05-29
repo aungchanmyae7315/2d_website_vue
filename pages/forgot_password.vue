@@ -74,8 +74,7 @@ export default {
      },
      created() {
        this.$axios.get("v2/v1/contact")
-    
-            
+     
                 .then(response => {
                     this.contact = response.data.data[0].phone_number
             });

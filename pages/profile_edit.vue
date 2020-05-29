@@ -232,7 +232,6 @@
     removeImage: function (e) {
       this.image = '';
     },
-
     profile_edit() {
                //  console.log(this.image);
 

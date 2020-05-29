@@ -239,7 +239,6 @@ export default {
            
         }
     },
-
     methods: {
         goBack() {
              this.$router.push(`/?lang=${this.$store.state.locale}`); 

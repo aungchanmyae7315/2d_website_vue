@@ -15,7 +15,6 @@
             <p>{{$t('after_the_top_up_section')}}</p>
              <el-button @click="goBack" round="">{{$t('ok')}}</el-button>
         </section>
-       
     </main>
 </template>
 <style>

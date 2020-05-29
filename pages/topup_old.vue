@@ -367,8 +367,7 @@ export default {
             
                 .then(response => {
                     this.contact = response.data.data[0].phone_number
-            });
-                
+            });           
     },
     methods: {
          simple_toggle(default_limit, filters_length) {

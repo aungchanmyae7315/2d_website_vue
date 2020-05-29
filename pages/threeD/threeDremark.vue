@@ -139,8 +139,7 @@ export default {
                  }
                  
                },
-        }
-        
+        } 
     },
     methods: {
       thousands_separators(num){
