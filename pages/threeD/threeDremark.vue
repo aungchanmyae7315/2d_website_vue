@@ -18,7 +18,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
     <div class="form-inline" action="#">
     <el-form :model="numberValidateForm"  ref="numberValidateForm"  class="demo-ruleForm">
       <el-dialog
-  title="Add Bet Number"
+  :title="$t('add_bet_number')"
   :visible.sync="dialogVisible"
   width="90%">
   <span>
@@ -26,28 +26,28 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
                                    
           prop="item.number"
           :rules="[
-              { required: true, message: 'Please Enter Bet Number' },
+              { required: true, message: $t('bet_number_required') },
               
           ]"
           
           >  
-          <el-input id="form-name" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" placeholder="Bet Number" v-model.number="numberValidateForm.item.number"></el-input>
+          <el-input id="form-name" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" :placeholder="$t('bet_number_add')" v-model.number="numberValidateForm.item.number"></el-input>
     </el-form-item>
      <el-form-item
                                    
           prop="item.amount"
           :rules="[
-              { required: true, message: 'please enter bet amount' },
+              { required: true, message: $t('amount_required') },
               
           ]"
           
           >  
-          <el-input id="form-name" type="number"  placeholder="Bet Amount" v-model.number="numberValidateForm.item.amount"></el-input>
+          <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_add')" v-model.number="numberValidateForm.item.amount"></el-input>
     </el-form-item>
   </span>
   <span slot="footer" class="dialog-footer">
-    <el-button @click="dialogVisible = false">Cancel</el-button>
-    <el-button type="primary" @click="addItem('numberValidateForm')">Add</el-button>
+    <el-button @click="dialogVisible = false">{{$t('cancel_add')}}</el-button>
+    <el-button type="primary" @click="addItem('numberValidateForm')">{{$t('add')}}</el-button>
   </span>
 </el-dialog>
        
@@ -60,9 +60,9 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
 
     <table class="table table-striped table-bordered table-sm">
       <thead class="thead-light">
-        <th>Number</th>
-        <th>Amount</th>
-        <th>Edit/Del</th>
+        <th>{{$t('no')}}</th>
+        <th>{{$t('Amount')}}</th>
+        <th>{{$t('edit_delete')}}</th>
       </thead>
       <tr v-for="(item, index) in items" :key="index">
         <td>

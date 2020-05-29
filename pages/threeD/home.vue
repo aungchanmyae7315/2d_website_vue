@@ -80,7 +80,7 @@
                      
                         </li>
                          <li v-else>
-                             <h5>ထီပိတ်ပါပြီ</h5>
+                             <h5>{{$t('threed_bet_close')}}</h5>
                              
                       
                         </li>
@@ -170,7 +170,7 @@
           ]"
           
           >  
-          <el-input id="form-name" type="number"  placeholder="ထီထိုးငွေပမာဏဖြည့်ပါ 100 Ks(min)" v-model="ruleForm.amountThreeD"></el-input>
+          <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"></el-input>
     </el-form-item>
     <div  v-if ="!$store.state.isLoggedIn">
          <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
@@ -178,7 +178,7 @@
       </nuxt-link>
     </div>
     <div v-else>
-           <el-button   @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('ထီထိုးမည်')}}</el-button>     
+           <el-button   @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('Bet')}}</el-button>     
     </div>
      
          

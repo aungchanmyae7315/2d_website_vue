@@ -17,7 +17,7 @@
                            
                     prop="bet_number"
                     :rules="[
-                    { required: true, message: 'bet is required'},
+                    { required: true, message:$t('bet_number_required')},
                     
                     ]">  
                     <el-checkbox-group v-model="numberValidateForm.bet_number">
@@ -28,14 +28,15 @@
                                    
           prop="amountThreeD"
           :rules="[
-              { required: true, message: 'please enter bet amount' },
+              { required: true, message: $t('amount_required') },
               
           ]"
           
           >  
-          <el-input id="form-name" type="number"  placeholder="Bet Amount" v-model.number="numberValidateForm.amountThreeD"></el-input>
-          <p style="color:#fff;float:right;margin:0">{{$t('you_balance')}} : {{this.myWallet}} {{$t('kyat')}}</p>
+          <el-input id="form-name" type="number"  :placeholder="$t('bet_amount')" v-model.number="numberValidateForm.amountThreeD"></el-input>
+         
     </el-form-item>
+     <p style="color:#fff;float:right;margin:0;margin-top:-14px">{{$t('you_balance')}} : {{this.myWallet}} {{$t('kyat')}}</p>
             <!-- <el-input class type="number" placeholder="100 Ks(min)"  v-model="amountThreeD"  ></el-input> -->
             <div class="bet_btn">
                 
@@ -135,9 +136,7 @@ export default {
     .samethreeD_main .el-header {
         padding:20px;
     }
-    .samethreeD_main .el-form-item {
-        margin:0;
-    }
+
     .logo_samethreenumber {
         width:130px;
         position: relative;
@@ -179,6 +178,7 @@ export default {
     }
     .contact_sameThree .bet_btn {
         bottom:unset;
+        margin-top:15px;
     }
 </style>
 
