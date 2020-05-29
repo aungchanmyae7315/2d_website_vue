@@ -70,7 +70,8 @@ export default {
     },
     methods: {
         goBack() {
-                this.$router.push(`/profile_edit?lang=${this.$store.state.locale}`);      
+                this.$router.push(`/profile_edit?lang=${this.$store.state.locale}`); 
+           
         }
     }
 }

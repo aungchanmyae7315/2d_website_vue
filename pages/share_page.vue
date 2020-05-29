@@ -381,6 +381,8 @@ const VueSelect = {
 };
 Vue.use(VueSelect)
 
+
+
 export default {
     mounted() {
          let token = localStorage.getItem('token');

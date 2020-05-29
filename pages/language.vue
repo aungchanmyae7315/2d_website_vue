@@ -29,6 +29,7 @@
             </nuxt-link>
         </div>
            
+      
         </div>
        
            

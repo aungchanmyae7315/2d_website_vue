@@ -96,7 +96,8 @@ export default {
     data() {
         return {
            
-            bet_detail:'',     
+            bet_detail:'',
+            
           
         }
     },
@@ -104,6 +105,9 @@ export default {
        goBack() {
              this.$router.push(`/bet_status?lang=${this.$store.state.locale}`); 
          },
+    
+    
+  
     },
       created() {
 

@@ -27,6 +27,7 @@
         padding-top:20px;
         color:#000;
         cursor: pointer;
+
     }
     .refel_success .el-page-header__content {
         color:#000;

@@ -347,7 +347,9 @@
         border-radius: 32px;
         border:2pt solid #FFEA72;
         max-width: 480px;
-        z-index: 99;  
+        z-index: 99;
+       
+        
     }
     .modal_bet .el-button {
       
@@ -677,7 +679,6 @@ export default {
  
     data() {
         return {
-            serverDate:'',
             holidays:'',
             submitted:false,
             time_countdown:'',
@@ -693,6 +694,7 @@ export default {
             morning_to:'',
             evening_from:'',
             evening_to:'',
+           
             morningTime_9_30:'09:30:00',
             time_12_00:'12:01:00',
             time_01_00:'13:00:00',
@@ -813,9 +815,9 @@ export default {
     
                 // var cu_time= new Date("12/01/2019 " + this.currentTime);
                 var mo_from= new Date("03/20/2019 " + this.morning_from);
-                var ev_to = new Date("03/19/2019 " + this.server_time);
+                var ev_to = new Date("03/19/2019 " + this.currentTime);
                 var mo_to= new Date("03/20/2019 " + this.evening_from);
-                var ev_from = new Date("03/20/2019 " + this.server_time);
+                var ev_from = new Date("03/20/2019 " + this.currentTime);
                 var difference =  mo_from - ev_to;   
                 var difference_two = mo_to - ev_from;
                 var getAllTime = this.convertMS(difference);

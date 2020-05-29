@@ -59,6 +59,7 @@
         color:#fff; 
     } 
    
+   
 </style> 
 <script> 
 export default { 

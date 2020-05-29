@@ -122,6 +122,7 @@ export default {
         handleClick(tab, event) {
             console.log(tab, event);
         },
+    
      
         bet_date(data) {
           this.$store.commit('bet_date', data)

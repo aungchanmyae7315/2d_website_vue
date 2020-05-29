@@ -495,6 +495,7 @@ export default {
             .catch((error) => console.log('Error sharing', error));
         }
       },
+       
       SavePhoto() {
          this.$message({
           showClose: true,

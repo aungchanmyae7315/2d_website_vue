@@ -8,7 +8,8 @@
              </el-header>
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_promotion">
-                  <div class="promotion"> 
+                  <div class="promotion">
+              
          
                 <ul  v-for="(promotion,p) in promotions" :key="p" >
                     

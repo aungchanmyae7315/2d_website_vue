@@ -140,6 +140,8 @@
                <h5 class="main_icon" style="font-weight:bold;color:#ccab48">Refresh</h5>
             </el-menu-item>
             </nuxt-link>
+
+
           </el-menu>
         </el-footer>
   </div>

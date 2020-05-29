@@ -128,6 +128,7 @@ export default {
           this.$store.commit('bet_date', data)
        
             this.$router.push(`/bet_detail?lang=${this.$store.state.locale}`); 
+
         },
          bet_date_threed(data) {
           this.$store.commit('bet_date', data)
