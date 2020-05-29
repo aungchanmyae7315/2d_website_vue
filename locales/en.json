@@ -87,7 +87,7 @@
   "login_title":"Login",
   "profile_edit_title":"Profile Edit",
   "remark_title":"Remark",
-  "result_title":"2D Result",
+  "result_title":"Result",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"Topup",
 
@@ -275,7 +275,17 @@
  "bet_offday_title":"2D ပိတ်ရက်များ",
  "download_app":"Download",
  "you_not_input":"When you share App to your friends, ask him to enter this code after registeration.",
- "last_5day_bet_history":"Bet record of last 5 days."
+ "last_5day_bet_history":"Bet record of last 5 days.",
+"bet_amount":"Bet Amount",
+"bet_number_required":"Please select numbers",
+"edit_delete":"Edit/Delete",
+"add_bet_number":"Add Bet Number",
+"bet_number_add":"Bet Number",
+"bet_amount_add":"Bet Amount",
+"add":"Add",
+"cancel_add":"Cancel",
+"bet_amount_min_100":"Please enter bet Amount(min 100 Ks)",
+"threed_bet_close":"3D Bet Closing"
 
 
 

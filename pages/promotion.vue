@@ -9,7 +9,7 @@
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_promotion">
                   <div class="promotion">
-                  
+              
          
                 <ul  v-for="(promotion,p) in promotions" :key="p" >
                     
@@ -87,7 +87,7 @@ export default {
     overflow: auto;
     margin-left: 17px;
     padding-right: 28px;
-    padding-bottom:200px;
+    padding-bottom:150px;
 }
 .promotion {
     text-align:center;

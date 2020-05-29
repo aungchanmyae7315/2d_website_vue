@@ -5,21 +5,16 @@
                 <el-page-header  @back="goBack" title=""  :content="`${$t('bet_status_title')}`">
                    
                 </el-page-header>
-                <p class="time_status" >
+               
+    
+      </el-header>
+      <div class="bet_status_tag">
+           <el-tabs v-model="activeName" @tab-click="handleClick">
+        <el-tab-pane label="2D" name="first">
+             <p class="time_status" >
                     <span>{{this.time_status}} Section</span>
                 </p>
-                 
-           <!-- </nuxt-link> -->
-           <div class="demo-image">
-             <img src="~static/images/icons/seinlucky_logo.png" alt="" class="seinlucky_icon">
-            <span  class="seinlucky_text">SeinLucky</span>
-            </div>
-         <!-- <nuxt-link :to="`${$t('/bet_history')}?lang=${$store.state.locale}`">
-             <img src="~static/images/icons/bet_status_icon.png" alt="" class="bet_status_icon">
-        </nuxt-link> -->
-      </el-header>
-
-       <table class="table" style="width:95%" >
+             <table class="table" style="width:100%" >
             <thead>
                 <tr>
                 <th>{{$t('date_time')}}</th>
@@ -39,44 +34,41 @@
             </tbody>
            
         </table>
+        </el-tab-pane>
+         <el-tab-pane label="3D" name="second">
+               <table class="table" style="width:100%" >
+            <thead>
+                <tr>
+                <th>{{$t('date_time')}}</th>
+               
+                <th style="text-align:right">{{$t('Amount')}}</th>
+                </tr>
+            </thead>
+            <tbody >
+                <!-- @click="dialogVisible = true" -->
+                <tr   @click="bet_date(bet_list.date)"  v-for="(bet_list,b) in bet_stauts_threed" :key="b" :id="bet_list.id">
+                <th scope="row">{{bet_list.date}}</th>  
+               
+                <td style="text-align:right">{{bet_list.amount}} ကျပ်</td>
+                
+                </tr>
+               
+            </tbody>
+           
+        </table>
+        </el-tab-pane>
+       </el-tabs>
+      </div>
+        
+
+      
         <div style="text-align:center;padding:20px;">
             <nuxt-link :to="`${$t('/bet_history_btn')}?lang=${$store.state.locale}`">
                 <el-button class="bet_history_btn" type="info" round>{{$t('Click to see Bet History')}}</el-button>
             </nuxt-link>
         </div>
        
-      <el-dialog class="model_items" v-for="(bet_list,b) in bet_stauts" :key="b" :id="bet_list.id"
-        title="Tips"
-        :visible.sync="dialogVisible"
-        width="90%"
-        >
-    <ul >
-        <li >
-            <span>Date & Time</span><br>
-            <p>{{bet_list.created_at}}</p>
-            
-        </li>
-        <li>
-            <span>Name</span>
-             <span>Name</span>
-        </li>
-        <li>
-            <span>Phone Number</span>
-            <p>09xxxxxx</p>
-        </li>
-        <li>
-            <span>Bet Number</span>
-            <p>{{bet_list.number}}</p>
-        </li>
-        <li>
-            <span>Odds</span>
-        </li>
-        <li>
-            <span>Amount</span>
-             <p>{{bet_list.amount}}</p>
-        </li>
-    </ul>
-</el-dialog>
+     
     </div>
 
 </template>
@@ -86,6 +78,9 @@
     .bet_status .el-header {
        background-color :#fff;
       
+    }
+    .bet_status .table td, .table th {
+        border:0 ;
     }
     .el-page-header__left {
         margin:0;
@@ -99,7 +94,6 @@
     .bet_status .el-page-header__content {
         color:#000;
         font-weight: bold;
-        margin-left:130px;
        
     }
     .list_bet_info ul {
@@ -148,8 +142,26 @@
         text-align: center;
         color:#000;
         right:0;
+      
+        font-size:12px; 
         left:0;
         
+    }
+     .bet_status_tag .el-tabs__nav {
+        width:50% !important;
+        text-align: center;
+    }
+    .bet_status_tag .el-tabs--top .el-tabs__item.is-top:last-child {
+        width:100%;
+         padding:0;
+    }
+    .bet_status_tag .el-tabs--top .el-tabs__item.is-top:nth-child(2) {
+        border-right:1px solid #b8b8b8;
+        width:100%;
+        padding:0;
+    }
+     .bet_status_tag .table th {
+        border:0;
     }
 </style>
 
@@ -165,15 +177,26 @@ export default {
         return {
            
             bet_stauts:'',
+            bet_stauts_threed:'',
             dialogVisible: false,
             time_status:'',
-            time:this.time_status
+            // time:this.time_status,
+             activeName: 'first'
         }
     },
     methods: {
+         bet_date(data) {
+          this.$store.commit('bet_date', data)
+       
+            this.$router.push(`/threeD/bet_threed_detail?lang=${this.$store.state.locale}`); 
+
+        },
         goBack() {
              this.$router.push(`/me?lang=${this.$store.state.locale}`); 
          },
+          handleClick(tab, event) {
+            console.log(tab, event);
+        }
    
     
        
@@ -183,17 +206,31 @@ export default {
          let token = localStorage.getItem('token');
         
         
-                this.$axios.get("/v1/betStatus",
+                this.$axios.get("/v2/v1/betStatus",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
                         })
                     .then(response => {
                           this.$nuxt.$loading.finish()
-                        console.log(response.data.data)
+                      
                      this.bet_stauts = response.data.data  
                     this.time_status = response.data.time
-                   // console.log(this.time_stauts)
+                  
+                })
+                 this.$axios.get("/v2/v1/threed/betStatus",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                        console.log(response)
+                        
+                          this.$nuxt.$loading.finish()
+                       
+                     this.bet_stauts_threed = response.data.data 
+                     console.log(this.bet_stauts_threed)
+                  
                 })
      }
 }

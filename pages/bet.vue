@@ -775,12 +775,10 @@ export default {
               .then(response => {
                 // console.log(response.data.time)
                 //  console.log(response.data.date)
-              this.server_time = response.data.time
+               this.server_time = response.data.time
                this.serverDate  = response.data.date
                
-              
-              })
-                
+              }) 
     },
     
      methods: {
@@ -810,7 +808,7 @@ export default {
             };
         },
         offDate() {
- 
+          
             this.$router.push(`/holiday_page?lang=${this.$store.state.locale}`); 
         },
             BetCurrentTime(){
@@ -855,7 +853,7 @@ export default {
                     }
                 },
         goBack() {
-            this.$router.push(`/?lang=${this.$store.state.locale}`); 
+            this.$router.push(`/home?lang=${this.$store.state.locale}`); 
         },
         updateCurrentTime() {
             this.currentTime = moment().format('HH:mm:ss');  

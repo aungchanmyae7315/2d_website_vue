@@ -10,13 +10,13 @@
                  <nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`"> 
 
                   <div @click="goNotiPage" class="noti" type="primary">
-                    <img v-if="this.readed == 'null' " src="~static/images/noti.png" alt="logo">
-                     <img v-else src="~static/images/noti_t.png" alt="logo">
+                    <img v-if="this.readed == 'null' " src="~static/images/noti.png" alt="logo" >
+                     <img v-else src="~static/images/noti_t.png" alt="logo" >
                   </div>
                    </nuxt-link> 
             </li>
             <li>
-                 <img src="~static/images/logo.png" class="logo" alt="logo">
+                 <img src="~static/images/logo.png" class="logo" alt="logo" style="margin-right:40px;">
             </li>
              
             <li class="download_btn" >
@@ -64,7 +64,7 @@
             line-height="0px"
             active-text-color="#ffd04b">
               <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-            <el-menu-item index="1" @click="HomeRefresh"  v-loading.fullscreen.lock="fullscreenLoading">
+            <el-menu-item index="1" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
             
               <img src="~static/icons_header/dimond_t_icon.png" alt="">
              <h5 class="main_icon" style="font-weight:bold;color:#ccab48;">Refresh</h5>
@@ -118,7 +118,7 @@ export default {
                     .then(response => {
                    
                         this.readed = response.data.read_at
-              
+                
                      console.log(this.readed)
                     
                 })
@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     HomeRefresh() {
-       this.fullscreenLoading = true;
+      this.fullscreenLoading = true;
         setTimeout(() => {
           
           this.fullscreenLoading = false;

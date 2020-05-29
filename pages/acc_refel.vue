@@ -7,7 +7,7 @@
                             <img src="~static/images/refel_page/refel_img_two.png" class="">
                         </div>
                      -->
-                         <h5 style="color:#85CE61;font-weight:bold">{{$t('my_referral_code')}}</h5>
+                         <h5 style="color:#85CE61;font-weight:bold">{{$t('you_referral_code')}}</h5>
                         <el-card class="box-card">
                             
                             <!-- <h3 >Registartion Successful!!</h3> -->

@@ -34,6 +34,7 @@
   font-style: normal;
   
   }
+ 
   
    body{font-family:'Myanmar3'!important;}
   
@@ -69,6 +70,7 @@ input[type=number] {
    width:60px;
  }
  .el-menu-item {
+   width:71px;
    padding:0 2px;
    text-align: center;
    line-height: 44px !important;
@@ -169,8 +171,16 @@ input[type=number] {
     width:107px;
     height:auto;
     text-align: center;
-    margin-right:40px;
+  
    
+  }
+  .refresh_icon img {
+    width: 30px;
+    height: auto;
+    font-weight: bold;
+    position: relative;
+    bottom: 72px;
+    left:200px;
   }
   .change_lang_icon  , .result_icon{
     float: right;
@@ -243,6 +253,7 @@ input[type=number] {
       display: inline-block;
       /* padding-left:15px; */
      color:#fff;
+     font-size:13px;
      font-weight: bold;
      position: relative;
      bottom:14px;
@@ -474,12 +485,16 @@ input[type=number] {
     position: relative;
     top:10px;
   }
+  .twod_card , .threed_card {
+    width:100%;
+    height:auto;
+  }
   .bet_btn {
     text-align: center;
     margin-left: -18px;
     display: block;
     position: fixed;
-    bottom: 75px;
+    bottom: 40px;
     max-width:480px;
     width: 100%;
     
@@ -549,6 +564,9 @@ input[type=number] {
 }
 }
 @media screen and (max-width:768px) {
+  .refresh_icon img {
+    left:180px;
+  }
   .hideScrollBar {
    margin-left:15px;
   }
@@ -569,6 +587,9 @@ input[type=number] {
   .hideScrollBar {
     margin-left:13px;
   }
+  .refresh_icon img {
+    left:150px;
+  }
 
 
 }
@@ -587,7 +608,13 @@ input[type=number] {
   }
 
 }
+@media screen and (max-width:350px) { 
+  .refresh_icon img {
+    left:130px;
+  }
+}
 @media screen and (min-width:460px) {
+ 
   .bet_container .el-dialog {
     width:57% !important;
   }
@@ -804,3 +831,8 @@ input[type=number] {
     box-shadow: 0 0 0 0.55em rgba(255, 255, 255, 0.45);
   }
 } */
+
+
+.smooth-picker .smooth-handle-layer .smooth-top[data-v-a1dc87f8] {
+  background-color: yellow !important;
+}

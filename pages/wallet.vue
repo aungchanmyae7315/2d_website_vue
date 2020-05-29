@@ -114,9 +114,9 @@
                     </el-menu-item>
                 </nuxt-link>
                 <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                  <el-menu-item index="2">
-                      <img src="~static/icons_header/wallet_t_icon.png" alt="">
-                      <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('wallet_title')}}</h5>
+                  <el-menu-item index="2"  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+                      <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                      <h5 class="main_icon" style="font-weight:bold;color:#ccab48">Refresh</h5>
                   </el-menu-item>
                 </nuxt-link>
                  <nuxt-link :to="`${$t('/promotion')}?lang=${$store.state.locale}`"> 
@@ -295,6 +295,7 @@
    },
     data() {
       return {
+        fullscreenLoading: false,
         bank_account:'',
         card_number:'',
         visible: false,
@@ -326,7 +327,7 @@
                         console.log('blcok_user')
                       }else {
                         this.$store.commit('logOut');
-                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                       }
 
                 })
@@ -335,6 +336,14 @@
     },
 
     methods: {
+       HomeRefresh() {
+      this.fullscreenLoading = true;
+        setTimeout(() => {
+          
+          this.fullscreenLoading = false;
+          location.reload();
+        }, 1000);
+    },
        thousands_separators(num){
           var num_parts = num.toString().split(".");
           num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");

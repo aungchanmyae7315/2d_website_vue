@@ -89,7 +89,7 @@
   "login_title":"လော့အင်ဝင်မယ်",
   "profile_edit_title":"ပြင်မည်",
   "remark_title":"ထိုးမည့်ဂဏန်းများ",
-  "result_title":"2D ထွက်ဂဏန်းများ",
+  "result_title":"ထွက်ဂဏန်းများ",
   "signup_refel_title":"Sein Lucky အကောင့်အသစ်ဖွင့်မည်",
   "topup_title":"ငွေဖြည့်မည်",
 
@@ -234,7 +234,7 @@
 "show_more":"အခြားဘဏ်များကြည့်ရန်",
 "show_less":"ပြန်သိမ်းရန်",
 "please_upload_photo_here":"ငွေလွှဲမှတ်တမ်း ပုံတင်ပါ",
-"bet_close_time":"ပိတ်မည်အချိန်",
+"bet_close_time":"ထီပိတ်ရန်ကျန်ချိန်",
 "close_text":"ပိတ်ပါပြီ",
 "please_upload_slip_file":" ငွေလွှဲမှတ်တမ်းဓာတ်ပုံ  တင်ပါ",
 "seinlucky_point_title" :"Sein Lucky ပွိုင့်",
@@ -274,7 +274,17 @@
 "bet_offday_title":"2D ပိတ်ရက်များ",
 "download_app":"ဒေါင်းလုပ်App",
 "you_not_input":"သင်ဖြည့်ရန်မဟုတ်ပါ။ အခြားသူအား App မတ်ဆက်ပေးသောအခါ ဤကုဒ်ကိုဖြည့်ခိုင်းပါ။",
-"last_5day_bet_history":"လွန်ခဲ့သော(၅) ရက်၏ ထီထိုးမှတ်တမ်း"
+"last_5day_bet_history":"လွန်ခဲ့သော(၅) ရက်၏ ထီထိုးမှတ်တမ်း",
+"bet_amount":"ထိုးငွေ",
+"bet_number_required":"ထိုးဂဏန်းရွေးပါ",
+"edit_delete":"ပြင်/ဖျက်",
+"add_bet_number":"ထိုးဂဏန်း တိုးမည်",
+"bet_number_add":"ထိုးဂဏန်း",
+"bet_amount_add":"ထိုးငွေ",
+"add":"တိုးမည်",
+"cancel_add":"ပယ်မည်",
+"bet_amount_min_100":"ထီထိုးငွေ ပမာဏဖြည့်ပါ(၁၀၀ ကျပ်အထက်)",
+"threed_bet_close":"3D ထီထိုးချိန်ကျော်ပါပြီ။"
 
 
 
