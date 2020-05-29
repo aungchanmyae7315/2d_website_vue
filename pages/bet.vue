@@ -694,7 +694,6 @@ export default {
             morning_to:'',
             evening_from:'',
             evening_to:'',
-           
             morningTime_9_30:'09:30:00',
             time_12_00:'12:01:00',
             time_01_00:'13:00:00',
