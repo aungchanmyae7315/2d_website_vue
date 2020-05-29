@@ -37,9 +37,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
           prop="item.amount"
           :rules="[
               { required: true, message: $t('amount_required') },
-              
           ]"
-          
           >  
           <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_add')" v-model.number="numberValidateForm.item.amount"></el-input>
     </el-form-item>

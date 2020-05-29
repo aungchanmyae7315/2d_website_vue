@@ -96,8 +96,7 @@ export default {
     data() {
         return {
            
-            bet_detail:'',
-            
+            bet_detail:'',     
           
         }
     },

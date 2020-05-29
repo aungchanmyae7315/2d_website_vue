@@ -41,7 +41,6 @@
             <div class="bet_btn">
                 
                  <el-button type="" @click="sameNumberSubmit('numberValidateForm')" :disabled='submitted' round>{{$t('Bet')}}</el-button>
-             
                
             </div>
              </el-form>

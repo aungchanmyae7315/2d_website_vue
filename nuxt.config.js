@@ -70,7 +70,6 @@ export default {
   ],
   download: [
     '~/assets/download/SeinLucky.apk',
-    
   ],
   js: [
     '~/assets/js/index.js',

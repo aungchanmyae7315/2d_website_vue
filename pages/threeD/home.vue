@@ -623,7 +623,6 @@ export default {
         border:1px solid #FFEA72;
         color:#fff;
     }
-   
 
    .threeD_main  .el-header {
         padding:20px;
