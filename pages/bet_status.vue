@@ -52,6 +52,7 @@
                 <td style="text-align:right">{{bet_list.amount}} ကျပ်</td>
                 
                 </tr>
+               
             </tbody>
            
         </table>

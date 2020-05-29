@@ -437,7 +437,8 @@ export default {
     },
       submitLang() {
                   
-            this.$store.commit('SET_LANG', 'hello')             
+            this.$store.commit('SET_LANG', 'hello')
+                        
         },
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {

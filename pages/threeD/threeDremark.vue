@@ -29,6 +29,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
               { required: true, message: $t('bet_number_required') },
               
           ]"
+          
           >  
           <el-input id="form-name" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" :placeholder="$t('bet_number_add')" v-model.number="numberValidateForm.item.number"></el-input>
     </el-form-item>
@@ -37,7 +38,9 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
           prop="item.amount"
           :rules="[
               { required: true, message: $t('amount_required') },
+              
           ]"
+          
           >  
           <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_add')" v-model.number="numberValidateForm.item.amount"></el-input>
     </el-form-item>
@@ -47,6 +50,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
     <el-button type="primary" @click="addItem('numberValidateForm')">{{$t('add')}}</el-button>
   </span>
 </el-dialog>
+       
     <!-- <input type="text" id="form-name" v-model="ruleForm.number" placeholder="Bet Number" class="form-control"> 
     <input type="text" v-model="ruleForm.amount" placeholder="Bet Amount" class="form-control" v-on:keyup.enter="addItem"> -->
     </el-form>
@@ -139,7 +143,8 @@ export default {
                  }
                  
                },
-        } 
+        }
+        
     },
     methods: {
       thousands_separators(num){

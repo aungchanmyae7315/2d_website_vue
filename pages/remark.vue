@@ -287,7 +287,8 @@ export default {
                           message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
                           type: 'warning',
                         });
-                });      
+                });
+               
        },
         submit_point() {
           let token = localStorage.getItem('token');

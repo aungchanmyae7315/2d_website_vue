@@ -78,6 +78,7 @@
                     <p>ရက်စွဲ  {{notification_detail.data.time}}</p>
                 </div>
             
+            
             </el-card>
         </div>
 
@@ -578,7 +579,7 @@ export default {
                     .then(response => {
                        console.log(response)
                     this.notification_detail = response.data.data
-                  
+                    console.log('leee pal')
                     console.log(this.notification_detail)
                 })
           // let token = localStorage.getItem('token');

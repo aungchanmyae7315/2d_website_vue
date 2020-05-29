@@ -221,6 +221,7 @@
       
       this.image = e.target.files[0];
        this.url = URL.createObjectURL(this.image);
+  
     },
 
     removeImage: function (e) {

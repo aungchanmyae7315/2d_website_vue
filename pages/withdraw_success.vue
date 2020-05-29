@@ -13,6 +13,7 @@
     .withdraw_success {
         padding:20px;
         text-align: center;
+
     }
     .withdraw_success img {
         width:60px;

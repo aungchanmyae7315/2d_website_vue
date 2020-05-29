@@ -291,6 +291,7 @@
      
     
       this.updateIsLoggedIn();
+     
    },
     data() {
       return {
