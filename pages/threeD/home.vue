@@ -113,7 +113,9 @@
           
          <el-row>
                  <el-col :span="6">
+                   <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n" target="_blank">
                     <el-button  class="book_btn" type="text"></el-button>
+                    </a>
                 </el-col>
                 <el-col :span="18" style="padding-left:15px;">
                     <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
@@ -744,7 +746,7 @@ export default {
       border-radius: 9px;
     }
     .book_btn {
-      width:75px !important;
+      width:52px !important;
         border-radius: 9px;
         background-image: url(~static/threed_img/dream_book.jpg);
         background-position:center;
