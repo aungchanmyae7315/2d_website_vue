@@ -18,11 +18,11 @@
                   <img src="~static/images/icons/ios_download_img.png" alt="">
               </nuxt-link>
           </div>
-           <div>
+           <!-- <div>
              <a href="https://play.google.com/store/apps/details?id=seinlucky.com&hl=en">
                 <img src="~static/images/icons/playstore_download_img.png" alt="">
               </a>
-            </div>
+            </div> -->
           
          
           <div>

@@ -1,6 +1,6 @@
 <template>
     <section class="bet_container">
-         <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+         <el-form @submit.native.prevent   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
         <el-header>
              <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                           <el-page-header @back="goBack" title="">
@@ -102,7 +102,7 @@
                             
                             >  
                           
-                                <el-input class type="number" placeholder="100 Ks(min)"  v-model="ruleForm.amount"  ></el-input>
+                                <el-input @keypress.enter.native="bet('ruleForm')" class type="number" placeholder="100 Ks(min)"  v-model="ruleForm.amount"  ></el-input>
                             
                             </el-form-item>
                 </el-col>

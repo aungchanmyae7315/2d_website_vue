@@ -26,7 +26,7 @@
                         </div>
                     </div>
         <div class="form_padding">
-                <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                <el-form @submit.native.prevent   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                     <el-form-item
                     
                     prop="phone"
@@ -36,7 +36,7 @@
                     ]"
                     
                     >  
-                        <el-input type="number"  :placeholder="$t('Phone_placeholder')+' '+'(09 ပါထည့်ဖြည့်ပါ)'" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                        <el-input  @keypress.enter.native="submitForm('ruleForm')" type="number"  :placeholder="$t('Phone_placeholder')+' '+'(09 ပါထည့်ဖြည့်ပါ)'" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                     
                     </el-form-item>
                     
@@ -50,7 +50,7 @@
                     
                         ]"
                     >
-                        <el-input type="password" show-password :placeholder="$t('Password')"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
+                        <el-input  @keypress.enter.native="submitForm('ruleForm')" type="password" show-password :placeholder="$t('Password')"  prefix-icon="el-icon-lock" v-model="ruleForm.password" ></el-input>
                     </el-form-item>
                     <el-form-item>
                 <el-button type="success" round @click="submitForm('ruleForm')">{{$t('login_title')}}</el-button>

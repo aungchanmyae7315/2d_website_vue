@@ -90,7 +90,7 @@
                 </el-row>
               </div>
         </div>
-          <carousel :autoplay="false" :nav="false" v-if="loaded" :items =1>
+          <carousel :autoplaySpeed="1000" :autoplay="true" :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -131,13 +131,7 @@
               :pickerbox="false"
               :header="false"
             
-            
-
-
               @change = "change"
-              
-              :confirmText="confirmText"
-
                 :visible="true"
             
             />
@@ -147,16 +141,18 @@
             </div>
             </el-col>
             <el-col :span="6">
-                     <el-button @click="rBtn(threed)" :class="{'is-active': isActive}" class="r_btn">R</el-button>
+                    
+                 <el-button @click="rBtn(threed) ; handleCheckAllChange" :indeterminate="isIndeterminate" v-model="checkAll"  :class="{'is-active': isActive}" class="r_btn btn btn-info">R</el-button> 
+
             </el-col>
           </el-row>
          
           </div>
-          <el-form :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
-            <div v-if="isActive"  class="contact_sameThree">
+          <el-form  @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
+            <div   class="contact_sameThree">
           
             <el-form-item> 
-                <el-checkbox-group v-model="bet_number">
+                <el-checkbox-group v-model="bet_number" @change="handleCheckedCitiesChange">
                   <el-checkbox-button v-for="city in this.Rnumber" :label="city" :key="city">{{city}}</el-checkbox-button>
               </el-checkbox-group>
             </el-form-item>
@@ -168,9 +164,8 @@
               { required: true, message: 'please enter bet amount' },
               
           ]"
-          
           >  
-          <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"></el-input>
+          <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"  @keypress.enter.native="submitThreed('ruleForm')"></el-input>
     </el-form-item>
     <div  v-if ="!$store.state.isLoggedIn">
          <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
@@ -182,13 +177,8 @@
     </div>
      
          
-          </el-form>
-           
+          </el-form>    
       </section>
-
-
-
-
       </div>
     </div>
 
@@ -201,7 +191,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
- const cityOptions = ['000', '111', '222', '333'];
+
    import VuePicker from 'vue-pickers'
      var oneCol = []
     var twoCol = []
@@ -233,19 +223,11 @@ export default {
     getters: {},
   mutations: {},
   actions: {},
-  props:['value'],
 
 
   mounted() {
  
-    $("input").keyup(function () {
-       if ($(this).val()) {
-          $(".picker .header").addClass('HideBtn');
-       }
-       else {
-          $(".picker .header").removeClass('HideBtn');
-       }
-    });
+    
 
   var self = this;
           if (this.$store.state.sliderImage.length > 0){
@@ -297,7 +279,9 @@ export default {
   data() {
     
     return {
-       fullscreenLoading: false,
+       checkAll: false,
+      isIndeterminate: true,
+      fullscreenLoading: false,
       pickerValue:this.selectedDate,
 
       isActive: false,
@@ -333,9 +317,6 @@ export default {
             profile:'',
             myWallet:'',  
            pickerVisible: false,
-            confirmText:this.$t('Bet'),
-            cities: cityOptions,
-            
             pickData: [
             oneCol,
             twoCol,
@@ -356,6 +337,7 @@ export default {
 
 
    methods: {
+    
      HomeRefresh() {
       this.fullscreenLoading = true;
         setTimeout(() => {
@@ -384,9 +366,8 @@ export default {
     },
   
     rBtn(threed) {
-      console.log(threed)
-      // let threed = [2,2,3];
-          	this.isActive = !this.isActive;
+      
+          this.isActive = !this.isActive;
           const permArr = [],usedChars = [];
           const rotate = (input) => {
             let ch;
@@ -418,7 +399,22 @@ export default {
           data = data.filter(unique);
           this.Rnumber = data
 
+
+        this.checkAll = true
+        this.bet_number = true
+        this.isIndeterminate = false;
+        this.bet_number = threed ? this.Rnumber : [];
+        this.isIndeterminate = false;
+
     },
+     
+      handleCheckedCitiesChange(value) {
+        let checkedCount = value.length;
+        this.checkAll = checkedCount === this.Rnumber.length;
+        this.isIndeterminate = checkedCount > 0 && checkedCount < this.Rnumber.length;
+      },
+
+
     change(res) {
       JSON.stringify(res)
       let data = []

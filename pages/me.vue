@@ -69,13 +69,13 @@
                         <li><nuxt-link  :to="`${$t('/language')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/lang.png" alt=""> {{$t('Language')}}</a></nuxt-link></li>
 
 
-                        <div v-if="this.device_id !== null ">
+                        <!-- <div v-if="this.device_id !== null "> -->
                               <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('fill_referral_code')}}</a></nuxt-link></li> 
                               <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li> 
-                        </div>
+                        <!-- </div>
                         <div v-else>
 
-                        </div>
+                        </div> -->
                          
                         <!-- <li><nuxt-link  :to="`${$t('/share')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/share_icon.png" alt="">{{$t('app_share')}} </a></nuxt-link></li> -->
                         <li><a href="#"  @click="dialogVisible = true"><img src="~static/icons_acc_me/logout_icon.png" alt=""> {{$t('Log Out')}}</a></li>

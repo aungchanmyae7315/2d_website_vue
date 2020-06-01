@@ -124,7 +124,7 @@
               </div>
         </div>
 
-        <carousel :autoplay="false" :nav="false" v-if="loaded" :items =1>
+        <carousel :autoplaySpeed="1000" :autoplay="true" :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -163,238 +163,7 @@
           
           
            </div>
-          <!-- <div class="block" data-aos="fade-up" data-aos-duration="700">
   
-            <el-carousel  trigger="click" height="155px" arrow="always">
-               <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
-                  <div>
-                     <a :href="img_slide.link" target="_blank">
-                    <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:155px;">
-                      <div slot="placeholder" class="image-slot">
-                        Loading<span class="dot">...</span>
-                      </div>
-                    </el-image>
-                     </a>
-                  </div>
-                   
-              </el-carousel-item>
-           
-                    <div class="el-carousel_label">
-                      
-                        <h3> 
-                          <div class="scroll-left">
-                            <p> 
-                               <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
-                              {{this.slider_text.text}}</p>
-                          </div>
-                           </h3> 
-                    </div>
-            </el-carousel>
-
-          </div>   -->
-          <!-- <div class="row n_d_t">
-            <div class="col">
-               
-                <div class="number">
-                    
-                      <h2 v-if="!this.info.live && !this.info_api.result_1200">
-                        <div class="loadingio-spinner-dual-ball-ty27h70p24 ">
-                            <div class="ldio-ct1tsjzqdg5">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                      </h2>
-                           
-                       <h2 v-else   class="static"  v-bind:class="{ live_number: isActive, 'text-danger': hasError }"> 
-                          
-                         <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
-                          <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.result_1200}}</span>
-                          <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
-                          <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
-                          <span v-else>{{this.info_api.live}}</span>
-                      </h2>
-                      
-                </div>
-               
-            </div>
-            <div class="col">
-                <div class="date_time">
-                  <div class="d_t_item">
-                   
- 
-                      <span>updated at:</span><br>
-
-                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="currentDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="currentDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="currentDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
-                      <span v-else v-text="currentDate"></span>
-                      <br>
-                  
-                      <span v-text="this.breakTime"></span>
-                  </div>
-
-                  
-                </div>
-            </div>
-          </div> -->
-          
-           <!-- <div class="card_one">
-            <div class="card_item">
-              <h5 class="time_number">12:00 PM</h5>
-            
-                <div class="row">
-                  
-                  <div class="col">
-                      <span>Set</span>
-                       <h4  v-if="!this.info.set_1200 && !this.info_api.set_1200"    class="card_loading">
-                        <div class="loadingio-spinner-card_one_loading">
-                            <div class="card_one_loading">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                      </h4>
-                      <h4 v-else>
-                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else>{{this.info_api.set_1200}}</h4>
-                      </h4>
-                  </div>
-                  <div class="col">
-                      <span>Value</span>
-                       <h4  v-if="!this.info.val_1200 && !this.info_api.val_1200"    class="card_loading">
-                        <div class="loadingio-spinner-card_one_loading">
-                            <div class="card_one_loading">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                      </h4>
-                      <h4 >
-                        <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else>{{this.info_api.val_1200}}</h4>
-                      </h4>
-                  </div>
-                  <div class="col">
-                      <span>2D</span>
-                     <h4 class="static" style="font-weight:bold">
-                         
-                          {{this.info_api.result_1200}}
-                      </h4>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <!-- <div class="card_two">
-                <div class="card_item">
-                  <h5 class="time_number">4:30 PM</h5>
-                    <div class="row">
-                      
-                      <div class="col">
-                          <span>Set</span>
-                          <h4  v-if="!this.info.set_430 && !this.info_api.set_430"    class="card_loading">
-                            <div class="loadingio-spinner-card_one_loading">
-                                <div class="card_one_loading">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                          </h4>
-                          <h4 v-else>
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
-                            <h4 v-else>{{this.info_api.set_430}}</h4>
-                          </h4>
-                      </div>
-                      <div class="col">
-                          <span>Value</span>
-                           <h4   v-if="!this.info.val_430 && !this.info_api.val_430"    class="card_loading">
-                            <div class="loadingio-spinner-card_one_loading">
-                                <div class="card_one_loading">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                          </h4>
-                          <h4  v-else>
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
-                            <h4 v-else>{{this.info_api.val_430}}</h4>
-                          </h4>
-                        
-                      </div>
-                      <div class="col">
-                          <span>2D</span>
-                          <h4 class="static" style="font-weight:bold">
-                       
-                          {{this.info_api.result_430}}
-                      </h4>
-                         
-                      </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="card_three">
-                <div class="card_item">
-                
-                    <div class="row">
-                      
-                      <div class="col">
-                          <h5 class="time_number">9:30 AM</h5>
-                      </div>
-                      <div class="col">
-                          <span>Modern</span>
-                          <h4>{{this.info_api.modern_930}}</h4>
-                      </div>
-                      <div class="col">
-                          <span>Internet</span>
-                          <h4>{{this.info_api.internet_930}}</h4>
-                      </div>
-                    </div>
-                </div>
-            </div> -->
-            <!-- <div class="card_three " >
-                <div class="card_item">
-                
-                    <div class="row">
-                      
-                      <div class="col">
-                          <h5 class="time_number">2:00 PM</h5>
-                      </div>
-                      <div class="col">
-                          <span>Modern</span>
-                          <h4>{{this.info_api.modern_200}}</h4>
-                      </div>
-                      <div class="col">
-                          <span>Internet</span>
-                          <h4>{{this.info_api.internet_200}}</h4>
-                      </div>
-                    </div>
-                </div>
-            </div> -->
-
-            <!-- <div class="bet_btn">
-              <nuxt-link :to="`${$t('/bet')}?lang=${$store.state.locale}`">
-                 <el-button type="" round>{{$t('Bet')}}</el-button>
-              </nuxt-link>
-               
-            </div> -->
       </div>
     </div>
 
@@ -453,36 +222,6 @@ export default {
                 }
                 
 
-          // if (this.$store.state.sliderText.length > 0){
-          //    if(self.slider_text  !== null) {
-          //               this.loaded = true;
-          //           }
-          //   self.slider_text = this.$store.state.sliderText;
-          // }
-          // else{
-          //   setTimeout(function(){
-          //   self.$axios.get('/v2/v1/slider_text')
-          //       .then(response => {
-          //       console.log(response)
-          //        if(self.slider_text  !== null) {
-          //               this.loaded = true;
-          //           }
-          //       self.slider_text = response.data.data[0];
-          //       self.$store.commit('setSliderText', response.data.data);
-          //       })
-          //   }, 4000);
-          // }
-
-
-
-
-
-
-
-
-
-
-
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
     if (m != null && isSeinluckyApp){
@@ -519,7 +258,7 @@ export default {
   data() {
     
     return {
-     
+     autoplaySpeed:3,
       last_date:'',
       dialogVisible: false,
        isActive: true,

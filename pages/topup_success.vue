@@ -2,7 +2,7 @@
     <main>
         <section class="topup_success">
             <img src="~static/images/refel_page/refel_img_two.png" class="">
-            <h4>{{$t('Completed')}}</h4>
+            <h4>{{$t('topup_success_end')}}</h4>
             <el-card style="border-radius:19px;margin-bottom:30px">
                  <span>{{$t('sein_lucky_office_hours')}}</span>
                   <el-divider></el-divider>
