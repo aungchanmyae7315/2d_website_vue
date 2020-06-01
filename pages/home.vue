@@ -129,7 +129,7 @@
               </div>
         </div>
 
-        <carousel :autoplay="false" :nav="false" v-if="loaded" :items =1>
+        <carousel :autoplaySpeed="1000" :autoplay="true"  :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -701,6 +701,7 @@ export default {
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
                   this.last_date = response.data.data.last_date
+                  console.log(this.last_date)
                 if(response.data.data.status_430 == "backend") {
                     
                          this.isActive = false

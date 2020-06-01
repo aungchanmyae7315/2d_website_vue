@@ -284,7 +284,9 @@
 "add":"添加",
 "cancel_add":"取消",
 "bet_amount_min_100":"请输入下注金额(最少100 Ks）",
-"threed_bet_close":"本场下注已关闭"
+"threed_bet_close":"本场下注已关闭",
+"topup_success_end":"充值提交中..."
+
 
 
 
