@@ -83,11 +83,7 @@ export default {
   //debug:true,
  baseURL: "https://api.2dboss.com/api/",
  //baseURL: "https://seinlucky123.com/api/",
-<<<<<<< HEAD
-// baseURL: "https://build.seinchanthar.com/api/",
-=======
  //baseURL: "https://build.seinchanthar.com/api/",
->>>>>>> d3a0a0c623047b847151190eaf237e85c512a34d
   proxy:false,
   proxyHeaders: false,
   headers: {
