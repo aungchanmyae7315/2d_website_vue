@@ -12,7 +12,7 @@
            
         <section class="contact_sameThree">
             <h6>(၃) လုံးပူး ဂဏန်းများ</h6>
-           <el-form :model="numberValidateForm"  ref="numberValidateForm"  class="demo-ruleForm">
+           <el-form  @submit.native.prevent :model="numberValidateForm"  ref="numberValidateForm"  class="demo-ruleForm">
                  <el-form-item
                            
                     prop="bet_number"
@@ -33,7 +33,7 @@
           ]"
           
           >  
-          <el-input id="form-name" type="number"  :placeholder="$t('bet_amount')" v-model.number="numberValidateForm.amountThreeD"></el-input>
+          <el-input @keypress.enter.native="sameNumberSubmit('numberValidateForm')" id="form-name" type="number"  :placeholder="$t('bet_amount')" v-model.number="numberValidateForm.amountThreeD"></el-input>
          
     </el-form-item>
      <p style="color:#fff;float:right;margin:0;margin-top:-14px">{{$t('you_balance')}} : {{this.myWallet}} {{$t('kyat')}}</p>
