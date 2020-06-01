@@ -11,7 +11,7 @@
 
                 </el-header>
                 <p>{{$t('Choose your receiving account')}}</p>
-                <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                <el-form @submit.native.prevent :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
     <el-form-item 
             
             prop="radio1"
@@ -57,7 +57,7 @@
                     
                     >  
                     <!-- <el-form-item label="Bank Card Number" class="tran_input" > -->
-                        <el-input @change="submitted = false"  type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
+                        <el-input @keypress.enter.native="withdrawal('ruleForm')" @change="submitted = false"  type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
                     </el-form-item>
                     <!-- <el-form-item label="Withdraw Amount" class="tran_amount tran_input" > -->
                     <el-form-item class="tran_amount tran_input"
@@ -69,7 +69,7 @@
                         ]"
                         
                         >  
-                        <el-input   type="number" :placeholder="$t('enter_cash_amount')" v-model="ruleForm.tran_amount" ></el-input>
+                        <el-input @keypress.enter.native="withdrawal('ruleForm')"   type="number" :placeholder="$t('enter_cash_amount')" v-model="ruleForm.tran_amount" ></el-input>
                     </el-form-item>
                     <!-- <el-form-item label="Password" class="password tran_input" > -->
                         <el-form-item class="tran_amount tran_input"
@@ -81,7 +81,7 @@
                             ]"
                             
                             >  
-                        <el-input type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
+                        <el-input @keypress.enter.native="withdrawal('ruleForm')" type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
                     </el-form-item>
                   <!-- <div @click="firstFunction(); secondFunction();"></div> -->
                <!-- <input type="button" value="super duper cool button" @click="submitted = true" :disabled="submitted">

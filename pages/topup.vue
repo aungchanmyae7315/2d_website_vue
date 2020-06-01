@@ -54,7 +54,7 @@
                       <p>{{$t('Please_enter_transferred')}}</p>
                      
                         
-                    <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                    <el-form  @submit.native.prevent   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                         <el-form-item 
                         prop="tran_amount"
                     :rules="[
@@ -64,7 +64,7 @@
                         class="tran_input" >
                         <el-row>
                           <el-col :span="18">
-                             <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                             <el-input @keypress.enter.native="slip_upload_wave('ruleForm')"   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
                           </el-col>
                           <el-col :span="6" style="text-align:center">
                              <el-button type="text"  @click="centerDialogVisible_Wave = true">{{$t('example_text')}}</el-button>
@@ -98,7 +98,7 @@
                         class="tran_input" >
                         <el-row>
                             <el-col :span="18">
-                                 <el-input   type="number" :placeholder="$t('slip_number_s')" v-model="ruleForm.slip_code"></el-input>
+                                 <el-input  @keypress.enter.native="slip_upload_wave('ruleForm')"   type="number" :placeholder="$t('slip_number_s') " v-model="ruleForm.slip_code"></el-input>
                             </el-col>
                             <el-col :span="6" style="text-align:center">
                                 <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
@@ -124,7 +124,7 @@
                   </div>
                   <div class="btn_group" v-else-if="radio == 2">
                        <p>{{$t('Please_enter_transferred')}}</p>
-                          <el-form   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                          <el-form  @submit.native.prevent   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                         <el-form-item 
                         prop="tran_amount"
                     :rules="[
@@ -134,7 +134,7 @@
                         class="tran_input" >
                             <el-row>
                               <el-col :span="18">
-                                <el-input   type="number" :placeholder="$t('Enter transferred amount')" v-model="ruleForm.tran_amount"></el-input>
+                                <el-input @keypress.enter.native="slip_upload_kbz('ruleForm')"    type="number" :placeholder="$t('Enter transferred amount' )" v-model="ruleForm.tran_amount"></el-input>
                               </el-col>
                               <el-col :span="6" style="text-align:center">
                                 <el-button type="text"  @click="centerDialogVisible_Kbz = true">{{$t('example_text')}}</el-button>
@@ -166,7 +166,7 @@
                         class="tran_input" >
                         <el-row>
                             <el-col :span="18">
-                                 <el-input   type="number" :placeholder="$t('slip_kbz_number_s')" v-model="ruleForm.slip_code"></el-input>
+                                 <el-input @keypress.enter.native="slip_upload_kbz('ruleForm')"   type="number" :placeholder="$t('slip_kbz_number_s')" v-model="ruleForm.slip_code"></el-input>
                             </el-col>
                             <el-col :span="6" style="text-align:center">
                               <el-button type="text"  @click="centerDialogVisible = true">{{$t('example_text')}}</el-button>
