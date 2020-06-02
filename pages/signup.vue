@@ -224,16 +224,16 @@ import axios from 'axios'
                       // console.log(this.userInfo)
                       this.$store.commit('logIn', this.userInfo)
                         this.$store.commit('accessToken', this.token)
-
-                    if(response.data.status == 3) {
-                       this.$router.push(`/signup_successNrc?lang=${this.$store.state.locale}`);
-                    }else if (this.device_id == null) {
-                        this.$router.push(`/signup_successChrome?lang=${this.$store.state.locale}`);
-                    }else if(this.device_id !== null) {
                        this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
-                    }else {
-                         console.log('not Direction')
-                    }
+                    // if(response.data.status == 3) {
+                    //    this.$router.push(`/signup_successNrc?lang=${this.$store.state.locale}`);
+                    // }else if (this.device_id == null) {
+                    //     this.$router.push(`/signup_successChrome?lang=${this.$store.state.locale}`);
+                    // }else if(this.device_id !== null) {
+                    
+                    // }else {
+                    //      console.log('not Direction')
+                    // }
           
                 })
                 .catch(error => {
