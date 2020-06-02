@@ -84,6 +84,7 @@ export default {
                                
                                 
                                 if(this.error_msg == 'fail'){
+                                     this.submitted = false
                                     this.$message({
                                         message:this.$t('refel_code_invalid'),
                                         type: 'warning',
