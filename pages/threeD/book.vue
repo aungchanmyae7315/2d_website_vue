@@ -60,7 +60,7 @@ export default {
 		"id": 1,
 		"state": {
 			"opened": false,
-			"selected": true,
+			// "selected": false,
 			"disabled": false
 		},
 		"children": [
@@ -69,7 +69,7 @@ export default {
 				"id": 2,
 				"state": {
 					"opened": false,
-					"selected": true,
+					"selected": false,
 					"disabled": false
 				},
 				"children": null
@@ -79,7 +79,7 @@ export default {
 				"id": 3,
 				"state": {
 					"opened": false,
-					"selected": true,
+					"selected": false,
 					"disabled": false
 				},
 				"children": null
@@ -94,7 +94,7 @@ export default {
 		"id": 19,
 		"state": {
 			"opened": false,
-			"selected": true,
+			// "selected": false,
 			"disabled": false
 		},
 		"children": [
@@ -103,7 +103,7 @@ export default {
 				"id": 20,
 				"state": {
 					"opened": false,
-					"selected": true,
+					"selected": false,
 					"disabled": false
 				},
 				"children": null
@@ -113,19 +113,21 @@ export default {
 				"id": 21,
 				"state": {
 					"opened": false,
-					"selected": true,
+					"selected": false,
 					"disabled": false
 				},
 				"children": null
 			}
 		]
-	},
+    },
+    
 
 
 	
 ];
 
         return {
+            
              items : tree,
                checkedNames: [],
                one:[]
@@ -134,29 +136,24 @@ export default {
     },
     methods: {
          submitForm() {
+              let data = []
               for(let child of this.items){
                   this.one = child
-                   for (var p of Array.from(this.one.children)) {
-                       if(p.state.selected == true)  {
+                    console.log(this.one.children[0].state.selected)
+                      console.log(this.one.children[1].state.selected)
+
                         
-                            console.log(p.number);
-            //   const parent = p;
-            //   console.log(parent)
-
-            //     Array.prototype.forEach.call(parent.children, child => {
-            //     console.log(child)
-            //     });
-               
-            
-        
-
-
-
-                       }
-                    
-                    }
+                          
+                            this.one.children.forEach(element => {
+                                 if( this.one.children[0].state.selected == true &&  this.one.children[1].state.selected == true) {
+                                    data.push(element.number);
+                                    this.Bookthreed = data;
+                               }
+                            });
+                     
             }
-           
+           console.log(this.Bookthreed)
+
         },
         parentChange(item, state){
             for(let child of item.children){
