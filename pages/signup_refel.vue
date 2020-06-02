@@ -16,7 +16,7 @@
                             <h4>{{$t('have_referral_code')}}</h4>
                             <p>{{$t('please_enter_referral_code')}}
                             </p>
-                       <el-form :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                       <el-form  @submit.native.prevent :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
                              <el-form-item
                                    
                                     prop="referal_code"
@@ -26,7 +26,7 @@
                                     ]"
                                     
                                     >  
-                                    <el-input :placeholder="$t('enter_referral_code')" v-model="ruleForm.referal_code"></el-input>
+                                    <el-input @keypress.enter.native="submitRefel('ruleForm')" :placeholder="$t('enter_referral_code')" v-model="ruleForm.referal_code"></el-input>
                                    <div style="padding-top:20px;">
                                          <el-button type="success"  round @click="submitRefel('ruleForm')"> တင်ပြမည်</el-button>
                                    </div>
