@@ -113,9 +113,10 @@
           
          <el-row>
                  <el-col :span="6">
-                   <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n" target="_blank">
+                  <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">  
                     <el-button  class="book_btn" type="text"></el-button>
-                    </a>
+                  </nuxt-link>
+                  
                 </el-col>
                 <el-col :span="18" style="padding-left:15px;">
                     <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
