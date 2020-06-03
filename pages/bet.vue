@@ -829,7 +829,8 @@ export default {
                        return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.server_time > this.morning_to && this.server_time <  this.evening_from ) {
                         this.isMorningEvening = true
-                       this.isActive = false
+                       
+                       this.isActive = true
                         return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
                     }else if(this.server_time > this.evening_from && this.server_time < this.evening_to ) {
                          this.isActive = true
