@@ -846,7 +846,7 @@ export default {
                         this.isMorningEvening = true
                         //   this.isActive = true
                         // return this.time_countdown = this.$root.$t('close_text');
-                       this.isActive = false
+                       this.isActive = true
                      
                        return this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }
