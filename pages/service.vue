@@ -11,7 +11,7 @@
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
-                    <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_one')}}</p>
+                    <p style="color:#eebd3e;font-weight:bold;font-size:16px;">{{$t('service_time_one')}}</p>
                      <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_two')}}</p>
                       <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_three')}}</p>
 

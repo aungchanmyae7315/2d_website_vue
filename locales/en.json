@@ -286,7 +286,8 @@
 "cancel_add":"Cancel",
 "bet_amount_min_100":"Please enter bet Amount(min 100 Ks)",
 "threed_bet_close":"3D Bet Closing",
-"topup_success_end":"Top-up Pending... "
+"topup_success_end":"Top-up Pending... ",
+"you_already_referral_code":"Referral Code you have entered"
 
 
 

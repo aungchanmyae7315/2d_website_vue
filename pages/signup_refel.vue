@@ -120,7 +120,7 @@ export default {
          
     },
         skip() {
-             this.$router.push(`/home?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/?lang=${this.$store.state.locale}`); 
         }
     }
 }
