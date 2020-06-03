@@ -77,7 +77,7 @@
                               </li> 
                               <li v-else>
                                 <!-- <nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"> -->
-                                  <img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('you_already_referral_code')}} : <span style="color:#EEBD3E;font-weight:bold">( {{this.get_refel}} )</span>
+                                  <img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('you_already_referral_code')}} : <span style="color:#EEBD3E;font-weight:bold">{{this.get_refel}} </span>
                                   <!-- </nuxt-link> -->
                                 </li> 
                               <!-- <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('fill_referral_code')}}</a></nuxt-link></li> 
@@ -147,7 +147,7 @@
              <nuxt-link :to="`${$t('/me')}?lang=${$store.state.locale}`">
              <el-menu-item index="4"  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
                <img src="~static/icons_header/dimond_t_icon.png" alt="">
-               <h5 class="main_icon" style="font-weight:bold;color:#ccab48">Refresh</h5>
+               <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('me_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
 
