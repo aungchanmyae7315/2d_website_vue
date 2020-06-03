@@ -70,8 +70,18 @@
 
 
                         <!-- <div v-if="this.device_id !== null "> -->
-                              <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('fill_referral_code')}}</a></nuxt-link></li> 
-                              <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li> 
+                           <li v-if="this.get_refel == null ">
+                                  <nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`">
+                                  <a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('fill_referral_code')}} </a>
+                                  </nuxt-link>
+                              </li> 
+                              <li v-else>
+                                <!-- <nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"> -->
+                                  <img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('you_already_referral_code')}} : <span style="color:#EEBD3E;font-weight:bold">( {{this.get_refel}} )</span>
+                                  <!-- </nuxt-link> -->
+                                </li> 
+                              <!-- <li v-if="this.get_refel == null "><nuxt-link :to="`${$t('/acc_refel')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('fill_referral_code')}}</a></nuxt-link></li> 
+                              <li v-else><nuxt-link :to="`${$t('/refel_success')}?lang=${$store.state.locale}`"><a href=""><img src="~static/icons_acc_me/refel_icon.png" alt=""> {{$t('my_referral_code')}}</a></nuxt-link></li>  -->
                         <!-- </div>
                         <div v-else>
 
@@ -278,15 +288,18 @@ export default {
     }
     .acc_items  li {
         padding:10px 0;
+        color:#fff;
+        font-size:13px;
+        font-weight: bold;
         display:block;
     }
     .acc_items li a {
         text-decoration: none;
         color:#fff;
-        font-size:16px;
+        font-size:13px;
         font-weight:bold;
     }
-    .acc_items li a img {
+    .acc_items li  img {
         padding: 0 10px;
         width:48px;
         height:auto;

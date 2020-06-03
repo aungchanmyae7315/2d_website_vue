@@ -8,7 +8,7 @@
                 </el-page-header> 
             </nuxt-link>
        
-          <el-form v-if="active===1"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+          <el-form  @submit.native.prevent v-if="active===1"  :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
            
         
         <div class="sign_up_text">
@@ -33,7 +33,7 @@
               ]"
                
             >  
-                <el-input type="number" placeholder="09 xxx xxx xxx" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
+                <el-input  @keypress.enter.native="next('ruleForm')" type="number" placeholder="09 xxx xxx xxx" prefix-icon="el-icon-phone" v-model="ruleForm.phone"  ></el-input>
                
             </el-form-item>
             
@@ -88,7 +88,7 @@
              <el-button type="success" round @click="nextTwo('ruleForm')">next</el-button>
         </el-form> -->
 
-        <el-form v-if="active===2" :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="demo-ruleForm" >
+        <el-form @submit.native.prevent v-if="active===2" :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="demo-ruleForm" >
            <div class="sign_up_text">
             <h4>{{$t('set_your_password')}}</h4>
         </div>
@@ -97,14 +97,14 @@
                         prop="pass"
                        
                 >  
-                    <el-input type="password" show-password :placeholder="$t('password')" prefix-icon="el-icon-lock" v-model="ruleForm.pass" ></el-input>
+                    <el-input  @keypress.enter.native="submitForm('ruleForm')" type="password" show-password :placeholder="$t('password')" prefix-icon="el-icon-lock" v-model="ruleForm.pass" ></el-input>
                 
                 </el-form-item>
                 <el-form-item
                         prop="checkPass"
                        
                 >  
-                    <el-input type="password" show-password :placeholder="$t('confirm_password')" prefix-icon="el-icon-lock" v-model="ruleForm.checkPass" ></el-input>
+                    <el-input  @keypress.enter.native="submitForm('ruleForm')" type="password" show-password :placeholder="$t('confirm_password')" prefix-icon="el-icon-lock" v-model="ruleForm.checkPass" ></el-input>
                 
                 </el-form-item>
             
