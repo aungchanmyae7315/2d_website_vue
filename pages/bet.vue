@@ -652,7 +652,7 @@ export default {
            
         this.$axios.get('/v2/v1/holiday')
               .then(response => {
-                
+                console.log(response)
                this.holidays = response.data
              
                 if(this.holidays.status == 1) {
@@ -842,6 +842,7 @@ export default {
                          this.isActive = false
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }else {
+                      
                     
                         this.isMorningEvening = true
                         //   this.isActive = true
