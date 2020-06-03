@@ -31,7 +31,7 @@
              <nuxt-link :to="`${$t('/promotion')}?lang=${$store.state.locale}`"> 
             <el-menu-item index="2" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
                <img src="~static/icons_header/dimond_t_icon.png" alt="">
-                <h5 class="main_icon" style="font-weight:bold;color:#ccab48">Refresh</h5>
+                <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('promotion_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
             <nuxt-link :to="`${$t('/service')}?lang=${$store.state.locale}`">
