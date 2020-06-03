@@ -48,7 +48,7 @@
             </el-form-item>
         </el-form>
                  <p>{{$t('registered_phone')}}: {{this.profile.phone}}</p>
-                  <p>{{$t('my_referral_code')}} : {{this.referal_code}}</p>
+                  <!-- <p>{{$t('my_referral_code')}} : {{this.referal_code}}</p> -->
 
 
                <el-button round @click="profile_edit">{{$t('Confirm')}}</el-button>
