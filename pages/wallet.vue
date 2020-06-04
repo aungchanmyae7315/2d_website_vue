@@ -57,8 +57,15 @@
              <div class="longText" id="hidingScrollBar">
                 <div class=" hideScrollBar_wallet ">
                   <div class="topup_withdraw">
-                        <nuxt-link  :to="`${$t('/topup_youtube')}?lang=${$store.state.locale}`"><img src="~static/images/topup_withdraw/learn_icon.png" alt="" > <p class="under-below">{{$t('How to top up money?')}}</p></nuxt-link>
-                         <nuxt-link  :to="`${$t('/withdraw_youtube')}?lang=${$store.state.locale}`"> <img src="~static/images/topup_withdraw/learn_icon.png" alt=""><p class="under-below">{{$t('How to withdraw money?')}}</p></nuxt-link>
+                        <nuxt-link  :to="`${$t('/topup_youtube')}?lang=${$store.state.locale}`"><img src="~static/images/topup_withdraw/learn_icon.png" alt="" >
+                         <p class="under-below">ငွေသွင်းနည်းကြည့်ရန် နှိပ်ပါ။</p>
+                         <!-- <p class="under-below">{{$t('How to top up money?')}}</p> -->
+                         </nuxt-link>
+                         <nuxt-link  :to="`${$t('/withdraw_youtube')}?lang=${$store.state.locale}`"> <img src="~static/images/topup_withdraw/learn_icon.png" alt="">
+                         <p class="under-below">  ငွေထုတ်နည်းကြည့်ရန် နှိပ်ပါ။</p>
+                           <!-- <p class="under-below">{{$t('How to withdraw money?')}}</p> -->
+                      
+                         </nuxt-link>
                   </div>
                     
                 <el-card style="width:98%" data-aos="fade-up" data-aos-duration="800">

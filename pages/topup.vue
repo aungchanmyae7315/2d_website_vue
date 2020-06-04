@@ -749,7 +749,15 @@ export default {
                           message: 'ဂဏန်း ၆  ထက်ပိုနေပါသည် ',
                           type: 'warning',
                         });
-                     }else {
+                     }else if(error.response.data.errors.slip_code == 'The given data was invalid.') {
+                          this.submitted = false
+                          this.$message({
+                              showClose: true,
+                            message: 'The given data was invalid.',
+                            type: 'warning',
+                          });
+                     }
+                     else {
                          this.submitted = false
                          this.$message({
                             showClose: true,

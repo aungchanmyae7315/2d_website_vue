@@ -12,13 +12,16 @@
                  <el-avatar v-else :size="60"><img :src="this.profile.profile " alt=""></el-avatar>
                 </nuxt-link>
                 <div  class="avatar_text">
-                  <ul>
-                  <li v-if="this.profile.name == null">{{this.profile.phone}}</li>
-                     <li v-else>{{this.profile.name}}</li>
-                    <!-- <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`"> -->
+                  <ul v-if="this.profile.name == '-'">
+                    <li>{{this.profile.phone}}</li>
+                  </ul>
+                  <ul v-else>
+                    <li>{{this.profile.name}}</li>
+                    <li>{{this.profile.phone}}</li>
+                  </ul>
+                     <!-- <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`"> -->
                      <!-- <li>{{$t('you_referral_code')}}: <span class="edit_profile">{{this.get_refel_gen}}</span></li> -->
                     <!-- </nuxt-link> -->
-                  </ul>
                   </div>
             
               </div>
@@ -178,7 +181,7 @@ export default {
                   }
                 })
             .then(response => {
-              //console.log(response)
+              console.log(response)
                 // this.$nuxt.$loading.finish()
                  this.blockUser = response.data.data.trash
                 this.device_id = response.data.data.device_id
