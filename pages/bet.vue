@@ -853,7 +853,11 @@ export default {
                         this.isMorningEvening = true
                         //   this.isActive = true
                         // return this.time_countdown = this.$root.$t('close_text');
-                       this.isActive = true
+                       if(this.holidays.status == 1) {
+                             this.isActive = true
+                        }else {
+                             this.isActive = false
+                        }
                      
                        return this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }
