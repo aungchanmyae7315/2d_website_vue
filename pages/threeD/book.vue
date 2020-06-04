@@ -173,7 +173,7 @@ export default {
                         
                           
                             this.one.children.forEach(element => {
-                                 if( this.one.children[0].state.selected == true &&  this.one.children[1].state.selected == true) {
+                                 if( this.one.children[0].state.selected == true) {
                                     data.push(element.number);
                                     this.Bookthreed = data;
                                }
@@ -506,10 +506,7 @@ export default {
           border-top-right-radius: 9px;
            border-top-left-radius: 9px;
     }
-    .number_list_item li {
-        /* padding:20px;
-        width:60px; */
-    }
+
 body {
   font-family: "Open Sans";
 }
