@@ -735,6 +735,7 @@ export default {
                             
                 })
                  .catch(error => {
+                   console.log(error.response.data.errors)
                      this.submitted = false
                      if(error.response.data.errors.slip_code == 'The slip code must be at least 6 characters.') {
                           this.$message({
