@@ -31,7 +31,7 @@
                             
                             >  
                           
-                                <el-input @keypress.enter.native="bet('ruleForm')" class type="number" placeholder="100 Ks(min)"  v-model="ruleForm.amount"  ></el-input>
+                                <el-input @keypress.enter.native="submitForm('ruleForm')" class type="number" placeholder="100 Ks(min)"  v-model="ruleForm.amount"  ></el-input>
                             
                             </el-form-item>
                 </el-col>
@@ -40,14 +40,36 @@
             <el-row> 
                   <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
                         <el-col :span="13" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="13" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}:  {{$t('kyat')}}</div></el-col>
+                        <el-col :span="13" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}:  {{this.thousands_separators(myWallet)}} {{$t('kyat')}} </div></el-col>
                   </nuxt-link>
-                 <el-col :span="11" class="bet_close_time"> {{$t('bet_close_time')}} :  </el-col>
+                 <el-col :span="11" class="bet_close_time"> 
+                     <div id="app-timer" class="count_time_threed">
+                      <ul>
+                       
+                        <li>
+                              <h5>ထီပိတ်ရက်ကျန်ချိန်</h5>
+                        </li>
+                        <li v-if="this.holiday == 0">
+                            
+                              <div v-for="(time ,k) in times" :key="k">
+                                <h6 class="card-title">{{time.time}}</h6>
+                              </div>
+                     
+                        </li>
+                         <li v-else>
+                             <h5>{{$t('threed_bet_close')}}</h5>
+                             
+                      
+                        </li>
+                      </ul>
+                    </div>
+                    
+                      </el-col>
             </el-row>
              <el-row> 
                   <nuxt-link :to="`${$t('/share')}?lang=${$store.state.locale}`">
                         <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance_point')}}:  </div></el-col>
+                        <el-col :span="14" v-else> <div class="balance_amount">  </div></el-col>
                     </nuxt-link>
 
                        <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
@@ -59,7 +81,7 @@
                          </div>
                             <div v-else class="bet_login_btn">
                             <el-col :span="10">
-                                  <el-button    type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
+                                  <el-button    type="warning" getHello="getHello" class="bet_btn_login" @click="submitForm('ruleForm')" round >{{$t('Bet')}}</el-button>
                             </el-col>
 
 
@@ -69,7 +91,7 @@
        <el-main>
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_bet">
-                   <button @click="submitForm">click</button>
+                  
                     
                     <ul class="number_list">
                         
@@ -94,15 +116,16 @@
                             <ul v-if="item.children.length != 0" class="number_list_item">
                                 <li v-for="(children, index) in item.children" :key="index"   :data-id="children.id" class="dd-item">
                                     <div class="number_item button-group-pills text-center"  data-toggle="buttons">
-                                        <label class="btn btn-default" >
+                                     
+                                        <label class="" @click="children.state.selected = !children.state.selected"  v-bind:class="[children.state.selected ? 'dd-item open' : 'dd-item']"    >
                                         <input type="checkbox"  
                                             :value="children.number"
-                                          
+                                           
                                             v-model="children.state.selected"
                                             :name="children.text" 
                                             :checked="children.state.selected" 
                                             :disabled="children.state.disabled" 
-                                            @click="children.state.selected = !children.state.selected">
+                                            >
                                     
                                             
                                             {{children.number}}
@@ -115,7 +138,7 @@
                            
                         </li>
                     </ul>
-                 
+                  <button @click="submitForm">click</button>
               
             </div>
         </div>
@@ -135,6 +158,7 @@ export default {
   }
     },
     mounted() {
+         this.updateIsLoggedIn();
           this.$axios.get('/v2/v1/threed/book')
               .then(response => {
                 console.log(response.data)
@@ -143,10 +167,47 @@ export default {
                 
               })  
     },
-    
+    created() {
+          let token = localStorage.getItem('token');
+        if(token) {
+             this.$axios.get("/v2/v1/profile",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                     
+                     this.profile = response.data.data
+                     this.myWallet = this.profile.wallet
+                      this.myPointWallet = this.profile.point
+                    this.server_time = response.data.data.time;
+                })
+        } 
+          this.$axios.get('/v2/v1/threed/count_down')
+              .then(response => {
+                console.log(response)
+                  this.endTime = response.data.next_start_date
+                  this.holiday = response.data.data
+              }) 
+        this.updateTimer();
+
+        let timeinterval = setInterval(this.updateTimer, 1000);
+    },
     data() {
 
         return {
+              myWallet:'',
+              endTime: '',
+            times: [
+                { id: 0, text: "D", time: 45 },
+                { id: 1, text: " H", time: 35 },
+                { id: 2, text: "M ", time: 25 },
+                { id: 3, text: "S", time: 15 }
+            ],
+            holiday:'',
+            a: 1,
+            progress: 50,
+             isActive: true,
              ruleForm: {
                     amount:'',
                     check_btn: [],
@@ -160,11 +221,47 @@ export default {
         
     },
     methods: {
+         thousands_separators(num){
+            //console.dir(num);
+          if (num == undefined){
+              return "";
+          }  
+          var num_parts = num.toString().split(".");
+          num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+          return num_parts.join(".");
+        },
+         updateTimer: function(){
+            this.getTimeRemaining();
+            this.updateProgressBar();
+        },
+        getTimeRemaining: function() {
+            let t = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
+            
+            // console.log(this.progress);
+            this.times[3].time = Math.floor(t / 1000 % 60) ;
+            this.times[2].time = Math.floor(t / 1000 / 60 % 60) + ':';
+            this.times[1].time = Math.floor(t / (1000 * 60 * 60) % 24) +':';
+            this.times[0].time = Math.floor(t / (1000 * 60 * 60 * 24)) +' '+'ရက်' + ' ';
+        },
+        updateProgressBar: function(){
+        //TODO fix progress bar
+        // let interval = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
+        // this.progress = Math.floor(this.currentTime / Date.parse(new Date(this.endTime))*100);
+        },
+         
+        updateIsLoggedIn() {
+            this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
+        },
+        hasUserInfo() {
+            return Boolean(localStorage.getItem('userInfo'));
+        },
         goBack() {
             this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
         },
-         submitForm() {
-              let data = []
+         submitForm(formName) {
+              this.$refs[formName].validate((valid) => {
+          if (valid) {
+                let book_number = []
               for(let child of this.book_data){
                   this.one = child
                     console.log(this.one.children[0].state.selected)
@@ -173,21 +270,58 @@ export default {
                         
                           
                             this.one.children.forEach(element => {
-                                 if( this.one.children[0].state.selected == true) {
-                                    data.push(element.number);
-                                    this.Bookthreed = data;
+                                console.log(this.one.children)
+                                 if(this.one.children[0].state.selected == true && this.one.children[1].state.selected == true) {
+                                    book_number.push(element.number);
+                                    this.Bookthreed = book_number;
                                }
-                            });
-                     
+                   
+                            });  
             }
+                          
+                           
            console.log(this.Bookthreed)
+                            var data = this.ruleForm.amount  
+                            this.$store.commit('betAmountThreeD',data);
+                            var data = this.Bookthreed  
+                            this.$store.commit('getBetThreeD', data);
+                  //this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+          }else{
+
+          }
+        });
+
+             
+            
 
         },
         parentChange(item, state){
             for(let child of item.children){
                 child.state.selected = state
             }
-        }
+        },
+    //      submitThreed(formName) {
+    //     this.$refs[formName].validate((valid) => {
+    //       if (valid) {
+             
+    
+    //            var data = this.all_number  
+      
+     
+    //      this.$store.commit('getBetThreeD', data);
+    //     var data = this.ruleForm.amountThreeD  
+    //     this.$store.commit('betAmountThreeD',data);
+
+    //     this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+    //       } else {
+    //         console.log('error submit!!');
+    //         return false;
+    //       }
+    //     });
+    
+     
+
+    // },
     }
 }
 </script>
@@ -317,7 +451,7 @@ export default {
         overflow: auto;
         margin-left: 17px;
         padding-right: 28px;
-        padding-top: 190px;
+        padding-top: 220px;
         padding-bottom:30px;
        
         
@@ -336,7 +470,6 @@ export default {
     .bet_close_time {
         font-size: 13px;
         text-align: center;
-        padding-top:8px;
         
     }
     .betclose_text {
@@ -519,12 +652,31 @@ body {
   background-color: #FFF;
   color: #14a4be;
 }
-/* .button-group-pills .btn.active {
+.dd-item.open {
   border-color: #14a4be;
   background-color: #14a4be;
   color: #FFF;
   box-shadow: none;
-} */
-
+}
+.count_time_threed  ul{
+  padding:13px 0;
+  margin:0;
+  list-style: none;
+  text-align: right;
+}
+.count_time_threed ul li {
+  display:flex;
+}
+.count_time_threed h5 {
+  font-size:11px;
+  color:#fff;
+  font-weight: bold;
+}
+.count_time_threed h6 {
+  color:#FFEA72;
+  font-size:12px;
+  font-weight: bold;
+  margin:0;
+}
 
 </style>

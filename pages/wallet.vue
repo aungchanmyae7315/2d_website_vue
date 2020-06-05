@@ -73,10 +73,10 @@
 
                   <h5>{{ $t('Sein Lucky Bank Accounts') }}</h5>
                   <p><span style="color:red;">{{$t('Warning')}} !!!</span> {{$t('there_is_no_other')}}</p>
-                    
                     <div v-for="(bank_info, b) in bank_account" :key="b">
-                     <div class="demo-type wallet_type">
-                     
+                   
+                       <div  class="demo-type wallet_type">
+                    
                        <el-image :src="bank_info.bank_icon">
                         <div slot="placeholder" class="image-slot">
                           Loading<span class="dot">...</span>
@@ -96,7 +96,7 @@
                             {{ $t('Copy') }}
                           </span>
                           </div>
-                      </div>
+                        </div>
                     </div>
                       
                 </el-card>
@@ -304,21 +304,39 @@
       return {
         fullscreenLoading: false,
         bank_account:'',
+        
+
         card_number:'',
         visible: false,
         profile:'',
         message:'',
         myWallet:'',
-        blockUser:''
+        blockUser:'',
+        group_type:'',
       };
     },
      created() {
+           let token = localStorage.getItem('token');
+        // if(token) {
+        //       this.$axios.get("/v2/v1/bank_card_grouping",
+        //             {headers: {
+        //                        "Authorization": "Bearer "+token
+        //                  }
+        //                 })
+        //             .then(response => {
+        //               console.log(response.data.data)
+        //               // this.group_type = response.data.data[0].group_type
+        //               // console.log(this.group_type)
+        //               this.bank_account = response.data.data[0].bank_group
+        //                console.log(this.bank_account)
+        //         })
+        // }
       
           this.$axios.get('/v1/admin-bank')
               .then(response => {
                 this.bank_account = response.data.data
               })  
-          let token = localStorage.getItem('token');
+         
         if(token) {
               this.$axios.get("/v2/v1/profile",
                     {headers: {
@@ -329,6 +347,7 @@
                       this.blockUser = response.data.data.trash
                      this.profile = response.data.data
                      this.myWallet = this.profile.wallet
+                    
 
                       if(this.blockUser == 0) {
                         console.log('blcok_user')

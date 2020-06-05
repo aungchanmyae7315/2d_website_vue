@@ -113,7 +113,7 @@
           
          <el-row>
                  <el-col :span="6">   
-                   <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank">
+                    <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank"> -->
                   <!-- <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">   -->
                     <el-button  class="book_btn" type="text"></el-button>
                   <!-- </nuxt-link> -->
@@ -163,7 +163,7 @@
                                    
           prop="amountThreeD"
           :rules="[
-              { required: true, message: 'please enter bet amount' },
+              { required: true, message: $t('amount_required') },
               
           ]"
           >  
@@ -448,6 +448,7 @@ export default {
             this.all_number =  this.result_number
             var data = this.all_number  
        }
+
          this.$store.commit('getBetThreeD', data);
         var data = this.ruleForm.amountThreeD  
         this.$store.commit('betAmountThreeD',data);
@@ -716,8 +717,9 @@ export default {
    }
    .threed_home .el-input__inner {
       margin-top:10px;
+      text-align: right;
        background-color: #252E39;
-       color:#fff;
+       color:#b8b8b8;
    }
    .threeD_main .logo {
        width:104px;
