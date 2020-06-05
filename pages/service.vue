@@ -7,7 +7,7 @@
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_service">
                   <div class="service">
-                  <img src="~static/icons_service/Customer_services_icon.png" alt="" style="width:120px" data-aos="fade-down"
+                  <img src="~static/icons_service/Customer_services_icon.png" alt="" style="width:130px" data-aos="fade-down"
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
@@ -19,29 +19,29 @@
                        
                         <h6>{{$t('topup_withdrawal_help')}}</h6>
                         <ul class="contact_phone">
-                          <li class="phone_item"><i class="el-icon-phone"></i>  +959257578394(Viber)</li>
-                           <li><el-button size="medium"    round>  <a style="color:#7B519C;" href="viber://contact?number=%2B959257578394"> 
-                               <img src="~static/icons_service/viber_icon.svg" alt="" >viber  </a></el-button></li>
+                          <li class="phone_item"><i class="el-icon-phone"></i>  +959257578394</li>
+                           <li><el-button size="medium"    round>  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959257578394"> 
+                               <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button></li>
                         </ul>
                          <ul class="contact_phone">
-                          <li class="phone_item"><i class="el-icon-phone"></i>  +959889973993(Viber)</li>
-                           <li><el-button size="medium"   round> <a style="color:#7B519C;" href="viber://contact?number=%2B959889973993">
-                              <img src="~static/icons_service/viber_icon.svg" alt="" >viber  </a></el-button></li>
+                          <li class="phone_item"><i class="el-icon-phone"></i>  +959889973993</li>
+                           <li><el-button size="medium"   round> <a style="color:#7B519C; font-size:15px" href="viber://contact?number=%2B959889973993">
+                              <img src="~static/icons_service/viber_icon.svg" alt="" >Viber </a></el-button></li>
                         </ul>
               </el-card>
               <el-card  class="phone_card">
                      <h6>{{$t('agent_info')}}</h6>
                          <ul class="contact_phone">
-                          <li class="phone_item" style="padding-right:72px;"><i class="el-icon-phone"></i> 09 8817 028 82</li>
-                           <li><el-button size="medium"     round><a style="color:#000" href="tel:0959881702882">{{$t('phone_call')}} </a></el-button></li>
+                          <li class="phone_item" style=""><i class="el-icon-phone"></i> 09 8817 028 82</li>
+                           <li><el-button size="medium"     round><a style="color:#000;font-size:15px" href="tel:0959881702882">{{$t('phone_call')}} </a></el-button></li>
                         </ul>
               </el-card>
                 <el-card  class="phone_card">
                            <h6>{{$t('customer_service_title')}}</h6>
                            <ul class="contact_phone">
-                          <li class="phone_item"><i class="el-icon-phone"></i>  +959771318916(Viber)</li>
-                           <li><el-button size="medium"   round> <a style="color:#000;" href="viber://contact?number=%2B959771318916">
-                              <img src="~static/icons_service/viber_icon.svg" alt="" >viber  </a></el-button></li>
+                          <li class="phone_item"><i class="el-icon-phone"></i>  +959771318916</li>
+                           <li><el-button size="medium"   round> <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959771318916">
+                              <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button></li>
                         </ul>
                             
               </el-card>
@@ -181,7 +181,7 @@ export default {
       color:#fff;
     }
     .contact_phone img  {
-      width:20px;
+      width:25px;
       padding-right:5px;
    
     }
@@ -189,12 +189,12 @@ export default {
 
   .contact_phone li i {
     font-size: 17px;
-    padding-right:15px;
+    padding-right:5px;
   }
   .phone_item {
-    font-size: 12px;
+    font-size: 14px;
     padding-top:10px;
-    padding-right:20px;
+    padding-right:50px;
     padding-bottom:30px;
   }
     
