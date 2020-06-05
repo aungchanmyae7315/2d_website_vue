@@ -32,7 +32,7 @@
               <el-card  class="phone_card">
                      <h6>{{$t('agent_info')}}</h6>
                          <ul class="contact_phone">
-                          <li class="phone_item" style=""><i class="el-icon-phone"></i> 09 8817 028 82</li>
+                          <li class="phone_item" style="padding-right:64px;"><i class="el-icon-phone"></i> 09 8817 028 82</li>
                            <li><el-button size="medium"     round><a style="color:#000;font-size:15px" href="tel:0959881702882">{{$t('phone_call')}} </a></el-button></li>
                         </ul>
               </el-card>
