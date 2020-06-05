@@ -193,6 +193,7 @@ export default {
   }
   .phone_item {
     font-size: 12px;
+    padding-top:10px;
     padding-right:20px;
     padding-bottom:30px;
   }
