@@ -15,11 +15,37 @@
                      <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_two')}}</p>
                       <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_three')}}</p>
 
-                    <!-- <ul class="service_contact" v-for="(phone , p) in contact" :key="p">
-                        <li><el-button size="medium"  @click="dial(phone)"   icon="el-icon-phone" round>{{phone}}</el-button></li>
-
-                    </ul> -->
-                    <el-card v-for="(phone , p) in contact" :key="p" class="phone_card">
+              <el-card  class="phone_card">
+                       
+                        <h6>{{$t('topup_withdrawal_help')}}</h6>
+                        <ul class="contact_phone">
+                          <li class="phone_item"><i class="el-icon-phone"></i>  +959257578394(Viber)</li>
+                           <li><el-button size="medium"    round>  <a style="color:#7B519C;" href="viber://contact?number=%2B959257578394"> 
+                               <img src="~static/icons_service/viber_icon.svg" alt="" >viber  </a></el-button></li>
+                        </ul>
+                         <ul class="contact_phone">
+                          <li class="phone_item"><i class="el-icon-phone"></i>  +959889973993(Viber)</li>
+                           <li><el-button size="medium"   round> <a style="color:#7B519C;" href="viber://contact?number=%2B959889973993">
+                              <img src="~static/icons_service/viber_icon.svg" alt="" >viber  </a></el-button></li>
+                        </ul>
+              </el-card>
+              <el-card  class="phone_card">
+                     <h6>{{$t('agent_info')}}</h6>
+                         <ul class="contact_phone">
+                          <li class="phone_item" style="padding-right:72px;"><i class="el-icon-phone"></i> 09 8817 028 82</li>
+                           <li><el-button size="medium"     round><a style="color:#000" href="tel:0959881702882">{{$t('phone_call')}} </a></el-button></li>
+                        </ul>
+              </el-card>
+                <el-card  class="phone_card">
+                           <h6>{{$t('customer_service_title')}}</h6>
+                           <ul class="contact_phone">
+                          <li class="phone_item"><i class="el-icon-phone"></i>  +959771318916(Viber)</li>
+                           <li><el-button size="medium"   round> <a style="color:#000;" href="viber://contact?number=%2B959771318916">
+                              <img src="~static/icons_service/viber_icon.svg" alt="" >viber  </a></el-button></li>
+                        </ul>
+                            
+              </el-card>
+                    <!-- <el-card v-for="(phone , p) in contact" :key="p" class="phone_card">
                         <h6 v-if="phone.type == 'Customer Service'">{{$t('customer_service_title')}}</h6>
                         <h6 v-else-if="phone.type == 'Top-up\/Withdrawal Help'">{{$t('topup_withdrawal_help')}}</h6>
                          <h6 v-else-if="phone.type == 'IT Support'">{{$t('it_support')}}</h6>
@@ -29,11 +55,9 @@
                           <li class="phone_item"><i class="el-icon-phone"></i> {{ph_item.phone}}</li>
                            <li><el-button size="medium"  @click="dial(ph_item.phone)"   round>{{$t('phone_call')}}</el-button></li>
                         </ul>
-                    </el-card>
+                    </el-card> -->
 
-                  <!-- <h6>Or</h6>
-                  <p class="contact_chat">{{$t('You can just message to us')}} </p>
-                    <el-button type="primary">Chat with our customer service</el-button> -->
+                
                 </div>
               </div>
              </div>
@@ -64,14 +88,14 @@ export default {
     },
      },
     created() {
-       this.$axios.get("/v2/v1/contact")
+      //  this.$axios.get("/v2/v1/contact")
     
             
-                .then(response => {
-                  this.$nuxt.$loading.finish()
-                  console.log(response.data)
-                    this.contact = response.data.data
-            });
+      //           .then(response => {
+      //             this.$nuxt.$loading.finish()
+      //             console.log(response.data)
+      //               this.contact = response.data.data
+      //       });
      },
 }
 </script>
@@ -156,6 +180,11 @@ export default {
       display: inline-flex;
       color:#fff;
     }
+    .contact_phone img  {
+      width:20px;
+      padding-right:5px;
+   
+    }
 
 
   .contact_phone li i {
@@ -163,7 +192,7 @@ export default {
     padding-right:15px;
   }
   .phone_item {
-    padding-right:50px;
+    padding-right:20px;
     padding-bottom:30px;
   }
     
