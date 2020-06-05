@@ -317,25 +317,25 @@
     },
      created() {
            let token = localStorage.getItem('token');
-        if(token) {
-              this.$axios.get("/v2/v1/bank_card_grouping",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                      console.log(response.data.data)
-                      // this.group_type = response.data.data[0].group_type
-                      // console.log(this.group_type)
-                      this.bank_account = response.data.data[0].bank_group
-                       console.log(this.bank_account)
-                })
-        }
+        // if(token) {
+        //       this.$axios.get("/v2/v1/bank_card_grouping",
+        //             {headers: {
+        //                        "Authorization": "Bearer "+token
+        //                  }
+        //                 })
+        //             .then(response => {
+        //               console.log(response.data.data)
+        //               // this.group_type = response.data.data[0].group_type
+        //               // console.log(this.group_type)
+        //               this.bank_account = response.data.data[0].bank_group
+        //                console.log(this.bank_account)
+        //         })
+        // }
       
-          // this.$axios.get('/v1/admin-bank')
-          //     .then(response => {
-          //       this.bank_account = response.data.data
-          //     })  
+          this.$axios.get('/v1/admin-bank')
+              .then(response => {
+                this.bank_account = response.data.data
+              })  
          
         if(token) {
               this.$axios.get("/v2/v1/profile",

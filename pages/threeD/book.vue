@@ -285,7 +285,7 @@ export default {
                             this.$store.commit('betAmountThreeD',data);
                             var data = this.Bookthreed  
                             this.$store.commit('getBetThreeD', data);
-                  this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+                  //this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
           }else{
 
           }
