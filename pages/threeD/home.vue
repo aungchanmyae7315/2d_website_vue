@@ -113,7 +113,7 @@
           
          <el-row>
                  <el-col :span="6">   
-                    <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank"> -->
+                    <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank"> 
                   <!-- <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">   -->
                     <el-button  class="book_btn" type="text"></el-button>
                   <!-- </nuxt-link> -->
