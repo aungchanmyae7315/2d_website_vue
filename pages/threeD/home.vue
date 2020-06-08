@@ -150,8 +150,8 @@
           </el-row>
          
           </div>
-          <el-form  @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
-            <div   class="contact_sameThree">
+          <el-form   @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
+            <div v-if="this.isActive"   class="contact_sameThree">
           
             <el-form-item> 
                 <el-checkbox-group v-model="bet_number" @change="handleCheckedCitiesChange">
@@ -368,7 +368,7 @@ export default {
     },
   
     rBtn(threed) {
-      
+          
           this.isActive = !this.isActive;
           const permArr = [],usedChars = [];
           const rotate = (input) => {

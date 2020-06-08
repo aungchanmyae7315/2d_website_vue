@@ -10,13 +10,10 @@
             <el-row style="padding-top:10px;">
                 <el-col :span="6">
                     
-                    <div v-if="ruleForm">
-                        <el-button @click="clear_btn()" class="fast_btn" >{{$t('clear_btn')}}</el-button>
-                    </div>
-                    <div v-else>
-                        <el-button type="button"   @click="dialogFormVisible = true"   class="fast_btn" >{{$t('fast_btn')}}</el-button>
+                    
+                        <el-button type="button"   @click="rBtn();dialogFormVisible = true"   class="fast_btn" >R</el-button>
                           
-                    </div>
+                  
             
                 </el-col>
                 <el-col :span="18">
@@ -117,7 +114,7 @@
                                 <li v-for="(children, index) in item.children" :key="index"   :data-id="children.id" class="dd-item">
                                     <div class="number_item button-group-pills text-center"  data-toggle="buttons">
                                      
-                                        <label class="" @click="children.state.selected = !children.state.selected"  v-bind:class="[children.state.selected ? 'dd-item open' : 'dd-item']"    >
+                                        <label class="hide_input" @click="children.state.selected = !children.state.selected"  v-bind:class="[children.state.selected ? 'dd-item open' : 'dd-item']"    >
                                         <input type="checkbox"  
                                             :value="children.number"
                                            
@@ -138,7 +135,7 @@
                            
                         </li>
                     </ul>
-                  <button @click="submitForm">click</button>
+                 
               
             </div>
         </div>
@@ -196,6 +193,7 @@ export default {
     data() {
 
         return {
+               getOpen:'',
               myWallet:'',
               endTime: '',
             times: [
@@ -261,6 +259,28 @@ export default {
          submitForm(formName) {
               this.$refs[formName].validate((valid) => {
           if (valid) {
+                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                checkedElements = checkedElements.filter(e => e !== 'on'); // will return ['A', 'C']
+                console.log(checkedElements);
+                this.Bookthreed = checkedElements;
+                var data = this.ruleForm.amount  
+                this.$store.commit('betAmountThreeD',data);
+                var data = this.Bookthreed  
+                this.$store.commit('getBetThreeD', data);
+                  this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+          }else{
+              console.log('valid !!')
+          }
+        });
+
+             
+            
+
+        },
+          rBtn(threed) {
                 let book_number = []
               for(let child of this.book_data){
                   this.one = child
@@ -271,7 +291,7 @@ export default {
                           
                             this.one.children.forEach(element => {
                                 console.log(this.one.children)
-                                 if(this.one.children[0].state.selected == true && this.one.children[1].state.selected == true) {
+                                 if("!'dd-item open") {
                                     book_number.push(element.number);
                                     this.Bookthreed = book_number;
                                }
@@ -281,20 +301,51 @@ export default {
                           
                            
            console.log(this.Bookthreed)
-                            var data = this.ruleForm.amount  
-                            this.$store.commit('betAmountThreeD',data);
-                            var data = this.Bookthreed  
-                            this.$store.commit('getBetThreeD', data);
-                  //this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
-          }else{
-
-          }
-        });
-
-             
+          
+          this.isActive = !this.isActive;
+          const permArr = [],usedChars = [];
+          const rotate = (input) => {
+            let ch;
+            input.forEach((val,index) =>{
+              ch = input.splice(index, 1)[0];
+              usedChars.push(ch);
+              if (input.length == 0) {
+                permArr.push(usedChars.slice());
+              }
+              rotate(input);
+              input.splice(index, 0, ch);
+              usedChars.pop();
+            })
+            return permArr
             
+          };
 
-        },
+          let unique = (value, index, self) => { 
+              return self.indexOf(value) === index;
+          }
+
+          let regex = new RegExp(',', 'g');
+          let data = [];
+          let result = rotate(this.Bookthreed);
+
+          result.forEach(arr => {
+            data.push(arr.toString().replace(regex, ''));
+          })
+          data = data.filter(unique);
+          this.Rnumber = data
+          console.log(this.Rnumber)
+
+
+        // this.checkAll = true
+        // this.bet_number = true
+        // this.isIndeterminate = false;
+        // this.bet_number = threed ? this.Rnumber : [];
+        // this.isIndeterminate = false;
+
+    },
+     
+
+     
         parentChange(item, state){
             for(let child of item.children){
                 child.state.selected = state
@@ -630,12 +681,31 @@ export default {
     }
     .number_list_item {
         display: inline-flex;
+        position: relative;
+        top:-8px;
+    }
+    .number_list_item .label {
+       
+        color:#fff;
+    }
+    .number_list_item .dd-item {
+         margin:0;
+         padding-right:0;
+         padding-left:0;
+         max-width: 480px;
+         width:44px;
+         height:32px;
+         line-height: 29px;
+         border-bottom-left-radius:4px;
+          border-bottom-right-radius:4px;
+         color:#fff;
+        background-color: #262626;
     }
     .hide_input input[type=checkbox], input[type=radio] {
         display: none;
     }
     .hide_input img {
-        width:90px;
+        width:88px;
           border-top-right-radius: 9px;
            border-top-left-radius: 9px;
     }

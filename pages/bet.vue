@@ -116,10 +116,12 @@
                  <el-col :span="11" class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </el-col>
             </el-row>
              <el-row> 
-                  <nuxt-link :to="`${$t('/share')}?lang=${$store.state.locale}`">
+                  <!-- <nuxt-link :to="`${$t('/share')}?lang=${$store.state.locale}`"> -->
                         <el-col :span="14" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
-                        <el-col :span="14" v-else> <div class="balance_amount"><img src="~static/images/point_icon.png"  alt="">{{$t('you_balance_point')}}: {{this.thousands_separators(myPointWallet)}} </div></el-col>
-                    </nuxt-link>
+                        <el-col :span="14" v-else> <div class="balance_amount">
+                            <!-- <img src="~static/images/point_icon.png"  alt="">{{$t('you_balance_point')}}: {{this.thousands_separators(myPointWallet)}}  -->
+                            </div></el-col>
+                    <!-- </nuxt-link> -->
 
                        <div class="bet_footer" v-if ="!$store.state.isLoggedIn">
                         <el-col :span="24" style="font-size:13px;text-align:right"> 

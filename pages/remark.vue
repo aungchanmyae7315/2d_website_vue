@@ -63,30 +63,11 @@
                  
                 </el-card> 
                 <h6>ထိုးဂဏာန်းအတည်ပြုစာရင်း</h6>
-                <!-- <el-card class="point_amount">
-                     <el-radio v-model="radio" label="2" >
-                         <div>
-                                <img v-if="radio == 2" src="~static/images/point_icon.png"  alt="">
-                                <img v-else src="~static/images/point_t_icon.png"  alt="">
-                         </div>
-                       
-                         <p> လက်ကျန်ပွိုင့်</p>
-                         <h6> {{profile.point_wallet}} </h6>
-                    </el-radio>
-                       <el-divider direction="vertical"></el-divider>
-                    <el-radio v-model="radio" label="1">
-                        <div>
-                            <img v-if="radio == 1" src="~static/images/amount_icon.png"  alt="">
-                            <img v-else src="~static/images/amount_t_icon.png"  alt="">
-                        </div>
-                        
+                <el-card class="point_amount">
                        <p> လက်ကျန်ငွေ</p> 
-                       <h6>{{profile.wallet}}</h6>
-                        
-                    </el-radio>
-                   
-                </el-card> -->
-                <el-card v-if="radio == 1" class="point_amount">
+                       <h6>{{this.myWallet}} {{$t('kyat')}}</h6>
+                </el-card>
+                <!-- <el-card v-if="radio == 1" class="point_amount">
                      <el-radio v-model="radio" label="2" >
                          <div>
                                 <img src="~static/images/point_t_icon.png"  alt="">
@@ -131,15 +112,15 @@
                         
                     </el-radio>
                    
-                </el-card>
+                </el-card> -->
                 
 
                  <div class="btn_group">
                      
                         
                             
-                          <el-button v-if="radio == 1" :disabled='submitted'  type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
-                          <el-button v-else :disabled='submitted'  type="submit"  @click="submit_point" class="bet_submit" round>  {{$t('Bet')}}</el-button>
+                          <el-button  :disabled='submitted'  type="submit"  @click="submit_bet" class="bet_submit" round>  {{$t('Bet')}}</el-button>
+                          <!-- <el-button v-else :disabled='submitted'  type="submit"  @click="submit_point" class="bet_submit" round>  {{$t('Bet')}}</el-button> -->
                   
                     
                   </div>
@@ -290,63 +271,63 @@ export default {
                 });
                
        },
-        submit_point() {
-          let token = localStorage.getItem('token');
+    //     submit_point() {
+    //       let token = localStorage.getItem('token');
 
-                var data = {
-                    client_name:this.name,
-                    client_phone:this.phone,
-                    twod_id:  localStorage.getItem('check_btn'),
-                    point: localStorage.getItem('bet_amount') ,
-                }
-                console.log(data)
-            this.$axios.post("/v2/v1/2d_point/bet",
-                           data,
-                    {
-                        headers: {
-                               "Authorization": "Bearer "+token
-                         },
+    //             var data = {
+    //                 client_name:this.name,
+    //                 client_phone:this.phone,
+    //                 twod_id:  localStorage.getItem('check_btn'),
+    //                 point: localStorage.getItem('bet_amount') ,
+    //             }
+    //             console.log(data)
+    //         this.$axios.post("/v2/v1/2d_point/bet",
+    //                        data,
+    //                 {
+    //                     headers: {
+    //                            "Authorization": "Bearer "+token
+    //                      },
                           
-                        })
+    //                     })
                 
-                    .then(response => {
-                        console.log(response)
-                    this.res_mor_error = response.data.status
-                    console.log(this.res_mor_error) 
-                    if(this.res_mor_error == "morning"  ) {
-                         this.$message({
-                            showClose: true,
-                          message: response.data.data,
-                          type: 'warning',
-                        //   duration:0
-                        });
-                    }else if(response.data.status ==  4) {
-                        this.$message({
-                            showClose: true,
-                          message: this.$t('amount_invalid'),
-                          type: 'warning',
-                        //   duration:0
-                        });
-                    }else if (response.data.status == 6) {
-                       this.$message({
-                            showClose: true,
-                          message: response.data.data,
-                          type: 'warning',
-                          duration:10000
-                        });
-                    }
-                    else {
-                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
-                    }  
-                })
-                .catch(error => {
-                   this.$message({
-                            showClose: true,
-                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
-                          type: 'warning',
-                        });
-                });
-       },     
+    //                 .then(response => {
+    //                     console.log(response)
+    //                 this.res_mor_error = response.data.status
+    //                 console.log(this.res_mor_error) 
+    //                 if(this.res_mor_error == "morning"  ) {
+    //                      this.$message({
+    //                         showClose: true,
+    //                       message: response.data.data,
+    //                       type: 'warning',
+    //                     //   duration:0
+    //                     });
+    //                 }else if(response.data.status ==  4) {
+    //                     this.$message({
+    //                         showClose: true,
+    //                       message: this.$t('amount_invalid'),
+    //                       type: 'warning',
+    //                     //   duration:0
+    //                     });
+    //                 }else if (response.data.status == 6) {
+    //                    this.$message({
+    //                         showClose: true,
+    //                       message: response.data.data,
+    //                       type: 'warning',
+    //                       duration:10000
+    //                     });
+    //                 }
+    //                 else {
+    //                       this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+    //                 }  
+    //             })
+    //             .catch(error => {
+    //                this.$message({
+    //                         showClose: true,
+    //                       message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+    //                       type: 'warning',
+    //                     });
+    //             });
+    //    },     
     }
 }
 </script>
