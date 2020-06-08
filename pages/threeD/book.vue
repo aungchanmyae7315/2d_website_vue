@@ -259,40 +259,20 @@ export default {
          submitForm(formName) {
               this.$refs[formName].validate((valid) => {
           if (valid) {
-                let book_number = []
-              for(let child of this.book_data){
-                  this.one = child
-                    console.log(this.one.children[0].state.selected)
-                      console.log(this.one.children[1].state.selected)
-
-                        let getElement =  document.getElementsByClassName('open')
-                                    for(let getClass of getElement )  {
-                                        this.getOpen = getClass
-
-                                        var label = document.getElementsByTagName("label");
-                                    let ok =   $( "input[type=checkbox]" ).val;
-                                         console.log(ok)
-                                        //console.log(this.getOpen)
-                                    }
-                          
-                            this.one.children.forEach(element => {
-                                    if(open) {
-                                    book_number.push(element.number);
-                                    this.Bookthreed = book_number;
-                               }
-                   
-                            });  
-            }
-                          
-                           
-           console.log(this.Bookthreed)
-                            var data = this.ruleForm.amount  
-                            this.$store.commit('betAmountThreeD',data);
-                            var data = this.Bookthreed  
-                            this.$store.commit('getBetThreeD', data);
-                  //this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                checkedElements = checkedElements.filter(e => e !== 'on'); // will return ['A', 'C']
+                console.log(checkedElements);
+                this.Bookthreed = checkedElements;
+                var data = this.ruleForm.amount  
+                this.$store.commit('betAmountThreeD',data);
+                var data = this.Bookthreed  
+                this.$store.commit('getBetThreeD', data);
+                  this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
           }else{
-
+              console.log('valid !!')
           }
         });
 

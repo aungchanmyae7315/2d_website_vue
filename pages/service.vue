@@ -32,15 +32,15 @@
               <el-card  class="phone_card">
                      <h6>{{$t('agent_info')}}</h6>
                          <ul class="contact_phone">
-                          <li class="phone_item" style="padding-right:64px;"><i class="el-icon-phone"></i> 09 8817 028 82</li>
-                           <li><el-button size="medium"     round><a style="color:#000;font-size:15px" href="tel:0959881702882">{{$t('phone_call')}} </a></el-button></li>
+                          <li class="phone_item" style="padding-right:64px;"><i class="el-icon-phone"></i> 09 7550 130 75</li>
+                           <li><el-button size="medium"     round><a style="color:#000;font-size:15px" href="tel:09755013075">{{$t('phone_call')}} </a></el-button></li>
                         </ul>
               </el-card>
                 <el-card  class="phone_card">
                            <h6>{{$t('customer_service_title')}}</h6>
                            <ul class="contact_phone">
-                          <li class="phone_item"><i class="el-icon-phone"></i>  +959771318916</li>
-                           <li><el-button size="medium"   round> <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959771318916">
+                          <li class="phone_item"><i class="el-icon-phone"></i>  +959888052163</li>
+                           <li><el-button size="medium"   round> <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959888052163">
                               <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button></li>
                         </ul>
                             
