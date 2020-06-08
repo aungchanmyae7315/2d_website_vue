@@ -113,11 +113,11 @@
           
          <el-row>
                  <el-col :span="6">   
-                    <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank"> 
-                  <!-- <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">   -->
+                    <!-- <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank">  -->
+                  <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">  
                     <el-button  class="book_btn" type="text"></el-button>
-                  <!-- </nuxt-link> -->
-                  </a>
+                  </nuxt-link>
+                  <!-- </a> -->
                 </el-col>
                 <el-col :span="18" style="padding-left:15px;">
                     <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
@@ -150,8 +150,8 @@
           </el-row>
          
           </div>
-          <el-form  @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
-            <div   class="contact_sameThree">
+          <el-form   @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
+            <div v-if="this.isActive"   class="contact_sameThree">
           
             <el-form-item> 
                 <el-checkbox-group v-model="bet_number" @change="handleCheckedCitiesChange">
@@ -368,7 +368,7 @@ export default {
     },
   
     rBtn(threed) {
-      
+          
           this.isActive = !this.isActive;
           const permArr = [],usedChars = [];
           const rotate = (input) => {
