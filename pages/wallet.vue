@@ -219,6 +219,9 @@
     .wallet .avatar_text {
       padding:0;
     }
+    .wallet .el-card .demo-type .avatar_text {
+      position:unset !important;
+    }
     .wallet .bank_number {
       color:#CCCCCC;
       font-size: 13px;
