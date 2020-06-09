@@ -212,7 +212,14 @@ export default {
                           type: 'warning',
                            duration:10000
                         });
-                    } 
+                    } else if (response.data.status == 8) {
+                       this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                           duration:10000
+                        });
+                    }
                     else if (response.data.status == 5) {
                        this.submitted = false
                        this.$message({
