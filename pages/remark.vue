@@ -257,12 +257,30 @@ export default {
                           type: 'warning',
                            duration:10000
                         });
+                    }else if (response.data.status == 7) {
+                       this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                           duration:10000
+                        });
+                    }
+                    else if (response.data.status == 8) {
+                       this.$message({
+                            showClose: true,
+                          message: response.data.data,
+                          type: 'warning',
+                           duration:10000
+                        });
                     }
                     else {
-                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                         // this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                     }  
                 })
                 .catch(error => {
+                  
+                    console.log(error.response)
+                   
                    this.$message({
                             showClose: true,
                           message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
