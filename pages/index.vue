@@ -166,7 +166,18 @@
   
       </div>
     </div>
-
+          <el-dialog
+  :visible.sync="dialogVisible_autoLogout"
+  width="90%"
+  :show-close="false"
+  :close-on-click-modal="false"
+  >
+  
+  <span>{{$t('section_time_out')}}</span>
+  <br>
+    <el-button style="margin-top:20px;" type="primary" @click="autoLogout() ;dialogVisible_autoLogout = false">{{$t('ok')}}</el-button>
+  
+</el-dialog>
   </el-main>
        
 </template>
@@ -261,6 +272,7 @@ export default {
      autoplaySpeed:3,
       last_date:'',
       dialogVisible: false,
+      dialogVisible_autoLogout:false,
        isActive: true,
       hasError: false,
       currentTime: '',
@@ -303,6 +315,10 @@ export default {
     clearInterval(this.serverCurTimeItvId);
   },
    methods: {
+     autoLogout() {
+          this.$store.commit('logOut');
+          this.$router.push(`/login?lang=${this.$store.state.locale}`); 
+     },
     thousands_separators(num){
       var num_parts = num.toString().split(".");
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -510,12 +526,22 @@ export default {
                         console.log('blcok_user')
                       }else {
                         this.$store.commit('logOut');
-                        this.$router.push(`/home?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
                       }
                   
                   
 
                 })
+                .catch(error => {
+                 
+                    if(error.response.data.message == 'Unauthenticated.') {
+                       
+                        this.dialogVisible_autoLogout = true
+                     
+                    }
+                    
+                 });
+
       }
       else{
         this.$axios.get('/v2/v1/server_time')
