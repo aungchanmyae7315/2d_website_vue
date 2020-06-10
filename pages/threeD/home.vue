@@ -90,7 +90,7 @@
                 </el-row>
               </div>
         </div>
-          <carousel :autoplaySpeed="1000" :autoplay="true" :nav="false" v-if="loaded" :items =1>
+          <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -112,15 +112,16 @@
          <section class="threeD_items">
           
          <el-row>
-                 <el-col :span="6">   
+                 
+                <el-col :span="13" style="padding-left:5px;">
+                    <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
+                </el-col>
+                <el-col :span="6">   
                     <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank"> 
                   <!-- <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">   -->
                     <el-button  class="book_btn" type="text"></el-button>
                   <!-- </nuxt-link> -->
                   </a>
-                </el-col>
-                <el-col :span="18" style="padding-left:15px;">
-                    <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
                 </el-col>
             </el-row>
            <div>
@@ -128,19 +129,16 @@
           <el-row>
             <el-col :span="18">
                  <div class="picker">
-            <VuePicker :data="pickData"
-              :showToolbar="false"
-              :pickerbox="false"
-              :header="false"
-            
-              @change = "change"
-                :visible="true"
-            
-            />
-
-            
-         
-            </div>
+                    <VuePicker :data="pickData"
+                      :showToolbar="false"
+                      :pickerbox="false"
+                      :header="false"
+                    
+                      @change = "change"
+                        :visible="true"
+                    
+                    />
+                  </div>
             </el-col>
             <el-col :span="6">
                     
@@ -167,16 +165,25 @@
               
           ]"
           >  
-          <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"  @keypress.enter.native="submitThreed('ruleForm')"></el-input>
+          <el-row>
+            <el-col :span="18">
+                <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"  @keypress.enter.native="submitThreed('ruleForm')"></el-input>
+                 <div  v-if ="!$store.state.isLoggedIn">
+                      <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
+                          <el-button style="width:100%" class="submitThreed_btn">{{$t('Please Login first')}}</el-button>
+                    </nuxt-link>
+                    </div>
+                    <div v-else>
+                          <el-button  style="width:unset !important;border:0;"  @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('Bet')}}</el-button>     
+                    </div>
+            </el-col>
+             <el-col :span="6" :offset="6">
+
+            </el-col>
+          </el-row>
+        
     </el-form-item>
-    <div  v-if ="!$store.state.isLoggedIn">
-         <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
-            <el-button style="width:100%" class="submitThreed_btn">{{$t('Please Login first')}}</el-button>
-      </nuxt-link>
-    </div>
-    <div v-else>
-           <el-button   @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('Bet')}}</el-button>     
-    </div>
+   
      
          
           </el-form>    
@@ -193,13 +200,10 @@
 import Vue from 'vue'
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
-
-   import VuePicker from 'vue-pickers'
-     var oneCol = []
-    var twoCol = []
-    var threeCol = []
-    
- 
+import VuePicker from 'vue-pickers'
+      var oneCol = []
+      var twoCol = []
+      var threeCol = []
   for (let i = 0; i < 10; i++ ) {
      
     oneCol.push({
@@ -223,15 +227,10 @@ export default {
       VuePicker
      },
     getters: {},
-  mutations: {},
-  actions: {},
-
-
+    mutations: {},
+    actions: {},
   mounted() {
- 
-    
-
-  var self = this;
+    var self = this;
           if (this.$store.state.sliderImage.length > 0){
             self.slider_images = this.$store.state.sliderImage;
              if(this.slider_images  !== null) {
@@ -270,22 +269,15 @@ export default {
           this.$store.commit('setWebAppVersion', response.data.version);
         });
     }
-
       this.updateIsLoggedIn();
-     
-
    },
-
-  
-  
   data() {
     
     return {
-       checkAll: false,
+      checkAll: false,
       isIndeterminate: true,
       fullscreenLoading: false,
       pickerValue:this.selectedDate,
-
       isActive: false,
       endTime: '',
       times: [
@@ -297,16 +289,13 @@ export default {
       holiday:'',
       a: 1,
       progress: 50,
-
       dialogVisible: false,
       slider_images:'',
       activeIndex: '1',
       info:'',
       info_api:'',
-      
       profile:'',
       slider_text:'',
-     
       myWallet:'',
       blockUser:'',
       loaded:'',
@@ -314,32 +303,23 @@ export default {
       ruleForm: {
           amountThreeD:'',
       },
-          
-            
-            profile:'',
-            myWallet:'',  
-           pickerVisible: false,
-            pickData: [
-            oneCol,
-            twoCol,
-            threeCol,
-            
-            ],
-            threed:[],
-            result: '',
-            Rresult:'',
-            label:'',
-            Rnumber:[]
-    
-      //   activeIndex2: '1',
+      profile:'',
+      myWallet:'',  
+      pickerVisible: false,
+      pickData: [
+      oneCol,
+      twoCol,
+      threeCol,
+      ],
+      threed:[],
+      result: '',
+      Rresult:'',
+      label:'',
+      Rnumber:[]
     }
     
   },
- 
-
-
    methods: {
-    
      HomeRefresh() {
       this.fullscreenLoading = true;
         setTimeout(() => {
@@ -386,11 +366,9 @@ export default {
             return permArr
             
           };
-
           let unique = (value, index, self) => { 
               return self.indexOf(value) === index;
           }
-
           let regex = new RegExp(',', 'g');
           let data = [];
           let result = rotate(threed);
@@ -400,23 +378,18 @@ export default {
           })
           data = data.filter(unique);
           this.Rnumber = data
-
-
-        this.checkAll = true
-        this.bet_number = true
-        this.isIndeterminate = false;
-        this.bet_number = threed ? this.Rnumber : [];
-        this.isIndeterminate = false;
+          this.checkAll = true
+          this.bet_number = true
+          this.isIndeterminate = false;
+          this.bet_number = threed ? this.Rnumber : [];
+          this.isIndeterminate = false;
 
     },
-     
       handleCheckedCitiesChange(value) {
         let checkedCount = value.length;
         this.checkAll = checkedCount === this.Rnumber.length;
         this.isIndeterminate = checkedCount > 0 && checkedCount < this.Rnumber.length;
       },
-
-
     change(res) {
       JSON.stringify(res)
       let data = []
@@ -424,44 +397,29 @@ export default {
         if(element.value != undefined){
           data.push(element.value);
         }
-        
         this.threed = data;
-       
       });
-
-
     },
-
     submitThreed(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
                 this.result_number =(this.threed[0].toString())+this.threed[1]+(this.threed[2].toString())
-       console.log(this.result_number)
-       if(this.isActive) {
-        
-           this.all_number =  this.bet_number
-
-               var data = this.all_number  
-      
-       }else {
-       
-            this.all_number =  this.result_number
-            var data = this.all_number  
-       }
-
+          if(this.isActive) {
+              this.all_number =  this.bet_number
+                var data = this.all_number  
+          }else {
+                this.all_number =  this.result_number
+                var data = this.all_number  
+          }
          this.$store.commit('getBetThreeD', data);
-        var data = this.ruleForm.amountThreeD  
-        this.$store.commit('betAmountThreeD',data);
-
-        this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+          var data = this.ruleForm.amountThreeD  
+          this.$store.commit('betAmountThreeD',data);
+          this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
           } else {
             console.log('error submit!!');
             return false;
           }
         });
-    
-     
-
     },
 
         goBack() {
@@ -472,28 +430,18 @@ export default {
             num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return num_parts.join(".");
         },
-    
-   
-        
-        
-   
-      
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
       hasUserInfo() {
         return Boolean(localStorage.getItem('userInfo'));
       },
-
-
       updateTimer: function(){
         this.getTimeRemaining();
         this.updateProgressBar();
       },
        getTimeRemaining: function() {
         let t = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
-        
-        // console.log(this.progress);
         this.times[3].time = Math.floor(t / 1000 % 60) ;
         this.times[2].time = Math.floor(t / 1000 / 60 % 60) + ':';
         this.times[1].time = Math.floor(t / (1000 * 60 * 60) % 24) +':';
@@ -503,23 +451,17 @@ export default {
       //TODO fix progress bar
       // let interval = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
       // this.progress = Math.floor(this.currentTime / Date.parse(new Date(this.endTime))*100);
-    }
-    
-
+      }
     },
      created() {
          this.$axios.get('/v2/v1/threed/count_down')
               .then(response => {
-                console.log(response)
                   this.endTime = response.data.next_start_date
                   this.holiday = response.data.data
               }) 
         this.updateTimer();
-    // console.log("date is " + new Date());
-    // console.log("abc is: " + this.a);
-    let timeinterval = setInterval(this.updateTimer, 1000);
-              
-         let token = localStorage.getItem('token');
+        let timeinterval = setInterval(this.updateTimer, 1000);   
+        let token = localStorage.getItem('token');
       if(token) {
          this.$axios.get("/v2/v1/profile",
                     {headers: {
@@ -528,11 +470,9 @@ export default {
                         })
                     .then(response => {
                       this.blockUser = response.data.data.trash
-                    //console.dir(response.data);
-                     this.profile = response.data.data
-                    this.myWallet = this.profile.wallet 
-                    this.currentTime = response.data.data.time;
-                    //console.dir(response.data.data.time);
+                      this.profile = response.data.data
+                      this.myWallet = this.profile.wallet 
+                      this.currentTime = response.data.data.time;
                      if(this.blockUser == 0) {
                        
                       }else {
@@ -640,7 +580,7 @@ export default {
 }
 .choose_bet_title {
   color:#fff;
-  margin-top:25px;
+  margin-top:10px;
   text-align: left;
 }
 
@@ -716,7 +656,7 @@ export default {
         text-align: center;
    }
    .threed_home .el-input__inner {
-      margin-top:10px;
+      margin-top:15px;
       text-align: right;
        background-color: #252E39;
        color:#b8b8b8;

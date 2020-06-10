@@ -129,7 +129,7 @@
               </div>
         </div>
 
-        <carousel :autoplaySpeed="1000" :autoplay="true"  :nav="false" v-if="loaded" :items =1>
+        <carousel  :autoplay="true"  :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -415,24 +415,18 @@ export default {
             // setTimeout(function(){
               self.$axios.get('/v2/v1/slider_image?name=2D')
                 .then(response => {
-                  
-                console.dir(response.data.data);
-                 
                  if(self.slider_images  !== null) {
                         this.loaded = true;
                     }
 
                 self.slider_images = response.data.data
-               
-
                 // self.$store.commit('setSliderImage', response.data.data);
                 })
                
             // }, 2000);
               self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
-                console.log(response)
-              
+
                 self.slider_text = response.data.data[0];
                 })
 
@@ -465,7 +459,7 @@ export default {
       // this.$axios.get(`/v2/v1/add_language?language=${lang}`)
       //   .then(response => {
           
-      //     console.log(response)         
+          
       //   });
    },
 
@@ -565,40 +559,10 @@ export default {
           async getDataresult() {
             this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
-                console.dir("twod-result/live");
-                console.dir(response);
                 this.info_api = response.data.data
                
               })
           },
-        
-    //   changeLang (lang) {
-     
-    //   this.$store.commit('SET_LANG', lang)
-      
-    //   this.dialogVisible = false
-    //    this.$router.push(`/?lang=${this.$store.state.locale}`);
-    //     this.$axios.get(`/v2/v1/add_language?language=${lang}`)
-    
-            
-    //             .then(response => {
-                 
-    //               console.log(response)
-                   
-    //     });
-    //      this.$axios.get("/v2/v1/get_language")
-    
-            
-    //             .then(response => {
-                 
-    //               console.log(response)
-                   
-    //         });
-             
-    // },
-      // submitLang() {      
-      //       this.$store.commit('SET_LANG', 'hello')            
-      //   },
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
@@ -612,7 +576,6 @@ export default {
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
-            console.log('Hello')
              this.getDataresult();
           }else{
             
@@ -701,7 +664,6 @@ export default {
        this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
                   this.last_date = response.data.data.last_date
-                  console.log(this.last_date)
                 if(response.data.data.status_430 == "backend") {
                     
                          this.isActive = false
@@ -736,7 +698,6 @@ export default {
                     this.currentTime = response.data.data.time;
                     //console.dir(response.data.data.time);
                      if(this.blockUser == 0) {
-                        console.log('blcok_user')
                       }else {
                         this.$store.commit('logOut');
                         this.$router.push(`/home?lang=${this.$store.state.locale}`); 
@@ -749,12 +710,9 @@ export default {
     
           this.$axios.get('/v2/v1/server_time')
               .then(response => {
-                // console.log(response.data.time)
-                //  console.log(response.data.date)
+    
                this.currentTime = response.data.time
                this.serverDate  = response.data.date
-               console.log(this.currentTime)
-               console.log(this.serverDate)
               })
       
     },

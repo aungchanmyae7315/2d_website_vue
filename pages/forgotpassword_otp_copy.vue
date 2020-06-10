@@ -163,7 +163,6 @@ import axios from 'axios'
                 })
 
                 .then(response => {
-                console.log(response.data.message),
                 this.error_mes = response.data.data
                 this.res_mes = response.data.message
                     if(this.res_mes === 'fail') {
@@ -178,27 +177,13 @@ import axios from 'axios'
                     }else {
                             if (this.active++ > 2) this.active = 0;
                     }
-
-
-                console.log(this.ruleForm.phone),
-               
                 this.userOtp = response.data,
-                this.$store.commit('setOtp', this.userOtp),
-                console.log(this.userOtp)
+                this.$store.commit('setOtp', this.userOtp)
                 });
-            
-            
-
           } else {
-            console.log('error submit!!');
             return false;
           }
         });
-        
-        
-                // console.log(response)
-                  // this.$store.commit("setPhone", this.userPhone); 
-                // 
       },
        nextTwo(formName) {
         this.$refs[formName].validate((valid) => {
@@ -246,32 +231,16 @@ import axios from 'axios'
                        if (this.active++ > 2) this.active = 0;
                          this.$router.push(`/?lang=${this.$store.state.locale}`); 
                   }
-                })
-                // .then(response => ( 
-                //    this.otp_error = response.data.result,
-                //   //  if(response.data.result == '0') 
-                // console.log(this.otp_error),
-                // console.log('bar'),
-                //   console.log(response.message),
-                //    this.userInfo = response.data,
-                //   this.$store.commit('logIn', this.userInfo),
-                //   console.log(this.userInfo)
-                  
-              
-                // ));
-                
+                }) 
           } else {
             console.log('error submit!!');
             return false;
           }
         });
       },
-     
-
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-      
     }
   }
   </script>

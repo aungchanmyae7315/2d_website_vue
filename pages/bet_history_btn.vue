@@ -149,9 +149,8 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
                         this.$nuxt.$loading.finish()
-                     this.bet_historys = response.data.data   
+                        this.bet_historys = response.data.data   
                 })
                   this.$axios.get("/v2/v1/threed/history",
                     {headers: {
@@ -159,9 +158,8 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
                         this.$nuxt.$loading.finish()
-                     this.bet_historys_threed = response.data.data   
+                        this.bet_historys_threed = response.data.data   
                 })
      }
 }

@@ -49,7 +49,7 @@ export default {
     
             
                 .then(response => {
-                    console.log(response.data.data)
+                   
                     this.$nuxt.$loading.finish()
                     this.promotions = response.data.data
             });
@@ -62,7 +62,7 @@ export default {
      },
      methods: {
          cur_id(data) {
-             console.log(data)
+        
          this.$store.commit('promotion_id', data);
         this.$router.push(`/promotion_detail?`+data+`lang=${this.$store.state.locale}`); 
        

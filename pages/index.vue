@@ -124,7 +124,7 @@
               </div>
         </div>
 
-        <carousel :autoplaySpeed="1000" :autoplay="true" :nav="false" v-if="loaded" :items =1>
+        <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -166,7 +166,18 @@
   
       </div>
     </div>
-
+          <el-dialog
+  :visible.sync="dialogVisible_autoLogout"
+  width="90%"
+  :show-close="false"
+  :close-on-click-modal="false"
+  >
+  
+  <span>{{$t('section_time_out')}}</span>
+  <br>
+    <el-button style="margin-top:20px;" type="primary" @click="autoLogout() ;dialogVisible_autoLogout = false">{{$t('ok')}}</el-button>
+  
+</el-dialog>
   </el-main>
        
 </template>
@@ -199,7 +210,7 @@ export default {
               self.$axios.get('/v2/v1/slider_image?name=home')
                 .then(response => {
                   
-                console.dir(response.data.data);
+              
                  
                  if(self.slider_images  !== null) {
                         this.loaded = true;
@@ -214,7 +225,7 @@ export default {
             // }, 2000);
               self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
-                console.log(response)
+            
               
                 self.slider_text = response.data.data[0];
                 })
@@ -249,7 +260,7 @@ export default {
       // this.$axios.get(`/v2/v1/add_language?language=${lang}`)
       //   .then(response => {
           
-      //     console.log(response)         
+       
       //   });
    },
 
@@ -258,9 +269,9 @@ export default {
   data() {
     
     return {
-     autoplaySpeed:3,
       last_date:'',
       dialogVisible: false,
+      dialogVisible_autoLogout:false,
        isActive: true,
       hasError: false,
       currentTime: '',
@@ -303,6 +314,10 @@ export default {
     clearInterval(this.serverCurTimeItvId);
   },
    methods: {
+     autoLogout() {
+          this.$store.commit('logOut');
+          this.$router.push(`/login?lang=${this.$store.state.locale}`); 
+     },
     thousands_separators(num){
       var num_parts = num.toString().split(".");
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -354,16 +369,13 @@ export default {
             
                 .then(response => {
                  
-                  console.log(response)
-                   
+      
         });
          this.$axios.get("/v2/v1/get_language")
     
             
                 .then(response => {
-                 
-                  console.log(response)
-                   
+
             });
              
       // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
@@ -384,7 +396,7 @@ export default {
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
             this.breakTime = '4:30 PM'; 
-            console.log('Hello')
+          
              this.getDataresult();
           }else{
             
@@ -501,26 +513,30 @@ export default {
                         })
                     .then(response => {
                       this.blockUser = response.data.data.trash
-                    //console.dir(response.data);
-                     this.profile = response.data.data
-                    this.myWallet = this.profile.wallet 
-                    this.currentTime = response.data.data.time;
-                    //console.dir(response.data.data.time);
+                      this.profile = response.data.data
+                      this.myWallet = this.profile.wallet 
+                      this.currentTime = response.data.data.time;
                      if(this.blockUser == 0) {
-                        console.log('blcok_user')
                       }else {
                         this.$store.commit('logOut');
-                        this.$router.push(`/home?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
                       }
-                  
-                  
-
                 })
+                .catch(error => {
+                 
+                    if(error.response.data.message == 'Unauthenticated.') {
+                       
+                        this.dialogVisible_autoLogout = true
+                     
+                    }
+                    
+                 });
+
       }
       else{
         this.$axios.get('/v2/v1/server_time')
               .then(response => {
-                console.log(response.data)
+              
                this.currentTime = response.data
               })
       }

@@ -214,22 +214,17 @@ import axios from 'axios'
           if (valid) {
             
               let token = localStorage.getItem('token');
-        console.log(token)
                 var data = {
                    password:this.ruleForm.pass
                 }
-                console.log(data)
                  this.$axios.post("/v2/v1/change_password",
                            data,
                     {
                         headers: {
                                "Authorization": "Bearer "+token
                          },
-                          
                         })
-                
                     .then(response => {
-                     console.log(response)
                     this.res_error = response.data.message
                       this.res_message = response.data.data
                       if(this.res_error == 'fail') {

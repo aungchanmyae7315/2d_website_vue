@@ -76,10 +76,6 @@
         display: inline-block;
        
     }
-  
-    
-
-
 </style>
 
 <script>
@@ -89,39 +85,27 @@ export default {
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
       })
-
-      
     },
     data() {
         return {
-           
             bet_detail:'',
-            
-          
         }
     },
     methods: {
        goBack() {
              this.$router.push(`/bet_history?lang=${this.$store.state.locale}`); 
          },
-    
-    
-  
     },
       created() {
-
         let token = localStorage.getItem('token');
-
         let bet_date = localStorage.getItem('bet_date');
            this.$axios.get("/v2/v1/threed/historyByDate?date="+bet_date,
                 {headers: {
                             "Authorization": "Bearer "+token
                         }
                     })
-            
                 .then(response => {
-                      this.$nuxt.$loading.finish()
-                      console.log(response)
+                    this.$nuxt.$loading.finish()
                     this.bet_detail = response.data.data
             })
      }

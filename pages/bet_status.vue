@@ -224,13 +224,8 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
-                        
-                          this.$nuxt.$loading.finish()
-                       
-                     this.bet_stauts_threed = response.data.data 
-                     console.log(this.bet_stauts_threed)
-                  
+                        this.$nuxt.$loading.finish()
+                        this.bet_stauts_threed = response.data.data 
                 })
      }
 }
