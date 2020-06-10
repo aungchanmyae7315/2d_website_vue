@@ -55,7 +55,7 @@
                          <ul class="contact_phone">
                             <el-row>
                               <el-col :span="9">
-                                <li class="phone_item" style="padding-right:64px;">+959755013075</li>
+                                <li class="phone_item">+959755013075</li>
                               </el-col>
                               <el-col style="text-align:right" :span="15">
                                   <li><el-button size="medium" >  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959755013075"> 
