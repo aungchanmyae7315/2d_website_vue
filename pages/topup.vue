@@ -685,50 +685,37 @@ export default {
 
         },
 
-           slip_upload_wave(formName) {
+        slip_upload_wave(formName) {
              this.$refs[formName].validate((valid) => {
-          if (valid) {
+             if (valid) {
               this.submitted = true
               let token = localStorage.getItem('token');
-          
-        var data = {
+              var data = {
                     bank_type_id:this.wave_bank_id,
-                   
                     amount: this.ruleForm.tran_amount,
                     slip_code: this.ruleForm.slip_code,
                 }
-             
-              console.log(data)
-              //console.log(token)
-       
                 this.$axios.post("/v2/v1/slip_automatch",
                            data,
                     {
-                           
-
                         headers: {
                                "Authorization": "Bearer "+token
-                         },
-                          
+                         },  
                         })
-                
                     .then(response => {
-                     this.same_slip_number_ms = response.data.message
-
-                if(this.same_slip_number_ms == 'fail') {
-                    this.submitted = false
-                      this.$message({
-                            showClose: true,
-                          message: 'Your Slip Code is exist',
-                          type: 'warning',
-                        });
-                }else {
-                  this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
-                }
-                            
+                        this.same_slip_number_ms = response.data.message
+                    if(this.same_slip_number_ms == 'fail') {
+                        this.submitted = false
+                          this.$message({
+                                showClose: true,
+                              message: 'Your Slip Code is exist',
+                              type: 'warning',
+                            });
+                    }else {
+                      this.$router.push(`/topup_success?lang=${this.$store.state.locale}`); 
+                    }        
                 })
                  .catch(error => {
-                   console.log(error.response.data.errors)
                      this.submitted = false
                      if(error.response.data.errors.slip_code == 'The slip code must be at least 6 characters.') {
                           this.$message({

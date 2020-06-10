@@ -98,9 +98,8 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
                         this.$nuxt.$loading.finish()
-                     this.holiday_list = response.data.data   
+                        this.holiday_list = response.data.data   
                 })
      }
 }

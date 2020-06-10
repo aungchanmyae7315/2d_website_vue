@@ -158,20 +158,13 @@
           </el-menu>
         </el-footer>
   </div>
-        
-
       </el-main>
 
 </template>
-
-
 <script>
  import axios from 'axios'
 export default {
-
     mounted() {
-  
-     
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');
     if(token) {
@@ -181,19 +174,16 @@ export default {
                   }
                 })
             .then(response => {
-              console.log(response)
+           
                 // this.$nuxt.$loading.finish()
                  this.blockUser = response.data.data.trash
                 this.device_id = response.data.data.device_id
               this.profile = response.data.data
                if(this.blockUser == 0) {
-                  console.log('blcok_user')
                 }else {
                   this.$store.commit('logOut');
                   this.$router.push(`/home?lang=${this.$store.state.locale}`); 
-                }
-            
-             
+                }  
         })
          this.$axios.get("/v2/v1/referal_code",
             {headers: {
@@ -201,18 +191,12 @@ export default {
                   }
                 })
             .then(response => {
-              //  this.$nuxt.$loading.finish()
-              // location.reload();
-              console.log(response)
               this.get_refel = response.data.data.referal_code
               this.get_refel_gen = response.data.data.generate_code
               this.hide_oneDay = response.data.data.status
-              console.log(this.hide_oneDay)
-              console.log(this.get_refel)
               
         })
-    }
-      
+    } 
    },
     data() {
       return {

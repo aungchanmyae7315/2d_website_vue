@@ -176,8 +176,6 @@
                   })
               .then(response => {
                 this.profile = response.data.data
-                console.log(this.profile.name)
-
           })
         this.$axios.get("/v2/v1/referal_code",
                     {headers: {
@@ -185,13 +183,7 @@
                          }
                         })
                     .then(response => {
-                      
-                     this.referal_code = response.data.data.generate_code
-                     console.log(this.referal_code)
-                    
-                  
-                  
-
+                        this.referal_code = response.data.data.generate_code
                 })
       }
                 
@@ -229,50 +221,38 @@
     },
 
     profile_edit() {
-               //  console.log(this.image);
+          let token = localStorage.getItem('token');
 
-                let token = localStorage.getItem('token');
+          let formData = new FormData();
+          formData.append('profile', this.image);
+          this.$axios.post('/v2/v1/profile-photo/update',
+            formData
+            ,{
+            headers: {
+              "Authorization": "Bearer "+token,
+              'content-type': 'multipart/form-data'
+            }
+          })
+            .then(function (response) {
+            })
+            .catch(function (error) {
+            });
 
-                let formData = new FormData();
-                formData.append('profile', this.image);
+            var data_name = {
+              name: $('#ok').val(),
 
-                 console.log(formData);
-
-                this.$axios.post('/v2/v1/profile-photo/update',
-                  formData
-                 ,{
-                  headers: {
-                    "Authorization": "Bearer "+token,
-                    'content-type': 'multipart/form-data'
-                  }
-                })
-                  .then(function (response) {
-                    console.log(response);
+            }
+    
+          this.$axios.post("/v2/v1/profile/update",data_name,
+              {headers: {
+                          "Authorization": "Bearer "+token
+                    }
                   })
-                  .catch(function (error) {
-                    console.log(error);
-                  });
-
-                 var data_name = {
-                    name: $('#ok').val(),
-
-                  }
-         
-                this.$axios.post("/v2/v1/profile/update",data_name,
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                     console.log(this.name_update = response.data.data)
-
-                })
-
-
-                this.$router.push(`/me?lang=${this.$store.state.locale}`); 
-    }
-
-
+              .then(response => {
+                this.name_update = response.data.data
+          })
+          this.$router.push(`/me?lang=${this.$store.state.locale}`); 
+      }
     }
   }
 </script>

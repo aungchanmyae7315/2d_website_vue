@@ -288,7 +288,15 @@
 "threed_bet_close":"3D Bet Closing",
 "topup_success_end":"Top-up Pending... ",
 "you_already_referral_code":"Referral Code you have entered",
-"section_time_out" :"Your section time has expired. Pease login again."
+"section_time_out" :"Your section time has expired. Pease login again.",
+"/download":"/download",
+"/promotion":"/promotion",
+"/home":"/home",
+"/threeD/home":"/threeD/home",
+"/topup_youtube":"/topup_youtube",
+"/withdraw_youtube":"/withdraw_youtube",
+"/share":"/share"
+
 
 
 

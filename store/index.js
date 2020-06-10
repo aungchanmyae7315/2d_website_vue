@@ -1,6 +1,4 @@
 import Vuex from 'vuex'
-
-
 const createStore = () => {
     return new Vuex.Store({
         
@@ -41,36 +39,24 @@ const createStore = () => {
               },
 
             logIn(state, userInfo) {
-                //console.log("UserInfo", userInfo);
-                // state.userInfo = userInfo;
                 localStorage.setItem('userInfo', JSON.stringify(userInfo));
-                state.isLoggedIn = true;
-                
+                state.isLoggedIn = true; 
             },
             accessToken(state, token) {
-                // console.log("Token", token);
-                 state.token = token;
-
-                localStorage.setItem('token', (token));
-            
-                
+                state.token = token;
+                localStorage.setItem('token', (token));  
             },
             noti_id(state, data) {
-                // console.log("Token", token);
                 state.data = data;
-                localStorage.setItem('notification_id', (data));
-            
-                
+                localStorage.setItem('notification_id', (data));   
             },
             promotion_id(state, data) {
-                // console.log("Token", token);
                 state.data = data;
                 localStorage.setItem('promotion_id', (data));  
             },
             bet_date(state, data) {
                 state.data = data;
                 localStorage.setItem('bet_date', (data));
-             
             },
             logOut(state) {
                 localStorage.removeItem('userInfo');
@@ -84,25 +70,19 @@ const createStore = () => {
             updateLang(state, updateLang) {
                 state.updateLang = updateLang;
             },
-           
-            
             setOtp(state, Otp){
                 state.Otp = Otp;
-                //console.log(Otp)
             },
             error_mes(state, Otp){
                 state.Otp = Otp;
-                //console.log(Otp)
             },
 
             setPhone(state, phoneResponse){
                 state.phoneResponse = phoneResponse;
-                //console.log(phoneResponse.access_token)
             },
             getBet(state, check_btn){
                 localStorage.setItem('check_btn', check_btn);
                 state.check_btn = check_btn;
-                //console.log(check_btn)
             },
             getBetThreeD(state, bet_number) {
                 localStorage.setItem('bet_numberThreeD', bet_number);
@@ -111,17 +91,13 @@ const createStore = () => {
             betAmount(state, bet_amount){
                 localStorage.setItem('bet_amount', bet_amount);
                 state.bet_amount = bet_amount;
-                //console.log(bet_amount)
             },
             betAmountThreeD(state, amountThreeD){
                 localStorage.setItem('amountThreeD', amountThreeD);
                 state.amountThreeD = amountThreeD;
-                //console.log(bet_amount)
             },
             file(state, file){
-                //localStorage.setItem('file',file);
                 state.file = file;
-                //console.log(check_btn)
             },
            
         }

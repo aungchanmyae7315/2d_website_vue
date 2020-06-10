@@ -61,17 +61,9 @@ export default {
     
             
                 .then(response => {
-                 
-                  console.log(response)
-                   
         });
          this.$axios.get("/v2/v1/get_language")
-    
-            
-                .then(response => {
-                 
-                  console.log(response)
-                   
+                .then(response => {   
             });
              
      

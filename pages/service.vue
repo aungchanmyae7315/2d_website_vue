@@ -19,29 +19,71 @@
                        
                         <h6>{{$t('topup_withdrawal_help')}}</h6>
                         <ul class="contact_phone">
-                          <li class="phone_item"><i class="el-icon-phone"></i>  +959257578394</li>
-                           <li><el-button size="medium"    round>  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959257578394"> 
-                               <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button></li>
+                          <el-row>
+                            <el-col :span="9">
+                               <li class="phone_item">+959257578394</li>
+                            </el-col>
+                            <el-col style="text-align:right" :span="15">
+                                <li><el-button size="medium" >  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959257578394"> 
+                                  <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button>
+                                  <el-button size="medium" >  <a style="color:#13562A;font-size:15px" href="tel:09257578394"> 
+                                  <img src="~static/icons_service/call_back.svg" alt="" >Phone</a></el-button>
+                                </li>
+                            </el-col>
+                          </el-row>
+                         
+                          
                         </ul>
                          <ul class="contact_phone">
-                          <li class="phone_item"><i class="el-icon-phone"></i>  +959889973993</li>
-                           <li><el-button size="medium"   round> <a style="color:#7B519C; font-size:15px" href="viber://contact?number=%2B959889973993">
-                              <img src="~static/icons_service/viber_icon.svg" alt="" >Viber </a></el-button></li>
+                            <el-row>
+                            <el-col :span="9">
+                               <li class="phone_item">+959889973993</li>
+                            </el-col>
+                            <el-col style="text-align:right" :span="15">
+                                <li><el-button size="medium" >  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959889973993"> 
+                                  <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button>
+                                  <el-button size="medium" >  <a style="color:#13562A;font-size:15px" href="tel:09889973993"> 
+                                  <img src="~static/icons_service/call_back.svg" alt="" >Phone</a></el-button>
+                                </li>
+                            </el-col>
+                          </el-row>
+                        
                         </ul>
               </el-card>
               <el-card  class="phone_card">
                      <h6>{{$t('agent_info')}}</h6>
                          <ul class="contact_phone">
-                          <li class="phone_item" style="padding-right:64px;"><i class="el-icon-phone"></i> 09 7550 130 75</li>
-                           <li><el-button size="medium"     round><a style="color:#000;font-size:15px" href="tel:09755013075">{{$t('phone_call')}} </a></el-button></li>
+                            <el-row>
+                              <el-col :span="9">
+                                <li class="phone_item" style="padding-right:64px;">+959755013075</li>
+                              </el-col>
+                              <el-col style="text-align:right" :span="15">
+                                  <li><el-button size="medium" >  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959755013075"> 
+                                    <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button>
+                                    <el-button size="medium" >  <a style="color:#13562A;font-size:15px" href="tel:09755013075"> 
+                                    <img src="~static/icons_service/call_back.svg" alt="" >Phone</a></el-button>
+                                  </li>
+                              </el-col>
+                          </el-row>
                         </ul>
               </el-card>
                 <el-card  class="phone_card">
                            <h6>{{$t('customer_service_title')}}</h6>
                            <ul class="contact_phone">
-                          <li class="phone_item"><i class="el-icon-phone"></i>  +959888052163</li>
-                           <li><el-button size="medium"   round> <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959888052163">
-                              <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button></li>
+                              <el-row>
+                              <el-col :span="9">
+                                <li class="phone_item">+959888052163</li>
+                              </el-col>
+                              <el-col style="text-align:right" :span="15">
+                                  <li><el-button size="medium" >  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959888052163"> 
+                                    <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button>
+                                    <el-button size="medium" >  <a style="color:#13562A;font-size:15px" href="tel:09888052163"> 
+                                    <img src="~static/icons_service/call_back.svg" alt="" >Phone</a></el-button>
+                                  </li>
+                              </el-col>
+                          </el-row>
+                         
+                        
                         </ul>
                             
               </el-card>
@@ -124,6 +166,7 @@ export default {
     }
   .service .el-button.is-round {
     width:unset;
+    margin:0;
   }
 
     .service .contact_text  {
@@ -177,7 +220,6 @@ export default {
       padding:0;
       margin:0;
       list-style: none;
-      display: inline-flex;
       color:#fff;
     }
     .contact_phone img  {
@@ -194,8 +236,17 @@ export default {
   .phone_item {
     font-size: 14px;
     padding-top:10px;
-    padding-right:50px;
     padding-bottom:30px;
+  }
+  .service .el-card__body {
+    padding:15px;
+  }
+  .service .el-button+.el-button {
+    margin:0;
+  }
+  .service .el-button--medium {
+    padding:10px 12px;
+    font-weight: bold;
   }
     
 </style>

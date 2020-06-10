@@ -121,8 +121,7 @@ export default {
                     })
             
                 .then(response => {
-                      this.$nuxt.$loading.finish()
-                      console.log(response)
+                    this.$nuxt.$loading.finish()
                     this.bet_detail = response.data.data
             })
      }

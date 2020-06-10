@@ -214,17 +214,13 @@ import axios from 'axios'
                     password: this.ruleForm.pass
                 })
                 .then(response => {
-                  console.log(response)
                    this.token = response.data.access_token;
                    this.device_id = response.data.device_id
-                   console.log(this.device_id)
                       this.userInfo = response.data,
                       this.$nuxt.$loading.finish()
-                   
-                      // console.log(this.userInfo)
                       this.$store.commit('logIn', this.userInfo)
-                        this.$store.commit('accessToken', this.token)
-                       this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
+                      this.$store.commit('accessToken', this.token)
+                      this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
                     // if(response.data.status == 3) {
                     //    this.$router.push(`/signup_successNrc?lang=${this.$store.state.locale}`);
                     // }else if (this.device_id == null) {
@@ -248,20 +244,14 @@ import axios from 'axios'
                   //   }
 
                   if(error.response.data.errors.password) {
-                       console.log(error.response.data.errors.password[0])
-                           
-                              this.$message({
-                                showClose: true,
-                                center: true,
-                            
-                                message: error.response.data.errors.password[0],
-                                type: 'error'
-                              });
+                        this.$message({
+                          showClose: true,
+                          center: true,
+                      
+                          message: error.response.data.errors.password[0],
+                          type: 'error'
+                        });
                   }else if(error.response.data.errors.phone) {
-                    console.log('pal')
-                     console.log(error.response.data.errors.phone[0])
-                    
-                          
                         this.$message({
                           showClose: true,
                           center: true,
@@ -278,25 +268,8 @@ import axios from 'axios'
                     // }else {
                     //     this.$router.push(`/signup_refel?lang=${this.$store.state.locale}`);
                     // }
-                  }
-                          
-                              
+                  }             
                  });
-              
-                // .then(respon)
-                // .then(response => ( 
-                //    this.otp_error = response.data.result,
-                //   //  if(response.data.result == '0') 
-                // console.log(this.otp_error),
-                // console.log('bar'),
-                //   console.log(response.message),
-                //    this.userInfo = response.data,
-                //   this.$store.commit('logIn', this.userInfo),
-                //   console.log(this.userInfo)
-                  
-              
-                // ));
-                
           } else {
             console.log('error submit!!');
             return false;

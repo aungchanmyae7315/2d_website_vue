@@ -108,7 +108,7 @@ export default {
   mounted() {
       let token = localStorage.getItem('token');
         var data =  moment().format('YYYY-MM-DD HH:mm:ss')
-        console.log(data)
+       
         if(token) {
                 this.$axios.get("/v2/v1/notification",
                     {headers: {
@@ -118,9 +118,7 @@ export default {
                     .then(response => {
                    
                         this.readed = response.data.read_at
-                
-                     console.log(this.readed)
-                    
+
                 })
         }
   },
@@ -152,8 +150,7 @@ export default {
                     .then(response => {
                       
                       this.readed = response.data.read_at
-                  console.log(this.readed)
-                     //console.log(noti_id)
+               
                     
                 })
         }

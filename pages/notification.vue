@@ -261,13 +261,9 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response.data)
-                    this.notification = response.data.data
-                    this.$nuxt.$loading.finish()
-                   // console.log(this.notification.stauts)
-                     var noti_id = this.notification.notification_id
-                     //console.log(noti_id)
-                    
+                        this.notification = response.data.data
+                        this.$nuxt.$loading.finish()
+                        var noti_id = this.notification.notification_id
                 })
         }
                 
