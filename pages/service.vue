@@ -245,7 +245,7 @@ export default {
     margin:0;
   }
   .service .el-button--medium {
-    padding:10px 12px;
+    padding:10px 8px;
     font-weight: bold;
   }
     
