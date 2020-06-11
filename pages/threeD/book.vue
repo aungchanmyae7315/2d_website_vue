@@ -9,9 +9,11 @@
            
             <el-row style="padding-top:10px;">
                 <el-col :span="6">
+                        <el-button v-if="this.Bookthreed.length != 1">
+                            hello
+                        </el-button>
                     
-                    
-                        <el-button type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="chan();  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
+                        <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="chan();  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
                           <el-dialog
                          
                             title="Tips"
@@ -131,7 +133,7 @@
                             
                             <ul v-if="item.children.length != 0" class="number_list_item">
                                 <li v-for="(children, index) in item.children" :key="index"   :data-id="children.id" class="dd-item">
-                                    <div class="number_item button-group-pills text-center"  data-toggle="buttons">
+                                    <div class="number_item button-group-pills text-center" @click="LengthCount()"  data-toggle="buttons">
                                      
                                         <label class="hide_input" @click="children.state.selected = !children.state.selected"  v-bind:class="[children.state.selected ? 'dd-item open' : 'dd-item']"    >
                                         <input type="checkbox"  
@@ -215,7 +217,7 @@ export default {
             checkAll: false,
              isIndeterminate: true,
             checkboxModelbox:true,
-            Bookthreed:'',
+            Bookthreed:true,
             dialogFormVisible_rBtn:false,
               getOpen:'',
               myWallet:'',
@@ -249,6 +251,19 @@ export default {
             
       
       },
+       LengthCount() {
+         
+               
+                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                   
+                checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
+                this.Bookthreed = checkedElements;
+                console.log(this.Bookthreed)
+
+        },
          thousands_separators(num){
             //console.dir(num);
           if (num == undefined){
@@ -729,7 +744,7 @@ export default {
          padding-right:0;
          padding-left:0;
          max-width: 480px;
-         width:44px;
+         width:40px;
          height:32px;
          line-height: 29px;
          border-bottom-left-radius:4px;
@@ -741,9 +756,9 @@ export default {
         display: none;
     }
     .hide_input img {
-        width:88px;
-          border-top-right-radius: 9px;
-           border-top-left-radius: 9px;
+        width:80px;
+        border-top-right-radius: 9px;
+        border-top-left-radius: 9px;
     }
 
 body {

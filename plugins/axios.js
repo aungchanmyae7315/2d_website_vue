@@ -1,5 +1,6 @@
 
 export default function ({ $axios, redirect }) {
+
   $axios.onRequest(config => {
     console.dir(config.url);
     config.headers.common['device-id'] = localStorage.getItem("deviceId")
@@ -17,13 +18,19 @@ export default function ({ $axios, redirect }) {
 
 
   $axios.onError(error => {
+    console.log(error.response)
     const code = parseInt(error.response && error.response.status)
+  
     if (code === 400) {
       redirect('/400')
+    }else if(code == 500) {
+      // redirect('/500')
+     
     }
+
   })
+
+  
 }
-
-
 
 

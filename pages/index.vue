@@ -183,11 +183,12 @@
 </template>
 
 <script>
-
+import Vue from 'vue'
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
 
 export default {
+  
  components: { carousel },
     getters: {},
   mutations: {},
@@ -196,7 +197,43 @@ export default {
 
 
   mounted() {
- 
+
+
+
+
+  this.$axios.onError(error => {
+    console.log(error.response.data.trace)
+
+    this.error_url = error.response.config.url
+    this.error_message = error.response.data.message
+    this.error_trace = error.response.data.trace
+    
+    
+    console.log(this.error_url)
+       let token = localStorage.getItem('token');
+                var data = {
+                    request_url:this.error_url,
+                    user_agent:navigator.userAgent,
+                    err: this.error_message,
+                    info: "hello",
+                    trace:"hello",
+                    msg: this.error_message,
+                }
+          this.$axios.post("/v2/v1/error_log",
+                           data,
+                    {
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         }, 
+                        })
+                    .then(response => {
+                        console.log('hee')
+                        console.log(response)
+                        console.log('fff')
+                    })
+
+  })
+   
 
   var self = this;
           if (this.$store.state.sliderImage.length > 0){
@@ -269,6 +306,11 @@ export default {
   data() {
     
     return {
+      error_url:'',
+      error_message:'',
+      error_trace:'',
+      error:'',
+      trace:'',
       last_date:'',
       dialogVisible: false,
       dialogVisible_autoLogout:false,
