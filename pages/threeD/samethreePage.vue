@@ -65,11 +65,8 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
                         this.profile = response.data.data
-                      this.myWallet = this.thousands_separators(this.profile.wallet)
-                  
-
+                        this.myWallet = this.thousands_separators(this.profile.wallet)
                 })
         }  
 
@@ -80,17 +77,12 @@ export default {
                  amountThreeD:'',
                   bet_number: [],
              },
-            
             myWallet:'',
             SameNumber: sameThreeOptions,
-             submitted:false,
-          
+            submitted:false,
         }
         
     },
-    components: {
-     
-  },
     methods: {
          thousands_separators(num){
             var num_parts = num.toString().split(".");
@@ -115,17 +107,9 @@ export default {
             return false;
           }
         });
-
-
-          
         }
 
     },
-    computed: {
-       
-       
-       
-    }
 }
 </script>
 

@@ -40,8 +40,7 @@ export default {
                  referal_code:'',
 
                 },
-             errors:[],
-           
+            errors:[],
             accessToken: '',
         }
     },
@@ -53,12 +52,7 @@ export default {
                         let token = localStorage.getItem('token');
                         var data_code = {
                             referal_code:this.ruleForm.referal_code
-
                         }
-                        // console.log(token)
-                        // console.log(data_code)
-                    //    alert(data_code)
-                
                         this.$axios.post("/v2/v1/upload_referal_code",data_code,
                             {headers: {
                                     "Authorization": "Bearer "+token
@@ -67,8 +61,6 @@ export default {
                             .then(response => {
                                 this.res_data = response.data.data
                                 this.error_msg = response.data.message
-                                console.log(this.res_data)
-                                console.log(this.error_msg)
                                 if(this.error_msg == 'fail'){
                                     this.$message({
                                         message:this.$t('refel_code_invalid'),
@@ -83,9 +75,6 @@ export default {
                                     });
                                     this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                                 }
-                                
-                            // console.log(this.name_update = response.data.data)
-              
                 })
 
 

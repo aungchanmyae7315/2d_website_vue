@@ -108,18 +108,11 @@ import axios from 'axios'
              this.$axios.get(`/v2/v1/add_language?language=${lang}`)
     
             
-                .then(response => {
-                 
-                  console.log(response)
-                   
+            .then(response => {    
         });
          this.$axios.get("/v2/v1/get_language")
-    
-            
                 .then(response => {
-                 
-                  console.log(response)
-                   
+  
             });
              
          },
@@ -141,51 +134,34 @@ import axios from 'axios'
                 this.$nuxt.$loading.finish()
                   if(response.data.result == '0'){
                     this.error_message = response.data.data,
-                    console.log(this.message)
                     this.error = 'Please try again'
                     this.$notify.error({
                       title: 'Error',
                       message: this.error_message
                     });
                   }else {
-                     this.userInfo = response.data,
-                     this.token = response.data.access_token;
-                    
+                    this.userInfo = response.data,
+                    this.token = response.data.access_token;
                     this.$store.commit('logIn', this.userInfo);
                     this.$store.commit('accessToken', this.token);
-                    
-                     
-                     this.success_message = response.data.data,
-                    
-                     this.$notify({
-                     
-                        
-                        //message: $t('set_your_password'),
+                    this.success_message = response.data.data,
+                    this.$notify({
                         message:  this.$t('login_success'),
                         type: 'success',
-                         //duration:0
-                       
                       });
-                        this.$router.push(`/?lang=${this.$store.state.locale}`); 
-                         
+                        this.$router.push(`/?lang=${this.$store.state.locale}`);   
                   }
                  
                 })
           } else {
-          
             console.log('error submit!!');
             return false;
           }
         });
-
-               
-           
-      
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
       },
-
     }
   }
 </script>

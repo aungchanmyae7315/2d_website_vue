@@ -181,8 +181,6 @@
                   })
               .then(response => {
                 this.profile = response.data.data
-                console.log(this.profile.name)
-
           })
           this.$axios.get("/v2/v1/referal_code",
                     {headers: {
@@ -190,13 +188,7 @@
                          }
                         })
                     .then(response => {
-                      
-                     this.referal_code = response.data.data.generate_code
-                     console.log(this.referal_code)
-                    
-                  
-                  
-
+                        this.referal_code = response.data.data.generate_code
                 })
       }
                 

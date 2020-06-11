@@ -207,18 +207,16 @@ export default {
     },
     data() {
         return {
-            	submitted:false,
-                ruleForm: {
-                card_number:'',
-                tran_amount:'',
-                password:'',
-                radio1:'',
+            submitted:false,
+            ruleForm: {
+            card_number:'',
+            tran_amount:'',
+            password:'',
+            radio1:'',
 
           },
             loaded:'',
             bank_type:'',
-            
-            
         }
     },
     methods: {
@@ -236,33 +234,23 @@ export default {
             this.$refs[formName].validate((valid) => {
             if (valid) {
                 let token = localStorage.getItem('token');
-     console.log(token)
                 var data = {
                     bank_type_id:this.bank_id,
                     card_number:this.ruleForm.card_number,
                     amount: this.ruleForm.tran_amount,
                     password: this.ruleForm.password,
                 }
-              
-       
                 this.$axios.post("/v2/v1/withdraw",
                            data,
                     {
-                           
-
                         headers: {
                                "Authorization": "Bearer "+token
                          },
                           
                         })
-                
                     .then(response => {
-                  
-                     console.log(response)
-                      this.res_status = response.data.status,
-                        // this.message = response
-                     this.res_data_status = response.data.data
-                      
+                        this.res_status = response.data.status,
+                        this.res_data_status = response.data.data
                     if(this.res_status == 3 ) {
                          this.submitted = false
                             this.$notify({

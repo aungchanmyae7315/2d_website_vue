@@ -421,12 +421,7 @@ export default {
                   }
                 })
             .then(response => {
-              console.log(response)
-               
-                this.device_id = response.data.data.device_id
-             
-            
-             
+                this.device_id = response.data.data.device_id  
         })
          this.$axios.get("/v2/v1/referal_code",
                     {headers: {
@@ -434,13 +429,7 @@ export default {
                          }
                         })
                     .then(response => {
-                      
                      this.referal_code = response.data.data.generate_code
-                     console.log(this.referal_code)
-                    
-                  
-                  
-
                 })
       }
     },
@@ -512,8 +501,6 @@ export default {
           img.src = dataUrl;
           
             //document.body.appendChild(img);
-            // console.log(img.src)
-           
             //   let token = localStorage.getItem('token');
             // if(token) {
            

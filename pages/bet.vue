@@ -654,7 +654,6 @@ export default {
            
         this.$axios.get('/v2/v1/holiday')
               .then(response => {
-                console.log(response)
                this.holidays = response.data
              
                 if(this.holidays.status == 1) {
@@ -725,8 +724,6 @@ export default {
        this.$axios.get('/v2/v1/close_time')
              
               .then(response => {
-                
-                //   console.log(response)
                     this.time = response.data.data
                      
                     this.morning_from = response.data.data[0].from
@@ -766,20 +763,17 @@ export default {
                         })
                     .then(response => {
                      
-                     this.profile = response.data.data
-                     this.myWallet = this.profile.wallet
-                      this.myPointWallet = this.profile.point
+                    this.profile = response.data.data
+                    this.myWallet = this.profile.wallet
+                    this.myPointWallet = this.profile.point
                     this.server_time = response.data.data.time;
                 })
         } 
         
           this.$axios.get('/v2/v1/server_time')
               .then(response => {
-                // console.log(response.data.time)
-                //  console.log(response.data.date)
                this.server_time = response.data.time
                this.serverDate  = response.data.date
-               
               }) 
     },
     
@@ -825,7 +819,6 @@ export default {
                 var difference_two = mo_to - ev_from;
                 var getAllTime = this.convertMS(difference);
                 var getAllTime_two = this.convertMS(difference_two);
-                    console.log(this.morning_to)
                 if(this.server_time  >  this.morning_from && this.server_time < this.morning_to ) {
                         this.isActive = true
                          this.isMorningEvening  = false

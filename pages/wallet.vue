@@ -319,27 +319,23 @@
       };
     },
      created() {
-           let token = localStorage.getItem('token');
-        if(token) {
-              this.$axios.get("/v2/v1/bank_card_grouping",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                      console.log(response.data.data)
-                      // this.group_type = response.data.data[0].group_type
-                      // console.log(this.group_type)
-                      this.bank_account = response.data.data[0].bank_group
-                       console.log(this.bank_account)
-                })
-        }
+          let token = localStorage.getItem('token');
+        // if(token) {
+        //       this.$axios.get("/v2/v1/bank_card_grouping",
+        //             {headers: {
+        //                        "Authorization": "Bearer "+token
+        //                  }
+        //                 })
+        //             .then(response => {
+        //               console.log(response)
+        //                 this.bank_account = response.data.data[0].bank_group
+        //         })
+        // }
       
-          // this.$axios.get('/v1/admin-bank')
-          //     .then(response => {
-          //       this.bank_account = response.data.data
-          //     })  
-         
+          this.$axios.get('/v1/admin-bank')
+              .then(response => {
+                this.bank_account = response.data.data
+              })  
         if(token) {
               this.$axios.get("/v2/v1/profile",
                     {headers: {
@@ -348,20 +344,15 @@
                         })
                     .then(response => {
                       this.blockUser = response.data.data.trash
-                     this.profile = response.data.data
-                     this.myWallet = this.profile.wallet
-                    
-
+                      this.profile = response.data.data
+                      this.myWallet = this.profile.wallet
                       if(this.blockUser == 0) {
-                        console.log('blcok_user')
                       }else {
                         this.$store.commit('logOut');
                         this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                       }
-
                 })
-        }
-                
+        }          
     },
 
     methods: {
@@ -373,21 +364,18 @@
           location.reload();
         }, 1000);
     },
-       thousands_separators(num){
-          var num_parts = num.toString().split(".");
-          num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-          return num_parts.join(".");
-        },
-
-       updateIsLoggedIn() {
+      thousands_separators(num){
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+      },
+      updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
       hasUserInfo() {
         return Boolean(localStorage.getItem('userInfo'));
       },
-
-       copyTestingCode (data) {
-        
+      copyTestingCode (data) {
           let testingCodeToCopy = document.querySelector('#code'+data)
           testingCodeToCopy.setAttribute('type', 'text')    
            testingCodeToCopy.setAttribute('readonly', true);
@@ -402,16 +390,12 @@
               showClose: true,
           
             });
-            
           } catch (err) {
-            alert('Oops, unable to copy');
+              alert('Oops, unable to copy');
           }
           testingCodeToCopy.setAttribute('type', 'hidden')
           window.getSelection().removeAllRanges()
-        },
-       
-
-       
+        }, 
     }
   };
 </script>

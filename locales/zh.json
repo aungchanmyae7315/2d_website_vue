@@ -287,7 +287,14 @@
 "threed_bet_close":"本场下注已关闭",
 "topup_success_end":"充值提交中...",
 "you_already_referral_code":"你输入的推荐码",
-"section_time_out" :"账号登录 已超时，请重新登录。"
+"section_time_out" :"账号登录 已超时，请重新登录。",
+"/download":"/download",
+"/promotion":"/promotion",
+"/home":"/home",
+"/threeD/home":"/threeD/home",
+"/topup_youtube":"/topup_youtube",
+"/withdraw_youtube":"/withdraw_youtube",
+"/share":"/share"
 
 
 

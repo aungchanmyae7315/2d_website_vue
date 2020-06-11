@@ -140,9 +140,7 @@ export default {
   mounted() {
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
-      })
-
-      
+      }) 
     },
     data() {
         return {
@@ -158,7 +156,6 @@ export default {
         }
     },
     created() {
-      
            var data= {
               bets:localStorage.getItem('check_btn'),
           }
@@ -168,9 +165,7 @@ export default {
                       })
                   .then(response => {
                       this.$nuxt.$loading.finish()
-                    console.log(response)
-                  this.bet_odds = response.data
-
+                      this.bet_odds = response.data
               })
           let token = localStorage.getItem('token');
         if(token) {
@@ -180,14 +175,11 @@ export default {
                          }
                         })
                     .then(response => {
-                        console.log(response)
-                     this.profile = response.data.data
-                      this.myWallet = this.thousands_separators(this.profile.wallet)
-                      this.myPointWallet = this.thousands_separators(this.profile.point)
-
+                        this.profile = response.data.data
+                        this.myWallet = this.thousands_separators(this.profile.wallet)
+                        this.myPointWallet = this.thousands_separators(this.profile.point)
                 })
         }      
-    
     },
     computed: {
         sumTotal() {
@@ -220,22 +212,15 @@ export default {
                     twod_id:  localStorage.getItem('check_btn'),
                     amount: localStorage.getItem('bet_amount') ,
                 }
-                console.log(data)
           this.$axios.post("/v2/v1/2d_web/bet",
                            data,
                     {
-                           
-
                         headers: {
                                "Authorization": "Bearer "+token
-                         },
-                          
+                         }, 
                         })
-                
                     .then(response => {
-                        console.log(response)
                     this.res_mor_error = response.data.status
-                    console.log(this.res_mor_error) 
                     if(this.res_mor_error == "morning"  ) {
                          this.$message({
                             showClose: true,
@@ -274,16 +259,13 @@ export default {
                         });
                     }
                     else {
-                         // this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                         this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                     }  
                 })
                 .catch(error => {
-                  
-                    console.log(error.response)
-                   
                    this.$message({
                             showClose: true,
-                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                          message: 'catch error',
                           type: 'warning',
                         });
                 });
@@ -297,8 +279,7 @@ export default {
     //                 client_phone:this.phone,
     //                 twod_id:  localStorage.getItem('check_btn'),
     //                 point: localStorage.getItem('bet_amount') ,
-    //             }
-    //             console.log(data)
+    //             }    
     //         this.$axios.post("/v2/v1/2d_point/bet",
     //                        data,
     //                 {
@@ -309,9 +290,7 @@ export default {
     //                     })
                 
     //                 .then(response => {
-    //                     console.log(response)
     //                 this.res_mor_error = response.data.status
-    //                 console.log(this.res_mor_error) 
     //                 if(this.res_mor_error == "morning"  ) {
     //                      this.$message({
     //                         showClose: true,

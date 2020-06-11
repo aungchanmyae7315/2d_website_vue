@@ -9,10 +9,31 @@
            
             <el-row style="padding-top:10px;">
                 <el-col :span="6">
+                        <el-button v-if="this.Bookthreed.length != 1">
+                            hello
+                        </el-button>
                     
-                    
-                        <el-button type="button"   @click="rBtn();dialogFormVisible = true"   class="fast_btn" >R</el-button>
-                          
+                        <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="chan();  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
+                          <el-dialog
+                         
+                            title="Tips"
+                        
+                            :show-close="false"
+                            :close-on-click-modal = "false"
+                            :visible.sync="dialogFormVisible_rBtn"
+                            width="90%">    
+                           <span>dd{{this.Bookthreed}}</span>
+                            <el-checkbox-group v-model="checkboxModelbox" @change="handleCheckedCitiesChange">
+                                <el-checkbox-button v-for="(number , index) in this.Bookthreed" :key="index" :label="number" >
+                                    {{number}}
+                                </el-checkbox-button>
+                            </el-checkbox-group>
+                            
+                            <span slot="footer" class="dialog-footer">
+                                <el-button @click="dialogFormVisible_rBtn = false;  checkboxModelbox = []">Cancel</el-button>
+                                <el-button type="primary"   @click=" submitAll();dialogFormVisible_rBtn = true">Confirm</el-button>
+                            </span>
+                        </el-dialog>
                   
             
                 </el-col>
@@ -112,7 +133,7 @@
                             
                             <ul v-if="item.children.length != 0" class="number_list_item">
                                 <li v-for="(children, index) in item.children" :key="index"   :data-id="children.id" class="dd-item">
-                                    <div class="number_item button-group-pills text-center"  data-toggle="buttons">
+                                    <div class="number_item button-group-pills text-center" @click="LengthCount()"  data-toggle="buttons">
                                      
                                         <label class="hide_input" @click="children.state.selected = !children.state.selected"  v-bind:class="[children.state.selected ? 'dd-item open' : 'dd-item']"    >
                                         <input type="checkbox"  
@@ -135,7 +156,7 @@
                            
                         </li>
                     </ul>
-                 
+                 {{this.Bookthreed}}Hello
               
             </div>
         </div>
@@ -147,6 +168,7 @@
 </template>
 <script>
 export default {
+
     computed: {
   classObject: function () {
     return {
@@ -158,13 +180,13 @@ export default {
          this.updateIsLoggedIn();
           this.$axios.get('/v2/v1/threed/book')
               .then(response => {
-                console.log(response.data)
                this.book_data = response.data
              
                 
               })  
     },
     created() {
+
           let token = localStorage.getItem('token');
         if(token) {
              this.$axios.get("/v2/v1/profile",
@@ -182,7 +204,6 @@ export default {
         } 
           this.$axios.get('/v2/v1/threed/count_down')
               .then(response => {
-                console.log(response)
                   this.endTime = response.data.next_start_date
                   this.holiday = response.data.data
               }) 
@@ -193,7 +214,12 @@ export default {
     data() {
 
         return {
-               getOpen:'',
+            checkAll: false,
+             isIndeterminate: true,
+            checkboxModelbox:true,
+            Bookthreed:true,
+            dialogFormVisible_rBtn:false,
+              getOpen:'',
               myWallet:'',
               endTime: '',
             times: [
@@ -219,6 +245,25 @@ export default {
         
     },
     methods: {
+        handleCheckedCitiesChange(val) {
+             
+            this.checkboxModelbox = val ? this.checkboxModelbox : [];
+            
+      
+      },
+       LengthCount() {
+         
+               
+                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                   
+                checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
+                this.Bookthreed = checkedElements;
+                console.log(this.Bookthreed)
+
+        },
          thousands_separators(num){
             //console.dir(num);
           if (num == undefined){
@@ -234,8 +279,6 @@ export default {
         },
         getTimeRemaining: function() {
             let t = Date.parse(new Date(this.endTime)) - Date.parse(new Date());
-            
-            // console.log(this.progress);
             this.times[3].time = Math.floor(t / 1000 % 60) ;
             this.times[2].time = Math.floor(t / 1000 / 60 % 60) + ':';
             this.times[1].time = Math.floor(t / (1000 * 60 * 60) % 24) +':';
@@ -256,16 +299,29 @@ export default {
         goBack() {
             this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
         },
-         submitForm(formName) {
-              this.$refs[formName].validate((valid) => {
-          if (valid) {
+        chan() {
+               
                 var elements = document.querySelectorAll('input[type="checkbox"]:checked');
                 var checkedElements = Array.prototype.map.call(elements, function (el, i) {
                     return el.value;
                 });
                 checkedElements = checkedElements.filter(e => e !== 'on'); // will return ['A', 'C']
-                console.log(checkedElements);
                 this.Bookthreed = checkedElements;
+
+        },
+        submitAll() {
+            console.log(this.checkboxModelbox)
+        },
+         submitForm(formName) {
+              this.$refs[formName].validate((valid) => {
+             if (valid) {
+                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                checkedElements = checkedElements.filter(e => e !== 'on'); // will return ['A', 'C']
+                this.Bookthreed = checkedElements;
+                console.log(this.Bookthreed)
                 var data = this.ruleForm.amount  
                 this.$store.commit('betAmountThreeD',data);
                 var data = this.Bookthreed  
@@ -284,13 +340,8 @@ export default {
                 let book_number = []
               for(let child of this.book_data){
                   this.one = child
-                    console.log(this.one.children[0].state.selected)
-                      console.log(this.one.children[1].state.selected)
 
-                        
-                          
                             this.one.children.forEach(element => {
-                                console.log(this.one.children)
                                  if("!'dd-item open") {
                                     book_number.push(element.number);
                                     this.Bookthreed = book_number;
@@ -693,7 +744,7 @@ export default {
          padding-right:0;
          padding-left:0;
          max-width: 480px;
-         width:44px;
+         width:40px;
          height:32px;
          line-height: 29px;
          border-bottom-left-radius:4px;
@@ -705,9 +756,9 @@ export default {
         display: none;
     }
     .hide_input img {
-        width:88px;
-          border-top-right-radius: 9px;
-           border-top-left-radius: 9px;
+        width:80px;
+        border-top-right-radius: 9px;
+        border-top-left-radius: 9px;
     }
 
 body {
@@ -724,6 +775,13 @@ body {
 }
 .dd-item.open {
   border-color: #14a4be;
+  background-color: #14a4be;
+  color: #FFF;
+  box-shadow: none;
+}
+ input[type=checkbox]:checked{
+
+    border-color: #14a4be;
   background-color: #14a4be;
   color: #FFF;
   box-shadow: none;
@@ -747,6 +805,15 @@ body {
   font-size:12px;
   font-weight: bold;
   margin:0;
+}
+.model_box_numbers {
+    padding:0;
+    margin:0;
+}
+.model_box_numbers li {
+    list-style: none;
+    color:#fff;
+    font-weight: bold;
 }
 
 </style>

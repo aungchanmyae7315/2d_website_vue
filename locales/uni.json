@@ -287,7 +287,15 @@
 "threed_bet_close":"3D ထီထိုးချိန်ကျော်ပါပြီ။",
 "topup_success_end":"ငွေဖြည့်ရန် တင်ပြနေပါသည်...",
 "you_already_referral_code":"သင်ဖြည့်ထားသောရည်ညွှန်းကုဒ်",
-"section_time_out" :"အကောင့်ဆက်ရှင်အချိန်ကျော်သွားပါသည်။ အကောင့်ပြန်ဝင်ပေးပါ။"
+"section_time_out" :"အကောင့်ဆက်ရှင်အချိန်ကျော်သွားပါသည်။ အကောင့်ပြန်ဝင်ပေးပါ။",
+"/download":"/download",
+"/promotion":"/promotion",
+"/home":"/home",
+"/threeD/home":"/threeD/home",
+"/topup_youtube":"/topup_youtube",
+"/withdraw_youtube":"/withdraw_youtube",
+"/share":"/share"
+
 
 
 

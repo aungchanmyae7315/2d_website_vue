@@ -450,7 +450,6 @@ const VueSelect = {
 };
 Vue.use(VueSelect)
 
-
 export default {
     data() {
         return {
@@ -484,8 +483,6 @@ export default {
         }
     },
     mounted() {
-     
-
         let token = localStorage.getItem('token');
       if(token) {
          this.$axios.get("/v2/v1/referal_code",
@@ -494,13 +491,7 @@ export default {
                          }
                         })
                     .then(response => {
-                      
-                     this.referal_code = response.data.data.generate_code
-                     console.log(this.referal_code)
-                    
-                  
-                  
-
+                        this.referal_code = response.data.data.generate_code
                 })
       }
       this.$nextTick(() => {
@@ -509,16 +500,13 @@ export default {
         })
     },
      methods: {
-          SavePhoto() {
-        var app = this
+        SavePhoto() {
+          var app = this
           var node = document.getElementById('my-node');
- 
-        htmlToImage.toPng(node)
+          htmlToImage.toPng(node)
         .then(function (dataUrl) {
-         
           var img = new Image();
           img.src = dataUrl;
-           
             //document.body.appendChild(img);
             console.log(img.src)
            
@@ -557,44 +545,32 @@ export default {
         });
   
       },
-
-         goBack() {
-
-              this.$router.push(`/notification?lang=${this.$store.state.locale}`); 
-
-         },
-
+      goBack() {
+        this.$router.push(`/notification?lang=${this.$store.state.locale}`); 
+      },
      },
        created() {
 
          let token = localStorage.getItem('token');
             let noti_id = localStorage.getItem('notification_id');
-            console.log(noti_id);
                 this.$axios.get("/v1/notification/detail?notification_id="+noti_id,
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
                         })
-                
                     .then(response => {
-                       console.log(response)
-                    this.notification_detail = response.data.data
-                    console.log('leee pal')
-                    console.log(this.notification_detail)
+                      this.notification_detail = response.data.data
                 })
-          // let token = localStorage.getItem('token');
-        if(token) {
+            if(token) {
               this.$axios.get("/v2/v1/profile",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
                         })
                     .then(response => {
-                     this.profile = response.data.data
-                        console.log(this.profile)
+                        this.profile = response.data.data
                 })
-        }
-                
+            }         
      }
 }
 </script>
