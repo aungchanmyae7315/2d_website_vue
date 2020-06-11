@@ -37,6 +37,7 @@
     border:2px solid #b8b8b8;
     color:#000;
     background: unset;
+    padding:9px;
 }
 </style>
 <script>
