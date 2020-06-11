@@ -61,7 +61,7 @@ export default function ({ $axios, redirect }) {
                     if (code === 400) {
                           redirect('/400')
                         }else if(code == 500) {
-                          //redirect(`/error_page?lang=en`) 
+                          redirect(`/error_page?lang=en`) 
                          
                         }
                 })
