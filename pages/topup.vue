@@ -708,7 +708,7 @@ export default {
                         this.submitted = false
                           this.$message({
                                 showClose: true,
-                              message: 'Your Slip Code is exist',
+                              message: this.$t('your_slip_code_is'),
                               type: 'warning',
                             });
                     }else {

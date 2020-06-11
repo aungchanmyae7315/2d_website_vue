@@ -220,6 +220,7 @@ export default {
                          }, 
                         })
                     .then(response => {
+                        
                     this.res_mor_error = response.data.status
                     if(this.res_mor_error == "morning"  ) {
                          this.$message({
@@ -365,6 +366,7 @@ export default {
     width:100%;
 }
 .bet_submit {
+  margin-bottom:20px;
   background-color:#158220;
   color:#fff;
   font-weight: bold;
