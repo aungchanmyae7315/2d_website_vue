@@ -28,6 +28,7 @@ Vue.config.warnHandler = function(msg, vm, trace) {
   console.dir(navigator.userAgent);
   //user id
   //url
+  redirect(`/error_page?lang=en`) 
 }
 Vue.config.errorHandler = (err, vm, info) => {
   // err: error trace
@@ -37,4 +38,5 @@ Vue.config.errorHandler = (err, vm, info) => {
   // TODO: Perform any custom logic or log to server
   console.dir("+++ errorHandler");
   console.dir(err);
+  redirect(`/error_page?lang=en`) 
 };

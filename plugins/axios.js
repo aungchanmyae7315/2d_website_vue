@@ -1,4 +1,7 @@
+import Vue from 'vue';
+import Vuex from 'vuex';
 
+Vue.use(Vuex);
 export default function ({ $axios, redirect }) {
 
   $axios.onRequest(config => {
@@ -17,18 +20,57 @@ export default function ({ $axios, redirect }) {
 
 
 
-  $axios.onError(error => {
-    console.log(error.response)
-    const code = parseInt(error.response && error.response.status)
+  // $axios.onError(error => {
+  //   console.log(error.response)
+  //   const code = parseInt(error.response && error.response.status)
   
-    if (code === 400) {
-      redirect('/400')
-    }else if(code == 500) {
-      // redirect('/500')
+  //   if (code === 400) {
+  //     redirect('/400')
+  //   }else if(code == 500) {
+  //     this.$router.push('/service') 
      
-    }
+  //   }
 
+  // })
+
+  $axios.onError(error => {
+    
+    console.log(error.response)
+
+   // this.error_url = error.response.config.url
+    // this.error_message = error.response.data.message
+    // this.error_trace = error.response.data.trace
+    
+       let token = localStorage.getItem('token');
+                var data = {
+                    request_url:error.response.config.url,
+                    user_agent:navigator.userAgent,
+                    err:error.response.data.message,
+                    info: "hello",
+                    trace:"hello",
+                    msg: error.response.data.message,
+                }
+          $axios.post("/v2/v1/error_log",
+                           data,
+                    {
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         }, 
+                        })
+                    .then(response => {
+                        console.log('hee')
+                        console.log(response)
+                        console.log('fff')
+                    })
+                    const code = parseInt(error.response && error.response.status)
+                    if (code === 400) {
+                          redirect('/400')
+                        }else if(code == 500) {
+                          redirect(`/error_page?lang=en`) 
+                         
+                        }
   })
+   
 
   
 }
