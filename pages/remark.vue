@@ -259,13 +259,13 @@ export default {
                         });
                     }
                     else {
-                         // this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                         this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
                     }  
                 })
                 .catch(error => {
                    this.$message({
                             showClose: true,
-                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                          message: 'catch error',
                           type: 'warning',
                         });
                 });
