@@ -664,3 +664,23 @@ input[type=number] {
 .smooth-picker .smooth-handle-layer .smooth-top[data-v-a1dc87f8] {
   background-color: yellow !important;
 }
+/* .item_error {
+  width:100%;
+  position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+} */
+.item_error img {
+  width:100px;
+  height: auto;
+}
+.item_error p {
+  color:#6d6868e0;
+}
+.item_error .el-button {
+  border:2px solid #b8b8b8;
+  color:#000;
+  background: unset;
+  padding:9px;
+}

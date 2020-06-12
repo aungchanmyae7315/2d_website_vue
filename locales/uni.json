@@ -295,7 +295,10 @@
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
 "/share":"/share",
-"your_slip_code_is":"ဤအမှတ်စဉ်(၆)လုံးဖြင့် အရင်ကတင်ပြပြီးပါပြီ။"
+"your_slip_code_is":"ဤအမှတ်စဉ်(၆)လုံးဖြင့် အရင်ကတင်ပြပြီးပါပြီ။",
+"something_went_wrong":"တစ်ခုခုမှားနေသည်။",
+"pls_check_your_connection":"အင်တာနက်စစ်ဆေးပြီး ပြန်စမ်းကြည့်ပါ။",
+"try_again":"ပြန်စမ်းရန်"
 
 
 
