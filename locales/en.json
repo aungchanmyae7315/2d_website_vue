@@ -296,7 +296,11 @@
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
 "/share":"/share",
-"your_slip_code_is":"Your slip code has been submitted."
+"your_slip_code_is":"Your slip code has been submitted.",
+"something_went_wrong":"Something went wrong",
+"pls_check_your_connection":"Please check your connection and try again",
+"try_again":"Try Again"
+
 
 
 
