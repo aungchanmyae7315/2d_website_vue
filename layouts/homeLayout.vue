@@ -100,12 +100,18 @@
           </el-menu>
         </el-footer>
     </div>
-    
+    <HasError></HasError>
+   
   </div>
 </template>
 <script>
+import HasError from '~/components/HasError.vue'
 export default {
+   components: {
+     HasError
+  },
   mounted() {
+     
       let token = localStorage.getItem('token');
         var data =  moment().format('YYYY-MM-DD HH:mm:ss')
        
@@ -126,7 +132,8 @@ export default {
     return {
       readed:'',
        dialog: false,
-       fullscreenLoading: false
+      fullscreenLoading: false,
+     
     }
   },
   methods: {

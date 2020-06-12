@@ -11,9 +11,9 @@
      data-aos-easing="linear"
      data-aos-duration="500">
                     <p class="contact_text"> {{ $t('Contact us via Viber or Phone call.') }}</p>
-                    <p style="color:#eebd3e;font-weight:bold;font-size:16px;">{{$t('service_time_one')}}</p>
-                     <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_two')}}</p>
-                      <p style="color:#BDC5BE;font-size:13px;">{{$t('service_time_three')}}</p>
+                    <p style="color:#eebd3e;font-weight:bold;font-size:16px;margin:0;">{{$t('service_time_one')}}</p>
+                     <p style="color:#BDC5BE;font-size:13px;margin:0;">{{$t('service_time_two')}}</p>
+                      <p style="color:#BDC5BE;font-size:13px;margin:0;">{{$t('service_time_three')}}</p>
 
               <el-card  class="phone_card">
                        
@@ -104,12 +104,14 @@
               </div>
              </div>
         </el-main>
+         <HasError></HasError>
     </main>
 </template>
 
 
 <script>
  import axios from 'axios'
+  import HasError from '~/components/HasError.vue'
 export default {
 
      layout: 'serviceLayout',
@@ -119,8 +121,12 @@ export default {
         })
      
     },
+     components: {
+     HasError
+    },
      data() {
        return {
+         
          contact:[],
        }
      },
@@ -170,6 +176,7 @@ export default {
   }
 
     .service .contact_text  {
+        margin:0;
         color:#BDC5BE;
         font-size:17px;
         font-weight: bold;

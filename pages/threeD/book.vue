@@ -13,7 +13,7 @@
                             hello
                         </el-button>
                     
-                        <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="chan();  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
+                        <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="rBtn(Bookthreed);  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
                           <el-dialog
                          
                             title="Tips"
@@ -263,6 +263,7 @@ export default {
                 this.Bookthreed = checkedElements;
                 console.log(this.Bookthreed)
 
+
         },
          thousands_separators(num){
             //console.dir(num);
@@ -299,16 +300,7 @@ export default {
         goBack() {
             this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
         },
-        chan() {
-               
-                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
-                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
-                    return el.value;
-                });
-                checkedElements = checkedElements.filter(e => e !== 'on'); // will return ['A', 'C']
-                this.Bookthreed = checkedElements;
-
-        },
+  
         submitAll() {
             console.log(this.checkboxModelbox)
         },
@@ -336,24 +328,14 @@ export default {
             
 
         },
-          rBtn(threed) {
-                let book_number = []
-              for(let child of this.book_data){
-                  this.one = child
-
-                            this.one.children.forEach(element => {
-                                 if("!'dd-item open") {
-                                    book_number.push(element.number);
-                                    this.Bookthreed = book_number;
-                               }
-                   
-                            });  
-            }
-                          
-                           
-           console.log(this.Bookthreed)
+          rBtn(Bookthreed) {
+             
+           
+            //   alert(Bookthreed)
+            var str ='123'
+            var res = str.split(" ", 3);
+            console.log(res)
           
-          this.isActive = !this.isActive;
           const permArr = [],usedChars = [];
           const rotate = (input) => {
             let ch;
@@ -377,14 +359,16 @@ export default {
 
           let regex = new RegExp(',', 'g');
           let data = [];
-          let result = rotate(this.Bookthreed);
+          let result = rotate(Bookthreed);
 
           result.forEach(arr => {
             data.push(arr.toString().replace(regex, ''));
           })
           data = data.filter(unique);
           this.Rnumber = data
+          console.log('lee ')
           console.log(this.Rnumber)
+        console.log('pal')
 
 
         // this.checkAll = true

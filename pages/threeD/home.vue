@@ -142,7 +142,7 @@
             </el-col>
             <el-col :span="6">
                     
-                 <el-button @click="rBtn(threed) ; handleCheckAllChange" :indeterminate="isIndeterminate" v-model="checkAll"  :class="{'is-active': isActive}" class="r_btn btn btn-info">R</el-button> 
+                 <el-button @click="rBtn(c) ; handleCheckAllChange" :indeterminate="isIndeterminate" v-model="checkAll"  :class="{'is-active': isActive}" class="r_btn btn btn-info">R</el-button> 
 
             </el-col>
           </el-row>

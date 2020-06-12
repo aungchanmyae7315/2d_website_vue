@@ -178,23 +178,7 @@
     <el-button style="margin-top:20px;" type="primary" @click="autoLogout() ;dialogVisible_autoLogout = false">{{$t('ok')}}</el-button>
   
 </el-dialog>
-<el-dialog
 
-  :visible.sync="dialogVisible_error"
-  width="90%"
-   :show-close="false"
-  :close-on-click-modal="false">
-  <section class="item_error">
-            <div>
-                <img src="~static/error/sad_cloud_icon.png" alt="">
-                <h6>{{$t('something_went_wrong')}}</h6>
-                <p>{{$t('pls_check_your_connection')}}</p>
-                <el-button type="info"  @click=" HomeRefresh();dialogVisible_error = false" v-loading.fullscreen.lock="fullscreenLoading"  ><img src="~static/icons_header/dimond_t_icon.png" style="width:30px" alt="">{{$t('try_again')}}</el-button>
-            </div>
-    </section>
-  
-
-</el-dialog>
   </el-main>
        
 </template>
@@ -214,88 +198,7 @@ export default {
 
 
   mounted() {
-       let token = localStorage.getItem('token');
-         if(token) { 
-            this.$axios.onError(error => {
-              console.log(error.response)
-                var data = {
-                    request_url:error.response.config.url,
-                    user_agent:navigator.userAgent,
-                    page_url: window.location.href,
-                    err:error.response.data.message,
-                    info: "hello",
-                    trace:"hello",
-                    msg: error.response.data.message,
-                }
-              this.$axios.post("/v2/v1/error_log",
-                           data,
-                    {
-                        headers: {
-                               "Authorization": "Bearer "+token
-                         }, 
-                        })
-                    .then(response => {
-                        console.log(response)
-                    })
-                    const code = parseInt(error.response && error.response.status)
-                    if (code === 400) {
-                          redirect('/400')
-                        }else if(code == 500) {
-                            this.dialogVisible_error = true
-                          // redirect(`/error_page?lang=en`) 
-                        }
-                })
-         }else {
-          
-               this.$axios.onError(error => {
-                console.log(error.response)
-                var data = {
-                    request_url:error.response.config.url,
-                    user_agent:navigator.userAgent,
-                    page_url: window.location.href,
-                    err:error.response.data.message,
-                    info: "hello",
-                    trace:"hello",
-                    msg: error.response.data.message,
-                }
-              alert('ok')
-             this.$axios.post('/v2/v1/error_log/all', {
-                  data
-                })
-                .then(response => {
-                        console.log(response)
-                    })
-                    const code = parseInt(error.response && error.response.status)
-                    if (code === 400) {
-                          redirect('/400')
-                        }else if(code == 500) {
-                            this.dialogVisible_error = true
-                          // redirect(`/error_page?lang=en`) 
-                        }
-              })
-         }
-  
-Vue.config.warnHandler = function(msg, vm, trace) {
-  console.dir("+++ warnHandler");
-  console.dir(trace);
-  console.dir(msg);
-  console.dir("++++++");
-  console.dir(vm.$axios);
-  console.dir(navigator.userAgent);
-  //user id
-  //url
-    this.dialogVisible_error = true
-}
-Vue.config.errorHandler = (err, vm, info) => {
-  // err: error trace
-  // vm: component in which error occured
-  // info: Vue specific error information such as lifecycle hooks, events etc.
-  
-  // TODO: Perform any custom logic or log to server
-  console.dir("+++ errorHandler");
-  console.dir(err);
-    this.dialogVisible_error = true
-};
+     
 
   var self = this;
           if (this.$store.state.sliderImage.length > 0){
@@ -351,8 +254,7 @@ Vue.config.errorHandler = (err, vm, info) => {
       last_date:'',
       dialogVisible: false,
       dialogVisible_autoLogout:false,
-      dialogVisible_error:false,
-      fullscreenLoading: false,
+     
       isActive: true,
       hasError: false,
       currentTime: '',

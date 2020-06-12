@@ -15,7 +15,8 @@ const createStore = () => {
             file:'',
             webAppVersion:'',
             sliderImage:[],
-            sliderText:''
+            sliderText:'',
+            hello:''
         
         },
         getters: {
@@ -98,6 +99,10 @@ const createStore = () => {
             },
             file(state, file){
                 state.file = file;
+            },
+            axiosError(state, error){
+                localStorage.setItem('axiosRequestError', error);
+                state.error = error;
             },
            
         }
