@@ -158,12 +158,18 @@
           </el-menu>
         </el-footer>
   </div>
+   <HasError></HasError>
       </el-main>
 
 </template>
 <script>
+
  import axios from 'axios'
+import HasError from '~/components/HasError.vue'
 export default {
+  components: {
+     HasError
+    },
     mounted() {
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');

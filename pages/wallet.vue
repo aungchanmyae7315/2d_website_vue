@@ -148,6 +148,7 @@
 
               </el-menu>
           </el-footer>
+           <HasError></HasError>
   </el-main>
 </template>
 <style>
@@ -295,6 +296,7 @@
 </style>
 <script>
  import axios from 'axios'
+ import HasError from '~/components/HasError.vue'
   export default {
 
      mounted() {
@@ -303,6 +305,9 @@
       this.updateIsLoggedIn();
      
    },
+    components: {
+     HasError
+    },
     data() {
       return {
         fullscreenLoading: false,
