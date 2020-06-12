@@ -644,7 +644,7 @@ export default {
                     this.submitted = false
                       this.$message({
                             showClose: true,
-                          message: 'သင်၏ Slip Code  အသုံးပြုပြီးပါပြီ ',
+                          message: this.$t('your_slip_code_is'),
                           type: 'warning',
                         });
                 }else {

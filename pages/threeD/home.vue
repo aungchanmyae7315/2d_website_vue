@@ -117,11 +117,11 @@
                     <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
                 </el-col>
                 <el-col :span="6">   
-                    <!-- <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank">  -->
-                  <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">  
+                     <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank">  
+                  <!-- <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">   -->
                     <el-button  class="book_btn" type="text"></el-button>
-                  </nuxt-link>
-                  <!-- </a> -->
+                  <!-- </nuxt-link> -->
+                   </a> 
                 </el-col>
             </el-row>
            <div>
@@ -142,7 +142,7 @@
             </el-col>
             <el-col :span="6">
                     
-                 <el-button @click="rBtn(c) ; handleCheckAllChange" :indeterminate="isIndeterminate" v-model="checkAll"  :class="{'is-active': isActive}" class="r_btn btn btn-info">R</el-button> 
+                 <el-button @click="rBtn(threed) " :indeterminate="isIndeterminate" v-model="checkAll"  :class="{'is-active': isActive}" class="r_btn btn btn-info">R</el-button> 
 
             </el-col>
           </el-row>
