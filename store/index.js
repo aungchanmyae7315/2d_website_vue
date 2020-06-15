@@ -108,6 +108,15 @@ const createStore = () => {
                 localStorage.setItem('UserID', user_id);
                 state.user_id = user_id;
             },
+            topup_detail_id(state, data) {
+                state.data = data;
+                localStorage.setItem('topup_detail_id', (data));  
+            },
+            withdrawl_detail_id(state, data) {
+                state.data = data;
+                localStorage.setItem('withdrawl_detail_id', (data));  
+            },
+            
            
         }
     })
