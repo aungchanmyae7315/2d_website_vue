@@ -503,6 +503,8 @@ export default {
                          }
                         })
                     .then(response => {
+                      var user_id = response.data.data.id
+                      window.$nuxt.$store.commit('userId', user_id);
                       this.blockUser = response.data.data.trash
                       this.profile = response.data.data
                       this.myWallet = this.profile.wallet 

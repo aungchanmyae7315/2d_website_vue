@@ -20,23 +20,8 @@ export default function ({ $axios, redirect }) {
 
  
             $axios.onError(error => {
-              // console.log('lee')
-              
-              let token = localStorage.getItem('token');
-            
-              $axios.get("/v2/v1/profile",
-                      {headers: {
-                                  "Authorization": "Bearer "+token
-                            }
-                          })
-                      .then(response => {
-                        console.log(response)
-                        var user_id = response.data.data.id
-                        window.$nuxt.$store.commit('userId', user_id);
-                       
-                          
-                  })
-            
+
+             
                 var data = {
                     user_id:localStorage.getItem('UserID'),
                     request_url:error.response.config.url,
