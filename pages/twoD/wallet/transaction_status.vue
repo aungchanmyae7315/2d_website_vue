@@ -9,7 +9,7 @@
      <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane :label="$t('Withdrawal')" name="first">
            
-          <section v-if="withdrawl_transaction" class="transaction">
+          <section v-if="this.withdrawl_transaction" class="transaction">
             
                 <p>နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း</p>
                 <el-card class="transaction_list" v-for="(tran , t) in withdrawl_transaction" :key="t">
@@ -65,7 +65,7 @@
         </el-tab-pane>
         <el-tab-pane :label="$t('Top Up')" name="second">
               
-            <section v-if="topup_transaction" class="transaction">
+            <section v-if="this.topup_transaction" class="transaction">
                   <p>နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း</p>
                 <el-card class="transaction_list" v-for="(tran , t) in topup_transaction" :key="t">
                     <div  @click="cur_id(tran.id)" >
