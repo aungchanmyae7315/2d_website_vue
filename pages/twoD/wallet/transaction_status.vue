@@ -8,7 +8,9 @@
       </el-header>
      <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane :label="$t('Withdrawal')" name="first">
-          <section class="transaction">
+            <section v-if="!withdrawl_transaction"> <p style="text-align:center;color:#b8b8b8">No Data</p></section>
+          <section v-else class="transaction">
+            
                 <p>နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း</p>
                 <el-card class="transaction_list" v-for="(tran , t) in withdrawl_transaction" :key="t">
                     <div @click="withdrawl_cur_id(tran.id)">
@@ -61,7 +63,8 @@
 
         </el-tab-pane>
         <el-tab-pane :label="$t('Top Up')" name="second">
-            <section class="transaction">
+               <section v-if="!withdrawl_transaction"> <p style="text-align:center;color:#b8b8b8">No Data</p></section>
+            <section v-else class="transaction">
                   <p>နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း</p>
                 <el-card class="transaction_list" v-for="(tran , t) in topup_transaction" :key="t">
                     <div  @click="cur_id(tran.id)" >
