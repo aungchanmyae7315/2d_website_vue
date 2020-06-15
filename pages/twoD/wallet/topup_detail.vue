@@ -43,7 +43,7 @@
                       <h6>Transaction Type</h6>
                   </el-col>
                   <el-col :span="12">
-                      <p>Withdrawal</p>
+                      <p>Top Up</p>
                   </el-col>
                    <el-col :span="12">
                       <h6>Bank</h6>
