@@ -69,7 +69,7 @@
                       
                          </nuxt-link>
                   </div>
-                <el-card class="time_card" data-aos="fade-up" data-aos-duration="800">
+                <el-card class="time_card">
                     <span>{{$t('sein_lucky_office_hours')}}</span>
                     <el-divider></el-divider>
                     <span>{{$t('mon-sat')}}</span><br>
@@ -77,7 +77,7 @@
                     <span>{{$t('evening')}} 12:00 PM - 06:00 PM</span>
                 </el-card>
                     
-                <el-card class="bank_card" style="width:98%" data-aos="fade-up" data-aos-duration="800">
+                <el-card class="bank_card" style="width:98%">
                   
 
                   <h5>{{ $t('Sein Lucky Bank Accounts') }}</h5>
