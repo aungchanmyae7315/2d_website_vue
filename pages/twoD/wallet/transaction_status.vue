@@ -63,7 +63,7 @@
 
         </el-tab-pane>
         <el-tab-pane :label="$t('Top Up')" name="second">
-               <section v-if="!withdrawl_transaction"> <p style="text-align:center;color:#b8b8b8">No Data</p></section>
+               <section v-if="!topup_transaction"> <p style="text-align:center;color:#b8b8b8">No Data</p></section>
             <section v-else class="transaction">
                   <p>နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း</p>
                 <el-card class="transaction_list" v-for="(tran , t) in topup_transaction" :key="t">
