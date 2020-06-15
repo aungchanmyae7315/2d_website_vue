@@ -104,6 +104,10 @@ const createStore = () => {
                 localStorage.setItem('axiosRequestError', error);
                 state.error = error;
             },
+            userId(state, user_id){
+                localStorage.setItem('UserID', user_id);
+                state.user_id = user_id;
+            },
            
         }
     })

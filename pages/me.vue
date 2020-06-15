@@ -180,7 +180,7 @@ export default {
                   }
                 })
             .then(response => {
-           
+           console.log(response)
                 // this.$nuxt.$loading.finish()
                  this.blockUser = response.data.data.trash
                 this.device_id = response.data.data.device_id
