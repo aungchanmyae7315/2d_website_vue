@@ -40,12 +40,12 @@ export default function ({ $axios, redirect }) {
                     if (code === 400) {
                           redirect('/400')
                         }
-                        window.$nuxt.$store.commit('axiosError', error.response);
+                       // window.$nuxt.$store.commit('axiosError', error.response);
                 })
        
   
 Vue.config.warnHandler = function(msg, vm, trace) {
-  vm.$store.commit('axiosError', trace);
+  //vm.$store.commit('axiosError', trace);
   // console.dir("+++ warnHandler");
   // console.dir(trace);
   // console.dir(msg);
@@ -56,7 +56,7 @@ Vue.config.warnHandler = function(msg, vm, trace) {
   
 }
 Vue.config.errorHandler = (err, vm, info) => {
-  vm.$store.commit('axiosError', err);
+  //vm.$store.commit('axiosError', err);
   // err: error trace
   // vm: component in which error occured
   // info: Vue specific error information such as lifecycle hooks, events etc.

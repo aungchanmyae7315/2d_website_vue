@@ -25,6 +25,7 @@
     "element-ui": "^2.13.0",
     "html-to-image": "^0.1.1",
     "html2canvas": "^1.0.0-rc.5",
+    "material-design-icons": "^3.0.1",
     "mobile-device-detect": "^0.3.3",
     "moment": "^2.24.0",
     "nuxt": "^2.0.0",
