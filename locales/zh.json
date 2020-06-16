@@ -301,7 +301,17 @@
 "try_again":"重试",
 "number":"号 ",
 "availabel_bet_amount":"可下注额 仅剩 ",
-"reach_highest_bet_limit":"已达最高下注额，请尝试其他号码。"
+"reach_highest_bet_limit":"已达最高下注额，请尝试其他号码。",
+"transaction_type":"交易类型",
+"bank":"银行",
+"account":"银行账号",
+"transaction_status":"查看 提现与充值 状态",
+"transaction_history":"两天内交易记录",
+"withdrawal_success":"提现成功",
+"pending":"提交中。。。",
+"money_has_been_trans":"钱已经回到您的 银行账户。",
+"withdrawal_details":"提现信息",
+"topup_details":"充值信息"
 
 
 

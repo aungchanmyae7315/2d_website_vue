@@ -302,7 +302,17 @@
 "try_again":"Try Again",
 "number":"number",
 "availabel_bet_amount":"available bet amount only remains",
-"reach_highest_bet_limit":"reach highest bet limit amount. Please try other numbers. "
+"reach_highest_bet_limit":"reach highest bet limit amount. Please try other numbers. ",
+"transaction_type":"Transaction Type",
+"bank":"Bank",
+"account":"Account",
+"transaction_status":"Transaction Status",
+"transaction_history":"Transaction History within 2 days",
+"withdrawal_success":"Withdrawal Success !",
+"pending":"Pending...",
+"money_has_been_trans":"Money has been transferred to your bank account.",
+"withdrawal_details":"Withdrawal Details",
+"topup_details":"Top Up Details"
 
 
 

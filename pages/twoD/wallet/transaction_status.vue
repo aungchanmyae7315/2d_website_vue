@@ -2,7 +2,7 @@
    <main class="tran_status">
       <el-header>
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
-               <el-page-header title="" @back="goBack"  content="Transaction Status">
+               <el-page-header title="" @back="goBack"   :content="`${$t('transaction_status')}`">
                 </el-page-header>
            <!-- </nuxt-link> -->
       </el-header>
@@ -11,7 +11,7 @@
            
           <section v-if="this.withdrawl_transaction" class="transaction">
             
-                <p>နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း</p>
+                 <p>{{$t('transaction_history')}}</p>
                 <el-card class="transaction_list" v-for="(tran , t) in withdrawl_transaction" :key="t">
                     <div @click="withdrawl_cur_id(tran.id)">
                     <el-row>
@@ -35,12 +35,12 @@
                     </el-row>
                      <el-divider></el-divider>
                      <div v-if="tran.status == 0">
-                          <p style="color:#2196F3;padding-top:5px;margin:0;">တင်ပြနေသည် . . .</p>
+                          <p style="color:#2196F3;padding-top:5px;margin:0;">{{$t('pending')}}</p>
                      </div>
                       <div v-if="tran.status == 1">
                           <div style="float:left;padding-top:5px">
-                              <h6 style="color:#158220;font-weight:bold">ငွေလွှဲပြီး</h6>
-                              <p style="color:#757575;font-size:12px">ဘဏ်အကောင့်သို့ငွေရောက်ရှိပါသည်</p>
+                              <h6 style="color:#158220;font-weight:bold">{{$t('withdrawal_success')}}</h6>
+                              <p style="color:#757575;font-size:12px">{{$t('money_has_been_trans')}}</p>
                           </div>
                           <div style="float:right">
                               <img src="~static/images/topup_withdraw/check_circle-black-18dp.svg" alt="" style="padding:12px;">
@@ -66,7 +66,7 @@
         <el-tab-pane :label="$t('Top Up')" name="second">
               
             <section v-if="this.topup_transaction" class="transaction">
-                  <p>နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း</p>
+                  <p>{{$t('transaction_history')}}</p>
                 <el-card class="transaction_list" v-for="(tran , t) in topup_transaction" :key="t">
                     <div  @click="cur_id(tran.id)" >
                     <el-row>
@@ -90,12 +90,12 @@
                     </el-row>
                      <el-divider></el-divider>
                      <div v-if="tran.status == 0">
-                          <p style="color:#2196F3;padding-top:5px;margin:0;">တင်ပြနေသည် . . .</p>
+                          <p style="color:#2196F3;padding-top:5px;margin:0;">{{$t('pending')}}</p>
                      </div>
                       <div v-if="tran.status == 1">
                           <div style="float:left;padding-top:5px">
-                              <h6 style="color:#158220;font-weight:bold">ငွေလွှဲပြီး</h6>
-                              <p style="color:#757575;font-size:12px">ဘဏ်အကောင့်သို့ငွေရောက်ရှိပါသည်</p>
+                              <h6 style="color:#158220;font-weight:bold">{{$t('withdrawal_success')}}</h6>
+                              <p style="color:#757575;font-size:12px">{{$t('money_has_been_trans')}}</p>
                           </div>
                           <div style="float:right">
                               <img src="~static/images/topup_withdraw/check_circle-black-18dp.svg" alt="" style="padding:12px;">
