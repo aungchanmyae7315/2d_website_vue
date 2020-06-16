@@ -192,20 +192,25 @@ export default {
                         });
                     }else if (response.data.status == 7) {
                        this.submitted = false
+                        const h = this.$createElement;
                        this.$message({
-                            showClose: true,
-                          message: response.data.data,
-                          type: 'warning',
-                           duration:10000
+                          message: h('p', null, [
+                            h('span', null, ),
+                            h('i', { style: 'color: green' },'3D' + this.$t('number')+' '+(response.data.data)+' '+this.$t('reach_highest_bet_limit'))
+                          ])
                         });
+
                     } else if (response.data.status == 8) {
+                        this.submitted = false
+                        const h = this.$createElement;
                        this.$message({
-                            showClose: true,
-                          message: response.data.data,
-                          type: 'warning',
-                           duration:10000
+                          message: h('p', null, [
+                            h('span', null, ),
+                            h('i', { style: 'color: green' },'3D' + this.$t('number')+' '+(response.data.data.number)+' '+this.$t('availabel_bet_amount')+(response.data.data.amount)+ this.$t('kyat'))
+                          ])
                         });
-                    }
+                   
+                     }
                     else if (response.data.status == 5) {
                        this.submitted = false
                        this.$message({

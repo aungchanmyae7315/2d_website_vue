@@ -299,8 +299,10 @@
 "your_slip_code_is":"Your slip code has been submitted.",
 "something_went_wrong":"Something went wrong",
 "pls_check_your_connection":"Please check your connection and try again",
-"try_again":"Try Again"
-
+"try_again":"Try Again",
+"number":"number",
+"availabel_bet_amount":"available bet amount only remains",
+"reach_highest_bet_limit":"reach highest bet limit amount. Please try other numbers. "
 
 
 

@@ -298,7 +298,12 @@
 "your_slip_code_is":"此编号已经被提交过了。",
 "something_went_wrong":"系统异常",
 "pls_check_your_connection":"检查网络后 请重试。",
-"try_again":"重试"
+"try_again":"重试",
+"number":"号 ",
+"availabel_bet_amount":"可下注额 仅剩 ",
+"reach_highest_bet_limit":"已达最高下注额，请尝试其他号码。"
+
+
 
 
 

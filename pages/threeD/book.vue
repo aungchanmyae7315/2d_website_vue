@@ -10,30 +10,46 @@
             <el-row style="padding-top:10px;">
                 <el-col :span="6">
                         <el-button v-if="this.Bookthreed.length != 1">
-                            hello
+                            <span @click="LengthBtn() ;dialogFormVisible_length = true" v-if="this.Bookthreed.length > 1">{{this.Bookthreed.length}}</span>
+                            <span v-else>0</span>
                         </el-button>
-                    
+                         
                         <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="rBtn(Bookthreed);  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
                           <el-dialog
                          
-                            title="Tips"
-                        
                             :show-close="false"
                             :close-on-click-modal = "false"
                             :visible.sync="dialogFormVisible_rBtn"
                             width="90%">    
-                           <span>dd{{this.Bookthreed}}</span>
                             <el-checkbox-group v-model="checkboxModelbox" @change="handleCheckedCitiesChange">
-                                <el-checkbox-button v-for="(number , index) in this.Bookthreed" :key="index" :label="number" >
+                                <el-checkbox-button v-for="(number , index) in this.Rnumber" :key="index" :label="number" >
                                     {{number}}
                                 </el-checkbox-button>
                             </el-checkbox-group>
                             
                             <span slot="footer" class="dialog-footer">
                                 <el-button @click="dialogFormVisible_rBtn = false;  checkboxModelbox = []">Cancel</el-button>
-                                <el-button type="primary"   @click=" submitAll();dialogFormVisible_rBtn = true">Confirm</el-button>
+                                <el-button type="primary"   @click=" submitAll('ruleForm');dialogFormVisible_rBtn = true">Confirm</el-button>
                             </span>
                         </el-dialog>
+                        <!--lenght number model box -->
+                         <el-dialog
+                         
+                            :show-close="false"
+                            :close-on-click-modal = "false"
+                            :visible.sync="dialogFormVisible_length"
+                            width="90%">  
+                            <el-checkbox-group v-model="checkboxModelboxLength" @change="handleCheckedCitiesChange">
+                                <el-checkbox-button v-for="(number , index) in this.Bookthreed" :key="index" :label="number" >
+                                    {{number}}
+                                </el-checkbox-button>
+                            </el-checkbox-group>
+                            
+                            <span slot="footer" class="dialog-footer">
+                                <el-button @click="dialogFormVisible_length = false;  checkboxModelboxLength = []">Cancel</el-button>
+                                <el-button type="primary"   @click=" submitLength('ruleForm');dialogFormVisible_length = true">Confirm</el-button>
+                            </span> 
+                          </el-dialog>
                   
             
                 </el-col>
@@ -216,9 +232,11 @@ export default {
         return {
             checkAll: false,
              isIndeterminate: true,
-            checkboxModelbox:true,
+            checkboxModelbox:[],
+            checkboxModelboxLength:[],
             Bookthreed:true,
             dialogFormVisible_rBtn:false,
+            dialogFormVisible_length:false,
               getOpen:'',
               myWallet:'',
               endTime: '',
@@ -301,7 +319,20 @@ export default {
             this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
         },
   
-        submitAll() {
+        submitAll(formName) {
+             this.$refs[formName].validate((valid) => {
+                if (valid) {
+                  
+                    var data = this.ruleForm.amount  
+                    this.$store.commit('betAmountThreeD',data);
+                    var data = this.checkboxModelbox  
+                    this.$store.commit('getBetThreeD', data);
+                    this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+                }else {
+                    console.log('error submit!!');
+                    return false;
+                }
+             });
             console.log(this.checkboxModelbox)
         },
          submitForm(formName) {
@@ -318,7 +349,7 @@ export default {
                 this.$store.commit('betAmountThreeD',data);
                 var data = this.Bookthreed  
                 this.$store.commit('getBetThreeD', data);
-                  this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+                  //this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
           }else{
               console.log('valid !!')
           }
@@ -329,15 +360,9 @@ export default {
 
         },
           rBtn(Bookthreed) {
-             
-           
-            //   alert(Bookthreed)
-            var str ='123'
-            var res = str.split(" ", 3);
-            console.log(res)
-          
-          const permArr = [],usedChars = [];
-          const rotate = (input) => {
+            const finalData = Array.from(String(Bookthreed), Number);
+            const permArr = [],usedChars = [];
+            const rotate = (input) => {
             let ch;
             input.forEach((val,index) =>{
               ch = input.splice(index, 1)[0];
@@ -359,24 +384,41 @@ export default {
 
           let regex = new RegExp(',', 'g');
           let data = [];
-          let result = rotate(Bookthreed);
+          let result = rotate(finalData);
+          console.log(result)
 
           result.forEach(arr => {
             data.push(arr.toString().replace(regex, ''));
           })
           data = data.filter(unique);
           this.Rnumber = data
-          console.log('lee ')
+         
           console.log(this.Rnumber)
-        console.log('pal')
 
 
-        // this.checkAll = true
-        // this.bet_number = true
-        // this.isIndeterminate = false;
-        // this.bet_number = threed ? this.Rnumber : [];
-        // this.isIndeterminate = false;
+       this.checkAll = true
+        this.bet_number = true
+        this.isIndeterminate = false;
+        this.checkboxModelbox = finalData ? this.Rnumber : [];
+        this.isIndeterminate = false;
 
+    },
+    LengthBtn() {
+         this.checkboxModelboxLength = this.Bookthreed ? this.Bookthreed : [];
+    },
+    submitLength(formName) {
+         this.$refs[formName].validate((valid) => {
+             if (valid) {
+                 //console.log(this.checkboxModelboxLength)
+                  var data = this.ruleForm.amount  
+                    this.$store.commit('betAmountThreeD',data);
+                    var data = this.checkboxModelboxLength  
+                    this.$store.commit('getBetThreeD', data);
+                    this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+             }else {
+
+             }
+         })
     },
      
 
