@@ -365,6 +365,7 @@ export default {
     width:100%;
 }
 .bet_submit {
+  margin-bottom: 20px;
   background-color:#158220;
   color:#fff;
   font-weight: bold;

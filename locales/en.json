@@ -244,7 +244,7 @@
   "seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ",
   "seinlucky_point":"Seinlucky Point",
   "/seinlucky_point":"/seinlucky_point",
-  "customer_service_title":"Customer Service",
+  "customer_service_title":"App Error Help",
   "topup_withdrawal_help":"Top-up/Withdrawal Help",
   "it_support":"IT Support",
   "agent_info":"Agent Information (Viber Only)",
@@ -295,7 +295,8 @@
 "/threeD/home":"/threeD/home",
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
-"/share":"/share"
+"/share":"/share",
+"your_slip_code_is":"Your slip code has been submitted."
 
 
 

@@ -243,7 +243,7 @@
 "seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ",
 "seinlucky_point":"Seinlucky Point",
 "/seinlucky_point":"/seinlucky_point",
-"customer_service_title":"客户电话",
+"customer_service_title":"软件问题 客服",
 "topup_withdrawal_help":"充值、提现帮助",
 "it_support":"软件、账号问题",
 "agent_info":"申请代理",
@@ -294,7 +294,8 @@
 "/threeD/home":"/threeD/home",
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
-"/share":"/share"
+"/share":"/share",
+"your_slip_code_is":"此编号已经被提交过了。"
 
 
 

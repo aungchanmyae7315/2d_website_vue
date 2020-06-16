@@ -243,7 +243,7 @@
 "seinlucky_point_btn":"ရယူနည်းကို ကြည့်ရန်နှိပ်ပါ",
 "seinlucky_point":"Seinlucky Point",
 "/seinlucky_point":"/seinlucky_point",
-"customer_service_title":"အထွေထွေ ဝန်ဆောင်မှုဖုန်း",
+"customer_service_title":"App Error ဝန်ဆောင်မှုဖုန်း",
 "topup_withdrawal_help":"ငွေသွင်း၊ငွေထုတ် အကူအညီ",
 "it_support":"ဆော့ဝဲ App အကူအညီ",
 "agent_info":"ကိုယ်စားလှယ်ဝင်ဖို့ စုံစမ်းရန်",
@@ -294,7 +294,8 @@
 "/threeD/home":"/threeD/home",
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
-"/share":"/share"
+"/share":"/share",
+"your_slip_code_is":"ဤအမှတ်စဉ်(၆)လုံးဖြင့် အရင်ကတင်ပြပြီးပါပြီ။"
 
 
 
