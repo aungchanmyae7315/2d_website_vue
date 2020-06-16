@@ -63,7 +63,7 @@
                       <h6>{{$t('Amount')}}</h6>
                   </el-col>
                   <el-col :span="12">
-                      <p>{{this.topup_detail_item.amount}}</p>
+                      <p>{{this.topup_detail_item.amount}} {{$t('kyat')}}</p>
                   </el-col>
               </el-row>
               <div v-if="this.topup_detail_item.status == 2">

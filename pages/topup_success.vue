@@ -8,7 +8,7 @@
                   <el-divider></el-divider>
                 <span>{{$t('mon-sat')}}</span><br>
                 <span>{{$t('morning')}} 9:00 AM - 11:50 AM</span><br>
-                 <span>{{$t('evening')}} 12:00 PM - 06:00 PM</span>
+                 <span>{{$t('evening')}} 01:00 PM - 05:30 PM</span>
 
             </el-card>
             <p style="color:#5AAF46">{{$t('top-up_is_pending_approved_10_minutes')}}</p>
