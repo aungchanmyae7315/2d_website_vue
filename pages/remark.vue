@@ -220,6 +220,7 @@ export default {
                          }, 
                         })
                     .then(response => {
+                        
                     this.res_mor_error = response.data.status
                     if(this.res_mor_error == "morning"  ) {
                          this.$message({
@@ -243,19 +244,21 @@ export default {
                            duration:10000
                         });
                     }else if (response.data.status == 7) {
+                        const h = this.$createElement;
                        this.$message({
-                            showClose: true,
-                          message: response.data.data,
-                          type: 'warning',
-                           duration:10000
+                          message: h('p', null, [
+                            h('span', null, ),
+                            h('i', { style: 'color: green' },'3D' + this.$t('number')+' '+(response.data.data)+' '+this.$t('reach_highest_bet_limit'))
+                          ])
                         });
                     }
                     else if (response.data.status == 8) {
+                        const h = this.$createElement;
                        this.$message({
-                            showClose: true,
-                          message: response.data.data,
-                          type: 'warning',
-                           duration:10000
+                          message: h('p', null, [
+                            h('span', null, ),
+                            h('i', { style: 'color: green' },'3D' + this.$t('number')+' '+(response.data.data.number)+' '+this.$t('availabel_bet_amount')+(response.data.data.amount)+ this.$t('kyat'))
+                          ])
                         });
                     }
                     else {
@@ -365,7 +368,11 @@ export default {
     width:100%;
 }
 .bet_submit {
+<<<<<<< HEAD
   margin-bottom: 20px;
+=======
+  margin-bottom:20px;
+>>>>>>> 1cafe71b9cb2a6d88d269e73efbf1aee0102a052
   background-color:#158220;
   color:#fff;
   font-weight: bold;

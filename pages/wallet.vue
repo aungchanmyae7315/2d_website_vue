@@ -49,26 +49,35 @@
                 <nuxt-link  :to="`${$t('/topup')}?lang=${$store.state.locale}`">
                       <el-button type="warning" round>{{ $t('Top Up') }}</el-button>
                 </nuxt-link>
-              
+                <nuxt-link  :to="`${$t('/twoD/wallet/transaction_status')}?lang=${$store.state.locale}`">
+                  <el-button style="width:93%" class="tran_status_btn" round><img src="~static/images/topup_withdraw/exchange-alt-solid.svg" alt="" style="padding:0 10px;"> Transaction Status</el-button>
+                </nuxt-link>
                </div>
 
-         
+            
             </el-header>
              <div class="longText" id="hidingScrollBar">
                 <div class=" hideScrollBar_wallet ">
                   <div class="topup_withdraw">
-                        <nuxt-link  :to="`${$t('/topup_youtube')}?lang=${$store.state.locale}`"><img src="~static/images/topup_withdraw/learn_icon.png" alt="" >
+                        <nuxt-link  :to="`${$t('/topup_youtube')}?lang=${$store.state.locale}`"><img src="~static/images/topup_withdraw/youtube-brands.svg" alt="" >
                          <p class="under-below">ငွေသွင်းနည်းကြည့်ရန် နှိပ်ပါ။</p>
                          <!-- <p class="under-below">{{$t('How to top up money?')}}</p> -->
                          </nuxt-link>
-                         <nuxt-link  :to="`${$t('/withdraw_youtube')}?lang=${$store.state.locale}`"> <img src="~static/images/topup_withdraw/learn_icon.png" alt="">
+                         <nuxt-link  :to="`${$t('/withdraw_youtube')}?lang=${$store.state.locale}`"> <img src="~static/images/topup_withdraw/youtube-brands.svg" alt="">
                          <p class="under-below">  ငွေထုတ်နည်းကြည့်ရန် နှိပ်ပါ။</p>
                            <!-- <p class="under-below">{{$t('How to withdraw money?')}}</p> -->
                       
                          </nuxt-link>
                   </div>
+                <el-card class="time_card">
+                    <span>{{$t('sein_lucky_office_hours')}}</span>
+                    <el-divider></el-divider>
+                    <span>{{$t('mon-sat')}}</span><br>
+                    <span>{{$t('morning')}} 9:00 AM - 11:50 AM</span><br>
+                    <span>{{$t('evening')}} 12:00 PM - 06:00 PM</span>
+                </el-card>
                     
-                <el-card style="width:98%" data-aos="fade-up" data-aos-duration="800">
+                <el-card class="bank_card" style="width:98%">
                   
 
                   <h5>{{ $t('Sein Lucky Bank Accounts') }}</h5>
@@ -83,7 +92,7 @@
                         </div>
                       </el-image>
                       <div  class="avatar_text">
-                        <ul style="padding-top:18px;">
+                        <ul style="position:relative;top:-8px;">
                           <li style="font-size:14px;">{{bank_info.bank_name}}</li>
                           <li style="font-size:14px;" class="bank_number">
                             <span class="code text-red">{{ bank_info.card_number }}</span>
@@ -148,6 +157,7 @@
 
               </el-menu>
           </el-footer>
+           <HasError></HasError>
   </el-main>
 </template>
 <style>
@@ -178,7 +188,7 @@
     }
     .btn_group_wallet {
       text-align: center;
-      padding:10px 0;
+      padding-top:10px;
     }
     .btn_group_wallet .el-button.is-round {
       width:46%;
@@ -199,14 +209,24 @@
     .copy-btn {
       cursor: pointer;
       background: #fff;
-      padding:4px 7px;
+      padding:7px;
       border-radius: 23px;
       font-size:11px;
     }
-    .wallet .el-card {
+    .wallet .bank_card {
       background-color: #252E39;
       border:2pt solid #FFEA72;
       border-radius: 13px;
+    }
+    .wallet .time_card {
+      margin-bottom:15px;
+      border-radius: 13px;
+      color:#fff;
+      border:0;
+      background-color: #2B6F42;
+    }
+    .wallet .time_card .el-divider--horizontal {
+      margin:11px auto;
     }
     .wallet  h5 {
       color:#fff;
@@ -269,8 +289,8 @@
 
     }
     .topup_withdraw img {
-      width:20px;
-      margin:5px 15px;
+      width:25px;
+      margin:5px 8px;
       height:auto;
       float: left;
     }
@@ -281,11 +301,19 @@
       text-decoration-style: solid;
     }
     .under-below { 
-      font-size: 19px;
+      font-size: 15px;
       font-weight: bold;
       -webkit-text-underline-position: under;
       -ms-text-underline-position: below;
       text-underline-position: under; 
+    }
+    .tran_status_btn {
+      width:93%;
+      margin-top:10px;
+      color:#fff;
+      border:0;
+      background-color:#2B6F42;
+      
     }
     @media screen and (max-width: 320px) {
       .wallet_type img {
@@ -295,6 +323,7 @@
 </style>
 <script>
  import axios from 'axios'
+ import HasError from '~/components/HasError.vue'
   export default {
 
      mounted() {
@@ -303,6 +332,9 @@
       this.updateIsLoggedIn();
      
    },
+    components: {
+     HasError
+    },
     data() {
       return {
         fullscreenLoading: false,
@@ -319,7 +351,7 @@
       };
     },
      created() {
-          let token = localStorage.getItem('token');
+        //   let token = localStorage.getItem('token');
         // if(token) {
         //       this.$axios.get("/v2/v1/bank_card_grouping",
         //             {headers: {

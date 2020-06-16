@@ -50,6 +50,7 @@
 
           </el-menu>
         </el-footer>
+         <HasError></HasError>
   </div>
 </template>
 
@@ -79,12 +80,16 @@
 </style>
 
 <script>
+  import HasError from '~/components/HasError.vue'
 export default {
   data() {
     return {
       fullscreenLoading: false
     }
   },
+  components: {
+     HasError
+    },
   methods: {
     HomeRefresh() {
       this.fullscreenLoading = true;

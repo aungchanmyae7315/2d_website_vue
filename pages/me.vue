@@ -158,12 +158,18 @@
           </el-menu>
         </el-footer>
   </div>
+   <HasError></HasError>
       </el-main>
 
 </template>
 <script>
+
  import axios from 'axios'
+import HasError from '~/components/HasError.vue'
 export default {
+  components: {
+     HasError
+    },
     mounted() {
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');
@@ -174,7 +180,7 @@ export default {
                   }
                 })
             .then(response => {
-           
+           console.log(response)
                 // this.$nuxt.$loading.finish()
                  this.blockUser = response.data.data.trash
                 this.device_id = response.data.data.device_id

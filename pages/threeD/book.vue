@@ -9,29 +9,47 @@
            
             <el-row style="padding-top:10px;">
                 <el-col :span="6">
-                    
-                    
-                        <el-button type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="chan();  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
+                        <el-button v-if="this.Bookthreed.length != 1">
+                            <span @click="LengthBtn() ;dialogFormVisible_length = true" v-if="this.Bookthreed.length > 1">{{this.Bookthreed.length}}</span>
+                            <span v-else>0</span>
+                        </el-button>
+                         
+                        <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="rBtn(Bookthreed);  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
                           <el-dialog
                          
-                            title="Tips"
-                        
                             :show-close="false"
                             :close-on-click-modal = "false"
                             :visible.sync="dialogFormVisible_rBtn"
                             width="90%">    
-                           <span>dd{{this.Bookthreed}}</span>
                             <el-checkbox-group v-model="checkboxModelbox" @change="handleCheckedCitiesChange">
-                                <el-checkbox-button v-for="(number , index) in this.Bookthreed" :key="index" :label="number" >
+                                <el-checkbox-button v-for="(number , index) in this.Rnumber" :key="index" :label="number" >
                                     {{number}}
                                 </el-checkbox-button>
                             </el-checkbox-group>
                             
                             <span slot="footer" class="dialog-footer">
                                 <el-button @click="dialogFormVisible_rBtn = false;  checkboxModelbox = []">Cancel</el-button>
-                                <el-button type="primary"   @click=" submitAll();dialogFormVisible_rBtn = true">Confirm</el-button>
+                                <el-button type="primary"   @click=" submitAll('ruleForm');dialogFormVisible_rBtn = true">Confirm</el-button>
                             </span>
                         </el-dialog>
+                        <!--lenght number model box -->
+                         <el-dialog
+                         
+                            :show-close="false"
+                            :close-on-click-modal = "false"
+                            :visible.sync="dialogFormVisible_length"
+                            width="90%">  
+                            <el-checkbox-group v-model="checkboxModelboxLength" @change="handleCheckedCitiesChange">
+                                <el-checkbox-button v-for="(number , index) in this.Bookthreed" :key="index" :label="number" >
+                                    {{number}}
+                                </el-checkbox-button>
+                            </el-checkbox-group>
+                            
+                            <span slot="footer" class="dialog-footer">
+                                <el-button @click="dialogFormVisible_length = false;  checkboxModelboxLength = []">Cancel</el-button>
+                                <el-button type="primary"   @click=" submitLength('ruleForm');dialogFormVisible_length = true">Confirm</el-button>
+                            </span> 
+                          </el-dialog>
                   
             
                 </el-col>
@@ -131,7 +149,7 @@
                             
                             <ul v-if="item.children.length != 0" class="number_list_item">
                                 <li v-for="(children, index) in item.children" :key="index"   :data-id="children.id" class="dd-item">
-                                    <div class="number_item button-group-pills text-center"  data-toggle="buttons">
+                                    <div class="number_item button-group-pills text-center" @click="LengthCount()"  data-toggle="buttons">
                                      
                                         <label class="hide_input" @click="children.state.selected = !children.state.selected"  v-bind:class="[children.state.selected ? 'dd-item open' : 'dd-item']"    >
                                         <input type="checkbox"  
@@ -214,9 +232,11 @@ export default {
         return {
             checkAll: false,
              isIndeterminate: true,
-            checkboxModelbox:true,
-            Bookthreed:'',
+            checkboxModelbox:[],
+            checkboxModelboxLength:[],
+            Bookthreed:true,
             dialogFormVisible_rBtn:false,
+            dialogFormVisible_length:false,
               getOpen:'',
               myWallet:'',
               endTime: '',
@@ -249,6 +269,20 @@ export default {
             
       
       },
+       LengthCount() {
+         
+               
+                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                   
+                checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
+                this.Bookthreed = checkedElements;
+                console.log(this.Bookthreed)
+
+
+        },
          thousands_separators(num){
             //console.dir(num);
           if (num == undefined){
@@ -284,17 +318,21 @@ export default {
         goBack() {
             this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
         },
-        chan() {
-               
-                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
-                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
-                    return el.value;
-                });
-                checkedElements = checkedElements.filter(e => e !== 'on'); // will return ['A', 'C']
-                this.Bookthreed = checkedElements;
-
-        },
-        submitAll() {
+  
+        submitAll(formName) {
+             this.$refs[formName].validate((valid) => {
+                if (valid) {
+                  
+                    var data = this.ruleForm.amount  
+                    this.$store.commit('betAmountThreeD',data);
+                    var data = this.checkboxModelbox  
+                    this.$store.commit('getBetThreeD', data);
+                    this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+                }else {
+                    console.log('error submit!!');
+                    return false;
+                }
+             });
             console.log(this.checkboxModelbox)
         },
          submitForm(formName) {
@@ -311,7 +349,7 @@ export default {
                 this.$store.commit('betAmountThreeD',data);
                 var data = this.Bookthreed  
                 this.$store.commit('getBetThreeD', data);
-                  this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+                  //this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
           }else{
               console.log('valid !!')
           }
@@ -321,26 +359,10 @@ export default {
             
 
         },
-          rBtn(threed) {
-                let book_number = []
-              for(let child of this.book_data){
-                  this.one = child
-
-                            this.one.children.forEach(element => {
-                                 if("!'dd-item open") {
-                                    book_number.push(element.number);
-                                    this.Bookthreed = book_number;
-                               }
-                   
-                            });  
-            }
-                          
-                           
-           console.log(this.Bookthreed)
-          
-          this.isActive = !this.isActive;
-          const permArr = [],usedChars = [];
-          const rotate = (input) => {
+          rBtn(Bookthreed) {
+            const finalData = Array.from(String(Bookthreed), Number);
+            const permArr = [],usedChars = [];
+            const rotate = (input) => {
             let ch;
             input.forEach((val,index) =>{
               ch = input.splice(index, 1)[0];
@@ -362,22 +384,41 @@ export default {
 
           let regex = new RegExp(',', 'g');
           let data = [];
-          let result = rotate(this.Bookthreed);
+          let result = rotate(finalData);
+          console.log(result)
 
           result.forEach(arr => {
             data.push(arr.toString().replace(regex, ''));
           })
           data = data.filter(unique);
           this.Rnumber = data
+         
           console.log(this.Rnumber)
 
 
-        // this.checkAll = true
-        // this.bet_number = true
-        // this.isIndeterminate = false;
-        // this.bet_number = threed ? this.Rnumber : [];
-        // this.isIndeterminate = false;
+       this.checkAll = true
+        this.bet_number = true
+        this.isIndeterminate = false;
+        this.checkboxModelbox = finalData ? this.Rnumber : [];
+        this.isIndeterminate = false;
 
+    },
+    LengthBtn() {
+         this.checkboxModelboxLength = this.Bookthreed ? this.Bookthreed : [];
+    },
+    submitLength(formName) {
+         this.$refs[formName].validate((valid) => {
+             if (valid) {
+                 //console.log(this.checkboxModelboxLength)
+                  var data = this.ruleForm.amount  
+                    this.$store.commit('betAmountThreeD',data);
+                    var data = this.checkboxModelboxLength  
+                    this.$store.commit('getBetThreeD', data);
+                    this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+             }else {
+
+             }
+         })
     },
      
 
@@ -729,7 +770,7 @@ export default {
          padding-right:0;
          padding-left:0;
          max-width: 480px;
-         width:44px;
+         width:40px;
          height:32px;
          line-height: 29px;
          border-bottom-left-radius:4px;
@@ -741,9 +782,9 @@ export default {
         display: none;
     }
     .hide_input img {
-        width:88px;
-          border-top-right-radius: 9px;
-           border-top-left-radius: 9px;
+        width:80px;
+        border-top-right-radius: 9px;
+        border-top-left-radius: 9px;
     }
 
 body {

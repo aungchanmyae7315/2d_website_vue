@@ -178,16 +178,18 @@
     <el-button style="margin-top:20px;" type="primary" @click="autoLogout() ;dialogVisible_autoLogout = false">{{$t('ok')}}</el-button>
   
 </el-dialog>
+
   </el-main>
        
 </template>
 
 <script>
-
+import Vue from 'vue'
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
 
 export default {
+  
  components: { carousel },
     getters: {},
   mutations: {},
@@ -196,7 +198,7 @@ export default {
 
 
   mounted() {
- 
+     
 
   var self = this;
           if (this.$store.state.sliderImage.length > 0){
@@ -209,30 +211,17 @@ export default {
             // setTimeout(function(){
               self.$axios.get('/v2/v1/slider_image?name=home')
                 .then(response => {
-                  
-              
-                 
                  if(self.slider_images  !== null) {
                         this.loaded = true;
                     }
-
                 self.slider_images = response.data.data
-               
-
-                // self.$store.commit('setSliderImage', response.data.data);
                 })
-               
             // }, 2000);
               self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
-            
-              
                 self.slider_text = response.data.data[0];
                 })
-
                 }
-                
-
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
     if (m != null && isSeinluckyApp){
@@ -246,33 +235,27 @@ export default {
           this.$store.commit('setWebAppVersion', response.data.version);
         });
     }
- 
-    
       this.getDataKwee();
       //this.getDataresult();
       this.updateIsLoggedIn();
       this.updateLang();
       this.getKweeLiveData();
-       
-
       let lang = localStorage.getItem('locale');
       this.$store.commit('SET_LANG', lang);
-      // this.$axios.get(`/v2/v1/add_language?language=${lang}`)
-      //   .then(response => {
-          
-       
-      //   });
    },
-
-  
-  
   data() {
     
     return {
+      error_url:'',
+      error_message:'',
+      error_trace:'',
+      error:'',
+      trace:'',
       last_date:'',
       dialogVisible: false,
       dialogVisible_autoLogout:false,
-       isActive: true,
+     
+      isActive: true,
       hasError: false,
       currentTime: '',
       morningTime_9_30:'09:30:00',
@@ -314,6 +297,14 @@ export default {
     clearInterval(this.serverCurTimeItvId);
   },
    methods: {
+      HomeRefresh() {
+      this.fullscreenLoading = true;
+        setTimeout(() => {
+          
+          this.fullscreenLoading = false;
+          location.reload();
+        }, 1000);
+    },
      autoLogout() {
           this.$store.commit('logOut');
           this.$router.push(`/login?lang=${this.$store.state.locale}`); 
@@ -512,6 +503,8 @@ export default {
                          }
                         })
                     .then(response => {
+                      var user_id = response.data.data.id
+                      window.$nuxt.$store.commit('userId', user_id);
                       this.blockUser = response.data.data.trash
                       this.profile = response.data.data
                       this.myWallet = this.profile.wallet 

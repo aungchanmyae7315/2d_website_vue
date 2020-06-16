@@ -187,7 +187,7 @@
 "bank_option_required":"လက်ခံမည့်ဘဏ်ကိုရွေးပါ",
 "withdraw_amount_required":"ထုတ်ယူလိုသည့် ‌ငွေပမာဏ",
 "sein_lucky_office_hours":"Sein Lucky ငွေဖြည့်ချိန်များ",
-"mon-sat":"တနင်္လာ - စနေ",
+"mon-sat":"(တနင်္လာ - စနေ)",
 "topup_approved_5_minutes":"ရုံးဖွင့်ချိန်တွင် (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
 "if_not_in_office_hours" :"ရုံးဖွင့်ချိန်ကျော်ပြီးနောက်ငွေဖြည့်လျှင် ရုံးစဖွင့်ချိန်မှ (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
 "amount_invalid":"ငွေမလုံလောက်ပါ။",
@@ -295,7 +295,15 @@
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
 "/share":"/share",
-"your_slip_code_is":"ဤအမှတ်စဉ်(၆)လုံးဖြင့် အရင်ကတင်ပြပြီးပါပြီ။"
+"your_slip_code_is":"ဤအမှတ်စဉ်(၆)လုံးဖြင့် အရင်ကတင်ပြပြီးပါပြီ။",
+"something_went_wrong":"တစ်ခုခုမှားနေသည်။",
+"pls_check_your_connection":"အင်တာနက်စစ်ဆေးပြီး ပြန်စမ်းကြည့်ပါ။",
+"try_again":"ပြန်စမ်းရန်",
+"number":"ဂဏန်း",
+"availabel_bet_amount":"ထိုးသူပြည့်သွားပါပြီ။ ထပ်ထိုးနိုင်သည့်ငွေပမာဏ",
+"reach_highest_bet_limit":" သည် ထိုးငွေပြည့်သွားပါပြီ။ အခြားဂဏန်းကို ရွေးပေးပါ။"
+
+
 
 
 

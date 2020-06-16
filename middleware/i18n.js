@@ -25,3 +25,22 @@ export default function ({ isHMR, app, store, route, params, error, redirect }) 
 
   //console.dir(route.fullPath);
 }
+// Vue.config.warnHandler = function(msg, vm, trace) {
+//   console.dir("+++ warnHandler");
+//   console.dir(trace);
+//   console.dir(msg);
+//   console.dir("++++++");
+//   console.dir(vm.$axios);
+//   console.dir(navigator.userAgent);
+//   //user id
+//   //url
+// }
+// Vue.config.errorHandler = (err, vm, info) => {
+//   // err: error trace
+//   // vm: component in which error occured
+//   // info: Vue specific error information such as lifecycle hooks, events etc.
+  
+//   // TODO: Perform any custom logic or log to server
+//   console.dir("+++ errorHandler");
+//   console.dir(err);
+// };
