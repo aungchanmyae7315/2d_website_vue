@@ -2,7 +2,7 @@
    <div class="main_container topup_detail">
       <el-header>
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
-               <el-page-header title="" @back="goBack"  content="Top Up Details">
+               <el-page-header title="" @back="goBack"   :content="`${$t('topup_details')}`">
                 </el-page-header>
            <!-- </nuxt-link> -->
       </el-header>
@@ -10,11 +10,11 @@
                 <div v-if="this.topup_detail_item.status == 0">
                   
                 <img  src="~static/images/topup_withdraw/hourglass_bottom.svg" class="success_icon">
-                 <h6 style="color:#2196F3;font-weight:bold">တင်ပြနေသည်</h6>
+                 <h6 style="color:#2196F3;font-weight:bold">{{$t('pending')}}</h6>
                 </div>
                 <div v-else-if="this.topup_detail_item.status == 1">
                         <img  src="~static/images/topup_withdraw/check_circle-black-18dp.svg" class="success_icon">
-                        <h6 style="color:#158220;font-weight:bold">ငွေလွှဲပြီး</h6>
+                        <h6 style="color:#158220;font-weight:bold">{{$t('withdrawal_success')}}</h6>
                 </div>
                 <div v-else-if="this.topup_detail_item.status == 2">
                         <img src="~static/images/topup_withdraw/cancel-black-18dp.svg" class="success_icon">
@@ -40,25 +40,25 @@
                       <p>{{this.topup_detail_item.transfer_date}}</p>
                   </el-col>
                    <el-col :span="12">
-                      <h6>Transaction Type</h6>
+                      <h6>{{$t('transaction_type')}}</h6>
                   </el-col>
                   <el-col :span="12">
-                      <p>Top Up</p>
+                      <p>{{$t('Top Up')}}</p>
                   </el-col>
                    <el-col :span="12">
-                      <h6>Bank</h6>
+                      <h6>{{$t('bank')}}</h6>
                   </el-col>
                   <el-col :span="12">
                       <p>{{this.topup_detail_item.bank_name}}</p>
                   </el-col>
                    <el-col :span="12">
-                      <h6>Account</h6>
+                      <h6>{{$t('account')}}</h6>
                   </el-col>
                   <el-col :span="12">
                       <p>{{this.topup_detail_item.slip_code}}</p>
                   </el-col>
                    <el-col :span="12">
-                      <h6>ပမာဏ</h6>
+                      <h6>{{$t('Amount')}}</h6>
                   </el-col>
                   <el-col :span="12">
                       <p>{{this.topup_detail_item.amount}}</p>
