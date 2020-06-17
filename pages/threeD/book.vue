@@ -1,5 +1,5 @@
 <template>
-    <section class="bet_container">
+    <section class="bet_container book">
          <el-form @submit.native.prevent   :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
         <el-header>
              <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
@@ -9,31 +9,47 @@
            
             <el-row style="padding-top:10px;">
                 <el-col :span="6">
-                        <el-button v-if="this.Bookthreed.length != 1">
-                            hello
+                        <el-button class="fast_btn_threeD" v-if="this.Bookthreed.length != 1">
+                            <span @click="LengthBtn() ;dialogFormVisible_length = true" v-if="this.Bookthreed.length > 1">{{this.Bookthreed.length}}</span>
+                            <span v-else>0</span>
                         </el-button>
-                    
-                        <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="rBtn(Bookthreed);  dialogFormVisible_rBtn = true"   class="fast_btn" >R</el-button>
-                          <el-dialog
                          
-                            title="Tips"
-                        
+                        <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="rBtn(Bookthreed);  dialogFormVisible_rBtn = true"   class="fast_btn_threeD" ><span>R</span></el-button>
+                          <el-dialog
+                             title="ရွေးထားသော ဂဏန်းများ"
                             :show-close="false"
                             :close-on-click-modal = "false"
                             :visible.sync="dialogFormVisible_rBtn"
                             width="90%">    
-                           <span>dd{{this.Bookthreed}}</span>
                             <el-checkbox-group v-model="checkboxModelbox" @change="handleCheckedCitiesChange">
+                                <el-checkbox-button v-for="(number , index) in this.Rnumber" :key="index" :label="number" >
+                                    {{number}}
+                                </el-checkbox-button>
+                            </el-checkbox-group>
+                            
+                            <span slot="footer" class="dialog-footer">
+                                <el-button @click="dialogFormVisible_rBtn = false;  checkboxModelbox = []">{{$t('cancel')}}</el-button>
+                                <el-button type="primary" class="bet_btn_book"   @click=" submitAll('ruleForm');dialogFormVisible_rBtn = true">{{$t('Bet')}}</el-button>
+                            </span>
+                        </el-dialog>
+                        <!--lenght number model box -->
+                         <el-dialog
+                             title="ရွေးထားသော ဂဏန်းများ"
+                            :show-close="false"
+                            :close-on-click-modal = "false"
+                            :visible.sync="dialogFormVisible_length"
+                            width="90%">  
+                            <el-checkbox-group v-model="checkboxModelboxLength" @change="handleCheckedCitiesChange">
                                 <el-checkbox-button v-for="(number , index) in this.Bookthreed" :key="index" :label="number" >
                                     {{number}}
                                 </el-checkbox-button>
                             </el-checkbox-group>
                             
                             <span slot="footer" class="dialog-footer">
-                                <el-button @click="dialogFormVisible_rBtn = false;  checkboxModelbox = []">Cancel</el-button>
-                                <el-button type="primary"   @click=" submitAll();dialogFormVisible_rBtn = true">Confirm</el-button>
-                            </span>
-                        </el-dialog>
+                                <el-button @click="dialogFormVisible_length = false;  checkboxModelboxLength = []">{{$t('cancel')}}</el-button>
+                                <el-button type="primary" class="bet_btn_book"   @click=" submitLength('ruleForm');dialogFormVisible_length = true">{{$t('Bet')}}</el-button>
+                            </span> 
+                          </el-dialog>
                   
             
                 </el-col>
@@ -122,10 +138,11 @@
                                     :disabled="item.state.disabled" 
                                     :name="item.img" 
                                     :checked="item.state.selected" 
-                                    @click="item.state.selected = !item.state.selected"
-                                    @change="parentChange(item, item.state.selected)"
+                                   
+                                    @change="parentChange(item, item.state.selected )"
+                                     @click="item.state.selected = !item.state.selected"
                                     id="image-check">
-
+                                      <div class="card_name">{{ item.name }}</div>
                                     <img :src="item.img" width="100">
                                 </label>
                                 
@@ -134,7 +151,7 @@
                             <ul v-if="item.children.length != 0" class="number_list_item">
                                 <li v-for="(children, index) in item.children" :key="index"   :data-id="children.id" class="dd-item">
                                     <div class="number_item button-group-pills text-center" @click="LengthCount()"  data-toggle="buttons">
-                                     
+                                      
                                         <label class="hide_input" @click="children.state.selected = !children.state.selected"  v-bind:class="[children.state.selected ? 'dd-item open' : 'dd-item']"    >
                                         <input type="checkbox"  
                                             :value="children.number"
@@ -152,12 +169,10 @@
                                 </li>
                                 </ul>
                                
-                           
+                        
                            
                         </li>
                     </ul>
-                 {{this.Bookthreed}}Hello
-              
             </div>
         </div>
         </el-main>
@@ -170,21 +185,29 @@
 export default {
 
     computed: {
-  classObject: function () {
-    return {
-              active: this.isActive && !this.error,
-    }
-  }
+//   classObject: function () {
+//     return {
+//               active: this.isActive && !this.error,
+//     }
+//   }
     },
     mounted() {
+        this.$nextTick(function () {
+              var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                   
+                checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
+                this.Bookthreed = checkedElements;
+    });
          this.updateIsLoggedIn();
           this.$axios.get('/v2/v1/threed/book')
               .then(response => {
-               this.book_data = response.data
-             
-                
-              })  
+               this.book_data = response.data  
+              }) 
     },
+ 
     created() {
 
           let token = localStorage.getItem('token');
@@ -211,14 +234,17 @@ export default {
 
         let timeinterval = setInterval(this.updateTimer, 1000);
     },
+
     data() {
 
         return {
             checkAll: false,
              isIndeterminate: true,
-            checkboxModelbox:true,
-            Bookthreed:true,
+            checkboxModelbox:[],
+            checkboxModelboxLength:[],
+            Bookthreed:[],
             dialogFormVisible_rBtn:false,
+            dialogFormVisible_length:false,
               getOpen:'',
               myWallet:'',
               endTime: '',
@@ -248,23 +274,8 @@ export default {
         handleCheckedCitiesChange(val) {
              
             this.checkboxModelbox = val ? this.checkboxModelbox : [];
-            
-      
       },
-       LengthCount() {
-         
-               
-                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
-                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
-                    return el.value;
-                });
-                   
-                checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
-                this.Bookthreed = checkedElements;
-                console.log(this.Bookthreed)
-
-
-        },
+     
          thousands_separators(num){
             //console.dir(num);
           if (num == undefined){
@@ -301,8 +312,20 @@ export default {
             this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
         },
   
-        submitAll() {
-            console.log(this.checkboxModelbox)
+        submitAll(formName) {
+             this.$refs[formName].validate((valid) => {
+                if (valid) {
+                  
+                    var data = this.ruleForm.amount  
+                    this.$store.commit('betAmountThreeD',data);
+                    var data = this.checkboxModelbox  
+                    this.$store.commit('getBetThreeD', data);
+                    this.$router.push(`/threeD/dreamRemark?lang=${this.$store.state.locale}`); 
+                }else {
+                    console.log('error submit!!');
+                    return false;
+                }
+             });
         },
          submitForm(formName) {
               this.$refs[formName].validate((valid) => {
@@ -313,31 +336,20 @@ export default {
                 });
                 checkedElements = checkedElements.filter(e => e !== 'on'); // will return ['A', 'C']
                 this.Bookthreed = checkedElements;
-                console.log(this.Bookthreed)
                 var data = this.ruleForm.amount  
                 this.$store.commit('betAmountThreeD',data);
                 var data = this.Bookthreed  
                 this.$store.commit('getBetThreeD', data);
-                  this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
+                this.$router.push(`/threeD/dreamRemark?lang=${this.$store.state.locale}`); 
           }else{
               console.log('valid !!')
           }
         });
-
-             
-            
-
         },
           rBtn(Bookthreed) {
-             
-           
-            //   alert(Bookthreed)
-            var str ='123'
-            var res = str.split(" ", 3);
-            console.log(res)
-          
-          const permArr = [],usedChars = [];
-          const rotate = (input) => {
+            const finalData = Array.from(String(Bookthreed), Number);
+            const permArr = [],usedChars = [];
+            const rotate = (input) => {
             let ch;
             input.forEach((val,index) =>{
               ch = input.splice(index, 1)[0];
@@ -359,55 +371,59 @@ export default {
 
           let regex = new RegExp(',', 'g');
           let data = [];
-          let result = rotate(Bookthreed);
+          let result = rotate(finalData);
 
           result.forEach(arr => {
             data.push(arr.toString().replace(regex, ''));
           })
           data = data.filter(unique);
           this.Rnumber = data
-          console.log('lee ')
-          console.log(this.Rnumber)
-        console.log('pal')
-
-
-        // this.checkAll = true
-        // this.bet_number = true
-        // this.isIndeterminate = false;
-        // this.bet_number = threed ? this.Rnumber : [];
-        // this.isIndeterminate = false;
+        
+       this.checkAll = true
+        this.bet_number = true
+        this.isIndeterminate = false;
+        this.checkboxModelbox = finalData ? this.Rnumber : [];
+        this.isIndeterminate = false;
 
     },
-     
+    LengthBtn() {
+         this.checkboxModelboxLength = this.Bookthreed ? this.Bookthreed : [];
+    },
+    submitLength(formName) {
+         this.$refs[formName].validate((valid) => {
+             if (valid) {
+                 //console.log(this.checkboxModelboxLength)
+                  var data = this.ruleForm.amount  
+                    this.$store.commit('betAmountThreeD',data);
+                    var data = this.checkboxModelboxLength  
+                    this.$store.commit('getBetThreeD', data);
+                    this.$router.push(`/threeD/dreamRemark?lang=${this.$store.state.locale}`); 
+             }else {
 
+             }
+         })
+    },
      
-        parentChange(item, state){
-            for(let child of item.children){
-                child.state.selected = state
+    parentChange(item,state) {
+        
+        for(let child of item.children){
+            child.state.selected = state
+            if(state){
+                this.Bookthreed.push(child.number)
+            }else{
+                this.Bookthreed.pop();
             }
+        }
+    },
+      LengthCount () {
+                var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+                    return el.value;
+                });
+                   
+                checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
+                this.Bookthreed = checkedElements;
         },
-    //      submitThreed(formName) {
-    //     this.$refs[formName].validate((valid) => {
-    //       if (valid) {
-             
-    
-    //            var data = this.all_number  
-      
-     
-    //      this.$store.commit('getBetThreeD', data);
-    //     var data = this.ruleForm.amountThreeD  
-    //     this.$store.commit('betAmountThreeD',data);
-
-    //     this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
-    //       } else {
-    //         console.log('error submit!!');
-    //         return false;
-    //       }
-    //     });
-    
-     
-
-    // },
     }
 }
 </script>
@@ -417,6 +433,15 @@ export default {
         border-radius: 13px;
         margin: 50px auto;
         background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);
+    }
+    .card_name {
+        position: absolute;
+        background-color:#E5E5E5;
+        font-size: 13px;
+        width:79.5px;
+        padding:2px;
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
     }
 
     .holiday img {
@@ -463,8 +488,8 @@ export default {
     
     .el-checkbox-button.is-checked .el-checkbox-button__inner {
             color:#000;
-            background-color:#FEDC54;
-            border-color: #FEDC54;
+            background-color:#EEC059;
+            border-color: #EEC059;
             -webkit-box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
             -moz-box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
             box-shadow: -1px 8px 56px -12px rgba(0,0,0,0.75);
@@ -477,11 +502,8 @@ export default {
         border: 0;
         margin: 7px;
         border-radius: 10px;
-        padding: 14px;
-        width:42px;
-        height:42px;
-        color: #e0dddd;
-        background:#14612D;
+        color: #fff;
+        background:#666666;
         font-weight: bold;
     }
     .el-checkbox-button:first-child .el-checkbox-button__inner {
@@ -502,11 +524,17 @@ export default {
     /* .bet_input {
         margin-top:15px;
     } */
-    .fast_btn {
+    .fast_btn_threeD {
         background: #D4E2FF;
         color: green;
         width:90%;
+        height:37px;
        
+    }
+    .fast_btn_threeD span {
+        font-size: 25px;
+        padding:3px 0;
+        font-weight: bold;
     }
  
     .bet_login_btn  .el-button.is-round{
@@ -640,8 +668,8 @@ export default {
        .bet_container .el-input__inner {
            height:36px;
        }
-       .fast_btn {
-           padding:12px;
+       .fast_btn_threeD {
+           padding:8px;
            font-size: 10px;
        }
       
@@ -676,8 +704,8 @@ export default {
        .bet_container .el-input__inner {
            height:36px;
        }
-       .fast_btn {
-           padding:12px;
+       .fast_btn_threeD {
+           padding:8px;
            font-size: 10px;
        }
    }
@@ -730,10 +758,10 @@ export default {
          max-width: 480px;
          width:40px;
          height:32px;
-         line-height: 29px;
+         line-height: 36px;
          border-bottom-left-radius:4px;
           border-bottom-right-radius:4px;
-         color:#fff;
+         color:#A8A8A8;
         background-color: #262626;
     }
     .hide_input input[type=checkbox], input[type=radio] {
@@ -741,13 +769,10 @@ export default {
     }
     .hide_input img {
         width:80px;
-        border-top-right-radius: 9px;
-        border-top-left-radius: 9px;
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
     }
 
-body {
-  font-family: "Open Sans";
-}
 
 .button-group-pills .btn {
   border-radius:9px;
@@ -755,18 +780,19 @@ body {
  
   border-color: #bbbbbb;
   background-color: #FFF;
-  color: #14a4be;
+  color:#EEC059;
 }
 .dd-item.open {
-  border-color: #14a4be;
-  background-color: #14a4be;
-  color: #FFF;
+  border-color: #EEC059;
+  background-color:#EEC059;
+  color: #000;
+  font-weight: bold;
   box-shadow: none;
 }
  input[type=checkbox]:checked{
 
-    border-color: #14a4be;
-  background-color: #14a4be;
+    border-color: #EEC059;
+  background-color:#EEC059;
   color: #FFF;
   box-shadow: none;
 }
@@ -798,6 +824,21 @@ body {
     list-style: none;
     color:#fff;
     font-weight: bold;
+}
+.book .el-dialog__title {
+    color:#34281D;
+}
+.book .el-dialog__header {
+    background: linear-gradient(#FDD164, #BB8834);
+    border-top-right-radius: 28px;
+    border-top-left-radius: 28px;
+}
+.book .bet_btn_book {
+    background: linear-gradient(#FDD164, #BB8834);
+    font-size: 17px;
+    font-weight: bold;
+    color: #4D2707;
+    border:0;
 }
 
 </style>

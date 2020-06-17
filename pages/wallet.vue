@@ -50,7 +50,7 @@
                       <el-button type="warning" round>{{ $t('Top Up') }}</el-button>
                 </nuxt-link>
                 <nuxt-link  :to="`${$t('/twoD/wallet/transaction_status')}?lang=${$store.state.locale}`">
-                  <el-button style="width:93%" class="tran_status_btn" round><img src="~static/images/topup_withdraw/exchange-alt-solid.svg" alt="" style="padding:0 10px;"> Transaction Status</el-button>
+                  <el-button style="width:93%" class="tran_status_btn" round><img src="~static/images/topup_withdraw/exchange-alt-solid.svg" alt="" style="padding:0 10px;">{{$t('transaction_status')}}</el-button>
                 </nuxt-link>
                </div>
 
@@ -74,7 +74,7 @@
                     <el-divider></el-divider>
                     <span>{{$t('mon-sat')}}</span><br>
                     <span>{{$t('morning')}} 9:00 AM - 11:50 AM</span><br>
-                    <span>{{$t('evening')}} 12:00 PM - 06:00 PM</span>
+                    <span>{{$t('evening')}} 01:00 PM - 05:30 PM</span>
                 </el-card>
                     
                 <el-card class="bank_card" style="width:98%">
@@ -352,22 +352,22 @@
     },
      created() {
           let token = localStorage.getItem('token');
-        if(token) {
-              this.$axios.get("/v2/v1/bank_card_grouping",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                      console.log(response)
-                        this.bank_account = response.data.data[0].bank_group
-                })
-        }
+        // if(token) {
+        //       this.$axios.get("/v2/v1/bank_card_grouping",
+        //             {headers: {
+        //                        "Authorization": "Bearer "+token
+        //                  }
+        //                 })
+        //             .then(response => {
+        //               console.log(response)
+        //                 this.bank_account = response.data.data[0].bank_group
+        //         })
+        // }
       
-          // this.$axios.get('/v1/admin-bank')
-          //     .then(response => {
-          //       this.bank_account = response.data.data
-          //     })  
+          this.$axios.get('/v1/admin-bank')
+              .then(response => {
+                this.bank_account = response.data.data
+              })  
         if(token) {
               this.$axios.get("/v2/v1/profile",
                     {headers: {
@@ -375,6 +375,7 @@
                          }
                         })
                     .then(response => {
+                      console.log(response)
                       this.blockUser = response.data.data.trash
                       this.profile = response.data.data
                       this.myWallet = this.profile.wallet

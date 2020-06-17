@@ -298,7 +298,21 @@
 "your_slip_code_is":"ဤအမှတ်စဉ်(၆)လုံးဖြင့် အရင်ကတင်ပြပြီးပါပြီ။",
 "something_went_wrong":"တစ်ခုခုမှားနေသည်။",
 "pls_check_your_connection":"အင်တာနက်စစ်ဆေးပြီး ပြန်စမ်းကြည့်ပါ။",
-"try_again":"ပြန်စမ်းရန်"
+"try_again":"ပြန်စမ်းရန်",
+"number":"ဂဏန်း",
+"availabel_bet_amount":"ထိုးသူပြည့်သွားပါပြီ။ ထပ်ထိုးနိုင်သည့်ငွေပမာဏ",
+"reach_highest_bet_limit":" သည် ထိုးငွေပြည့်သွားပါပြီ။ အခြားဂဏန်းကို ရွေးပေးပါ။",
+"transaction_type":"အမျိုးအစား",
+"bank":"ဘဏ်",
+"account":"ဘဏ်အကောင့်",
+"transaction_status":"ငွေဖြည့် / ငွေထုတ် အခြေအနေ",
+"transaction_history":"နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း",
+"withdrawal_success":"ငွေလွှဲပြီး",
+"pending":"တင်ပြနေသည်...",
+"money_has_been_trans":"ဘဏ်အကောင့်သို့ငွေရောက်ရှိပါသည်",
+"withdrawal_details":"ငွေထုတ်အသေးစိတ်",
+"topup_details":"ငွေဖြည့်အသေးစိတ်"
+
 
 
 

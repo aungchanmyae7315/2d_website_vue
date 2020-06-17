@@ -19,29 +19,29 @@ export default function ({ $axios, redirect }) {
   });
 
  
-            $axios.onError(error => {
-              console.log('axiosOnError')
-                var data = {
-                    user_id:localStorage.getItem('UserID'),
-                    request_url:error.response.config.url,
-                    user_agent:navigator.userAgent,
-                    page_url: window.location.href,
-                    err:error.response.data.message,
-                    info: "hello",
-                    trace:"hello",
-                    msg: error.response.data.message,
-                }
-              $axios.post("/v2/v1/error_log",
-                           data)
-                    .then(response => {
-                         console.log(response)
-                    })
-                    const code = parseInt(error.response && error.response.status)
-                    if (code === 400) {
-                          redirect('/400')
-                        }
-                       // window.$nuxt.$store.commit('axiosError', error.response);
-                })
+            // $axios.onError(error => {
+            //   console.log('axiosOnError')
+            //     var data = {
+            //         user_id:localStorage.getItem('UserID'),
+            //         request_url:error.response.config.url,
+            //         user_agent:navigator.userAgent,
+            //         page_url: window.location.href,
+            //         err:error.response.data.message,
+            //         info: "hello",
+            //         trace:"hello",
+            //         msg: error.response.data.message,
+            //     }
+            //   $axios.post("/v2/v1/error_log",
+            //                data)
+            //         .then(response => {
+            //              console.log(response)
+            //         })
+            //         const code = parseInt(error.response && error.response.status)
+            //         if (code === 400) {
+            //               redirect('/400')
+            //             }
+            //            // window.$nuxt.$store.commit('axiosError', error.response);
+            //     })
        
   
 Vue.config.warnHandler = function(msg, vm, trace) {

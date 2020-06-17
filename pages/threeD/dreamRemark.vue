@@ -237,7 +237,7 @@ export default {
       this.items.splice(index, 1)
     },
         goBack() {
-            this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
+            this.$router.push(`/threeD/book?lang=${this.$store.state.locale}`); 
         }
     },
     created() {
