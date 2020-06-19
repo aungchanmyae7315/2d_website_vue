@@ -157,6 +157,7 @@ export default {
     }
     .contact_sameThree .el-input__inner {
         background: #252E39;
+        text-align: right;
         border:1px solid #FFEA72;
         color:#fff;
     }

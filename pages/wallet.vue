@@ -60,12 +60,12 @@
                 <div class=" hideScrollBar_wallet ">
                   <div class="topup_withdraw">
                         <nuxt-link  :to="`${$t('/topup_youtube')}?lang=${$store.state.locale}`"><img src="~static/images/topup_withdraw/youtube-brands.svg" alt="" >
-                         <p class="under-below">ငွေသွင်းနည်းကြည့်ရန် နှိပ်ပါ။</p>
-                         <!-- <p class="under-below">{{$t('How to top up money?')}}</p> -->
+                       
+                         <p class="under-below">{{$t('How to top up money?')}}</p>
                          </nuxt-link>
                          <nuxt-link  :to="`${$t('/withdraw_youtube')}?lang=${$store.state.locale}`"> <img src="~static/images/topup_withdraw/youtube-brands.svg" alt="">
                          <p class="under-below">  ငွေထုတ်နည်းကြည့်ရန် နှိပ်ပါ။</p>
-                           <!-- <p class="under-below">{{$t('How to withdraw money?')}}</p> -->
+                           <p class="under-below">{{$t('How to withdraw money?')}}</p>
                       
                          </nuxt-link>
                   </div>
@@ -352,22 +352,22 @@
     },
      created() {
           let token = localStorage.getItem('token');
-        // if(token) {
-        //       this.$axios.get("/v2/v1/bank_card_grouping",
-        //             {headers: {
-        //                        "Authorization": "Bearer "+token
-        //                  }
-        //                 })
-        //             .then(response => {
-        //               console.log(response)
-        //                 this.bank_account = response.data.data[0].bank_group
-        //         })
-        // }
+        if(token) {
+              this.$axios.get("/v2/v1/bank_card_grouping",
+                    {headers: {
+                               "Authorization": "Bearer "+token
+                         }
+                        })
+                    .then(response => {
+                      console.log(response)
+                        this.bank_account = response.data.data[0].bank_group
+                })
+        }
       
-          this.$axios.get('/v1/admin-bank')
-              .then(response => {
-                this.bank_account = response.data.data
-              })  
+          // this.$axios.get('/v1/admin-bank')
+          //     .then(response => {
+          //       this.bank_account = response.data.data
+          //     })  
         if(token) {
               this.$axios.get("/v2/v1/profile",
                     {headers: {
