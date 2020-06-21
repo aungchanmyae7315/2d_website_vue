@@ -362,12 +362,14 @@
                       console.log(response)
                         this.bank_account = response.data.data[0].bank_group
                 })
+        }else {
+           this.$axios.get('/v1/admin-bank')
+              .then(response => {
+                this.bank_account = response.data.data
+              })  
         }
       
-          // this.$axios.get('/v1/admin-bank')
-          //     .then(response => {
-          //       this.bank_account = response.data.data
-          //     })  
+         
         if(token) {
               this.$axios.get("/v2/v1/profile",
                     {headers: {
