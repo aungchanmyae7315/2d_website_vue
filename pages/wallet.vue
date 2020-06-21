@@ -64,7 +64,7 @@
                          <p class="under-below">{{$t('How to top up money?')}}</p>
                          </nuxt-link>
                          <nuxt-link  :to="`${$t('/withdraw_youtube')}?lang=${$store.state.locale}`"> <img src="~static/images/topup_withdraw/youtube-brands.svg" alt="">
-                         <p class="under-below">  ငွေထုတ်နည်းကြည့်ရန် နှိပ်ပါ။</p>
+                        
                            <p class="under-below">{{$t('How to withdraw money?')}}</p>
                       
                          </nuxt-link>
