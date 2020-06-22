@@ -600,7 +600,6 @@ export default {
   color:#fff;
   font-weight: bold;
 }
-
  .submitThreed_btn {
      background: linear-gradient(#FDD164, #BB8834);
      font-size:15px;
