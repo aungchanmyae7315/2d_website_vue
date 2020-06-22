@@ -153,7 +153,7 @@
                 </nuxt-link>
               </el-col>
               <el-col :span="12">
-                 <nuxt-link :to="`${$t('/threeD/home')}?lang=${$store.state.locale}`"> 
+                 <nuxt-link :to="`${$t('/threeD/')}?lang=${$store.state.locale}`"> 
                  
                         <img src="~static/images/threed_card.png" alt="" class="threed_card">
                   

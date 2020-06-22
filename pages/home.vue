@@ -106,26 +106,7 @@
                     </div> -->
                    </el-col>
                 </el-row>
-                 
-<!--                   
-                  <el-dialog
-                   
-                    :visible.sync="dialogVisible"
-                    class="change_lang_modal"
-                    width="70%">
-
-                     <div class="lang lang_icon">
-                        <el-dropdown @command="changeLang"  style="text-align:center">
-          
-                            <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
-
-                        </el-dropdown>   
-                    </div>
-
-                   
-                  </el-dialog> -->
+            
               </div>
         </div>
 
@@ -148,35 +129,6 @@
               {{this.slider_text.text}}</p>
           </div>
         </h3>
-          <!-- <div class="block" data-aos="fade-up" data-aos-duration="700">
-  
-            <el-carousel  trigger="click" height="155px" arrow="always">
-               <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
-                  <div>
-                     <a :href="img_slide.link" target="_blank">
-                    <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:155px;">
-                      <div slot="placeholder" class="image-slot">
-                        Loading<span class="dot">...</span>
-                      </div>
-                    </el-image>
-                     </a>
-                  </div>
-                   
-              </el-carousel-item>
-           
-                    <div class="el-carousel_label">
-                      
-                        <h3> 
-                          <div class="scroll-left">
-                            <p> 
-                               <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
-                              {{this.slider_text.text}}</p>
-                          </div>
-                           </h3> 
-                    </div>
-            </el-carousel>
-
-          </div>   -->
           <div class="row n_d_t">
             <div class="col">
                
@@ -207,11 +159,7 @@
             <div class="col">
                 <div class="date_time">
                   <div class="d_t_item">
-                   
- 
-                     
                       <span>updated at:</span><br>
-
                       <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="serverDate"></span>
                       <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="serverDate"></span>
                       <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="serverDate"></span>
@@ -221,8 +169,6 @@
                   
                       <span v-text="this.breakTime"></span>
                   </div>
-
-                  
                 </div>
             </div>
           </div>

@@ -1,23 +1,18 @@
 <template>
         
         
-      <el-main class="main_page threed_home">
+      <el-main class="main_page threed_home_index">
         <!-- <Online></Online> -->
-         <el-header>
+         <el-header style="height:auto !important;">
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                <el-page-header title="" @back="goBack" >
                      
                 </el-page-header>
                  <img src="~static/images/threed_logo.png" class="logo" alt="logo" style="width:145px">
-              <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
+              <div @click="HomeRefresh" class=" refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
                 <img src="~static/icons_header/dimond_t_icon.png" alt="">
               </div>
            <!-- </nuxt-link> -->
-      </el-header>
-       
-        <div class="longText" id="hidingScrollBar">
-         <div class="hideScrollBar">
-        
         
            <div class="" v-if ="!$store.state.isLoggedIn">
 
@@ -28,8 +23,6 @@
                   </nuxt-link>
                     
               </div>
-               
-           
         </div>
         <div v-else>
            
@@ -90,7 +83,7 @@
                 </el-row>
               </div>
         </div>
-          <!-- <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
+          <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -108,88 +101,32 @@
                 <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
               {{this.slider_text.text}}</p>
           </div>
-        </h3> -->
-         <section class="threeD_items">
-          
-         <el-row>
-                 
-                <el-col :span="13" style="padding-left:5px;">
-                    <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
-                </el-col>
-                <el-col :span="6">   
-                     <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank">  
-                  <!-- <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">   -->
-                    <el-button  class="book_btn" type="text"></el-button>
-                  <!-- </nuxt-link> -->
-                   </a> 
-                </el-col>
-            </el-row>
-           <div>
-            <p class="choose_bet_title">လောင်းမည့်ဂဏန်းရွေးပါ။</p>
-          <el-row>
-            <el-col :span="18">
-                 <div class="picker">
-                    <VuePicker :data="pickData"
-                      :showToolbar="false"
-                      :pickerbox="false"
-                      :header="false"
-                    
-                      @change = "change"
-                        :visible="true"
-                    
-                    />
+        </h3>
+        <p class="result_title_td_index">{{$t('result_title')}}</p>
+          </el-header>
+        <div class="longText" id="hidingScrollBar">
+            <div class="hideScrollBar">
+                  <div  style="padding:0 20px;" v-for="(result,t) in threed_result" :key="t" >
+                    <el-card class="threed_result_card">
+                        <el-row>
+                            <el-col :span="12" class="td_result_date">
+                                 {{result.datetime}}
+                            </el-col>
+                            <el-col :span="12"  class="td_result_number">
+                                {{result.result}}
+                            </el-col>
+                        </el-row>
+                    </el-card>
                   </div>
-            </el-col>
-            <el-col :span="6">
-                    
-                 <el-button @click="rBtn(threed) " :indeterminate="isIndeterminate" v-model="checkAll"  :class="{'is-active': isActive}" class="r_btn btn btn-info">R</el-button> 
-
-            </el-col>
-          </el-row>
-         
-          </div>
-          <el-form   @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
-            <div v-if="this.isActive"   class="contact_sameThree">
-          
-            <el-form-item> 
-                <el-checkbox-group v-model="bet_number" @change="handleCheckedCitiesChange">
-                  <el-checkbox-button v-for="city in this.Rnumber" :label="city" :key="city">{{city}}</el-checkbox-button>
-              </el-checkbox-group>
-            </el-form-item>
-          </div>
-           <el-form-item
-                                   
-          prop="amountThreeD"
-          :rules="[
-              { required: true, message: $t('amount_required') },
-              
-          ]"
-          >  
-          <el-row>
-            <el-col :span="18">
-                <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"  @keypress.enter.native="submitThreed('ruleForm')"></el-input>
-                 <div  v-if ="!$store.state.isLoggedIn">
-                      <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
-                          <el-button style="width:100%" class="submitThreed_btn">{{$t('Please Login first')}}</el-button>
-                    </nuxt-link>
+                 <div class="bet_btn">
+                        <nuxt-link :to="`${$t('/threeD/home')}?lang=${$store.state.locale}`">
+                            <el-button type="" round>{{$t('Bet')}}</el-button>
+                        </nuxt-link>
                     </div>
-                    <div v-else>
-                          <el-button  style="width:unset !important;border:0;"  @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('Bet')}}</el-button>     
-                    </div>
-            </el-col>
-             <el-col :span="6" :offset="6">
-
-            </el-col>
-          </el-row>
+                   
+            </div>
+        </div>
         
-    </el-form-item>
-   
-     
-         
-          </el-form>    
-      </section>
-      </div>
-    </div>
 
   </el-main>
        
@@ -200,61 +137,52 @@
 import Vue from 'vue'
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
-import VuePicker from 'vue-pickers'
-      var oneCol = []
-      var twoCol = []
-      var threeCol = []
-  for (let i = 0; i < 10; i++ ) {
-     
-    oneCol.push({
-      label:  i ,
-      value: i
-    })
-     twoCol.push({
-      label:   i ,
-      value: i
-    })
-     threeCol.push({
-      label:  i ,
-      value: i
-    })
-   
-  }
+
+    
    
 export default {
  components: { 
      carousel,
-      VuePicker
+     
      },
     getters: {},
     mutations: {},
     actions: {},
   mounted() {
-    // var self = this;
-    //       if (this.$store.state.sliderImage.length > 0){
-    //         self.slider_images = this.$store.state.sliderImage;
-    //          if(this.slider_images  !== null) {
-    //                     this.loaded = true;
-    //                 }
-    //       }
-    //       else{
-    //         // setTimeout(function(){
-    //           self.$axios.get('/v2/v1/slider_image?name=3D')
-    //             .then(response => {
+       this.$axios.get("/v2/v1/threed-result")
+      
+                
+                    .then(response => {
+                        console.log(response.data.data)
+                     this.threed_result = response.data.data
+                     this.$nuxt.$loading.finish()
+                })
+
+    var self = this;
+          if (this.$store.state.sliderImage.length > 0){
+            self.slider_images = this.$store.state.sliderImage;
+             if(this.slider_images  !== null) {
+                        this.loaded = true;
+                    }
+          }
+          else{
+            // setTimeout(function(){
+              self.$axios.get('/v2/v1/slider_image?name=3D')
+                .then(response => {
                    
-    //              if(self.slider_images  !== null) {
-    //                     this.loaded = true;
-    //                 }
+                 if(self.slider_images  !== null) {
+                        this.loaded = true;
+                    }
 
-    //             self.slider_images = response.data.data
-    //             })
-    //           self.$axios.get('/v2/v1/slider_text')
-    //             .then(response => {
+                self.slider_images = response.data.data
+                })
+              self.$axios.get('/v2/v1/slider_text')
+                .then(response => {
 
-    //             self.slider_text = response.data.data[0];
-    //             })
+                self.slider_text = response.data.data[0];
+                })
 
-    //             }
+                }
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -274,10 +202,8 @@ export default {
   data() {
     
     return {
-      checkAll: false,
-      isIndeterminate: true,
+      threed_result:'',
       fullscreenLoading: false,
-      pickerValue:this.selectedDate,
       isActive: false,
       endTime: '',
       times: [
@@ -290,32 +216,15 @@ export default {
       a: 1,
       progress: 50,
       dialogVisible: false,
-      // slider_images:'',
+      slider_images:'',
       activeIndex: '1',
-      info:'',
-      info_api:'',
       profile:'',
-      // slider_text:'',
+      slider_text:'',
       myWallet:'',
       blockUser:'',
       loaded:'',
-      bet_number: [],
-      ruleForm: {
-          amountThreeD:'',
-      },
-      profile:'',
-      myWallet:'',  
-      pickerVisible: false,
-      pickData: [
-      oneCol,
-      twoCol,
-      threeCol,
-      ],
-      threed:[],
-      result: '',
-      Rresult:'',
-      label:'',
-      Rnumber:[]
+     
+     
     }
     
   },
@@ -340,93 +249,13 @@ export default {
         return check;
     },
     goBack() {
-        this.$router.push(`/threeD/?lang=${this.$store.state.locale}`);
+        this.$router.push(`/?lang=${this.$store.state.locale}`);
     },
-  
-    SameThreeNumber() {
-       this.$router.push(`/threeD/samethreePage?lang=${this.$store.state.locale}`); 
+    thousands_separators(num){
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
     },
-  
-    rBtn(threed) {
-          
-          this.isActive = !this.isActive;
-          const permArr = [],usedChars = [];
-          const rotate = (input) => {
-            let ch;
-            input.forEach((val,index) =>{
-              ch = input.splice(index, 1)[0];
-              usedChars.push(ch);
-              if (input.length == 0) {
-                permArr.push(usedChars.slice());
-              }
-              rotate(input);
-              input.splice(index, 0, ch);
-              usedChars.pop();
-            })
-            return permArr
-            
-          };
-          let unique = (value, index, self) => { 
-              return self.indexOf(value) === index;
-          }
-          let regex = new RegExp(',', 'g');
-          let data = [];
-          let result = rotate(threed);
-
-          result.forEach(arr => {
-            data.push(arr.toString().replace(regex, ''));
-          })
-          data = data.filter(unique);
-          this.Rnumber = data
-          this.checkAll = true
-          this.bet_number = true
-          this.isIndeterminate = false;
-          this.bet_number = threed ? this.Rnumber : [];
-          this.isIndeterminate = false;
-
-    },
-      handleCheckedCitiesChange(value) {
-        let checkedCount = value.length;
-        this.checkAll = checkedCount === this.Rnumber.length;
-        this.isIndeterminate = checkedCount > 0 && checkedCount < this.Rnumber.length;
-      },
-    change(res) {
-      JSON.stringify(res)
-      let data = []
-      res.forEach(element => {
-        if(element.value != undefined){
-          data.push(element.value);
-        }
-        this.threed = data;
-      });
-    },
-    submitThreed(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-                this.result_number =(this.threed[0].toString())+this.threed[1]+(this.threed[2].toString())
-          if(this.isActive) {
-              this.all_number =  this.bet_number
-                var data = this.all_number  
-          }else {
-                this.all_number =  this.result_number
-                var data = this.all_number  
-          }
-         this.$store.commit('getBetThreeD', data);
-          var data = this.ruleForm.amountThreeD  
-          this.$store.commit('betAmountThreeD',data);
-          this.$router.push(`/threeD/threeDremark?lang=${this.$store.state.locale}`); 
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-    },
-
-        thousands_separators(num){
-            var num_parts = num.toString().split(".");
-            num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            return num_parts.join(".");
-        },
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
@@ -488,53 +317,57 @@ export default {
 .choose_2d_3d .el-card {
   margin:20px;
 }
-.threed_home .logo {
+.threed_home_index .logo {
     height: auto;
-    position: relative;
-    top: -31px;
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
 }
-.threed_home .el-header {
-  padding:20px;
+.threed_home_index .el-header {
+  padding:20px 20px 0 20px;
   color:#fff;
+}
+.result_title_td_index {
+    margin-top:-20px;
+    margin-bottom:0;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+.threed_home_index .refresh_icon {
+    position: absolute;
+    right:0;
+    left:0;
+    top:80px;
+    
+}
+.threed_result_card {
+    color:#fff;
+    border: 2px solid #FFEA72;
+    border-radius: 13px;
+    margin: 10px auto;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#3A4450), to(#151E28)), -webkit-gradient(linear, right top, left top, from(#3A4450), color-stop(50%, #3A4450), to(#151E28));
+    background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);
+}
+.threed_result_card .td_result_date {
+    text-align: left;
+}
+.threed_result_card .td_result_number {
+    text-align: right;
+    color:#FFEA72;
+    font-weight: bold;
+}
+.threed_home_index .avatar_text ul {
+    margin:0;
+    padding:0 10px;
 }
 .main_page .el-image {
     border-radius: 24px !important;
 }
-.threed_home .hideScrollBar {
+.threed_home_index .hideScrollBar {
   padding-top:15px;
+  padding-bottom:430px;
 }
-
-.threed_home .el-form-item {
-    margin:0;
-}
-.threed_home .contact_sameThree {
-    padding-top:20px;
-    padding-right:80px;
-    text-align: left;
-    
-}
-.contact_sameThree .el-checkbox-button__inner {
-    
-    background-color: #1A1A1A;
-    border: 0;
-    margin: 5px;
-    color: #fff;
-    font-size:14px;
-    font-weight: bold;
-    border-radius: 9px;
-}
-.contact_sameThree .el-checkbox-button.is-checked .el-checkbox-button__inner {
-   background: #FFEA72;
-    color:#000;
-    box-shadow:unset;
-    font-weight: bold;
-}
-.contact_sameThree .el-checkbox-button:first-child .el-checkbox-button__inner ,
-.el-checkbox-button:last-child .el-checkbox-button__inner {
-   border: 0;
-   border-radius: 9px;
-}
-
 
 
 .owl-theme .owl-nav.disabled + .owl-dots {
@@ -547,106 +380,6 @@ export default {
   display: block !important;
   border:0;
 }
-.vue-picker {
-    position: relative;
-    background-color: #fff;
-    user-select: none;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-  }
-.pickerbox[data-v-4804d034] {
-  position: unset !important; 
-     width: unset !important;
-    height: unset !important; 
-    left: unset !important; 
-    top: unset !important; 
-     background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%) !important;
-    z-index: 9999;
-    overflow: hidden;
-    border-radius: 21px;
-    border-color:darkgoldenrod;
-    border:2px solid #F5DF73;
-  
-
-}
-.colums[data-v-4804d034] {
-  margin:0 55px !important;
-}
-.content[data-v-4804d034] {
-  height:180px !important;
-}
-.choose_bet_title {
-  color:#fff;
-  margin-top:10px;
-  text-align: left;
-}
-
-  .vue-picker[data-v-4804d034] {
-    position: unset  !important;
-    background: unset !important;
-    user-select: none;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .picker .btn[data-v-6ffe26b0] {
-     color:#4D2707;
-  }
-  .HideBtn {
-     pointer-events:auto !important;
-      background: linear-gradient(#FDD164, #BB8834); 
-  }
-.el-button.is-active, .el-button.is-plain:active {
-  background-color:#0071DB;
-  color:#fff;
-  font-weight: bold;
-}
-
- .submitThreed_btn {
-     background: linear-gradient(#FDD164, #BB8834);
-     font-size:15px;
-     border-radius: 20px;
-    width:100px;
-    margin-top:15px;
-     border:0;
- }
-
-  .picker .mask[data-v-4804d034] {
-        background-size: 100% 70px !important;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.136), rgba(255, 255, 255, 0.034)), linear-gradient(0deg, rgba(255, 255, 255, 0.034), rgba(255, 255, 255, 0.136));
-  }
-  .picker .list li[data-v-1a173b4c] {
-    color:#fff;
-    position: relative;
-    top:-14px;
-    font-weight: bold;
-  }
-  .picker .header .left {
-    display: none;
-  }
-  .picker .header[data-v-6ffe26b0]::after {
-    border:unset;
-  }
-  .picker .title[data-v-6ffe26b0] {
-    display: none;
-  }
-  .colums[data-v-4804d034] {
-    font-size: 24px !important;
-
-  }
-
-  .contact_rthree .el-checkbox-button.is-checked .el-checkbox-button__inner {
-        background: #FFEA72;
-        color:#000;
-        box-shadow:unset;
-        font-weight: bold;
-    }
-    .contact_rthree .el-input__inner {
-        background: #252E39;
-        border:1px solid #FFEA72;
-        color:#fff;
-    }
-   
-
    .threeD_main  .el-header {
         padding:20px;
         color:#fff;
@@ -672,36 +405,7 @@ export default {
         border:1px solid #fff;
     
     }
-    .r_btn {
-      position: relative;
-      width:unset !important;
-      top:75px;
-      left:5px;
-      background-color: #275329;
-      color:#fff;
-      border-radius: 9px;
-    }
-    .book_btn {
-      width:52px !important;
-        border-radius: 9px;
-        background-image: url(~static/threed_img/dream_book.jpg);
-        background-position:center;
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-    }
-    .choose_number_box p {
-        text-align: left;
-        color:#fff;
-        padding-top:10px;
-
-    }
-    .choose_number_box .el-card {
-        border-radius: 21px;
-        background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);
-        color:#b8b8b8;
-       
-        border:2px solid #FFEA72;
-    } 
+   
     /* slider text css */
 /* CSS Document */
 .scroll-left {
@@ -722,11 +426,7 @@ export default {
   -webkit-animation: scroll-left 10s linear infinite;
   animation: scroll-left 10s linear infinite;
 }
-.same_three_btn {
-  background: linear-gradient(#26B6F2, #1A39BC);
-  border:0;
-  border-radius: 9px;
-}
+
 .count_time_threed  ul{
   padding:13px 0;
   margin:0;
