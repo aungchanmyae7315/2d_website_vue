@@ -266,9 +266,10 @@ export default {
                     }  
                 })
                 .catch(error => {
+                    console.log(error.response)
                    this.$message({
                             showClose: true,
-                          message: 'catch error',
+                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
                           type: 'warning',
                         });
                 });

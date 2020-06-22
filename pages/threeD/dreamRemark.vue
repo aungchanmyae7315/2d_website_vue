@@ -227,7 +227,7 @@ export default {
                  .catch(error => {
                    this.$message({
                             showClose: true,
-                          message: 'catch error',
+                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
                           type: 'warning',
                         });
                 });
