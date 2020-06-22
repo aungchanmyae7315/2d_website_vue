@@ -3,7 +3,7 @@
         
       <el-main class="main_page threed_home_index">
         <!-- <Online></Online> -->
-         <el-header style="height:auto !important;">
+         <el-header style="height:60px">
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                <el-page-header title="" @back="goBack" >
                      
@@ -13,17 +13,20 @@
                 <img src="~static/icons_header/dimond_t_icon.png" alt="">
               </div>
            <!-- </nuxt-link> -->
-        
-           <div class="" v-if ="!$store.state.isLoggedIn">
+          </el-header>
 
-              <div class="demo-type">
-                 <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
-                    <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
-                    <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
-                  </nuxt-link>
-                    
-              </div>
-        </div>
+        <div class="longText" id="hidingScrollBar">
+            <div class="hideScrollBar">
+            <div  v-if ="!$store.state.isLoggedIn">
+
+                <div class="demo-type">
+                    <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
+                        <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
+                        <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
+                    </nuxt-link>
+                        
+                </div>
+            </div>
         <div v-else>
            
               <div class="demo-type">
@@ -83,7 +86,8 @@
                 </el-row>
               </div>
         </div>
-          <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
+
+                 <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
     
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -103,10 +107,7 @@
           </div>
         </h3>
         <p class="result_title_td_index">{{$t('result_title')}}</p>
-          </el-header>
-        <div class="longText" id="hidingScrollBar">
-            <div class="hideScrollBar">
-                  <div  style="padding:0 20px;" v-for="(result,t) in threed_result" :key="t" >
+                  <div  v-for="(result,t) in threed_result" :key="t" >
                     <el-card class="threed_result_card">
                         <el-row>
                             <el-col :span="12" class="td_result_date">
@@ -330,6 +331,7 @@ export default {
 }
 .result_title_td_index {
     margin-top:-20px;
+    color:#fff;
     margin-bottom:0;
     padding-bottom: 15px;
     font-weight: bold;
@@ -366,7 +368,7 @@ export default {
 }
 .threed_home_index .hideScrollBar {
   padding-top:15px;
-  padding-bottom:430px;
+  padding-bottom:230px;
 }
 
 
