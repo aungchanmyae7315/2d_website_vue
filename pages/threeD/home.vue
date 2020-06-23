@@ -15,12 +15,12 @@
               </div> -->
            <!-- </nuxt-link> -->
            <el-row>
-             <el-col :span="6" style="padding-right:7px;">
+             <el-col :span="8" style="padding-right:7px;">
               <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n" target="_blank">
                  <img class="book_btn" src="~static/threed_img/dream_book.png" alt="">
               </a>
              </el-col>
-             <el-col :span="18">
+             <el-col :span="16">
                       <el-form-item
                                         
                 prop="amountThreeD"
@@ -34,7 +34,7 @@
              </el-col>
            </el-row>
            <el-row style="margin:10px auto;">
-             <el-col :span="16" style="padding-top:12px;">
+             <el-col :span="16">
                 <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
                         <el-col :span="24" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
                         <el-col :span="24" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.thousands_separators(myWallet)}} {{$t('kyat')}}</div></el-col>
@@ -71,10 +71,10 @@
               </div>
            </el-row>
            <el-row v-else>
-              <el-col :span="12" style="padding-right:10px;">
+              <el-col :span="9" style="padding-right:10px;">
                  <el-button type="info" round  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
              </el-col>
-             <el-col :span="12" style="padding-left:10px;">
+             <el-col :span="15" style="padding-left:10px;">
               
                     <div>
                           <el-button round   @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('Bet')}}</el-button>     
@@ -399,6 +399,7 @@ export default {
         height: auto;
     }
   .balance_amount {
+    font-size: 12px;
     color:#fff;
     text-align: left;
   }
@@ -497,6 +498,7 @@ export default {
 }
 .choose_bet_title {
   color:#fff;
+  font-weight: bold;
   margin-top:10px;
   text-align: left;
 }
@@ -525,6 +527,8 @@ export default {
      font-size:15px;
      border-radius: 20px;
     width:100%;
+    color:#4D2707;
+    font-weight: bold;
      border:0;
  }
 
@@ -650,7 +654,9 @@ export default {
 }
 .same_three_btn {
   width:100%;
-  background: linear-gradient(#26B6F2, #1A39BC);
+  background-color:#2F6F42;
+  color:#fff;
+  font-weight: bold;
   border:0;
   border-radius: 9px;
 }
@@ -664,9 +670,12 @@ export default {
   display:flex;
 }
 .count_time_threed h5 {
-  font-size:11px;
+  font-size:12px;
   color:#fff;
   font-weight: bold;
+}
+.card-title {
+  font-size: 12px;
 }
 .count_time_threed h6 {
   color:#FFEA72;
