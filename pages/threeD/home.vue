@@ -34,13 +34,13 @@
              </el-col>
            </el-row>
            <el-row style="margin:10px auto;">
-             <el-col :span="12" style="padding-top:12px;">
+             <el-col :span="16" style="padding-top:12px;">
                 <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
                         <el-col :span="24" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
                         <el-col :span="24" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.thousands_separators(myWallet)}} {{$t('kyat')}}</div></el-col>
                   </nuxt-link>
              </el-col>
-             <el-col :span="12">
+             <el-col :span="8">
                 <div id="app-timer" class="count_time_threed">
                       <ul>
                        
@@ -400,6 +400,7 @@ export default {
     }
   .balance_amount {
     color:#fff;
+    text-align: left;
   }
 .choose_2d_3d .el-card {
   margin:20px;
@@ -654,7 +655,7 @@ export default {
   border-radius: 9px;
 }
 .count_time_threed  ul{
-  padding-top:8px;
+  padding:8px;
   margin:0;
   list-style: none;
   text-align: right;
