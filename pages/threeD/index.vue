@@ -390,7 +390,7 @@ export default {
    .threed_home .el-input__inner {
       margin-top:15px;
       text-align: right;
-       background-color: #252E39;
+       background-color:#fff;
        color:#b8b8b8;
    }
    .threeD_main .logo {
