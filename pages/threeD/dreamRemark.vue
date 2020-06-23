@@ -8,9 +8,6 @@
            <!-- </nuxt-link> -->
       </el-header>
          <div>
-             <!-- Inspired by:
-https://codepen.io/edward1995/pen/ooyKbq
-https://codepen.io/humber_cde_91/pen/agmmJq-->
 
 <div id="app">
   <div class="container">
@@ -23,7 +20,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
           width="90%">
           <span>
             <el-form-item
-                                          
+                :label="$t('number')"                  
                   prop="item.number"
                   :rules="[
                       { required: true, message: $t('bet_number_required') },
@@ -33,8 +30,16 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
                   >  
                   <el-input id="form-name" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" :placeholder="$t('bet_number_add')" v-model.number="numberValidateForm.item.number"></el-input>
             </el-form-item>
+             <el-form-item
+                    :label="$t('odds')"                  
+                  prop="item.odds"
+                  
+                  
+                  >  
+                  <el-input id="form-name" disabled="" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" :placeholder="$t('odds')" v-model.number="numberValidateForm.item.odds"></el-input>
+            </el-form-item>
             <el-form-item
-                                          
+                    :label="$t('bet_amount')"                         
                   prop="item.amount"
                   :rules="[
                       { required: true, message: $t('amount_required') },
@@ -61,6 +66,7 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
             <table class="table table-striped table-bordered table-sm">
               <thead class="thead-light">
                 <th>{{$t('no')}}</th>
+                <th>{{$t('odds')}}</th>
                 <th>{{$t('Amount')}}</th>
                 <th>{{$t('edit_delete')}}</th>
               </thead>
@@ -71,25 +77,31 @@ https://codepen.io/humber_cde_91/pen/agmmJq-->
                   <span v-else>{{item.number}} </span>
                     </div>
                 </td>
+                 <td>
+                    <div style="width:100%">
+                  <input style="width:100%" disabled v-if="item.edit" type="number" v-model="item.odds"  v-on:keyup.enter="item.edit = !item.edit">
+                  <span v-else>{{item.odds}} </span>
+                    </div>
+                </td>
                 <td >
                     <div style="width:100%">
-                  <input style="width:100%" v-if="item.edit" type="number" v-model="item.amount" v-on:keyup.enter="item.edit = !item.edit">
-                  <span v-else>{{item.amount}} </span>
+                      <input style="width:100%" v-if="item.edit" type="number" v-model="item.amount" v-on:keyup.enter="item.edit = !item.edit">
+                      <span v-else>{{item.amount}} </span>
                   </div>
                 </td>
                 <td >
                     <div style="width:100%;display:flex">
-                      <button style="margin:5px;" v-if="!item.edit"  @click="item.edit = !item.edit" class="btn "><i class="el-icon-edit"></i></button>
-                      <button style="margin:5px;" v-else  @click="item.edit = !item.edit" class="btn "><i class="el-icon-finished"></i></button>
-                      <button  style="margin:5px;" @click="removeItem(index)" class="btn "><i class="el-icon-delete"></i></button>
+                      <button style="margin:5px;border-radius:50%;" v-if="!item.edit"  @click="item.edit = !item.edit" class="btn "><i class="el-icon-edit"></i></button>
+                      <button style="margin:5px;border-radius:50%;" v-else  @click="item.edit = !item.edit" class="btn "><i class="el-icon-finished"></i></button>
+                      <button  style="margin:5px;border-radius:50%;" @click="removeItem(index)" class="btn "><i class="el-icon-delete"></i></button>
                     </div>
                 
                 </td>
               </tr>
-              <tr style="color:orange;font-weight:bold">
-                <td>စုစုပေါင်း<br>ထိုးငွေ</td>  
-                  <td>{{total}} {{$t('kyat')}}</td>
-                </tr>
+              <tfoot style="text-align:center;">
+                 <td colspan="5" style="padding:10px"><span style="color:orange;font-weight:bold">စုစုပေါင်းထိုးငွေ </span> <span style="float:right"> {{total}} {{$t('kyat')}} </span></td>
+              </tfoot>
+              
             </table>
     
           <el-card class="myWallet_card">
@@ -128,12 +140,13 @@ export default {
               dialogVisible: false,
               myWallet:'',
               amount:localStorage.getItem('amountThreeD'),
-              item: {number: '', amount:'', edit: 0},
+              item: {number: '', odds:'', amount:'', edit: 0},
               items:[],
                numberValidateForm: { 
                  item: {
                     number: '',
-                    amount: ''
+                    amount: '',
+                    odds:'500',
                  }
                  
                },
@@ -149,8 +162,10 @@ export default {
         addItem(formName){
       
           this.$refs[formName].validate((valid) => {
+
             if (valid) {
-                this.items.push({number:this.numberValidateForm.item.number, amount:this.numberValidateForm.item.amount, edit:this.item.edit})
+              
+                this.items.push({number:this.numberValidateForm.item.number,odds:this.numberValidateForm.item.odds, amount:this.numberValidateForm.item.amount, edit:this.item.edit})
                 this.item = [];
                 $('#form-name').focus();
                 this.dialogVisible = false
@@ -227,7 +242,7 @@ export default {
                  .catch(error => {
                    this.$message({
                             showClose: true,
-                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                           message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
                           type: 'warning',
                         });
                 });
@@ -251,6 +266,7 @@ export default {
               
                       })
                   .then(response => {
+                   console.log(response.data)
                       this.$nuxt.$loading.finish()
                       this.items = response.data.data
               })

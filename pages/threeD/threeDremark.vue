@@ -100,12 +100,7 @@
               </tr>
               <tfoot style="text-align:center;">
                  <td colspan="5" style="padding:10px"><span style="color:orange;font-weight:bold">စုစုပေါင်းထိုးငွေ </span> <span style="float:right"> {{total}} {{$t('kyat')}} </span></td>
-  <!-- <tr style="color:orange;font-weight:bold">
-               
-                <td>စုစုပေါင်း<br>ထိုးငွေ</td>  
-                  <td></td>
-                </tr> -->
-  </tfoot>
+              </tfoot>
               
             </table>
     
