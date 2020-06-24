@@ -31,10 +31,18 @@
                   
                   </el-avatar>
               </nuxt-link>
-                <div  class="avatar_text">
+                 <div  class="avatar_text">
                   <ul>
-                    <li>{{ $t('my_balance') }}</li>
-                    <li class="amount_mmk">{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
+                       <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
+                          <li style="color:#fff;line-height:16px">
+                            <span>{{this.profile.name}}</span><br>
+                            <span>{{this.profile.phone}}</span>
+                          
+                          </li>
+                     </nuxt-link>
+                    <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
+                          <li  style="line-height:13px" class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
+                    </nuxt-link>
                   </ul>
                   </div>
               </div>

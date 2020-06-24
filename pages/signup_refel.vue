@@ -146,7 +146,7 @@ export default {
     }
    .signup_refel_page h2.background {
     position: relative;
-    margin:25px auto;
+    margin:10px auto;
     z-index: 1;
     }
     .signup_refel_page .box-card h3 {

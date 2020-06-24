@@ -249,8 +249,11 @@ input[type=number] {
       padding:10px 0;
   }
   .avatar_text ul {
+    font-size:12px;
     list-style: none;
     padding:10px 2px;
+    position: relative;
+    top:3px;
    
   }
   .avatar_text {
