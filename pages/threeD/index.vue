@@ -45,17 +45,17 @@
                         <img :src="this.profile.profile" alt="">
                       </el-avatar>
                     </nuxt-link>
-                <div  class="avatar_text">
+               <div  class="avatar_text">
                   <ul>
                        <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
-                          <li style="color:#fff"><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
-                              <span v-else >{{this.profile.name}}</span>
+                          <li style="color:#fff;line-height:16px">
+                            <span>{{this.profile.name}}</span><br>
+                            <span>{{this.profile.phone}}</span>
                           
-
                           </li>
                      </nuxt-link>
                     <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                          <li  class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
+                          <li  style="line-height:13px" class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
                     </nuxt-link>
                   </ul>
                   </div>
