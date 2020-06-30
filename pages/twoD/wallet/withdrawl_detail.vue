@@ -69,10 +69,58 @@
               <div v-if="this.topup_detail_item.status == 2">
                     <el-divider></el-divider>
                   <el-card style="background-color:#F5F5F5">
-                      <p style="color:#757575">Sein Lucky Account သို့ ငွေဖြည့်သွင်းမှု မမှန်ကန်ပါ ဘဏ်အကောင့်နံပါတ်အား ပြန်လည်စစ်ဆေးပေးပါ</p>
+                      <p style="color:#757575">Sein Lucky Account သို့ ငွေထုတ်ယူမှု မမှန်ကန်ပါ ဘဏ်အကောင့်နံပါတ်အား ပြန်လည်စစ်ဆေးပေးပါ</p>
                   </el-card>
                   <el-button round @click="returnAgain()" class="return_again">ပြန်လည်လုပ်ဆောင်မည်</el-button>
 
+              </div>
+              <div v-else-if="this.topup_detail_item.status == 0">
+               <el-card style="background:#F5F5F5;" class="time_card">
+                    <span>{{$t('sein_lucky_office_hours')}}</span>
+                    <el-divider></el-divider>
+                    <span>{{$t('mon-sat')}}</span><br>
+                    <span>{{$t('morning')}} 9:00 AM - 12:20 PM</span><br>
+                    <span>{{$t('evening')}} 01:00 PM - 05:30 PM</span>
+                </el-card>
+                <p style="padding-top:10px;">၁၀ မိနစ်အတွင်းငွေမရောက်ပါကဆက်သွယ်ရန် ဖုန်းများ</p>
+                <el-card style="background:#F5F5F5;"  class="phone_card">
+                       
+                        <h6>{{$t('topup_withdrawal_help')}}</h6>
+                        <ul class="contact_phone">
+                          <el-row>
+                            <el-col :span="9">
+                               <li class="phone_item">+959257578394</li>
+                            </el-col>
+                            <el-col style="text-align:right" :span="15">
+                                <li><el-button size="medium" >  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959257578394"> 
+                                  <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button>
+                                  <el-button size="medium" >  <a style="color:#13562A;font-size:15px" href="tel:09257578394"> 
+                                  <img src="~static/icons_service/call_back.svg" alt="" >Phone</a></el-button>
+                                </li>
+                            </el-col>
+                          </el-row>
+                         
+                          
+                        </ul>
+                         <ul class="contact_phone">
+                            <el-row>
+                            <el-col :span="9">
+                               <li class="phone_item">+959889973993</li>
+                            </el-col>
+                            <el-col style="text-align:right" :span="15">
+                                <li><el-button size="medium" >  <a style="color:#7B519C;font-size:15px" href="viber://contact?number=%2B959889973993"> 
+                                  <img src="~static/icons_service/viber_icon.svg" alt="" >Viber  </a></el-button>
+                                  <el-button size="medium" >  <a style="color:#13562A;font-size:15px" href="tel:09889973993"> 
+                                  <img src="~static/icons_service/call_back.svg" alt="" >Phone</a></el-button>
+                                </li>
+                            </el-col>
+                          </el-row>
+                        
+                        </ul>
+              </el-card>
+               <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
+                <el-button type="info" class="ok_btn" round>{{$t('ok')}}</el-button>
+               </nuxt-link>
               </div>
         </section>
 
@@ -81,6 +129,7 @@
 </template>
 
 <style>
+
     .topup_detail .el-header {
        background-color :#fff;
 
@@ -127,6 +176,44 @@
         background-color: #F44336;
         color:#fff;
     }
+    .topup_detail_item  .phone_card h6 {
+      text-align: left;
+      padding-bottom:20px;
+      color:#000;
+    }
+    .topup_detail_item .contact_phone {
+      padding:0;
+      margin:0;
+      list-style: none;
+      color:#000;
+    }
+    .topup_detail_item .contact_phone img  {
+      width:25px;
+      padding-right:5px;
+   
+    }
+
+
+  .contact_phone li i {
+    font-size: 17px;
+    padding-right:5px;
+  }
+  .phone_item {
+    font-size: 14px;
+    padding-top:10px;
+    padding-bottom:30px;
+  }
+  @media screen and (max-width:400px) {
+      .topup_detail_item .el-button--medium {
+          padding:10px 6px;
+      }
+  }
+  .topup_detail_item .ok_btn {
+      background: #2196F3;
+      color:#fff;
+      width:100%;
+      margin:15px auto;
+  }
    
 </style>
 

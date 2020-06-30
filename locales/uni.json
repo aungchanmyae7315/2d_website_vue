@@ -308,9 +308,11 @@
 "account":"ဘဏ်အကောင့်",
 "transaction_status":"ငွေဖြည့် / ငွေထုတ် အခြေအနေ",
 "transaction_history":"နှစ်ရက်အတွင်းငွေလွှဲမှတ်တမ်း",
+"topup_success":"ငွေဖြည့်ပြီး",
 "withdrawal_success":"ငွေလွှဲပြီး",
 "pending":"တင်ပြနေသည်...",
 "money_has_been_trans":"ဘဏ်အကောင့်သို့ငွေရောက်ရှိပါသည်",
+"topupmoney_has_been_trans":"Sein Lucky Accountသို့ငွေဖြည့်သွင်းမူအောင်မြင်ပါသည်",
 "withdrawal_details":"ငွေထုတ်အသေးစိတ်",
 "topup_details":"ငွေဖြည့်အသေးစိတ်"
 
