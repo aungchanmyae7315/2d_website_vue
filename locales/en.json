@@ -293,6 +293,7 @@
 "/promotion":"/promotion",
 "/home":"/home",
 "/threeD/home":"/threeD/home",
+"/threeD/book":"/threeD/book",
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
 "/share":"/share",
@@ -308,9 +309,11 @@
 "account":"Account",
 "transaction_status":"Transaction Status",
 "transaction_history":"Transaction History within 2 days",
+"topup_success":"Top-up Success !",
 "withdrawal_success":"Withdrawal Success !",
 "pending":"Pending...",
 "money_has_been_trans":"Money has been transferred to your bank account.",
+"topupmoney_has_been_trans":"Top-up successfully, please check your balance.",
 "withdrawal_details":"Withdrawal Details",
 "topup_details":"Top Up Details"
 

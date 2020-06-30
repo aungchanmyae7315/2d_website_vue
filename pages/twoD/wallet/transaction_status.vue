@@ -10,9 +10,11 @@
       
         <el-tab-pane :label="$t('Top Up')" name="first">
               
-            <section v-if="this.topup_transaction" class="transaction">
-                  <p>{{$t('transaction_history')}}</p>
+            <section  v-if="!this.topup_transaction.length == 0" class="transaction">
+                  <p style="font-size:14px">နှစ်ရက်အတွင်း Sein Lucky Account သို့ငွေဖြည့်မှတ်တမ်း</p>
+
                 <el-card class="transaction_list" v-for="(tran , t) in topup_transaction" :key="t">
+                    
                     <div  @click="cur_id(tran.id)" >
                     <el-row>
                         <el-col :span="16">
@@ -29,7 +31,7 @@
                         
                         </el-col>
                         <el-col style="text-align:right" :span="8">
-                                <h5 class="tran_amount">{{tran.amount}} {{$t('kyat')}}</h5>
+                                <h5 class="tran_amount">{{tran.amount}} {{$t('kyat')}} <i class="el-icon-arrow-right"></i> </h5>
                         </el-col>
                        
                     </el-row>
@@ -39,8 +41,8 @@
                      </div>
                       <div v-if="tran.status == 1">
                           <div style="float:left;padding-top:5px">
-                              <h6 style="color:#158220;font-weight:bold">{{$t('withdrawal_success')}}</h6>
-                              <p style="color:#757575;font-size:12px">{{$t('money_has_been_trans')}}</p>
+                              <h6 style="color:#158220;font-weight:bold">{{$t('topup_success')}}</h6>
+                              <p style="color:#757575;font-size:12px">{{$t('topupmoney_has_been_trans')}}</p>
                           </div>
                           <div style="float:right">
                               <img src="~static/images/topup_withdraw/check_circle-black-18dp.svg" alt="" style="padding:12px;">
@@ -59,14 +61,18 @@
                     </div>
                 </el-card>          
             </section>
-             <section  v-else> <p style="text-align:center;color:#b8b8b8">No Data</p></section>
+             <section class="no_data_topup"  v-else>
+                    <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
+                        <el-button type="info" round>{{$t('ok')}}</el-button>
+                   </nuxt-link>
+            </section>
 
         </el-tab-pane>
           <el-tab-pane :label="$t('Withdrawal')" name="second">
            
-          <section v-if="this.withdrawl_transaction" class="transaction">
+          <section v-if="!this.withdrawl_transaction.length == 0"  class="transaction">
             
-                 <p>{{$t('transaction_history')}}</p>
+                 <p  style="font-size:14px">နှစ်ရက်အတွင်း Sein Lucky Account မှငွေထုတ်မှတ်တမ်း</p>
                 <el-card class="transaction_list" v-for="(tran , t) in withdrawl_transaction" :key="t">
                     <div @click="withdrawl_cur_id(tran.id)">
                     <el-row>
@@ -114,7 +120,11 @@
                     </div>
                 </el-card>          
             </section>
-             <section v-else > <p style="text-align:center;color:#b8b8b8">No Data</p></section>
+             <section class="no_data_withdrawal"  v-else > 
+                   <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
+                        <el-button type="info" round>{{$t('ok')}}</el-button>
+                   </nuxt-link>
+             </section>
        
 
         </el-tab-pane>
@@ -126,6 +136,36 @@
 </template>
 
 <style>
+    .no_data_topup {
+        background-image: url(~static/images/topup_withdraw/topup_nodata.jpeg);
+        width: 100%;
+        height: 100vh;
+         margin-top:-80px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 100%;
+    }
+     .no_data_withdrawal {
+        background-image: url(~static/images/topup_withdraw/withdrawal_nodata.jpeg);
+        width: 100%;
+        height: 100vh;
+        margin-top:-80px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 100%;
+    }
+    .no_data_withdrawal .el-button  , .no_data_topup .el-button {
+        position: fixed;
+        bottom:10px;
+        max-width: 480px;
+        left:0;
+        right:0;
+        width:89%;
+        background-color: #158220;
+        color:#fff;
+        margin:20px auto;
+       
+    }
     .tran_status .el-header {
        background-color :#fff;
     }
@@ -162,6 +202,9 @@
     }
     .transaction {
         padding:15px;
+    }
+    .transaction .el-tabs__header {
+        margin:0;
     }
     .transaction .el-card {
         border-radius: 13px;

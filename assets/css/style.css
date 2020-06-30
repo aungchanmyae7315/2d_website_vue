@@ -251,6 +251,8 @@ input[type=number] {
   .avatar_text ul {
     list-style: none;
     padding:10px 2px;
+    position: relative;
+    top:3px;
    
   }
   .avatar_text {

@@ -1,77 +1,119 @@
 <template>
-        <main>
-            <div class="withdrawal">
-                <div class="longText" id="hidingScrollBar">
-                    <div class="hideScrollBar_refel">
-                <el-header>
-                     <!-- <nuxt-link :to="`${$t('wallet')}?lang=${$store.state.locale}`"> -->
-                           <el-page-header @back="goBack" title=""  :content="`${$t('Withdrawal')}`">
-                         </el-page-header>
-                     <!-- </nuxt-link> -->
+   
+    <section>
+        <div class="withdrawal">
+            <el-header>
+                 <!-- <nuxt-link  :to="`${$t('wallet')}?lang=${$store.state.locale}`"> -->
+                 <el-page-header title="" @back="goBack"  :content="`${$t('Withdrawal')}`">
+                    
+                </el-page-header>
+                 <!-- </nuxt-link> -->
+            </el-header>
 
-                </el-header>
-                <p>{{$t('Choose your receiving account')}}</p>
-                <el-form @submit.native.prevent :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
-    <el-form-item 
-            
-            prop="radio1"
-            :rules="[
-                { required: true, message: $t('bank_option_required')}, 
-            ]">
+                 <p>{{$t('Choose your receiving account')}}</p>
+               <el-card v-if="radio == 1" class="point_amount">
+                     <el-radio v-model="radio" label="2" >
+                         <div>
+                                <img src="~static/images/kbz_t.jpg"   alt="">
+                               
+                         </div>
+                    </el-radio>
+                     
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                            <img src="~static/images/wavepay.jpg"   class="active_img" alt="">
+                          
+                        </div>
+                    </el-radio>
+                     <el-radio v-model="radio" label="3" >
+                         <div>
+                                
+                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpeg"   alt="">
+                                 <img v-else src="~static/images/wavepay.jpeg"  alt="">
+                         </div>
+                    </el-radio>
+                   
+                </el-card>
                 
-<carousel :autoplay="false" :nav="false" v-if="loaded" :items =4>
-    
-    <div class="bank_type" v-for="(bank, i) in bank_type" :key="i">
-      
-            
-
-                <div @click="id_bank(bank.id)" >
-
-                    <el-radio-group v-model="ruleForm.radio1">
-                    
-                    <el-radio-button    :label="bank.bank_name">
-                    
-                        <img :src="bank.bank_icon" alt="">
-                        <!-- <span>{{bank.bank_name}}</span> -->
-                    </el-radio-button> 
-                    </el-radio-group>
-                </div>
-            
-              
-                            
-    </div>
-
-    
-</carousel>
-    </el-form-item>
-
-
-                
-                    <el-form-item
-                    :label="$t('Receiving Account')"
-                    prop="card_number"
-                    :rules="[
-                        { required: true, message: $t('bank_card_number_required')},
+                <el-card v-else-if="radio == 2" class="point_amount">
+                 
+                  
+                     <el-radio v-model="radio" label="2" >
+                         <div>
+                                
+                                <img v-if="radio == 2" src="~static/images/kbz.jpg"  alt=""  class="active_img">
+                                 <img v-else src="~static/images/kbz_t.jpg"  alt="">
+                         </div>
+                    </el-radio>
+                      
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                           
+                            <img src="~static/images/wavepay_t.jpg"  alt="">
+                        </div>
                         
-                    ]"
-                    
-                    >  
-                    <!-- <el-form-item label="Bank Card Number" class="tran_input" > -->
-                        <el-input @keypress.enter.native="withdrawal('ruleForm')" @change="submitted = false"  type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
-                    </el-form-item>
-                    <!-- <el-form-item label="Withdraw Amount" class="tran_amount tran_input" > -->
-                    <el-form-item class="tran_amount tran_input"
-                        :label="$t('Cash Amount')"
-                        prop="tran_amount"
-                        :rules="[
-                            { required: true,  message: $t('withdraw_amount_required')},
-                            
-                        ]"
+                    </el-radio>
+                     <el-radio v-model="radio" label="3" >
+                         <div>
+                                
+                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpeg"  alt="">
+                                 <img v-else src="~static/images/wavepay.jpeg"  alt="">
+                         </div>
+                    </el-radio>
+                   
+                </el-card>
+                   <el-card v-else class="point_amount">
+                 
+                  
+                     <el-radio v-model="radio" label="2" >
+                         <div>
+                                
+                                <img v-if="radio == 2" src="~static/images/kbz.jpg"    alt="">
+                                 <img v-else src="~static/images/kbz_t.jpg" alt="">
+                         </div>
+                    </el-radio>
+                      
+                    <el-radio v-model="radio" label="1">
+                        <div>
+                           
+                            <img src="~static/images/wavepay_t.jpg"  alt="">
+                        </div>
                         
-                        >  
-                        <el-input @keypress.enter.native="withdrawal('ruleForm')"   type="number" :placeholder="$t('enter_cash_amount')" v-model="ruleForm.tran_amount" ></el-input>
-                    </el-form-item>
-                    <!-- <el-form-item label="Password" class="password tran_input" > -->
+                    </el-radio>
+                     <el-radio v-model="radio" label="3" >
+                         <div>
+                                
+                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpeg"   class="active_img"  alt="">
+                                 <img v-else src="~static/images/wavepay.jpeg"  alt="">
+                         </div>
+                    </el-radio>
+                   
+                </el-card>
+               
+
+                 <div class="btn_group" v-if="radio == 1">
+                       <el-form @submit.native.prevent :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                         <el-form-item
+                                :label="$t('Receiving Account')"
+                                prop="card_number"
+                                :rules="[
+                                    { required: true, message: $t('bank_card_number_required')},
+                                    
+                                ]">  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')" @change="submitted = false"  type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
+                        </el-form-item>
+                 
+                        <el-form-item class="tran_amount tran_input"
+                            :label="$t('Cash Amount')"
+                            prop="tran_amount"
+                            :rules="[
+                                { required: true,  message: $t('withdraw_amount_required')},
+                                
+                            ]"
+                            
+                            >  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')"   type="number" :placeholder="$t('enter_cash_amount')" v-model="ruleForm.tran_amount" ></el-input>
+                        </el-form-item>
                         <el-form-item class="tran_amount tran_input"
                             :label="'SeinLucky '+$t('Password_placeholder')"
                             prop="password"
@@ -81,26 +123,162 @@
                             ]"
                             
                             >  
-                        <el-input @keypress.enter.native="withdrawal('ruleForm')" type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
-                    </el-form-item>
-                  <!-- <div @click="firstFunction(); secondFunction();"></div> -->
-               <!-- <input type="button" value="super duper cool button" @click="submitted = true" :disabled="submitted">
-                 -->
-                     <el-button round @click="withdrawal('ruleForm')"  :disabled='submitted' >{{$t('Confirm')}}</el-button>
-                  </el-form>
-                    </div>
-                </div>
-                
-            </div>
-        </main>
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')" type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
+                        </el-form-item>
+                      </el-form>
+                       <el-button round @click="withdrawal('ruleForm')"  :disabled='submitted' >{{$t('Confirm')}}</el-button>
+                   
+                       
+                  </div>
+                  <div class="btn_group" v-else-if="radio == 2">
+                      <el-form @submit.native.prevent :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                         <el-form-item
+                                :label="$t('Receiving Account')"
+                                prop="card_number"
+                                :rules="[
+                                    { required: true, message: $t('bank_card_number_required')},
+                                    
+                                ]">  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')" @change="submitted = false"  type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
+                        </el-form-item>
+                 
+                        <el-form-item class="tran_amount tran_input"
+                            :label="$t('Cash Amount')"
+                            prop="tran_amount"
+                            :rules="[
+                                { required: true,  message: $t('withdraw_amount_required')},
+                                
+                            ]"
+                            
+                            >  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')"   type="number" :placeholder="$t('enter_cash_amount')" v-model="ruleForm.tran_amount" ></el-input>
+                        </el-form-item>
+                        <el-form-item class="tran_amount tran_input"
+                            :label="'SeinLucky '+$t('Password_placeholder')"
+                            prop="password"
+                            :rules="[
+                                { required: true, message: $t('Password')},
+                                
+                            ]"
+                            
+                            >  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')" type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
+                        </el-form-item>
+                      </el-form>
+                       <el-button round @click="withdrawal('ruleForm')"  :disabled='submitted' >{{$t('Confirm')}}</el-button>
+                  </div>
+                    <div class="btn_group" v-else-if="radio == 3">
+                         <el-form @submit.native.prevent :model="ruleForm" ref="ruleForm"  class="demo-ruleForm" >
+                         <el-form-item
+                                :label="$t('Receiving Account')"
+                                prop="card_number"
+                                :rules="[
+                                    { required: true, message: $t('bank_card_number_required')},
+                                    
+                                ]">  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')" @change="submitted = false"  type="number" :placeholder="$t('Enter Card Number')" v-model="ruleForm.card_number"></el-input>
+                        </el-form-item>
+                 
+                        <el-form-item class="tran_amount tran_input"
+                            :label="$t('Cash Amount')"
+                            prop="tran_amount"
+                            :rules="[
+                                { required: true,  message: $t('withdraw_amount_required')},
+                                
+                            ]"
+                            
+                            >  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')"   type="number" :placeholder="$t('enter_cash_amount')" v-model="ruleForm.tran_amount" ></el-input>
+                        </el-form-item>
+                         <el-form-item class="tran_amount tran_input"
+                            label="ဆိုင်တွင်ငွေထုတ်ရန် ဂဏန်း(၆)လုံးသတ်မှတ်ပါ"
+                            prop="code"
+                            :rules="[
+                                { required: true,  message: 'ဂဏန်း(၆)လုံးသတ်မှတ်ပါ'},
+                                
+                            ]"
+                            
+                            >  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;"   type="number" placeholder="ငွေထုတ်ရန် ဂဏန်း(၆)လုံး" v-model="ruleForm.code" ></el-input>
+                        </el-form-item>
+                        <el-form-item class="tran_amount tran_input"
+                            :label="'SeinLucky '+$t('Password_placeholder')"
+                            prop="password"
+                            :rules="[
+                                { required: true, message: $t('Password')},
+                                
+                            ]"
+                            
+                            >  
+                            <el-input @keypress.enter.native="withdrawal('ruleForm')" type="text" show-password :placeholder="$t('Password')" v-model="ruleForm.password" ></el-input>
+                        </el-form-item>
+                      </el-form>
+                       <el-button round @click="withdrawal('ruleForm')"  :disabled='submitted' >{{$t('Confirm')}}</el-button>
+                   
+                       
+                  
+                  </div>
+                  <div v-else>
+
+                  </div>
+
+            
+        
+        </div>
+       
+    </section>
+
 </template>
+
 <style>
-     .withdrawal {
-        padding:0 20px;
+
+    .withdrawal {
+        padding:0 20px 50px  20px;
     }
+    .withdrawal .el-dialog__header {
+      padding:0;
+    }
+   
     .withdrawal .el-header {
        background-color :#fff;
 
+    }
+     .withdrawal .point_amount img{
+        /* width:100%; */
+        border-radius: 13px;
+        height:70px;
+       
+    }
+  
+    .withdrawal  .el-radio__label {
+      padding:0;
+    }
+   
+    .active_img {
+      padding:3px;
+       border:2px solid #3A7D1F;
+      border-radius: 13px;
+        -webkit-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
+        -moz-box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
+        box-shadow: -3px 3px 18px -7px rgba(0,0,0,0.75);
+    }
+   
+    .withdrawal .point_amount .el-radio__input.is-checked+.el-radio__label {
+        color:#158220;
+        font-weight: bold;
+    }
+    .withdrawal .point_amount .el-radio__input {
+        display: none;
+    }
+
+    .withdrawal .point_amount .el-radio , .el-radio__label {
+        margin:0;
+        padding:0px;
+        line-height: 0;
+    }
+    .withdrawal .point_amount .el-card__body {
+       text-align: center;
+       padding:15px 0;
     }
     .el-page-header__left {
         margin:0;
@@ -118,128 +296,125 @@
         background-color: #E6E6E6;
         color:#666666;
     }
-   
+    
     .withdrawal p {
         color:#666666;
-    }
-    .withdrawal .choose_pay {
-        list-style: none;
-        padding:0;
-        margin:10px auto;
-    }
-    .choose_pay img {
-        width:40px;
-        height: auto;
-        margin-right:9px;
-        -webkit-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
-        -moz-box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
-        box-shadow: 1px 1px 15px -6px rgba(0,0,0,0.75);
-    }
-    .withdrawal .el-radio-button__orig-radio:checked+.el-radio-button__inner {
-        color:#158220;
-        font-weight: bold;
-        border:0;
-        text-align: left;
-        background: unset;
-        box-shadow:unset;
-        border: 3px solid #158220;
-        border-radius: 9px;
-    }
-
-      /* .withdrawal .el-radio-button__orig-radio:checked+.el-radio-button__inner::after {
-          content: "\2713";
-
-        font-size: 15px;
-        width: 20px;
-        margin-left:20px;
-        height: 20px;
-        
-       
-      } */
-    .withdrawal .el-radio-button__inner {
-        border:0;
     }
     .withdrawal .el-form-item__label {
         color:#000;
     }
-     .withdrawal .el-button.is-round{
-        
+   
+    .withdrawal .el-button.is-round{
         position: relative;
-        bottom:0;
         max-width: 480px;
         width:100%;
-        margin-bottom:20px;
         background-color: #158220;
         color:#fff;
+        margin-top:20px;
     }
-    .el-radio-button:first-child .el-radio-button__inner {
-        border:0;
-        padding:0;
-    }
-   .bank_type img {
-       width:65px !important;
-       height: auto !important;
-      
-       border-radius: 9px;
     
-       box-shadow: 0 2px 6px rgba(0,0,0,0.25);
-   }
-   .owl-carousel .owl-stage-outer {
-       padding: 10px 11px 0 11px;
-   }
-   .el-button.is-disabled {
-    background: red;
+.withdrawal .btn_group .el-form-item {
+    margin-bottom: 0;
 }
-
+    
+   
 </style>
 
 <script>
 import axios from 'axios'
-import carousel from 'vue-owl-carousel'
-
 export default {
-    components: { carousel },
+
     mounted() {
+
+
       this.$nextTick(() => {
       this.$nuxt.$loading.start()
       setTimeout(() => this.$nuxt.$loading.finish(), 500)
-    })
+    });
+      this.$axios.get("/v2/v1/smart_bank_type")
+                .then(response => {
+                   
+                   this.bank_type = response.data.data
+
+                   this.kbz_bank_id = this.bank_type[0].id
+                    this.wavemoney_id = this.bank_type[1].id
+                    this.shopwavemoney_id = this.bank_type[2].id
+                    console.log(this.bank_type)
+                   console.log(this.kbz_bank_id)
+                    console.log(this.wavemoney_id)
+                    console.log(this.shopwavemoney_id)
+            });
+
+    
     },
     data() {
-        return {
-            submitted:false,
-            ruleForm: {
-            card_number:'',
-            tran_amount:'',
-            password:'',
-            radio1:'',
+        return { 
+            radio: '',
+     
+           ruleForm: {
+                card_number:'',
+                tran_amount:'',
+                password:'',
+                code:'',
 
           },
-            loaded:'',
-            bank_type:'',
+          bank_type:''
+             
+              
         }
     },
+     created() {
+      
+         
+        
+    },
     methods: {
-        goBack() {
+      
+
+          goBack() {
              this.$router.push(`/wallet?lang=${this.$store.state.locale}`); 
-            
          },
-        id_bank(data) {
-            this.bank_id = data;
-            this.submitted = false
-        },
-       
-        withdrawal(formName) {
+          withdrawal(formName) {
+            
             this.submitted = true
+            if(this.radio == 1) {
+              this.bank_id =  this.wavemoney_id 
+            }else if(this.radio == 2) {
+              this.bank_id =  this.kbz_bank_id 
+            }else if(this.radio == 3) {
+                 this.bank_id =  this.shopwavemoney_id 
+            }
             this.$refs[formName].validate((valid) => {
             if (valid) {
                 let token = localStorage.getItem('token');
+                console.log(this.bank_id)
+                 if(this.radio == 1) {
+                      var data = {
+                    bank_type_id:this.bank_id,
+                    card_number:this.ruleForm.card_number,
+                    amount: this.ruleForm.tran_amount,
+                    password: this.ruleForm.password,
+                   
+                }
+            }else if(this.radio == 2) {
+                 var data = {
+                    bank_type_id:this.bank_id,
+                    card_number:this.ruleForm.card_number,
+                    amount: this.ruleForm.tran_amount,
+                    password: this.ruleForm.password,
+                   
+                }
+            }else if(this.radio == 3) {
                 var data = {
                     bank_type_id:this.bank_id,
                     card_number:this.ruleForm.card_number,
                     amount: this.ruleForm.tran_amount,
                     password: this.ruleForm.password,
+                    code:this.ruleForm.code
                 }
+            }
+               
+                console.log(data)
                 this.$axios.post("/v2/v1/withdraw",
                            data,
                     {
@@ -249,6 +424,7 @@ export default {
                           
                         })
                     .then(response => {
+                        console.log(response)
                         this.res_status = response.data.status,
                         this.res_data_status = response.data.data
                     if(this.res_status == 3 ) {
@@ -287,18 +463,15 @@ export default {
                 console.log('error submit!!');
                 return false;
             }
-            });   
-             
-        }
+            });  
+          }
+
+ 
+            
+            
+    
     },
-    mounted() {
-        this.$axios.get("/v1/bank-type")
-                .then(response => {
-                    if(this.bank_type !== null) {
-                        this.loaded = true;
-                    }
-                   this.bank_type = response.data.data
-            });
-     },
+    
+    
 }
 </script>

@@ -292,6 +292,7 @@
 "/promotion":"/promotion",
 "/home":"/home",
 "/threeD/home":"/threeD/home",
+"/threeD/book":"/threeD/book",
 "/topup_youtube":"/topup_youtube",
 "/withdraw_youtube":"/withdraw_youtube",
 "/share":"/share",
@@ -307,9 +308,11 @@
 "account":"银行账号",
 "transaction_status":"查看 提现与充值 状态",
 "transaction_history":"两天内交易记录",
+"topup_success":"充值成功",
 "withdrawal_success":"提现成功",
 "pending":"提交中。。。",
 "money_has_been_trans":"钱已经回到您的 银行账户。",
+"topupmoney_has_been_trans":"账号充值成功",
 "withdrawal_details":"提现信息",
 "topup_details":"充值信息"
 

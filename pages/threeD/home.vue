@@ -2,71 +2,47 @@
         
         
       <el-main class="main_page threed_home">
+         <el-form   @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
         <!-- <Online></Online> -->
-         <el-header>
+         <el-header style="height:auto !important;">
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                <el-page-header title="" @back="goBack" >
                      
                 </el-page-header>
-                 <img src="~static/images/threed_logo.png" class="logo" alt="logo" style="width:145px">
+                 <!-- <img src="~static/images/threed_logo.png" class="logo" alt="logo" style="width:145px">
               <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
                 <img src="~static/icons_header/dimond_t_icon.png" alt="">
-              </div>
+              </div> -->
            <!-- </nuxt-link> -->
-      </el-header>
-       
-        <div class="longText" id="hidingScrollBar">
-         <div class="hideScrollBar">
-        
-        
-           <div class="" v-if ="!$store.state.isLoggedIn">
-
-              <div class="demo-type">
-                 <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
-                    <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
-                    <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
-                  </nuxt-link>
+           <el-row>
+             <el-col :span="8" style="padding-right:7px;">
+              <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n" target="_blank">
+                 <img class="book_btn" src="~static/threed_img/dream_book.png" alt="">
+              </a>
+             </el-col>
+             <el-col :span="16">
+                      <el-form-item
+                                        
+                prop="amountThreeD"
+                :rules="[
+                    { required: true, message: $t('amount_required') },
                     
-              </div>
-               
-           
-        </div>
-        <div v-else>
-           
-              <div class="demo-type">
-               
-                
-                 <el-row >
-                  <el-col :span="17">
-                      <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
-                        <el-avatar :size="60" v-if="this.profile.profile == null">
-                          <img src="~static/images/icons/me_img.png" alt="">
-                        
-                      
-                      </el-avatar>
-                 
-                      <el-avatar :size="60" v-else >
-                        <img :src="this.profile.profile" alt="">
-                      </el-avatar>
-                    </nuxt-link>
-                <div  class="avatar_text">
-                  <ul>
-                       <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
-                          <li style="color:#fff"><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
-                              <span v-else >{{this.profile.name}}</span>
-                          
+                ]"
+                > 
+                 <el-input id="form-name" type="number" style="height:44px"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"  @keypress.enter.native="submitThreed('ruleForm')"></el-input>
+                </el-form-item>
+             </el-col>
+           </el-row>
+           <el-row style="margin:10px auto;">
+             <el-col :span="16">
+                   <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
+                        <el-col :span="24" v-if ="!$store.state.isLoggedIn" > <div class="balance_amount"></div></el-col>
+                        <el-col :span="24" v-else> <div class="balance_amount"><img src="~static/images/amount_icon.png"  alt="">{{$t('you_balance')}}: {{this.thousands_separators(myWallet)}} {{$t('kyat')}}</div></el-col>
+                  </nuxt-link>
 
-                          </li>
-                     </nuxt-link>
-                    <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                          <li  class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
-                    </nuxt-link>
-                  </ul>
-                  </div>
-              
-                  </el-col>
-                   <el-col :span="7">
-                        <div id="app-timer" class="count_time_threed">
+             </el-col>
+             <el-col :span="8" style="float:right">
+                <div id="app-timer" class="count_time_threed">
                       <ul>
                        
                         <li>
@@ -85,47 +61,38 @@
                       
                         </li>
                       </ul>
-                    </div>
-                   </el-col>
-                </el-row>
+                   </div>
+             </el-col>
+           </el-row>
+           <el-row v-if ="!$store.state.isLoggedIn">
+               <div>
+                      <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
+                          <el-button style="width:100%" round="" class="submitThreed_btn">{{$t('Please Login first')}}</el-button>
+                    </nuxt-link>
               </div>
-        </div>
-          <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
-    
-            <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
-                 <a :href="img_slide.link" target="_blank">
-                    <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:160px;">
-                      <div slot="placeholder" class="image-slot">
-                        Loading<span class="dot">...</span>
-                      </div>
-                    </el-image>
-                  </a>
-            </div>
-        </carousel>
-        <h3 class="run_bar"> 
-          <div class="scroll-left">
-            <p> 
-                <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
-              {{this.slider_text.text}}</p>
-          </div>
-        </h3>
+           </el-row>
+           <el-row v-else>
+              <el-col :span="9" style="padding-right:10px;">
+                 <el-button type="info" round  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
+             </el-col>
+             <el-col :span="15" style="padding-left:10px;">
+              
+                    <div>
+                          <el-button round   @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('Bet')}}</el-button>     
+                    </div>
+             </el-col>
+            
+           </el-row>
+      </el-header>
+       
+        <div class="longText" id="hidingScrollBar">
+         <div class="hideScrollBar">
+        
+        
+         
          <section class="threeD_items">
-          
-         <el-row>
-                 
-                <el-col :span="13" style="padding-left:5px;">
-                    <el-button type="info"  class="same_three_btn" @click="SameThreeNumber">(၃) လုံးပူး</el-button>
-                </el-col>
-                <el-col :span="6">   
-                     <!-- <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n"  target="_blank">   -->
-                  <nuxt-link :to="`${$t('/threeD/book')}?lang=${$store.state.locale}`">  
-                    <el-button  class="book_btn" type="text"></el-button>
-                  </nuxt-link>
-                   <!-- </a>  -->
-                </el-col>
-            </el-row>
-           <div>
-            <p class="choose_bet_title">လောင်းမည့်ဂဏန်းရွေးပါ။</p>
+
+            <p class="choose_bet_title">လောင်းမည့်ဂဏန်းလှည့်ပြီးရွေးပါ။</p>
           <el-row>
             <el-col :span="18">
                  <div class="picker">
@@ -147,8 +114,6 @@
             </el-col>
           </el-row>
          
-          </div>
-          <el-form   @submit.native.prevent :model="ruleForm"  ref="ruleForm"  class="demo-ruleForm">
             <div v-if="this.isActive"   class="contact_sameThree">
           
             <el-form-item> 
@@ -157,40 +122,12 @@
               </el-checkbox-group>
             </el-form-item>
           </div>
-           <el-form-item
-                                   
-          prop="amountThreeD"
-          :rules="[
-              { required: true, message: $t('amount_required') },
-              
-          ]"
-          >  
-          <el-row>
-            <el-col :span="18">
-                <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_min_100')" v-model="ruleForm.amountThreeD"  @keypress.enter.native="submitThreed('ruleForm')"></el-input>
-                 <div  v-if ="!$store.state.isLoggedIn">
-                      <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
-                          <el-button style="width:100%" class="submitThreed_btn">{{$t('Please Login first')}}</el-button>
-                    </nuxt-link>
-                    </div>
-                    <div v-else>
-                          <el-button  style="width:unset !important;border:0;"  @click="submitThreed('ruleForm')" class="submitThreed_btn">{{$t('Bet')}}</el-button>     
-                    </div>
-            </el-col>
-             <el-col :span="6" :offset="6">
-
-            </el-col>
-          </el-row>
-        
-    </el-form-item>
-   
-     
+          
          
-          </el-form>    
       </section>
       </div>
     </div>
-
+  </el-form>    
   </el-main>
        
 </template>
@@ -230,32 +167,6 @@ export default {
     mutations: {},
     actions: {},
   mounted() {
-    var self = this;
-          if (this.$store.state.sliderImage.length > 0){
-            self.slider_images = this.$store.state.sliderImage;
-             if(this.slider_images  !== null) {
-                        this.loaded = true;
-                    }
-          }
-          else{
-            // setTimeout(function(){
-              self.$axios.get('/v2/v1/slider_image?name=3D')
-                .then(response => {
-                   
-                 if(self.slider_images  !== null) {
-                        this.loaded = true;
-                    }
-
-                self.slider_images = response.data.data
-                })
-              self.$axios.get('/v2/v1/slider_text')
-                .then(response => {
-
-                self.slider_text = response.data.data[0];
-                })
-
-                }
-
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
     if (m != null && isSeinluckyApp){
@@ -290,12 +201,12 @@ export default {
       a: 1,
       progress: 50,
       dialogVisible: false,
-      slider_images:'',
+      // slider_images:'',
       activeIndex: '1',
       info:'',
       info_api:'',
       profile:'',
-      slider_text:'',
+      // slider_text:'',
       myWallet:'',
       blockUser:'',
       loaded:'',
@@ -340,7 +251,7 @@ export default {
         return check;
     },
     goBack() {
-        this.$router.push(`/home?lang=${this.$store.state.locale}`);
+        this.$router.push(`/threeD/?lang=${this.$store.state.locale}`);
     },
   
     SameThreeNumber() {
@@ -422,9 +333,6 @@ export default {
         });
     },
 
-        goBack() {
-             this.$router.push(`/?lang=${this.$store.state.locale}`); 
-         },
         thousands_separators(num){
             var num_parts = num.toString().split(".");
             num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -445,7 +353,7 @@ export default {
         this.times[3].time = Math.floor(t / 1000 % 60) ;
         this.times[2].time = Math.floor(t / 1000 / 60 % 60) + ':';
         this.times[1].time = Math.floor(t / (1000 * 60 * 60) % 24) +':';
-        this.times[0].time = Math.floor(t / (1000 * 60 * 60 * 24)) +' '+'ရက်' + ' ';
+        this.times[0].time = Math.floor(t / (1000 * 60 * 60 * 24)) +''+'ရက်' + '';
     },
      updateProgressBar: function(){
       //TODO fix progress bar
@@ -487,7 +395,15 @@ export default {
 </script>
 
 <style>
-
+  .balance_amount img {
+        width:30px;
+        height: auto;
+    }
+  .balance_amount {
+    font-size: 12px;
+    color:#fff;
+    text-align: left;
+  }
 .choose_2d_3d .el-card {
   margin:20px;
 }
@@ -495,6 +411,9 @@ export default {
     height: auto;
     position: relative;
     top: -31px;
+}
+.threed_home .el-form-item__error {
+  padding-top:14px;
 }
 .threed_home .el-header {
   padding:20px;
@@ -580,6 +499,7 @@ export default {
 }
 .choose_bet_title {
   color:#fff;
+  font-weight: bold;
   margin-top:10px;
   text-align: left;
 }
@@ -603,13 +523,13 @@ export default {
   color:#fff;
   font-weight: bold;
 }
-
  .submitThreed_btn {
      background: linear-gradient(#FDD164, #BB8834);
      font-size:15px;
      border-radius: 20px;
-    width:100px;
-    margin-top:15px;
+    width:100%;
+    color:#4D2707;
+    font-weight: bold;
      border:0;
  }
 
@@ -658,8 +578,10 @@ export default {
    .threed_home .el-input__inner {
       margin-top:15px;
       text-align: right;
-       background-color: #252E39;
-       color:#b8b8b8;
+       background-color: #fff;
+       color:#7e7575;
+       font-size: 19px;
+       padding:25px 20px;
    }
    .threeD_main .logo {
        width:104px;
@@ -685,12 +607,18 @@ export default {
       border-radius: 9px;
     }
     .book_btn {
-      width:52px !important;
+      background: #fff;
+      width:100%;
+      margin-top:14px;
+      height: 52px;
+      border-radius: 4px;
+
+      /* width:52px !important;
         border-radius: 9px;
         background-image: url(~static/threed_img/dream_book.jpg);
         background-position:center;
         background-size: 100% 100%;
-        background-repeat: no-repeat;
+        background-repeat: no-repeat; */
     }
     .choose_number_box p {
         text-align: left;
@@ -726,12 +654,15 @@ export default {
   animation: scroll-left 10s linear infinite;
 }
 .same_three_btn {
-  background: linear-gradient(#26B6F2, #1A39BC);
+  width:100%;
+  background-color:#2F6F42;
+  color:#fff;
+  font-weight: bold;
   border:0;
   border-radius: 9px;
 }
 .count_time_threed  ul{
-  padding:13px 0;
+  padding:8px;
   margin:0;
   list-style: none;
   text-align: right;
@@ -740,9 +671,12 @@ export default {
   display:flex;
 }
 .count_time_threed h5 {
-  font-size:11px;
+  font-size:12px;
   color:#fff;
   font-weight: bold;
+}
+.card-title {
+  font-size: 12px;
 }
 .count_time_threed h6 {
   color:#FFEA72;

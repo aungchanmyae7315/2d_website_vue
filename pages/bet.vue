@@ -288,6 +288,7 @@
         background: #D4E2FF;
         color: green;
         width:90%;
+        padding:18px 10px;
        
     }
  
@@ -302,6 +303,7 @@
     .bet_container  .el-input__inner{
        text-align: right;
        font-size:20px;
+       padding:25px;
     }
   
     .el-input-group__prepend {
@@ -424,7 +426,6 @@
            height:36px;
        }
        .fast_btn {
-           padding:12px;
            font-size: 10px;
        }
       
@@ -458,10 +459,6 @@
        }
        .bet_container .el-input__inner {
            height:36px;
-       }
-       .fast_btn {
-           padding:12px;
-           font-size: 10px;
        }
    }
    @media screen and (max-width:360px) {
