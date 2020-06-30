@@ -168,6 +168,51 @@
     .topup_detail_list p {
         text-align: right;
     }
+    .return_again {
+        margin-top:20px;
+        max-width: 480px;
+        width:100%;
+        background-color: #F44336;
+        color:#fff;
+    }
+    .topup_detail_item  .phone_card h6 {
+      text-align: left;
+      padding-bottom:20px;
+      color:#000;
+    }
+    .topup_detail_item .contact_phone {
+      padding:0;
+      margin:0;
+      list-style: none;
+      color:#000;
+    }
+    .topup_detail_item .contact_phone img  {
+      width:25px;
+      padding-right:5px;
+   
+    }
+
+
+  .contact_phone li i {
+    font-size: 17px;
+    padding-right:5px;
+  }
+  .phone_item {
+    font-size: 14px;
+    padding-top:10px;
+    padding-bottom:30px;
+  }
+  @media screen and (max-width:400px) {
+      .topup_detail_item .el-button--medium {
+          padding:10px 6px;
+      }
+  }
+  .topup_detail_item .ok_btn {
+      background: #2196F3;
+      color:#fff;
+      width:100%;
+      margin:15px auto;
+  }
    
 </style>
 
