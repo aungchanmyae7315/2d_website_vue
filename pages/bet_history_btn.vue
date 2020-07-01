@@ -149,15 +149,20 @@ export default {
                          }
                         })
                     .then(response => {
+                        console.log(response)
                         this.$nuxt.$loading.finish()
                         this.bet_historys = response.data.data   
                 })
+                 .catch(function (error) {
+                     console.log(error.response)
+                });
                   this.$axios.get("/v2/v1/threed/history",
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
                         })
                     .then(response => {
+                        console.log(response)
                         this.$nuxt.$loading.finish()
                         this.bet_historys_threed = response.data.data   
                 })
