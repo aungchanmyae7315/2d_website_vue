@@ -67,7 +67,7 @@
                   </el-col>
                   <div v-if="this.topup_detail_item.status == 0">
                    <el-col :span="12">
-                      <p  style="text-align:left">ငွေထုတ်ရန် ဂဏန်း(၆)လုံး</p>
+                      <p  style="text-align:left">ဆိုင်တွင်ငွေထုတ်ရန် ဂဏန်း(၆)လုံး</p>
                   </el-col>
                     <el-col :span="12">
                       <p  style="text-align:right">{{this.topup_detail_item.code}} </p>
