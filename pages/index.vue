@@ -472,13 +472,16 @@ export default {
 
   }else {
      
-      // var ok =  setInterval(function() {
+      var ok =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
+      
               .then(response => {
+              
                   this.last_date = response.data.data.last_date
                 if(response.data.data.status_430 == "backend") {
                     
                          this.isActive = false
+                         clearTimeout(stop_Interval); 
 
                 }else {
                         this.isActive = false
@@ -491,7 +494,7 @@ export default {
                 }
                 this.info_api = response.data.data
               })
-        //  }.bind(this), 3000)
+         }.bind(this), 3000)
   }
         
               
