@@ -78,7 +78,6 @@
   "me_title":"ကျွန်ုပ်",
 
   "acc_refel_title":"acc_refel",
-
   "bet_detail_title":"မှတ်တမ်းသေးစိတ်",
   "bet_history_title":"ထီထိုးမှတ်တမ်း",
   "bet_status_title":"ထိုးထားသောစာရင်း",
@@ -187,7 +186,7 @@
 "bank_option_required":"လက်ခံမည့်ဘဏ်ကိုရွေးပါ",
 "withdraw_amount_required":"ထုတ်ယူလိုသည့် ‌ငွေပမာဏ",
 "sein_lucky_office_hours":"Sein Lucky ငွေဖြည့်ချိန်များ",
-"mon-sat":"(တနင်္လာ - စနေ)",
+"mon-sat":"(တနင်္လာ မှ စနေ)",
 "topup_approved_5_minutes":"ရုံးဖွင့်ချိန်တွင် (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
 "if_not_in_office_hours" :"ရုံးဖွင့်ချိန်ကျော်ပြီးနောက်ငွေဖြည့်လျှင် ရုံးစဖွင့်ချိန်မှ (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
 "amount_invalid":"ငွေမလုံလောက်ပါ။",
@@ -244,7 +243,7 @@
 "seinlucky_point":"Seinlucky Point",
 "/seinlucky_point":"/seinlucky_point",
 "customer_service_title":"App Error ဝန်ဆောင်မှုဖုန်း",
-"topup_withdrawal_help":"ငွေသွင်း၊ငွေထုတ် အကူအညီ",
+"topup_withdrawal_help":"ငွေသွင်း၊ငွေထုတ် အတွက်စုံစမ်းရန်",
 "it_support":"ဆော့ဝဲ App အကူအညီ",
 "agent_info":"ကိုယ်စားလှယ်ဝင်ဖို့ စုံစမ်းရန်",
 "save_photo":"ပုံကိုသိမ်းမယ်",
@@ -254,7 +253,7 @@
 "logout_confirm":"သေချာသည်",
 "cancel":"ပယ်မည်",
 "service_time_one":"ဝန်ဆောင်မှုအချိန်" ,
-"service_time_two":"တနင်္လာနေ့ ~ စနေနေ့ ",
+"service_time_two":"တနင်္လာနေ့ မှ စနေနေ့ ",
 "service_time_three":" နံနက် 9:00 AM  မှ ညနေ 5:30 PM",
 "slip_number":"လုပ်ငန်းစဉ်အမှတ်",
 "slip_number_s":"လုပ်ငန်းစဉ်အမှတ်နောက်ဆုံးဂဏန်း ၆ လုံး",
@@ -275,6 +274,7 @@
 "download_app":"ဒေါင်းလုပ်App",
 "you_not_input":"သင်ဖြည့်ရန်မဟုတ်ပါ။ အခြားသူအား App မတ်ဆက်ပေးသောအခါ ဤကုဒ်ကိုဖြည့်ခိုင်းပါ။",
 "last_5day_bet_history":"လွန်ခဲ့သော(၅) ရက်၏ ထီထိုးမှတ်တမ်း",
+"last_16day_bet_history":"လွန်ခဲ့သော(၁၆) ရက်၏ ထီထိုးမှတ်တမ်း",
 "bet_amount":"ထိုးငွေ",
 "bet_number_required":"ထိုးဂဏန်းရွေးပါ",
 "edit_delete":"ပြင်/ဖျက်",
@@ -314,7 +314,10 @@
 "money_has_been_trans":"ဘဏ်အကောင့်သို့ငွေရောက်ရှိပါသည်",
 "topupmoney_has_been_trans":"Sein Lucky Accountသို့ငွေဖြည့်သွင်းမူအောင်မြင်ပါသည်",
 "withdrawal_details":"ငွေထုတ်အသေးစိတ်",
-"topup_details":"ငွေဖြည့်အသေးစိတ်"
+"topup_details":"ငွေဖြည့်အသေးစိတ်",
+"you_are_submitting_withdrawal":"ငွေထုပ်ခြင်း ထပ်ခါထပ်ခါလုပ်မိနေပါသည်။ နောက် (၂) မိနစ်မှ ပြန်စမ်းကြည့်ပါ။"
+
+
 
 
 

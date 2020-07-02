@@ -435,6 +435,14 @@ export default {
                                 message:this.$t('password_invalid'),
                             type: 'warning'
                             }); 
+                    }else if(this.res_status == 4) {
+                        this.submitted = false
+                            this.$notify({
+                               duration:0,
+                                message:this.$t('you_are_submitting_withdrawal'),
+                            type: 'warning'
+                            }); 
+
                     }else if(this.res_status == 2) {
                           this.submitted = false
                               this.$notify({

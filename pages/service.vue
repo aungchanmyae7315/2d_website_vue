@@ -67,7 +67,7 @@
                           </el-row>
                         </ul>
               </el-card>
-                <el-card  class="phone_card">
+                <!-- <el-card  class="phone_card">
                            <h6>{{$t('customer_service_title')}}</h6>
                            <ul class="contact_phone">
                               <el-row>
@@ -86,7 +86,7 @@
                         
                         </ul>
                             
-              </el-card>
+              </el-card> -->
                     <!-- <el-card v-for="(phone , p) in contact" :key="p" class="phone_card">
                         <h6 v-if="phone.type == 'Customer Service'">{{$t('customer_service_title')}}</h6>
                         <h6 v-else-if="phone.type == 'Top-up\/Withdrawal Help'">{{$t('topup_withdrawal_help')}}</h6>
@@ -164,6 +164,7 @@ export default {
     margin-left: 17px;
     padding-right: 28px;
     padding-top:60px;
+    padding-bottom: 50px;
 }
   .service {
         text-align:center;

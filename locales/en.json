@@ -276,6 +276,7 @@
  "download_app":"Download",
  "you_not_input":"When you share App to your friends, ask him to enter this code after registeration.",
  "last_5day_bet_history":"Bet record of last 5 days.",
+ "last_16day_bet_history":"Bet record of last 16 days.",
 "bet_amount":"Bet Amount",
 "bet_number_required":"Please select numbers",
 "edit_delete":"Edit/Delete",
@@ -315,7 +316,8 @@
 "money_has_been_trans":"Money has been transferred to your bank account.",
 "topupmoney_has_been_trans":"Top-up successfully, please check your balance.",
 "withdrawal_details":"Withdrawal Details",
-"topup_details":"Top Up Details"
+"topup_details":"Top Up Details",
+"you_are_submitting_withdrawal":"You are submitting the withdrawal repeatedly, please try again one minute later. "
 
 
 
