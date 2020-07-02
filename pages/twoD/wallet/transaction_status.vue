@@ -220,6 +220,7 @@
     }
     .transaction_list .el-card__body {
         padding:10px;
+        cursor: pointer;
     }
     .transaction_list ul li h6 {
         padding-top:10px;

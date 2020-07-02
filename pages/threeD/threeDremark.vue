@@ -236,7 +236,7 @@ export default {
                         });
                     } else {
                       this.submitted = true
-                          this.$router.push(`/bet_success?lang=${this.$store.state.locale}`);
+                          this.$router.push(`/threeD/dream_bet_success?lang=${this.$store.state.locale}`);
                     } 
                 })
                  .catch(error => {

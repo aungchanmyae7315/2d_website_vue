@@ -47,7 +47,7 @@
                   <el-col :span="12">
                       <p>{{$t('Withdrawal')}}</p>
                   </el-col>
-                   <el-col :span="12">
+                <el-col :span="12">
                       <h6>{{$t('bank')}}</h6>
                   </el-col>
                   <el-col :span="12">
@@ -65,6 +65,14 @@
                   <el-col :span="12">
                       <p>{{this.topup_detail_item.amount}} {{$t('kyat')}}</p>
                   </el-col>
+                  <div v-if="this.topup_detail_item.status == 0">
+                   <el-col :span="12">
+                      <p  style="text-align:left">ဆိုင်တွင်ငွေထုတ်ရန် ဂဏန်း(၆)လုံး</p>
+                  </el-col>
+                    <el-col :span="12">
+                      <p  style="text-align:right">{{this.topup_detail_item.code}} </p>
+                  </el-col>
+                  </div>
               </el-row>
               <div v-if="this.topup_detail_item.status == 2">
                     <el-divider></el-divider>

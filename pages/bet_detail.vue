@@ -9,10 +9,7 @@
         
       </el-header>
       
-       <div class="demo-image">
-            <img src="~static/images/icons/seinlucky_logo.png" alt="" class="seinlucky_icon">
-        <span  class="seinlucky_text">SeinLucky</span>
-        </div>
+     
 
        <el-row style="padding:23px;">
             <el-col :span="12"><div class="">{{$t('date_time')}}</div></el-col>
