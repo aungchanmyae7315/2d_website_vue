@@ -96,6 +96,7 @@ export default {
         sameNumberSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
+              this.submitted = true;
                 var data = this.numberValidateForm.bet_number  
             this.$store.commit('getBetThreeD', data);
             var data = this.numberValidateForm.amountThreeD  
