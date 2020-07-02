@@ -358,8 +358,8 @@ export default {
                 code:'',
 
           },
-          bank_type:''
-             
+          bank_type:'',
+         submitted:false,
               
         }
     },
@@ -386,6 +386,7 @@ export default {
             }
             this.$refs[formName].validate((valid) => {
             if (valid) {
+                 this.submitted = false
                 let token = localStorage.getItem('token');
                 console.log(this.bank_id)
                  if(this.radio == 1) {
@@ -450,7 +451,7 @@ export default {
                             }); 
                     }else {
                            
-                       
+                        this.submitted = true
                         this.$router.push(`/withdraw_success?lang=${this.$store.state.locale}`); 
                     
                     }

@@ -10,7 +10,7 @@
             <el-row style="padding-top:10px;">
                 <el-col :span="6">
                         <el-button class="fast_btn_threeD" v-if="this.Bookthreed.length != 1">
-                            <span @click="LengthBtn() ;dialogFormVisible_length = true" v-if="this.Bookthreed.length > 1">{{this.Bookthreed.length}}</span>
+                            <span @click="LengthBtn() ;dialogFormVisible_length = true" v-if="Bookthreed.length > 1">{{Bookthreed.length}}</span>
                             <span v-else>0</span>
                         </el-button>
                          
@@ -177,6 +177,7 @@
         </div>
         </el-main>
             </el-form>
+            {{this.Bookthreed}}
            
     </section>
     
@@ -192,15 +193,15 @@ export default {
 //   }
     },
     mounted() {
-        this.$nextTick(function () {
-              var elements = document.querySelectorAll('input[type="checkbox"]:checked');
-                var checkedElements = Array.prototype.map.call(elements, function (el, i) {
-                    return el.value;
-                });
+    //     this.$nextTick(function () {
+    //           var elements = document.querySelectorAll('input[type="checkbox"]:checked');
+    //             var checkedElements = Array.prototype.map.call(elements, function (el, i) {
+    //                 return el.value;
+    //             });
                    
-                checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
-                this.Bookthreed = checkedElements;
-    });
+    //             checkedElements = checkedElements.filter(e => e !== 'on' && e !== []); // will return ['A', 'C']
+    //             this.Bookthreed = checkedElements;
+    // });
          this.updateIsLoggedIn();
           this.$axios.get('/v2/v1/threed/book')
               .then(response => {
@@ -268,6 +269,7 @@ export default {
              //items : this.tree,
                checkedNames: [],
                one:[]
+               
         }
         
     },
@@ -406,9 +408,9 @@ export default {
     },
      
     parentChange(item,state) {
-        
         for(let child of item.children){
             child.state.selected = state
+            
             if(state){
                 this.Bookthreed.push(child.number)
             }else{

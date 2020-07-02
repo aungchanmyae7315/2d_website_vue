@@ -182,13 +182,14 @@ export default {
            }
            let token = localStorage.getItem('token');
           if(token) {
+             this.submitted = true
              this.$axios.post("/v2/v1/threed/bet",data,
                     {headers: {
                                "Authorization": "Bearer "+token
                          }
                         })
                     .then(response => {
-                     this.submitted = true
+                     this.submitted = false
                      if(response.data.status == 2) {
                        this.submitted = false
                         this.$message({
