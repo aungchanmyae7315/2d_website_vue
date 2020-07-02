@@ -472,7 +472,7 @@ export default {
 
   }else {
      
-      var ok =  setInterval(function() {
+      var stop_Interval =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
       
               .then(response => {
