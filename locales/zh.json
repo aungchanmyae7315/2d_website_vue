@@ -275,6 +275,7 @@
 "download_app":"下载App",
 "you_not_input":"这不是你要填的码，是给 你推荐的人 填的码。",
 "last_5day_bet_history":"过去 5 天内的下注记录",
+"last_16day_bet_history":"过去 16 天内的下注记录",
 "bet_amount":"下注金额",
 "bet_number_required":"请选择下注号码",
 "edit_delete":"操作",

@@ -193,17 +193,17 @@ export default {
                   this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                 }  
         })
-        //  this.$axios.get("/v2/v1/referal_code",
-        //     {headers: {
-        //                 "Authorization": "Bearer "+token
-        //           }
-        //         })
-        //     .then(response => {
-        //       this.get_refel = response.data.data.referal_code
-        //       this.get_refel_gen = response.data.data.generate_code
-        //       this.hide_oneDay = response.data.data.status
+         this.$axios.get("/v2/v1/referal_code",
+            {headers: {
+                        "Authorization": "Bearer "+token
+                  }
+                })
+            .then(response => {
+              this.get_refel = response.data.data.referal_code
+              this.get_refel_gen = response.data.data.generate_code
+              this.hide_oneDay = response.data.data.status
               
-        // })
+        })
     } 
    },
     data() {

@@ -78,7 +78,6 @@
   "me_title":"ကျွန်ုပ်",
 
   "acc_refel_title":"acc_refel",
-
   "bet_detail_title":"မှတ်တမ်းသေးစိတ်",
   "bet_history_title":"ထီထိုးမှတ်တမ်း",
   "bet_status_title":"ထိုးထားသောစာရင်း",
@@ -187,7 +186,7 @@
 "bank_option_required":"လက်ခံမည့်ဘဏ်ကိုရွေးပါ",
 "withdraw_amount_required":"ထုတ်ယူလိုသည့် ‌ငွေပမာဏ",
 "sein_lucky_office_hours":"Sein Lucky ငွေဖြည့်ချိန်များ",
-"mon-sat":"(တနင်္လာ - စနေ)",
+"mon-sat":"(တနင်္လာ မှ စနေ)",
 "topup_approved_5_minutes":"ရုံးဖွင့်ချိန်တွင် (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
 "if_not_in_office_hours" :"ရုံးဖွင့်ချိန်ကျော်ပြီးနောက်ငွေဖြည့်လျှင် ရုံးစဖွင့်ချိန်မှ (၅) မိနစ်အတွင်း ငွေဝင်ပါမည်။",
 "amount_invalid":"ငွေမလုံလောက်ပါ။",
@@ -254,7 +253,7 @@
 "logout_confirm":"သေချာသည်",
 "cancel":"ပယ်မည်",
 "service_time_one":"ဝန်ဆောင်မှုအချိန်" ,
-"service_time_two":"တနင်္လာနေ့ ~ စနေနေ့ ",
+"service_time_two":"တနင်္လာနေ့ မှ စနေနေ့ ",
 "service_time_three":" နံနက် 9:00 AM  မှ ညနေ 5:30 PM",
 "slip_number":"လုပ်ငန်းစဉ်အမှတ်",
 "slip_number_s":"လုပ်ငန်းစဉ်အမှတ်နောက်ဆုံးဂဏန်း ၆ လုံး",
@@ -275,6 +274,7 @@
 "download_app":"ဒေါင်းလုပ်App",
 "you_not_input":"သင်ဖြည့်ရန်မဟုတ်ပါ။ အခြားသူအား App မတ်ဆက်ပေးသောအခါ ဤကုဒ်ကိုဖြည့်ခိုင်းပါ။",
 "last_5day_bet_history":"လွန်ခဲ့သော(၅) ရက်၏ ထီထိုးမှတ်တမ်း",
+"last_16day_bet_history":"လွန်ခဲ့သော(၁၆) ရက်၏ ထီထိုးမှတ်တမ်း",
 "bet_amount":"ထိုးငွေ",
 "bet_number_required":"ထိုးဂဏန်းရွေးပါ",
 "edit_delete":"ပြင်/ဖျက်",

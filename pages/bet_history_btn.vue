@@ -6,7 +6,7 @@
                 
                 </el-page-header>
            <!-- </nuxt-link> -->
-         <p style="padding:0 20px">{{$t('last_5day_bet_history')}}</p>
+      
       </el-header>
        <!-- <div class="demo-image">
             <img src="~static/images/icons/seinlucky_logo.png" alt="" class="seinlucky_icon">
@@ -15,7 +15,7 @@
         <br>
           <el-tabs v-model="activeName" @tab-click="handleClick">
                <el-tab-pane label="2D" name="first">
-
+                      <p style="padding:0 20px">{{$t('last_5day_bet_history')}}</p>
                     <table class="table">
                             <thead>
                                 <tr>
@@ -34,7 +34,7 @@
                         </table>
                 </el-tab-pane>
                 <el-tab-pane label="3D" name="second">
-
+                       <p style="padding:0 20px">{{$t('last_16day_bet_history')}}</p>
                     <table class="table">
                             <thead>
                                 <tr>
