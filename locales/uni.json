@@ -243,7 +243,7 @@
 "seinlucky_point":"Seinlucky Point",
 "/seinlucky_point":"/seinlucky_point",
 "customer_service_title":"App Error ဝန်ဆောင်မှုဖုန်း",
-"topup_withdrawal_help":"ငွေသွင်း၊ငွေထုတ် အကူအညီ",
+"topup_withdrawal_help":"ငွေသွင်း၊ငွေထုတ် အတွက်စုံစမ်းရန်",
 "it_support":"ဆော့ဝဲ App အကူအညီ",
 "agent_info":"ကိုယ်စားလှယ်ဝင်ဖို့ စုံစမ်းရန်",
 "save_photo":"ပုံကိုသိမ်းမယ်",
@@ -314,7 +314,10 @@
 "money_has_been_trans":"ဘဏ်အကောင့်သို့ငွေရောက်ရှိပါသည်",
 "topupmoney_has_been_trans":"Sein Lucky Accountသို့ငွေဖြည့်သွင်းမူအောင်မြင်ပါသည်",
 "withdrawal_details":"ငွေထုတ်အသေးစိတ်",
-"topup_details":"ငွေဖြည့်အသေးစိတ်"
+"topup_details":"ငွေဖြည့်အသေးစိတ်",
+"you_are_submitting_withdrawal":"ငွေထုပ်ခြင်း ထပ်ခါထပ်ခါလုပ်မိနေပါသည်။ နောက် (၂) မိနစ်မှ ပြန်စမ်းကြည့်ပါ။"
+
+
 
 
 

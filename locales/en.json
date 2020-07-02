@@ -316,7 +316,8 @@
 "money_has_been_trans":"Money has been transferred to your bank account.",
 "topupmoney_has_been_trans":"Top-up successfully, please check your balance.",
 "withdrawal_details":"Withdrawal Details",
-"topup_details":"Top Up Details"
+"topup_details":"Top Up Details",
+"you_are_submitting_withdrawal":"You are submitting the withdrawal repeatedly, please try again one minute later. "
 
 
 

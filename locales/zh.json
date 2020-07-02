@@ -315,7 +315,9 @@
 "money_has_been_trans":"钱已经回到您的 银行账户。",
 "topupmoney_has_been_trans":"账号充值成功",
 "withdrawal_details":"提现信息",
-"topup_details":"充值信息"
+"topup_details":"充值信息",
+"you_are_submitting_withdrawal":"你在 重复的提交提现申请，请在 一分钟后重试。"
+
 
 
 
