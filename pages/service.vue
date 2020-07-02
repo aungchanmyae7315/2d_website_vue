@@ -164,6 +164,7 @@ export default {
     margin-left: 17px;
     padding-right: 28px;
     padding-top:60px;
+    padding-bottom: 50px;
 }
   .service {
         text-align:center;
