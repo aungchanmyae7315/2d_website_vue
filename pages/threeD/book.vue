@@ -16,7 +16,7 @@
                          
                         <el-button v-else type="button"  :indeterminate="isIndeterminate"   v-model="checkAll" @click="rBtn(Bookthreed);  dialogFormVisible_rBtn = true"   class="fast_btn_threeD" ><span>R</span></el-button>
                           <el-dialog
-                             title="ရွေးထားသော ဂဏန်းများ"
+                             :title="Number(Bookthreed)+' '+'​၏ R ဂဏန်းများ'"
                             :show-close="false"
                             :close-on-click-modal = "false"
                             :visible.sync="dialogFormVisible_rBtn"
@@ -204,6 +204,7 @@ export default {
          this.updateIsLoggedIn();
           this.$axios.get('/v2/v1/threed/book')
               .then(response => {
+                  console.log(response)
                this.book_data = response.data  
               }) 
     },
@@ -565,7 +566,7 @@ export default {
         overflow: auto;
         margin-left: 17px;
         padding-right: 28px;
-        padding-top: 220px;
+        padding-top: 260px;
         padding-bottom:30px;
        
         
@@ -768,9 +769,10 @@ export default {
         display: none;
     }
     .hide_input img {
-        width:80px;
+        width: 79.7px;
         border-top-right-radius: 6px;
         border-top-left-radius: 6px;
+        padding-top: 8px;
     }
 
 
@@ -797,7 +799,8 @@ export default {
   box-shadow: none;
 }
 .count_time_threed  ul{
-  padding:13px 0;
+  padding-top: 15px;
+  padding-bottom: 10px;
   margin:0;
   list-style: none;
   text-align: right;
@@ -806,7 +809,7 @@ export default {
   display:flex;
 }
 .count_time_threed h5 {
-  font-size:11px;
+  font-size:13px;
   color:#fff;
   font-weight: bold;
 }

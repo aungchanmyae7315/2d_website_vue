@@ -608,7 +608,6 @@ export default {
     }
     .book_btn {
       background: #fff;
-      width:100%;
       margin-top:14px;
       height: 52px;
       border-radius: 4px;
