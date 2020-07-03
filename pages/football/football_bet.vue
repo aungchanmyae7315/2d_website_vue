@@ -1,7 +1,7 @@
 <template>
           <el-main class="main_page twod_home">
             <el-header>
-              <el-page-header title=""> </el-page-header>
+              <el-page-header title=""  @back="goBack"> </el-page-header>
 
               <p style="width:145px !important" class="logo">Goal+</p>
               <div
@@ -23,8 +23,8 @@
 
               <div class="goal_header" style="height:65vh">
                 <div class="el-body">
-                    <el-tabs type="card" @tab-click="handleClick">
-                        <el-tab-pane label="Body">
+                    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+                        <el-tab-pane name="first" label="Body">
                           <div class="choose_team">လောင်းမည့်အသင်းရွေးပါ</div>
                                   <div class="padding-justify">
 
@@ -64,7 +64,7 @@
                     </div>
                 </div>
                         </el-tab-pane>
-                        <el-tab-pane label="Goal">
+                        <el-tab-pane name="second" label="Goal">
                           <div class="choose_team">လောင်းမည့်အသင်းရွေးပါ</div>
                           <div class="padding-justify">
                     <div class="collapse_card" v-for="(fDetail, f) in footballMatchDetail" :key="f">
@@ -94,7 +94,7 @@
                             <p class="goal_vs_p1">ဂိုးပေါင်း</p>
                             <p class="goal_vs_p2">{{fDetail.goal_price}}</p>
                           </div>
-                          <div class="" style="background-color:yellow;display:block;">
+                          <div class="" >
                               <el-form-item
 
                                       prop="radio"
@@ -105,38 +105,21 @@
 
                                       >
                                     <!-- <input type="number" v-model="footballID" :value="fDetail.id"> -->
-                                    <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="1" value="1" style="display:block;background-color:red;width:90%;text-align:left;">
-                                        <div class="" style="width:50%;background-color:green;">
-                                          Up
-
-                                              <!-- <el-row>
-                                                <el-col :span="10">
-                                                  Up
-                                                </el-col>
-                                                <el-col :span="10">
+                                    <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="1" value="1" style="display:block">
+                                        <div class="">
+                                              
                                                   <img src="~static/images/up.png" width="20" class="">
-                                                </el-col>
-                                              </el-row> -->
+                                               
                                         </div>
-                                        <div style="width:50%;background-color:green;">
-                                           <img src="~static/images/up.png" width="20" class="" style="display:flex-end;" >
-                                        </div>
+                                       
                                     </el-radio>
-                                    <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="2" value="2"  style="display:block;background-color:red;width:90%;text-align:left;">
-                                        <div>
-                                              <el-row>
-                                                <el-col :span="10">
-
-
-                                                </el-col>
-                                                <el-col :span="2">
-                                                  Up
-                                                </el-col>
-                                                <el-col :span="10" style="text-align:right;">
+                                     <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="2" value="2" style="display:block">
+                                        <div class="">
+                                              
                                                   <img src="~static/images/up.png" width="20" class="">
-                                                </el-col>
-                                              </el-row>
+                                               
                                         </div>
+                                       
                                     </el-radio>
                               </el-form-item>
                             </div>
@@ -173,7 +156,13 @@
                           </div>
                     <!-- <el-button  :disabled='submitted'  type="submit" v-on:click="football_bet()"   class="bet_submit" round>  {{$t('Bet')}}</el-button> -->
                     <!-- <button type="submit" class="btn_bet" v-on:click="football_bet()">Bet</button> -->
-                       <el-button type="" @click="footballSubmit('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}</el-button>
+                    <div v-if="this.activeName == 'first'">
+                          <el-button type="" @click="footballSubmit_body('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}Body Btn</el-button>
+                    </div>
+                    <div v-else-if="this.activeName == 'second'">
+                         <el-button type="" @click="footballSubmit('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}} Gold Btn</el-button>
+                    </div>
+                     
 
             </div>
 
@@ -282,26 +271,22 @@ export default {
 
       info: "",
       info_api: "",
-      kwee_cma: "",
-      set_1200: "",
+
       profile: "",
       slider_text: "",
       breakTime: null,
-      kweeliveItvId: 0,
-      serverCurTimeItvId: 0,
+
       myWallet: "",
-      blockUser: "",
-      loaded: "",
+
       footballMatchDetail:"",
 
-      errors: [],
       accordion:true,
-      // data:[],
-      // amountBet:null,
+ 
        football_match_id:"",
       //  amount:"",
        goal_status:"",
       activeIndex2: '1',
+      activeName:"second",
       numberValidateForm1: {
                  amount:'',
                  radio:'',
@@ -317,7 +302,7 @@ export default {
       }, 1000);
     },
     goBack() {
-      this.$router.push(`/?lang=${this.$store.state.locale}`);
+      this.$router.push(`/football/football?lang=${this.$store.state.locale}`);
     },
     thousands_separators(num) {
       var num_parts = num.toString().split(".");
@@ -390,23 +375,30 @@ export default {
           if (valid) {
            this.submitted = true
           let token = localStorage.getItem('token');
+          console.log(token)
                 // var data=[]
-                var data =
-                   {
-                    football_match_id:localStorage.getItem("football_detali_id"),
-                    amount:this.numberValidateForm1.amount,
-                    goal_status:this.numberValidateForm1.radio,
-
-                   }
-                console.log(data);
-          this.$axios.post("v2/v1/football/goal/bet",
-                           data,
-                    {
+               
+          // this.$axios.post("v2/v1/football/goal/bet",
+          //  this.$axios.post('/v2/v1/football/goal/bet', {
+          //           football_match_id:localStorage.getItem("football_detali_id"),
+          //             amount:this.numberValidateForm1.amount,
+          //             goal_status:this.numberValidateForm1.radio,
+          //            headers: {
+          //                      "Authorization": "Bearer "+token
+          //                },
+                    
+          //       })
+           this.$axios.post("/v2/v1/football/goal/bet",{
+                        football_match_id:localStorage.getItem("football_detali_id"),
+                        amount:this.numberValidateForm1.amount,
+                        goal_status:this.numberValidateForm1.radio,
                         headers: {
                                "Authorization": "Bearer "+token
                          },
+                          
                         })
                     .then(response => {
+
                       console.log(response);
                     })
                     .catch(error => {
