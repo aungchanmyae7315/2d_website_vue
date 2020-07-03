@@ -1,12 +1,23 @@
 <template>
 
 
-      <el-main class="main_page">
+      <el-main class="main_page twod_home">
         <!-- <Online></Online> -->
+          <el-header>
+           <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
+               <el-page-header title="" @back="goBack" >
 
+                </el-page-header>
+
+                 <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo">
+           <!-- </nuxt-link> -->
+              <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
+                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+              </div>
+      </el-header>
         <div class="longText" id="hidingScrollBar">
          <div class="hideScrollBar">
-
+            <!-- <AutoLogout></AutoLogout> -->
         <div class="" v-if ="!$store.state.isLoggedIn">
 
               <div class="demo-type">
@@ -15,14 +26,13 @@
                     <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
                   </nuxt-link>
                      <div class="change_lang_icon">
-                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
+
                        <el-button type="text" @click="dialogVisible = true">
                         <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
-                    <!-- </nuxt-link> -->
-                  </div>
+                  </div> -->
                   <el-dialog
 
                     :visible.sync="dialogVisible"
@@ -34,7 +44,7 @@
 
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
                             <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
+
                             <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
 
 
@@ -67,14 +77,14 @@
                 <div  class="avatar_text">
                   <ul>
                        <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
-                          <li style="color:#fff;line-height:16px">
-                            <span>{{this.profile.name}}</span><br>
-                            <span>{{this.profile.phone}}</span>
+                          <li style="color:#fff"><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
+                              <span v-else >{{this.profile.name}}</span>
+
 
                           </li>
                      </nuxt-link>
                     <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                          <li  style="line-height:13px" class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
+                          <li  class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
                     </nuxt-link>
                   </ul>
                   </div>
@@ -85,19 +95,19 @@
 
                   </el-col> -->
                    <el-col :span="3">
-                      <div class="change_lang_icon">
-                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->
+                      <!-- <div class="change_lang_icon">
+
                        <el-button type="text" @click="dialogVisible = true">
                          <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
-                    <!-- </nuxt-link> -->
-                  </div>
+
+                    </div> -->
                    </el-col>
                 </el-row>
 
-
+<!--
                   <el-dialog
 
                     :visible.sync="dialogVisible"
@@ -106,25 +116,20 @@
 
                      <div class="lang lang_icon">
                         <el-dropdown @command="changeLang"  style="text-align:center">
-                        <!-- <span class="el-dropdown-link" style='cursor: pointer;'>
-                            {{$t('Language')}}
-                        </span> -->
 
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
                             <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                            <!-- <el-dropdown-item  round command='zg'>ျမန္မာ ေဇာ္ဂ်ီ</el-dropdown-item> -->
                             <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
-
 
                         </el-dropdown>
                     </div>
 
 
-                  </el-dialog>
+                  </el-dialog> -->
               </div>
         </div>
 
-        <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
+        <carousel  :autoplay="true"  :nav="false" v-if="loaded" :items =1>
 
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
@@ -143,74 +148,73 @@
               {{this.slider_text.text}}</p>
           </div>
         </h3>
-         <div class="choose_2d_3d" data-aos="fade-up" data-aos-duration="700">
+          <!-- <div class="block" data-aos="fade-up" data-aos-duration="700">
+
+            <el-carousel  trigger="click" height="155px" arrow="always">
+               <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
+                  <div>
+                     <a :href="img_slide.link" target="_blank">
+                    <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:155px;">
+                      <div slot="placeholder" class="image-slot">
+                        Loading<span class="dot">...</span>
+                      </div>
+                    </el-image>
+                     </a>
+                  </div>
+
+              </el-carousel-item>
+
+                    <div class="el-carousel_label">
+
+                        <h3>
+                          <div class="scroll-left">
+                            <p>
+                               <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
+                              {{this.slider_text.text}}</p>
+                          </div>
+                           </h3>
+                    </div>
+            </el-carousel>
+
+          </div>   -->
+          <div class="row n_d_t">
+            <div class="col">
+                <div class="date_time">
+
+                </div>
+            </div>
+          </div>
+          <div class="choose_2d_3d" data-aos="fade-up" data-aos-duration="700">
             <el-row>
-              <el-col :span="12">
-                <nuxt-link :to="`${$t('/home')}?lang=${$store.state.locale}`">
+              <el-col :span="8">
+                 <nuxt-link :to="`${$t('/moungg')}?lang=${$store.state.locale}`">
 
-                         <img src="~static/images/twod_card.png" alt="" class="twod_card">
-
-                </nuxt-link>
-              </el-col>
-              <el-col :span="12">
-                 <nuxt-link :to="`${$t('/threeD/')}?lang=${$store.state.locale}`">
-
-                        <img src="~static/images/threed_card.png" alt="" class="threed_card">
+                        <div class="card_one font-color" style="margin-right:15px;">
+                         Maungg
+                         </div>
 
                 </nuxt-link>
               </el-col>
             </el-row>
-
-           <el-row>
-              <el-col :span="12">
-                <nuxt-link :to="`${$t('football/home')}?lang=${$store.state.locale}`">
-
-                         Bau Cau
-
-                </nuxt-link>
-              </el-col>
-              <el-col :span="12">
-                 <nuxt-link :to="`${$t('/football/football')}?lang=${$store.state.locale}`">
-
-                        Football
-
-                </nuxt-link>
-              </el-col>
-            </el-row>
-
-           </div>
-
+            </div>
       </div>
     </div>
-          <el-dialog
-  :visible.sync="dialogVisible_autoLogout"
-  width="90%"
-  :show-close="false"
-  :close-on-click-modal="false"
-  >
-
-  <span>{{$t('section_time_out')}}</span>
-  <br>
-    <el-button style="margin-top:20px;" type="primary" @click="autoLogout() ;dialogVisible_autoLogout = false">{{$t('ok')}}</el-button>
-
-</el-dialog>
 
   </el-main>
 
 </template>
 
 <script>
-import Vue from 'vue'
+
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
 
 export default {
-
  components: { carousel },
     getters: {},
   mutations: {},
   actions: {},
-  layout: 'homeLayout',
+ // layout: 'homeLayout',
 
 
   mounted() {
@@ -225,19 +229,25 @@ export default {
           }
           else{
             // setTimeout(function(){
-              self.$axios.get('/v2/v1/slider_image?name=home')
+              self.$axios.get('/v2/v1/slider_image?name=2D')
                 .then(response => {
                  if(self.slider_images  !== null) {
                         this.loaded = true;
                     }
+
                 self.slider_images = response.data.data
+                // self.$store.commit('setSliderImage', response.data.data);
                 })
+
             // }, 2000);
               self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
+
                 self.slider_text = response.data.data[0];
                 })
+
                 }
+
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
     if (m != null && isSeinluckyApp){
@@ -251,27 +261,34 @@ export default {
           this.$store.commit('setWebAppVersion', response.data.version);
         });
     }
+
+
       this.getDataKwee();
       //this.getDataresult();
       this.updateIsLoggedIn();
-      this.updateLang();
+      // this.updateLang();
       this.getKweeLiveData();
+
+
       let lang = localStorage.getItem('locale');
       this.$store.commit('SET_LANG', lang);
+      // this.$axios.get(`/v2/v1/add_language?language=${lang}`)
+      //   .then(response => {
+
+
+      //   });
    },
+
+
+
   data() {
 
     return {
-      error_url:'',
-      error_message:'',
-      error_trace:'',
-      error:'',
-      trace:'',
+        fullscreenLoading: false,
+      serverDate:'',
       last_date:'',
       dialogVisible: false,
-      dialogVisible_autoLogout:false,
-
-      isActive: true,
+       isActive: true,
       hasError: false,
       currentTime: '',
       morningTime_9_30:'09:30:00',
@@ -304,6 +321,7 @@ export default {
 
   },
 
+
   destroyed () {
     clearInterval(this.kweeliveItvId);
     clearInterval(this.serverCurTimeItvId);
@@ -313,7 +331,7 @@ export default {
     clearInterval(this.serverCurTimeItvId);
   },
    methods: {
-      HomeRefresh() {
+    HomeRefresh() {
       this.fullscreenLoading = true;
         setTimeout(() => {
 
@@ -321,10 +339,9 @@ export default {
           location.reload();
         }, 1000);
     },
-     autoLogout() {
-          this.$store.commit('logOut');
-          this.$router.push(`/login?lang=${this.$store.state.locale}`);
-     },
+    goBack() {
+       this.$router.push(`/?lang=${this.$store.state.locale}`);
+    },
     thousands_separators(num){
       var num_parts = num.toString().split(".");
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -358,38 +375,10 @@ export default {
           async getDataresult() {
             this.$axios.get('/v2/v1/twod-result/live')
               .then(response => {
-                console.dir("twod-result/live");
-                console.dir(response);
                 this.info_api = response.data.data
 
               })
           },
-
-      changeLang (lang) {
-      //mutate 'locale' in store
-      this.$store.commit('SET_LANG', lang)
-      //re-route to the current page but with the selected language in a query string
-      this.dialogVisible = false
-       this.$router.push(`/?lang=${this.$store.state.locale}`);
-        this.$axios.get(`/v2/v1/add_language?language=${lang}`)
-
-
-                .then(response => {
-
-
-        });
-         this.$axios.get("/v2/v1/get_language")
-
-
-                .then(response => {
-
-            });
-
-      // this.$router.push({ path: `${this.$router.currentRoute.path}?lang=${lang}` })
-    },
-      submitLang() {
-            this.$store.commit('SET_LANG', 'hello')
-        },
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
@@ -403,7 +392,6 @@ export default {
           }else if(this.currentTime < this.morningTime_9_30){
             this.isActive = false
             this.breakTime = '4:30 PM';
-
              this.getDataresult();
           }else{
 
@@ -444,12 +432,12 @@ export default {
       },
 
 
-      updateLang() {
-        this.$store.commit('updateLang', this.hasLang());
-      },
-      hasLang() {
-        return Boolean(localStorage.getItem('locale'));
-      },
+      // updateLang() {
+      //   this.$store.commit('updateLang', this.hasLang());
+      // },
+      // hasLang() {
+      //   return Boolean(localStorage.getItem('locale'));
+      // },
     },
      created() {
 
@@ -488,16 +476,13 @@ export default {
 
   }else {
 
-      // var stop_Interval =  setInterval(function() {
+      // var ok =  setInterval(function() {
        this.$axios.get('/v2/v1/twod-result/live')
-
               .then(response => {
-
                   this.last_date = response.data.data.last_date
                 if(response.data.data.status_430 == "backend") {
 
                          this.isActive = false
-                        //  clearTimeout(stop_Interval);
 
                 }else {
                         this.isActive = false
@@ -522,36 +507,30 @@ export default {
                          }
                         })
                     .then(response => {
-                      var user_id = response.data.data.id
-                      window.$nuxt.$store.commit('userId', user_id);
                       this.blockUser = response.data.data.trash
-                      this.profile = response.data.data
-                      this.myWallet = this.profile.wallet
-                      this.currentTime = response.data.data.time;
+                    //console.dir(response.data);
+                     this.profile = response.data.data
+                    this.myWallet = this.profile.wallet
+                    this.currentTime = response.data.data.time;
+                    //console.dir(response.data.data.time);
                      if(this.blockUser == 0) {
                       }else {
                         this.$store.commit('logOut');
-                        this.$router.push(`/?lang=${this.$store.state.locale}`);
+                        this.$router.push(`/home?lang=${this.$store.state.locale}`);
                       }
+
+
+
                 })
-                .catch(error => {
-
-                    if(error.response.data.message == 'Unauthenticated.') {
-
-                        this.dialogVisible_autoLogout = true
-
-                    }
-
-                 });
-
       }
-      else{
-        this.$axios.get('/v2/v1/server_time')
+
+          this.$axios.get('/v2/v1/server_time')
               .then(response => {
 
-               this.currentTime = response.data
+               this.currentTime = response.data.time
+               this.serverDate  = response.data.date
               })
-      }
+
     },
 }
 
@@ -559,20 +538,19 @@ export default {
 </script>
 
 <style>
-
-.choose_2d_3d .el-card {
-  margin:20px;
+.twod_home .el-header {
+  padding:20px;
+  color:#fff;
 }
+.twod_home .hideScrollBar {
+  padding-top:0;
+}
+.twod_home .logo {
 
-
-
-
-
-
-
-
-
-
+  height: auto;
+  position: relative;
+  top:-31px;
+}
 .owl-theme .owl-nav.disabled + .owl-dots {
   position: absolute;
   right:0;
@@ -876,6 +854,9 @@ export default {
 .main_page .el-dialog__wrapper {
   background: rgba(7, 14, 7, 0.8);
 
+}
+.font-color{
+  color:white;
 }
   /* change lang css end */
 /* Move it (define the animation) */
