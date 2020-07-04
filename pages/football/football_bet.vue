@@ -1,7 +1,7 @@
 <template>
           <el-main class="main_page twod_home">
             <el-header>
-              <el-page-header title=""> </el-page-header>
+              <el-page-header title=""  @back="goBack"> </el-page-header>
 
               <p style="width:145px !important" class="logo">Goal+</p>
               <div
@@ -23,8 +23,8 @@
 
               <div class="goal_header" style="height:65vh">
                 <div class="el-body">
-                    <el-tabs type="card" @tab-click="handleClick">
-                        <el-tab-pane label="Body">
+                    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+                        <el-tab-pane name="first" label="Body">
                           <div class="choose_team">လောင်းမည့်အသင်းရွေးပါ</div>
                                   <div class="padding-justify">
                     <div class="collapse_card" v-for="(fDetail, f) in footballMatchDetail" :key="f">
@@ -39,13 +39,34 @@
                                 <div class="vs_inner team_01">
                                     <span class="hot"><img src="~static/images/hot.png" width="20"> Hot</span>
                                     <br>
-                                  <img :src="fDetail.hot_team.logo" class="vs_team_img">
+                                    <input   v-model="radio"
+                                  type="radio" name="emotion" 
+                                  id="sad" class="input-hidden" />
+                                <label for="sad">
+                                   <div class="ok">
+                                      ok
+                                    </div>
+                                   <img :src="fDetail.hot_team.logo" class="vs_team_img">
+                                   
+                                </label>
+                                  
                                   <br>
                               <span class="vs_teamname">{{fDetail.hot_team.name}}</span>
                                 </div>
                                 <span class="vs_text"> VS</span>
                                 <div class="vs_inner team_02">
-                                  <img :src="fDetail.away_team.logo" class="vs_team_img">
+                                  <input v-model="radio" value="2"
+                                      type="radio" name="emotion"
+                                      id="happy" class="input-hidden" />
+                                    <label for="happy">
+                                        <div class="ok">
+                                    
+                                    </div>
+                                       <img :src="fDetail.away_team.logo" class="vs_team_img">
+                                     
+                                    </label>
+                                    
+                                
                                   <br>
                                   <span class="vs_teamname">{{fDetail.away_team.name}}</span>
                                 </div>
@@ -59,7 +80,7 @@
                     </div>
                 </div>
                         </el-tab-pane>
-                        <el-tab-pane label="Goal">
+                        <el-tab-pane name="second" label="Goal">
                           <div class="choose_team">လောင်းမည့်အသင်းရွေးပါ</div>
                           <div class="padding-justify">
                     <div class="collapse_card" v-for="(fDetail, f) in footballMatchDetail" :key="f">
@@ -89,7 +110,7 @@
                             <p class="goal_vs_p1">ဂိုးပေါင်း</p>
                             <p class="goal_vs_p2">{{fDetail.goal_price}}</p>
                           </div>
-                          <div class="" style="background-color:yellow;display:block;">
+                          <div class="" >
                               <el-form-item
 
                                       prop="radio"
@@ -99,40 +120,28 @@
                                       ]"
 
                                       >
-                                    <!-- <input type="number" v-model="footballID" :value="fDetail.id"> -->
-                                    <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="1" value="1" style="display:block;background-color:red;width:90%;text-align:left;">
-                                        <div class="" style="width:50%;background-color:green;">
-                                          Up
-
-                                              <!-- <el-row>
-                                                <el-col :span="10">
-                                                  Up
-                                                </el-col>
-                                                <el-col :span="10">
+                                  <div class="radio_up">
+                                        <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="1" value="1"  >
+                                        <div class="">
+                                              
                                                   <img src="~static/images/up.png" width="20" class="">
-                                                </el-col>
-                                              </el-row> -->
+                                               
                                         </div>
-                                        <div style="width:50%;background-color:green;">
-                                           <img src="~static/images/up.png" width="20" class="" style="display:flex-end;" >
-                                        </div>
+                                       
                                     </el-radio>
-                                    <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="2" value="2"  style="display:block;background-color:red;width:90%;text-align:left;">
-                                        <div>
-                                              <el-row>
-                                                <el-col :span="10">
-
-
-                                                </el-col>
-                                                <el-col :span="2">
-                                                  Up
-                                                </el-col>
-                                                <el-col :span="10" style="text-align:right;">
-                                                  <img src="~static/images/up.png" width="20" class="">
-                                                </el-col>
-                                              </el-row>
+                                  </div>
+                                  <div class="radio_down">
+                                       <el-radio @keypress.enter.native="footballSubmit('numberValidateForm1')" v-model="numberValidateForm1.radio" label="2" value="2" >
+                                        <div class="">
+                                              
+                                                  <img src="~static/images/down.png" width="20" class="">
+                                               
                                         </div>
+                                       
                                     </el-radio>
+                                  </div>
+                                   
+                                    
                               </el-form-item>
                             </div>
                         </div>
@@ -168,7 +177,13 @@
                           </div>
                     <!-- <el-button  :disabled='submitted'  type="submit" v-on:click="football_bet()"   class="bet_submit" round>  {{$t('Bet')}}</el-button> -->
                     <!-- <button type="submit" class="btn_bet" v-on:click="football_bet()">Bet</button> -->
-                       <el-button type="" @click="footballSubmit('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}</el-button>
+                    <div v-if="this.activeName == 'first'">
+                          <el-button type="" @click="footballSubmit_body('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}Body Btn</el-button>
+                    </div>
+                    <div v-else-if="this.activeName == 'second'">
+                         <el-button type="" @click="footballSubmit('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}} Gold Btn</el-button>
+                    </div>
+                     
 
             </div>
 
@@ -277,30 +292,27 @@ export default {
 
       info: "",
       info_api: "",
-      kwee_cma: "",
-      set_1200: "",
+
       profile: "",
       slider_text: "",
       breakTime: null,
-      kweeliveItvId: 0,
-      serverCurTimeItvId: 0,
+
       myWallet: "",
-      blockUser: "",
-      loaded: "",
+
       footballMatchDetail:"",
 
-      errors: [],
       accordion:true,
-      // data:[],
-      // amountBet:null,
+ 
        football_match_id:"",
       //  amount:"",
        goal_status:"",
       activeIndex2: '1',
+      activeName:"first",
       numberValidateForm1: {
                  amount:'',
                  radio:'',
              },
+          radio:''
     };
   },
   methods: {
@@ -312,7 +324,7 @@ export default {
       }, 1000);
     },
     goBack() {
-      this.$router.push(`/?lang=${this.$store.state.locale}`);
+      this.$router.push(`/football/football?lang=${this.$store.state.locale}`);
     },
     thousands_separators(num) {
       var num_parts = num.toString().split(".");
@@ -380,28 +392,63 @@ export default {
 //                     .then(response => {
 //                     })
 //  }
-  footballSubmit(formName) {
+  footballSubmit_body(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
            this.submitted = true
           let token = localStorage.getItem('token');
-                // var data=[]
-                var data =
-                   {
-                    football_match_id:localStorage.getItem("football_detali_id"),
-                    amount:this.numberValidateForm1.amount,
-                    goal_status:this.numberValidateForm1.radio,
 
-                   }
-                console.log(data);
-          this.$axios.post("v2/v1/football/goal/bet",
+          var data = {
+              football_match_id:localStorage.getItem("football_detali_id"),
+              amount:this.numberValidateForm1.amount,
+              goal_status:this.radio,
+          }
+          this.$axios.post("/v2/v1/football/body/bet",
                            data,
                     {
                         headers: {
                                "Authorization": "Bearer "+token
                          },
+                          
                         })
                     .then(response => {
+
+                      console.log(response);
+                    })
+                    .catch(error => {
+                      console.log(error.response)
+                    })
+
+
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+        },
+
+
+         footballSubmit(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+           this.submitted = true
+          let token = localStorage.getItem('token');
+
+          var data = {
+              football_match_id:localStorage.getItem("football_detali_id"),
+              amount:this.numberValidateForm1.amount,
+              goal_status:this.numberValidateForm1.radio,
+          }
+          this.$axios.post("/v2/v1/football/goal/bet",
+                           data,
+                    {
+                        headers: {
+                               "Authorization": "Bearer "+token
+                         },
+                          
+                        })
+                    .then(response => {
+
                       console.log(response);
                     })
                     .catch(error => {
@@ -473,357 +520,59 @@ export default {
   padding: 20px;
   color: #fff;
 }
-.twod_home .hideScrollBar {
-  padding-top: 0;
-}
-.twod_home .logo {
-  height: auto;
-  position: relative;
-  top: -21px;
-}
-.owl-theme .owl-nav.disabled + .owl-dots {
-  position: absolute;
-  right: 0;
-  left: 0;
-  top: 97px;
-}
-.owl-carousel .owl-dots.disabled {
-  display: block !important;
-  border: 0;
-}
-.main_page .owl-carousel .owl-stage-outer {
-  padding: 0 !important;
-}
-.main_page .el-image {
-  border-radius: 24px !important;
-}
-@keyframes ldio-ct1tsjzqdg5-o {
-  0% {
-    opacity: 1;
-    transform: translate(0 0);
-  }
-  49.99% {
-    opacity: 1;
-    transform: translate(40px, 0);
-  }
-  50% {
-    opacity: 0;
-    transform: translate(40px, 0);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(0, 0);
-  }
-}
-@keyframes ldio-ct1tsjzqdg5 {
-  0% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(40px, 0);
-  }
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-.loadingio-spinner-dual-ball-ty27h70p24 {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  overflow: hidden;
-}
-.loadingio-spinner-card_one_loading {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 22px;
-  right: 32px;
-  overflow: hidden;
-}
-.ldio-ct1tsjzqdg5 div {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  top: 60px;
-  left: 20px;
-}
-.ldio-ct1tsjzqdg5 div:nth-child(1) {
-  background: #93dbe9;
-  animation: ldio-ct1tsjzqdg5 1s linear infinite;
-  animation-delay: -0.5s;
-  width: 30px;
-  height: 30px;
-}
-.ldio-ct1tsjzqdg5 div:nth-child(2) {
-  background: #689cc5;
-  animation: ldio-ct1tsjzqdg5 1s linear infinite;
-  animation-delay: 0s;
-  width: 30px;
-  height: 30px;
-}
-.ldio-ct1tsjzqdg5 div:nth-child(3) {
-  background: #93dbe9;
-  animation: ldio-ct1tsjzqdg5-o 1s linear infinite;
-  animation-delay: -0.5s;
-  width: 30px;
-  height: 30px;
-}
-
-.ldio-ct1tsjzqdg5 {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  left: 45px;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
-}
-
-.ldio-ct1tsjzqdg5 div {
-  box-sizing: content-box;
-}
-/* generated by https://loading.io/ */
-.card_one_loading div {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  top: 60px;
-  left: 20px;
-}
-.card_one_loading div:nth-child(1) {
-  background: #93dbe9;
-  animation: ldio-ct1tsjzqdg5 1s linear infinite;
-  animation-delay: -0.5s;
-  width: 15px;
-  height: 15px;
-}
-.card_one_loading div:nth-child(2) {
-  background: #689cc5;
-  animation: ldio-ct1tsjzqdg5 1s linear infinite;
-  animation-delay: 0s;
-  width: 15px;
-  height: 15px;
-}
-.card_one_loading div:nth-child(3) {
-  background: #93dbe9;
-  animation: ldio-ct1tsjzqdg5-o 1s linear infinite;
-  animation-delay: -0.5s;
-  width: 15px;
-  height: 15px;
-}
-
-.card_one_loading {
-  width: 40px;
-  height: 40px;
-  position: relative;
-  left: 0;
-  bottom: 55px;
-  transform: translateZ(0) scale(1);
-  backface-visibility: hidden;
-  transform-origin: 0 0; /* see note above */
-}
-
-.card_one_loading div {
-  box-sizing: content-box;
-}
-
-.el-carousel {
-  border-radius: 22px;
-  -webkit-border-radius: 22px;
-  -moz-border-radius: 22px;
-  -webkit-box-shadow: -1px 1px 16px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -1px 1px 16px -4px rgba(0, 0, 0, 0.75);
-  box-shadow: -1px 1px 16px -4px rgba(0, 0, 0, 0.75);
-}
-
-.main_page {
-  margin: 0 auto;
-}
-.el-header {
-  background-color: #14612d;
-  color: #333;
-  /* text-align: center; */
-  padding: 10px 0;
-  z-index: 5;
-}
-
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
-}
-
-.el-main {
-  text-align: center;
-  margin: 0 auto;
-  background-image: url(~static/images/main_bg.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  max-width: 480px;
-  width: 100%;
-  height: 100vh;
-  padding: 0;
-  overflow: hidden;
-  /* background-position: 100% 100%; */
-}
-
-body > .el-container {
-  margin-bottom: 40px;
-}
-
-.el-container:nth-child(5) .el-aside,
-.el-container:nth-child(6) .el-aside {
-  line-height: 260px;
-}
-
-.el-container:nth-child(7) .el-aside {
-  line-height: 320px;
-}
-
-/* slider text css */
-/* CSS Document */
-.scroll-left {
-  overflow: hidden;
-  height: 31px;
-  position: relative;
-  width: auto;
-}
-.scroll-left p {
-  position: absolute;
-  white-space: nowrap;
-  height: 100%;
-  margin: 0;
-  line-height: 31px;
-  text-align: left;
-  /* Apply animation to this element */
-  -moz-animation: scroll-left 10s linear infinite;
-  -webkit-animation: scroll-left 10s linear infinite;
-  animation: scroll-left 10s linear infinite;
-}
-/* change language css */
-.main_page .lang {
-  text-align: center;
-  margin: 0 auto;
-}
-.main_page .el-dialog {
-  border-radius: 21px !important;
-}
-
-.lang .el-dropdown {
-  padding: 27px;
-  -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-}
-.main_page .lang .el-dropdown-menu__item {
-  margin: 20px auto;
-  background: #158220;
-  color: #fff;
-  border-radius: 21px;
-}
-.lang .el-dropdown-link {
-  font-size: 18px;
-  font-weight: bold;
-}
-.language_type .el-dropdown-menu__item:not(.is-disabled):hover {
-  background: #158220;
-  color: #fff;
-  border-radius: 21px;
-}
-.lang .el-button.is-round {
-  width: 100%;
-  position: absolute;
-  right: 0;
-  left: 0;
-  margin: 20px;
-  bottom: 0;
-}
-.language_type {
-  padding: 20px;
-}
-.language_type .el-header {
-  background-color: #fff;
-}
-.language_type ul {
-  padding: 0;
-  margin: 150px auto;
-  list-style: none;
-}
-.language_type ul li {
-  max-width: 480px;
-  width: 50%;
-  padding: 10px;
-  text-align: center;
-  border-radius: 23px;
-  margin: 20px auto;
-  color: #000;
-  text-transform: capitalize;
-}
-.language_type ul li a {
-  text-decoration: none;
-}
-.language_type .active {
-  background: #158220;
-  color: #fff;
+.el-radio {
   display: block;
-  font-weight: bold;
+  margin:0 30px;
+ 
 }
-.el-page-header__left {
-  margin: 0;
+.radio_up {
+  background: blue;
+  margin:0 30px;
 }
-.language_type .el-page-header {
-  line-height: 43px;
-  color: #000;
+.radio_down {
+  background: blue;
+  margin:10px 30px;
 }
-.language_type .el-page-header__content {
-  color: #000;
-  font-weight: bold;
+.radio_down.el-radio:last-child  {
+  margin:10px 30px;
 }
-.main_page .el-dialog {
-  max-width: 480px;
-  width: 90%;
+.radio_up .el-radio__input , .radio_down .el-radio__input {
+  float: left;
+  padding-top:5px;
 }
-.main_page .el-dialog__wrapper {
-  background: rgba(7, 14, 7, 0.8);
+.radio_up img , .radio_down img {
+  position: relative;
+  bottom:7px
 }
-.font-color {
-  color: white;
+.goal_inner .input-hidden {
+  position: absolute;
+  left: -9999px;
 }
-/* change lang css end */
-/* Move it (define the animation) */
-@-moz-keyframes scroll-left {
-  0% {
-    -moz-transform: translateX(100%);
-  }
-  100% {
-    -moz-transform: translateX(-100%);
-  }
+
+.goal_inner input[type=radio]:checked + label>img {
+  border: 1px solid #fff;
+  box-shadow: 0 0 3px 3px #090;
+
 }
-@-webkit-keyframes scroll-left {
-  0% {
-    -webkit-transform: translateX(100%);
-  }
-  100% {
-    -webkit-transform: translateX(-100%);
-  }
+
+/* Stuff after this is only to make things more pretty */
+.goal_inner input[type=radio] + label>img {
+  
+  transition: 500ms all;
 }
-@keyframes scroll-left {
-  0% {
-    -moz-transform: translateX(100%); /* Browser bug fix */
-    -webkit-transform: translateX(100%); /* Browser bug fix */
-    transform: translateX(200px);
-  }
-  100% {
-    -moz-transform: translateX(-100%); /* Browser bug fix */
-    -webkit-transform: translateX(-100%); /* Browser bug fix */
-    transform: translateX(-100%);
-  }
+
+ .goal_inner input[type=radio]:checked + label>.ok{
+   display:block;
+   width:84px;
+   background: red;
+   height:84px;
+   position: absolute;
+   opacity: 0.3;
+   
+}
+.ok {
+  display: none;
+
 }
 
 </style>
