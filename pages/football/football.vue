@@ -119,13 +119,79 @@
         <el-row>
           <div class="carousel2">
               <carousel :autoplay="false" :nav="false"  :items =4>
-                    <div class="date1"> One</div>
-                    <div class="date1">Two</div>
-                    <div class="date1">Three</div>
-                    <div class="date1">Four</div>
-                    <div class="date1">Five</div>
-                    <div class="date1">Six</div>
-                    <div class="date1">Seven</div>
+              <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User1" name="first">Testing</el-tab-pane>
+
+
+
+              </el-tabs>
+              <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User4" name="User4">User4</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User3" name="User3">User3</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User4" name="User4">User4</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User5" name="User7">User5</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User6" name="User6">User6</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User7" name="User7">User7</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User8" name="User8">User8</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User9" name="User9">User9</el-tab-pane>
+
+
+
+              </el-tabs>
+ <el-tabs v-model="activeName" @tab-click="handleClick">
+
+                        <el-tab-pane label="User10" name="User10">User10</el-tab-pane>
+
+
+
+              </el-tabs>
+
+                    <!-- <div>Three</div> -->
+
               </carousel>
           </div>
       </el-row>
@@ -357,7 +423,7 @@ export default {
       blockUser: "",
       loaded: "",
       activeNames:[1,2,3,4,5,6,7,9,8],
-      // activeName: "first",
+      activeName: "first",
       todayfootball:"",
       football_info:"",
       resultDate:"",
@@ -829,4 +895,30 @@ body > .el-container {
     transform: translateX(-100%);
   }
 }
+/* .carousel2 .el-tabs--card>.el-tabs__header {
+    border: none !important;
+}
+
+.carousel2 .el-tabs--card>.el-tabs__header .el-tabs__nav {
+    border: none !important;
+}
+
+.carousel2 .el-tabs--card>.el-tabs__header .el-tabs__item.is-active {
+    border: 2px solid #FFEA72 !important;
+}
+
+.carousel2 .el-tabs__nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel2 .el-tabs__item {
+    background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%);
+    border-radius: 5px;
+    width: 47%;
+    font-size: 12px !important;
+    color: lightgray !important;
+    border: 0 !important;
+} */
 </style>

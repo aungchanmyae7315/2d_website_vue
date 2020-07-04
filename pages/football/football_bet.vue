@@ -27,11 +27,6 @@
                         <el-tab-pane label="Body">
                           <div class="choose_team">လောင်းမည့်အသင်းရွေးပါ</div>
                                   <div class="padding-justify">
-
-
-
-
-
                     <div class="collapse_card" v-for="(fDetail, f) in footballMatchDetail" :key="f">
                     <el-row>
                       <span  class="date">{{fDetail.play_at_time}}</span>
