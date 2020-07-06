@@ -160,9 +160,9 @@
                 <div class="date_time">
                   <div class="d_t_item">
                       <span>updated at:</span><br>
-                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="serverDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="serverDate"></span>
-                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="serverDate"></span>
+                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="this.last_date"></span>
+                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="this.last_date"></span>
+                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="this.last_date"></span>
                       <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
                       <span v-else v-text="this.last_date"></span>
                       <br>
@@ -487,10 +487,11 @@ export default {
 
      //luke
         async getKweeLiveData(){
-          this.$axios.get('/luke/kwee_live')
+          this.$axios.get('/luke/twod-result-live')
             .then(response => {
-              this.info = response.data[0];
-	      //console.dir(this.info);
+
+              this.info = response.data.data;
+	      console.dir(this.info);
             })
      },
 
@@ -503,7 +504,7 @@ export default {
            this.itvKweeLiveData();
           },
           async getDataresult() {
-            this.$axios.get('/v2/v1/twod-result/live')
+            this.$axios.get('/luke/twod-result-live')
               .then(response => {
                 this.info_api = response.data.data
                
@@ -582,7 +583,7 @@ export default {
    
       var stop_Interval =  setInterval(function() {
         
-       this.$axios.get('/v2/v1/twod-result/live')
+       this.$axios.get('/luke/twod-result-live')
               .then(response => {
 
                 if(response.data.data.status_1200 == "backend") {
@@ -591,7 +592,7 @@ export default {
                        clearTimeout(stop_Interval);  
                 }else {
                        this.isActive = true
-                      this.$axios.get('/v2/v1/twod-result/live')
+                      this.$axios.get('/luke/twod-result-live')
                     .then(response => {
                      
                       this.info_api = response.data.data
@@ -607,16 +608,17 @@ export default {
   }else {
      
       // var ok =  setInterval(function() {
-       this.$axios.get('/v2/v1/twod-result/live')
+       this.$axios.get('/luke/twod-result-live')
               .then(response => {
                   this.last_date = response.data.data.last_date
+                  console.log(this.last_date)
                 if(response.data.data.status_430 == "backend") {
                     
                          this.isActive = false
 
                 }else {
                         this.isActive = false
-                    //   this.$axios.get('/v2/v1/twod-result/live')
+                    //   this.$axios.get('/v2/v1/twod-result-live')
                     // .then(response => {
                     //    this.last_date = response.data.data.last_date
                     //   this.info_api = response.data.data
