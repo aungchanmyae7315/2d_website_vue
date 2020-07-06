@@ -1,6 +1,6 @@
 <template>
-    <div class="f_main">
-        <el-main class="main_page twod_home">
+   <div class="f_main">
+        <main class="main_page twod_home">
             <!-- <Online></Online> -->
             <el-header>
                 <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
@@ -97,7 +97,11 @@
                             </div>
 
                         </h3>
-
+ <scroll-fixed-header :fixed.sync="fixed" :threshold="350">
+        <nav class="navbar navbar-light bg-light">
+         Hello
+        </nav>
+    </scroll-fixed-header>
 
                         <div class="carousel2">
                             <carousel :autoplay="false" :nav="true" :items=3>
@@ -401,15 +405,21 @@
 
                     </div>
                 </div>
-        </el-main>
+        </main>
         </div>
 </template>
 
+
+
 <script>
+ import Vue from 'vue'
+import ScrollFixedHeader from 'vuejs-scroll-fixed-header'
+Vue.use(ScrollFixedHeader)
 import axios from "axios";
 import carousel from "vue-owl-carousel";
 
 export default {
+    name: 'Timer',
     components: { carousel },
     getters: {},
     mutations: {},
@@ -501,7 +511,8 @@ export default {
             tomorrow1Match: '',
             tomorrow2Match: '',
 
-            currentTab: 1
+            currentTab: 1,
+             fixed: false
 
             //   activeIndex2: '1',
         };
@@ -663,6 +674,7 @@ export default {
     }
 };
 </script>
+
 
 <style>
 .navbar.vue-fixed-header--isFixed {

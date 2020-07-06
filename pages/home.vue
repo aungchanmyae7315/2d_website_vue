@@ -492,6 +492,7 @@ export default {
             .then(response => {
               this.info = response.data.data;
               this.close_day = response.data.data.is_close_day
+              console.log(response)
 
             })
      },
@@ -518,10 +519,12 @@ export default {
            
              this.getDataresult();
           } else if(this.currentTime > this.time_04_30){
+            
             this.isActive = false
             this.breakTime = '4:30 PM'; 
              this.getDataKwee();
           }else if(this.currentTime < this.morningTime_9_30){
+            
             this.isActive = false
             this.breakTime = '4:30 PM'; 
              this.getDataresult();
@@ -541,16 +544,26 @@ export default {
            
           } else if(this.currentTime > this.time_04_30){
             // this.isActive = false
+             if(this.close_day == 1) {
+            
+               this.isActive = false
+            }else {
+                
+               this.isActive = true
+            }
             this.breakTime = '4:30 PM'; 
             
           }else if(this.currentTime < this.morningTime_9_30){
+            
             this.isActive = false
             this.breakTime = '4:30 PM'; 
             
           }else{
             if(this.close_day == 1) {
+            
                this.isActive = false
             }else {
+                
                this.isActive = true
             }
             
