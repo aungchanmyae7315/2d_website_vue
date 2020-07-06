@@ -45,6 +45,7 @@
     "vue-smooth-picker": "^0.4.2",
     "vue-social-sharing": "^2.4.7",
     "vue-spinner": "^1.0.3",
+    "vuejs-scroll-fixed-header": "^1.0.2",
     "yarn": "^1.22.4"
   },
   "devDependencies": {

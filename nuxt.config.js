@@ -30,7 +30,6 @@ export default {
         ],
         script: [
 
-            // { src: '' },Kyaw Wai Yan Lin
 
             { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js' },
             { src: 'https://unpkg.com/vue-image-upload-resize' },
@@ -82,7 +81,7 @@ export default {
         credentials: false,
         //debug:true,
         //baseURL: "https://api.2dboss.com/api/",
-        baseURL: "https://build.seinchanthar.com/api/",
+       baseURL: "https://build.seinchanthar.com/api/",
         proxy: false,
         proxyHeaders: false,
         headers: {

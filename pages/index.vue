@@ -251,11 +251,10 @@ export default {
           this.$store.commit('setWebAppVersion', response.data.version);
         });
     }
-      this.getDataKwee();
-      //this.getDataresult();
+      
       this.updateIsLoggedIn();
       this.updateLang();
-      this.getKweeLiveData();
+    
       let lang = localStorage.getItem('locale');
       this.$store.commit('SET_LANG', lang);
    },
@@ -273,11 +272,6 @@ export default {
 
       isActive: true,
       hasError: false,
-      currentTime: '',
-      morningTime_9_30:'09:30:00',
-      time_12_00:'12:01:00',
-      time_01_00:'13:00:00',
-      time_04_30:'16:30:00',
 
 
       currentDate: null,
@@ -292,9 +286,7 @@ export default {
       set_1200:'',
       profile:'',
       slider_text:'',
-      breakTime:null,
-      kweeliveItvId:0,
-      serverCurTimeItvId:0,
+
       myWallet:'',
       blockUser:'',
       loaded:'',
@@ -304,14 +296,7 @@ export default {
 
   },
 
-  destroyed () {
-    clearInterval(this.kweeliveItvId);
-    clearInterval(this.serverCurTimeItvId);
-  },
-  beforeDestroy () {
-    clearInterval(this.kweeliveItvId);
-    clearInterval(this.serverCurTimeItvId);
-  },
+
    methods: {
       HomeRefresh() {
       this.fullscreenLoading = true;
@@ -338,33 +323,9 @@ export default {
     },
 
 
-     //luke
-        async getKweeLiveData(){
-          this.$axios.get('/luke/kwee_live')
-            .then(response => {
-              this.info = response.data[0];
-	      //console.dir(this.info);
-            })
-     },
+   
 
-     itvKweeLiveData(){
-          this.kweeliveItvId = setInterval(function() {
-            this.getKweeLiveData();
-          }.bind(this), 3000)
-     },
-         async getDataKwee() {
-           this.itvKweeLiveData();
-          },
-          async getDataresult() {
-            this.$axios.get('/v2/v1/twod-result/live')
-              .then(response => {
-                console.dir("twod-result/live");
-                console.dir(response);
-                this.info_api = response.data.data
-
-              })
-          },
-
+        
       changeLang (lang) {
       //mutate 'locale' in store
       this.$store.commit('SET_LANG', lang)
@@ -390,52 +351,9 @@ export default {
       submitLang() {
             this.$store.commit('SET_LANG', 'hello')
         },
-       updateCurrentTime() {
-         if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-            this.isActive = false
-            this.breakTime = '12:01 PM';
-
-             this.getDataresult();
-          } else if(this.currentTime > this.time_04_30){
-            this.isActive = false
-            this.breakTime = '4:30 PM';
-             this.getDataKwee();
-          }else if(this.currentTime < this.morningTime_9_30){
-            this.isActive = false
-            this.breakTime = '4:30 PM';
-
-             this.getDataresult();
-          }else{
-
-             this.isActive = true
-            this.breakTime = moment().format('h:mm A');
-          }
-      // this.currentTime = moment().format('HH:mm:ss');
-       this.currentDate = moment().format("YYYY D MMMM  dddd")
-
-       },
-       ServerCurrentTime() {
-         if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-           // this.isActive = false
-            this.breakTime = '12:01 PM';
-
-          } else if(this.currentTime > this.time_04_30){
-            // this.isActive = false
-            this.breakTime = '4:30 PM';
-
-          }else if(this.currentTime < this.morningTime_9_30){
-            this.isActive = false
-            this.breakTime = '4:30 PM';
-
-          }else{
-
-             this.isActive = true
-            this.breakTime = moment().format('h:mm A');
-          }
-      // this.currentTime = moment().format('HH:mm:ss');
-       this.currentDate = moment().format("YYYY D MMMM  dddd")
-
-       },
+     
+      
+        
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
@@ -453,65 +371,6 @@ export default {
     },
      created() {
 
-      this.currentDate = moment().format("YYYY D MMMM  dddd")
-     // this.currentTime = moment().format('HH:mm:ss ');
-       this.breakTime = moment().format('h:mm:ss a')
-     this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
-
-    if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-
-    }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-
-      var stop_Interval =  setInterval(function() {
-
-       this.$axios.get('/v2/v1/twod-result/live')
-              .then(response => {
-
-                if(response.data.data.status_1200 == "backend") {
-
-                       this.isActive = false
-                       clearTimeout(stop_Interval);
-                }else {
-                       this.isActive = true
-                      this.$axios.get('/v2/v1/twod-result/live')
-                    .then(response => {
-
-                      this.info_api = response.data.data
-
-                    })
-                }
-                this.info_api = response.data.data
-              })
-         }.bind(this), 3000)
-  }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-  }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
-
-  }else {
-
-      // var stop_Interval =  setInterval(function() {
-       this.$axios.get('/v2/v1/twod-result/live')
-
-              .then(response => {
-
-                  this.last_date = response.data.data.last_date
-                if(response.data.data.status_430 == "backend") {
-
-                         this.isActive = false
-                        //  clearTimeout(stop_Interval);
-
-                }else {
-                        this.isActive = false
-                    //   this.$axios.get('/v2/v1/twod-result/live')
-                    // .then(response => {
-                    //    this.last_date = response.data.data.last_date
-                    //   this.info_api = response.data.data
-
-                    // })
-                }
-                this.info_api = response.data.data
-              })
-        //  }.bind(this), 3000)
-  }
 
 
          let token = localStorage.getItem('token');
@@ -545,13 +404,7 @@ export default {
                  });
 
       }
-      else{
-        this.$axios.get('/v2/v1/server_time')
-              .then(response => {
-
-               this.currentTime = response.data
-              })
-      }
+      
     },
 }
 
