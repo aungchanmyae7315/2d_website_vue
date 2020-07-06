@@ -1,6 +1,6 @@
 <template>
-    <div class="f_main">
-        <el-main class="main_page twod_home">
+   <div class="f_main">
+        <main class="main_page twod_home">
             <!-- <Online></Online> -->
             <el-header>
                 <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
@@ -97,9 +97,9 @@
                             </div>
 
                         </h3>
-
-
-                        <div class="carousel2">
+                    <scroll-fixed-header :fixed.sync="fixed" :threshold="350">
+                        <!-- <nav class="navbar navbar-light bg_fixed_header"> -->
+                            <div class="carousel2">
                             <carousel :autoplay="false" :nav="true" :items=3>
 
                                 <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
@@ -116,6 +116,10 @@
                                 <div></div>
                             </carousel>
                         </div>
+                        <!-- </nav> -->
+                    </scroll-fixed-header>
+
+                       
 
                         <div class="f-el-tabls" id="today" v-show="currentTab === 1">
 
@@ -401,15 +405,21 @@
 
                     </div>
                 </div>
-        </el-main>
+        </main>
         </div>
 </template>
 
+
+
 <script>
+ import Vue from 'vue'
+import ScrollFixedHeader from 'vuejs-scroll-fixed-header'
+Vue.use(ScrollFixedHeader)
 import axios from "axios";
 import carousel from "vue-owl-carousel";
 
 export default {
+    name: 'Timer',
     components: { carousel },
     getters: {},
     mutations: {},
@@ -501,7 +511,8 @@ export default {
             tomorrow1Match: '',
             tomorrow2Match: '',
 
-            currentTab: 1
+            currentTab: 1,
+             fixed: false
 
             //   activeIndex2: '1',
         };
@@ -663,6 +674,7 @@ export default {
     }
 };
 </script>
+
 
 <style>
 .navbar.vue-fixed-header--isFixed {
@@ -1076,5 +1088,29 @@ body>.el-container {
         /* Browser bug fix */
         transform: translateX(-100%);
     }
+}
+.bg_fixed_header {
+    
+    background-color:#158220;
+    color:#fff;
+    font-weight: bold;
+}
+.twod_home {
+    text-align: center;
+    margin:0 auto;
+    background-image:url(~static/images/main_bg.png);
+    background-size:cover;
+    background-attachment: fixed;
+    max-width: 480px;
+    width:100%;
+  
+    padding:0;
+    
+}
+.is-fixed {
+    background-color:#158220;
+    color:#fff;
+    font-weight: bold;
+    height:54px;
 }
 </style>

@@ -154,7 +154,7 @@
                                            {{ $t("kyat") }}
                                   </span>
                         <span class="close_time">
-                                    Bet Close: 14:25:17
+                                   <span class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </span>
                                   </span>
                     </div>
                     <!-- <el-button  :disabled='submitted'  type="submit" v-on:click="football_bet()"   class="bet_submit" round>  {{$t('Bet')}}</el-button> -->
@@ -186,28 +186,28 @@ export default {
     // layout: 'homeLayout',
 
     mounted() {
-        var self = this;
-        if (this.$store.state.sliderImage.length > 0) {
-            self.slider_images = this.$store.state.sliderImage;
-            if (this.slider_images !== null) {
-                this.loaded = true;
-            }
-        } else {
-            // setTimeout(function(){
-            self.$axios.get("/v2/v1/slider_image?name=2D").then(response => {
-                if (self.slider_images !== null) {
-                    this.loaded = true;
+         this.$axios.get('/v2/v1/holiday')
+              .then(response => {
+               this.holidays = response.data
+             
+                if(this.holidays.status == 1) {
+                    this.isActive = true
+                    this.isHolidays = false
+                   
                 }
-
-                self.slider_images = response.data.data;
-                // self.$store.commit('setSliderImage', response.data.data);
-            });
-
-            // }, 2000);
-            self.$axios.get("/v2/v1/slider_text").then(response => {
-                self.slider_text = response.data.data[0];
-            });
-        }
+              })   
+    
+        this.updateIsLoggedIn();
+        setInterval(() => {
+            this.BetCurrentTime();
+                 var currentDate  = moment().day();
+                
+                if(currentDate == 0 || currentDate == 6) {
+                        this.isActive = true
+                        this.isHoliday = false
+                          this.time_countdown = this.$root.$t('close_text');
+                   }
+        }, 1000);
 
         var m = window.location.href.match(/device_id=([^&]+)/i);
         var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -289,6 +289,33 @@ export default {
                 radio: '',
             },
             radio: '',
+             holidays:'',
+            submitted:false,
+            time_countdown:'',
+            one_result:'',
+            evening_time:'',
+            isActive:true,
+            isHoliday:true,
+            isHolidays:true,
+            isMorningEvening:true,
+            hasError:'',
+            currentTime: '',
+            morning_from:this.morning_from,
+            morning_to:'',
+            evening_from:'',
+            evening_to:'',
+           
+            morningTime_9_30:'09:30:00',
+            time_12_00:'12:01:00',
+            time_01_00:'13:00:00',
+            time_04_30:'16:30:00',
+              isLoggedIn: true,
+         
+               dialogFormVisible: false,
+               
+                profile:'', 
+                myWallet:'',
+             
 
 
         };
@@ -309,6 +336,76 @@ export default {
             num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return num_parts.join(".");
         },
+        convertMS( milliseconds ) {
+            var day, hour, minute, seconds;
+            seconds = Math.floor(milliseconds / 1000);
+            minute = Math.floor(seconds / 60);
+            seconds = seconds % 60;
+            hour = Math.floor(minute / 60);
+            minute = minute % 60;
+            day = Math.floor(hour / 24);
+            hour = hour % 24;
+            return {
+                day: day,
+                hour: hour,
+                minute: minute,
+                seconds: seconds
+            };
+        },
+         BetCurrentTime(){
+               this.currentTime = moment().format('HH:mm:ss');
+    
+                // var cu_time= new Date("12/01/2019 " + this.currentTime);
+                var mo_from= new Date("03/20/2019 " + this.morning_from);
+                var ev_to = new Date("03/19/2019 " + this.currentTime);
+                var mo_to= new Date("03/20/2019 " + this.evening_from);
+                var ev_from = new Date("03/20/2019 " + this.currentTime);
+                var difference =  mo_from - ev_to;   
+                var difference_two = mo_to - ev_from;
+                var getAllTime = this.convertMS(difference);
+                var getAllTime_two = this.convertMS(difference_two);
+                if(this.server_time  >  this.morning_from && this.server_time < this.morning_to ) {
+                        this.isActive = true
+                         this.isMorningEvening  = false
+                       return this.time_countdown = this.$root.$t('close_text');
+                    }else if(this.server_time > this.morning_to && this.server_time <  this.evening_from ) {
+                        this.isMorningEvening = true
+                        if(this.holidays.status == 1) {
+                             this.isActive = true
+                        }else {
+                             this.isActive = false
+                        }
+                      
+                        return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
+                    }else if(this.server_time > this.evening_from && this.server_time < this.evening_to ) {
+                         this.isActive = true
+                       
+                      
+                        this.isMorningEvening  = false
+                        return this.time_countdown = this.$root.$t('close_text');
+                    }else if(this.server_time > this.evening_to) {
+
+                         if(this.holidays.status == 1) {
+                             this.isActive = true
+                        }else {
+                             this.isActive = false
+                        }
+                         return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
+                    }else {
+                     
+                    
+                        this.isMorningEvening = true
+                        //   this.isActive = true
+                        // return this.time_countdown = this.$root.$t('close_text');
+                       if(this.holidays.status == 1) {
+                             this.isActive = true
+                        }else {
+                             this.isActive = false
+                        }
+                     
+                       return this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
+                    }
+                },
 
         isMobile: function() {
             var check = false;
@@ -445,7 +542,41 @@ export default {
     },
     created() {
 
+        this.breakTime = moment().format('h:mm:ss a')
+       
 
+       this.$axios.get('/v2/v1/close_time')
+             
+              .then(response => {
+                    this.time = response.data.data
+                     
+                    this.morning_from = response.data.data[0].from
+                    this.morning_to = response.data.data[0].to
+                    this.evening_from = response.data.data[1].from
+                    this.evening_to = response.data.data[1].to
+          
+                    var currentTime = moment().format('HH:mm:ss');
+                    var currentDate  = moment().day();
+                
+                    if(this.server_time  >  this.morning_from && this.server_time < this.morning_to ) {
+                        this.isActive = true
+                        
+                    }else if(this.server_time > this.morning_to && this.server_time <  this.evening_from ) {
+                        this.isActive = false
+                        
+                    }else if(this.server_time > this.evening_from && this.server_time < this.evening_to ) {
+                        this.isActive = true
+                       
+                    }else if(this.server_time > this.evening_to) {
+                        this.isActive = false
+                    }else {
+                         this.isActive = false  
+                    }
+
+                    // if(currentDate == 0 || currentDate == 6) {
+                    //     this.isActive = true
+                    // }
+                })
         let token = localStorage.getItem("token");
         if (token) {
             this.$axios
