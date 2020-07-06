@@ -30,7 +30,6 @@ export default {
         ],
         script: [
 
-            // { src: '' },Kyaw Wai Yan Lin
 
             { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js' },
             { src: 'https://unpkg.com/vue-image-upload-resize' },

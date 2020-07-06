@@ -417,6 +417,7 @@ export default {
         fullscreenLoading: false,
       serverDate:'',
       last_date:'',
+      close_day:'',
       dialogVisible: false,
        isActive: true,
       hasError: false,
@@ -489,9 +490,9 @@ export default {
         async getKweeLiveData(){
           this.$axios.get('/luke/twod-result-live')
             .then(response => {
-
               this.info = response.data.data;
-	      console.dir(this.info);
+              this.close_day = response.data.data.is_close_day
+
             })
      },
 
@@ -547,8 +548,12 @@ export default {
             this.breakTime = '4:30 PM'; 
             
           }else{
+            if(this.close_day == 1) {
+               this.isActive = false
+            }else {
+               this.isActive = true
+            }
             
-             this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
       // this.currentTime = moment().format('HH:mm:ss');
@@ -586,19 +591,6 @@ export default {
        this.$axios.get('/luke/twod-result-live')
               .then(response => {
 
-                if(response.data.data.status_1200 == "backend") {
-                    
-                       this.isActive = false
-                       clearTimeout(stop_Interval);  
-                }else {
-                       this.isActive = true
-                      this.$axios.get('/luke/twod-result-live')
-                    .then(response => {
-                     
-                      this.info_api = response.data.data
-                    
-                    })
-                }
                 this.info_api = response.data.data
               })
          }.bind(this), 3000)
@@ -608,24 +600,12 @@ export default {
   }else {
      
       // var ok =  setInterval(function() {
+         
        this.$axios.get('/luke/twod-result-live')
+   
               .then(response => {
                   this.last_date = response.data.data.last_date
-                  console.log(this.last_date)
-                if(response.data.data.status_430 == "backend") {
-                    
-                         this.isActive = false
-
-                }else {
-                        this.isActive = false
-                    //   this.$axios.get('/v2/v1/twod-result-live')
-                    // .then(response => {
-                    //    this.last_date = response.data.data.last_date
-                    //   this.info_api = response.data.data
-                    
-                    // })
-                }
-                this.info_api = response.data.data
+                  this.info_api = response.data.data
               })
         //  }.bind(this), 3000)
   }
