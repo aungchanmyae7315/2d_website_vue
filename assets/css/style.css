@@ -205,6 +205,13 @@ a:hover {
     text-align: center;
 }
 
+.logo1 {
+    width: 107px;
+    height: auto;
+    text-align: center;
+    transform: translateY(-20px);
+}
+
 .refresh_icon img {
     width: 30px;
     height: auto;
@@ -612,6 +619,14 @@ input[type=number] {
     /* text-align: justify; */
 }
 
+.longText1 {
+    max-width: 480px;
+    width: 100%;
+    /* height: 100%; */
+    margin: auto;
+    /* text-align: justify; */
+}
+
 
 /*------THE TRICK------*/
 
@@ -717,6 +732,13 @@ input[type=number] {
 @media screen and (max-width:350px) {
     .refresh_icon img {
         left: 130px;
+    }
+    .carousel2 .el-tabs__content {
+        width: 340px;
+        /* background-color: red; */
+        /* display: block; */
+        /* margin-left: 10px; */
+        margin-top: 10px;
     }
 }
 
@@ -901,8 +923,8 @@ transform: translate(-50%, -50%);
 }
 
 .team_logo {
-    width: 50px;
-    height: 50px;
+    width: 70px !important;
+    height: 70px;
     border-radius: 50%;
     margin: 0 5px;
 }
@@ -1048,15 +1070,15 @@ transform: translate(-50%, -50%);
 }
 
 .f-el-tabls .el-tabs__nav {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
 }
 
 .f-el-tabls .el-tabs__item {
     background-color: #2B6F42;
     border-radius: 5px;
-    width: 30%;
+    width: 30% !important;
     font-size: 12px !important;
     color: lightgray !important;
     border: 0 !important;
@@ -1160,6 +1182,12 @@ transform: translate(-50%, -50%);
     text-align: center;
 }
 
+.vs_team_img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+
 .vs_text {
     align-self: center;
     color: white;
@@ -1172,7 +1200,7 @@ transform: translate(-50%, -50%);
 
 .goal_vs {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 10px;
     line-height: 1;
 }
 
@@ -1280,6 +1308,7 @@ transform: translate(-50%, -50%);
 .carousel2 .owl-theme .owl-nav.disabled+.owl-dots {
     /* position: absolute !important; */
     top: 0px !important;
+    display: none !important;
 }
 
 .carousel2 .owl-theme .owl-dots .owl-dot span {
@@ -1384,4 +1413,154 @@ transform: translate(-50%, -50%);
     margin: 0;
     /* padding: 0 15px; */
     line-height: 0;
+}
+
+
+/* .carousel2 .el-tabs__nav {
+    text-align: center;
+    /* display: flex !important; */
+
+
+/* float: none !important;
+width: 100%!important; */
+
+
+/* } */
+
+
+/* .carousel2 .el-tabs__active-bar {
+    background-color: #FFEA72;
+    height: 4px !important;
+    color: white !important; */
+
+
+/* width: 95% !important; */
+
+
+/* } */
+
+
+/* .carousel2 .el-tabs__item {
+    width: 95% !important;
+    border: 0;
+    color: white;
+}
+
+.carousel2 .el-tabs__item:hover {
+    color: white;
+}
+
+.carousel2 .el-tabs>.el-tabs__header .el-tabs__nav {
+    border: none !important;
+}
+*/
+
+.owl-theme .owl-dots {
+    display: none;
+}
+
+.carousel2 .owl-theme .owl-nav {
+    display: none;
+}
+
+
+/* .el-tabs__header {
+    margin: 0px !important;
+} */
+
+
+/* .carousel2 .el-tabs__content { */
+
+
+/* width: 100%; */
+
+
+/* background-color: red; */
+
+
+/* display: block; */
+
+
+/* margin-left: 10px; */
+
+
+/* margin-top: 10px; */
+
+
+/* display: flex; */
+
+
+/* position: relative; */
+
+
+/* margin-left: -150px !important; */
+
+
+/* } */
+
+
+/* .carousel2 .el-tabs--card>.el-tabs__header {
+    border: 0 !important;
+} */
+
+
+/* .carousel2  .el-tabs__content {
+    background-color: red !important;
+    margin-left: -20px;
+} */
+
+
+/* .carousel2 .testing .el-tabs__content {
+    max-width: 452px !important;
+    width: 300% !important;
+}
+
+.carousel2 .testing .forT .el-tabs__content {
+    margin-left: -100px;
+} */
+
+@media (max-width:420px) {
+    .carousel2 .testing .el-tabs__content {
+        max-width: 380px !important;
+        width: 300% !important;
+    }
+}
+
+@media (max-width:380px) {
+    .carousel2 .testing .el-tabs__content {
+        max-width: 345px !important;
+        width: 300% !important;
+    }
+}
+
+@media (max-width:360px) {
+    .carousel2 .testing .el-tabs__content {
+        max-width: 330px !important;
+        width: 300% !important;
+    }
+}
+
+
+/* .for2day {
+    width: 150px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    background-color: red !important;
+} */
+
+.carousel2 .el-menu {
+    background: transparent!important;
+}
+
+.carousel2 .el-menu--horizontal>.el-menu-item {
+    height: 40px !important;
+    width: 200px !important;
+    margin-right: 20px!important;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
