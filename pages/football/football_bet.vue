@@ -32,28 +32,28 @@
                                                     <div class="vs_inner team_01">
                                                         <span class="hot"><img src="~static/images/hot.png" width="20"> Hot</span>
                                                         <br>
-                                                        <input v-model="radio" type="radio" name="emotion" id="sad" class="input-hidden" />
+                                                        <input v-model="bet_team_id" type="radio" name="bet_team_id" v-bind:value="fDetail.home_team.id" id="sad" class="input-hidden" />
                                                         <label for="sad">
-                                       <div class="ok">
-                                           <span class="tick"></span>
-                                        </div>
-                                       <img :src="fDetail.hot_team.logo" class="vs_team_img">
+                                               <div class="ok">
+                                                   <span class="tick"></span>
+                                                </div>
+                                               <img :src="fDetail.hot_team.logo" class="vs_team_img">
 
-                                    </label>
+                                            </label>
 
                                                         <br>
-                                                        <span class="vs_teamname">{{fDetail.hot_team.name}}</span>
+                                                        <span class="vs_teamname">{{fDetail.home_team.name}}</span>
                                                     </div>
                                                     <span class="vs_text"> VS</span>
                                                     <div class="vs_inner team_02">
-                                                        <input v-model="radio" value="2" type="radio" name="emotion" id="happy" class="input-hidden" />
+                                                        <input v-model="bet_team_id" type="radio" name="bet_team_id" v-bind:value="fDetail.away_team.id" id="happy" class="input-hidden" />
                                                         <label for="happy">
-                                            <div class="ok">
-                                                  <span class="tick"></span>
-                                            </div>
-                                           <img :src="fDetail.away_team.logo" class="vs_team_img">
+                                                    <div class="ok">
+                                                          <span class="tick"></span>
+                                                    </div>
+                                                   <img :src="fDetail.away_team.logo" class="vs_team_img">
 
-                                        </label>
+                                                </label>
 
 
                                                         <br>
@@ -103,9 +103,9 @@
                                                 </div>
                                                 <div class="">
                                                     <el-form-item prop="radio" :rules="[
-                                              { required: true, message: 'please select team'},
+                                                      { required: true, message: 'please select team'},
 
-                                          ]">
+                                                  ]">
 
 
                                                         <div class="radio_up">
@@ -139,23 +139,23 @@
                     <p class="amount_lbl">လောင်းမည့်ပမာဏကိုထည့်ပါ၊</p>
 
                     <el-form-item prop="amount" :rules="[
-                                  { required: true, message: $t('amount_required') },
+                                          { required: true, message: $t('amount_required') },
 
-                              ]">
+                                      ]">
                         <el-input @keypress.enter.native="footballSubmit('numberValidateForm1')" id="form-name" type="number" :placeholder="$t('bet_amount')" v-model="numberValidateForm1.amount"></el-input>
 
                     </el-form-item>
 
                     <div class="bet_info">
                         <span class="bet_balance">
-                                    <img  src="~static/images/amount_icon.png" width="25">
-                                   <span>{{ $t("you_balance") }} : </span
-                                                        >{{ this.thousands_separators(myWallet) }}
-                                           {{ $t("kyat") }}
-                                  </span>
+                                            <img  src="~static/images/amount_icon.png" width="25">
+                                           <span>{{ $t("you_balance") }} : </span
+                                                                >{{ this.thousands_separators(myWallet) }}
+                                                   {{ $t("kyat") }}
+                                          </span>
                         <span class="close_time">
-                                   <span class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </span>
-                                  </span>
+                                           <span class="bet_close_time"> {{$t('bet_close_time')}} : {{this.time_countdown}} </span>
+                        </span>
                     </div>
                     <!-- <el-button  :disabled='submitted'  type="submit" v-on:click="football_bet()"   class="bet_submit" round>  {{$t('Bet')}}</el-button> -->
                     <!-- <button type="submit" class="btn_bet" v-on:click="football_bet()">Bet</button> -->
@@ -186,27 +186,34 @@ export default {
     // layout: 'homeLayout',
 
     mounted() {
-         this.$axios.get('/v2/v1/holiday')
-              .then(response => {
-               this.holidays = response.data
-             
-                if(this.holidays.status == 1) {
+        //  this.$axios.get('/v2/v1/football/close_time')
+
+        //       .then(response => {
+        //            console.log(response)
+        //       })
+
+        this.$axios.get('/v2/v1/holiday')
+            .then(response => {
+                this.holidays = response.data
+
+                if (this.holidays.status == 1) {
                     this.isActive = true
                     this.isHolidays = false
-                   
+
                 }
-              })   
-    
+            })
+            // alert('ok')
+
         this.updateIsLoggedIn();
         setInterval(() => {
             this.BetCurrentTime();
-                 var currentDate  = moment().day();
-                
-                if(currentDate == 0 || currentDate == 6) {
-                        this.isActive = true
-                        this.isHoliday = false
-                          this.time_countdown = this.$root.$t('close_text');
-                   }
+            var currentDate = moment().day();
+
+            if (currentDate == 0 || currentDate == 6) {
+                this.isActive = true
+                this.isHoliday = false
+                this.time_countdown = this.$root.$t('close_text');
+            }
         }, 1000);
 
         var m = window.location.href.match(/device_id=([^&]+)/i);
@@ -254,7 +261,7 @@ export default {
             dialogVisible: false,
             isActive: true,
             hasError: false,
-            currentTime: "",
+            server_time: "",
             morningTime_9_30: "09:30:00",
             time_12_00: "12:01:00",
             time_01_00: "13:00:00",
@@ -289,33 +296,34 @@ export default {
                 radio: '',
             },
             radio: '',
-             holidays:'',
-            submitted:false,
-            time_countdown:'',
-            one_result:'',
-            evening_time:'',
-            isActive:true,
-            isHoliday:true,
-            isHolidays:true,
-            isMorningEvening:true,
-            hasError:'',
+            bet_team_id: '',
+            holidays: '',
+            submitted: false,
+            time_countdown: '',
+            one_result: '',
+            evening_time: '',
+            isActive: true,
+            isHoliday: true,
+            isHolidays: true,
+            isMorningEvening: true,
+            hasError: '',
             currentTime: '',
-            morning_from:this.morning_from,
-            morning_to:'',
-            evening_from:'',
-            evening_to:'',
-           
-            morningTime_9_30:'09:30:00',
-            time_12_00:'12:01:00',
-            time_01_00:'13:00:00',
-            time_04_30:'16:30:00',
-              isLoggedIn: true,
-         
-               dialogFormVisible: false,
-               
-                profile:'', 
-                myWallet:'',
-             
+            morning_from: this.morning_from,
+            morning_to: '',
+            evening_from: '',
+            evening_to: '',
+
+            morningTime_9_30: '09:30:00',
+            time_12_00: '12:01:00',
+            time_01_00: '13:00:00',
+            time_04_30: '16:30:00',
+            isLoggedIn: true,
+
+            dialogFormVisible: false,
+
+            profile: '',
+            myWallet: '',
+
 
 
         };
@@ -336,7 +344,7 @@ export default {
             num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return num_parts.join(".");
         },
-        convertMS( milliseconds ) {
+        convertMS(milliseconds) {
             var day, hour, minute, seconds;
             seconds = Math.floor(milliseconds / 1000);
             minute = Math.floor(seconds / 60);
@@ -352,60 +360,60 @@ export default {
                 seconds: seconds
             };
         },
-         BetCurrentTime(){
-               this.currentTime = moment().format('HH:mm:ss');
-    
-                // var cu_time= new Date("12/01/2019 " + this.currentTime);
-                var mo_from= new Date("03/20/2019 " + this.morning_from);
-                var ev_to = new Date("03/19/2019 " + this.currentTime);
-                var mo_to= new Date("03/20/2019 " + this.evening_from);
-                var ev_from = new Date("03/20/2019 " + this.currentTime);
-                var difference =  mo_from - ev_to;   
-                var difference_two = mo_to - ev_from;
-                var getAllTime = this.convertMS(difference);
-                var getAllTime_two = this.convertMS(difference_two);
-                if(this.server_time  >  this.morning_from && this.server_time < this.morning_to ) {
-                        this.isActive = true
-                         this.isMorningEvening  = false
-                       return this.time_countdown = this.$root.$t('close_text');
-                    }else if(this.server_time > this.morning_to && this.server_time <  this.evening_from ) {
-                        this.isMorningEvening = true
-                        if(this.holidays.status == 1) {
-                             this.isActive = true
-                        }else {
-                             this.isActive = false
-                        }
-                      
-                        return this.time_countdown = getAllTime_two.hour+':'+getAllTime_two.minute+':'+getAllTime_two.seconds
-                    }else if(this.server_time > this.evening_from && this.server_time < this.evening_to ) {
-                         this.isActive = true
-                       
-                      
-                        this.isMorningEvening  = false
-                        return this.time_countdown = this.$root.$t('close_text');
-                    }else if(this.server_time > this.evening_to) {
+        BetCurrentTime() {
+            this.currentTime = moment().format('HH:mm:ss');
 
-                         if(this.holidays.status == 1) {
-                             this.isActive = true
-                        }else {
-                             this.isActive = false
-                        }
-                         return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
-                    }else {
-                     
-                    
-                        this.isMorningEvening = true
-                        //   this.isActive = true
-                        // return this.time_countdown = this.$root.$t('close_text');
-                       if(this.holidays.status == 1) {
-                             this.isActive = true
-                        }else {
-                             this.isActive = false
-                        }
-                     
-                       return this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
-                    }
-                },
+            // var cu_time= new Date("12/01/2019 " + this.currentTime);
+            var mo_from = new Date("03/20/2019 " + this.morning_from);
+            var ev_to = new Date("03/19/2019 " + this.currentTime);
+            var mo_to = new Date("03/20/2019 " + this.evening_from);
+            var ev_from = new Date("03/20/2019 " + this.currentTime);
+            var difference = mo_from - ev_to;
+            var difference_two = mo_to - ev_from;
+            var getAllTime = this.convertMS(difference);
+            var getAllTime_two = this.convertMS(difference_two);
+            if (this.server_time > this.morning_from && this.server_time < this.morning_to) {
+                this.isActive = true
+                this.isMorningEvening = false
+                return this.time_countdown = this.$root.$t('close_text');
+            } else if (this.server_time > this.morning_to && this.server_time < this.evening_from) {
+                this.isMorningEvening = true
+                if (this.holidays.status == 1) {
+                    this.isActive = true
+                } else {
+                    this.isActive = false
+                }
+
+                return this.time_countdown = getAllTime_two.hour + ':' + getAllTime_two.minute + ':' + getAllTime_two.seconds
+            } else if (this.server_time > this.evening_from && this.server_time < this.evening_to) {
+                this.isActive = true
+
+
+                this.isMorningEvening = false
+                return this.time_countdown = this.$root.$t('close_text');
+            } else if (this.server_time > this.evening_to) {
+
+                if (this.holidays.status == 1) {
+                    this.isActive = true
+                } else {
+                    this.isActive = false
+                }
+                return this.time_countdown = getAllTime.hour + ':' + getAllTime.minute + ':' + getAllTime.seconds
+            } else {
+
+
+                this.isMorningEvening = true
+                //   this.isActive = true
+                // return this.time_countdown = this.$root.$t('close_text');
+                if (this.holidays.status == 1) {
+                    this.isActive = true
+                } else {
+                    this.isActive = false
+                }
+
+                return this.time_countdown = getAllTime.hour + ':' + getAllTime.minute + ':' + getAllTime.seconds
+            }
+        },
 
         isMobile: function() {
             var check = false;
@@ -470,13 +478,14 @@ export default {
         footballSubmit_body(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
+                    console.log(this.radio);
                     this.submitted = true
                     let token = localStorage.getItem('token');
 
                     var data = {
                         football_match_id: localStorage.getItem("football_detali_id"),
                         amount: this.numberValidateForm1.amount,
-                        goal_status: this.radio,
+                        bet_team_id: this.bet_team_id,
                     }
                     this.$axios.post("/v2/v1/football/body/bet",
                             data, {
@@ -486,9 +495,45 @@ export default {
 
                             })
                         .then(response => {
+                            console.log(response)
+                            this.submitted = false
+                            if (response.data.status == 5) {
+                                this.submitted = false
+                                this.$message({
+                                    showClose: true,
+                                    message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else if (response.data.status == 1) {
+                                this.$message({
+                                    showClose: true,
+                                    message: 'Football Bet is closed.',
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else if (response.data.status == 2) {
+                                this.$message({
+                                    showClose: true,
+                                    message: this.$t('amount_invalid'),
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else if (response.data.status == 5) {
+                                this.$message({
+                                    showClose: true,
+                                    message: 'Cannot bet 50',
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else {
+                                this.submitted = true
+                                this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
 
-                            console.log(response);
-                            this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
+                            }
+
+
+
 
                         })
                         .catch(error => {
@@ -524,8 +569,44 @@ export default {
                             })
                         .then(response => {
 
-                            console.log(response);
-                            this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
+                            console.log(response)
+                            this.submitted = false
+                            if (response.data.status == 5) {
+                                this.submitted = false
+                                this.$message({
+                                    showClose: true,
+                                    message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else if (response.data.status == 1) {
+                                this.$message({
+                                    showClose: true,
+                                    message: 'Football Bet is closed.',
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else if (response.data.status == 2) {
+                                this.$message({
+                                    showClose: true,
+                                    message: this.$t('amount_invalid'),
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else if (response.data.status == 5) {
+                                this.$message({
+                                    showClose: true,
+                                    message: 'Cannot bet 50',
+                                    type: 'warning',
+                                    //   duration:0
+                                });
+                            } else {
+                                this.submitted = true
+                                this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
+
+                            }
+
+
                         })
                         .catch(error => {
                             console.log(error.response)
@@ -542,41 +623,42 @@ export default {
     },
     created() {
 
-        this.breakTime = moment().format('h:mm:ss a')
-       
+         this.breakTime = moment().format('h:mm:ss a')
 
-       this.$axios.get('/v2/v1/close_time')
-             
-              .then(response => {
-                    this.time = response.data.data
-                     
-                    this.morning_from = response.data.data[0].from
-                    this.morning_to = response.data.data[0].to
-                    this.evening_from = response.data.data[1].from
-                    this.evening_to = response.data.data[1].to
-          
-                    var currentTime = moment().format('HH:mm:ss');
-                    var currentDate  = moment().day();
-                
-                    if(this.server_time  >  this.morning_from && this.server_time < this.morning_to ) {
-                        this.isActive = true
-                        
-                    }else if(this.server_time > this.morning_to && this.server_time <  this.evening_from ) {
-                        this.isActive = false
-                        
-                    }else if(this.server_time > this.evening_from && this.server_time < this.evening_to ) {
-                        this.isActive = true
-                       
-                    }else if(this.server_time > this.evening_to) {
-                        this.isActive = false
-                    }else {
-                         this.isActive = false  
-                    }
 
-                    // if(currentDate == 0 || currentDate == 6) {
-                    //     this.isActive = true
-                    // }
-                })
+        this.$axios.get('v2/v1/football/close_time')
+
+            .then(response => {
+              console.log("Close_time",response)
+                this.time = response.data.data
+
+                this.morning_from = response.data.data[0].from
+                this.morning_to = response.data.data[0].to
+                this.evening_from = response.data.data[1].from
+                this.evening_to = response.data.data[1].to
+
+                var currentTime = moment().format('HH:mm:ss');
+                var currentDate = moment().day();
+
+                if (this.server_time > this.morning_from && this.server_time < this.morning_to) {
+                    this.isActive = true
+
+                } else if (this.server_time > this.morning_to && this.server_time < this.evening_from) {
+                    this.isActive = false
+
+                } else if (this.server_time > this.evening_from && this.server_time < this.evening_to) {
+                    this.isActive = true
+
+                } else if (this.server_time > this.evening_to) {
+                    this.isActive = false
+                } else {
+                    this.isActive = false
+                }
+
+                // if(currentDate == 0 || currentDate == 6) {
+                //     this.isActive = true
+                // }
+            })
         let token = localStorage.getItem("token");
         if (token) {
             this.$axios
@@ -600,7 +682,7 @@ export default {
         }
 
         this.$axios.get("/v2/v1/server_time").then(response => {
-            this.currentTime = response.data.time;
+            this.server_time = response.data.time;
             this.serverDate = response.data.date;
         });
 

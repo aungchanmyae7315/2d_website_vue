@@ -8,36 +8,33 @@
         </el-header>
 
         <div class="bet_detail_main">
-
-            <div class="collapse_card1" style="color:#121212;">
-                <el-row>
-                    <span class="date" style="color:#121212;">18-Jun-2020</span>
-                    <span class="time1" style="color:#121212;">3:00PM</span>
-                </el-row>
-
-                <div class="goal_inner">
-                    <div class=" team_vs">
-                        <div class="vs_inner1 team_01">
-                            <span class="hot" style="color:#121212;margin-left:-10px"><img src="~static/images/hot.png" width="20"> Hot</span>
-                            <br>
-                            <img src="~static/images/chelsea.png" class="vs_team_img">
-                            <br>
-                            <span class="vs_teamname" style="color:#121212;">Team A</span>
-                        </div>
-                        <span class="vs_text" style="color:#121212; font-size:25px;font-weight:501">
-                              2 - 0<br><span class="gb_background">Goal 20-20</span></span>
-                        <div class="vs_inner1 team_02">
-                            <img src="~static/images/manchester.png" class="vs_team_img">
-                            <br>
-                            <span class="vs_teamname" style="color:#121212;">Team B</span>
+            <div v-for="(fDetail, f) in historyDetail" :key="f">
+                <div class="collapse_card1" style="color:#121212;">
+                    <el-row>
+                        <span class="date" style="color:#121212;">{{fDetail.play_at_time}}</span>
+                        <span class="time1" style="color:#121212;">{{fDetail.play_at}}</span>
+                    </el-row>
+                    <div class="goal_inner">
+                        <div class=" team_vs">
+                            <div class="vs_inner1 team_01">
+                                <span class="hot" style="color:#121212;margin-left:-10px;font-size:12px;"><img src="~static/images/hot.png" width="20"> Hot</span>
+                                <br>
+                                <img :src="fDetail.home_team.logo" class="vs_team_img">
+                                <br>
+                                <span class="vs_teamname" style="color:#121212;">{{fDetail.home_team.name}}</span>
+                            </div>
+                            <span class="vs_text" style="color:#121212; font-size:25px;font-weight:501">
+                                  {{fDetail.home_goal}} - {{fDetail.away_goal}}<br><span class="gb_background">{{fDetail.price}}</span></span>
+                            <div class="vs_inner1 team_02">
+                                <img :src="fDetail.away_team.logo" class="vs_team_img">
+                                <br>
+                                <span class="vs_teamname" style="color:#121212;">{{fDetail.away_team.name}}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-
-
     </div>
 </template>
 
@@ -98,8 +95,8 @@ export default {
     },
     data() {
         return {
-            historyByDate: '',
-            football_information: '',
+            historyDetail: '',
+            // football_information: '',
         };
     },
 
@@ -111,22 +108,15 @@ export default {
     },
     created() {
         let token = localStorage.getItem('token');
-        this.$axios.get("/v2/v1/football/history", {
+        let historydetailid = localStorage.getItem("bet_history_detail_id")
+        this.$axios.get("v2/v1/football/history/detail?id=" + historydetailid, {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
             })
             .then(response => {
                 console.log(response.data.data),
-                    this.historyByDate = response.data.data
-                // Array.from(this.historyByDate).forEach(aa =>
-                //   console.log("hi",football_info.football_info),
-                //   this.football_information=football_info.football_info,
-                // );
-                // this.historyByDate.forEach(function(key, value){
-                // console.log( key),
-                // this.football_information = key.date;
-                // })
+                    this.historyDetail = response.data.data
             })
     }
 };

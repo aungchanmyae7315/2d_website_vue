@@ -121,6 +121,16 @@ const createStore = () => {
                 localStorage.setItem('football_detali_id', (data));
             },
 
+            football_noti_detail_id(state, data) {
+                state.data = data;
+                localStorage.setItem('football_noti_detail_id', (data));
+            },
+
+            bet_history_detail_id(state, data) {
+                state.data = data;
+                localStorage.setItem('bet_history_detail_id', (data));
+            },
+
 
 
         }

@@ -7,39 +7,47 @@
             <!-- </nuxt-link> -->
         </el-header>
         <div class="noti_main">
-            <div style="margin-top:10px;" v-for="(footballInfo, f) in historyByDate" :key="f" >
+            <div style="margin-top:10px;" v-for="(footballInfo, f) in historyByDate" :key="f">
+                   {{footballInfo.date}}
+                <!-- <nuxt-link :to="`${$t('/football/betHistoryDetail')}?lang=${$store.state.locale}`"> -->
 
-            <nuxt-link :to="`${$t('/football/betHistoryDetail')}?lang=${$store.state.locale}`">
-                Date
-                <div class="amount_card" v-for="(footballInfos , d) in footballInfo.football_info" :key="d">
+                    <div class="amount_card" v-for="(footballInfos , d) in footballInfo.football_info" :key="d" @click="bet_history_detail_id(footballInfos.id)">
 
-                    <el-card class="box-card">
+                        <el-card class="box-card">
 
-                        <div slot="header" class="clearfix" style="height:60px;">
-                            <span class="con">Body <br /><span class="team_name_text">Selected Team : <span>{{footballInfos.amount}}</span></span>
-                            </span>
-                            <p style="float: right; padding: 3px 0;font-size:20px; transform: translateY(-20px);" type="text">
-                               {{footballInfos.amount}} KS
-                            </p>
-                        </div>
-                        <div class="text item">
-
-                            <div class="match">
-                                <div class="teaminner_01">
-                                    <p class="t_name team_name_text" style="font-size:14px;">Team A</p>
-                                    <img src="~static/images/chelsea.png" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
-                                    <p class="result team_name_text">
-                                        <span style="font-size:17px; color:black;">2&nbsp;-&nbsp;0</span><br><span>3:00PM</span>
-                                    </p>
-                                    <img src="~static/images/chelsea.png" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
-                                    <p class="t_name team_name_text" style="font-size:14px;"> Team B</p>
-                                </div>
+                            <div slot="header" class="clearfix" style="height:60px;">
+                                <span v-if="footballInfos.type == 1">   <span class="con">Body <br /><span class="team_name_text">Selected Team : <span>{{footballInfos.bet_team.name}}</span></span>
+                                </span>
+                                </span>
+                                <span v-else-if="footballInfos.type == 2">   <span class="con">Goal <br /><span class="team_name_text">
+                                  <span v-if="footballInfos.goal_status == 1">Up</span>
+                                  <span v-else-if="footballInfos.goal_status == 2">Down</span>
+                                  </span>
+                                </span>
+                                </span>
+                                <p style="float: right; padding: 3px 0;font-size:20px; transform: translateY(-20px);" type="text">
+                                    {{footballInfos.amount}} KS
+                                </p>
                             </div>
+                            <div class="text item">
 
-                        </div>
-                    </el-card>
-                </div>
-            </nuxt-link>
+                                <div class="match">
+                                    <div class="teaminner_01">
+                                        <p class="t_name team_name_text" style="font-size:14px;">{{footballInfos.home_team.name}}</p>
+                                        <img :src="footballInfos.home_team.logo" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
+                                        <p class="result team_name_text">
+                                            <span style="font-size:17px; color:black;">{{footballInfos.home_goal}}&nbsp;-&nbsp;{{footballInfos.away_goal}}</span><br>
+                                            <span>{{footballInfos.play_at}}</span>
+                                        </p>
+                                        <img :src="footballInfos.away_team.logo" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
+                                        <p class="t_name team_name_text" style="font-size:14px;">{{footballInfos.away_team.name}}</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </el-card>
+                    </div>
+                <!-- </nuxt-link> -->
             </div>
         </div>
     </div>
@@ -103,13 +111,18 @@ export default {
     data() {
         return {
             historyByDate: '',
-             football_information:'',
+            football_information: '',
         };
     },
 
     methods: {
         goBack() {
             this.$router.push(`/?lang=${this.$store.state.locale}`);
+        },
+
+        bet_history_detail_id(data) {
+            this.$store.commit('bet_history_detail_id', data);
+            this.$router.push(`/football/betHistoryDetail?` + data + `lang=${this.$store.state.locale}`);
         },
 
     },
@@ -123,14 +136,6 @@ export default {
             .then(response => {
                 console.log(response.data.data),
                     this.historyByDate = response.data.data
-                    // Array.from(this.historyByDate).forEach(aa =>
-                    //   console.log("hi",football_info.football_info),
-                    //   this.football_information=football_info.football_info,
-                    // );
-                    // this.historyByDate.forEach(function(key, value){
-                    // console.log( key),
-                    // this.football_information = key.date;
-                // })
             })
     }
 };

@@ -177,16 +177,21 @@
 
             <!-- for football -->
 
-            <div class="noti_main">
-                <nuxt-link :to="`${$t('/football/bet_detail')}?lang=${$store.state.locale}`">
-                    <div class="amount_card">
-
+            <div class="noti_main" v-for="(footballnoti ,fn) in football_notification" :key="fn">
+                    <div class="amount_card" @click="football_noti_detail_id(footballnoti.notification_id)">
                         <el-card class="box-card">
                             <div slot="header" class="clearfix">
-                                <span class="con">Congratulations <br /><span class="team_name_text">body</span>
+                                <span class="con">{{footballnoti.title}}
+                                  <br>
+                                <span v-if="footballnoti.type == '2'">
+                                <span class="team_name_text" style="font-size:17px;">body</span>
+                                </span>
+                                <span v-else>
+                                <span class="team_name_text" style="font-size:17px;">Goal</span>
+                                </span>
                                 </span>
                                 <p style="float: right; padding: 3px 0;font-size:20px;" type="text">
-                                    +50000Ks
+                                  +  {{footballnoti.win_amount}} Ks
                                 </p>
                             </div>
                             <div class="text item">
@@ -194,13 +199,13 @@
                                     <el-col>
                                         <div class="match">
                                             <div class="teaminner_01">
-                                                <p class="t_name team_name_text">Team A</p>
-                                                <img src="~static/images/hot.png" alt="logo" class="team_logo team_02" />
+                                                <p class="t_name team_name_text">{{footballnoti.home_team.name}}</p>
+                                                <img :src="footballnoti.home_team.logo" alt="logo" class="team_logo team_02" />
                                                 <p class="result team_name_text">
-                                                    2&nbsp;-&nbsp;0<br /><span>3:00PM</span>
+                                                    {{footballnoti.home_goal}}&nbsp;-&nbsp;{{footballnoti.away_goal}}<br /><span>{{footballnoti.play_at}}</span>
                                                 </p>
-                                                <img src="~static/images/hot.png" alt="logo" class="team_logo team_02" />
-                                                <p class="t_name team_name_text">Team B</p>
+                                                <img :src="footballnoti.away_team.logo" alt="logo" class="team_logo team_02" />
+                                                <p class="t_name team_name_text">{{footballnoti.away_team.name}}</p>
                                             </div>
                                         </div>
                                     </el-col>
@@ -208,7 +213,6 @@
                             </div>
                         </el-card>
                     </div>
-                </nuxt-link>
             </div>
 
         </section>
@@ -277,7 +281,7 @@ export default {
         return {
 
             notification: '',
-            football_notification:''
+            football_notification: ''
 
         }
     },
@@ -290,7 +294,11 @@ export default {
             this.$store.commit('noti_id', data);
             this.$router.push(`/withdraw_noti?lang=${this.$store.state.locale}`);
 
-        }
+        },
+        football_noti_detail_id(data) {
+            this.$store.commit('football_noti_detail_id', data);
+            this.$router.push(`/football/bet_detail?` + data + `lang=${this.$store.state.locale}`);
+        },
     },
     created() {
 
@@ -310,16 +318,16 @@ export default {
                 })
         }
 
-      //for football noti
+        //for football noti
 
-      if (token) {
+        if (token) {
             this.$axios.get("/v2/v1/football/notification", {
                     headers: {
                         "Authorization": "Bearer " + token
                     }
                 })
                 .then(response => {
-                  console.log(response);
+                    console.log(response);
                     this.football_notification = response.data.data
                     // this.$nuxt.$loading.finish()
                     var noti_id = this.notification.notification_id

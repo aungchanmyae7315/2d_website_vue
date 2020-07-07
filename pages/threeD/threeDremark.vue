@@ -20,33 +20,33 @@
           width="90%">
           <span>
             <el-form-item
-                :label="$t('number')"                  
+                :label="$t('number')"
                   prop="item.number"
                   :rules="[
                       { required: true, message: $t('bet_number_required') },
-                      
+
                   ]"
-                  
-                  >  
+
+                  >
                   <el-input id="form-name" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" :placeholder="$t('bet_number_add')" v-model.number="numberValidateForm.item.number"></el-input>
             </el-form-item>
              <el-form-item
-                    :label="$t('odds')"                  
+                    :label="$t('odds')"
                   prop="item.odds"
-                  
-                  
-                  >  
+
+
+                  >
                   <el-input id="form-name" disabled="" type="number"  pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==3) return false;" :placeholder="$t('odds')" v-model.number="numberValidateForm.item.odds"></el-input>
             </el-form-item>
             <el-form-item
-                    :label="$t('bet_amount')"                         
+                    :label="$t('bet_amount')"
                   prop="item.amount"
                   :rules="[
                       { required: true, message: $t('amount_required') },
-                      
+
                   ]"
-                  
-                  >  
+
+                  >
                   <el-input id="form-name" type="number"  :placeholder="$t('bet_amount_add')" v-model.number="numberValidateForm.item.amount"></el-input>
             </el-form-item>
           </span>
@@ -55,8 +55,8 @@
             <el-button type="primary" @click="addItem('numberValidateForm')">{{$t('add')}}</el-button>
           </span>
         </el-dialog>
-       
-          <!-- <input type="text" id="form-name" v-model="ruleForm.number" placeholder="Bet Number" class="form-control"> 
+
+          <!-- <input type="text" id="form-name" v-model="ruleForm.number" placeholder="Bet Number" class="form-control">
           <input type="text" v-model="ruleForm.amount" placeholder="Bet Amount" class="form-control" v-on:keyup.enter="addItem"> -->
           </el-form>
           <!-- <button @click="addItem('ruleForm')" class="btn btn-dark"><i class="el-icon-circle-plus-outline"></i></button>
@@ -95,15 +95,15 @@
                       <button style="margin:5px;border-radius:50%;" v-else  @click="item.edit = !item.edit" class="btn "><i class="el-icon-finished"></i></button>
                       <button  style="margin:5px;border-radius:50%;" @click="removeItem(index)" class="btn "><i class="el-icon-delete"></i></button>
                     </div>
-                
+
                 </td>
               </tr>
               <tfoot style="text-align:center;">
                  <td colspan="5" style="padding:10px"><span style="color:orange;font-weight:bold">စုစုပေါင်းထိုးငွေ </span> <span style="float:right"> {{total}} {{$t('kyat')}} </span></td>
               </tfoot>
-              
+
             </table>
-    
+
           <el-card class="myWallet_card">
                 <p>လက်ကျန်ငွေ</p>
                 <h6>{{this.myWallet}} {{$t('kyat')}}</h6>
@@ -112,10 +112,10 @@
         <div class="threed_betBtn">
             <el-button round @click="betAll" :disabled='submitted' type="info">{{$t('Bet')}}</el-button>
         </div>
-     
-        </div>     
+
+        </div>
       </div>
- 
+
     </main>
 </template>
 
@@ -142,16 +142,16 @@ export default {
               amount:localStorage.getItem('amountThreeD'),
               item: {number: '', odds:'', amount:'', edit: 0},
               items:[],
-               numberValidateForm: { 
+               numberValidateForm: {
                  item: {
                     number: '',
                     amount: '',
                     odds:'500',
                  }
-                 
+
                },
         }
-        
+
     },
     methods: {
         thousands_separators(num){
@@ -160,18 +160,18 @@ export default {
             return num_parts.join(".");
           },
         addItem(formName){
-      
+
           this.$refs[formName].validate((valid) => {
 
             if (valid) {
-              
+
                 this.items.push({number:this.numberValidateForm.item.number,odds:this.numberValidateForm.item.odds, amount:this.numberValidateForm.item.amount, edit:this.item.edit})
                 this.item = [];
                 $('#form-name').focus();
                 this.dialogVisible = false
             } else {
             console.log('error Submit')
-            
+
             }
         });
 
@@ -189,6 +189,7 @@ export default {
                          }
                         })
                     .then(response => {
+                      console.log(response)
                      this.submitted = false
                      if(response.data.status == 2) {
                        this.submitted = false
@@ -225,7 +226,7 @@ export default {
                             h('i', { style: 'color: green' },'3D' + this.$t('number')+' '+(response.data.data.number)+' '+this.$t('availabel_bet_amount')+(response.data.data.amount)+ this.$t('kyat'))
                           ])
                         });
-                   
+
                      }
                     else if (response.data.status == 5) {
                        this.submitted = false
@@ -238,7 +239,7 @@ export default {
                     } else {
                       this.submitted = true
                           this.$router.push(`/threeD/dream_bet_success?lang=${this.$store.state.locale}`);
-                    } 
+                    }
                 })
                  .catch(error => {
                    this.$message({
@@ -247,13 +248,13 @@ export default {
                           type: 'warning',
                         });
                 });
-          } 
+          }
         },
     removeItem(index){
       this.items.splice(index, 1)
     },
         goBack() {
-            this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`); 
+            this.$router.push(`/threeD/home?lang=${this.$store.state.locale}`);
         }
     },
     created() {
@@ -264,7 +265,7 @@ export default {
           }
           this.$axios.post("/v2/v1/threed_get_odds",data,
                   {
-              
+
                       })
                   .then(response => {
                    console.log(response.data)
@@ -283,7 +284,7 @@ export default {
                       this.myWallet = this.thousands_separators(this.profile.wallet)
                       this.myPointWallet = this.thousands_separators(this.profile.point)
                 })
-        }  
+        }
     }
 }
 </script>

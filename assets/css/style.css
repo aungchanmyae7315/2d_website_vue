@@ -585,6 +585,25 @@ input[type=number] {
     height: auto;
 }
 
+.bauchu_card {
+    background: linear-gradient(#158220, #121212);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 78%;
+    height: 95px;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    padding-left: 50px;
+    color: white;
+    border: 2px solid #FFEA72;
+}
+
+.football_card_logo {
+    width: 79%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.22);
+}
+
 .bet_btn {
     text-align: center;
     margin-left: -16px;
