@@ -487,6 +487,7 @@ export default {
             .then(response => {
               this.info = response.data.data;
               this.close_day = response.data.data.is_close_day
+               this.last_date = response.data.data.last_date
               console.log(response)
 
             })
