@@ -262,14 +262,8 @@ export default {
             isActive: true,
             hasError: false,
             server_time: "",
-            morningTime_9_30: "09:30:00",
-            time_12_00: "12:01:00",
-            time_01_00: "13:00:00",
-            time_04_30: "16:30:00",
-
+       
             currentDate: null,
-            morningTime: null,
-
             slider_images: "",
             activeIndex: "1",
 
@@ -278,16 +272,9 @@ export default {
 
             profile: "",
             slider_text: "",
-            breakTime: null,
-
-            myWallet: "",
-
             footballMatchDetail: "",
-
             accordion: true,
-
             football_match_id: "",
-            //  amount:"",
             goal_status: "",
             activeIndex2: '1',
             activeName: "first",
@@ -301,28 +288,13 @@ export default {
             submitted: false,
             time_countdown: '',
             one_result: '',
-            evening_time: '',
-            isActive: true,
-            isHoliday: true,
-            isHolidays: true,
-            isMorningEvening: true,
             hasError: '',
             currentTime: '',
-            morning_from: this.morning_from,
-            morning_to: '',
-            evening_from: '',
-            evening_to: '',
-
-            morningTime_9_30: '09:30:00',
-            time_12_00: '12:01:00',
-            time_01_00: '13:00:00',
-            time_04_30: '16:30:00',
             isLoggedIn: true,
-
             dialogFormVisible: false,
-
             profile: '',
             myWallet: '',
+            end_bet_football:''
 
 
 
@@ -362,57 +334,26 @@ export default {
         },
         BetCurrentTime() {
             this.currentTime = moment().format('HH:mm:ss');
+            var currentTime = new Date("07/07/2020 " + this.currentTime);
+            var endBet = new Date("07/07/2020 " + this.end_bet_football);
 
-            // var cu_time= new Date("12/01/2019 " + this.currentTime);
-            var mo_from = new Date("03/20/2019 " + this.morning_from);
-            var ev_to = new Date("03/19/2019 " + this.currentTime);
-            var mo_to = new Date("03/20/2019 " + this.evening_from);
-            var ev_from = new Date("03/20/2019 " + this.currentTime);
-            var difference = mo_from - ev_to;
-            var difference_two = mo_to - ev_from;
-            var getAllTime = this.convertMS(difference);
-            var getAllTime_two = this.convertMS(difference_two);
-            if (this.server_time > this.morning_from && this.server_time < this.morning_to) {
-                this.isActive = true
-                this.isMorningEvening = false
-                return this.time_countdown = this.$root.$t('close_text');
-            } else if (this.server_time > this.morning_to && this.server_time < this.evening_from) {
-                this.isMorningEvening = true
-                if (this.holidays.status == 1) {
-                    this.isActive = true
-                } else {
-                    this.isActive = false
-                }
-
-                return this.time_countdown = getAllTime_two.hour + ':' + getAllTime_two.minute + ':' + getAllTime_two.seconds
-            } else if (this.server_time > this.evening_from && this.server_time < this.evening_to) {
-                this.isActive = true
-
-
-                this.isMorningEvening = false
-                return this.time_countdown = this.$root.$t('close_text');
-            } else if (this.server_time > this.evening_to) {
-
-                if (this.holidays.status == 1) {
-                    this.isActive = true
-                } else {
-                    this.isActive = false
-                }
-                return this.time_countdown = getAllTime.hour + ':' + getAllTime.minute + ':' + getAllTime.seconds
-            } else {
-
-
-                this.isMorningEvening = true
-                //   this.isActive = true
-                // return this.time_countdown = this.$root.$t('close_text');
-                if (this.holidays.status == 1) {
-                    this.isActive = true
-                } else {
-                    this.isActive = false
-                }
-
-                return this.time_countdown = getAllTime.hour + ':' + getAllTime.minute + ':' + getAllTime.seconds
+            var nextDate = new Date("07/07/2020 " + this.currentTime);
+            var endBet = new Date("07/08/2020 " + this.end_bet_football);
+    
+            var difference =  endBet - currentTime;
+            var difference_two =    endBet - nextDate
+          
+            var football_betTime = this.convertMS(difference);
+              var football_betTime_B = this.convertMS(difference_two);
+            // console.log(football_betTime)
+            if(this.server_time > this.end_bet_football) {
+               
+                 return this.time_countdown = football_betTime.hour + ':' + football_betTime.minute + ':' + football_betTime.seconds
+            }else if (this.server_time < this.end_bet_football) {
+    
+                 return this.time_countdown = football_betTime_B.hour + ':' + football_betTime_B.minute + ':' + football_betTime_B.seconds
             }
+           
         },
 
         isMobile: function() {
@@ -430,51 +371,14 @@ export default {
             })(navigator.userAgent || navigator.vendor || window.opera);
             return check;
         },
-        ServerCurrentTime() {
-            if (
-                this.currentTime > this.time_12_00 &&
-                this.currentTime < this.time_01_00
-            ) {
-                // this.isActive = false
-                this.breakTime = "12:01 PM";
-            } else if (this.currentTime > this.time_04_30) {
-                // this.isActive = false
-                this.breakTime = "4:30 PM";
-            } else if (this.currentTime < this.morningTime_9_30) {
-                this.isActive = false;
-                this.breakTime = "4:30 PM";
-            } else {
-                this.isActive = true;
-                this.breakTime = moment().format("h:mm A");
-            }
-            // this.currentTime = moment().format('HH:mm:ss');
-            this.currentDate = moment().format("YYYY D MMMM  dddd");
-        },
+       
         updateIsLoggedIn() {
             this.$store.commit("updateIsLoggedIn", this.hasUserInfo());
         },
         hasUserInfo() {
             return Boolean(localStorage.getItem("userInfo"));
         },
-        //  submit_bet_football() {
-        //              this.submitted = true
-        //           let token = localStorage.getItem('token');
-
-        //                 var data = {
-        //                     football_match_id:this.id,
-        //                     amount:this.amount,
-        //                     goal_status:this.goal_status,
-        //                 }
-        //           this.$axios.post("/v2/v1/2d_web/bet",
-        //                            data,
-        //                     {
-        //                         headers: {
-        //                                "Authorization": "Bearer "+token
-        //                          },
-        //                         })
-        //                     .then(response => {
-        //                     })
-        //  }
+      
         footballSubmit_body(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
@@ -531,10 +435,6 @@ export default {
                                 this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
 
                             }
-
-
-
-
                         })
                         .catch(error => {
                             console.log(error.response)
@@ -623,42 +523,8 @@ export default {
     },
     created() {
 
-         this.breakTime = moment().format('h:mm:ss a')
-
-
-        this.$axios.get('v2/v1/football/close_time')
-
-            .then(response => {
-              console.log("Close_time",response)
-                this.time = response.data.data
-
-                this.morning_from = response.data.data[0].from
-                this.morning_to = response.data.data[0].to
-                this.evening_from = response.data.data[1].from
-                this.evening_to = response.data.data[1].to
-
-                var currentTime = moment().format('HH:mm:ss');
-                var currentDate = moment().day();
-
-                if (this.server_time > this.morning_from && this.server_time < this.morning_to) {
-                    this.isActive = true
-
-                } else if (this.server_time > this.morning_to && this.server_time < this.evening_from) {
-                    this.isActive = false
-
-                } else if (this.server_time > this.evening_from && this.server_time < this.evening_to) {
-                    this.isActive = true
-
-                } else if (this.server_time > this.evening_to) {
-                    this.isActive = false
-                } else {
-                    this.isActive = false
-                }
-
-                // if(currentDate == 0 || currentDate == 6) {
-                //     this.isActive = true
-                // }
-            })
+    
+      
         let token = localStorage.getItem("token");
         if (token) {
             this.$axios
@@ -698,6 +564,8 @@ export default {
                 .then(response => {
                     console.log("heool", response);
                     this.footballMatchDetail = response.data.data;
+                    this.end_bet_football = response.data.data[0].end_date;
+                    console.log(this.end_bet_football)
                     console.log("Hello", this.footballMatchDetail);
 
                 });
