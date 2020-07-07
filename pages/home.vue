@@ -409,8 +409,6 @@ export default {
       //   });
    },
 
-  
-  
   data() {
     
     return {
@@ -522,12 +520,12 @@ export default {
             
             this.isActive = false
             this.breakTime = '4:30 PM'; 
-             this.getDataKwee();
+            //  this.getDataKwee();
           }else if(this.currentTime < this.morningTime_9_30){
             
             this.isActive = false
             this.breakTime = '4:30 PM'; 
-             this.getDataresult();
+            //  this.getDataresult();
           }else{
             
              this.isActive = true
@@ -539,11 +537,13 @@ export default {
        },
        ServerCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-           // this.isActive = false
+           this.isActive = false
+          
             this.breakTime = '12:01 PM';
            
           } else if(this.currentTime > this.time_04_30){
             // this.isActive = false
+         
              if(this.close_day == 1) {
             
                this.isActive = false
@@ -554,11 +554,12 @@ export default {
             this.breakTime = '4:30 PM'; 
             
           }else if(this.currentTime < this.morningTime_9_30){
-            
+         
             this.isActive = false
             this.breakTime = '4:30 PM'; 
             
           }else{
+            
             if(this.close_day == 1) {
             
                this.isActive = false
@@ -599,14 +600,14 @@ export default {
 
     }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
    
-      var stop_Interval =  setInterval(function() {
+      // var stop_Interval =  setInterval(function() {
         
-       this.$axios.get('/luke/twod-result-live')
-              .then(response => {
+      //  this.$axios.get('/luke/twod-result-live')
+      //         .then(response => {
 
-                this.info_api = response.data.data
-              })
-         }.bind(this), 3000)
+      //           this.info_api = response.data.data
+      //         })
+      //    }.bind(this), 3000)
   }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
   }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
 
