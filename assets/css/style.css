@@ -384,7 +384,7 @@ a:hover {
     color: rgba(255, 255, 255, 1);
     font-size: 75pt;
     text-align: center;
-    margin-top: 19px;
+    margin-top: 10px;
 }
 
 .number::before {

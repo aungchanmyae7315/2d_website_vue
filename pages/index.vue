@@ -151,7 +151,7 @@
                         </el-col>
                     </el-row>
 
-                    <el-row>
+                    <!-- <el-row>
                         <el-col :span="12">
                             <nuxt-link :to="`${$t('football/home')}?lang=${$store.state.locale}`">
 
@@ -166,7 +166,7 @@
 
                             </nuxt-link>
                         </el-col>
-                    </el-row>
+                    </el-row> -->
 
                 </div>
 
