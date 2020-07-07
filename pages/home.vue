@@ -134,7 +134,7 @@
                
                 <div class="number">
                       <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
-                      <h2 v-if="!this.info.live && !this.info_api.result_1200"    >
+                      <h2 v-if="!this.info.live && !this.info.result_1200"    >
                         <div class="loadingio-spinner-dual-ball-ty27h70p24 ">
                             <div class="ldio-ct1tsjzqdg5">
                                 <div></div>
@@ -147,10 +147,10 @@
                        <h2 v-else   class="static"  v-bind:class="{ live_number: isActive, 'text-danger': hasError }"> 
                           
                          <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
-                          <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.result_1200}}</span>
+                          <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.result_1200}}</span>
                           <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
                           <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
-                          <span v-else>{{this.info_api.live}}</span>
+                          <span v-else>{{this.info.live}}</span>
                       </h2>
                       
                 </div>
@@ -181,7 +181,7 @@
                   
                   <div class="col">
                       <span>Set</span>
-                       <h4  v-if="!this.info.set_1200 && !this.info_api.set_1200"    class="card_loading">
+                       <h4  v-if="!this.info.set_1200"    class="card_loading">
                         <div class="loadingio-spinner-card_one_loading">
                             <div class="card_one_loading">
                                 <div></div>
@@ -192,15 +192,15 @@
                       </h4>
                       <h4 v-else>
                           <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_1200}}</h4>
-                          <h4 v-else>{{this.info_api.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_1200}}</h4>
+                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.set_1200}}</h4>
+                          <h4 v-else>{{this.info.set_1200}}</h4>
                       </h4>
                   </div>
                   <div class="col">
                       <span>Value</span>
-                       <h4  v-if="!this.info.val_1200 && !this.info_api.val_1200"    class="card_loading">
+                       <h4  v-if="!this.info.val_1200 && !this.info.val_1200"    class="card_loading">
                         <div class="loadingio-spinner-card_one_loading">
                             <div class="card_one_loading">
                                 <div></div>
@@ -211,17 +211,17 @@
                       </h4>
                       <h4 >
                         <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_1200}}</h4>
-                          <h4 v-else>{{this.info_api.val_1200}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.val_1200}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_1200}}</h4>
+                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.val_1200}}</h4>
+                          <h4 v-else>{{this.info.val_1200}}</h4>
                       </h4>
                   </div>
                   <div class="col">
                       <span>2D</span>
                      <h4 class="static" style="font-weight:bold">
                          
-                          {{this.info_api.result_1200}}
+                          {{this.info.result_1200}}
                       </h4>
                   </div>
                 </div>
@@ -234,7 +234,7 @@
                       
                       <div class="col">
                           <span>Set</span>
-                          <h4  v-if="!this.info.set_430 && !this.info_api.set_430"    class="card_loading">
+                          <h4  v-if="!this.info.set_430 "    class="card_loading">
                             <div class="loadingio-spinner-card_one_loading">
                                 <div class="card_one_loading">
                                     <div></div>
@@ -244,16 +244,16 @@
                             </div>
                           </h4>
                           <h4 v-else>
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.set_430}}</h4>
+                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_430}}</h4>
+                            <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_430}}</h4>
                             <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.set_430}}</h4>
-                            <h4 v-else>{{this.info_api.set_430}}</h4>
+                            <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.set_430}}</h4>
+                            <h4 v-else>{{this.info.set_430}}</h4>
                           </h4>
                       </div>
                       <div class="col">
                           <span>Value</span>
-                           <h4   v-if="!this.info.val_430 && !this.info_api.val_430"    class="card_loading">
+                           <h4   v-if="!this.info.val_430 "    class="card_loading">
                             <div class="loadingio-spinner-card_one_loading">
                                 <div class="card_one_loading">
                                     <div></div>
@@ -263,11 +263,11 @@
                             </div>
                           </h4>
                           <h4  v-else>
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info_api.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info_api.val_430}}</h4>
+                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_430}}</h4>
+                            <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.val_430}}</h4>
                             <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info_api.val_430}}</h4>
-                            <h4 v-else>{{this.info_api.val_430}}</h4>
+                            <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.val_430}}</h4>
+                            <h4 v-else>{{this.info.val_430}}</h4>
                           </h4>
                         
                       </div>
@@ -275,7 +275,7 @@
                           <span>2D</span>
                           <h4 class="static" style="font-weight:bold">
                        
-                          {{this.info_api.result_430}}
+                          {{this.info.result_430}}
                       </h4>
                           <!-- <h4 class="result_num">{{this.info.result_430}}</h4> -->
                       </div>
@@ -292,11 +292,11 @@
                       </div>
                       <div class="col">
                           <span>Modern</span>
-                          <h4>{{this.info_api.modern_930}}</h4>
+                          <h4>{{this.info.modern_930}}</h4>
                       </div>
                       <div class="col">
                           <span>Internet</span>
-                          <h4>{{this.info_api.internet_930}}</h4>
+                          <h4>{{this.info.internet_930}}</h4>
                       </div>
                     </div>
                 </div>
@@ -311,11 +311,11 @@
                       </div>
                       <div class="col">
                           <span>Modern</span>
-                          <h4>{{this.info_api.modern_200}}</h4>
+                          <h4>{{this.info.modern_200}}</h4>
                       </div>
                       <div class="col">
                           <span>Internet</span>
-                          <h4>{{this.info_api.internet_200}}</h4>
+                          <h4>{{this.info.internet_200}}</h4>
                       </div>
                     </div>
                 </div>
@@ -393,12 +393,9 @@ export default {
     }
  
     
-      this.getDataKwee();
+      this.itvKweeLiveData();
       //this.getDataresult();
       this.updateIsLoggedIn();
-      // this.updateLang();
-      this.getKweeLiveData();
-       
 
       let lang = localStorage.getItem('locale');
       this.$store.commit('SET_LANG', lang);
@@ -433,7 +430,7 @@ export default {
       activeIndex: '1',
       
       info:'',
-      info_api:'',
+ 
       kwee_cma:'',
       set_1200:'',
       profile:'',
@@ -500,16 +497,7 @@ export default {
             this.getKweeLiveData();
           }.bind(this), 3000)
      },
-         async getDataKwee() {
-           this.itvKweeLiveData();
-          },
-          async getDataresult() {
-            this.$axios.get('/luke/twod-result-live')
-              .then(response => {
-                this.info_api = response.data.data
-               
-              })
-          },
+      
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
@@ -598,34 +586,7 @@ export default {
        this.breakTime = moment().format('h:mm:ss a')
      this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
-    if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-
-    }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-   
-      // var stop_Interval =  setInterval(function() {
-        
-      //  this.$axios.get('/luke/twod-result-live')
-      //         .then(response => {
-
-      //           this.info_api = response.data.data
-      //         })
-      //    }.bind(this), 3000)
-  }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-  }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
-
-  }else {
-     
-      // var ok =  setInterval(function() {
-         
-       this.$axios.get('/luke/twod-result-live')
-   
-              .then(response => {
-                  this.last_date = response.data.data.last_date
-                  this.info_api = response.data.data
-              })
-        //  }.bind(this), 3000)
-  }
-        
+  
               
          let token = localStorage.getItem('token');
       if(token) {
