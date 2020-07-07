@@ -1,14 +1,14 @@
 <template>
-    <div class="f_main">
-        <el-main class="main_page twod_home">
+   <div class="f_main">
+        <main class="main_page twod_home">
             <!-- <Online></Online> -->
             <el-header>
                 <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                 <el-page-header title="" @back="goBack"> </el-page-header>
-                <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo" />
+                <img src="~static/images/footballLogo.png" style="width:145px !important" class="logo" alt="logo" />
                 <!-- </nuxt-link> -->
 
-                <nuxt-link :to="`${$t('/football/football_notification')}?lang=${$store.state.locale}`" v-if="$store.state.isLoggedIn">
+                <nuxt-link :to="`${$t('/football/betHistory')}?lang=${$store.state.locale}`" v-if="$store.state.isLoggedIn">
                     <div class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
                         <img src="~static/images/football_noti.png" alt="logo" style="width:20px;" />
                     </div>
@@ -97,9 +97,9 @@
                             </div>
 
                         </h3>
-
-
-                        <div class="carousel2">
+                    <scroll-fixed-header :fixed.sync="fixed" :threshold="350">
+                        <!-- <nav class="navbar navbar-light bg_fixed_header"> -->
+                            <div class="carousel2">
                             <carousel :autoplay="false" :nav="true" :items=3>
 
                                 <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
@@ -116,6 +116,10 @@
                                 <div></div>
                             </carousel>
                         </div>
+                        <!-- </nav> -->
+                    </scroll-fixed-header>
+
+                       
 
                         <div class="f-el-tabls" id="today" v-show="currentTab === 1">
 
@@ -235,6 +239,7 @@
                             <div class="collapse_card" v-for="(tomorrow_info, f) in tomorrowMatch" :key="f">
                                 <el-collapse v-model="activeNames" @change="handleChange">
                                     <el-collapse-item :title="tomorrow_info.league.name" :name="tomorrow_info.id">
+                                      <div  @click="cur_id(tomorrow_info.id)">
                                         <el-row>
                                             <el-col>
                                                 <div class="teaminner_01">
@@ -256,6 +261,7 @@
                                                 </div>
                                             </el-col>
                                         </el-row>
+                                        </div>
                                     </el-collapse-item>
                                 </el-collapse>
                             </div>
@@ -263,7 +269,7 @@
 
                         <div v-show="currentTab === 3">
                             <div class="collapse_card" v-for="(tomorrow1_info, f) in tomorrow1Match" :key="f">
-                                <el-collapse v-model="activeNames" @change="handleChange">
+                                <el-collapse v-model="activeNames" @change="handleChange" @click="cur_id(tomorrow1_info.id)">
                                     <el-collapse-item :title="tomorrow1_info.league.name" :name="tomorrow1_info.id">
                                         <el-row>
                                             <el-col>
@@ -290,7 +296,7 @@
 
                         <div v-show="currentTab === 4">
                             <div class="collapse_card" v-for="(tomorrow2_info, f) in tomorrow2Match" :key="f">
-                                <el-collapse v-model="activeNames" @change="handleChange">
+                                <el-collapse v-model="activeNames" @change="handleChange" @click="cur_id(tomorrow2_info.id)">
                                     <el-collapse-item :title="tomorrow2_info.league.name" :name="tomorrow2_info.id">
                                         <el-row>
                                             <el-col>
@@ -401,15 +407,21 @@
 
                     </div>
                 </div>
-        </el-main>
+        </main>
         </div>
 </template>
 
+
+
 <script>
+ import Vue from 'vue'
+import ScrollFixedHeader from 'vuejs-scroll-fixed-header'
+Vue.use(ScrollFixedHeader)
 import axios from "axios";
 import carousel from "vue-owl-carousel";
 
 export default {
+    name: 'Timer',
     components: { carousel },
     getters: {},
     mutations: {},
@@ -501,7 +513,8 @@ export default {
             tomorrow1Match: '',
             tomorrow2Match: '',
 
-            currentTab: 1
+            currentTab: 1,
+             fixed: false
 
             //   activeIndex2: '1',
         };
@@ -664,14 +677,8 @@ export default {
 };
 </script>
 
-<style>
-.navbar.vue-fixed-header--isFixed {
-    position: fixed;
-    left: 0;
-    top: 0;
-    /* width: 100vw; */
-}
 
+<style>
 .twod_home .el-header {
     padding: 20px;
     color: #fff;
@@ -1076,5 +1083,29 @@ body>.el-container {
         /* Browser bug fix */
         transform: translateX(-100%);
     }
+}
+.bg_fixed_header {
+    
+    background-color:#158220;
+    color:#fff;
+    font-weight: bold;
+}
+.twod_home {
+    text-align: center;
+    margin:0 auto;
+    background-image:url(~static/images/main_bg.png);
+    background-size:cover;
+    background-attachment: fixed;
+    max-width: 480px;
+    width:100%;
+  
+    padding:0;
+    
+}
+.is-fixed {
+    background-color:#158220;
+    color:#fff;
+    font-weight: bold;
+    height:54px;
 }
 </style>

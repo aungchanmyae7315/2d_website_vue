@@ -1340,11 +1340,16 @@ transform: translate(-50%, -50%);
 
 .team_name_text {
     color: #121212;
+    font-size: 12px;
 }
 
 .con {
     font-size: 18px;
-    color: #14612D;
+    color: black;
+}
+
+.amount_card .el-card__body {
+    padding: 0px !important;
 }
 
 .bet_detail_main {
