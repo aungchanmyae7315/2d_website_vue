@@ -5,10 +5,10 @@
             <el-header>
                 <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                 <el-page-header title="" @back="goBack"> </el-page-header>
-                <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo" />
+                <img src="~static/images/footballLogo.png" style="width:145px !important" class="logo" alt="logo" />
                 <!-- </nuxt-link> -->
 
-                <nuxt-link :to="`${$t('/football/football_notification')}?lang=${$store.state.locale}`" v-if="$store.state.isLoggedIn">
+                <nuxt-link :to="`${$t('/football/betHistory')}?lang=${$store.state.locale}`" v-if="$store.state.isLoggedIn">
                     <div class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
                         <img src="~static/images/football_noti.png" alt="logo" style="width:20px;" />
                     </div>
@@ -239,6 +239,7 @@
                             <div class="collapse_card" v-for="(tomorrow_info, f) in tomorrowMatch" :key="f">
                                 <el-collapse v-model="activeNames" @change="handleChange">
                                     <el-collapse-item :title="tomorrow_info.league.name" :name="tomorrow_info.id">
+                                      <div  @click="cur_id(tomorrow_info.id)">
                                         <el-row>
                                             <el-col>
                                                 <div class="teaminner_01">
@@ -260,6 +261,7 @@
                                                 </div>
                                             </el-col>
                                         </el-row>
+                                        </div>
                                     </el-collapse-item>
                                 </el-collapse>
                             </div>
@@ -267,7 +269,7 @@
 
                         <div v-show="currentTab === 3">
                             <div class="collapse_card" v-for="(tomorrow1_info, f) in tomorrow1Match" :key="f">
-                                <el-collapse v-model="activeNames" @change="handleChange">
+                                <el-collapse v-model="activeNames" @change="handleChange" @click="cur_id(tomorrow1_info.id)">
                                     <el-collapse-item :title="tomorrow1_info.league.name" :name="tomorrow1_info.id">
                                         <el-row>
                                             <el-col>
@@ -294,7 +296,7 @@
 
                         <div v-show="currentTab === 4">
                             <div class="collapse_card" v-for="(tomorrow2_info, f) in tomorrow2Match" :key="f">
-                                <el-collapse v-model="activeNames" @change="handleChange">
+                                <el-collapse v-model="activeNames" @change="handleChange" @click="cur_id(tomorrow2_info.id)">
                                     <el-collapse-item :title="tomorrow2_info.league.name" :name="tomorrow2_info.id">
                                         <el-row>
                                             <el-col>
@@ -677,13 +679,6 @@ export default {
 
 
 <style>
-.navbar.vue-fixed-header--isFixed {
-    position: fixed;
-    left: 0;
-    top: 0;
-    /* width: 100vw; */
-}
-
 .twod_home .el-header {
     padding: 20px;
     color: #fff;
