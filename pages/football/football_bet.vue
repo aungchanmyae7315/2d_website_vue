@@ -262,7 +262,7 @@ export default {
             isActive: true,
             hasError: false,
             server_time: "",
-       
+
             currentDate: null,
             slider_images: "",
             activeIndex: "1",
@@ -339,21 +339,21 @@ export default {
 
             var nextDate = new Date("07/07/2020 " + this.currentTime);
             var endBet = new Date("07/08/2020 " + this.end_bet_football);
-    
+
             var difference =  endBet - currentTime;
             var difference_two =    endBet - nextDate
-          
+
             var football_betTime = this.convertMS(difference);
               var football_betTime_B = this.convertMS(difference_two);
             // console.log(football_betTime)
             if(this.server_time > this.end_bet_football) {
-               
+
                  return this.time_countdown = football_betTime.hour + ':' + football_betTime.minute + ':' + football_betTime.seconds
             }else if (this.server_time < this.end_bet_football) {
-    
+
                  return this.time_countdown = football_betTime_B.hour + ':' + football_betTime_B.minute + ':' + football_betTime_B.seconds
             }
-           
+
         },
 
         isMobile: function() {
@@ -371,14 +371,14 @@ export default {
             })(navigator.userAgent || navigator.vendor || window.opera);
             return check;
         },
-       
+
         updateIsLoggedIn() {
             this.$store.commit("updateIsLoggedIn", this.hasUserInfo());
         },
         hasUserInfo() {
             return Boolean(localStorage.getItem("userInfo"));
         },
-      
+
         footballSubmit_body(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
@@ -399,8 +399,9 @@ export default {
 
                             })
                         .then(response => {
-                            console.log(response)
-                            this.submitted = false
+
+
+                             this.submitted = false
                             if (response.data.status == 5) {
                                 this.submitted = false
                                 this.$message({
@@ -435,6 +436,7 @@ export default {
                                 this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
 
                             }
+
                         })
                         .catch(error => {
                             console.log(error.response)
@@ -523,8 +525,8 @@ export default {
     },
     created() {
 
-    
-      
+
+
         let token = localStorage.getItem("token");
         if (token) {
             this.$axios

@@ -5,12 +5,12 @@
             <div class="first_div">
                 <div v-if="this.football_noti_detail.type == 1">
                     <h5 class="body_text">
-                        Goal
+                        Body
                     </h5>
                 </div>
                 <div v-else>
                     <h5 class="body_text">
-                        Body
+                        Goal
                     </h5>
                 </div>
                 <img src="~static/images/order.png" alt="" style="margin-top:10px;" />
@@ -28,53 +28,132 @@
                     <span class="time1" style="color:#121212;">{{this.football_noti_detail.play_at}}</span>
                 </el-row>
 
+              <div v-if="this.football_noti_detail.bet_team == null">
                 <div class="goal_inner">
                     <div class=" team_vs">
                         <div class="vs_inner1 team_01">
                             <span class="hot" style="color:#121212;margin-left:-10px;font-size:12px;"><img src="~static/images/hot.png" width="20"> Hot</span>
                             <br>
-                            <!-- <input v-model="radio" type="radio" name="emotion" id="sad" class="input-hidden" /> -->
-                                            <label for="sad">
-                                               <div class="ok">
-                                                   <span class="tick"></span>
-                                                </div>
-                                               <img :src="this.football_noti_detail.hot_team.logo" class="vs_team_img">
+                            <label for="sad">
+                                    <img :src="this.football_noti_detail.hot_team.logo" class="vs_team_img">
 
-                                            </label>
+                                 </label>
 
                             <br>
                             <span class="vs_teamname" style="color:#121212;">{{this.football_noti_detail.home_team.name}}</span>
                         </div>
                         <span class="vs_text" style="color:#121212; font-size:25px;font-weight:501">
-                                     {{this.football_noti_detail.home_goal}} - {{this.football_noti_detail.away_goal}}<br><span class="gb_background">{{this.football_noti_detail.price}}</span></span>
+                                                 {{this.football_noti_detail.home_goal}} - {{this.football_noti_detail.away_goal}}<br><span class="gb_background">{{this.football_noti_detail.price}}</span></span>
                         <div class="vs_inner1 team_02">
-                            <!-- <input v-model="radio" value="2" type="radio" name="emotion" id="happy" class="input-hidden" /> -->
-                            <label for="happy">
-                                                    <div class="ok" >
-                                                          <span class="tick"></span>
-                                                    </div>
-                                                   <img :src="this.football_noti_detail.away_team.logo" class="vs_team_img">
-
-                                                </label>
-
-
+                            <img :src="this.football_noti_detail.away_team.logo" class="vs_team_img">
                             <br>
                             <span class="vs_teamname" style="color:#121212;">{{this.football_noti_detail.away_team.name}}</span>
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div v-else>
+                <div class="goal_inner">
+                    <div class=" team_vs">
+                        <div v-if="this.football_noti_detail.bet_team.id == this.football_noti_detail.home_team.id">
+                            <div class="vs_inner_body team_01">
+                                <span class="hot" style="color:#121212;margin-left:-10px;font-size:12px;"><img src="~static/images/hot.png" width="20"> Hot</span>
+                                <br>
+                                <label for="sad">
+                                    <img :src="this.football_noti_detail.hot_team.logo" class="vs_team_img">
+
+                                 </label>
+
+                                <br>
+                                <span class="vs_teamname" style="color:#121212;">{{this.football_noti_detail.home_team.name}}</span>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <div class="vs_inner1 team_01">
+                                <span class="hot" style="color:#121212;margin-left:-10px;font-size:12px;"><img src="~static/images/hot.png" width="20"> Hot</span>
+                                <br>
+                                <label for="sad">
+                                    <img :src="this.football_noti_detail.hot_team.logo" class="vs_team_img">
+
+                                 </label>
+
+                                <br>
+                                <span class="vs_teamname" style="color:#121212;">{{this.football_noti_detail.home_team.name}}</span>
+                            </div>
+                        </div>
+                        <span class="vs_text" style="color:#121212; font-size:25px;font-weight:501">
+                                                 {{this.football_noti_detail.home_goal}} - {{this.football_noti_detail.away_goal}}<br><span class="gb_background">{{this.football_noti_detail.price}}</span></span>
+
+                        <div v-if="this.football_noti_detail.bet_team.id == this.football_noti_detail.away_team.id">
+                            <div class="vs_inner_body team_02">
+                                <img :src="this.football_noti_detail.away_team.logo" class="vs_team_img">
+                                <br>
+                                <span class="vs_teamname" style="color:#121212;">{{this.football_noti_detail.away_team.name}}</span>
+                            </div>
+                        </div>
+                        <div v-else>
+                            <div class="vs_inner1 team_02">
+                                <img :src="this.football_noti_detail.away_team.logo" class="vs_team_img">
+                                <br>
+                                <span class="vs_teamname" style="color:#121212;">{{this.football_noti_detail.away_team.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+          <div v-if="this.football_noti_detail.type == 2">
+            <div v-if="this.football_noti_detail.goal_status == 1">
+                <div class="up-And-down">
+                    <div class="checked_btn">
+                        <span class="up_check_icon"><i class="el-icon-check"></i></span>
+                    </div>
+                    <div class="up_down_text">Up</div>
+                    <div class="imageForUpDown"><img src="~static/images/up.png" width="20" class=""></div>
+                </div>
+            </div>
+
+            <div v-else>
+                <div class="up-And-down">
+                    <div class="checked_btn">
+                        <span class="normal_check_icon">&nbsp;</span>
+                    </div>
+                    <div class="up_down_text">Up</div>
+                    <div class="imageForUpDown"><img src="~static/images/up.png" width="20" class=""></div>
+                </div>
 
             </div>
-            <div class="suc_btn">
-                <el-footer>
-                    <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-                        <el-button round="">{{$t('Confirm')}}</el-button>
-                    </nuxt-link>
-                </el-footer>
+
+            <div v-if="this.football_noti_detail.goal_status == 2">
+                <div class="up-And-down">
+                    <div class="checked_btn">
+                        <span class="down_check_icon"><i class="el-icon-check"></i></span>
+                    </div>
+                    <div class="up_down_text" style="color:#F44336;">Down</div>
+                    <div class="imageForUpDown"><img src="~static/images/down.png" width="20" class=""></div>
+                </div>
+            </div>
+            <div v-else>
+                <div class="up-And-down">
+                    <div class="checked_btn">
+                        <span class="normal_check_icon"> &nbsp;</span>
+                    </div>
+                    <div class="up_down_text" style="color:#F44336;">Down</div>
+                    <div class="imageForUpDown"><img src="~static/images/down.png" width="20" class=""></div>
+                </div>
             </div>
         </div>
+        <div class="suc_btn">
+            <el-footer>
+                <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
+                    <el-button round="">{{$t('Confirm')}}</el-button>
+                </nuxt-link>
+            </el-footer>
+        </div>
 
-
+        </div>
     </div>
 </template>
 
@@ -119,6 +198,76 @@ export default {
 </script>
 
 <style scoped>
+.vs_inner_body {
+    border: 3px solid #158220;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.up-And-down {
+    width: 90%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #EEEEEE;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.checked_btn {
+    width: 30%;
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.up_down_text {
+    width: 30%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color: #158220;
+    font-weight: bold;
+}
+
+.imageForUpDown {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 20%;
+}
+
+.checked_btn .up_check_icon {
+    width: 20px;
+    background-color: #158220;
+    height: 20px;
+    justify-content: flex-start;
+    margin: 10px;
+    border-radius: 2px;
+    color: white;
+}
+
+.checked_btn .normal_check_icon {
+    width: 20px;
+    border: 2px solid #C8C8C8;
+    height: 20px;
+    justify-content: flex-start;
+    margin: 10px;
+    border-radius: 2px;
+    color: #121211;
+}
+
+.checked_btn .down_check_icon {
+    width: 20px;
+    background-color: #F44336;
+    height: 20px;
+    justify-content: flex-start;
+    margin: 10px;
+    border-radius: 2px;
+    color: white;
+}
+
 .vs_inner1 {
     width: auto !important;
 }

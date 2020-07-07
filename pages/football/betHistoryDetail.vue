@@ -4,11 +4,11 @@
             <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
             <div v-for="(fDetailHeader, f) in historyDetail" :key="f">
                 <div v-if="fDetailHeader.type == 1">
-                    <el-page-header @back="goBack" title="" :content="`Goal`">
+                    <el-page-header @back="goBack" title="" :content="`Body`">
                     </el-page-header>
                 </div>
                 <div v-else>
-                    <el-page-header @back="goBack" title="" :content="`Body`">
+                    <el-page-header @back="goBack" title="" :content="`Goal`">
                     </el-page-header>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                         <div v-if="fDetail.goal_status == 1">
                             <div class="up-And-down">
                                 <div class="checked_btn">
-                                    <span class="normal_check_icon">&nbsp;</span>
+                                    <span class="up_check_icon"><i class="el-icon-check"></i></span>
                                 </div>
                                 <div class="up_down_text">Up</div>
                                 <div class="imageForUpDown"><img src="~static/images/up.png" width="20" class=""></div>
@@ -80,13 +80,14 @@
                         </div>
 
                         <div v-else>
-                            <div class="up-And-down">
+                           <div class="up-And-down">
                                 <div class="checked_btn">
-                                    <span class="up_check_icon"><i class="el-icon-check"></i></span>
+                                    <span class="normal_check_icon">&nbsp;</span>
                                 </div>
                                 <div class="up_down_text">Up</div>
                                 <div class="imageForUpDown"><img src="~static/images/up.png" width="20" class=""></div>
                             </div>
+
                         </div>
 
                         <div v-if="fDetail.goal_status == 2" >

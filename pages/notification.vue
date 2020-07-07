@@ -183,7 +183,7 @@
                             <div slot="header" class="clearfix">
                                 <span class="con">{{footballnoti.title}}
                                   <br>
-                                <span v-if="footballnoti.type == '2'">
+                                <span v-if="footballnoti.type == '1'">
                                 <span class="team_name_text" style="font-size:17px;">body</span>
                                 </span>
                                 <span v-else>
