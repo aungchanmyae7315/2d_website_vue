@@ -80,8 +80,13 @@ export default {
     axios: {
         credentials: false,
         //debug:true,
+<<<<<<< HEAD
         baseURL: "https://api.2dboss.com/api/",
        //baseURL: "https://build.seinchanthar.com/api/",
+=======
+        //baseURL: "https://api.2dboss.com/api/",
+        baseURL: "https://build.seinchanthar.com/api/",
+>>>>>>> 4482e315cfb377981d8ec5ec05e0f43526853338
         proxy: false,
         proxyHeaders: false,
         headers: {

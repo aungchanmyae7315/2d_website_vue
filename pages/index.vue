@@ -151,22 +151,20 @@
                         </el-col>
                     </el-row>
 
-                     <!-- <el-row>
+                    <!-- <el-row>
                         <el-col :span="12">
-                            <nuxt-link :to="`${$t('football/home')}?lang=${$store.state.locale}`">
-
+                       
                                 <div class="bauchu_card">Bau Cau</div>
 
-                                                </nuxt-link>
                         </el-col>
                         <el-col :span="12">
                             <nuxt-link :to="`${$t('/football/football')}?lang=${$store.state.locale}`">
 
-                                <img src="~static/images/footballbutton.jpeg" alt="" class="football_card_logo">
+                                <img src="~static/images/Football_link.png" alt="" class="football_card_logo">
 
                             </nuxt-link>
                         </el-col>
-                    </el-row>  -->
+                    </el-row> -->
 
                 </div>
 
