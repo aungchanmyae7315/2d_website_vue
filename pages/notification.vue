@@ -177,7 +177,7 @@
 
             <!-- for football -->
 
-            <div class="noti_main" v-for="(footballnoti ,fn) in football_notification" :key="fn">
+            <!-- <div class="noti_main" v-for="(footballnoti ,fn) in football_notification" :key="fn">
                     <div class="amount_card" @click="football_noti_detail_id(footballnoti.notification_id)">
                         <el-card class="box-card">
                             <div slot="header" class="clearfix">
@@ -213,7 +213,7 @@
                             </div>
                         </el-card>
                     </div>
-            </div>
+            </div> -->
 
         </section>
 
@@ -320,19 +320,19 @@ export default {
 
         //for football noti
 
-        if (token) {
-            this.$axios.get("/v2/v1/football/notification", {
-                    headers: {
-                        "Authorization": "Bearer " + token
-                    }
-                })
-                .then(response => {
-                    console.log(response);
-                    this.football_notification = response.data.data
-                    // this.$nuxt.$loading.finish()
-                    var noti_id = this.notification.notification_id
-                })
-        }
+        // if (token) {
+        //     this.$axios.get("/v2/v1/football/notification", {
+        //             headers: {
+        //                 "Authorization": "Bearer " + token
+        //             }
+        //         })
+        //         .then(response => {
+        //             console.log(response);
+        //             this.football_notification = response.data.data
+        //             // this.$nuxt.$loading.finish()
+        //             var noti_id = this.notification.notification_id
+        //         })
+        // }
 
 
     }
