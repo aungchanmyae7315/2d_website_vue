@@ -162,7 +162,7 @@ export default {
           this.currentTime = moment().format('YYYY-MM-DD hh:mm:ss');
              this.getSliderTime =  JSON.parse(localStorage.getItem('slider_time'))
             
-             if(this.getSliderTime == this.getSliderTime) {
+             if(this.currentTime > this.getSliderTime) {
                   localStorage.removeItem('slider_images');
                    localStorage.removeItem('slider_text');
                    
