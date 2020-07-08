@@ -366,7 +366,8 @@ export default {
                     }
 
                 self.slider_images = response.data.data
-                // self.$store.commit('setSliderImage', response.data.data);
+                console.log(self.slider_images)
+                self.$store.commit('setSliderImage', response.data.data);
                 })
                
             // }, 2000);
@@ -499,33 +500,34 @@ export default {
           }.bind(this), 3000)
      },
       
-       updateCurrentTime() {
-         if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-            this.isActive = false
-            this.breakTime = '12:01 PM';
+      //  updateCurrentTime() {
+      //    if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
+      //       this.isActive = false
+      //       this.breakTime = '12:01 PM';
            
-             this.getDataresult();
-          } else if(this.currentTime > this.time_04_30){
+      //        this.getDataresult();
+      //     } else if(this.currentTime > this.time_04_30){
             
-            this.isActive = false
-            this.breakTime = '4:30 PM'; 
-            //  this.getDataKwee();
-          }else if(this.currentTime < this.morningTime_9_30){
+      //       this.isActive = false
+      //       this.breakTime = '4:30 PM'; 
+      //       //  this.getDataKwee();
+      //     }else if(this.currentTime < this.morningTime_9_30){
             
-            this.isActive = false
-            this.breakTime = '4:30 PM'; 
-            //  this.getDataresult();
-          }else{
+      //       this.isActive = false
+      //       this.breakTime = '4:30 PM'; 
+      //       //  this.getDataresult();
+      //     }else{
           
             
-             this.isActive = true
-            this.breakTime = moment().format('h:mm A');
-          }
-      // this.currentTime = moment().format('HH:mm:ss');
-       this.currentDate = moment().format("YYYY D MMMM  dddd")
+      //        this.isActive = true
+      //       this.breakTime = moment().format('h:mm A');
+      //     }
+      // // this.currentTime = moment().format('HH:mm:ss');
+      //  this.currentDate = moment().format("YYYY D MMMM  dddd")
         
-       },
+      //  },
        ServerCurrentTime() {
+        //  console.log('ok')
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
            this.isActive = false
           
@@ -614,9 +616,9 @@ export default {
                 })
       }
     
-          this.$axios.get('/v2/v1/server_time')
+          this.$axios.get('http://luke.2dboss.com/api/luke/server-time')
               .then(response => {
-    
+                console.log(response)
                this.currentTime = response.data.time
                this.serverDate  = response.data.date
               })
