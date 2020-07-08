@@ -197,8 +197,14 @@ export default {
 
     mounted() {
 
+        var ok = this.$store.state.sliderImage
+        console.log('hello')
+        console.log(ok)
+        console.log('world')
 
+        
         var self = this;
+           
         if (this.$store.state.sliderImage.length > 0) {
             self.slider_images = this.$store.state.sliderImage;
             if (this.slider_images !== null) {

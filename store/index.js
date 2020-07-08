@@ -27,6 +27,8 @@ const createStore = () => {
                 state.webAppVersion = version;
             },
             setSliderImage(state, sliderImage) {
+                console.log(sliderImage)
+                
                 state.sliderImage = sliderImage;
             },
             setSliderText(state, sliderText) {
