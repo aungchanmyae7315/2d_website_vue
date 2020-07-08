@@ -161,7 +161,7 @@ export default {
 
           this.currentTime = moment().format('YYYY-MM-DD hh:mm:ss');
              this.getSliderTime =  JSON.parse(localStorage.getItem('slider_time'))
-             console.log(this.getSliderTime)
+            
              if(this.getSliderTime == this.getSliderTime) {
                   localStorage.removeItem('slider_images');
                    localStorage.removeItem('slider_text');
@@ -172,7 +172,7 @@ export default {
         if (localStorage.getItem('slider_images')) {
            
             this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
-            console.log(this.slider_images)
+          
             if (this.slider_images !== null) {
                 this.loaded = true;
             }
@@ -194,7 +194,7 @@ export default {
           if(localStorage.getItem('slider_images')) {
                
                   this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
-                  console.log(this.slider_text)
+               
             }else {
                  self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
