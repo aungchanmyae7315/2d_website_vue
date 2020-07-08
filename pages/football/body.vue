@@ -1,12 +1,12 @@
 <template>
-        
-        
+
+
       <el-main class="main_page twod_home">
         <!-- <Online></Online> -->
           <el-header>
            <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                <el-page-header title="" @back="goBack" >
-                     
+
                 </el-page-header>
 
                  <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo">
@@ -25,93 +25,112 @@
                     <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                     <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
                   </nuxt-link>
-                     <!-- <div class="change_lang_icon">
-                  
+                     <div class="change_lang_icon">
+
                        <el-button type="text" @click="dialogVisible = true">
                         <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
                   </div> -->
-                  <!-- <el-dialog
-                   
+                  <el-dialog
+
                     :visible.sync="dialogVisible"
                     class="change_lang_modal"
                     width="70%">
-                   
+
                      <div class="lang lang_icon">
                         <el-dropdown @command="changeLang"  style="text-align:center">
-                         
+
                             <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
                             <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                         
+
                             <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
-                      
-                      
-                        </el-dropdown>   
+
+
+                        </el-dropdown>
                     </div>
 
-                   
-                  </el-dialog> -->
+
+                  </el-dialog>
               </div>
-               
-           
+
+
         </div>
         <div v-else>
-           
+
               <div class="demo-type">
-               
-                
+
+
                  <el-row >
                   <el-col :span="21">
                       <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
                         <el-avatar :size="60" v-if="this.profile.profile == null">
                           <img src="~static/images/icons/me_img.png" alt="">
-                      
+
                       </el-avatar>
-                 
+
                       <el-avatar :size="60" v-else >
                         <img :src="this.profile.profile" alt="">
                       </el-avatar>
                     </nuxt-link>
-              <div  class="avatar_text">
+                <div  class="avatar_text">
                   <ul>
                        <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
-                          <li style="color:#fff;line-height:16px">
-                            <span>{{this.profile.name}}</span><br>
-                            <span>{{this.profile.phone}}</span>
-                          
+                          <li style="color:#fff"><span v-if="this.profile.name == null">{{this.profile.phone}}</span>
+                              <span v-else >{{this.profile.name}}</span>
+
+
                           </li>
                      </nuxt-link>
                     <nuxt-link :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                          <li  style="line-height:13px" class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
+                          <li  class="amount_mmk"><span>{{$t('you_balance')}} : </span>{{this.thousands_separators(myWallet)}} {{$t('kyat')}}</li>
                     </nuxt-link>
                   </ul>
                   </div>
-              
+
                   </el-col>
                   <!-- <el-col :span="3">
                     <Music></Music>
-                     
+
                   </el-col> -->
                    <el-col :span="3">
                       <!-- <div class="change_lang_icon">
-                    
+
                        <el-button type="text" @click="dialogVisible = true">
                          <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
                          <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
                       </el-button>
- 
+
                     </div> -->
                    </el-col>
                 </el-row>
-            
+
+<!--
+                  <el-dialog
+
+                    :visible.sync="dialogVisible"
+                    class="change_lang_modal"
+                    width="70%">
+
+                     <div class="lang lang_icon">
+                        <el-dropdown @command="changeLang"  style="text-align:center">
+
+                            <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt=""> English</el-dropdown-item>
+                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
+                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
+
+                        </el-dropdown>
+                    </div>
+
+
+                  </el-dialog> -->
               </div>
         </div>
 
         <carousel  :autoplay="true"  :nav="false" v-if="loaded" :items =1>
-    
+
             <div class="item" v-for="(img_slide,  i) in slider_images" :key="i">
                  <a :href="img_slide.link" target="_blank">
                     <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:160px;">
@@ -122,216 +141,68 @@
                   </a>
             </div>
         </carousel>
-        <h3 class="run_bar"> 
+        <h3 class="run_bar">
           <div class="scroll-left">
-            <p> 
+            <p>
                 <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
               {{this.slider_text.text}}</p>
           </div>
         </h3>
+          <!-- <div class="block" data-aos="fade-up" data-aos-duration="700">
+
+            <el-carousel  trigger="click" height="155px" arrow="always">
+               <el-carousel-item name='first' v-for="(img_slide,  i) in slider_images" :key="i">
+                  <div>
+                     <a :href="img_slide.link" target="_blank">
+                    <el-image :src="img_slide.slider_image" value="img_slide" style="width:100%;height:155px;">
+                      <div slot="placeholder" class="image-slot">
+                        Loading<span class="dot">...</span>
+                      </div>
+                    </el-image>
+                     </a>
+                  </div>
+
+              </el-carousel-item>
+
+                    <div class="el-carousel_label">
+
+                        <h3>
+                          <div class="scroll-left">
+                            <p>
+                               <img src="~static/images/slide_inner_icon.png" alt="" class="slide_inner_icon">
+                              {{this.slider_text.text}}</p>
+                          </div>
+                           </h3>
+                    </div>
+            </el-carousel>
+
+          </div>   -->
           <div class="row n_d_t">
             <div class="col">
-               
-                <div class="number">
-                      <!-- <h2 class="live_number">{{this.info.live}}</h2> -->
-                      <h2 v-if="!this.info.live && !this.info.result_1200"    >
-                        <div class="loadingio-spinner-dual-ball-ty27h70p24 ">
-                            <div class="ldio-ct1tsjzqdg5">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                      </h2>
-                           
-                       <h2 v-else   class="static"  v-bind:class="{ live_number: isActive, 'text-danger': hasError }"> 
-                          
-                         <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.live}}</span>
-                          <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.result_1200}}</span>
-                          <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.live}}</span>
-                          <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.result_1200}}</span>
-                          <span v-else>{{this.info.live}}</span>
-                      </h2>
-                      
-                </div>
-               
-            </div>
-            <div class="col">
                 <div class="date_time">
-                  <div class="d_t_item">
-                      <span>updated at:</span><br>
-                      <span v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00" v-text="this.last_date"></span>
-                      <span v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00" v-text="this.last_date"></span>
-                      <span v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30" v-text="this.last_date"></span>
-                      <span v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30" v-text="this.last_date"></span>
-                      <span v-else v-text="this.last_date"></span>
-                      <br>
-                  
-                      <span v-text="this.breakTime"></span>
-                  </div>
+
                 </div>
             </div>
           </div>
-          
-           <div class="card_one">
-            <div class="card_item">
-              <h5 class="time_number">12:00 PM</h5>
-            
-                <div class="row">
-                  
-                  <div class="col">
-                      <span>Set</span>
-                       <h4  v-if="!this.info.set_1200"    class="card_loading">
-                        <div class="loadingio-spinner-card_one_loading">
-                            <div class="card_one_loading">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                      </h4>
-                      <h4 v-else>
-                          <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_1200}}</h4>
-                          <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.set_1200}}</h4>
-                          <h4 v-else>{{this.info.set_1200}}</h4>
-                      </h4>
-                  </div>
-                  <div class="col">
-                      <span>Value</span>
-                       <h4  v-if="!this.info.val_1200 && !this.info.val_1200"    class="card_loading">
-                        <div class="loadingio-spinner-card_one_loading">
-                            <div class="card_one_loading">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                      </h4>
-                      <h4 >
-                        <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_1200}}</h4>
-                          <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.val_1200}}</h4>
-                          <h4 v-else>{{this.info.val_1200}}</h4>
-                      </h4>
-                  </div>
-                  <div class="col">
-                      <span>2D</span>
-                     <h4 class="static" style="font-weight:bold">
-                         
-                          {{this.info.result_1200}}
-                      </h4>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="card_two">
-                <div class="card_item">
-                  <h5 class="time_number">4:30 PM</h5>
-                    <div class="row">
-                      
-                      <div class="col">
-                          <span>Set</span>
-                          <h4  v-if="!this.info.set_430 "    class="card_loading">
-                            <div class="loadingio-spinner-card_one_loading">
-                                <div class="card_one_loading">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                          </h4>
-                          <h4 v-else>
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.set_430}}</h4>
-                            <h4 v-else-if ="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.set_430}}</h4>
-                            <h4 v-else>{{this.info.set_430}}</h4>
-                          </h4>
-                      </div>
-                      <div class="col">
-                          <span>Value</span>
-                           <h4   v-if="!this.info.val_430 "    class="card_loading">
-                            <div class="loadingio-spinner-card_one_loading">
-                                <div class="card_one_loading">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                          </h4>
-                          <h4  v-else>
-                            <h4 v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00">{{this.info.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00">{{this.info.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30">{{this.info.val_430}}</h4>
-                            <h4 v-else-if="this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30">{{this.info.val_430}}</h4>
-                            <h4 v-else>{{this.info.val_430}}</h4>
-                          </h4>
-                        
-                      </div>
-                      <div class="col">
-                          <span>2D</span>
-                          <h4 class="static" style="font-weight:bold">
-                       
-                          {{this.info.result_430}}
-                      </h4>
-                          <!-- <h4 class="result_num">{{this.info.result_430}}</h4> -->
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card_three">
-                <div class="card_item">
-                
-                    <div class="row">
-                      
-                      <div class="col">
-                          <h5 class="time_number">9:30 AM</h5>
-                      </div>
-                      <div class="col">
-                          <span>Modern</span>
-                          <h4>{{this.info.modern_930}}</h4>
-                      </div>
-                      <div class="col">
-                          <span>Internet</span>
-                          <h4>{{this.info.internet_930}}</h4>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card_three " >
-                <div class="card_item">
-                
-                    <div class="row">
-                      
-                      <div class="col">
-                          <h5 class="time_number">2:00 PM</h5>
-                      </div>
-                      <div class="col">
-                          <span>Modern</span>
-                          <h4>{{this.info.modern_200}}</h4>
-                      </div>
-                      <div class="col">
-                          <span>Internet</span>
-                          <h4>{{this.info.internet_200}}</h4>
-                      </div>
-                    </div>
-                </div>
-            </div>
+          <div class="choose_2d_3d" data-aos="fade-up" data-aos-duration="700">
+            <el-row>
 
-            <div class="bet_btn">
-              <nuxt-link :to="`${$t('/bet')}?lang=${$store.state.locale}`">
-                 <el-button type="" round>{{$t('Bet')}}</el-button>
-              </nuxt-link>
-               
+              <el-col :span="8">
+                 <nuxt-link :to="`${$t('/body')}?lang=${$store.state.locale}`">
+                        <div class="card_one font-color" style="margin-right:20px;">
+                         Body
+                         </div>
+
+                </nuxt-link>
+              </el-col>
+
+            </el-row>
             </div>
       </div>
     </div>
 
   </el-main>
-       
+
 </template>
 
 <script>
@@ -348,7 +219,7 @@ export default {
 
 
   mounted() {
- 
+
 
   var self = this;
           if (this.$store.state.sliderImage.length > 0){
@@ -368,7 +239,7 @@ export default {
                 self.slider_images = response.data.data
                 // self.$store.commit('setSliderImage', response.data.data);
                 })
-               
+
             // }, 2000);
               self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
@@ -391,28 +262,32 @@ export default {
           this.$store.commit('setWebAppVersion', response.data.version);
         });
     }
- 
-    
-      this.itvKweeLiveData();
+
+
+      this.getDataKwee();
       //this.getDataresult();
       this.updateIsLoggedIn();
+      // this.updateLang();
+      this.getKweeLiveData();
+
 
       let lang = localStorage.getItem('locale');
       this.$store.commit('SET_LANG', lang);
       // this.$axios.get(`/v2/v1/add_language?language=${lang}`)
       //   .then(response => {
-          
-          
+
+
       //   });
    },
 
+
+
   data() {
-    
+
     return {
         fullscreenLoading: false,
       serverDate:'',
       last_date:'',
-      close_day:'',
       dialogVisible: false,
        isActive: true,
       hasError: false,
@@ -425,12 +300,12 @@ export default {
 
       currentDate: null,
       morningTime:null,
-      
+
       slider_images:'',
       activeIndex: '1',
-      
+
       info:'',
- 
+      info_api:'',
       kwee_cma:'',
       set_1200:'',
       profile:'',
@@ -441,13 +316,13 @@ export default {
       myWallet:'',
       blockUser:'',
       loaded:'',
-    
+
       //   activeIndex2: '1',
     }
-    
+
   },
 
- 
+
   destroyed () {
     clearInterval(this.kweeliveItvId);
     clearInterval(this.serverCurTimeItvId);
@@ -460,7 +335,7 @@ export default {
     HomeRefresh() {
       this.fullscreenLoading = true;
         setTimeout(() => {
-          
+
           this.fullscreenLoading = false;
           location.reload();
         }, 1000);
@@ -473,23 +348,20 @@ export default {
       num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       return num_parts.join(".");
     },
-  
+
      isMobile: function() {
     	var check = false;
         (function(a){if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(a)||/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(a.substr(0,4))) check = true;})(navigator.userAgent||navigator.vendor||window.opera);
         return check;
     },
-  
+
 
      //luke
         async getKweeLiveData(){
-          this.$axios.get('/luke/twod-result-live')
+          this.$axios.get('/luke/kwee_live')
             .then(response => {
-              this.info = response.data.data;
-              this.close_day = response.data.data.is_close_day
-               this.last_date = response.data.data.last_date
-              console.log(response)
-
+              this.info = response.data[0];
+	      //console.dir(this.info);
             })
      },
 
@@ -498,72 +370,60 @@ export default {
             this.getKweeLiveData();
           }.bind(this), 3000)
      },
-      
+         async getDataKwee() {
+           this.itvKweeLiveData();
+          },
+          async getDataresult() {
+            this.$axios.get('/v2/v1/twod-result/live')
+              .then(response => {
+                this.info_api = response.data.data
+
+              })
+          },
        updateCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
             this.isActive = false
             this.breakTime = '12:01 PM';
-           
+
              this.getDataresult();
           } else if(this.currentTime > this.time_04_30){
-            
             this.isActive = false
-            this.breakTime = '4:30 PM'; 
-            //  this.getDataKwee();
+            this.breakTime = '4:30 PM';
+             this.getDataKwee();
           }else if(this.currentTime < this.morningTime_9_30){
-            
             this.isActive = false
-            this.breakTime = '4:30 PM'; 
-            //  this.getDataresult();
+            this.breakTime = '4:30 PM';
+             this.getDataresult();
           }else{
-          
-            
+
              this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
       // this.currentTime = moment().format('HH:mm:ss');
        this.currentDate = moment().format("YYYY D MMMM  dddd")
-        
+
        },
        ServerCurrentTime() {
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-           this.isActive = false
-          
+           // this.isActive = false
             this.breakTime = '12:01 PM';
-           
+
           } else if(this.currentTime > this.time_04_30){
             // this.isActive = false
-            // alert('lll')
-             if(this.close_day == 1) {
-            
-               this.isActive = false
-            }else {
-                
-               this.isActive = true
-            }
-            this.isActive = false
-            this.breakTime = '4:30 PM'; 
-            
+            this.breakTime = '4:30 PM';
+
           }else if(this.currentTime < this.morningTime_9_30){
-         
             this.isActive = false
-            this.breakTime = '4:30 PM'; 
-            
+            this.breakTime = '4:30 PM';
+
           }else{
-            
-            if(this.close_day == 1) {
-            
-               this.isActive = false
-            }else {
-                
-               this.isActive = true
-            }
-            
+
+             this.isActive = true
             this.breakTime = moment().format('h:mm A');
           }
       // this.currentTime = moment().format('HH:mm:ss');
        this.currentDate = moment().format("YYYY D MMMM  dddd")
-        
+
        },
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
@@ -581,14 +441,65 @@ export default {
       // },
     },
      created() {
-      
+
       this.currentDate = moment().format("YYYY D MMMM  dddd")
      // this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
      this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
-    
-  
-              
+
+    if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
+
+    }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
+
+      var stop_Interval =  setInterval(function() {
+
+       this.$axios.get('/v2/v1/twod-result/live')
+              .then(response => {
+
+                if(response.data.data.status_1200 == "backend") {
+
+                       this.isActive = false
+                       clearTimeout(stop_Interval);
+                }else {
+                       this.isActive = true
+                      this.$axios.get('/v2/v1/twod-result/live')
+                    .then(response => {
+
+                      this.info_api = response.data.data
+
+                    })
+                }
+                this.info_api = response.data.data
+              })
+         }.bind(this), 3000)
+  }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
+  }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
+
+  }else {
+
+      // var ok =  setInterval(function() {
+       this.$axios.get('/v2/v1/twod-result/live')
+              .then(response => {
+                  this.last_date = response.data.data.last_date
+                if(response.data.data.status_430 == "backend") {
+
+                         this.isActive = false
+
+                }else {
+                        this.isActive = false
+                    //   this.$axios.get('/v2/v1/twod-result/live')
+                    // .then(response => {
+                    //    this.last_date = response.data.data.last_date
+                    //   this.info_api = response.data.data
+
+                    // })
+                }
+                this.info_api = response.data.data
+              })
+        //  }.bind(this), 3000)
+  }
+
+
          let token = localStorage.getItem('token');
       if(token) {
          this.$axios.get("/v2/v1/profile",
@@ -600,27 +511,27 @@ export default {
                       this.blockUser = response.data.data.trash
                     //console.dir(response.data);
                      this.profile = response.data.data
-                    this.myWallet = this.profile.wallet 
+                    this.myWallet = this.profile.wallet
                     this.currentTime = response.data.data.time;
                     //console.dir(response.data.data.time);
                      if(this.blockUser == 0) {
                       }else {
                         this.$store.commit('logOut');
-                        this.$router.push(`/home?lang=${this.$store.state.locale}`); 
+                        this.$router.push(`/home?lang=${this.$store.state.locale}`);
                       }
-                  
-                  
+
+
 
                 })
       }
-    
+
           this.$axios.get('/v2/v1/server_time')
               .then(response => {
-    
+
                this.currentTime = response.data.time
                this.serverDate  = response.data.date
               })
-      
+
     },
 }
 
@@ -785,9 +696,9 @@ export default {
     box-shadow: -1px 1px 16px -4px rgba(0,0,0,0.75);
 
   }
-   
+
   .main_page {
-   
+
    margin:0 auto;
   }
   .el-header {
@@ -797,18 +708,18 @@ export default {
     padding:10px 0;
     z-index: 5;
   }
-  
+
   .el-aside {
     background-color: #D3DCE6;
     color: #333;
     text-align: center;
     line-height: 200px;
   }
-  
+
   .el-main {
     text-align: center;
     margin:0 auto;
-    background-image:url(~static/images/main_bg.png); 
+    background-image:url(~static/images/main_bg.png);
     background-size:cover;
     background-repeat: no-repeat;
     max-width: 480px;
@@ -817,18 +728,18 @@ export default {
     padding:0;
     overflow: hidden;
     /* background-position: 100% 100%; */
-    
+
   }
-  
+
   body > .el-container {
     margin-bottom: 40px;
   }
-  
+
   .el-container:nth-child(5) .el-aside,
   .el-container:nth-child(6) .el-aside {
     line-height: 260px;
   }
-  
+
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
   }
@@ -837,7 +748,7 @@ export default {
 /* CSS Document */
 .scroll-left {
   overflow: hidden;
-  height:31px;	
+  height:31px;
   position: relative;
   width:auto;
 }
@@ -848,7 +759,7 @@ export default {
   margin: 0;
   line-height: 31px;
   text-align: left;
-  /* Apply animation to this element */	
+  /* Apply animation to this element */
   -moz-animation: scroll-left 10s linear infinite;
   -webkit-animation: scroll-left 10s linear infinite;
   animation: scroll-left 10s linear infinite;
@@ -873,7 +784,7 @@ export default {
     background: #158220;
     color:#fff;
     border-radius: 21px;
-    
+
 }
 .lang .el-dropdown-link {
     font-size: 18px;
@@ -913,11 +824,11 @@ export default {
     margin:20px auto;
     color:#000;
     text-transform:capitalize;
-    
+
 }
 .language_type ul li a {
     text-decoration: none;
-   
+
 }
 .language_type .active {
     background:#158220;
@@ -931,7 +842,7 @@ export default {
 .language_type .el-page-header {
     line-height: 43px;
     color:#000;
-   
+
 }
 .language_type .el-page-header__content {
     color:#000;
@@ -943,7 +854,10 @@ export default {
 }
 .main_page .el-dialog__wrapper {
   background: rgba(7, 14, 7, 0.8);
-  
+
+}
+.font-color{
+  color:white;
 }
   /* change lang css end */
 /* Move it (define the animation) */
@@ -956,15 +870,15 @@ export default {
   100% { -webkit-transform: translateX(-100%); }
 }
 @keyframes scroll-left {
-  0%   { 
+  0%   {
   -moz-transform: translateX(100%); /* Browser bug fix */
   -webkit-transform: translateX(100%); /* Browser bug fix */
-  transform: translateX(200px); 		
+  transform: translateX(200px);
   }
-  100% { 
+  100% {
   -moz-transform: translateX(-100%); /* Browser bug fix */
   -webkit-transform: translateX(-100%); /* Browser bug fix */
-  transform: translateX(-100%); 
+  transform: translateX(-100%);
  }
 }
 </style>

@@ -656,7 +656,7 @@ export default {
                 if(this.holidays.status == 1) {
                     this.isActive = true
                     this.isHolidays = false
-                     this.isMorningEvening  = false
+                   
                 }
               })   
     
@@ -837,10 +837,14 @@ export default {
                         return this.time_countdown = this.$root.$t('close_text');
                     }else if(this.server_time > this.evening_to) {
 
-                         this.isActive = false
+                         if(this.holidays.status == 1) {
+                             this.isActive = true
+                        }else {
+                             this.isActive = false
+                        }
                          return  this.time_countdown = getAllTime.hour+':'+getAllTime.minute+':'+getAllTime.seconds
                     }else {
-                      
+                     
                     
                         this.isMorningEvening = true
                         //   this.isActive = true
