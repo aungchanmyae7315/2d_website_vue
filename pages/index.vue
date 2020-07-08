@@ -162,7 +162,7 @@
                         <el-col :span="12">
                             <nuxt-link :to="`${$t('/football/football')}?lang=${$store.state.locale}`">
 
-                                <img src="~static/images/Footballbutton.png" alt="" class="football_card_logo">
+                                <img src="~static/images/Football_link.png" alt="" class="football_card_logo">
 
                             </nuxt-link>
                         </el-col>
