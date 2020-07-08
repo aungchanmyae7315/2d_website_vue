@@ -26,10 +26,12 @@ const createStore = () => {
             setWebAppVersion(state, version) {
                 state.webAppVersion = version;
             },
-            setSliderImage(state, sliderImage) {
-                console.log(sliderImage)
+            setSliderImage(state, slider_images) {
+                localStorage.setItem('slider_images',JSON.stringify(slider_images));
+                state.slider_images = slider_images;
+               
+                // console.log(slider_images)
                 
-                state.sliderImage = sliderImage;
             },
             setSliderText(state, sliderText) {
                 state.sliderText = sliderText;
@@ -72,6 +74,9 @@ const createStore = () => {
             },
             updateLang(state, updateLang) {
                 state.updateLang = updateLang;
+            },
+            updateImage(state, updateImage) {
+                state.updateImage = updateImage;
             },
             setOtp(state, Otp) {
                 state.Otp = Otp;

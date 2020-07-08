@@ -197,16 +197,18 @@ export default {
 
     mounted() {
 
-        var ok = this.$store.state.sliderImage
-        console.log('hello')
-        console.log(ok)
-        console.log('world')
+        // var ok = localStorage.getItem('slider_images')
+        // console.log('hello')
+        // console.log(ok)
+        // console.log('world')
 
-        
+
         var self = this;
+          
+        if (localStorage.getItem('slider_images')) {
            
-        if (this.$store.state.sliderImage.length > 0) {
-            self.slider_images = this.$store.state.sliderImage;
+            this.slider_images = localStorage.getItem('slider_images')
+            console.log(this.slider_images)
             if (this.slider_images !== null) {
                 this.loaded = true;
             }
@@ -217,8 +219,9 @@ export default {
                     if (self.slider_images !== null) {
                         this.loaded = true;
                     }
-                    self.slider_images = response.data.data
-                      self.$store.commit('setSliderImage', response.data.data);
+                    this.slider_images = response.data.data
+                        // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
+                     self.$store.commit('setSliderImage', this.slider_images);
                 })
             // }, 2000);
             self.$axios.get('/v2/v1/slider_text')
@@ -242,6 +245,7 @@ export default {
 
         this.updateIsLoggedIn();
         this.updateLang();
+         this.updateImage();
 
         let lang = localStorage.getItem('locale');
         this.$store.commit('SET_LANG', lang);
@@ -355,6 +359,12 @@ export default {
         },
         hasLang() {
             return Boolean(localStorage.getItem('locale'));
+        },
+         updateImage() {
+            this.$store.commit('updateImage', this.hasImage());
+        },
+        hasImage() {
+            return Boolean(localStorage.getItem('slider_images'));
         },
     },
     created() {
