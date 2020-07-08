@@ -194,20 +194,24 @@ export default {
     actions: {},
     layout: 'homeLayout',
 
+    
+       
+
 
     mounted() {
-
-        // var ok = localStorage.getItem('slider_images')
-        // console.log('hello')
-        // console.log(ok)
-        // console.log('world')
-
-
+          this.currentTime = moment().format('YYYY-MM-DD hh:mm:ss');
+             this.getSliderTime =  JSON.parse(localStorage.getItem('slider_time'))
+             console.log(this.getSliderTime)
+             if(this.getSliderTime == this.getSliderTime) {
+                  localStorage.removeItem('slider_images');
+                   localStorage.removeItem('slider_text');
+                   
+             }
         var self = this;
           
         if (localStorage.getItem('slider_images')) {
            
-            this.slider_images = localStorage.getItem('slider_images')
+            this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
             console.log(this.slider_images)
             if (this.slider_images !== null) {
                 this.loaded = true;
@@ -222,13 +226,24 @@ export default {
                     this.slider_images = response.data.data
                         // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
                      self.$store.commit('setSliderImage', this.slider_images);
-                })
-            // }, 2000);
-            self.$axios.get('/v2/v1/slider_text')
-                .then(response => {
-                    self.slider_text = response.data.data[0];
+                        var myDate =  moment().format('YYYY-MM-DD hh:mm:ss');
+                        this.slider_time = moment(myDate).add(2, 'hours').format('YYYY-MM-DD hh:mm:ss');
+                        self.$store.commit('setSliderTime', this.slider_time);
                 })
         }
+          if(localStorage.getItem('slider_images')) {
+               
+                  this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                  console.log(this.slider_text)
+            }else {
+                 self.$axios.get('/v2/v1/slider_text')
+                .then(response => {
+                    self.slider_text = response.data.data[0];
+                     self.$store.commit('setSliderText', this.slider_text);
+                     
+                })
+            }
+
         var m = window.location.href.match(/device_id=([^&]+)/i);
         var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
         if (m != null && isSeinluckyApp) {
@@ -245,7 +260,7 @@ export default {
 
         this.updateIsLoggedIn();
         this.updateLang();
-         this.updateImage();
+       
 
         let lang = localStorage.getItem('locale');
         this.$store.commit('SET_LANG', lang);
@@ -360,12 +375,7 @@ export default {
         hasLang() {
             return Boolean(localStorage.getItem('locale'));
         },
-         updateImage() {
-            this.$store.commit('updateImage', this.hasImage());
-        },
-        hasImage() {
-            return Boolean(localStorage.getItem('slider_images'));
-        },
+        
     },
     created() {
 

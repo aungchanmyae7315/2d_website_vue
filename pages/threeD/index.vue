@@ -159,31 +159,50 @@ export default {
                      this.$nuxt.$loading.finish()
                 })
 
-    var self = this;
-          if (this.$store.state.sliderImage.length > 0){
-            self.slider_images = this.$store.state.sliderImage;
-             if(this.slider_images  !== null) {
-                        this.loaded = true;
-                    }
-          }
-          else{
-            // setTimeout(function(){
-              self.$axios.get('/v2/v1/slider_image?name=3D')
-                .then(response => {
+          this.currentTime = moment().format('YYYY-MM-DD hh:mm:ss');
+             this.getSliderTime =  JSON.parse(localStorage.getItem('slider_time'))
+             console.log(this.getSliderTime)
+             if(this.getSliderTime == this.getSliderTime) {
+                  localStorage.removeItem('slider_images');
+                   localStorage.removeItem('slider_text');
                    
-                 if(self.slider_images  !== null) {
+             }
+        var self = this;
+          
+        if (localStorage.getItem('slider_images')) {
+           
+            this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
+            console.log(this.slider_images)
+            if (this.slider_images !== null) {
+                this.loaded = true;
+            }
+        } else {
+            // setTimeout(function(){
+            self.$axios.get('/v2/v1/slider_image?name=home')
+                .then(response => {
+                    if (self.slider_images !== null) {
                         this.loaded = true;
                     }
-
-                self.slider_images = response.data.data
+                    this.slider_images = response.data.data
+                        // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
+                     self.$store.commit('setSliderImage', this.slider_images);
+                        var myDate =  moment().format('YYYY-MM-DD hh:mm:ss');
+                        this.slider_time = moment(myDate).add(2, 'hours').format('YYYY-MM-DD hh:mm:ss');
+                        self.$store.commit('setSliderTime', this.slider_time);
                 })
-              self.$axios.get('/v2/v1/slider_text')
+        }
+          if(localStorage.getItem('slider_images')) {
+               
+                  this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                  console.log(this.slider_text)
+            }else {
+                 self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
-
-                self.slider_text = response.data.data[0];
+                    self.slider_text = response.data.data[0];
+                     self.$store.commit('setSliderText', this.slider_text);
+                     
                 })
-
-                }
+            }
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);

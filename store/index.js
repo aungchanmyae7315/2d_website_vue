@@ -16,6 +16,7 @@ const createStore = () => {
             webAppVersion: '',
             sliderImage: [],
             sliderText: '',
+            sliderTime: '',
             hello: ''
 
         },
@@ -29,12 +30,15 @@ const createStore = () => {
             setSliderImage(state, slider_images) {
                 localStorage.setItem('slider_images',JSON.stringify(slider_images));
                 state.slider_images = slider_images;
-               
-                // console.log(slider_images)
-                
+
             },
-            setSliderText(state, sliderText) {
-                state.sliderText = sliderText;
+            setSliderText(state, slider_text) {
+                localStorage.setItem('slider_text',JSON.stringify(slider_text));
+                state.slider_text = slider_text;
+            },
+            setSliderTime(state, slider_time) {
+                localStorage.setItem('slider_time',JSON.stringify(slider_time));
+                state.slider_time = slider_time;
             },
             SET_LANG(state, locale) {
                 if (state.locales.indexOf(locale) !== -1) {
