@@ -366,7 +366,7 @@ export default {
                     }
 
                 self.slider_images = response.data.data
-                console.log(self.slider_images)
+                // console.log(self.slider_images)
                 self.$store.commit('setSliderImage', response.data.data);
                 })
                
