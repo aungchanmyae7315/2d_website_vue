@@ -566,7 +566,7 @@ export default {
                 .then(response => {
                     console.log("heool", response);
                     this.footballMatchDetail = response.data.data;
-                    this.end_bet_football = response.data.data[0].end_date;
+                    this.end_bet_football = response.data.data[0].end_time;
                     console.log(this.end_bet_football)
                     console.log("Hello", this.footballMatchDetail);
 

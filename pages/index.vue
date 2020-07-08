@@ -157,7 +157,7 @@
 
                                 <div class="bauchu_card">Bau Cau</div>
 
-                            </nuxt-link>
+                                                </nuxt-link>
                         </el-col>
                         <el-col :span="12">
                             <nuxt-link :to="`${$t('/football/football')}?lang=${$store.state.locale}`">
