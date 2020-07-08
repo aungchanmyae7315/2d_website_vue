@@ -37,7 +37,7 @@
                                                <div class="ok">
                                                    <span class="tick"></span>
                                                 </div>
-                                               <img :src="fDetail.hot_team.logo" class="vs_team_img">
+                                               <img :src="fDetail.home_team.logo" class="vs_team_img">
 
                                             </label>
 
@@ -86,9 +86,9 @@
                                                     <div class="vs_inner team_01">
                                                         <span class="hot"><img src="~static/images/hot.png" width="20"> Hot</span>
                                                         <br>
-                                                        <img :src="fDetail.hot_team.logo" class="vs_team_img">
+                                                        <img :src="fDetail.home_team.logo" class="vs_team_img">
                                                         <br>
-                                                        <span class="vs_teamname">{{fDetail.hot_team.name}}</span>
+                                                        <span class="vs_teamname">{{fDetail.home_team.name}}</span>
                                                     </div>
                                                     <span class="vs_text"> VS</span>
                                                     <div class="vs_inner team_02">
@@ -160,10 +160,10 @@
                     <!-- <el-button  :disabled='submitted'  type="submit" v-on:click="football_bet()"   class="bet_submit" round>  {{$t('Bet')}}</el-button> -->
                     <!-- <button type="submit" class="btn_bet" v-on:click="football_bet()">Bet</button> -->
                     <div v-if="this.activeName == 'first'">
-                        <el-button type="" class="btn_bet" @click="footballSubmit_body('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}</el-button>
+                        <div ><el-button type="" class="btn_bet"  @click="footballSubmit_body('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}</el-button></div>
                     </div>
                     <div v-else-if="this.activeName == 'second'">
-                        <el-button type="" class="btn_bet" @click="footballSubmit('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}</el-button>
+                        <div><el-button type="" class="btn_bet"  @click="footballSubmit('numberValidateForm1')" :disabled='submitted' round>{{$t('Bet')}}</el-button></div>
                     </div>
 
 
