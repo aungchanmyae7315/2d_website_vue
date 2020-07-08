@@ -151,7 +151,7 @@
                         </el-col>
                     </el-row>
 
-                    <!-- <el-row>
+                    <el-row>
                         <el-col :span="12">
                             <nuxt-link :to="`${$t('football/home')}?lang=${$store.state.locale}`">
 
@@ -162,11 +162,11 @@
                         <el-col :span="12">
                             <nuxt-link :to="`${$t('/football/football')}?lang=${$store.state.locale}`">
 
-                                <img src="~static/images/footballbutton.jpeg" alt="" class="football_card_logo">
+                                <img src="~static/images/Footballbutton.png" alt="" class="football_card_logo">
 
                             </nuxt-link>
                         </el-col>
-                    </el-row> -->
+                    </el-row>
 
                 </div>
 
