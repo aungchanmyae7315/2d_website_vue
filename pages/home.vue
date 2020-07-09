@@ -545,7 +545,7 @@ export default {
            
           } else if(this.currentTime > this.time_04_30){
             // this.isActive = false
-            // alert('lll')
+            //alert('lll')
              if(this.close_day == 1) {
             
                this.isActive = false
@@ -570,6 +570,8 @@ export default {
                 
                this.isActive = true
             }
+          
+            this.isActive = true
             
             this.breakTime = moment().format('h:mm A');
           }
@@ -597,7 +599,7 @@ export default {
       this.currentDate = moment().format("YYYY D MMMM  dddd")
      // this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
-     this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
+      setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
   
               
