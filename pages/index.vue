@@ -201,14 +201,10 @@ export default {
     mounted() {
         var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
         var lastTimestamp = localStorage.getItem('slider_time')
-        console.log("dd",lastTimestamp)
-       
         var diff = nowTimestamp - lastTimestamp;
-        console.log('diff', diff)
-
         var self = this;
           
-        if (diff > 7200) {
+        if (diff < 7200 ) {
         
             this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
             if (this.slider_images !== null) {
@@ -229,15 +225,15 @@ export default {
                         self.$store.commit('setSliderTime', this.slider_time);
                 })
         }
-          if(localStorage.getItem('slider_images')) {
+          if(diff < 7200) {
                
-                 // this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
                   console.log(this.slider_text)
             }else {
                  self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
                     self.slider_text = response.data.data[0];
-                    // self.$store.commit('setSliderText', this.slider_text);
+                    self.$store.commit('setSliderText', this.slider_text);
                      
                 })
             }
