@@ -199,20 +199,18 @@ export default {
 
 
     mounted() {
-          this.currentTime = moment().format('YYYY-MM-DD hh:mm:ss');
-             this.getSliderTime =  JSON.parse(localStorage.getItem('slider_time'))
-             console.log(this.getSliderTime)
-             if(this.currentTime > this.getSliderTime) {
-                  localStorage.removeItem('slider_images');
-                   localStorage.removeItem('slider_text');
-                   
-             }
+        var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var lastTimestamp = localStorage.getItem('slider_time')
+        console.log("dd",lastTimestamp)
+       
+        var diff = nowTimestamp - lastTimestamp;
+        console.log('diff', diff)
+
         var self = this;
           
-        if (localStorage.getItem('slider_images')) {
-           
+        if (diff > 7200) {
+        
             this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
-            console.log(this.slider_images)
             if (this.slider_images !== null) {
                 this.loaded = true;
             }
@@ -225,21 +223,21 @@ export default {
                     }
                     this.slider_images = response.data.data
                         // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
-                     self.$store.commit('setSliderImage', this.slider_images);
-                        var myDate =  moment().format('YYYY-MM-DD hh:mm:ss');
-                        this.slider_time = moment(myDate).add(2, 'hours').format('YYYY-MM-DD hh:mm:ss');
+                      self.$store.commit('setSliderImage', this.slider_images);
+
+                       this.slider_time = Math.round(new Date().getTime()/1000);
                         self.$store.commit('setSliderTime', this.slider_time);
                 })
         }
           if(localStorage.getItem('slider_images')) {
                
-                  this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                 // this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
                   console.log(this.slider_text)
             }else {
                  self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
                     self.slider_text = response.data.data[0];
-                     self.$store.commit('setSliderText', this.slider_text);
+                    // self.$store.commit('setSliderText', this.slider_text);
                      
                 })
             }
