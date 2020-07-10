@@ -479,27 +479,27 @@
           // 8 hours == 28800 seconds
       if(token) {
            if (diff < 28800 ) {
-        
+
             this.bank_account = JSON.parse(localStorage.getItem('bank_account'))
-           
-        } else {
-           
-              this.$axios.get("/v2/v1/bank_card_grouping",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                      console.log(response)
-                        this.bank_account = response.data.data[0].bank_group
-                        this.$store.commit('bank_card_grouping', this.bank_account);
-                        this.bank_group_time = Math.round(new Date().getTime()/1000);
-                        this.$store.commit('bankgroupTime', this.bank_group_time);
-                })
-         
+
+          } else {
             
-            
-        }
+                this.$axios.get("/v2/v1/bank_card_grouping",
+                      {headers: {
+                                "Authorization": "Bearer "+token
+                          }
+                          })
+                      .then(response => {
+                        console.log(response)
+                          this.bank_account = response.data.data[0].bank_group
+                          this.$store.commit('bank_card_grouping', this.bank_account);
+                          this.bank_group_time = Math.round(new Date().getTime()/1000);
+                          this.$store.commit('bankgroupTime', this.bank_group_time);
+                  })
+          
+              
+              
+          }
       }else {
          console.log('not login')
             this.$axios.get('/v1/admin-bank')
