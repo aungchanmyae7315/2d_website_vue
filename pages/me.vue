@@ -202,7 +202,6 @@ export default {
             this.get_refel = JSON.parse(localStorage.getItem('get_refel'))
            
         } else {
-          console.log('ok')
            this.$axios.get("/v2/v1/referal_code",
             {headers: {
                         "Authorization": "Bearer "+token
