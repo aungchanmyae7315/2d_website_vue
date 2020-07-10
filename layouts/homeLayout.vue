@@ -36,25 +36,6 @@
           </el-row>
        
              
- 
-               
-          
-            <!-- <el-col :span="4">
-                 <div class="music_icon">
-              
-                      <div id="player-container">
-                        <div id="play-pause" class="play" v-on:click="play">Play</div>
-                         <audio ref="audioElm" src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1"></audio>
-                      </div>
-                     
-                </div>
-            </el-col> -->
-           
-              
-           
- 
-
-                    
 
       
         </el-header>

@@ -12,7 +12,7 @@
                  <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo">
            <!-- </nuxt-link> -->
               <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
-                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                <img src="~static/icons_header/refresh_icon.png" alt="">
               </div>
       </el-header>
         <div class="longText" id="hidingScrollBar">
