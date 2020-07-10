@@ -84,7 +84,7 @@ export default {
     margin-left: 17px;
     padding-right: 28px;
     padding-bottom:150px;
-    padding-top:40px;
+    padding-top:20px;
 }
 .promotion {
     text-align:center;
