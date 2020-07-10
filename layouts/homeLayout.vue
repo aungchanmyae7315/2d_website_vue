@@ -148,6 +148,13 @@ export default {
   methods: {
     HomeRefresh() {
       this.fullscreenLoading = true;
+      localStorage.removeItem('slider_images');
+      localStorage.removeItem('slider_text');
+      localStorage.removeItem('slider_time');
+      localStorage.removeItem('bank_account');
+      localStorage.removeItem('bank_group_time');
+      localStorage.removeItem('get_refel');
+      localStorage.removeItem('referal_code_time');
         setTimeout(() => {
           
           this.fullscreenLoading = false;
