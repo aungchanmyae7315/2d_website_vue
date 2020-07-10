@@ -10,7 +10,7 @@
                 </el-page-header>
                  <img src="~static/images/threed_logo.png" class="logo" alt="logo" style="width:145px">
               <div @click="HomeRefresh" class=" refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
-                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                <img src="~static/icons_header/refresh_icon.png" alt="">
               </div>
            <!-- </nuxt-link> -->
           </el-header>
