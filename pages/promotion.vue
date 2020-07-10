@@ -1,9 +1,7 @@
 <template>
    <main>
          <el-main>
-              <el-header>
-          
-             </el-header>
+             
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_promotion">
                   <div class="promotion">
@@ -86,6 +84,7 @@ export default {
     margin-left: 17px;
     padding-right: 28px;
     padding-bottom:150px;
+    padding-top:40px;
 }
 .promotion {
     text-align:center;
