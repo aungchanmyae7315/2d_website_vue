@@ -472,8 +472,17 @@
       };
     },
      created() {
-          let token = localStorage.getItem('token');
-        if(token) {
+        let token = localStorage.getItem('token');
+         var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var lastTimestamp = localStorage.getItem('bank_group_time')
+        var diff = nowTimestamp - lastTimestamp;
+          // 8 hours == 28800 seconds
+        if (diff < 28800 ) {
+        
+            this.bank_account = JSON.parse(localStorage.getItem('bank_account'))
+           
+        } else {
+            if(token) {
               this.$axios.get("/v2/v1/bank_card_grouping",
                     {headers: {
                                "Authorization": "Bearer "+token
@@ -482,13 +491,19 @@
                     .then(response => {
                       console.log(response)
                         this.bank_account = response.data.data[0].bank_group
+                        this.$store.commit('bank_card_grouping', this.bank_account);
+                        this.bank_group_time = Math.round(new Date().getTime()/1000);
+                        this.$store.commit('bankgroupTime', this.bank_group_time);
                 })
-        }else {
-           this.$axios.get('/v1/admin-bank')
-              .then(response => {
-                this.bank_account = response.data.data
-              })  
+          }else { 
+            console.log('not login')
+            this.$axios.get('/v1/admin-bank')
+                .then(response => {
+                  this.bank_account = response.data.data
+                })  
+            }
         }
+        
       
          
         if(token) {

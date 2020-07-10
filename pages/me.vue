@@ -193,17 +193,34 @@ export default {
                   this.$router.push(`/home?lang=${this.$store.state.locale}`); 
                 }  
         })
-         this.$axios.get("/v2/v1/referal_code",
+        var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var lastTimestamp = localStorage.getItem('referal_code_time')
+        var diff = nowTimestamp - lastTimestamp;
+          // 8 hours == 28800 seconds
+        if (diff < 28800 ) {
+          
+            this.get_refel = JSON.parse(localStorage.getItem('get_refel'))
+           
+        } else {
+          console.log('ok')
+           this.$axios.get("/v2/v1/referal_code",
             {headers: {
                         "Authorization": "Bearer "+token
                   }
                 })
             .then(response => {
+              console.log(response)
               this.get_refel = response.data.data.referal_code
-              this.get_refel_gen = response.data.data.generate_code
-              this.hide_oneDay = response.data.data.status
+               this.$store.commit('referal_code', this.get_refel);
+                this.referal_code_time = Math.round(new Date().getTime()/1000);
+                this.$store.commit('referalTime', this.referal_code_time);
+
+              // this.get_refel_gen = response.data.data.generate_code
+              // this.hide_oneDay = response.data.data.status
               
-        })
+          })
+        }
+        
     } 
    },
     data() {

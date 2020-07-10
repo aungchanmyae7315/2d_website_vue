@@ -40,6 +40,22 @@ const createStore = () => {
                 localStorage.setItem('slider_time',JSON.stringify(slider_time));
                 state.slider_time = slider_time;
             },
+            bank_card_grouping(state, bank_account) {
+                localStorage.setItem('bank_account',JSON.stringify(bank_account));
+                state.bank_account = bank_account;
+            },
+            bankgroupTime(state, bank_group_time) {
+                localStorage.setItem('bank_group_time',JSON.stringify(bank_group_time));
+                state.bank_group_time = bank_group_time;
+            },
+            referal_code(state, get_refel) {
+                localStorage.setItem('get_refel',JSON.stringify(get_refel));
+                state.get_refel = get_refel;
+            },
+            referalTime(state, referal_code_time) {
+                localStorage.setItem('referal_code_time',JSON.stringify(referal_code_time));
+                state.bank_group_time = referal_code_time;
+            },
             SET_LANG(state, locale) {
                 if (state.locales.indexOf(locale) !== -1) {
                     state.locale = locale
