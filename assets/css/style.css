@@ -88,6 +88,17 @@ a:hover {
 .el-avatar>img {
     width: 60px;
 }
+.header_refresh_icon {
+    width:30px;
+    height: auto;
+    position: relative;
+    left: 29px;
+}
+.service_header_refresh_icon {
+    width:30px;
+    height: auto;
+    margin: 6px 24px 0 0;
+}
 
 .el-menu-item {
     width: 71px;
@@ -247,13 +258,15 @@ a:hover {
 }
 
 .header_icon {
-    width: 23px;
+    width: 19px;
     height: auto;
+    margin-left:5px;
 }
 
 .noti img {
     width: 24px;
     height: auto;
+    margin-left:8px;
 }
 
 .noti {

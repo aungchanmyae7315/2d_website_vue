@@ -35,8 +35,8 @@
             </el-menu-item>
             </nuxt-link>
             <nuxt-link :to="`${$t('/service')}?lang=${$store.state.locale}`">
-            <el-menu-item index="3" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
-                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+            <el-menu-item index="3">
+                <img src="~static/icons_header/service_t_icon.png" alt="">
                 <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('service_title')}}</h5>
             </el-menu-item>
             </nuxt-link>

@@ -2,9 +2,7 @@
    <main>
          <el-main>
               <el-header>
-           <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
-                <h5 class="promotion_title">{{$t('promotion')}}</h5>
-           <!-- </nuxt-link> -->
+          
              </el-header>
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_promotion">

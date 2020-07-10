@@ -4,15 +4,27 @@
     <el-main class="me">
        <div class="main_container">
      <el-header class="me_header" >
-
-         <div  v-if ="$store.state.isLoggedIn">
-              <div class="demo-type">
+        <el-row>
+               <el-col :span="12" style="text-align:left;">
+                   <h5 style="padding-left:20px;" class="promotion_title">{{$t('me_title')}}</h5>
+               </el-col >
+               <el-col :span="12"  style="text-align:right;">
+                <div  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+                   <img src="~static/icons_header/refresh_icon.png" alt="" class="service_header_refresh_icon">
+                </div>
+               </el-col>
+             </el-row>
+       </el-header>
+         <div class="longText" id="hidingScrollBar">
+              <div class="hideScrollBar">
+          <div  v-if ="$store.state.isLoggedIn">
+              <div class="demo-type" style="padding-bottom:0;">
                <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
                  <el-avatar v-if="this.profile.profile == null" :size="60"><img src="~static/images/icons/me_img.png" alt=""> </el-avatar>
                  <el-avatar v-else :size="60"><img :src="this.profile.profile " alt=""></el-avatar>
                 </nuxt-link>
                  <div  class="avatar_text">
-                  <ul>
+                  <ul style="padding-bottom:0;">
                        <nuxt-link :to="`${$t('/profile_edit')}?lang=${$store.state.locale}`">
                           <li style="color:#fff;line-height:16px">
                             <span>{{this.profile.name}}</span><br>
@@ -38,9 +50,8 @@
         </div>
        
            
-      </el-header>
-      <el-main>
-  
+     
+ 
            <ul class="acc_items">
               
             
@@ -112,8 +123,7 @@
 </el-dialog>
                   
   
-      </el-main>
-   
+  
      <el-footer class="footer">
           <el-menu
            
@@ -150,8 +160,8 @@
             </el-menu-item>
             </nuxt-link>
              <nuxt-link :to="`${$t('/me')}?lang=${$store.state.locale}`">
-             <el-menu-item index="4"  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
-               <img src="~static/icons_header/dimond_t_icon.png" alt="">
+             <el-menu-item index="4">
+               <img src="~static/icons_header/me_t_icon.png" alt="">
                <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('me_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
@@ -159,6 +169,8 @@
 
           </el-menu>
         </el-footer>
+              </div>
+      </div>
   </div>
    <HasError></HasError>
       </el-main>
@@ -288,8 +300,11 @@ export default {
 
 <style> 
     .me_header {
-        padding:0px 12px !important;
-        height:82px !important;
+       position: fixed;
+      max-width: 480px;
+      width:100%;
+      text-align: center;
+       
     }
 
     .header {
@@ -301,7 +316,7 @@ export default {
     .acc_items {
         list-style :none;
         text-align:left;
-        padding:10px;
+        padding:0;
     }
     .acc_items  li {
         padding:10px 0;

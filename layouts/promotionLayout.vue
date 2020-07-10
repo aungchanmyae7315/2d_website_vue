@@ -1,7 +1,19 @@
 <template>
   <div class="main_container">
     
-     
+       <el-header class="service_header" >
+             <el-row>
+               <el-col :span="12" style="text-align:left;">
+                   <h5 style="padding-left:20px;" class="promotion_title">{{$t('promotion_title')}}</h5>
+               </el-col >
+               <el-col :span="12"  style="text-align:right;">
+                <div  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+                   <img src="~static/icons_header/refresh_icon.png" alt="" class="service_header_refresh_icon">
+                </div>
+               </el-col>
+             </el-row>
+            
+           </el-header>
            <Nuxt />
      
 
@@ -29,8 +41,8 @@
             </el-menu-item>
             </nuxt-link>
              <nuxt-link :to="`${$t('/promotion')}?lang=${$store.state.locale}`"> 
-            <el-menu-item index="2" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
-               <img src="~static/icons_header/dimond_t_icon.png" alt="">
+            <el-menu-item index="2" >
+               <img src="~static/icons_header/promotion_t_icon.png" alt="">
                 <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('promotion_title')}}</h5>
             </el-menu-item>
             </nuxt-link>

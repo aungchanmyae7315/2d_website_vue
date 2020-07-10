@@ -1,7 +1,19 @@
 <template>
     <el-main class="wallet">
       <el-header class="wallet_header" >
-        
+         
+             <el-row>
+               <el-col :span="12" style="text-align:left;">
+                   <h5 style="padding-left:20px;" class="promotion_title">{{$t('wallet_title')}}</h5>
+               </el-col >
+               <el-col :span="12"  style="text-align:right;">
+                <div  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+                   <img src="~static/icons_header/refresh_icon.png" alt="" class="service_header_refresh_icon">
+                </div>
+               </el-col>
+             </el-row>
+            
+       
               <div v-if="!$store.state.isLoggedIn" class="demo-type logout_wallet">
                  <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" >  <img src="~static/images/icons/me_img.png" alt=""></el-avatar>
@@ -147,8 +159,8 @@
                     </el-menu-item>
                 </nuxt-link>
                 <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                  <el-menu-item index="2"  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
-                      <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                  <el-menu-item index="2">
+                      <img src="~static/icons_header/wallet_t_icon.png" alt="">
                       <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('wallet_title')}}</h5>
                   </el-menu-item>
                 </nuxt-link>
