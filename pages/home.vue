@@ -362,7 +362,7 @@ export default {
             }
         } else {
             // setTimeout(function(){
-            self.$axios.get('/v2/v1/slider_image?name=home')
+            self.$axios.get('/v2/v1/slider_image?name=2D')
                 .then(response => {
                     if (self.slider_images !== null) {
                         this.loaded = true;
