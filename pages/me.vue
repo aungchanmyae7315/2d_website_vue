@@ -185,6 +185,7 @@ export default {
      HasError
     },
     mounted() {
+      
      this.updateIsLoggedIn();
        let token = localStorage.getItem('token');
     if(token) {
@@ -209,11 +210,20 @@ export default {
         var lastTimestamp = localStorage.getItem('referal_code_time')
         var diff = nowTimestamp - lastTimestamp;
           // 8 hours == 28800 seconds
+       
         if (diff < 28800 ) {
-          
             this.get_refel = JSON.parse(localStorage.getItem('get_refel'))
+          console.log(this.get_refel)
+          if(this.get_refel !== null) {
            
+              localStorage.removeItem('get_refel');
+              localStorage.removeItem('referal_code_time');
+          }
+        
+          
+
         } else {
+          console.log('ooooo')
            this.$axios.get("/v2/v1/referal_code",
             {headers: {
                         "Authorization": "Bearer "+token
@@ -222,6 +232,7 @@ export default {
             .then(response => {
               console.log(response)
               this.get_refel = response.data.data.referal_code
+
                this.$store.commit('referal_code', this.get_refel);
                 this.referal_code_time = Math.round(new Date().getTime()/1000);
                 this.$store.commit('referalTime', this.referal_code_time);

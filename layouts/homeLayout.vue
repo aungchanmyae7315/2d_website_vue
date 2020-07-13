@@ -249,7 +249,7 @@ html {
 }
 .el-header {
   background-color: #14612D;
-    color: #333;
+    /* color: #333; */
     padding: 10px 0;
     z-index: 5;
 }

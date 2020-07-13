@@ -599,7 +599,7 @@ export default {
 
 .el-header {
     background-color: #14612D;
-    color: #333;
+    /* color: #333; */
     /* text-align: center; */
     padding: 10px 0;
     z-index: 5;

@@ -348,6 +348,14 @@ export default {
 
 
   mounted() {
+     this.$axios.get('/luke/twod-result-live')
+            .then(response => {
+              this.info = response.data.data;
+              this.close_day = response.data.data.is_close_day
+               this.last_date = response.data.data.last_date
+              console.log(response)
+
+            })
  
         var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
         var lastTimestamp = localStorage.getItem('slider_time')
