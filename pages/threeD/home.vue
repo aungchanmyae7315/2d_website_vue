@@ -576,7 +576,7 @@ export default {
         text-align: center;
    }
    .threed_home .el-input__inner {
-      margin-top:10px;
+      margin-top:15px;
       text-align: right;
        background-color: #fff;
        color:#7e7575;
@@ -608,7 +608,7 @@ export default {
     }
     .book_btn {
       background: #fff;
-      margin-top:10px;
+      margin-top:15px;
       height: 44px;
       border-radius: 4px;
 

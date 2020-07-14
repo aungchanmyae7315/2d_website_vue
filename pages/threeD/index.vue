@@ -400,12 +400,7 @@ export default {
         color:#fff;
         text-align: center;
    }
-   .threed_home .el-input__inner {
-      margin-top:15px;
-      text-align: right;
-       background-color:#fff;
-       color:#b8b8b8;
-   }
+
    .threeD_main .logo {
        width:104px;
         height: auto;
