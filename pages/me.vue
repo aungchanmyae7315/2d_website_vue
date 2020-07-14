@@ -223,7 +223,7 @@ export default {
           
 
         } else {
-          console.log('ooooo')
+        
            this.$axios.get("/v2/v1/referal_code",
             {headers: {
                         "Authorization": "Bearer "+token

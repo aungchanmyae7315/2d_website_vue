@@ -15,12 +15,12 @@
               </div> -->
            <!-- </nuxt-link> -->
            <el-row>
-             <el-col :span="8" style="padding-right:7px;">
+             <el-col :span="7" style="text-align:left">
               <a href="https://www.facebook.com/113035390413729/posts/121054989611769/?d=n" target="_blank">
                  <img class="book_btn" src="~static/threed_img/dream_book.png" alt="">
               </a>
              </el-col>
-             <el-col :span="16">
+             <el-col :span="17">
                       <el-form-item
                                         
                 prop="amountThreeD"
@@ -416,7 +416,7 @@ export default {
   padding-top:14px;
 }
 .threed_home .el-header {
-  padding:20px;
+  padding:20px 20px 10px 20px;
   color:#fff;
 }
 .main_page .el-image {
@@ -482,7 +482,7 @@ export default {
     height: unset !important; 
     left: unset !important; 
     top: unset !important; 
-     background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%) !important;
+    background-image: linear-gradient(#3A4450, #151E28), linear-gradient(270deg, #3A4450, #3A4450 50%, #151E28 100%) !important;
     z-index: 9999;
     overflow: hidden;
     border-radius: 21px;
@@ -535,7 +535,7 @@ export default {
 
   .picker .mask[data-v-4804d034] {
         background-size: 100% 70px !important;
-    background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.136), rgba(255, 255, 255, 0.034)), linear-gradient(0deg, rgba(255, 255, 255, 0.034), rgba(255, 255, 255, 0.136));
+          background-image: -webkit-gradient(linear, left top, left bottom,  from(rgba(40, 49, 59, 0.9)), to(rgba(40, 49, 59, 0.2))), -webkit-gradient(linear, left bottom, left top, from(rgba(40, 49, 59, 0.9)), to(rgba(40, 49, 59, 0.2)));
   }
   .picker .list li[data-v-1a173b4c] {
     color:#fff;
@@ -576,12 +576,12 @@ export default {
         text-align: center;
    }
    .threed_home .el-input__inner {
-      margin-top:15px;
+      margin-top:10px;
       text-align: right;
        background-color: #fff;
        color:#7e7575;
        font-size: 19px;
-       padding:25px 20px;
+       padding:21px 20px;
    }
    .threeD_main .logo {
        width:104px;
@@ -608,8 +608,8 @@ export default {
     }
     .book_btn {
       background: #fff;
-      margin-top:14px;
-      height: 52px;
+      margin-top:10px;
+      height: 44px;
       border-radius: 4px;
 
       /* width:52px !important;

@@ -113,7 +113,7 @@
                               </div>
                             </el-image>
                             <div  class="avatar_text">
-                              <ul style="position:relative;top:-8px;">
+                              <ul style="position:relative;top:-3px;">
                                 <li style="font-size:14px;">{{bank_info.bank_name}}</li>
                                 <li style="font-size:14px;" class="bank_number">
                                   <span class="code text-red">{{ bank_info.card_number }}</span>
@@ -121,7 +121,7 @@
                                 </li>
                               </ul>
                             </div>
-                            <div class="result_icon" style="padding-top:18px;">
+                            <div class="result_icon" style="padding-top:14px;">
                                 <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode(bank_info.id)">
                                 {{ $t('Copy') }}
                               </span>
@@ -203,7 +203,7 @@
     margin-left: 15px;
     padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
     padding-top:60px;
-    padding-bottom: 330px; /*This would hide the scroll bar of the bottom if there is one*/
+    padding-bottom: 260px; /*This would hide the scroll bar of the bottom if there is one*/
 
     }
   .wallet_header .demo-type {
