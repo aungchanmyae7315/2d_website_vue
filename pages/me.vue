@@ -200,6 +200,7 @@ export default {
                  this.blockUser = response.data.data.trash
                 this.device_id = response.data.data.device_id
               this.profile = response.data.data
+               this.myWallet = this.profile.wallet
                if(this.blockUser == 0) {
                 }else {
                   this.$store.commit('logOut');
