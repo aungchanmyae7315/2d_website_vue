@@ -1,13 +1,13 @@
 <template>
     <section class="bet_container">
-        <el-form @submit.native.prevent :model="ruleForm" ref="ruleForm" class="demo-ruleForm">
+        <el-form @submit.native.prevent :model="numberValidateForm1" ref="numberValidateForm1" class="demo-ruleForm">
             <el-header style=" background-color:#14612D;">
                 <el-row>
                     <el-col :span="10">
                         <div class="goTo">
-                            <a href="/">
-                                <div class="" @back="goBack"><i class="el-icon-arrow-left"></i></div>
-                            </a>
+
+                            <div class="" @click="goBack"><i class="el-icon-arrow-left"></i></div>
+
                         </div>
                     </el-col>
                     <el-col :span="10">
@@ -22,11 +22,11 @@
                     <el-col>
 
                         <el-form-item style="margin-bottom:10px;" prop="amount" :rules="[
-                                     { required: true, message: $t('amount_required') },
+                                         { required: true, message: $t('amount_required') },
 
-                                ]">
+                                    ]">
 
-                            <el-input @keypress.enter.native="bet('ruleForm')" class type="number" placeholder="100 Ks(min)" v-model="ruleForm.amount"></el-input>
+                            <el-input @keypress.enter.native="bet('numberValidateForm1')" class type="number" placeholder="100 Ks(min)" v-model="numberValidateForm1.amount"></el-input>
 
                         </el-form-item>
                     </el-col>
@@ -64,10 +64,10 @@
                     </div>
                     <div v-else class="bet_login_btn">
                         <el-col :span="10">
-                            <el-button :disabled='submitted' type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round>{{$t('Bet')}}</el-button>
+                            <el-button :disabled='submitted' type="warning" getHello="getHello" class="bet_btn_login" @click="footballSubmit_mown('numberValidateForm1')" round>{{$t('Bet')}}</el-button>
                         </el-col>
 
-                    <input type = "submit"  value="Bet" @click="bet1()">
+                        <!-- <input type = "submit"  value="Bet" @click="bet1()"> -->
                     </div>
                 </el-row>
             </el-header>
@@ -87,32 +87,20 @@
                             </div>
 
                             <el-form-item>
-                               <el-checkbox v-model="checked">
-                                    <div class="collapse_card mown">
-
-
-                                      <div class="" style="width:90%; display:flex; background-color:blue;">
-                                        <div class="" style="width:20%; background-color:red;">
-                                        <el-radio v-model="radio" label="1">Option A</el-radio>
+                                <div v-for="(match, f) in matchs" :key="f">
+                                <div class="collapse_card mown" @click="matchid()" :data-id="match.id" >
+                                    <div class="" style="width:100%; display:flex; background-color:blue;">
+                                        <div class="" style="width:45%; background-color:red;">
+                                            <el-radio v-model="radio" :label="match.home_team.id"  >{{match.home_team.name}}, {{match.id}}</el-radio>
                                         </div>
-                                        <div class="" style="width:20%; background-color:yellow;">
-                                        <el-radio v-model="radio" label="2">Option B</el-radio>
+                                        <div class="" style="width:45%; background-color:yellow;">
+                                            <el-radio v-model="radio" :label="match.away_team.id" >{{match.away_team.name}}{{match.id}}</el-radio>
                                         </div>
-                                      </div>
-
                                     </div>
-                                </el-checkbox>
-                                <div class="collapse_card mown">
-                                  <div class="1">
-                                    <el-checkbox v-model="checked1">
-                                        <div class="test1">
-                                          aa
-                                        </div>
-                                        <!-- <el-radio v-model="radio" label="1">Option A</el-radio>
-                                        <el-radio v-model="radio" label="2">Option B</el-radio> -->
-                                    </el-checkbox>
-                                  </div>
                                 </div>
+                                </div>
+
+
                             </el-form-item>
                         </div>
                     </div>
@@ -444,149 +432,6 @@
 </style>
 
 <script>
-const cityOptions = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
-    '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
-    '41', '42', '43', '44', '45', '46', '47', '48', '49', '50',
-    '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
-    '61', '62', '63', '64', '65', '66', '67', '68', '69', '70',
-    '71', '72', '73', '74', '75', '76', '77', '78', '79', '80',
-    '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
-    '91', '92', '93', '94', '95', '96', '97', '98', '99',
-
-
-
-];
-const btn_options = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
-    '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
-    '41', '42', '43', '44', '45', '46', '47', '48', '49', '50',
-    '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
-    '61', '62', '63', '64', '65', '66', '67', '68', '69', '70',
-    '71', '72', '73', '74', '75', '76', '77', '78', '79', '80',
-    '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
-    '91', '92', '93', '94', '95', '96', '97', '98', '99',
-
-
-
-];
-const big_option = ['50', '51', '52', '53', '54', '55', '56', '57', '58', '59', '60',
-    '61', '62', '63', '64', '65', '66', '67', '68', '69', '70',
-    '71', '72', '73', '74', '75', '76', '77', '78', '79', '80',
-    '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
-    '91', '92', '93', '94', '95', '96', '97', '98', '99',
-
-]
-const small_option = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10',
-    '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
-    '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
-    '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
-    '41', '42', '43', '44', '45', '46', '47', '48', '49',
-
-]
-const same_option = ['00', '11', '22', '33', '44', '55', '66', '77', '88', '99'
-
-
-]
-const even_option = ['00', '02', '04', '06', '08', '10', '12', '14', '16', '18',
-    '20', '22', '24', '26', '28', '30', '32', '34', '36', '38', '40',
-    '42', '44', '46', '48', '50', '52', '54', '56', '58', '60',
-    '62', '64', '66', '68', '70', '72', '74', '76', '78', '80',
-    '82', '84', '86', '88', '90', '92', '94', '96', '98',
-
-
-]
-const odd_option = ['01', '03', '05', '07', '09', '11', '13', '15', '17', '19', '21', '23', '25',
-    '27', '29', '31', '33', '35', '37', '39', '41', '43', '45', '47', '49', '51', '53',
-    '55', '57', '59', '61', '63', '65', '67', '69', '71', '73', '75', '77', '79', '81',
-    '83', '85', '87', '89', '91', '93', '95', '97', '99',
-]
-const ee_option = ['00', '02', '04', '06', '08', '20', '22', '24', '26', '28', '40', '42', '44', '46',
-    '48', '60', '62', '64', '66', '68', '80', '82', '84', '86', '88'
-]
-const oo_option = ['11', '13', '15', '17', '19', '31', '33', '35', '37', '39', '51', '53', '55', '57',
-    '59', '71', '73', '75', '77', '79', '91', '93', '95', '97', '99'
-]
-const eo_option = ['01', '03', '05', '07', '09', '21', '23', '25', '27', '29', '41', '43', '45', '47',
-    '49', '61', '63', '65', '67', '69', '81', '83', '85', '87', '89'
-]
-const oe_option = ['10', '12', '14', '16', '18', '30', '32', '34', '36', '38', '50', '52', '54', '56',
-    '58', '70', '72', '74', '76', '78', '90', '92', '94', '96', '98',
-]
-const con_number_option = ['07', '18', '24', '35', '69']
-const con_number_R_option = ['70', '81', '42', '53', '96']
-const con_number_power_option = ['05', '16', '27', '38', '49']
-const con_number_power_R_option = ['50', '61', '72', '83', '94']
-const btw_00_19_option = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13',
-    '14', '15', '16', '17', '18', '19'
-]
-const btw_20_39_option = ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
-    '31', '32', '33', '34', '35', '36', '37', '38', '39'
-]
-const btw_40_59_option = ['40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50',
-    '51', '52', '53', '54', '55', '56', '57', '58', '59'
-
-]
-const btw_60_79_option = ['60', '61', '62', '63', '64', '65', '66', '67', '68', '69', '70',
-    '71', '72', '73', '74', '75', '76', '77', '78', '79'
-
-]
-const btw_80_99_option = ['80', '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
-    '91', '92', '93', '94', '95', '96', '97', '98', '99'
-
-]
-const with_0_option = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '20', '30', '40',
-    '50', '60', '70', '80', '90'
-]
-const with_1_option = ['01', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '21', '31',
-    '41', '51', '61', '71', '81', '91',
-]
-const with_2_option = ['02', '12', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '32',
-    '42', '52', '62', '72', '82', '92',
-]
-const with_3_option = ['03', '13', '23', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39',
-    '43', '53', '63', '73', '83', '93',
-]
-const with_4_option = ['04', '14', '24', '34', '40', '41', '42', '43', '44', '45', '46', '47', '48',
-    '49', '54', '64', '74', '84', '94',
-]
-const with_5_option = ['05', '15', '25', '35', '45', '50', '51', '52', '53', '54', '55', '56', '57',
-    '58', '59', '65', '75', '85', '95',
-]
-const with_6_option = ['06', '16', '26', '36', '46', '56', '60', '61', '62', '63', '64', '65',
-    '66', '67', '68', '69', '76', '86', '96'
-]
-const with_7_option = ['07', '17', '27', '37', '47', '57', '67', '70', '71', '72', '73', '74',
-    '75', '76', '77', '78', '79', '87', '97',
-]
-const with_8_option = ['08', '18', '28', '38', '48', '58', '68', '78', '80', '81', '82', '83',
-    '84', '85', '86', '87', '88', '89', '98',
-]
-const with_9_option = ['09', '19', '29', '39', '49', '59', '69', '79', '89', '90', '91', '92',
-    '93', '94', '95', '96', '97', '98', '99',
-]
-const head_0_option = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09']
-const head_1_option = ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19']
-const head_2_option = ['20', '21', '22', '23', '24', '25', '26', '27', '28', '29']
-const head_3_option = ['30', '31', '32', '33', '34', '35', '36', '37', '38', '39']
-const head_4_option = ['40', '41', '42', '43', '44', '45', '46', '47', '48', '49']
-const head_5_option = ['50', '51', '52', '53', '54', '55', '56', '57', '58', '59']
-const head_6_option = ['60', '61', '62', '63', '64', '65', '66', '67', '68', '69']
-const head_7_option = ['70', '71', '72', '73', '74', '75', '76', '77', '78', '79']
-const head_8_option = ['80', '81', '82', '83', '84', '85', '86', '87', '88', '89']
-const head_9_option = ['90', '91', '92', '93', '94', '95', '96', '97', '98', '99', ]
-const tail_0_option = ['00', '10', '20', '30', '40', '50', '60', '70', '80', '90']
-const tail_1_option = ['01', '11', '21', '31', '41', '51', '61', '71', '81', '91']
-const tail_2_option = ['02', '12', '22', '32', '42', '52', '62', '72', '82', '92']
-const tail_3_option = ['03', '13', '23', '33', '43', '53', '63', '73', '83', '93']
-const tail_4_option = ['04', '14', '24', '34', '44', '54', '64', '74', '84', '94']
-const tail_5_option = ['05', '15', '25', '35', '45', '55', '65', '75', '85', '95']
-const tail_6_option = ['06', '16', '26', '36', '46', '56', '66', '76', '86', '96']
-const tail_7_option = ['07', '17', '27', '37', '47', '57', '67', '77', '87', '97']
-const tail_8_option = ['08', '18', '28', '38', '48', '58', '68', '78', '88', '98']
-const tail_9_option = ['09', '19', '29', '39', '49', '59', '69', '79', '89', '99']
 import axios from 'axios'
 export default {
     mounted() {
@@ -641,19 +486,43 @@ export default {
             time_01_00: '13:00:00',
             time_04_30: '16:30:00',
             isLoggedIn: true,
-            ruleForm: {
-                amount: '',
-                check_btn: [],
+            // ruleForm: {
+            //     amount: '',
+            //     check_btn: [],
 
-            },
+            // },
             dialogFormVisible: false,
-            btns: btn_options,
-            cities: cityOptions,
+
             profile: '',
             myWallet: '',
             myPointWallet: '',
-             radio: '1',
-             matchs:''
+            radio: '1',
+            matchs: '',
+            end_bet_football: '',
+            footballMatchDetail: "",
+            accordion: true,
+            football_match_id: "",
+            goal_status: "",
+            activeIndex2: '1',
+            activeName: "first",
+            numberValidateForm1: {
+                amount: '',
+                radio: '',
+            },
+            radio: '',
+            bet_team_id: '',
+            holidays: '',
+            submitted: false,
+            time_countdown: '',
+            one_result: '',
+            hasError: '',
+            currentTime: '',
+            isLoggedIn: true,
+            dialogFormVisible: false,
+            profile: '',
+            myWallet: '',
+            end_bet_football: ''
+
         }
     },
 
@@ -717,9 +586,9 @@ export default {
                 this.serverDate = response.data.date
             })
 
-             this.$axios.get("/v2/v1/football/today/upcoming")
+        this.$axios.get("/v2/v1/football/today/upcoming")
             .then(response => {
-                console.log(response.data);
+                console.log("upcoming", response.data.data);
                 this.matchs = response.data.data;
             })
     },
@@ -756,60 +625,29 @@ export default {
         },
         BetCurrentTime() {
             this.currentTime = moment().format('HH:mm:ss');
+            var currentTime = new Date("07/07/2020 " + this.currentTime);
+            var endBet = new Date("07/07/2020 " + this.end_bet_football);
 
-            // var cu_time= new Date("12/01/2019 " + this.currentTime);
-            var mo_from = new Date("03/20/2019 " + this.morning_from);
-            var ev_to = new Date("03/19/2019 " + this.currentTime);
-            var mo_to = new Date("03/20/2019 " + this.evening_from);
-            var ev_from = new Date("03/20/2019 " + this.currentTime);
-            var difference = mo_from - ev_to;
-            var difference_two = mo_to - ev_from;
-            var getAllTime = this.convertMS(difference);
-            var getAllTime_two = this.convertMS(difference_two);
-            if (this.server_time > this.morning_from && this.server_time < this.morning_to) {
-                this.isActive = true
-                this.isMorningEvening = false
-                return this.time_countdown = this.$root.$t('close_text');
-            } else if (this.server_time > this.morning_to && this.server_time < this.evening_from) {
-                this.isMorningEvening = true
-                if (this.holidays.status == 1) {
-                    this.isActive = true
-                } else {
-                    this.isActive = false
-                }
+            var nextDate = new Date("07/07/2020 " + this.currentTime);
+            var endBet = new Date("07/08/2020 " + this.end_bet_football);
 
-                return this.time_countdown = getAllTime_two.hour + ':' + getAllTime_two.minute + ':' + getAllTime_two.seconds
-            } else if (this.server_time > this.evening_from && this.server_time < this.evening_to) {
-                this.isActive = true
+            var difference = endBet - currentTime;
+            var difference_two = endBet - nextDate
 
+            var football_betTime = this.convertMS(difference);
+            var football_betTime_B = this.convertMS(difference_two);
+            // console.log(football_betTime)
+            if (this.server_time > this.end_bet_football) {
 
-                this.isMorningEvening = false
-                return this.time_countdown = this.$root.$t('close_text');
-            } else if (this.server_time > this.evening_to) {
+                return this.time_countdown = football_betTime.hour + ':' + football_betTime.minute + ':' + football_betTime.seconds
+            } else if (this.server_time < this.end_bet_football) {
 
-                if (this.holidays.status == 1) {
-                    this.isActive = true
-                } else {
-                    this.isActive = false
-                }
-                return this.time_countdown = getAllTime.hour + ':' + getAllTime.minute + ':' + getAllTime.seconds
-            } else {
-
-
-                this.isMorningEvening = true
-                //   this.isActive = true
-                // return this.time_countdown = this.$root.$t('close_text');
-                if (this.holidays.status == 1) {
-                    this.isActive = true
-                } else {
-                    this.isActive = false
-                }
-
-                return this.time_countdown = getAllTime.hour + ':' + getAllTime.minute + ':' + getAllTime.seconds
+                return this.time_countdown = football_betTime_B.hour + ':' + football_betTime_B.minute + ':' + football_betTime_B.seconds
             }
+
         },
         goBack() {
-            this.$router.push(`/home?lang=${this.$store.state.locale}`);
+            this.$router.push(`/football/football?lang=${this.$store.state.locale}`);
         },
         updateCurrentTime() {
             this.currentTime = moment().format('HH:mm:ss');
@@ -823,10 +661,85 @@ export default {
         clear_btn() {
             this.ruleForm.check_btn = [];
         },
-        bet1(){
-          alert("hello");
-          console.log("hello");
+         matchid(){
+            console.log("helo");
+          },
+        footballSubmit_mown(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+
+                    let checkRadio = document.querySelector(
+                        'input[name="bet_team_id"]:checked');
+
+                    if (checkRadio != null) {
+                        console.log(this.radio);
+                        this.submitted = true
+                        let token = localStorage.getItem('token');
+
+                        var data = {
+                            football_match_id: localStorage.getItem("football_detali_id"),
+                            amount: this.numberValidateForm1.amount,
+                            bet_team_id: this.bet_team_id,
+                        }
+                        this.$axios.post("/v2/v1/football/body/bet",
+                                data, {
+                                    headers: {
+                                        "Authorization": "Bearer " + token
+                                    },
+
+                                })
+                            .then(response => {
+
+
+                                this.submitted = false
+                                if (response.data.status == 5) {
+                                    this.submitted = false
+                                    this.$message({
+                                        showClose: true,
+                                        message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                                        type: 'warning',
+                                        //   duration:0
+                                    });
+                                } else if (response.data.status == 1) {
+                                    this.$message({
+                                        showClose: true,
+                                        message: 'Football Bet is closed.',
+                                        type: 'warning',
+                                        //   duration:0
+                                    });
+                                } else if (response.data.status == 2) {
+                                    this.$message({
+                                        showClose: true,
+                                        message: this.$t('amount_invalid'),
+                                        type: 'warning',
+                                        //   duration:0
+                                    });
+                                } else if (response.data.status == 5) {
+                                    this.$message({
+                                        showClose: true,
+                                        message: 'Cannot bet 50',
+                                        type: 'warning',
+                                        //   duration:0
+                                    });
+                                } else {
+                                    this.submitted = true
+                                    this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
+
+                                }
+
+                            })
+                            .catch(error => {
+                                console.log(error.response)
+                            })
+                    } else {
+                        document.getElementById("error_div").innerHTML = "Please select one team!";
+                    }
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
         },
-          }
+    }
 }
 </script>

@@ -7,7 +7,7 @@
                 </a>
                 <div class="football_header_logo"> <img src="~static/images/footballLogo.png" style="width:170px;" alt="logo" /></div>
                 <div class="football_refresh" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
-                    <img src="~static/icons_header/dimond_t_icon.png" alt="logo" style="width:30px;" />
+                    <img src="~static/icons_header/refresh_icon.png" alt="logo" style="width:30px;" />
                 </div>
             </div>
             <div class="profile_football" v-if="!$store.state.isLoggedIn">
@@ -397,10 +397,9 @@
         </div>
 
         <div class="mown_btn">
-
+          <nuxt-link :to="`${$t('/football/mown')}?lang=${$store.state.locale}`">
             <el-button>Mown</el-button>
-
-
+          </nuxt-link>
         </div>
 
     </div>
@@ -423,32 +422,44 @@ export default {
     mounted() {
 
 
+       var  nowTimestamp =  Math.round(new Date().getTime()/1000)
+        var lastTimestamp = localStorage.getItem('slider_time')
+        var diff = nowTimestamp - lastTimestamp;
         var self = this;
-        if (this.$store.state.sliderImage.length > 0) {
-            self.slider_images = this.$store.state.sliderImage;
+
+        if (diff < 7200 ) {
+
+            this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
             if (this.slider_images !== null) {
                 this.loaded = true;
             }
         } else {
             // setTimeout(function(){
-            self.$axios.get('/v2/v1/slider_image?name=2D')
+            self.$axios.get('/v2/v1/slider_image?name=Football')
                 .then(response => {
                     if (self.slider_images !== null) {
                         this.loaded = true;
                     }
+                    this.slider_images = response.data.data
+                        // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
+                      self.$store.commit('setSliderImage', this.slider_images);
 
-                    self.slider_images = response.data.data
-                    // self.$store.commit('setSliderImage', response.data.data);
+                       this.slider_time = Math.round(new Date().getTime()/1000);
+                        self.$store.commit('setSliderTime', this.slider_time);
                 })
-
-            // }, 2000);
-            self.$axios.get('/v2/v1/slider_text')
-                .then(response => {
-
-                    self.slider_text = response.data.data[0];
-                })
-
         }
+          if(diff < 7200) {
+
+                this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                  console.log(this.slider_text)
+            }else {
+                 self.$axios.get('/v2/v1/slider_text')
+                .then(response => {
+                    self.slider_text = response.data.data[0];
+                    self.$store.commit('setSliderText', this.slider_text);
+
+                })
+            }
 
         var m = window.location.href.match(/device_id=([^&]+)/i);
         var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -500,7 +511,7 @@ export default {
             myWallet: '',
             blockUser: '',
             loaded: '',
-            activeNames: [1, 2, 3, 4, 5, 6, 7, 9, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50],
+            activeNames: [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80],
             activeName: "first",
             todayfootball: "",
             football_info: "",
