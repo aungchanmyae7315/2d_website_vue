@@ -83,25 +83,6 @@
 
                 </h3>
             </div>
-            <!-- <scroll-fixed-header :fixed.sync="fixed" :threshold="350">
-                <div class="carousel2">
-                    <carousel :autoplay="false" :nav="true" :items=3>
-
-                        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                            <el-menu-item index="1"><span @click="toggle(5)">{{this.yesterday2Date}}</span></el-menu-item>
-                            <el-menu-item index="2"><span @click="toggle(6)">{{this.yesterday1Date}}</span></el-menu-item>
-                            <el-menu-item index="3"><span @click="toggle(7)">Yesterday</span></el-menu-item>
-                            <el-menu-item index="4"><span @click="toggle(1)">Today</span></el-menu-item>
-                            <el-menu-item index="5"><span @click="toggle(2)"> Tomorrow</span></el-menu-item>
-                            <el-menu-item index="6"><span @click="toggle(3)">{{this.tomorrow1Date}}</span></el-menu-item>
-                            <el-menu-item index="7"><span @click="toggle(4)">{{this.tomorrow2Date}}</span></el-menu-item>
-                        </el-menu>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </carousel>
-                </div>
-            </scroll-fixed-header> -->
         </div>
 
            <scroll-fixed-header :fixed.sync="fixed" :threshold="350">
