@@ -397,9 +397,9 @@
         </div>
 
         <div class="mown_btn">
-          <nuxt-link :to="`${$t('/football/mown')}?lang=${$store.state.locale}`">
+          <!-- <nuxt-link :to="`${$t('/football/mown')}?lang=${$store.state.locale}`"> -->
             <el-button>Mown</el-button>
-          </nuxt-link>
+          <!-- </nuxt-link> -->
         </div>
 
     </div>
