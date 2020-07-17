@@ -1,11 +1,7 @@
 <template>
    <main>
          <el-main>
-              <el-header>
-           <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
-                <h5 class="promotion_title">{{$t('promotion')}}</h5>
-           <!-- </nuxt-link> -->
-             </el-header>
+             
             <div class="longText" id="hidingScrollBar">
               <div class="hideScrollBar_promotion">
                   <div class="promotion">
@@ -88,6 +84,7 @@ export default {
     margin-left: 17px;
     padding-right: 28px;
     padding-bottom:150px;
+    padding-top:20px;
 }
 .promotion {
     text-align:center;

@@ -10,7 +10,7 @@
                 </el-page-header>
                  <img src="~static/images/threed_logo.png" class="logo" alt="logo" style="width:145px">
               <div @click="HomeRefresh" class=" refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
-                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                <img src="~static/icons_header/refresh_icon.png" alt="">
               </div>
            <!-- </nuxt-link> -->
           </el-header>
@@ -159,31 +159,44 @@ export default {
                      this.$nuxt.$loading.finish()
                 })
 
-    var self = this;
-          if (this.$store.state.sliderImage.length > 0){
-            self.slider_images = this.$store.state.sliderImage;
-             if(this.slider_images  !== null) {
-                        this.loaded = true;
-                    }
-          }
-          else{
+        var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var lastTimestamp = localStorage.getItem('slider_time')
+        var diff = nowTimestamp - lastTimestamp;
+        var self = this;
+          
+        if (diff < 7200 ) {
+        
+            this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
+            if (this.slider_images !== null) {
+                this.loaded = true;
+            }
+        } else {
             // setTimeout(function(){
-              self.$axios.get('/v2/v1/slider_image?name=3D')
+            self.$axios.get('/v2/v1/slider_image?name=3D')
                 .then(response => {
-                   
-                 if(self.slider_images  !== null) {
+                    if (self.slider_images !== null) {
                         this.loaded = true;
                     }
+                    this.slider_images = response.data.data
+                        // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
+                      self.$store.commit('setSliderImage', this.slider_images);
 
-                self.slider_images = response.data.data
+                       this.slider_time = Math.round(new Date().getTime()/1000);
+                        self.$store.commit('setSliderTime', this.slider_time);
                 })
-              self.$axios.get('/v2/v1/slider_text')
+        }
+          if(diff < 7200) {
+               
+                this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                  console.log(this.slider_text)
+            }else {
+                 self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
-
-                self.slider_text = response.data.data[0];
+                    self.slider_text = response.data.data[0];
+                    self.$store.commit('setSliderText', this.slider_text);
+                     
                 })
-
-                }
+            }
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -387,12 +400,7 @@ export default {
         color:#fff;
         text-align: center;
    }
-   .threed_home .el-input__inner {
-      margin-top:15px;
-      text-align: right;
-       background-color:#fff;
-       color:#b8b8b8;
-   }
+
    .threeD_main .logo {
        width:104px;
         height: auto;

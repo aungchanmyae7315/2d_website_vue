@@ -12,7 +12,7 @@
                  <img src="~static/images/twod_logo.png" style="width:145px !important" class="logo" alt="logo">
            <!-- </nuxt-link> -->
               <div @click="HomeRefresh" class="refresh_icon" v-loading.fullscreen.lock="fullscreenLoading">
-                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                <img src="~static/icons_header/refresh_icon.png" alt="">
               </div>
       </el-header>
         <div class="longText" id="hidingScrollBar">
@@ -402,35 +402,54 @@ export default {
 
 
   mounted() {
+     this.$axios.get('/luke/twod-result-live')
+            .then(response => {
+              this.info = response.data.data;
+              this.close_day = response.data.data.is_close_day
+               this.last_date = response.data.data.last_date
+              console.log(response)
 
+            })
 
-  var self = this;
-          if (this.$store.state.sliderImage.length > 0){
-            self.slider_images = this.$store.state.sliderImage;
-             if(this.slider_images  !== null) {
-                        this.loaded = true;
-                    }
-          }
-          else{
+        var  nowTimestamp =  Math.round(new Date().getTime()/1000)
+        var lastTimestamp = localStorage.getItem('slider_time')
+        var diff = nowTimestamp - lastTimestamp;
+        var self = this;
+
+        if (diff < 7200 ) {
+
+            this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
+            if (this.slider_images !== null) {
+                this.loaded = true;
+            }
+        } else {
             // setTimeout(function(){
-              self.$axios.get('/v2/v1/slider_image?name=2D')
+            self.$axios.get('/v2/v1/slider_image?name=2D')
                 .then(response => {
-                 if(self.slider_images  !== null) {
+                    if (self.slider_images !== null) {
                         this.loaded = true;
                     }
+                    this.slider_images = response.data.data
+                        // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
+                      self.$store.commit('setSliderImage', this.slider_images);
 
-                self.slider_images = response.data.data
-                // self.$store.commit('setSliderImage', response.data.data);
+                       this.slider_time = Math.round(new Date().getTime()/1000);
+                        self.$store.commit('setSliderTime', this.slider_time);
                 })
+        }
+          if(diff < 7200) {
 
-            // }, 2000);
-              self.$axios.get('/v2/v1/slider_text')
+                this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                  console.log(this.slider_text)
+            }else {
+                 self.$axios.get('/v2/v1/slider_text')
                 .then(response => {
+                    self.slider_text = response.data.data[0];
+                    self.$store.commit('setSliderText', this.slider_text);
 
-                self.slider_text = response.data.data[0];
                 })
+            }
 
-                }
 
   var m = window.location.href.match(/device_id=([^&]+)/i);
      var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
@@ -553,46 +572,50 @@ export default {
             this.getKweeLiveData();
           }.bind(this), 3000)
      },
-         async getDataKwee() {
-           this.itvKweeLiveData();
-          },
-          async getDataresult() {
-            this.$axios.get('/v2/v1/twod-result/live')
-              .then(response => {
-                this.info_api = response.data.data
 
-              })
-          },
-       updateCurrentTime() {
-         if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-            this.isActive = false
-            this.breakTime = '12:01 PM';
+      //  updateCurrentTime() {
+      //    if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
+      //       this.isActive = false
+      //       this.breakTime = '12:01 PM';
 
-             this.getDataresult();
-          } else if(this.currentTime > this.time_04_30){
-            this.isActive = false
-            this.breakTime = '4:30 PM';
-             this.getDataKwee();
-          }else if(this.currentTime < this.morningTime_9_30){
-            this.isActive = false
-            this.breakTime = '4:30 PM';
-             this.getDataresult();
-          }else{
+      //        this.getDataresult();
+      //     } else if(this.currentTime > this.time_04_30){
 
-             this.isActive = true
-            this.breakTime = moment().format('h:mm A');
-          }
-      // this.currentTime = moment().format('HH:mm:ss');
-       this.currentDate = moment().format("YYYY D MMMM  dddd")
+      //       this.isActive = false
+      //       this.breakTime = '4:30 PM';
+      //       //  this.getDataKwee();
+      //     }else if(this.currentTime < this.morningTime_9_30){
 
-       },
+      //       this.isActive = false
+      //       this.breakTime = '4:30 PM';
+      //       //  this.getDataresult();
+      //     }else{
+
+
+      //        this.isActive = true
+      //       this.breakTime = moment().format('h:mm A');
+      //     }
+      // // this.currentTime = moment().format('HH:mm:ss');
+      //  this.currentDate = moment().format("YYYY D MMMM  dddd")
+
+      //  },
        ServerCurrentTime() {
+        //  console.log('ok')
          if (this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
            // this.isActive = false
             this.breakTime = '12:01 PM';
 
           } else if(this.currentTime > this.time_04_30){
             // this.isActive = false
+            //alert('lll')
+             if(this.close_day == 1) {
+
+               this.isActive = false
+            }else {
+
+               this.isActive = true
+            }
+            this.isActive = false
             this.breakTime = '4:30 PM';
 
           }else if(this.currentTime < this.morningTime_9_30){
@@ -601,7 +624,16 @@ export default {
 
           }else{
 
-             this.isActive = true
+            if(this.close_day == 1) {
+
+               this.isActive = false
+            }else {
+
+               this.isActive = true
+            }
+
+            this.isActive = true
+
             this.breakTime = moment().format('h:mm A');
           }
       // this.currentTime = moment().format('HH:mm:ss');
@@ -628,59 +660,8 @@ export default {
       this.currentDate = moment().format("YYYY D MMMM  dddd")
      // this.currentTime = moment().format('HH:mm:ss ');
        this.breakTime = moment().format('h:mm:ss a')
-     this.serverCurTimeItvId = setInterval(() => this.ServerCurrentTime(), 1 * 1000);
+      setInterval(() => this.ServerCurrentTime(), 1 * 1000);
 
-    if(this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_12_00 ) {
-
-    }else if(this.currentTime > this.time_12_00 && this.currentTime <  this.time_01_00 ) {
-
-      var stop_Interval =  setInterval(function() {
-
-       this.$axios.get('/v2/v1/twod-result/live')
-              .then(response => {
-
-                if(response.data.data.status_1200 == "backend") {
-
-                       this.isActive = false
-                       clearTimeout(stop_Interval);
-                }else {
-                       this.isActive = true
-                      this.$axios.get('/v2/v1/twod-result/live')
-                    .then(response => {
-
-                      this.info_api = response.data.data
-
-                    })
-                }
-                this.info_api = response.data.data
-              })
-         }.bind(this), 3000)
-  }else if(this.currentTime > this.time_01_00 && this.currentTime < this.time_04_30 ) {
-  }else if(this.currentTime > this.time_04_30 && this.currentTime < this.morningTime_9_30) {
-
-  }else {
-
-      // var ok =  setInterval(function() {
-       this.$axios.get('/v2/v1/twod-result/live')
-              .then(response => {
-                  this.last_date = response.data.data.last_date
-                if(response.data.data.status_430 == "backend") {
-
-                         this.isActive = false
-
-                }else {
-                        this.isActive = false
-                    //   this.$axios.get('/v2/v1/twod-result/live')
-                    // .then(response => {
-                    //    this.last_date = response.data.data.last_date
-                    //   this.info_api = response.data.data
-
-                    // })
-                }
-                this.info_api = response.data.data
-              })
-        //  }.bind(this), 3000)
-  }
 
 
          let token = localStorage.getItem('token');
@@ -708,9 +689,9 @@ export default {
                 })
       }
 
-          this.$axios.get('/v2/v1/server_time')
+          this.$axios.get('http://luke.2dboss.com/api/luke/server-time')
               .then(response => {
-
+                console.log(response)
                this.currentTime = response.data.time
                this.serverDate  = response.data.date
               })
@@ -886,7 +867,6 @@ export default {
   }
   .el-header {
     background-color: #14612D;
-    color: #333;
     /* text-align: center; */
     padding:10px 0;
     z-index: 5;

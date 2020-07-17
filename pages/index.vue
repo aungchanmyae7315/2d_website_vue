@@ -151,13 +151,11 @@
                         </el-col>
                     </el-row>
 
-                    <el-row>
+                    <!-- <el-row>
                         <el-col :span="12">
-                            <!-- <nuxt-link :to="`${$t('football/home')}?lang=${$store.state.locale}`"> -->
-
+                       
                                 <div class="bauchu_card">Bau Cau</div>
 
-                                                <!-- </nuxt-link> -->
                         </el-col>
                         <el-col :span="12">
                             <nuxt-link :to="`${$t('/football/football')}?lang=${$store.state.locale}`">
@@ -166,7 +164,7 @@
 
                             </nuxt-link>
                         </el-col>
-                    </el-row>
+                    </el-row> -->
 
                 </div>
 
@@ -196,13 +194,19 @@ export default {
     actions: {},
     layout: 'homeLayout',
 
+    
+       
+
 
     mounted() {
-
-
+        var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var lastTimestamp = localStorage.getItem('slider_time')
+        var diff = nowTimestamp - lastTimestamp;
         var self = this;
-        if (this.$store.state.sliderImage.length > 0) {
-            self.slider_images = this.$store.state.sliderImage;
+          
+        if (diff < 7200 ) {
+        
+            this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
             if (this.slider_images !== null) {
                 this.loaded = true;
             }
@@ -213,14 +217,27 @@ export default {
                     if (self.slider_images !== null) {
                         this.loaded = true;
                     }
-                    self.slider_images = response.data.data
-                })
-            // }, 2000);
-            self.$axios.get('/v2/v1/slider_text')
-                .then(response => {
-                    self.slider_text = response.data.data[0];
+                    this.slider_images = response.data.data
+                        // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
+                      self.$store.commit('setSliderImage', this.slider_images);
+
+                       this.slider_time = Math.round(new Date().getTime()/1000);
+                        self.$store.commit('setSliderTime', this.slider_time);
                 })
         }
+          if(diff < 7200) {
+               
+                this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
+                  console.log(this.slider_text)
+            }else {
+                 self.$axios.get('/v2/v1/slider_text')
+                .then(response => {
+                    self.slider_text = response.data.data[0];
+                    self.$store.commit('setSliderText', this.slider_text);
+                     
+                })
+            }
+
         var m = window.location.href.match(/device_id=([^&]+)/i);
         var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
         if (m != null && isSeinluckyApp) {
@@ -237,6 +254,7 @@ export default {
 
         this.updateIsLoggedIn();
         this.updateLang();
+       
 
         let lang = localStorage.getItem('locale');
         this.$store.commit('SET_LANG', lang);
@@ -351,6 +369,7 @@ export default {
         hasLang() {
             return Boolean(localStorage.getItem('locale'));
         },
+        
     },
     created() {
 
@@ -580,7 +599,7 @@ export default {
 
 .el-header {
     background-color: #14612D;
-    color: #333;
+    /* color: #333; */
     /* text-align: center; */
     padding: 10px 0;
     z-index: 5;

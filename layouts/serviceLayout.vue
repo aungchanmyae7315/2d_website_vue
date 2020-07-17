@@ -35,8 +35,8 @@
             </el-menu-item>
             </nuxt-link>
             <nuxt-link :to="`${$t('/service')}?lang=${$store.state.locale}`">
-            <el-menu-item index="3" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
-                <img src="~static/icons_header/dimond_t_icon.png" alt="">
+            <el-menu-item index="3">
+                <img src="~static/icons_header/service_t_icon.png" alt="">
                 <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('service_title')}}</h5>
             </el-menu-item>
             </nuxt-link>
@@ -87,6 +87,13 @@ export default {
   },
   methods: {
      HomeRefresh() {
+      localStorage.removeItem('slider_images');
+      localStorage.removeItem('slider_text');
+      localStorage.removeItem('slider_time');
+      localStorage.removeItem('bank_account');
+      localStorage.removeItem('bank_group_time');
+      localStorage.removeItem('get_refel');
+      localStorage.removeItem('referal_code_time');
       this.fullscreenLoading = true;
         setTimeout(() => {
           

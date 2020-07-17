@@ -2,50 +2,40 @@
   <div>
     <div class="main_container">
         <el-header class="header">
-          <ul class="home_header">
-            <li class="" v-if ="!$store.state.isLoggedIn">
-                
-            </li>
-            <li v-else>
-                 <nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`"> 
-
-                  <div @click="goNotiPage" class="noti" type="primary">
-                    <img v-if="this.readed == 'null' " src="~static/images/noti.png" alt="logo" >
-                     <img v-else src="~static/images/noti_t.png" alt="logo" >
-                  </div>
-                   </nuxt-link> 
-            </li>
-            <li>
-                 <img src="~static/images/logo.png" class="logo" alt="logo" style="margin-right:40px;">
-            </li>
-             
-            <li class="download_btn" >
-                 <nuxt-link  :to="`${$t('/download')}?lang=${$store.state.locale}`">
-                    {{$t('download_app')}}<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
-                </nuxt-link>
-            </li>
-           
-          </ul>
-             
- 
-               
-          
-            <!-- <el-col :span="4">
-                 <div class="music_icon">
-              
-                      <div id="player-container">
-                        <div id="play-pause" class="play" v-on:click="play">Play</div>
-                         <audio ref="audioElm" src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1"></audio>
-                      </div>
-                     
+          <el-row>
+            <el-col :span="11">
+                   <img src="~static/images/logo.png" class="logo" alt="logo" style="padding-left:10px;">
+            </el-col>
+            <el-col :span="5">
+                 <div class="download_btn" >
+                  <nuxt-link  :to="`${$t('/download')}?lang=${$store.state.locale}`">
+                      {{$t('APP')}}<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
+                  </nuxt-link>
                 </div>
-            </el-col> -->
-           
-              
-           
- 
+            </el-col>
+            <el-col :span="3">
+                
+                  <div class="" v-if ="!$store.state.isLoggedIn">
+                 
+                  </div>
+                  <div v-else>
+                      <nuxt-link  :to="`${$t('/notification')}?lang=${$store.state.locale}`"> 
 
-                    
+                        <div @click="goNotiPage" class="noti" type="primary">
+                          <img v-if="this.readed == 'null' " src="~static/images/noti.png" alt="logo" >
+                          <img v-else src="~static/images/noti_t.png" alt="logo" >
+                        </div>
+                        </nuxt-link> 
+                  </div>
+            </el-col>
+            <el-col :span="5" style="float:right">
+                <div  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+                   <img src="~static/icons_header/refresh_icon.png" alt="" class="header_refresh_icon">
+                </div>
+            </el-col>
+          </el-row>
+       
+             
 
       
         </el-header>
@@ -64,7 +54,7 @@
             line-height="0px"
             active-text-color="#ffd04b">
               <nuxt-link :to="`${$t('/')}?lang=${$store.state.locale}`">
-            <el-menu-item index="1" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+            <el-menu-item index="1">
             
               <img src="~static/icons_header/dimond_t_icon.png" alt="">
              <h5 class="main_icon" style="font-weight:bold;color:#ccab48;">{{$t('home_title')}}</h5>
@@ -139,6 +129,13 @@ export default {
   methods: {
     HomeRefresh() {
       this.fullscreenLoading = true;
+      localStorage.removeItem('slider_images');
+      localStorage.removeItem('slider_text');
+      localStorage.removeItem('slider_time');
+      localStorage.removeItem('bank_account');
+      localStorage.removeItem('bank_group_time');
+      localStorage.removeItem('get_refel');
+      localStorage.removeItem('referal_code_time');
         setTimeout(() => {
           
           this.fullscreenLoading = false;
@@ -252,7 +249,7 @@ html {
 }
 .el-header {
   background-color: #14612D;
-    color: #333;
+    /* color: #333; */
     padding: 10px 0;
     z-index: 5;
 }
@@ -294,16 +291,15 @@ html {
 }
 .download_btn {
     color:#fff;
+    line-height: 33px;
     cursor: pointer;
     float: right;
     border-radius: 9px;
     background: #FFBA15;
-    position: absolute;
-    right: 20px;
-    padding: 0 12px;
-    line-height: 35px;
     font-weight: bold;
+    padding:0 12px;
 }
+
 .download_btn a {
   color:#000 !important;
    font-size: 11px;

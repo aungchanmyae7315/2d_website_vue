@@ -1,7 +1,19 @@
 <template>
     <el-main class="wallet">
       <el-header class="wallet_header" >
-        
+         
+             <el-row>
+               <el-col :span="12" style="text-align:left;">
+                   <h5 style="padding-left:20px;" class="promotion_title">{{$t('wallet_title')}}</h5>
+               </el-col >
+               <el-col :span="12"  style="text-align:right;">
+                <div  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+                   <img src="~static/icons_header/refresh_icon.png" alt="" class="service_header_refresh_icon">
+                </div>
+               </el-col>
+             </el-row>
+            
+       
               <div v-if="!$store.state.isLoggedIn" class="demo-type logout_wallet">
                  <nuxt-link :to="`${$t('/login')}?lang=${$store.state.locale}`">
                  <el-avatar :size="60" >  <img src="~static/images/icons/me_img.png" alt=""></el-avatar>
@@ -101,7 +113,7 @@
                               </div>
                             </el-image>
                             <div  class="avatar_text">
-                              <ul style="position:relative;top:-8px;">
+                              <ul style="position:relative;top:-3px;">
                                 <li style="font-size:14px;">{{bank_info.bank_name}}</li>
                                 <li style="font-size:14px;" class="bank_number">
                                   <span class="code text-red">{{ bank_info.card_number }}</span>
@@ -109,7 +121,7 @@
                                 </li>
                               </ul>
                             </div>
-                            <div class="result_icon" style="padding-top:18px;">
+                            <div class="result_icon" style="padding-top:14px;">
                                 <span class="  copy-btn ml-auto" @click.stop.prevent="copyTestingCode(bank_info.id)">
                                 {{ $t('Copy') }}
                               </span>
@@ -147,8 +159,8 @@
                     </el-menu-item>
                 </nuxt-link>
                 <nuxt-link  :to="`${$t('/wallet')}?lang=${$store.state.locale}`">
-                  <el-menu-item index="2"  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
-                      <img src="~static/icons_header/dimond_t_icon.png" alt="">
+                  <el-menu-item index="2">
+                      <img src="~static/icons_header/wallet_t_icon.png" alt="">
                       <h5 class="main_icon" style="font-weight:bold;color:#ccab48">{{$t('wallet_title')}}</h5>
                   </el-menu-item>
                 </nuxt-link>
@@ -191,7 +203,7 @@
     margin-left: 15px;
     padding-right: 28px; /*This would hide the scroll bar of the right. To be sure we hide the scrollbar on every browser, increase this value*/
     padding-top:60px;
-    padding-bottom: 330px; /*This would hide the scroll bar of the bottom if there is one*/
+    padding-bottom: 260px; /*This would hide the scroll bar of the bottom if there is one*/
 
     }
   .wallet_header .demo-type {
@@ -472,23 +484,43 @@
       };
     },
      created() {
-          let token = localStorage.getItem('token');
-        if(token) {
-              this.$axios.get("/v2/v1/bank_card_grouping",
-                    {headers: {
-                               "Authorization": "Bearer "+token
-                         }
-                        })
-                    .then(response => {
-                      console.log(response)
-                        this.bank_account = response.data.data[0].bank_group
-                })
-        }else {
-           this.$axios.get('/v1/admin-bank')
-              .then(response => {
-                this.bank_account = response.data.data
-              })  
-        }
+        let token = localStorage.getItem('token');
+         var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var lastTimestamp = localStorage.getItem('bank_group_time')
+        var diff = nowTimestamp - lastTimestamp;
+          // 8 hours == 28800 seconds
+      if(token) {
+           if (diff < 28800 ) {
+
+            this.bank_account = JSON.parse(localStorage.getItem('bank_account'))
+
+          } else {
+            
+                this.$axios.get("/v2/v1/bank_card_grouping",
+                      {headers: {
+                                "Authorization": "Bearer "+token
+                          }
+                          })
+                      .then(response => {
+                        console.log(response)
+                          this.bank_account = response.data.data[0].bank_group
+                          this.$store.commit('bank_card_grouping', this.bank_account);
+                          this.bank_group_time = Math.round(new Date().getTime()/1000);
+                          this.$store.commit('bankgroupTime', this.bank_group_time);
+                  })
+          
+              
+              
+          }
+      }else {
+         console.log('not login')
+            this.$axios.get('/v1/admin-bank')
+                .then(response => {
+                  this.bank_account = response.data.data
+                }) 
+      }
+       
+        
       
          
         if(token) {
@@ -513,6 +545,13 @@
 
     methods: {
        HomeRefresh() {
+           localStorage.removeItem('slider_images');
+          localStorage.removeItem('slider_text');
+          localStorage.removeItem('slider_time');
+          localStorage.removeItem('bank_account');
+          localStorage.removeItem('bank_group_time');
+          localStorage.removeItem('get_refel');
+          localStorage.removeItem('referal_code_time');
       this.fullscreenLoading = true;
         setTimeout(() => {
           

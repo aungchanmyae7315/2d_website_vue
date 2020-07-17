@@ -1,7 +1,17 @@
 <template>
    <main>
            <el-header class="service_header" >
-             <img src="~static/images/logo.png" class="logo" alt="logo">
+             <el-row>
+               <el-col :span="12" style="text-align:left;">
+                   <h5 style="padding-left:20px;" class="promotion_title">{{$t('service_title')}}</h5>
+               </el-col >
+               <el-col :span="12"  style="text-align:right;">
+                <div  @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
+                   <img src="~static/icons_header/refresh_icon.png" alt="" class="service_header_refresh_icon">
+                </div>
+               </el-col>
+             </el-row>
+            
            </el-header>
          <el-main>
             <div class="longText" id="hidingScrollBar">
