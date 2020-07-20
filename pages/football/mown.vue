@@ -22,9 +22,9 @@
                     <el-col>
 
                         <el-form-item style="margin-bottom:10px;" prop="amount" :rules="[
-                                         { required: true, message: $t('amount_required') },
+                                                                 { required: true, message: $t('amount_required') },
 
-                                    ]">
+                                                            ]">
 
                             <el-input @keypress.enter.native="bet('numberValidateForm1')" class type="number" placeholder="100 Ks(min)" v-model="numberValidateForm1.amount"></el-input>
 
@@ -85,26 +85,24 @@
                                 </div>
 
                             </div>
-
-                            <el-form-item>
-                                <div v-for="(match, f) in matchs" :key="f">
-                                <div class="collapse_card mown" @click="matchid()" :data-id="match.id" >
-                                    <div class="" style="width:100%; display:flex; background-color:blue;">
-                                        <div class="" style="width:45%; background-color:red;">
-                                            <el-radio v-model="radio" :label="match.home_team.id"  >{{match.home_team.name}}, {{match.id}}</el-radio>
+                            <div v-for="(match, f) in matchs" :key="f">
+                                <div class="collapse_card mown" @click="matchid()" :data-id="match.id" value="match.id">
+                                    <div class="" style="width:100%; display:flex;">
+                                        <div class="" style="width:45%; ">
+                                            <el-checkbox :label="match.home_team.id">{{match.home_team.name}}</el-checkbox>
                                         </div>
-                                        <div class="" style="width:45%; background-color:yellow;">
-                                            <el-radio v-model="radio" :label="match.away_team.id" >{{match.away_team.name}}{{match.id}}</el-radio>
+                                        <div class="" style="width:45%; ">
+                                            <el-checkbox :label="match.away_team.id">{{match.away_team.name}}</el-checkbox>
                                         </div>
                                     </div>
                                 </div>
                                 </div>
+                                </div>
 
 
-                            </el-form-item>
+                            </div>
                         </div>
                     </div>
-                </div>
             </el-main>
         </el-form>
 
@@ -521,7 +519,12 @@ export default {
             dialogFormVisible: false,
             profile: '',
             myWallet: '',
-            end_bet_football: ''
+            end_bet_football: '',
+            toggle_exclusive: undefined,
+            checkboxGroup1: [],
+
+
+            //  checkList: ['selected and disabled','Option A']
 
         }
     },
@@ -661,9 +664,10 @@ export default {
         clear_btn() {
             this.ruleForm.check_btn = [];
         },
-         matchid(){
-            console.log("helo");
-          },
+        matchid() {
+            var id = document.querySelector("#matchid").value;
+            console.log(id) // 1
+        },
         footballSubmit_mown(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
