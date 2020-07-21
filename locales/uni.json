@@ -120,6 +120,9 @@
   "/topup":"/topup",
   "/ios_install_guide":"/ios_install_guide",
   "/bet_history_btn":"/bet_history_btn",
+  "/twoD/wallet/transaction_status":"/twoD/wallet/transaction_status",
+  "/threeD/":"/threeD/",
+
 
 
   "back":"နောက်သို့",
@@ -316,6 +319,7 @@
 "withdrawal_details":"ငွေထုတ်အသေးစိတ်",
 "topup_details":"ငွေဖြည့်အသေးစိတ်",
 "you_are_submitting_withdrawal":"ငွေထုပ်ခြင်း ထပ်ခါထပ်ခါလုပ်မိနေပါသည်။ နောက် (၂) မိနစ်မှ ပြန်စမ်းကြည့်ပါ။"
+
 
 
 

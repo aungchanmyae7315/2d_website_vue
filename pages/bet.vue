@@ -765,9 +765,9 @@ export default {
                     this.myPointWallet = this.profile.point
                     this.server_time = response.data.data.time;
                 })
-        }
-
-          this.$axios.get('http://luke.2dboss.com/api/luke/server_time')
+        } 
+        
+          this.$axios.get('https://luke.2dboss.com/api/luke/server_time')
               .then(response => {
                this.server_time = response.data.time
                this.serverDate  = response.data.date

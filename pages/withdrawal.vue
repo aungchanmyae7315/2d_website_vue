@@ -28,8 +28,8 @@
                      <el-radio v-model="radio" label="3" >
                          <div>
                                 
-                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpeg"   alt="">
-                                 <img v-else src="~static/images/wavepay.jpeg"  alt="">
+                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpg"   alt="">
+                                 <img v-else src="~static/images/wavepay.jpg"  alt="">
                          </div>
                     </el-radio>
                    
@@ -56,8 +56,8 @@
                      <el-radio v-model="radio" label="3" >
                          <div>
                                 
-                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpeg"  alt="">
-                                 <img v-else src="~static/images/wavepay.jpeg"  alt="">
+                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpg"  alt="">
+                                 <img v-else src="~static/images/wavepay.jpg"  alt="">
                          </div>
                     </el-radio>
                    
@@ -83,8 +83,8 @@
                      <el-radio v-model="radio" label="3" >
                          <div>
                                 
-                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpeg"   class="active_img"  alt="">
-                                 <img v-else src="~static/images/wavepay.jpeg"  alt="">
+                                <img v-if="radio == 3" src="~static/images/wavepay_t.jpg"   class="active_img"  alt="">
+                                 <img v-else src="~static/images/wavepay.jpg"  alt="">
                          </div>
                     </el-radio>
                    

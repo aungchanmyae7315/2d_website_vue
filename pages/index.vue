@@ -218,6 +218,7 @@ export default {
                         this.loaded = true;
                     }
                     this.slider_images = response.data.data
+                    console.log(this.slider_images)
                         // window.$nuxt.$store.commit('setSliderImage', this.slider_images);
                       self.$store.commit('setSliderImage', this.slider_images);
 

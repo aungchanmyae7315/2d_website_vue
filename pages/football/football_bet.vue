@@ -715,6 +715,7 @@ export default {
 
                 }
             })
+            // alert('ok')
 
         this.updateIsLoggedIn();
         setInterval(() => {
@@ -727,47 +728,63 @@ export default {
                 this.time_countdown = this.$root.$t('close_text');
             }
         }, 1000);
-    },
-    computed: {
+
+        var m = window.location.href.match(/device_id=([^&]+)/i);
+        var isSeinluckyApp = navigator.userAgent.match(/seinlucky-app-2019/i);
+        if (m != null && isSeinluckyApp) {
+            var deviceId = m[1];
+            localStorage.setItem("deviceId", deviceId);
+        }
+        //console.dir(this.$store.state.webAppVersion.length);
+        if (this.$store.state.webAppVersion.length == 0) {
+            this.$axios.get(`/web-app-version`).then(response => {
+                this.$store.commit("setWebAppVersion", response.data.version);
+            });
+        }
+
+        let lang = localStorage.getItem("locale");
+        this.$store.commit("SET_LANG", lang);
+        $("input:checkbox").on('click', function() {
+            // in the handler, 'this' refers to the box clicked on
+            $("#markerDiv").click(function(e) {
+                var $box = $(this);
+                if ($box.is(":checked")) {
+                    // the name of the box is retrieved using the .attr() method
+                    // as it is assumed and expected to be immutable
+                    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                    // the checked state of the group/box on the other hand will change
+                    // and the current value is retrieved using .prop() method
+                    $(group).prop("checked", false);
+                    $box.prop("checked", true);
+                } else {
+                    $box.prop("checked", false);
+                }
+            });
+        })
+
+
 
     },
 
     data() {
         return {
-            holidays: '',
-            submitted: false,
-            time_countdown: '',
-            one_result: '',
-            evening_time: '',
+            fullscreenLoading: false,
+            serverDate: "",
+            last_date: "",
+            dialogVisible: false,
             isActive: true,
-            isHoliday: true,
-            isHolidays: true,
-            isMorningEvening: true,
-            hasError: '',
-            currentTime: '',
-            morning_from: this.morning_from,
-            morning_to: '',
-            evening_from: '',
-            evening_to: '',
+            hasError: false,
+            server_time: "",
 
-            morningTime_9_30: '09:30:00',
-            time_12_00: '12:01:00',
-            time_01_00: '13:00:00',
-            time_04_30: '16:30:00',
-            isLoggedIn: true,
-            // ruleForm: {
-            //     amount: '',
-            //     check_btn: [],
+            currentDate: null,
+            slider_images: "",
+            activeIndex: "1",
 
-            // },
-            dialogFormVisible: false,
+            info: "",
+            info_api: "",
 
-            profile: '',
-            myWallet: '',
-            myPointWallet: '',
-            radio: '1',
-            matchs: '',
-            end_bet_football: '',
+            profile: "",
+            slider_text: "",
             footballMatchDetail: "",
             accordion: true,
             football_match_id: "",
@@ -790,103 +807,24 @@ export default {
             dialogFormVisible: false,
             profile: '',
             myWallet: '',
-            end_bet_football: ''
+            end_bet_football:''
 
-        }
+
+
+        };
     },
-
-
-    created() {
-        this.breakTime = moment().format('h:mm:ss a')
-
-
-        this.$axios.get('/v2/v1/close_time')
-
-            .then(response => {
-                this.time = response.data.data
-
-                this.morning_from = response.data.data[0].from
-                this.morning_to = response.data.data[0].to
-                this.evening_from = response.data.data[1].from
-                this.evening_to = response.data.data[1].to
-
-                var currentTime = moment().format('HH:mm:ss');
-                var currentDate = moment().day();
-
-                if (this.server_time > this.morning_from && this.server_time < this.morning_to) {
-                    this.isActive = true
-
-                } else if (this.server_time > this.morning_to && this.server_time < this.evening_from) {
-                    this.isActive = false
-
-                } else if (this.server_time > this.evening_from && this.server_time < this.evening_to) {
-                    this.isActive = true
-
-                } else if (this.server_time > this.evening_to) {
-                    this.isActive = false
-                } else {
-                    this.isActive = false
-                }
-
-                // if(currentDate == 0 || currentDate == 6) {
-                //     this.isActive = true
-                // }
-            })
-
-        let token = localStorage.getItem('token');
-        if (token) {
-            this.$axios.get("/v2/v1/profile", {
-                    headers: {
-                        "Authorization": "Bearer " + token
-                    }
-                })
-                .then(response => {
-
-                    this.profile = response.data.data
-                    this.myWallet = this.profile.wallet
-                    this.myPointWallet = this.profile.point
-                    this.server_time = response.data.data.time;
-                })
-        }
-
-        this.$axios.get('/v2/v1/server_time')
-            .then(response => {
-                this.server_time = response.data.time
-                this.serverDate = response.data.date
-            })
-
-        this.$axios.get("/v2/v1/football/today/upcoming")
-            .then(response => {
-                console.log(response.data);
-                this.matchs = response.data.data;
-            })
-
-
-        let footballdetailid = localStorage.getItem("football_detali_id")
-        if (token) {
-            this.$axios
-                .get("v2/v1/football/detail?id=" + footballdetailid, {
-                    headers: {
-                        Authorization: "Bearer " + token
-                    }
-                })
-                .then(response => {
-                    console.log("heool", response);
-                    this.footballMatchDetail = response.data.data;
-                    this.end_bet_football = response.data.data[0].end_time;
-                    console.log(this.end_bet_football)
-                    console.log("Hello", this.footballMatchDetail);
-
-                });
-        }
-    },
-
     methods: {
+        HomeRefresh() {
+            this.fullscreenLoading = true;
+            setTimeout(() => {
+                this.fullscreenLoading = false;
+                location.reload();
+            }, 1000);
+        },
+        goBack() {
+            this.$router.push(`/football/football?lang=${this.$store.state.locale}`);
+        },
         thousands_separators(num) {
-            //console.dir(num);
-            if (num == undefined) {
-                return "";
-            }
             var num_parts = num.toString().split(".");
             num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             return num_parts.join(".");
@@ -906,10 +844,6 @@ export default {
                 minute: minute,
                 seconds: seconds
             };
-        },
-        offDate() {
-
-            this.$router.push(`/holiday_page?lang=${this.$store.state.locale}`);
         },
         BetCurrentTime() {
             this.currentTime = moment().format('HH:mm:ss');
