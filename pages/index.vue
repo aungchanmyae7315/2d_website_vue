@@ -150,10 +150,10 @@
                             </nuxt-link>
                         </el-col>
                     </el-row>
-
-                    <!-- <el-row>
+<!--
+                    <el-row>
                         <el-col :span="12">
-                       
+
                                 <div class="bauchu_card">Bau Cau</div>
 
                         </el-col>
@@ -194,18 +194,18 @@ export default {
     actions: {},
     layout: 'homeLayout',
 
-    
-       
+
+
 
 
     mounted() {
-        var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
+        var  nowTimestamp =  Math.round(new Date().getTime()/1000)
         var lastTimestamp = localStorage.getItem('slider_time')
         var diff = nowTimestamp - lastTimestamp;
         var self = this;
-          
+
         if (diff < 7200 ) {
-        
+
             this.slider_images = JSON.parse(localStorage.getItem('slider_images'))
             if (this.slider_images !== null) {
                 this.loaded = true;
@@ -227,7 +227,7 @@ export default {
                 })
         }
           if(diff < 7200) {
-               
+
                 this.slider_text = JSON.parse(localStorage.getItem('slider_text'))
                   console.log(this.slider_text)
             }else {
@@ -235,7 +235,7 @@ export default {
                 .then(response => {
                     self.slider_text = response.data.data[0];
                     self.$store.commit('setSliderText', this.slider_text);
-                     
+
                 })
             }
 
@@ -255,7 +255,7 @@ export default {
 
         this.updateIsLoggedIn();
         this.updateLang();
-       
+
 
         let lang = localStorage.getItem('locale');
         this.$store.commit('SET_LANG', lang);
@@ -370,7 +370,7 @@ export default {
         hasLang() {
             return Boolean(localStorage.getItem('locale'));
         },
-        
+
     },
     created() {
 
