@@ -252,7 +252,7 @@
 }
 
 .noti_text .noti_icon {
-    width: 65px;
+
     height: auto;
     float: left;
     display: block;
