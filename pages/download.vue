@@ -128,7 +128,7 @@ export default {
   background: #429dfb;
   color:#fff;
   max-width: 480px;
-  width:100%;
+  width:90%;
   margin:20px auto;
   padding:12px 0;
   line-height: 20px;

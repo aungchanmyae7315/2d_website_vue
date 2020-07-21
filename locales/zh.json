@@ -113,6 +113,8 @@
   "/topup":"/topup",
   "/ios_install_guide":"/ios_install_guide",
   "/bet_history_btn":"/bet_history_btn",
+  "/twoD/wallet/transaction_status":"/twoD/wallet/transaction_status",
+  "/threeD/":"/threeD/",
 
 
 "/withdraw_noti":"/withdraw_noti",

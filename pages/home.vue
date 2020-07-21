@@ -636,7 +636,7 @@ export default {
                 })
       }
     
-          this.$axios.get('http://luke.2dboss.com/api/luke/server-time')
+          this.$axios.get('https://luke.2dboss.com/api/luke/server-time')
               .then(response => {
                 console.log(response)
                this.currentTime = response.data.time

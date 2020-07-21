@@ -9,7 +9,7 @@
             <el-col :span="5">
                  <div class="download_btn" >
                   <nuxt-link  :to="`${$t('/download')}?lang=${$store.state.locale}`">
-                      {{$t('APP')}}<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
+                      APP<img src="~static/images/icons/download_icon.png" class="header_icon" alt="mes">
                   </nuxt-link>
                 </div>
             </el-col>

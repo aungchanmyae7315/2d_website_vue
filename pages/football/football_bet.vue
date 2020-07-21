@@ -549,7 +549,7 @@ export default {
                 });
         }
 
-        this.$axios.get("http://luke.2dboss.com/api/luke/server-time").then(response => {
+        this.$axios.get("https://luke.2dboss.com/api/luke/server-time").then(response => {
             this.server_time = response.data.time;
             this.serverDate = response.data.date;
         });

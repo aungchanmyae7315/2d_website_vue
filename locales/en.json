@@ -111,6 +111,8 @@
   "/topup":"/topup",
   "/ios_install_guide":"/ios_install_guide",
   "/bet_history_btn":"/bet_history_btn",
+  "/twoD/wallet/transaction_status":"/twoD/wallet/transaction_status",
+  "/threeD/":"/threeD/",
 
 
 
@@ -318,8 +320,6 @@
 "withdrawal_details":"Withdrawal Details",
 "topup_details":"Top Up Details",
 "you_are_submitting_withdrawal":"You are submitting the withdrawal repeatedly, please try again one minute later. "
-
-
 
 
 
