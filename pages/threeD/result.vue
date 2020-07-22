@@ -204,12 +204,12 @@ export default {
         return {
            twod_result:'',
            threed_result:'',
-            activeName: 'first'
+            activeName: 'second'
         }
     },
      methods: {
         goBack() {
-             this.$router.push(`/me?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/threeD/?lang=${this.$store.state.locale}`); 
          },
           handleClick(tab, event) {
             console.log(tab, event);

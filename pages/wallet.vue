@@ -514,9 +514,11 @@
           }
       }else {
          console.log('not login')
-            this.$axios.get('/v1/admin-bank')
+            this.$axios.get('/v2/v1/bank_card')
                 .then(response => {
-                  this.bank_account = response.data.data
+                  console.log(response.data.data)
+                  this.bank_account = response.data.data[0].bank_group
+                  
                 }) 
       }
        

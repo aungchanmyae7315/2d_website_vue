@@ -209,7 +209,7 @@ export default {
     },
      methods: {
         goBack() {
-             this.$router.push(`/me?lang=${this.$store.state.locale}`); 
+             this.$router.push(`/home?lang=${this.$store.state.locale}`); 
          },
           handleClick(tab, event) {
             console.log(tab, event);

@@ -1873,3 +1873,24 @@ width: 100%!important; */
     font-weight: bolder;
     text-align: center;
 }
+.hi_re_li {
+    background-color:#2F6F41;
+    border-radius: 36px;
+    margin-bottom:15px;
+  }
+  .hi_re_li .el-col img {
+    width:30px;
+    height: auto;
+  }
+  .history_icon {
+    padding-top:10px;
+  }
+  .live_chat_icon {
+    width:40px !important;
+    padding-top:0 !important;
+  }
+  .border_l_f {
+    border-left:1px solid #FFEA72;
+    border-right: 1px solid #FFEA72;
+    margin-top:9px;
+  }

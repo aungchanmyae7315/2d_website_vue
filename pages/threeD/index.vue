@@ -29,11 +29,11 @@
             </div>
         <div v-else>
            
-              <div class="demo-type">
+              <div class="demo-type" style="padding:0;">
                
                 
                  <el-row >
-                  <el-col :span="17">
+                  <el-col :span="17" style="margin-top:-10px;">
                       <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
                         <el-avatar :size="60" v-if="this.profile.profile == null">
                           <img src="~static/images/icons/me_img.png" alt="">
@@ -86,6 +86,25 @@
                 </el-row>
               </div>
         </div>
+         <!-- <el-row class="hi_re_li">
+
+          <el-col :span="8">
+            <nuxt-link  :to="`${$t('/threeD/bet_history')}?lang=${$store.state.locale}`"> 
+              <img src="~static/images/icons/twod_history.svg" alt="" class="history_icon">
+            </nuxt-link>
+          </el-col>
+          <el-col :span="8" class="border_l_f">
+             <nuxt-link  :to="`${$t('/threeD/result')}?lang=${$store.state.locale}`">
+               <img src="~static/images/icons/2d_result_icon.png" alt="">
+             </nuxt-link>
+          </el-col>
+          <el-col :span="8">
+             <nuxt-link  :to="`${$t('/live_chat')}?lang=${$store.state.locale}`">
+               <img src="~static/images/icons/live_chat_icon.svg" alt="" class="live_chat_icon">
+             </nuxt-link>
+          </el-col>
+        </el-row> -->
+
 
                  <carousel  :autoplay="true" :nav="false" v-if="loaded" :items =1>
     
