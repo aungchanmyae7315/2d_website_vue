@@ -85,11 +85,17 @@
                                 </div>
 
                             </div>
+
+                            <!-- <input type="radio" name="1" class="radio" id="one" @click="radio_id()"> -->
+                            <div v-for="(val, key) in list" :key="key">
+                                <input type="radio" name="radio" :value="val" v-model="selected" :id="val" @click="uncheck(val)">
+                                <label :for="val">{{ val }}</label>
+                            </div>
                             <div v-for="(match,aa) in matchs" :key="aa">
                               <div class="collapse_card mown" style="width:100%; display:flex;color:white;" @click="cur_id(match.id)">
                                 <div v-for="(option,team) in match.teams" :key="team" style="width:45%;">
                                   <label>
-                                  <input type="radio" :value="option.id" :name="match.id" v-model="option.id" :id="option.id" >
+                                  <input class="no_option" type="radio" :value="option.id" :name="match.id" v-model="option.id" :id="option.id" @click="uncheck1()">
                                   {{option.home_team}}
                                   </label>
                                 </div>
@@ -426,29 +432,14 @@
     }
 }
 </style>
-<script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
 <script>
+
 import axios from 'axios'
 
 export default {
 
     mounted() {
-      var grd = function(){
-  $("input[type='radio']").click(function() {
-    var previousValue = $(this).attr('previousValue');
-    var name = $(this).attr('name');
 
-    if (previousValue == 'checked') {
-      $(this).removeAttr('checked');
-      $(this).attr('previousValue', false);
-    } else {
-      $("input[name="+name+"]:radio").attr('previousValue', false);
-      $(this).attr('previousValue', 'checked');
-    }
-  });
-};
-
-grd('1');
 
         this.$axios.get('/v2/v1/holiday')
             .then(response => {
@@ -535,47 +526,16 @@ grd('1');
             myWallet: '',
             end_bet_football: '',
             list: ['one', 'two'],
-    selected: 'two',
-    previouslySelected: 'two',
-            questions :[
-        {
-          "id": 1,
-          "question": "Q1",
-          "chosenanswer": 0,
-          "options": [
-            {
-              "id": 1,
-              "answer": "A1",
-            },
-            {
-              "id": 2,
-              "answer": "A2",
-            }
-          ]
-        },
-        {
-          "id": 2,
-          "question": "Q2",
-          "chosenanswer": 0,
-          "options": [
-            {
-              "id": 3,
-              "answer": "A3",
-            },
-            {
-              "id": 4,
-              "answer": "A4",
-            }
-          ]
-        },
-      ],
-
+            selected: 'two',
+            previouslySelected: 'two',
+            id:''
         }
     },
 
 
 
     created() {
+
 
 
         this.breakTime = moment().format('h:mm:ss a')
@@ -647,6 +607,31 @@ grd('1');
 
 
     methods: {
+         uncheck: function(val) {
+      if (val === this.previouslySelected) {
+        this.selected = false;
+      }
+      this.previouslySelected = this.selected;
+    },
+    uncheck1: function() {
+      if (this.id === this.previouslySelected) {
+        this.selected = false;
+      }
+      this.previouslySelected = this.selected;
+    },
+
+        radio_id(id){
+            // alert("hello");
+        //   let checkedOne =  document.getElementById("one").checked = true;
+        //   let checkedTwo =  document.getElementById("one").checked = false;
+        //     console.log(id);
+            if(document.getElementById("one").checked == true){
+                document.getElementById("one").checked = false
+            }
+            else if(document.getElementById("one").checked == false){
+                 document.getElementById("one").checked = true
+            }
+        },
 
       uncheck: function(val) {
       if (val === this.previouslySelected) {

@@ -813,6 +813,91 @@ export default {
 
         };
     },
+       created() {
+        this.breakTime = moment().format('h:mm:ss a')
+
+
+        this.$axios.get('/v2/v1/close_time')
+
+            .then(response => {
+                this.time = response.data.data
+
+                this.morning_from = response.data.data[0].from
+                this.morning_to = response.data.data[0].to
+                this.evening_from = response.data.data[1].from
+                this.evening_to = response.data.data[1].to
+
+                var currentTime = moment().format('HH:mm:ss');
+                var currentDate = moment().day();
+
+                if (this.server_time > this.morning_from && this.server_time < this.morning_to) {
+                    this.isActive = true
+
+                } else if (this.server_time > this.morning_to && this.server_time < this.evening_from) {
+                    this.isActive = false
+
+                } else if (this.server_time > this.evening_from && this.server_time < this.evening_to) {
+                    this.isActive = true
+
+                } else if (this.server_time > this.evening_to) {
+                    this.isActive = false
+                } else {
+                    this.isActive = false
+                }
+
+                // if(currentDate == 0 || currentDate == 6) {
+                //     this.isActive = true
+                // }
+            })
+
+        let token = localStorage.getItem('token');
+        if (token) {
+            this.$axios.get("/v2/v1/profile", {
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                })
+                .then(response => {
+
+                    this.profile = response.data.data
+                    this.myWallet = this.profile.wallet
+                    this.myPointWallet = this.profile.point
+                    this.server_time = response.data.data.time;
+                })
+        }
+
+        this.$axios.get('/v2/v1/server_time')
+            .then(response => {
+                this.server_time = response.data.time
+                this.serverDate = response.data.date
+            })
+
+        this.$axios.get("/v2/v1/football/today/upcoming")
+            .then(response => {
+                console.log(response.data);
+                this.matchs = response.data.data;
+            })
+
+
+        let footballdetailid = localStorage.getItem("football_detali_id")
+        if (token) {
+            this.$axios
+                .get("v2/v1/football/detail?id=" + footballdetailid, {
+                    headers: {
+                        Authorization: "Bearer " + token
+                    }
+                })
+                .then(response => {
+                    console.log("heool", response);
+                    this.footballMatchDetail = response.data.data;
+                    this.end_bet_football = response.data.data[0].end_time;
+                    console.log(this.end_bet_football)
+                    console.log("Hello", this.footballMatchDetail);
+
+                });
+        }
+    },
+
     methods: {
         HomeRefresh() {
             this.fullscreenLoading = true;
