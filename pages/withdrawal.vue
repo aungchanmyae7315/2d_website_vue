@@ -464,8 +464,19 @@ export default {
                     
                     }
                 })
+                  .catch(error => {
+                            console.log(error.response)
+                             if(error.response.data.message == 'The given data was invalid.') {
+                                  this.submitted = false
+                                    this.$notify({
+                                    
+                                        message:'ဂဏန်း(၆)လုံးသတ်မှတ်ပါ',
+                                        type: 'warning'
+                                    }); 
+                             }
+                           
+                        })
              
-                 
             
             } else {
                
