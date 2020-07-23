@@ -35,7 +35,7 @@ export default {
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js',defer:true },
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js',defer:true },
             { src: 'https://unpkg.com/aos@next/dist/aos.js',defer: true},
-            { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',defer:true },
+            // { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',defer:true },
             // { src: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js' },
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js',defer:true },
             // { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js' },
