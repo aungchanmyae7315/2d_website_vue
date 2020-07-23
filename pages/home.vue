@@ -25,41 +25,14 @@
                     <el-avatar :size="60"><img src="~static/images/icons/me_img.png" alt=""></el-avatar>
                     <span  class="avatar_text_logout">{{$t('Please Login first')}}</span>
                   </nuxt-link>
-                     <!-- <div class="change_lang_icon">
-                  
-                       <el-button type="text" @click="dialogVisible = true">
-                        <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
-                      </el-button>
-                  </div> -->
-                  <!-- <el-dialog
-                   
-                    :visible.sync="dialogVisible"
-                    class="change_lang_modal"
-                    width="70%">
-                   
-                     <div class="lang lang_icon">
-                        <el-dropdown @command="changeLang"  style="text-align:center">
-                         
-                            <el-dropdown-item  round command='en'><img src="~static/images/english_icon.png" alt="">English</el-dropdown-item>
-                            <el-dropdown-item  round command='uni'><img src="~static/images/myanmar_icon.png" alt="">မြန်မာ</el-dropdown-item>
-                         
-                            <el-dropdown-item  round command='zh'><img src="~static/images/chinese_icon.png" alt="">中文</el-dropdown-item>
-                      
-                      
-                        </el-dropdown>   
-                    </div>
 
-                   
-                  </el-dialog> -->
               </div>
                
            
         </div>
         <div v-else>
            
-              <div class="demo-type">
+              <div class="demo-type" style="padding-bottom:0;">
                
                 
                  <el-row >
@@ -75,7 +48,7 @@
                       </el-avatar>
                     </nuxt-link>
               <div  class="avatar_text">
-                  <ul>
+                  <ul style="margin-bottom:0;">
                        <nuxt-link :to="`${$t('/edit_profile_index')}?lang=${$store.state.locale}`">
                           <li style="color:#fff;line-height:16px">
                             <span>{{this.profile.name}}</span><br>
@@ -90,25 +63,29 @@
                   </div>
               
                   </el-col>
-                  <!-- <el-col :span="3">
-                    <Music></Music>
-                     
-                  </el-col> -->
-                   <el-col :span="3">
-                      <!-- <div class="change_lang_icon">
-                    
-                       <el-button type="text" @click="dialogVisible = true">
-                         <span v-if="$store.state.locale == 'en'"> <img src="~static/images/english_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'uni'"> <img src="~static/images/myanmar_icon.png" alt=""></span>
-                         <span v-else-if="$store.state.locale == 'zh'"> <img src="~static/images/chinese_icon.png" alt=""></span>
-                      </el-button>
- 
-                    </div> -->
-                   </el-col>
+
                 </el-row>
             
               </div>
         </div>
+        <!-- <el-row class="hi_re_li">
+
+          <el-col :span="8">
+            <nuxt-link  :to="`${$t('/twoD/bet_history')}?lang=${$store.state.locale}`"> 
+              <img src="~static/images/icons/twod_history.svg" alt="" class="history_icon">
+            </nuxt-link>
+          </el-col>
+          <el-col :span="8" class="border_l_f">
+             <nuxt-link  :to="`${$t('/twoD/result')}?lang=${$store.state.locale}`">
+               <img src="~static/images/icons/2d_result_icon.png" alt="">
+             </nuxt-link>
+          </el-col>
+          <el-col :span="8">
+             <nuxt-link  :to="`${$t('/live_chat')}?lang=${$store.state.locale}`">
+               <img src="~static/images/icons/live_chat_icon.svg" alt="" class="live_chat_icon">
+             </nuxt-link>
+          </el-col>
+        </el-row> -->
 
         <carousel  :autoplay="true"  :nav="false" v-if="loaded" :items =1>
     
@@ -988,4 +965,5 @@ export default {
   transform: translateX(-100%); 
  }
 }
+
 </style>
