@@ -86,16 +86,16 @@
 
                             </div>
 
-                            <!-- <input type="radio" name="1" class="radio" id="one" @click="radio_id()"> -->
-                            <div v-for="(val, key) in list" :key="key">
-                                <input type="radio" name="radio" :value="val" v-model="selected" :id="val" @click="uncheck(val)">
-                                <label :for="val">{{ val }}</label>
-                            </div>
+                          <input type ="checkbox" class="aa">
+                          <input type ="checkbox">
+
                             <div v-for="(match,aa) in matchs" :key="aa">
-                              <div class="collapse_card mown" style="width:100%; display:flex;color:white;" @click="cur_id(match.id)">
+                                 <input type ="checkbox">
+                                 <input type ="checkbox">
+                              <div class="collapse_card mown" style="width:100%; display:flex;color:white;" >
                                 <div v-for="(option,team) in match.teams" :key="team" style="width:45%;">
                                   <label>
-                                  <input class="no_option" type="radio" :value="option.id" :name="match.id" v-model="option.id" :id="option.id" @click="uncheck1()">
+                                  <input class="no_option" type="radio" :value="option.id" :name="match.id"  :id="option.id">
                                   {{option.home_team}}
                                   </label>
                                 </div>
@@ -433,14 +433,34 @@
 }
 </style>
 <script>
-
 import axios from 'axios'
-
 export default {
 
     mounted() {
-
-
+ $("input:checkbox").on('click', function() {
+            // alert("hi")
+  // in the handler, 'this' refers to the box clicked on
+  var $box = $(this);
+  if ($box.is(":checked")) {
+    // the name of the box is retrieved using the .attr() method
+    // as it is assumed and expected to be immutable
+    var group = "input:checkbox[name='" + $box.attr("name") + "']";
+    // the checked state of the group/box on the other hand will change
+    // and the current value is retrieved using .prop() method
+    $(group).prop("checked", false);
+    $box.prop("checked", true);
+  } else {
+    $box.prop("checked", false);
+  }
+});
+$("input:checkbox").on('click', function() {
+  // alert("radio");
+$(this).siblings('input:checkbox').prop('checked', false);
+})
+$(".aa").on('click', function() {
+   alert("radio");
+// $(this).siblings('input:checkbox').prop('checked', false);
+})
         this.$axios.get('/v2/v1/holiday')
             .then(response => {
                 this.holidays = response.data
@@ -499,7 +519,7 @@ export default {
             profile: '',
             myWallet: '',
             myPointWallet: '',
-            radio: '1',
+            // radio: '1',
             matchs: '',
             end_bet_football: '',
             footballMatchDetail: "",
@@ -528,7 +548,8 @@ export default {
             list: ['one', 'two'],
             selected: 'two',
             previouslySelected: 'two',
-            id:''
+            previouslySelected1: 1,
+            // id:''
         }
     },
 
@@ -607,38 +628,24 @@ export default {
 
 
     methods: {
+
          uncheck: function(val) {
-      if (val === this.previouslySelected) {
+            //  alert(val);
+             console.log(val);
+      if (val === this.previouslySelected1) {
         this.selected = false;
       }
-      this.previouslySelected = this.selected;
+      this.previouslySelected1 = this.selected;
     },
-    uncheck1: function() {
-      if (this.id === this.previouslySelected) {
-        this.selected = false;
-      }
-      this.previouslySelected = this.selected;
-    },
+    // uncheck1: function() {
+    //   if (this.id === this.previouslySelected) {
+    //     this.selected = false;
+    //   }
+    //   this.previouslySelected = this.selected;
+    // },
 
-        radio_id(id){
-            // alert("hello");
-        //   let checkedOne =  document.getElementById("one").checked = true;
-        //   let checkedTwo =  document.getElementById("one").checked = false;
-        //     console.log(id);
-            if(document.getElementById("one").checked == true){
-                document.getElementById("one").checked = false
-            }
-            else if(document.getElementById("one").checked == false){
-                 document.getElementById("one").checked = true
-            }
-        },
 
-      uncheck: function(val) {
-      if (val === this.previouslySelected) {
-        this.selected = false;
-      }
-      this.previouslySelected = this.selected;
-    },
+
         thousands_separators(num) {
             //console.dir(num);
             if (num == undefined) {
@@ -706,9 +713,9 @@ export default {
         clear_btn() {
             this.ruleForm.check_btn = [];
         },
-        cur_id(data) {
+        cur_id(id) {
             // var id = document.querySelector("#matchid").value;
-            console.log(data) // 1
+            console.log(id) // 1
         },
         footballSubmit_mown(formName) {
             this.$refs[formName].validate((valid) => {
