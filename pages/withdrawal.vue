@@ -470,7 +470,7 @@ export default {
                                   this.submitted = false
                                     this.$notify({
                                     
-                                        message:'ဂဏန်း(၆)လုံးသတ်မှတ်ပါ',
+                                         message:this.$t('set_6_digit'),
                                         type: 'warning'
                                     }); 
                              }
