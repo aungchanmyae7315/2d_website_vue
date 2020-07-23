@@ -30,7 +30,6 @@ export default {
         ],
         script: [
 
-
             // { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js' },
             // { src: 'https://unpkg.com/vue-image-upload-resize' },
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js',defer:true },
@@ -80,8 +79,8 @@ export default {
     axios: {
         credentials: false,
         //debug:true,
-        baseURL: "https://api.2dboss.com/api/",
-       // baseURL: "https://build.seinchanthar.com/api/",
+        //baseURL: "https:/ / api .2 dboss.com / api / ",
+        baseURL: "https://build.seinchanthar.com/api/",
         proxy: false,
         proxyHeaders: false,
         headers: {
