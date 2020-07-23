@@ -167,7 +167,7 @@ export default {
               
                 this.items.push({number:this.numberValidateForm.item.number,odds:this.numberValidateForm.item.odds, amount:this.numberValidateForm.item.amount, edit:this.item.edit})
                 this.item = [];
-                $('#form-name').focus();
+                // $('#form-name').focus();
                 this.dialogVisible = false
             } else {
             console.log('error Submit')
