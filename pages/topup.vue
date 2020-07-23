@@ -24,7 +24,7 @@
                        <el-divider direction="vertical"></el-divider>
                     <el-radio v-model="radio" label="1">
                         <div>
-                            <img src="~static/images/wavepay.jpg"  alt="">
+                            <img src="~static/images/wavepay.jpg"  class="active_img" alt="">
                           
                         </div>
                     </el-radio>
@@ -34,7 +34,7 @@
                      <el-radio v-model="radio" label="2" >
                          <div>
                                 
-                                <img v-if="radio == 2" src="~static/images/kbz.jpg"  alt="">
+                                <img v-if="radio == 2" src="~static/images/kbz.jpg" class="active_img"  alt="">
                                  <img v-else src="~static/images/kbz_t.jpg"  alt="">
                          </div>
                     </el-radio>
@@ -282,6 +282,7 @@
     }
     .topup .point_amount .el-card__body {
        text-align: center;
+       padding:10px 0;
     }
     .el-page-header__left {
         margin:0;
