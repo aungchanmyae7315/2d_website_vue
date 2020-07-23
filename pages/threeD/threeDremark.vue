@@ -122,9 +122,6 @@
 
 <script>
 import Vue from 'vue'
-import CRUD from 'vue-element-crud'
-
-Vue.use(CRUD)
 
 export default {
   computed: {
