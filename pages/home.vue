@@ -330,6 +330,7 @@ export default {
               this.info = response.data.data;
               this.close_day = response.data.data.is_close_day
                this.last_date = response.data.data.last_date
+                this.currentTime = response.data.data.current_time
               console.log(response)
 
             })
@@ -432,8 +433,7 @@ export default {
       profile:'',
       slider_text:'',
       breakTime:null,
-      kweeliveItvId:0,
-      serverCurTimeItvId:0,
+
       myWallet:'',
       blockUser:'',
       loaded:'',
@@ -444,14 +444,7 @@ export default {
   },
 
  
-  destroyed () {
-    clearInterval(this.kweeliveItvId);
-    clearInterval(this.serverCurTimeItvId);
-  },
-  beforeDestroy () {
-    clearInterval(this.kweeliveItvId);
-    clearInterval(this.serverCurTimeItvId);
-  },
+
    methods: {
     HomeRefresh() {
       this.fullscreenLoading = true;
@@ -484,6 +477,7 @@ export default {
               this.info = response.data.data;
               this.close_day = response.data.data.is_close_day
                this.last_date = response.data.data.last_date
+                this.currentTime = response.data.data.current_time
               console.log(response)
 
             })
@@ -560,9 +554,7 @@ export default {
             
             this.breakTime = moment().format('h:mm A');
           }
-      // this.currentTime = moment().format('HH:mm:ss');
-       this.currentDate = moment().format("YYYY D MMMM  dddd")
-        
+
        },
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
@@ -581,8 +573,7 @@ export default {
     },
      created() {
       
-      this.currentDate = moment().format("YYYY D MMMM  dddd")
-     // this.currentTime = moment().format('HH:mm:ss ');
+  
        this.breakTime = moment().format('h:mm:ss a')
       setInterval(() => this.ServerCurrentTime(), 1 * 1000);
     
@@ -600,7 +591,7 @@ export default {
                     //console.dir(response.data);
                      this.profile = response.data.data
                     this.myWallet = this.profile.wallet 
-                    this.currentTime = response.data.data.time;
+                   
                     //console.dir(response.data.data.time);
                      if(this.blockUser == 0) {
                       }else {
@@ -613,12 +604,12 @@ export default {
                 })
       }
     
-          this.$axios.get('https://luke.2dboss.com/api/luke/server-time')
-              .then(response => {
-                console.log(response)
-               this.currentTime = response.data.time
-               this.serverDate  = response.data.date
-              })
+          // this.$axios.get('https://luke.2dboss.com/api/luke/server-time')
+          //     .then(response => {
+          //       console.log(response)
+          //      this.currentTime = response.data.time
+          //      this.serverDate  = response.data.date
+          //     })
       
     },
 }
