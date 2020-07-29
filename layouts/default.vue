@@ -1,32 +1,7 @@
 <template>
   <div>
     <div class="main_container">
-        <!-- <el-header class="header">
-          <ul class="header_item">
-           <li class="noti"><a href=""> <img src="~static/images/noti.png" alt="logo"></a></li>
-            <li><a href=""> <img src="~static/images/logo.png" class="logo" alt="logo"></a></li>
-            <li class="music_icon">
-             <div class="wrapper">
-                <a href="#" title="Listen to the song" class="player-controls">
-                    <span class="audio-label">
-                        
-                    </span>
-                    <span class="play"></span>
-                    <span class="pause"></span>
-                </a>
-                <audio id="player">
-                    <source src="https://www.dropbox.com/s/t32waag3ib20b28/OneDance-Drake.mp3?raw=1" type="audio/mp3">
-                   
-                </audio>
-            </div>
-            </li>
-            <li class="messeage_icon">
-                <img src="~static/images/icons/messeage_icon.png" class="header_icon" alt="mes">
-            </li>
-          </ul>
-            
-           
-        </el-header> -->
+       
    
         <nuxt />
         <!-- <el-footer class="footer">

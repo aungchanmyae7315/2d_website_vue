@@ -74,10 +74,7 @@
                                 </div>
 
                             </el-col>
-                            <!-- <el-col :span="3">
-                        <Music></Music>
-
-                      </el-col> -->
+                           
                             <el-col :span="3">
                                 <div class="change_lang_icon">
                                     <!-- <nuxt-link :to="`${$t('result')}?lang=${$store.state.locale}`"> -->

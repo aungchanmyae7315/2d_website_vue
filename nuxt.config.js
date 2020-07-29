@@ -1,3 +1,4 @@
+
 export default {
 
     server: {
@@ -7,9 +8,27 @@ export default {
 
     //loading: '~/components/loading.vue',
     mode: 'spa',
-    router: { // customize nuxt.js router (vue-router).
-        middleware: 'i18n' // middleware all pages of the application
-    },
+    // router: { 
+    //     // customize nuxt.js router (vue-router).
+    //     middleware: 'i18n' // middleware all pages of the application
+    // },
+    router: {
+
+        middleware: 'i18n',
+        routes: [
+            {
+              name: 'live_chat',
+              path: '/live_chat',
+              component: 'pages/live_chat.vue'
+            },
+            {
+              name: 'Chat',
+              path: '/Chat',
+              component: 'components/Chat.vue'
+            },
+            
+          ]
+      },
     generate: {
         fallback: true,
         interval: 100
@@ -31,11 +50,11 @@ export default {
         script: [
 
             // { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js' },
-            // { src: 'https://unpkg.com/vue-image-upload-resize' },
+            { src: 'https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js' },
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js',defer:true },
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js',defer:true },
             { src: 'https://unpkg.com/aos@next/dist/aos.js',defer: true},
-            // { src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',defer:true },
+            //{ src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',defer:true },
             // { src: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js' },
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js',defer:true },
             // { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js' },
@@ -95,7 +114,10 @@ export default {
         '@/plugins/aos',
         '~/plugins/i18n.js',
 
+        
+
     ],
+    
     /*
      ** Nuxt.js dev-modules
      */

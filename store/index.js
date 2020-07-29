@@ -17,7 +17,8 @@ const createStore = () => {
             sliderImage: [],
             sliderText: '',
             sliderTime: '',
-            hello: ''
+            hello: '',
+            Chat_name:''
 
         },
         getters: {
@@ -156,6 +157,14 @@ const createStore = () => {
             bet_history_detail_id(state, data) {
                 state.data = data;
                 localStorage.setItem('bet_history_detail_id', (data));
+            },
+            Chat_name(state, data) {
+                state.data = data;
+                localStorage.setItem('Chat_name', (data));
+            },
+            chatRouter(state, data) {
+                state.data = data;
+                localStorage.setItem('chatRouter', (data));
             },
 
 

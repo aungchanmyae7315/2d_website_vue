@@ -122,6 +122,10 @@
   "/bet_history_btn":"/bet_history_btn",
   "/twoD/wallet/transaction_status":"/twoD/wallet/transaction_status",
   "/threeD/":"/threeD/",
+  "/live_chat":"/live_chat",
+  "/twoD/result":"/twoD/result",
+  "/twoD/bet_history":"/twoD/bet_history",
+
 
 
 
@@ -319,7 +323,8 @@
 "withdrawal_details":"ငွေထုတ်အသေးစိတ်",
 "topup_details":"ငွေဖြည့်အသေးစိတ်",
 "you_are_submitting_withdrawal":"ငွေထုပ်ခြင်း ထပ်ခါထပ်ခါလုပ်မိနေပါသည်။ နောက် (၂) မိနစ်မှ ပြန်စမ်းကြည့်ပါ။",
-"set_6_digit":"ငွေထုတ်ရန် ဂဏန်း(၆)လုံးသာဖြစ်ရပါမည်။"
+"set_6_digit":"ငွေထုတ်ရန် ဂဏန်း(၆)လုံးသာဖြစ်ရပါမည်။",
+"pls_login_first":"အကောင့်အရင်၀င်ပါ"
 
 
 

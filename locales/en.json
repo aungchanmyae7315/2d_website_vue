@@ -111,6 +111,9 @@
   "/bet_history_btn":"/bet_history_btn",
   "/twoD/wallet/transaction_status":"/twoD/wallet/transaction_status",
   "/threeD/":"/threeD/",
+  "/live_chat":"/live_chat",
+  "/twoD/result":"/twoD/result",
+  "/twoD/bet_history":"/twoD/bet_history",
 
 
     "/withdraw_noti": "/withdraw_noti",
@@ -316,7 +319,8 @@
   "withdrawal_details":"Withdrawal Details",
   "topup_details":"Top Up Details",
   "you_are_submitting_withdrawal":"You are submitting the withdrawal repeatedly, please try again one minute later. ",
-  "set_6_digit":"Set 6-digit secret scode for withdrawal"
+  "set_6_digit":"Set 6-digit secret scode for withdrawal",
+  "pls_login_first":"Plesae Login First"
   
   }
   

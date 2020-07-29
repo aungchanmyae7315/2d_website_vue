@@ -71,7 +71,7 @@
                 </nuxt-link>
                   </el-col>
                   <!-- <el-col :span="3">
-                    <Music></Music>
+                
                      
                   </el-col> -->
                    <el-col :span="3">
@@ -350,8 +350,7 @@
 </template>
 
 <script>
-import Music from '~/components/Music.vue'
-import Online from '~/components/Online.vue'
+
 import axios from 'axios'
 
 export default {
@@ -374,8 +373,7 @@ export default {
    },
   components: {
   
-    Music,
-    Online
+
   },
   
   data() {
