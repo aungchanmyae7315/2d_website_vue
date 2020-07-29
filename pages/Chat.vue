@@ -334,7 +334,6 @@ export default {
             }
          
         },
-
          async getKweeLiveData(){
           this.$axios.get('/luke/twod-result-live')
             .then(response => {
