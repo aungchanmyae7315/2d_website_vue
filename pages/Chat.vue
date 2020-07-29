@@ -11,7 +11,7 @@
             
                 <div class="row">
                    <div class="col">
-                                 <span>Live one</span>
+                                 <span>Live</span>
                                 <h2 v-if="!this.info.live && !this.info.result_1200"    >
                                     <div class="loadingio-spinner-dual-ball-ty27h70p24 ">
                                         <div class="ldio-ct1tsjzqdg5">
@@ -92,7 +92,7 @@
                  
                     <div class="row">
                        <div class="col">
-                                 <span>Live two</span>
+                                 <span>Live</span>
                                 <h2 v-if="!this.info.live && !this.info.result_1200"    >
                                     <div class="loadingio-spinner-dual-ball-ty27h70p24 ">
                                         <div class="ldio-ct1tsjzqdg5">
