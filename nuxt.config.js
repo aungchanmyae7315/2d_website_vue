@@ -15,19 +15,7 @@ export default {
     router: {
 
         middleware: 'i18n',
-        routes: [
-            {
-              name: 'live_chat',
-              path: '/live_chat',
-              component: 'pages/live_chat.vue'
-            },
-            {
-              name: 'Chat',
-              path: '/Chat',
-              component: 'components/Chat.vue'
-            },
-            
-          ]
+       
       },
     generate: {
         fallback: true,
