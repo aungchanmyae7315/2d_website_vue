@@ -124,6 +124,13 @@ export default {
         margin:12px 5px 12px 8px;
         outline: none;
     }
+    input.new_message_input:focus {
+    outline:none !important;
+    outline-width: 0 !important;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
     .new-message .new_message_input:focus {
         outline-width: 0;
         outline: none;
