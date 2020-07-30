@@ -21,7 +21,7 @@
                 </el-col>
               <el-col :span="4">
                     <div class="enter_message_icon">
-                       <img src="~static/images/icons/send_back_icon.svg" alt="">
+                       <img @click="addMessage" src="~static/images/icons/send_back_icon.svg" alt="">
                     </div>
            
                 </el-col>
