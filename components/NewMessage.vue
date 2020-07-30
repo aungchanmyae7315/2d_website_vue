@@ -124,7 +124,10 @@ export default {
         margin:12px 5px 12px 8px;
         outline: none;
     }
-
+    .new-message .new_message_input:focus {
+        outline-width: 0;
+        outline: none;
+    }
     .enter_message_icon {
         text-align: center;
     }
