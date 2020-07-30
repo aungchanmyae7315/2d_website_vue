@@ -122,7 +122,9 @@ export default {
         border-radius: 19px;
         padding:5px 10px;
         margin:12px 5px 12px 8px;
+        outline: none;
     }
+
     .enter_message_icon {
         text-align: center;
     }
