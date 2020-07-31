@@ -888,12 +888,9 @@ export default {
                     }
                 })
                 .then(response => {
-                    console.log("heool", response);
                     this.footballMatchDetail = response.data.data;
                     this.end_bet_football = response.data.data[0].end_time;
                     console.log(this.end_bet_football)
-                    console.log("Hello", this.footballMatchDetail);
-
                 });
         }
     },
@@ -979,7 +976,7 @@ export default {
                         'input[name="bet_team_id"]:checked');
 
                     if (checkRadio != null) {
-                         console.log(this.radio);
+                        //  console.log(this.radio);
                     this.submitted = true
                     let token = localStorage.getItem('token');
 
@@ -1033,7 +1030,6 @@ export default {
                             } else {
                                 this.submitted = true
                                 this.$router.push(`/football/success?` + `lang=${this.$store.state.locale}`);
-
                             }
 
                         })

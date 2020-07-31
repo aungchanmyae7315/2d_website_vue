@@ -1,11 +1,15 @@
 <template>
     <div class="wholePage">
         <div class="testing_first">
+
+
             <div class="football_header">
                 <a href="/">
                     <div class="backTo" @back="goBack"><i class="el-icon-arrow-left"></i></div>
                 </a>
-                <div class="football_header_logo"> <img src="~static/images/footballLogo.png" style="width:170px;" alt="logo" /></div>
+                <div class="football_header_logo">
+                  <img src="~static/images/footballLogo.png" alt="logo" style="width:60%;"/>
+                </div>
                 <div class="football_refresh" @click="HomeRefresh" v-loading.fullscreen.lock="fullscreenLoading">
                     <img src="~static/icons_header/refresh_icon.png" alt="logo" style="width:30px;" />
                 </div>
@@ -47,7 +51,14 @@
                         <el-col :span="3">
                         </el-col>
                     </el-row>
-                    <div class="history_chat">
+                    <el-row class="mown_history_chat">
+                      <el-col :span="12" class="footabll_history"> <nuxt-link :to="`${$t('/football/betHistory')}?lang=${$store.state.locale}`">
+                                <img src="~static/images/history.svg" alt="logo" width="27px;">
+                            </nuxt-link></el-col>
+
+                      <el-col :span="12"><img src="~static/images/livechat.svg" alt="logo" width="30px;"></el-col>
+                    </el-row>
+                    <!-- <div class="history_chat">
 
                         <div class="forHistory">
                             <nuxt-link :to="`${$t('/football/betHistory')}?lang=${$store.state.locale}`">
@@ -58,7 +69,7 @@
                         <div class="forchat">
                             <img src="~static/images/livechat.svg" alt="logo" width="30px;">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -94,10 +105,10 @@
                             <el-menu-item index="1"><span @click="toggle(5)">{{this.yesterday2Date}}</span></el-menu-item>
                             <el-menu-item index="2"><span @click="toggle(6)">{{this.yesterday1Date}}</span></el-menu-item>
                             <el-menu-item index="3"><span @click="toggle(7)">Yesterday</span></el-menu-item>
-                            <el-menu-item index="4"><span @click="toggle(1)">Today</span></el-menu-item>
-                            <el-menu-item index="5"><span @click="toggle(2)"> Tomorrow</span></el-menu-item>
-                            <el-menu-item index="6"><span @click="toggle(3)">{{this.tomorrow1Date}}</span></el-menu-item>
-                            <el-menu-item index="7"><span @click="toggle(4)">{{this.tomorrow2Date}}</span></el-menu-item>
+                            <el-menu-item index="4" @click="mown(1)"><span @click="toggle(1)">Today</span></el-menu-item>
+                            <el-menu-item index="5" @click="mown(2)"><span @click="toggle(2)"> Tomorrow</span></el-menu-item>
+                            <el-menu-item index="6" @click="mown(3)"><span @click="toggle(3)">{{this.tomorrow1Date}}</span></el-menu-item>
+                            <el-menu-item index="7" @click="mown(4)"><span @click="toggle(4)">{{this.tomorrow2Date}}</span></el-menu-item>
                         </el-menu>
                         <div></div>
                         <div></div>
@@ -411,7 +422,6 @@ import ScrollFixedHeader from 'vuejs-scroll-fixed-header'
 Vue.use(ScrollFixedHeader)
 import axios from 'axios'
 import carousel from 'vue-owl-carousel'
-
 export default {
     components: { carousel },
     getters: {},
@@ -421,6 +431,8 @@ export default {
 
     mounted() {
 
+
+      localStorage.setItem('mown',1);
 
        var  nowTimestamp =  Math.round(new Date().getTime()/1000)
         var lastTimestamp = localStorage.getItem('slider_time')
@@ -511,7 +523,9 @@ export default {
             myWallet: '',
             blockUser: '',
             loaded: '',
-            activeNames: [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80],
+            activeNames: [37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50,51,52,53,54,55,56,57,58,59,
+            60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,,100,101,102,103,104,105,106,107,108,109,110,111,113,,112,114,115,116,117,118,119,120,121,122,123,124,125,126,
+            127,128,129,130,131,132,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159],
             activeName: "first",
             todayfootball: "",
             football_info: "",
@@ -534,7 +548,8 @@ export default {
             yesterday2Date: '',
 
             currentTab: 1,
-            fixed: false
+            fixed: false,
+              // localStorage.setItem('mown',1);
 
             //   activeIndex2: '1',
         }
@@ -646,6 +661,10 @@ export default {
             } else {
                 this.$router.push(`/login?` + `lang=${this.$store.state.locale}`);
             }
+
+        },
+        mown(data) {
+                this.$store.commit('mown', data);
 
         },
     },
