@@ -84,7 +84,7 @@
                                 </div>
 
                             </div>
-                            <p style="color:white;">{{mown}}</p>
+                            <!-- <p style="color:white;">{{mown}}</p> -->
                             <!-- <p style="color:white;">{{one1}}</p> -->
                             <div v-if="mown == 1">
                             <div v-for="(match,aa) in matchs" :key="aa">
