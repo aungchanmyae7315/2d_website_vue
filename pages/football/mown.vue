@@ -84,8 +84,10 @@
                                 </div>
 
                             </div>
+
                             <!-- <p style="color:white;">{{mown}}</p> -->
                             <!-- <p style="color:white;">{{one1}}</p> -->
+
                             <div v-if="mown == 1">
                             <div v-for="(match,aa) in matchs" :key="aa">
                                 <div class="collapse_card mown">
@@ -105,7 +107,7 @@
                                            </label>
 
                                     <div class="vs_mown" style="" >{{match.play_at}}</div>
-                                    <label class="for_both">
+                                    <label class="for_both" style="padding-right:2%;">
                                               <div class="team_logo001">
                                                <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
                                                </div>

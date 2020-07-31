@@ -167,6 +167,10 @@
                 <!-- {{fDetail.moung}} -->
 
                                 <div class="collapse_cardMown mown"  v-for="(fDetailMaung, f) in fDetail.moung" :key="f">
+                                     <el-row>
+                                      <span class="dateMown" style="color:#121212;">{{fDetailMaung.play_at_time}}</span>
+                                      <span class="timeMown" style="color:#121212;">{{fDetailMaung.play_at}}</span>
+                                      </el-row>
                                   <div class="mown_match" >
                                     <label class="for_both" style="padding-left:2%;" v-if="fDetailMaung.home_team.id == fDetailMaung.bet_team.id">
                                              <div class="forRadio">
@@ -193,11 +197,11 @@
                                                </div>
                                     </label>
 
-                                    <div class="vs_mown" style="color:#121212;font-size:20px;">
+                                    <div class="vs_mown" style="color:#121212;font-size:16px;">
                                       {{fDetailMaung.home_goal}} -  {{fDetailMaung.away_goal}}
 
                                       </div>
-                                    <label class="for_both" v-if="fDetailMaung.away_team.id == fDetailMaung.bet_team.id">
+                                    <label class="for_both" style="margin-right:15px;" v-if="fDetailMaung.away_team.id == fDetailMaung.bet_team.id">
                                               <div class="team_logo001">
                                                <img :src="fDetailMaung.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
                                                </div>
@@ -209,7 +213,7 @@
                                                    <el-checkbox v-model="checked2" disabled></el-checkbox>
                                              </div>
                                     </label>
-                                     <label class="for_both" v-else>
+                                     <label class="for_both" style="margin-right:15px;" v-else>
                                               <div class="team_logo001">
                                                <img :src="fDetailMaung.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
                                                </div>
@@ -217,7 +221,7 @@
 
                                                {{fDetailMaung.away_team.name}}
                                               </div>
-                                              <div class="forRadio">
+                                              <div class="forRadio" style="padding-right:5px;">
                                                    <el-checkbox  disabled></el-checkbox>
                                              </div>
                                     </label>
