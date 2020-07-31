@@ -27,14 +27,14 @@
                                     
                                     >  
                                     <el-input @keypress.enter.native="submitRefel('ruleForm')" :placeholder="$t('enter_referral_code')" v-model="ruleForm.referal_code"></el-input>
-                                   <div style="padding-top:20px;">
+                                   <div style="padding-top:10px;">
                                          <el-button type="success"  round @click="submitRefel('ruleForm')"> တင်ပြမည်</el-button>
                                    </div>
                                     
                              </el-form-item>
                         </el-form>
                         </el-card>
-                        <p style="padding-top:20px;">ရည်ညွှန်းကုဒ်မရှိလျှင် ကျော်သွားနိုင်ပါသည်။</p>
+                        <p style="margin-bottom:0;">ရည်ညွှန်းကုဒ်မရှိလျှင် ကျော်သွားနိုင်ပါသည်။</p>
                          <el-button type="warning" class="submitRefel" round @click="skip()">ရည်ညှန်းကုဒ်မရှိပါ</el-button>
                          
                 </div>

@@ -122,9 +122,6 @@
 
 <script>
 import Vue from 'vue'
-import CRUD from 'vue-element-crud'
-
-Vue.use(CRUD)
 
 export default {
   computed: {
@@ -167,7 +164,7 @@ export default {
               
                 this.items.push({number:this.numberValidateForm.item.number,odds:this.numberValidateForm.item.odds, amount:this.numberValidateForm.item.amount, edit:this.item.edit})
                 this.item = [];
-                $('#form-name').focus();
+                // $('#form-name').focus();
                 this.dialogVisible = false
             } else {
             console.log('error Submit')

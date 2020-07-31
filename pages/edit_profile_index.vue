@@ -239,7 +239,7 @@
             });
 
             var data_name = {
-              name: $('#ok').val(),
+              name: this.profile.name
 
             }
     

@@ -122,6 +122,10 @@
     "/bet_history_btn": "/bet_history_btn",
     "/twoD/wallet/transaction_status": "/twoD/wallet/transaction_status",
     "/threeD/": "/threeD/",
+    "/live_chat": "/live_chat",
+    "/twoD/result": "/twoD/result",
+    "/twoD/bet_history": "/twoD/bet_history",
+
 
 
 
@@ -319,22 +323,21 @@
     "withdrawal_details": "ငွေထုတ်အသေးစိတ်",
     "topup_details": "ငွေဖြည့်အသေးစိတ်",
     "you_are_submitting_withdrawal": "ငွေထုပ်ခြင်း ထပ်ခါထပ်ခါလုပ်မိနေပါသည်။ နောက် (၂) မိနစ်မှ ပြန်စမ်းကြည့်ပါ။",
+    "set_6_digit": "ငွေထုတ်ရန် ဂဏန်း(၆)လုံးသာဖြစ်ရပါမည်။",
+    "pls_login_first": "အကောင့်အရင်၀င်ပါ"
 
-    "all": "ပွဲစဉ်အားလုံး",
-    "closed": "​ပိတ်ပြီး",
-    "opening": "ဖွင့်နေစဲ",
-    "mownStatus": "အနည်းဆုံး ၃ သင်းရွေးပါ အများဆုံး ၁၀ သင်းရွေးပါ",
-    "enter_bet_amount": "လောင်းမည့်ပမာဏကိုထည့်ပါ",
-    "team": "လောင်းမည့်အသင်းရွေးပါ",
-    "max_amount": "အနည်းဆုံး (၁၀၀)ကျပ် ထိုးရပါမည်",
-    "multipleOF100": "ထီထိုး ငွေပမာဏသည် (၁၀၀) ​၏စတိုးကိန်းဖြစ်ရပါမည်။",
-    "football_Bet_closed.": "ဤပွဲစဉ်လောင်းရန်အတွက်ပိတ်သွားပါပြီ။",
-    "bet history": "လောင်းကြေးမှတ်တမ်း",
-    "congratulation": "ဂုဏ်ယူပါသည်！",
-    "Mown": "Mown",
-    "Body": "Body",
-    "goal": "Goal +",
-    "completed": "Completed",
-    "Upcoming": "Upcoming"
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
