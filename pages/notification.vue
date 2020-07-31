@@ -177,8 +177,10 @@
 
             <!-- for football -->
 
-            <!-- <div class="noti_main" v-for="(footballnoti ,fn) in football_notification" :key="fn">
-                    <div class="amount_card" @click="football_noti_detail_id(footballnoti.notification_id)">
+            <div class="noti_main" v-for="(footballnoti ,fn) in football_notification" :key="fn">
+
+          <div v-if = "footballnoti.type==1">
+                     <div class="amount_card" @click="football_noti_detail_id(footballnoti.notification_id)">
                         <el-card class="box-card">
                             <div slot="header" class="clearfix">
                                 <span class="con">{{footballnoti.title}}
@@ -186,8 +188,43 @@
                                 <span v-if="footballnoti.type == '1'">
                                 <span class="team_name_text" style="font-size:17px;">body</span>
                                 </span>
-                                <span v-else>
+                                <!-- <span v-else>
                                 <span class="team_name_text" style="font-size:17px;">Goal</span>
+                                </span> -->
+                                </span>
+                                <p style="float: right; padding: 3px 0;font-size:20px;" type="text">
+                                  +  {{footballnoti.win_amount}} Ks
+                                </p>
+                            </div>
+                            <div class="text item">
+                                <el-row>
+                                    <el-col>
+                                        <div class="match">
+                                            <div class="teaminner_01">
+                                                <p class="t_name team_name_text">{{footballnoti.home_team.name}}</p>
+                                                <img :src="footballnoti.home_team.logo" alt="logo" class="team_logo team_02" />
+                                                <p class="result team_name_text">
+                                                    {{footballnoti.home_goal}}&nbsp;-&nbsp;{{footballnoti.away_goal}}<br /><span>{{footballnoti.play_at}}</span>
+                                                </p>
+                                                <img :src="footballnoti.away_team.logo" alt="logo" class="team_logo team_02" />
+                                                <p class="t_name team_name_text">{{footballnoti.away_team.name}}</p>
+                                            </div>
+                                        </div>
+                                    </el-col>
+                                </el-row>
+                            </div>
+                        </el-card>
+                    </div>
+            </div>
+
+              <div v-if = "footballnoti.type==2">
+                     <div class="amount_card" @click="football_noti_detail_id(footballnoti.notification_id)">
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span class="con">{{footballnoti.title}}
+                                  <br>
+                                <span v-if="footballnoti.type == '2'">
+                                <span class="team_name_text" style="font-size:17px;">Goal+</span>
                                 </span>
                                 </span>
                                 <p style="float: right; padding: 3px 0;font-size:20px;" type="text">
@@ -213,7 +250,26 @@
                             </div>
                         </el-card>
                     </div>
-            </div> -->
+            </div>
+            <div v-if = "footballnoti.type==3">
+              <div class="amount_card" @click="football_noti_detail_id(footballnoti.notification_id)">
+                        <el-card class="box-card">
+                            <div slot="header" class="clearfix">
+                                <span class="con">{{footballnoti.title}}
+                                  <br>
+                                <span v-if="footballnoti.type == '3'">
+                                <span class="team_name_text" style="font-size:17px;">Maung</span>
+                                </span>
+                                </span>
+                                <p style="float: right; padding: 3px 0;font-size:20px;" type="text">
+                                  +  {{footballnoti.win_amount}} Ks
+                                </p>
+                            </div>
+
+                        </el-card>
+                    </div>
+              </div>
+            </div>
 
         </section>
 
@@ -320,19 +376,19 @@ export default {
 
         //for football noti
 
-        // if (token) {
-        //     this.$axios.get("/v2/v1/football/notification", {
-        //             headers: {
-        //                 "Authorization": "Bearer " + token
-        //             }
-        //         })
-        //         .then(response => {
-        //             console.log(response);
-        //             this.football_notification = response.data.data
-        //             // this.$nuxt.$loading.finish()
-        //             var noti_id = this.notification.notification_id
-        //         })
-        // }
+        if (token) {
+            this.$axios.get("/v2/v1/football/notification", {
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                })
+                .then(response => {
+                    console.log(response);
+                    this.football_notification = response.data.data
+                    // this.$nuxt.$loading.finish()
+                    var noti_id = this.notification.notification_id
+                })
+        }
 
 
     }

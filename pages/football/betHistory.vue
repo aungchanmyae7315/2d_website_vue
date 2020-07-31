@@ -13,13 +13,45 @@
 
                     <div class="amount_card" v-for="(footballInfos , d) in footballInfo.football_info" :key="d" @click="bet_history_detail_id(footballInfos.id)">
 
-                        <el-card class="box-card">
+                        <el-card class="box-card" v-if="footballInfos.type == 1">
 
                             <div slot="header" class="clearfix" style="height:60px;">
                                 <span v-if="footballInfos.type == 1">   <span class="con">Body <br /><span class="team_name_text">Selected Team : <span>{{footballInfos.bet_team.name}}</span></span>
                                 </span>
                                 </span>
-                                <span v-else-if="footballInfos.type == 2">   <span class="con">Goal+ <br /><span class="team_name_text">
+                                <p style="float: right; padding: 3px 0;font-size:20px; transform: translateY(-20px);" type="text">
+                                    {{footballInfos.amount}} KS
+                                </p>
+                            </div>
+                            <div class="text item">
+
+                                <div class="match">
+                                    <div class="teaminner_01">
+
+                                        <p class="t_name team_name_text" style="font-size:14px;">
+
+                                          <span v-if="footballInfos.type == 1"><span v-if="footballInfos.bet_team.id == footballInfos.home_team.id"><el-checkbox v-model="checked"></el-checkbox></span></span>
+                                          {{footballInfos.home_team.name}}</p>
+                                        <img :src="footballInfos.home_team.logo" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
+                                        <p class="result team_name_text">
+                                            <span style="font-size:17px; color:black;">{{footballInfos.home_goal}}&nbsp;-&nbsp;{{footballInfos.away_goal}}</span><br>
+                                            <span>{{footballInfos.play_at}}</span>
+                                        </p>
+                                        <img :src="footballInfos.away_team.logo" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
+                                        <p class="t_name team_name_text" style="font-size:14px;">{{footballInfos.away_team.name}} &nbsp;<span v-if="footballInfos.type == 1">
+                                          <span v-if="footballInfos.bet_team.id == footballInfos.away_team.id"> <el-checkbox v-model="checked"></el-checkbox></span></span></p>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </el-card>
+
+                       <el-card class="box-card" v-if="footballInfos.type == 2">
+
+                            <div slot="header" class="clearfix" style="height:60px;">
+
+                                <span v-if="footballInfos.type == 2">   <span class="con">Goal+ <br /><span class="team_name_text">
                                   <span v-if="footballInfos.goal_status == 1">Up</span>
                                   <span v-else-if="footballInfos.goal_status == 2">Down</span>
                                   </span>
@@ -35,7 +67,7 @@
                                     <div class="teaminner_01">
 
                                         <p class="t_name team_name_text" style="font-size:14px;">
-                                          <!-- <input type="checkbox" checked> -->
+
                                           <span v-if="footballInfos.type == 1"><span v-if="footballInfos.bet_team.id == footballInfos.home_team.id"><el-checkbox v-model="checked"></el-checkbox></span></span>
                                           {{footballInfos.home_team.name}}</p>
                                         <img :src="footballInfos.home_team.logo" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
@@ -44,14 +76,30 @@
                                             <span>{{footballInfos.play_at}}</span>
                                         </p>
                                         <img :src="footballInfos.away_team.logo" alt="logo" class="team_logo team_02" style="width:40px!important; height:40px;" />
-                                        <p class="t_name team_name_text" style="font-size:14px;">{{footballInfos.away_team.name}} &nbsp;<span v-if="footballInfos.type == 1"><span v-if="footballInfos.bet_team.id == footballInfos.away_team.id"> <el-checkbox v-model="checked"></el-checkbox></span></span></p>
+                                        <p class="t_name team_name_text" style="font-size:14px;">{{footballInfos.away_team.name}} &nbsp;<span v-if="footballInfos.type == 1">
+                                          <span v-if="footballInfos.bet_team.id == footballInfos.away_team.id"> <el-checkbox v-model="checked"></el-checkbox></span></span></p>
 
                                     </div>
                                 </div>
 
                             </div>
                         </el-card>
+
+                      <el-card class="box-card" v-if="footballInfos.type == 3">
+                         <div slot="header" class="clearfix" style="height:60px;">
+                           <p style="float: left; padding: 3px 0;font-size:20px;" type="text">
+                                    Maung
+                                </p>
+                           <p style="float: right; padding: 3px 0;font-size:20px;" type="text">
+                                    {{footballInfos.amount}} KS
+                                </p>
+                           </div>
+                      </el-card>
+
                     </div>
+
+
+
                 <!-- </nuxt-link> -->
             </div>
         </div>
