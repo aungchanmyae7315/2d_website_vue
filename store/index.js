@@ -166,6 +166,10 @@ const createStore = () => {
                 state.data = data;
                 localStorage.setItem('chatRouter', (data));
             },
+            change_zg_uni(state, data) {
+                state.data = data;
+                localStorage.setItem('change_zg_uni', (data));
+            },
 
             mown(state, data) {
                 state.data = data;

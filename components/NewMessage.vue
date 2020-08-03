@@ -13,7 +13,7 @@
              
           </div>
         <div v-else>
-        <form @submit.prevent="addMessage">
+        <form autocomplete="off" @submit.prevent="addMessage">
             <el-row>
                 <el-col :span="20">
                      <input type="text"    class="new_message_input" name="new-message" placeholder="Type a message..." v-model="newMessage" />
@@ -46,6 +46,7 @@ export default {
     name: "NewMessage",
    // props: ["name"],
    mounted() {
+       
        
         let token = localStorage.getItem('token');
         if(token) {
@@ -109,13 +110,13 @@ export default {
 };
 </script>
 <style >
- .unicode {
+ /* .unicode {
         font-family: "Pyidaungsu","MON3 Anonta 1" !important;
     }
 
     .zawgyi {
         font-family: "Zawgyi-One" !important;
-    }
+    } */
 .message_input_footer {
     padding:10px 20px;
 }

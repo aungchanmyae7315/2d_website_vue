@@ -1,10 +1,47 @@
 <template>
+    <main class="chat_page">
+            <el-dialog
+
+  :visible.sync="dialogVisible_chat"
+  width="90%"
+   :show-close="false"
+  :close-on-click-modal="false">
+ <el-radio-group @click.native="changeHandler" v-model="radio1">
+        <el-radio-button value="zawgyi"  label="ဤစာကိုဖတ္လိုရသည္"></el-radio-button><br>
+        <el-radio-button  valeue="unicode" label="ဤစာကိုဖတ်လိုရသည်"></el-radio-button>
+  
+    </el-radio-group>
+
+  
+
+</el-dialog>
+ 
     <div class="main_container live_chat">
         <el-header class="header">
             <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
                 <el-page-header title="" @back="goBack"  content="Sein Lucky Live Chat">
                     </el-page-header>
             <!-- </nuxt-link> -->
+            <!-- <h3>This is for ZawGyI font</h3>
+	<p class="zawgyi">
+		သည္စာသည္ ေဇာ္ဂ်ီ ျဖင့္ေရးေသာစာျဖစ္သည္
+	</p>
+	<h3>This is for unicode (myanmar3) font</h3>
+	<p class="unicode">
+		သည်စာသည် unicode ဖြင့်ရေးသောစာဖြစ်သည်
+	</p> -->
+
+   <el-button class="changeLange_icon" type="text" @click="dialogVisible_chat = true">
+       <img style="width:25px;height:auto" src="~static/images/icons/translate_lang.svg" alt="">
+   </el-button>
+
+
+    <!-- lee pal{{radio1}}
+    <p v-if="radio1 == 'zawgyi'">zawgyi</p>
+    <p v-else>uni</p>
+ -->
+
+
              <div class="card_one" v-if="this.currentTime  > this.morningTime_9_30 && this.currentTime < this.time_01_00">
             <div class="card_item">
            
@@ -177,15 +214,15 @@
             <div class="chat">
               
              
-                    <div class="card-content">
+                    <div  class="card-content">
                         <ul class="messages" v-chat-scroll>
                             <li v-for="message in messages" :key="message.id">
                                 <!-- <span> <img src="https://as2.ftcdn.net/jpg/00/97/00/09/500_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" alt="" class="chat_profile"></span> -->
-                               <el-row>
+                               <el-row >
                                    <el-col :span="4"> 
                                           <el-avatar  style="margin-top:10px;" :size="50">
                                                 <img v-if="message.image == null" src="https://as2.ftcdn.net/jpg/00/97/00/09/500_F_97000908_wwH2goIihwrMoeV9QF3BW6HtpsVFaNVM.jpg" alt="">
-                                               <img v-else :src="message.image" :alt="message.name">
+                                               <img  v-else :src="message.image" :alt="message.name">
                                             </el-avatar>
 
                                               
@@ -194,15 +231,20 @@
                                         <span v-if="message.name == '-'" class="chat_name">Anonymous</span>
                                         <span v-else class="chat_name">{{message.name}}{{" "}}</span>
                                    <br>
-                                        <span class="chat_text">
-                                        <span class="chat_content">{{message.content}}</span><br>
+                                        <span  class="chat_text ">
+                                       
+                                             <p  v-if="radio1 == 'ဤစာကိုဖတ္လိုရသည္'"   class="chat_content">{{message.content_zg}}</p>
+                                    
+                                              <p v-else  class="chat_content">{{message.content_uni}}</p>
+                                               
+
                                         <span class="chat_time">{{message.timestamp}}</span>
                                         </span>
                                    </el-col>
                                </el-row>
                                
                             
-                             
+                           
                               
                             </li>
                         </ul>
@@ -225,12 +267,15 @@
 </div> -->
 
     </div>
+       </main>
 </template>
 
 <script>
 import Vue from 'vue'
- 
+import VueZawUni from 'vue-zawuni'
 
+Vue.use(VueZawUni)
+import knayi from 'knayi-myscript'
 import db from "@/firebase/init";
 import moment from "moment";
 import NewMessage from "@/components/NewMessage";
@@ -243,6 +288,10 @@ export default {
         NewMessage
     },
     mounted() {
+        if(!localStorage.getItem('change_zg_uni')) {
+              this.dialogVisible_chat = true
+        }
+           
            var  nowTimestamp =  Math.round(new Date().getTime()/1000) 
             var lastTimestamp = localStorage.getItem('slider_time')
             var diff = nowTimestamp - lastTimestamp;
@@ -321,10 +370,19 @@ export default {
       profile:'',
       slider_text:'',
       breakTime:null,
-           
+     ok:true,
+     radio1:localStorage.getItem('change_zg_uni'),
+     dialogVisible_chat:false,
+
+  
         };
     },
     methods: {
+       changeHandler(e) { 
+           this.$store.commit('change_zg_uni', e.target.value);
+           this.dialogVisible_chat = false
+        },
+  
         goBack() {
             var CheckRoute = localStorage.getItem('chatRouter')
             if(CheckRoute == '2dhome') {
@@ -395,7 +453,7 @@ export default {
        },
     },
     created() {
-
+       
        this.breakTime = moment().format('h:mm:ss a')
       setInterval(() => this.ServerCurrentTime(), 1 * 1000);
 
@@ -412,11 +470,15 @@ export default {
                         id: element.doc.id,
                         name: element.doc.data().name,
                         image:element.doc.data().image,
-                        content: element.doc.data().content,
+
+                        content_uni: knayi.fontConvert(element.doc.data().content,'unicode'),
+                        content_zg: knayi.fontConvert(element.doc.data().content,'zawgyi'),
+                        
                         timestamp: moment(element.doc.data().timestamp).format(
                             "lll"
                         )
                     });
+                    
                 }
             });
         });
@@ -425,10 +487,42 @@ export default {
 </script>
 
 <style >
+body {
+    font-family: unset !important;
+}
+
+.zawgyi{
+			font-family:Zawgyi-One;
+		}
+		.unicode{
+			font-family:Myanmar3,Yunghkio,'Masterpiece Uni Sans';
+		}
+
  .live_chat .el-header {
        background-color :#fff;
        height: auto !important;
 
+}
+.chat_page .el-dialog {
+    text-align: center;
+}
+.changeLange_icon {
+    position: absolute;
+    right:21px;
+    top:5px;
+}
+.chat_page .el-radio-button:last-child .el-radio-button__inner {
+    border-radius: 5px;
+}
+.chat_page .el-radio-button__orig-radio:checked+.el-radio-button__inner {
+    border-radius: 5px;
+}
+.chat_page .el-radio-button__inner {
+    width:150px;
+    border-radius: 5px;
+   border:1px solid #b8b8b8;
+   border-radius: 3px;
+   border-left:1px solid #b8b8b8;
 }
 .el-page-header__left {
     margin:0;
@@ -461,6 +555,7 @@ export default {
     border-radius:6px;
     padding:5px 7px;
     float:left;
+    
 }
 .chat_name {
     color:#B0AFB3;
@@ -575,48 +670,38 @@ export default {
 }
 
 
-/* css zawgyi unicode conventer end */
-
-@font-face {
-    font-family: 'Zawgyi-One';
-    /* src: {{asset('/fonts/Zawgyi-One_V3.1.ttf')}}, IE9 Compat Modes */
-    src: url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi')format(‘embedded-opentype’), IE6-IE8 url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi') format(‘woff’), /* Modern Browsers */
-    url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi'), /* Safari, Android, iOS */
-    url('https://mmwebfonts.comquas.com/fonts/?font=zawgyi') format(‘svg’);
-    /* Legacy iOS */
-    font-weight: normal;
-    font-style: normal;
+.cards {
+  display: flex;
 }
-
-body {
-    font-family: 'Zawgyi-One'!important;
+.cards label {
+  cursor: pointer;
 }
-
-/* myanmar */
-@font-face {
-    font-family: 'Padauk';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local(''), local('Padauk-Regular'), url(https://fonts.gstatic.com/s/padauk/v6/RrQRboJg-id7OnbxckXh7Lk.woff2) format('woff2');
-    unicode-range: U+1000-109F, U+200C-200D, U+25CC;
-  }
-  /* latin */
-  @font-face {
-    font-family: 'Padauk';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local(''), local('Padauk-Regular'), url(https://fonts.gstatic.com/s/padauk/v6/RrQRboJg-id7OnbxbEXh.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
-
-
-body {
-    font-family: 'Padauk'!important;
+.cards label input {
+  display: none;
 }
-
-
-/* css zawgyi unicode conventer end */
+.cards label .text {
+  color: #ae2b26;
+  font-family: "roboto", arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100px;
+  height: 150px;
+  margin: 0 16px;
+  border: 1px solid #f2f2f2;
+  background: #f8f8f8;
+  padding: 16px;
+  text-align: center;
+}
+.cards label.isActive {
+  font-size: 30px;
+}
+.cards label:hover .text{
+  border-color: #ae2b26;
+  box-shadow: 0 0 8px #ccc;
+}
+.cards label input:checked + .text {
+  color: green;
+  border-color: green;
+}
 </style>

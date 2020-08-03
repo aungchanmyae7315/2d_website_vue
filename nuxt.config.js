@@ -57,8 +57,8 @@ export default {
             { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', defer: true },
             // { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css' },
             { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',defer:true },
-            { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=mon3' },
-            { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=zawgyi' },
+            // { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=mon3' },
+            // { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=zawgyi' },
         ]
     },
     /*
@@ -159,5 +159,7 @@ export default {
          ** You can extend webpack config here
          */
         extend(config, ctx) {}
+
+        
     }
 }

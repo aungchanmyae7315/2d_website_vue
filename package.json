@@ -27,6 +27,7 @@
     "element-ui": "^2.13.2",
     "firebase": "^7.17.1",
     "html-to-image": "^0.1.1",
+    "knayi-myscript": "^2.8.3",
     "mobile-device-detect": "^0.3.3",
     "moment": "^2.27.0",
     "nuxt": "^2.14.0",
