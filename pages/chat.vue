@@ -7,8 +7,8 @@
    :show-close="false"
   :close-on-click-modal="false">
  <el-radio-group @click.native="changeHandler" v-model="radio1">
-        <el-radio-button value="zawgyi"  label="ဤစာကိုဖတ္လိုရသည္"></el-radio-button><br>
-        <el-radio-button  valeue="unicode" label="ဤစာကိုဖတ်လိုရသည်"></el-radio-button>
+        <el-radio-button value="zawgyi"  label="ဤစာကိုဖတ္လိုရသည္">ဤစာကိုဖတ္လိုရသည္ (Zawgyi) </el-radio-button><br>
+        <el-radio-button  valeue="unicode" label="ဤစာကိုဖတ်လိုရသည်">ဤစာကိုဖတ်လိုရသည် (Unicode)</el-radio-button>
   
     </el-radio-group>
 
@@ -520,7 +520,7 @@ body {
     border-radius: 5px;
 }
 .chat_page .el-radio-button__inner {
-    width:150px;
+    width:220px;
     border-radius: 5px;
    border:1px solid #b8b8b8;
    border-radius: 3px;
