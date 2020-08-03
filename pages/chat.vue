@@ -513,6 +513,9 @@ body {
     right:21px;
     top:5px;
 }
+.chat_page button:focus {
+    outline: none;
+}
 .chat_page .el-radio-button:last-child .el-radio-button__inner {
     border-radius: 5px;
 }
