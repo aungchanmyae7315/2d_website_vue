@@ -505,6 +505,8 @@ body {
 }
 .chat_page .el-dialog {
     text-align: center;
+    max-width:480px;
+    width:90%;
 }
 .changeLange_icon {
     position: absolute;
