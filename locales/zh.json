@@ -335,6 +335,6 @@
     "Mown": "Mown",
     "Body": "Body",
     "goal": "Goal +",
-    "completed": "Completed",
-    "Upcoming": "Upcoming"
+    "completed": "已结束",
+    "Upcoming": "开放中"
 }

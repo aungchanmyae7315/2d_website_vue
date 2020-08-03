@@ -173,7 +173,7 @@
                                                <img :src="fDetailMaung.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
                                                </div>
                                     </label>
-                                    <label class="for_both" style="padding-left:2%;" v-else>
+                                    <label class="for_both" style="margin-right:3%;" v-else>
                                              <div class="forRadio" style="margin-top:2px;">
                                                   <el-checkbox  disabled></el-checkbox>
                                              </div>
@@ -202,7 +202,7 @@
                                                    <el-checkbox v-model="checked2" disabled></el-checkbox>
                                              </div>
                                     </label>
-                                     <label class="for_both" v-else>
+                                     <label class="for_both" v-else style="margin-right:3%;">
                                               <div class="team_logo001">
                                                <img :src="fDetailMaung.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
                                                </div>

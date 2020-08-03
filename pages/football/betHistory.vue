@@ -7,7 +7,7 @@
             <!-- </nuxt-link> -->
         </el-header>
         <div class="noti_main">
-            <div style="margin-top:10px;" v-for="(footballInfo, f) in historyByDate" :key="f">
+            <div style="margin-top:10px; margin-left:5px;" v-for="(footballInfo, f) in historyByDate" :key="f">
                    {{footballInfo.date}}
                 <!-- <nuxt-link :to="`${$t('/football/betHistoryDetail')}?lang=${$store.state.locale}`"> -->
 
