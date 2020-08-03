@@ -476,7 +476,7 @@ export default {
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
   }
-.pickerbox[data-v-4804d034] {
+.pickerbox {
   position: unset !important; 
      width: unset !important;
     height: unset !important; 
@@ -491,10 +491,10 @@ export default {
   
 
 }
-.colums[data-v-4804d034] {
+.picker .colums {
   margin:0 55px !important;
 }
-.content[data-v-4804d034] {
+.picker .content {
   height:180px !important;
 }
 .choose_bet_title {
@@ -504,14 +504,14 @@ export default {
   text-align: left;
 }
 
-  .vue-picker[data-v-4804d034] {
+  .vue-picker {
     position: unset  !important;
     background: unset !important;
     user-select: none;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
   }
-  .picker .btn[data-v-6ffe26b0] {
+  .picker .btn {
      color:#4D2707;
   }
   .HideBtn {
@@ -533,11 +533,11 @@ export default {
      border:0;
  }
 
-  .picker .mask[data-v-4804d034] {
+  .picker .mask[data-v-522db47a] {
         background-size: 100% 70px !important;
           background-image: -webkit-gradient(linear, left top, left bottom,  from(rgba(40, 49, 59, 0.9)), to(rgba(40, 49, 59, 0.2))), -webkit-gradient(linear, left bottom, left top, from(rgba(40, 49, 59, 0.9)), to(rgba(40, 49, 59, 0.2)));
   }
-  .picker .list li[data-v-1a173b4c] {
+  .picker .list li[data-v-ec129ff4] {
     color:#fff;
     position: relative;
     top:-14px;
@@ -546,13 +546,13 @@ export default {
   .picker .header .left {
     display: none;
   }
-  .picker .header[data-v-6ffe26b0]::after {
+  .picker .header::after {
     border:unset;
   }
-  .picker .title[data-v-6ffe26b0] {
+  .picker .title {
     display: none;
   }
-  .colums[data-v-4804d034] {
+  .picker .colums {
     font-size: 24px !important;
 
   }
