@@ -39,6 +39,7 @@
     "vue-owl-carousel": "^2.0.3",
     "vue-pickers": "^2.5.2",
     "vue-social-sharing": "^2.4.7",
+    "vue-zawuni": "^1.0.2",
     "vuejs-scroll-fixed-header": "^1.0.2",
     "yarn": "^1.22.4"
   },

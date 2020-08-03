@@ -36,7 +36,7 @@ export default {
             { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
         ],
         script: [
-
+       
             // { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js' },
             { src: 'https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js' },
             { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js',defer:true },
@@ -58,6 +58,8 @@ export default {
             { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',defer:true },
             // { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css' },
             { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',defer:true },
+            { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=mon3' },
+            { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=zawgyi' },
         ]
     },
     /*
@@ -147,6 +149,7 @@ export default {
     //     }
     //   }
     // },
+    
     /*
      ** Build configuration
      */

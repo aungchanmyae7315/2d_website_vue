@@ -36,7 +36,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueZawUni from 'vue-zawuni'
+
+Vue.use(VueZawUni)
 import db from "@/firebase/init";
+
 export default {
     name: "NewMessage",
    // props: ["name"],
@@ -104,6 +109,13 @@ export default {
 };
 </script>
 <style >
+ .unicode {
+        font-family: "Pyidaungsu","MON3 Anonta 1" !important;
+    }
+
+    .zawgyi {
+        font-family: "Zawgyi-One" !important;
+    }
 .message_input_footer {
     padding:10px 20px;
 }
