@@ -20,8 +20,8 @@
             <!-- </nuxt-link> -->
         </el-header>
         <div v-for="(fDetail, f) in historyDetail" :key="f">
-        <div class="bet_detail_main">
-                <div class="collapse_card1" style="color:#121212;" >
+            <div class="bet_detail_main">
+                <div class="collapse_card1" style="color:#121212;">
                     <el-row>
                         <span class="date" style="color:#121212;">{{fDetail.play_at_time}}</span>
                         <span class="time1" style="color:#121212;">{{fDetail.play_at}}</span>
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <span class="vs_text" style="color:#121212; font-size:25px;font-weight:501">
-                                              {{fDetail.home_goal}} - {{fDetail.away_goal}}<br><span class="gb_background">{{fDetail.price}}</span></span>
+                                                  {{fDetail.home_goal}} - {{fDetail.away_goal}}<br><span class="gb_background">{{fDetail.price}}</span></span>
 
                             <div v-if="fDetail.away_team.id == fDetail.bet_team.id">
                                 <div class="vs_inner_body team_02">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                                        <div class="goal_inner" v-if="fDetail.type==2">
+                    <div class="goal_inner" v-if="fDetail.type==2">
 
                         <div class=" team_vs">
                             <div v-if="fDetail.home_team.id == fDetail.bet_team.id">
@@ -94,7 +94,7 @@
                                 </div>
                             </div>
                             <span class="vs_text" style="color:#121212; font-size:25px;font-weight:501">
-                                              {{fDetail.home_goal}} - {{fDetail.away_goal}}<br><span class="gb_background">{{fDetail.price}}</span></span>
+                                                  {{fDetail.home_goal}} - {{fDetail.away_goal}}<br><span class="gb_background">{{fDetail.price}}</span></span>
 
                             <div v-if="fDetail.away_team.id == fDetail.bet_team.id">
                                 <div class="vs_inner_body team_02">
@@ -126,7 +126,7 @@
                         </div>
 
                         <div v-else>
-                           <div class="up-And-down">
+                            <div class="up-And-down">
                                 <div class="checked_btn">
                                     <span class="normal_check_icon">&nbsp;</span>
                                 </div>
@@ -136,7 +136,7 @@
 
                         </div>
 
-                        <div v-if="fDetail.goal_status == 2" >
+                        <div v-if="fDetail.goal_status == 2">
                             <div class="up-And-down">
                                 <div class="checked_btn">
                                     <span class="down_check_icon"><i class="el-icon-check"></i></span>
@@ -158,71 +158,111 @@
 
 
                 </div>
-                 <div v-if="fDetail.type==3" style="transform:translateY(-120px)">
-                   <el-row>
+                <div v-if="fDetail.type==3" style="transform:translateY(-120px)">
+                    <el-row>
                         <span class="date" style="color:#121212;">{{fDetail.bet_date}}</span>
                         <span class="time1" style="color:#121212;">{{fDetail.bet_time}}</span>
                     </el-row>
 
-                <!-- {{fDetail.moung}} -->
+                    <!-- {{fDetail.moung}} -->
 
-                                <div class="collapse_cardMown mown"  v-for="(fDetailMaung, f) in fDetail.moung" :key="f">
-                                  <div class="mown_match" >
-                                    <label class="for_both" style="padding-left:2%;" v-if="fDetailMaung.home_team.id == fDetailMaung.bet_team.id">
-                                             <div class="forRadio">
-                                               <el-checkbox v-model="checked2" disabled></el-checkbox>
-                                             </div>
-                                             <div class="team_name001" style="color:black;">
-
-                                               {{fDetailMaung.home_team.name}}
-                                              </div>
-                                              <div class="team_logo001">
-                                               <img :src="fDetailMaung.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
+                    <div class="collapse_cardMown mown" v-for="(match, f) in fDetail.moung" :key="f">
+                        <div style="display:flex;width:100%;">
+                                          <span class="dateMown" style="color:#121212;width:50%;text-align:left;">{{match.play_at_time}}</span>
+                                          <span class="timeMown" style="color:#121212;width:50%;text-align:right;">{{match.play_at}}</span>
+                        </div>
+                            <div class="card_inner" v-if="match.home_team.id == match.bet_team.id">
+                                  <input checked="checked"  type="radio" class="radio" :id="match.away_team.id">
+                                  <label :for="match.home_team.id">
+                                    <div class="checkbox"></div>
+                                     <p class="teamName_mown">{{match.home_team.name}}</p>
+                                     <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                  </label>
+                              </div>
+                              <div class="card_inner" v-else>
+                                  <input  type="radio" class="radio" :id="match.away_team.id">
+                                  <label :for="match.home_team.id">
+                                    <div class="checkbox"></div>
+                                     <p class="teamName_mown" style="color:lightgray">{{match.home_team.name}}</p>
+                                     <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                  </label>
+                              </div>
+                              <div class="card_vs">
+                                   <p style="font-size:14px;">{{match.home_goal}} - {{match.away_goal}}</p>
+                              </div>
+                               <div class="card_inner" v-if="match.bet_team.id == match.away_team.id">
+                                   <input checked="checked"  type="radio" class="radio" :id="match.away_team.id">
+                                   <label :for="match.away_team.id">
+                                     <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                    <p class="teamName_mown"> {{match.away_team.name}}</p>
+                                      <div class="checkbox"></div>
                                     </label>
-                                    <label class="for_both" style="padding-left:2%;" v-else>
-                                             <div class="forRadio" style="margin-top:2px;">
-                                                  <el-checkbox  disabled></el-checkbox>
-                                             </div>
-                                             <div class="team_name001" style="color:silver">
-
-                                               {{fDetailMaung.home_team.name}}
-                                              </div>
-                                              <div class="team_logo001">
-                                               <img :src="fDetailMaung.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
+                              </div>
+                              <div class="card_inner" v-else>
+                                   <input   type="radio" class="radio" :id="match.away_team.id">
+                                   <label :for="match.away_team.id">
+                                     <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                    <p class="teamName_mown" style="color:lightgray;"> {{match.away_team.name}}</p>
+                                      <div class="checkbox"></div>
                                     </label>
+                              </div>
 
-                                    <div class="vs_mown" style="color:#121212;font-size:20px;">
-                                      {{fDetailMaung.home_goal}} -  {{fDetailMaung.away_goal}}
-
-                                      </div>
-                                    <label class="for_both" v-if="fDetailMaung.away_team.id == fDetailMaung.bet_team.id">
-                                              <div class="team_logo001">
-                                               <img :src="fDetailMaung.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                                <div class="team_name001" style="color:black">
-
-                                               {{fDetailMaung.away_team.name}}
-                                              </div>
-                                              <div class="forRadio">
+                            <!-- <label class="for_both" style="padding-left:2%;" v-if="fDetailMaung.home_team.id == fDetailMaung.bet_team.id">
+                                                 <div class="forRadio">
                                                    <el-checkbox v-model="checked2" disabled></el-checkbox>
-                                             </div>
-                                    </label>
-                                     <label class="for_both" v-else>
-                                              <div class="team_logo001">
-                                               <img :src="fDetailMaung.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                                <div class="team_name001" style="color:silver">
+                                                 </div>
+                                                 <div class="team_name001" style="color:black;">
 
-                                               {{fDetailMaung.away_team.name}}
-                                              </div>
-                                              <div class="forRadio">
-                                                   <el-checkbox  disabled></el-checkbox>
-                                             </div>
-                                    </label>
-                                          </div>
-                                </div> </div>
+                                                   {{fDetailMaung.home_team.name}}
+                                                  </div>
+                                                  <div class="team_logo001">
+                                                   <img :src="fDetailMaung.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                                   </div>
+                                        </label>
+                            <label class="for_both" style="padding-left:2%;" v-else>
+                                                 <div class="forRadio" style="margin-top:2px;">
+                                                      <el-checkbox  disabled></el-checkbox>
+                                                 </div>
+                                                 <div class="team_name001" style="color:silver">
+
+                                                   {{fDetailMaung.home_team.name}}
+                                                  </div>
+                                                  <div class="team_logo001">
+                                                   <img :src="fDetailMaung.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                                   </div>
+                                        </label>
+
+                            <div class="vs_mown" style="color:#121212;font-size:16px;">
+                                {{fDetailMaung.home_goal}} - {{fDetailMaung.away_goal}}
+
+                            </div>
+                            <label class="for_both" style="margin-right:15px;" v-if="fDetailMaung.away_team.id == fDetailMaung.bet_team.id">
+                                                  <div class="team_logo001">
+                                                   <img :src="fDetailMaung.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                                   </div>
+                                                    <div class="team_name001" style="color:black">
+
+                                                   {{fDetailMaung.away_team.name}}
+                                                  </div>
+                                                  <div class="forRadio">
+                                                       <el-checkbox v-model="checked2" disabled></el-checkbox>
+                                                 </div>
+                                        </label>
+                            <label class="for_both" style="margin-right:15px;" v-else>
+                                                  <div class="team_logo001">
+                                                   <img :src="fDetailMaung.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                                   </div>
+                                                    <div class="team_name001" style="color:silver">
+
+                                                   {{fDetailMaung.away_team.name}}
+                                                  </div>
+                                                  <div class="forRadio" style="padding-right:5px;">
+                                                       <el-checkbox  disabled></el-checkbox>
+                                                 </div>
+                                        </label> -->
+
+                    </div>
+                </div>
 
             </div>
 
@@ -275,6 +315,7 @@
     border-radius: 2px;
     color: white;
 }
+
 .up_check_icon {
     width: 20px;
     background-color: #158220;

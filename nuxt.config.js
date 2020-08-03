@@ -1,4 +1,3 @@
-
 export default {
 
     server: {
@@ -8,15 +7,15 @@ export default {
 
     //loading: '~/components/loading.vue',
     mode: 'spa',
-    // router: { 
+    // router: {
     //     // customize nuxt.js router (vue-router).
     //     middleware: 'i18n' // middleware all pages of the application
     // },
     router: {
 
         middleware: 'i18n',
-       
-      },
+
+    },
     generate: {
         fallback: true,
         interval: 100
@@ -39,23 +38,23 @@ export default {
        
             // { src: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js' },
             { src: 'https://cdn.jsdelivr.net/npm/vue-chat-scroll/dist/vue-chat-scroll.min.js' },
-            { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js',defer:true },
-            { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js',defer:true },
-            { src: 'https://unpkg.com/aos@next/dist/aos.js',defer: true},
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js', defer: true },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data.min.js', defer: true },
+            { src: 'https://unpkg.com/aos@next/dist/aos.js', defer: true },
             //{ src: 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js',defer:true },
             // { src: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js' },
-            { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js',defer:true },
+            { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js', defer: true },
             // { src: 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js' },
             // { src: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',defer:true },
         ],
         link: [
             // { rel: 'icon', type: 'image/x-icon', href: `${dir}/favicon.ico` },
-            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico',defer:true },
-            { rel: 'apple-touch-icon', href: '/apple-touch-icon.png',defer:true },
-            { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=zawgyi' ,defer:true},
-            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Padauk&display=swap',defer:true },
-            { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css',defer:true },
-            { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',defer:true },
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico', defer: true },
+            { rel: 'apple-touch-icon', href: '/apple-touch-icon.png', defer: true },
+            { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=zawgyi', defer: true },
+            { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Padauk&display=swap', defer: true },
+            { rel: 'stylesheet', href: 'https://unpkg.com/aos@next/dist/aos.css', defer: true },
+            { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', defer: true },
             // { rel: 'stylesheet', href: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css' },
             { rel: 'stylesheet', href: 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',defer:true },
             { rel: 'stylesheet', href: 'https://mmwebfonts.comquas.com/fonts/?font=mon3' },
@@ -88,7 +87,7 @@ export default {
     axios: {
         credentials: false,
         //debug:true,
-       //baseURL: "https://api.2dboss.com/api/",
+        //  baseURL: "https://api.2dboss.com/api/",
         baseURL: "https://build.seinchanthar.com/api/",
         proxy: false,
         proxyHeaders: false,
@@ -104,10 +103,10 @@ export default {
         '@/plugins/aos',
         '~/plugins/i18n.js',
 
-        
+
 
     ],
-    
+
     /*
      ** Nuxt.js dev-modules
      */

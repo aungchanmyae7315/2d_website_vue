@@ -230,26 +230,6 @@
     "morning": "Morning",
     "evening": "Evening",
 
-
-    "all": "All Matches",
-    "closed": "Closed",
-    "opening": "Opening",
-    "mownStatus": "Please select Mini 3 matches and Max 10 matches",
-    "enter_bet_amount": "Enter bet amount",
-    "team": "Select your bet team",
-    "max_amount": "Minimum bet amount is 100 MMK",
-    "multipleOF100": "Bet amount must be multiple of 100 MMK",
-    "football_Bet_closed.": "Football Bet is closed.",
-    "bet history": "Bet History",
-    "congratulation": "Congratulation！",
-    "Mown": "Mown",
-    "Body": "Body",
-    "goal": "Goal +",
-    "completed": "Completed",
-    "Upcoming": "Upcoming",
-
-
-
     "if_the_photo_can_not_upload_on_your_device": "If the photo can not upload on your device, pls use SeinLucky's browser version. ",
     "click_here": "Click here",
     "to_user_browser_version": "pls use Seinlucky's browser version.",
@@ -339,6 +319,25 @@
     "topup_details": "Top Up Details",
     "you_are_submitting_withdrawal": "You are submitting the withdrawal repeatedly, please try again one minute later. ",
     "set_6_digit": "Set 6-digit secret scode for withdrawal",
-    "pls_login_first": "Plesae Login First"
+    "pls_login_first": "Plesae Login First",
+
+
+    "all": "All Matches",
+    "closed": "Closed",
+    "opening": "Opening",
+    "mownStatus1": "Please select Mini 3 matches ",
+    "mownStatus2": "Please select  Max 10 matches",
+    "enter_bet_amount": "Enter bet amount",
+    "team": "Select your bet team",
+    "max_amount": "Minimum bet amount is 100 MMK",
+    "multipleOF100": "Bet amount must be multiple of 100 MMK",
+    "football_Bet_closed.": "Football Bet is closed.",
+    "bet history": "Bet History",
+    "congratulation": "Congratulation！",
+    "Mown": "Maung",
+    "Body": "Body",
+    "goal": "Total Goal",
+    "completed": "Completed",
+    "Upcoming": "Upcoming"
 
 }

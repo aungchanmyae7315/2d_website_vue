@@ -11,20 +11,20 @@
                         </div>
                     </el-col>
                     <el-col :span="10">
-                        Mown
+                        {{$t('Mown')}}
                     </el-col>
 
                 </el-row>
                 <el-row style="padding-top:10px;">
                     <el-col>
-                        <p class="amount_lbl">လောင်းမည့်ပမာဏကိုထည့်ပါ၊</p>
+                        <p class="amount_lbl">{{$t('enter_bet_amount')}}</p>
                     </el-col>
                     <el-col>
 
                         <el-form-item style="margin-bottom:10px;" prop="amount" :rules="[
-                                                                                         { required: true, message: $t('amount_required') },
+                                                                                             { required: true, message: $t('amount_required') },
 
-                                                                                    ]">
+                                                                                        ]">
 
                             <el-input @keypress.enter.native="bet('numberValidateForm1')" class type="number" placeholder="100 Ks(min)" v-model="numberValidateForm1.amount"></el-input>
                         </el-form-item>
@@ -80,179 +80,147 @@
                                     <img src="~static/images/warning.svg" alt="logo" style="width:30px;" />
                                 </div>
                                 <div class="mown_warning">
-                                    <p>အနည်းဆုံးလောင်းမည့်အသင်း ၃ သင်းရွေးပေးပါ<br> အများဆုံး ၁၀ သင်းသာရွေးပေးပါ</p>
+                                    <p> {{$t('mownStatus1')}} {{$t('mownStatus2')}}</p>
                                 </div>
 
                             </div>
+
                             <!-- <p style="color:white;">{{mown}}</p> -->
-                            <!-- <p style="color:white;">{{one1}}</p> -->
+                                  <!-- <p style="color:white;">{{one1}}</p> -->
                             <div v-if="mown == 1">
                             <div v-for="(match,aa) in matchs" :key="aa">
-                                <div class="collapse_card mown">
 
-                                  <div class="mown_match" >
-                                    <label class="for_both" style="padding-left:2%;">
-                                             <div class="forRadio">
-                                                  <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
-                                             </div>
-                                             <div class="team_name001">
+                            <div class="collapse_card mown" style="color:white;">
+                              <div class="card_inner">
+                                 <input type="radio" class="radio" :id="match.home_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
+                                  <label :for="match.home_team.id">
+                                    <div class="checkbox"></div>
+                                     <p class="teamName_mown">{{match.home_team.name}}</p>
+                                     <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                  </label>
+                              </div>
+                              <div class="card_vs">
+                                   <p>{{match.play_at}}</p>
+                              </div>
+                              <div class="card_inner">
+                                   <input checked="checked"  type="radio" class="radio" :id="match.away_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
+                                   <label :for="match.away_team.id">
+                                     <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                    <p class="teamName_mown"> {{match.away_team.name}}</p>
+                                      <div class="checkbox"></div>
+                                    </label>
+                              </div>
 
-                                               {{match.home_team.name}}
-                                              </div>
-                                              <div class="team_logo001">
-                                               <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                           </label>
+                              <div class="line" style="width:95%;"></div>
+                                        <div class="body_price_mown">
+                                            <span>Body</span><span>{{match.body_price}}</span>
+                                        </div>
+                                    </div>
 
-                                    <div class="vs_mown" style="" >{{match.play_at}}</div>
-                                    <label class="for_both">
-                                              <div class="team_logo001">
-                                               <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                                <div class="team_name001">
 
-                                               {{match.away_team.name}}
-                                              </div>
-                                              <div class="forRadio">
-                                                   <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
-                                             </div>
-                                          </label>
-                                          </div>
-                                          <div class="line" style="width:95%;" ></div>
-                                          <div class="body_price_mown">
-                                            <span >Body</span><span >{{match.body_price}}</span>
-                                            </div>
-                                </div>
+
                             </div>
                             </div>
-
-
                             <div v-if="mown == 2">
-                            <div v-for="(match,aa) in tomorrow" :key="aa">
-                                <div class="collapse_card mown">
+                                <div v-for="(match,aa) in tomorrow" :key="aa">
 
-                                  <div class="mown_match" >
-                                    <label class="for_both" style="padding-left:2%;">
-                                             <div class="forRadio">
-                                                  <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
-                                             </div>
-                                             <div class="team_name001">
+                        <div class="collapse_card mown" style="color:white;">
+                              <div class="card_inner">
+                                 <input type="radio" class="radio" :id="match.home_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
+                                  <label :for="match.home_team.id">
+                                    <div class="checkbox"></div>
+                                     <p class="teamName_mown">{{match.home_team.name}}</p>
+                                     <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                  </label>
+                              </div>
+                              <div class="card_vs">
+                                   <p>{{match.play_at}}</p>
+                              </div>
+                              <div class="card_inner">
+                                   <input  type="radio" class="radio" :id="match.away_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
+                                   <label :for="match.away_team.id">
+                                     <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                    <p class="teamName_mown"> {{match.away_team.name}}</p>
+                                      <div class="checkbox"></div>
+                                    </label>
+                              </div>
 
-                                               {{match.home_team.name}}
-                                              </div>
-                                              <div class="team_logo001">
-                                               <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                           </label>
+                              <div class="line" style="width:95%;"></div>
+                                        <div class="body_price_mown">
+                                            <span>Body</span><span>{{match.body_price}}</span>
+                                        </div>
+                                    </div>
 
-                                    <div class="vs_mown" style="" >{{match.play_at}}</div>
-                                    <label class="for_both">
-                                              <div class="team_logo001">
-                                               <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                                <div class="team_name001">
+                            </div>
 
-                                               {{match.away_team.name}}
-                                              </div>
-                                              <div class="forRadio">
-                                                   <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
-                                             </div>
-                                          </label>
-                                          </div>
-                                          <div class="line" style="width:95%;" ></div>
-                                          <div class="body_price_mown">
-                                            <span >Body</span><span >{{match.body_price}}</span>
-                                            </div>
+
+                            <div v-if="mown == 3">
+                                <div v-for="(match,aa) in tomorrow1" :key="aa">
+                      <div class="collapse_card mown" style="color:white;">
+                              <div class="card_inner">
+                                 <input type="radio" class="radio" :id="match.home_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
+                                  <label :for="match.home_team.id">
+                                    <div class="checkbox"></div>
+                                     <p class="teamName_mown">{{match.home_team.name}}</p>
+                                     <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                  </label>
+                              </div>
+                              <div class="card_vs">
+                                   <p>{{match.play_at}}</p>
+                              </div>
+                              <div class="card_inner">
+                                   <input  type="radio" class="radio" :id="match.away_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
+                                   <label :for="match.away_team.id">
+                                     <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                    <p class="teamName_mown"> {{match.away_team.name}}</p>
+                                      <div class="checkbox"></div>
+                                    </label>
+                              </div>
+
+                              <div class="line" style="width:95%;"></div>
+                                        <div class="body_price_mown">
+                                            <span>Body</span><span>{{match.body_price}}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
 
+                            <div v-if="mown == 4">
+                                <div v-for="(match,aa) in tomorrow2" :key="aa">
+                           <div class="collapse_card mown" style="color:white;">
+                              <div class="card_inner">
+                                 <input type="radio" class="radio" :id="match.home_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
+                                  <label :for="match.home_team.id">
+                                    <div class="checkbox"></div>
+                                     <p class="teamName_mown">{{match.home_team.name}}</p>
+                                     <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                  </label>
+                              </div>
+                              <div class="card_vs">
+                                   <p>{{match.play_at}} </p>
+                              </div>
+                              <div class="card_inner">
+                                   <input  type="radio" class="radio" :id="match.away_team.id" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
+                                   <label :for="match.away_team.id">
+                                     <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
+                                    <p class="teamName_mown"> {{match.away_team.name}}</p>
+                                      <div class="checkbox"></div>
+                                    </label>
+                              </div>
 
-                                      <div v-if="mown == 3">
-                            <div v-for="(match,aa) in tomorrow1" :key="aa">
-                                <div class="collapse_card mown">
-
-                                  <div class="mown_match" >
-                                    <label class="for_both" style="padding-left:2%;">
-                                             <div class="forRadio">
-                                                  <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
-                                             </div>
-                                             <div class="team_name001">
-
-                                               {{match.home_team.name}}
-                                              </div>
-                                              <div class="team_logo001">
-                                               <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                           </label>
-
-                                    <div class="vs_mown" style="" >{{match.play_at}}</div>
-                                    <label class="for_both">
-                                              <div class="team_logo001">
-                                               <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                                <div class="team_name001">
-
-                                               {{match.away_team.name}}
-                                              </div>
-                                              <div class="forRadio">
-                                                   <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
-                                             </div>
-                                          </label>
-                                          </div>
-                                          <div class="line" style="width:95%;" ></div>
-                                          <div class="body_price_mown">
-                                            <span >Body</span><span >{{match.body_price}}</span>
-                                            </div>
+                              <div class="line" style="width:95%;"></div>
+                                        <div class="body_price_mown">
+                                            <span>Body</span><span>{{match.body_price}}</span>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            </div>
-
-                                      <div v-if="mown == 4">
-                            <div v-for="(match,aa) in tomorrow2" :key="aa">
-                                <div class="collapse_card mown">
-
-                                  <div class="mown_match" >
-                                    <label class="for_both" style="padding-left:2%;">
-                                             <div class="forRadio">
-                                                  <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.home_team.id}">
-                                             </div>
-                                             <div class="team_name001">
-
-                                               {{match.home_team.name}}
-                                              </div>
-                                              <div class="team_logo001">
-                                               <img :src="match.home_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                           </label>
-
-                                    <div class="vs_mown" style="" >{{match.play_at}}</div>
-                                    <label class="for_both">
-                                              <div class="team_logo001">
-                                               <img :src="match.away_team.logo" class="vs_team_img" style="width:55px;height:55px;">
-                                               </div>
-                                                <div class="team_name001">
-
-                                               {{match.away_team.name}}
-                                              </div>
-                                              <div class="forRadio">
-                                                   <input type="radio" v-model="one1[aa]" :name="match.id" :value="{football_match_id:match.id,bet_team_id:match.away_team.id}">
-                                             </div>
-                                          </label>
-                                          </div>
-                                          <div class="line" style="width:95%;" ></div>
-                                          <div class="body_price_mown">
-                                            <span >Body</span><span >{{match.body_price}}</span>
-                                            </div>
-                                </div>
-                            </div>
                             </div>
 
                         </div>
+                        </div>
+                        </div>
+                        </div>
 
-
-                    </div>
-                </div>
 
             </el-main>
         </el-form>
@@ -588,6 +556,8 @@
 
 <script>
 import axios from 'axios'
+
+
 export default {
 
     mounted() {
@@ -676,7 +646,7 @@ export default {
             profile: '',
             myWallet: '',
             end_bet_football: '',
-            mown:localStorage.getItem('mown'),
+            mown: localStorage.getItem('mown'),
             one: [],
             one1: [],
             res: [],
@@ -748,35 +718,35 @@ export default {
                 this.serverDate = response.data.date
             })
 
-      let mownID = localStorage.getItem('mown');
-      if(mownID==1){
-       this.$axios.get("/v2/v1/football/today/upcoming")
-            .then(response => {
-                console.log("upcoming", response.data.data);
-                this.matchs = response.data.data;
-            })
-      }
-      if(mownID==2){
-       this.$axios.get("/v2/v1/football/tomorrow/match")
-            .then(response => {
-                console.log("tomorrow", response.data.data);
-                this.tomorrow = response.data.data;
-            })
-      }
-      if(mownID==3){
-       this.$axios.get("/v2/v1/football/one_tomorrow/match")
-            .then(response => {
-                console.log("tomorrow1", response.data.data);
-                this.tomorrow1 = response.data.data;
-            })
-      }
-      if(mownID==4){
-       this.$axios.get("/v2/v1/football/two_tomorrow/match")
-            .then(response => {
-                console.log("tomorrow2", response.data.data);
-                this.tomorrow2 = response.data.data;
-            })
-      }
+        let mownID = localStorage.getItem('mown');
+        if (mownID == 1) {
+            this.$axios.get("/v2/v1/football/today/upcoming")
+                .then(response => {
+                    console.log("upcoming", response.data.data);
+                    this.matchs = response.data.data;
+                })
+        }
+        if (mownID == 2) {
+            this.$axios.get("/v2/v1/football/tomorrow/match")
+                .then(response => {
+                    console.log("tomorrow", response.data.data);
+                    this.tomorrow = response.data.data;
+                })
+        }
+        if (mownID == 3) {
+            this.$axios.get("/v2/v1/football/one_tomorrow/match")
+                .then(response => {
+                    console.log("tomorrow1", response.data.data);
+                    this.tomorrow1 = response.data.data;
+                })
+        }
+        if (mownID == 4) {
+            this.$axios.get("/v2/v1/football/two_tomorrow/match")
+                .then(response => {
+                    console.log("tomorrow2", response.data.data);
+                    this.tomorrow2 = response.data.data;
+                })
+        }
 
 
     },
@@ -785,7 +755,6 @@ export default {
 
 
     methods: {
-
         thousands_separators(num) {
             //console.dir(num);
             if (num == undefined) {
