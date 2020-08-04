@@ -132,7 +132,7 @@
                          </div>
                             <div v-else class="bet_login_btn">
                             <el-col :span="10">
-                                  <el-button  :disabled='submitted'    type="warning" getHello="getHello" class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
+                                  <el-button     type="warning"  class="bet_btn_login" @click="bet('ruleForm')" round >{{$t('Bet')}}</el-button>
                             </el-col>
 
 
@@ -881,7 +881,6 @@ export default {
                         this.$store.commit('getBet', data);
                         var bet_amount = this.ruleForm.amount
                         this.$store.commit('betAmount',bet_amount);
-                        this.submitted = true
                         this.$router.push(`/remark?lang=${this.$store.state.locale}`);
                     }
                 } else {

@@ -268,8 +268,8 @@ export default {
                 .catch(error => {
                     console.log(error.response)
                    this.$message({
-                         showClose: true,
-                           message:this.$t('server_error'),
+                            showClose: true,
+                          message:this.$t('server_error'),
                           type: 'warning',
                         });
                 });
@@ -324,7 +324,7 @@ export default {
     //             .catch(error => {
     //                this.$message({
     //                         showClose: true,
-    //                       message: 'Server response error',
+    //                         message:this.$t('server_error'),
     //                       type: 'warning',
     //                     });
     //             });

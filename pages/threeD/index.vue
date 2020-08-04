@@ -99,9 +99,11 @@
              </nuxt-link>
           </el-col>
           <el-col :span="8">
-             <nuxt-link  :to="`${$t('/live_chat')}?lang=${$store.state.locale}`">
+            <div @click="storeRouter">
+
                <img src="~static/images/icons/live_chat_icon.svg" alt="" class="live_chat_icon">
-             </nuxt-link>
+ 
+            </div>
           </el-col>
         </el-row> -->
 
@@ -284,11 +286,12 @@ export default {
     goBack() {
         this.$router.push(`/?lang=${this.$store.state.locale}`);
     },
-    thousands_separators(num){
-        var num_parts = num.toString().split(".");
-        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        return num_parts.join(".");
+      storeRouter() {
+      this.routePath = '3dhome'
+      this.$store.commit('chatRouter', this.routePath);
+      this.$router.push(`/chat?lang=${this.$store.state.locale}`);
     },
+
       updateIsLoggedIn() {
         this.$store.commit('updateIsLoggedIn', this.hasUserInfo());
       },
