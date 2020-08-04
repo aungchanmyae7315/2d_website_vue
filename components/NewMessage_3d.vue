@@ -43,7 +43,7 @@ Vue.use(VueZawUni)
 import db from "@/firebase/init";
 
 export default {
-    name: "NewMessage",
+    name: "NewMessage_3d",
    // props: ["name"],
    mounted() {
        
@@ -87,7 +87,7 @@ export default {
       },
         addMessage() {
             if (this.newMessage) {
-                db.collection("messages")
+                db.collection("messages_3d")
                     .add({
                         content: this.newMessage,
                         name: this.chat_name,

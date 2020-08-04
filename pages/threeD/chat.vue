@@ -19,7 +19,7 @@
     <div class="main_container live_chat">
         <el-header class="header">
             <!-- <nuxt-link  :to="`${$t('/')}?lang=${$store.state.locale}`"> -->
-                <el-page-header title="" @back="goBack"  content="Sein Lucky Live Chat">
+                <el-page-header title="" @back="goBack"  content="Sein Lucky 3D Live Chat">
                     </el-page-header>
             <!-- </nuxt-link> -->
             <!-- <h3>This is for ZawGyI font</h3>
@@ -255,7 +255,7 @@
             </div>
         
              <div class="card-action input_messeage">
-                        <NewMessage :name="name" />
+                        <NewMessagethreed :name="name" />
                     </div>
 
 
@@ -278,14 +278,14 @@ Vue.use(VueZawUni)
 import knayi from 'knayi-myscript'
 import db from "@/firebase/init";
 import moment from "moment";
-import NewMessage from "@/components/NewMessage";
+import NewMessagethreed from "@/components/NewMessage_3d";
 import VueChatScroll from 'vue-chat-scroll'
 Vue.use(VueChatScroll)
 export default {
     name: "Chat",
     props: ["name"],
     components: {
-        NewMessage
+        NewMessagethreed
     },
     mounted() {
         if(!localStorage.getItem('change_zg_uni')) {
@@ -384,12 +384,13 @@ export default {
         },
   
         goBack() {
-            var CheckRoute = localStorage.getItem('chatRouter')
-            if(CheckRoute == '2dhome') {
-                this.$router.push(`/home?lang=${this.$store.state.locale}`);
-            }else {
-                this.$router.push(`/threeD?lang=${this.$store.state.locale}`);
-            }
+             this.$router.push(`/threeD?lang=${this.$store.state.locale}`);
+            // var CheckRoute = localStorage.getItem('chatRouter')
+            // if(CheckRoute == '2dhome') {
+            //     this.$router.push(`/home?lang=${this.$store.state.locale}`);
+            // }else {
+               
+            // }
          
         },
          async getKweeLiveData(){
@@ -458,7 +459,7 @@ export default {
       setInterval(() => this.ServerCurrentTime(), 1 * 1000);
 
 
-        let ref = db.collection("messages")
+        let ref = db.collection("messages_3d")
         .orderBy("timestamp")
         .limitToLast(500);
       

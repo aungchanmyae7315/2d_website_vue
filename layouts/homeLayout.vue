@@ -302,7 +302,7 @@ html {
 
 .download_btn a {
   color:#000 !important;
-   font-size: 11px;
+   font-size: 14px;
 }
 .el-drawer__header {
   margin:0 ;
