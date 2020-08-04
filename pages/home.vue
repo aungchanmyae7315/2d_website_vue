@@ -68,7 +68,7 @@
             
               </div>
         </div>
-        <el-row class="hi_re_li">
+        <!-- <el-row class="hi_re_li">
 
           <el-col :span="8">
             <nuxt-link  :to="`${$t('/twoD/bet_history')}?lang=${$store.state.locale}`"> 
@@ -85,7 +85,7 @@
                <img src="~static/images/icons/live_chat_icon.svg" alt="" class="live_chat_icon">
               </nuxt-link>
           </el-col>
-        </el-row>
+        </el-row> -->
 
         <carousel  :autoplay="true"  :nav="false" v-if="loaded" :items =1>
     

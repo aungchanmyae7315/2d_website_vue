@@ -307,7 +307,7 @@
     "reach_highest_bet_limit": "reach highest bet limit amount. Please try other numbers. ",
     "transaction_type": "Transaction Type",
     "bank": "Bank",
-    "account": "Account",
+    "account": "slipe code",
     "transaction_status": "Transaction Status",
     "transaction_history": "Transaction History within 2 days",
     "topup_success": "Top-up Success !",
