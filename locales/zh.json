@@ -319,6 +319,9 @@
     "withdrawal_details": "提现信息",
     "topup_details": "充值信息",
     "you_are_submitting_withdrawal": "你在 重复的提交提现申请，请在 一分钟后重试。",
+    "set_6_digit": "Set 6-digit secret scode for withdrawal",
+    "pls_login_first": "Plesae Login First",
+    "server_error":"服务器占时异常，请稍后重试。",
 
 
     "all": "全部球赛",

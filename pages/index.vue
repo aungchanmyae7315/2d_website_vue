@@ -147,7 +147,7 @@
                             </nuxt-link>
                         </el-col>
                     </el-row>
-
+<!-- 
                     <el-row>
                         <el-col :span="12">
 
@@ -161,7 +161,7 @@
 
                             </nuxt-link>
                         </el-col>
-                    </el-row>
+                    </el-row> -->
 
                 </div>
 

@@ -881,7 +881,6 @@ export default {
                         this.$store.commit('getBet', data);
                         var bet_amount = this.ruleForm.amount
                         this.$store.commit('betAmount',bet_amount);
-                        this.submitted = true
                         this.$router.push(`/remark?lang=${this.$store.state.locale}`);
                     }
                 } else {

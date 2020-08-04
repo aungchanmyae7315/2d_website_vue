@@ -269,7 +269,7 @@ export default {
                     console.log(error.response)
                    this.$message({
                             showClose: true,
-                          message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+                          message:this.$t('server_error'),
                           type: 'warning',
                         });
                 });
@@ -324,7 +324,7 @@ export default {
     //             .catch(error => {
     //                this.$message({
     //                         showClose: true,
-    //                       message: 'ထီထိုးငွေပမာဏကို အနည်းဆုံး ၁၀၀ ထိုးရပါမည်',
+    //                         message:this.$t('server_error'),
     //                       type: 'warning',
     //                     });
     //             });
